@@ -1,5 +1,4 @@
 'use client';
-'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -52,6 +51,11 @@ const CounterItem: React.FC<{ target: number; children: React.ReactNode }> = ({
 };
 
 const BenefitsSection: React.FC = () => {
+  useEffect(() => {
+    // Safe to use document/window here
+    document.getElementById('someId');
+  }, []);
+
   return (
     <div
       className="sectionPadding bg-center bg-no-repeat bg-cover bg-b-900 bg-[url('../img/bc/FAQ-bg.png')]"

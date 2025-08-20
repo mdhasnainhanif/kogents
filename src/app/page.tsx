@@ -1,4 +1,3 @@
-// export const revalidate = 3600;
 'use client';
 import HeroSection from '../components/home/HeroSection';
 import ProductSection from '../components/home/ProductSection';

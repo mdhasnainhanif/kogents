@@ -1,15 +1,21 @@
 'use client';
-'use client';
 
 import React from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const AIAgentSection = () => {
+  useEffect(() => {
+    // Place any browser-only code here, e.g. document, window, localStorage
+    // Example:
+    // if (typeof document !== 'undefined') {
+    //   // document.querySelector(...)
+    // }
+  }, []);
 
   return (
     <>
-
       <section
         className="sectionPadding bg-center bg-no-repeat bg-cover newBg desktop-section-show"
         id="aiAgentSection"
@@ -20,8 +26,7 @@ const AIAgentSection = () => {
               <span
                 data-aos="fade-up"
                 className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
-              >Case Studies</span
-              >
+              >Case Studies</span>
               <h2
                 data-aos="fade-up"
                 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
@@ -336,7 +341,7 @@ const AIAgentSection = () => {
                   className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
                   data-modal-target="#welcomeModal"
                 >Request Access
-                  <Image src="assets//img/icons/arrow-right.svg" alt="arrow"
+                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow"
                    width={25} height={25} /></Link>
               </div>
             </div>
@@ -372,7 +377,7 @@ const AIAgentSection = () => {
                   className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
                   data-modal-target="#welcomeModal"
                 >Request Access
-                  <Image src="assets//img/icons/arrow-right.svg" alt="arrow"
+                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow"
                    width={25} height={25} /></Link>
               </div>
             </div>
@@ -692,7 +697,7 @@ const AIAgentSection = () => {
                   className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
                   data-modal-target="#welcomeModal"
                 >Request Access
-                  <Image src="assets//img/icons/arrow-right.svg" alt="arrow"
+                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow"
                    width={800} height={600} /></Link>
               </div>
             </div>
@@ -728,7 +733,7 @@ const AIAgentSection = () => {
                   className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
                   data-modal-target="#welcomeModal"
                 >Request Access
-                  <Image src="assets//img/icons/arrow-right.svg" alt="arrow"
+                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow"
                    width={800} height={600} /></Link>
               </div>
             </div>

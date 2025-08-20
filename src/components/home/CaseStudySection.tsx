@@ -1,10 +1,9 @@
 'use client';
-"use client";
 
 import Link from "next/link";
-import React from "react";
 import Image from 'next/image';
 
+import React, { useEffect } from "react";
 const CaseStudySection = () => {
   function updateServiceScrollerClass() {
     const el = document.getElementById("serviceScrollerArea");
@@ -17,11 +16,13 @@ const CaseStudySection = () => {
     }
   }
 
-  // page load par call karo
-  updateServiceScrollerClass();
-
-  // ✅ jab window resize ho to bhi call ho
-  window.addEventListener("resize", updateServiceScrollerClass);
+  useEffect(() => {
+    updateServiceScrollerClass();
+    window.addEventListener("resize", updateServiceScrollerClass);
+    return () => {
+      window.removeEventListener("resize", updateServiceScrollerClass);
+    };
+  }, []);
   return (
     <div className="sectionPadding pb-0 bg-[url('../img/bc/revolutionize-bg.png')] bg-cover">
       <section className="sectionPadding pt-0 pb_8">
