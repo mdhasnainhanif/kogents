@@ -1,0 +1,241 @@
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1100px){
+
+.megaMenuDropdown {
+    padding: 2rem 4rem !important;   
+    left: 85% !important;
+  
+}
+
+
+.customDropdown.active > .megaMenuDropdown {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.dropdownImgMain{
+    display: none;
+}
+
+.megaMenuDropdown.platform {
+ 
+    left: 215% !important;
+  
+}
+
+.section_product-image.wrapper{
+           padding: 0rem 4rem;
+   }
+   
+   
+.header_button{
+    display: none;
+}
+
+/*.megaMenuDropdown .gap4rem{*/
+/*   gap: 1rem !important; */
+/*}*/
+
+.desktop-section-show{
+    display:none !important;
+}
+.ipadpro-section-show{
+    display:block;
+}
+
+
+.aiAgentSection_ipad{
+    display:block !important;
+}
+
+.card_hide_ipadpro{
+    display:none !important;
+}
+
+.card_show_ipadpro{
+    display:block !important;
+}
+.counter1::before {
+    max-width: 11rem !important;
+    max-height: 11rem !important;
+    background-size: cover !important;
+}
+.counter2::before {
+    max-width: 13rem !important;
+    max-height: 13rem !important;
+    background-size: cover !important;
+}
+.counter3::before {
+    max-width: 12rem !important;
+    max-height: 11rem !important;
+    background-size: cover !important;
+}
+
+.animationSectionMain{
+    border:none !important;
+}
+
+.aiWhatsappBtn{
+    margin: 0 auto !important;
+}
+
+
+.teamCards_ipadpro{
+    flex-direction:column!important;
+}
+
+.teamCards_ipadpro .mt-6 {
+     margin-top: unset !important; 
+}
+
+.teamCards_ipadpro .mb-12 {
+    margin-bottom: 1rem !important;
+}
+
+      
+    .scroller > span{
+        margin-left: 0rem !important;
+    }
+
+       .whatsappBanner {
+        
+        display: none !important;
+    }
+    
+    .scroller > * {
+    /* margin: 0 auto !important; */
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+    
+    
+    .firstCol{
+    left: 50% !important;
+    transform: translate(-50%, 0px) !important;
+    text-align: center !important;
+    }
+    
+    .firstCol .buttonAnimation2{
+      margin:0 auto;
+  }
+    
+    .firstCol h1{
+      margin:0 auto !important;
+  }
+    
+    .buttonAnimation{
+            margin-left: auto !important;
+            margin-right: auto !important;
+    }
+    
+    /*.buttonAnimation2{*/
+    /*    margin: 0 auto;*/
+    /*}*/
+    
+    /*.contactBanner .col-lg-6:first-child(){*/
+    /*}*/
+    
+    .contact_boxes_height{
+        display:flex;
+        flex-direction:column;
+        
+    }
+    
+.contactBox {
+    /*padding: 3.39rem 1rem !important ;*/
+    height:100%;
+   }
+
+img.botImage {
+   
+    top: 1rem !important;
+    right: -2rem !important;
+    min-width: 21rem !important;
+}
+
+.scroller h2{
+    width: fit-content;
+}
+
+.scroller p{
+    text-align:center
+}
+
+.scroller .buttonAnimation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0rem;
+        width: fit-content;
+        margin-left: auto !important;
+        margin-right: auto;
+}
+
+.pxl-item--inner{
+    display:none;
+}
+    .ipad-stack > [class^="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .button-center-ipad {
+    display: flex;
+    justify-content: start;
+  }   
+
+.caseStudySlider{
+      margin-top:2rem;
+  }
+  
+  .paddingOnIpadPro {
+        padding: 0 !important;
+    }
+   
+   
+   #blogSection{
+    padding-top:0 !important;  
+   } 
+    #benefitsSection{
+        padding-top:3rem !important;
+    }
+    
+    .tilt-card img {
+    
+    margin-top: 12px;
+}
+
+.animationSectionMain {
+ 
+    background: none !important;
+   
+}
+
+.custom-padding{
+    padding-top:2rem ;
+}
+.stack-cards__item{
+    position: static !important;
+  top: unset !important;
+  height: unset !important;
+
+}
+#serviceScrollerArea {
+     margin-bottom: 0rem  !important;
+}
+
+.tilt-card img:first-child {
+    max-width: 29rem !important;
+}
+
+.chartMain > h2 {
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, 0px);
+    font-size: 2rem;
+    width: 100%;
+}
+
+    
+}
