@@ -25,11 +25,11 @@ const WhatsappImagesSection = () => {
               <p
                 className="text-light text-base text-center maxWidth39 mx-auto"
               >
-                Train your agent to handle specific industry jargon, unique
-                customer queries, or complex workflows. By incorporating
-                real-world data and ongoing interactions, Jotform AI evolves to
-                become smarter and more effective, ensuring every response is
-                accurate, helpful, and aligned with your business goals.
+                Train your agent to handle specific industry jargon&#44; unique
+                customer queries&#44; or complex workflows. By incorporating
+                real-world data and ongoing interactions&#44; Jotform AI evolves to
+                become smarter and more effective&#44; ensuring every response is
+                accurate&#44; helpful&#44; and aligned with your business goals.
               </p>
             </div>
           </div>
@@ -54,7 +54,7 @@ const WhatsappImagesSection = () => {
                     Authenticate your business account through WhatsApp Business
                     API
                   </li>
-                  <li>Link your WhatsApp number via secure, encrypted setup</li>
+                  <li>Link your WhatsApp number via secure&#44; encrypted setup</li>
                   <li>
                     Protect data with end-to-end encryption and admin-level
                     controls
@@ -87,15 +87,15 @@ const WhatsappImagesSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Upload FAQs, workflows, and customer scenarios to the
+                    Upload FAQs&#44; workflows&#44; and customer scenarios to the
                     training dashboard
                   </li>
                   <li>
-                    Teach the agent to handle queries, routing, and sales
+                    Teach the agent to handle queries&#44; routing&#44; and sales
                     engagement
                   </li>
                   <li>
-                    Run test chats to refine tone, response quality, and logic
+                    Run test chats to refine tone&#44; response quality&#44; and logic
                   </li>
                 </ul>
                 <a
@@ -129,7 +129,7 @@ const WhatsappImagesSection = () => {
                     automation
                   </li>
                   <li>
-                    Track engagement, resolution rate, and conversation health
+                    Track engagement&#44; resolution rate&#44; and conversation health
                     in real time
                   </li>
                   <li>
@@ -172,8 +172,8 @@ const WhatsappImagesSection = () => {
               <p
                 className="text-light text-center maxWidth39 mx-auto"
               >
-                With built-in analytics, permissions control, API support, and
-                multilingual handling, it's designed to serve businesses at
+                With built-in analytics&#44; permissions control&#44; API support&#44; and
+                multilingual handling&#44; it's designed to serve businesses at
                 scale with precision and power.
               </p>
             </div>
@@ -196,15 +196,15 @@ const WhatsappImagesSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Customize greetings, menus, and flows to match your business
+                    Customize greetings&#44; menus&#44; and flows to match your business
                     model
                   </li>
                   <li>
-                    Configure responses based on industry, audience, or campaign
+                    Configure responses based on industry&#44; audience&#44; or campaign
                     goals
                   </li>
                   <li>
-                    Set routing rules, escalation logic, and fallback handoffs
+                    Set routing rules&#44; escalation logic&#44; and fallback handoffs
                     with precision
                   </li>
                 </ul>
@@ -235,7 +235,7 @@ const WhatsappImagesSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Auto-respond to FAQs, order inquiries, and payment
+                    Auto-respond to FAQs&#44; order inquiries&#44; and payment
                     follow-ups
                   </li>
                   <li>
@@ -278,7 +278,7 @@ const WhatsappImagesSection = () => {
                     required
                   </li>
                   <li>
-                    Syncs with CRM, order management, and chatbot ecosystems
+                    Syncs with CRM&#44; order management&#44; and chatbot ecosystems
                   </li>
                   <li>
                     Unifies customer data from WhatsApp with your backend
@@ -308,19 +308,19 @@ const WhatsappImagesSection = () => {
                   className="rounded-lg imgHeight"
                 />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  Personalized, AI-Driven Conversations
+                  Personalized&#44; AI-Driven Conversations
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Tailors replies using customer history, behavior, and
+                    Tailors replies using customer history&#44; behavior&#44; and
                     preferences
                   </li>
                   <li>
-                    Delivers multilingual, context-aware conversations in real
+                    Delivers multilingual&#44; context-aware conversations in real
                     time
                   </li>
                   <li>
-                    Adapts tone and content based on region, persona, or
+                    Adapts tone and content based on region&#44; persona&#44; or
                     purchase stage
                   </li>
                 </ul>

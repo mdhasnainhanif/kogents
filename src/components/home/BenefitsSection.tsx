@@ -69,8 +69,8 @@ const BenefitsSection: React.FC = () => {
           </h2>
           <p className="w-75 mb-16 text-center paraColor subHeading">
             Deploy AI agents to streamline operations and amplify your
-            business's efficiency. These agents optimize processes, reduce
-            delays, and enhance output, ensuring you gain a competitive edge
+            business's efficiency. These agents optimize processes&#44; reduce
+            delays&#44; and enhance output&#44; ensuring you gain a competitive edge
             with speed and precision.
           </p>
 
@@ -94,8 +94,8 @@ const BenefitsSection: React.FC = () => {
                   <CounterItem target={93}>
                     <h3 className="heading-4">Smart Tools. Smarter Outcomes</h3>
                     <p className="text-white small-text1">
-                      With integrated analytics, live syncing, and action
-                      automation, Kogents AI Agents do more than reply — they
+                      With integrated analytics&#44; live syncing&#44; and action
+                      automation&#44; Kogents AI Agents do more than reply — they
                       act.
                     </p>
                   </CounterItem>
@@ -105,8 +105,8 @@ const BenefitsSection: React.FC = () => {
                   <CounterItem target={100}>
                     <h3 className="heading-4">Reliable. Adaptive. Always On</h3>
                     <p className="text-white small-text1">
-                      All agents are continuously learning from conversations,
-                      system signals, and customer outcomes — to deliver better
+                      All agents are continuously learning from conversations&#44;
+                      system signals&#44; and customer outcomes — to deliver better
                       support and smarter escalations.
                     </p>
                   </CounterItem>

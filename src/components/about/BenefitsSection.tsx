@@ -71,7 +71,7 @@ const BenefitsSection: React.FC = () => {
             With Tremendous Benefits
           </h2>
           <p className="w-75 mb-16 text-center paraColor subHeading">
-            Deploy AI agents to streamline operations and amplify your business's
+            Deploy AI agents to streamline operations and amplify your business&apos;s
             efficiency. These agents optimize processes, reduce delays, and
             enhance output, ensuring you gain a competitive edge with speed and
             precision.

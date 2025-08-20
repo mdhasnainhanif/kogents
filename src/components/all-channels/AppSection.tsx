@@ -19,12 +19,12 @@ const AppSection = () => {
             </h2>
 
             <p className="w-75 mb-16 text-center paraColor subHeading">
-              WhatsApp, Phone, Chat, Voice, Kiosk — we automate every
+              WhatsApp&#44; Phone&#44; Chat&#44; Voice&#44; Kiosk — we automate every
               touchpoint.
             </p>
 
             <p className="w-75 mb-16 text-center paraColor subHeading">
-              Your customers are everywhere — and now, so are you.
+              Your customers are everywhere — and now&#44; so are you.
             </p>
 
             <div className="row appMain mt-4 rowGap">

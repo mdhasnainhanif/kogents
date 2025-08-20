@@ -15,8 +15,8 @@ const AllChannelsCard = () => {
                 Find An Agent According To The Industry You Work In
               </h2>
               <p className="mb-8 paraColor text-base md:text-xl text-w-100 text-center">
-                Whether insurance, property management or a broad BPO
-                requirement, find the agent you need according to the work your
+                Whether insurance&#44; property management or a broad BPO
+                requirement&#44; find the agent you need according to the work your
                 business does.
               </p>
             </div>
@@ -125,9 +125,9 @@ const AllChannelsCard = () => {
                       Instagram Agent
                     </h3>
                     <p>
-                      Store, retrieve, or serve media and data assets like
-                      documents, receipts, or reports during AI-powered
-                      interactions, securely from S3 buckets.
+                      Store&#44; retrieve&#44; or serve media and data assets like
+                      documents&#44; receipts&#44; or reports during AI-powered
+                      interactions&#44; securely from S3 buckets.
                     </p>
                     <a
                       href="javascript:void(0);"
@@ -186,7 +186,7 @@ const AllChannelsCard = () => {
                       Shopify Agent
                     </h3>
                     <p>
-                      Auto-create, update, or complete Asana tasks from customer
+                      Auto-create&#44; update&#44; or complete Asana tasks from customer
                       requests or internal triggers handled by AI agents.
                     </p>
                     <a
@@ -217,7 +217,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a
@@ -248,7 +248,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a
@@ -279,7 +279,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a
@@ -310,7 +310,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a
@@ -341,7 +341,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a
@@ -372,7 +372,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a
@@ -403,7 +403,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a
@@ -434,7 +434,7 @@ const AllChannelsCard = () => {
                     </h3>
                     <p>
                       This integration enables your bot to seamlessly interact
-                      with Instagram, allowing you to harness the power of
+                      with Instagram&#44; allowing you to harness the power of
                       social media in your conversational AI experiences.
                     </p>
                     <a

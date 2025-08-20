@@ -22,7 +22,7 @@ const Banner = () => {
                 <p className="mb-8 paraColor text-base md:text-xl text-w-100 text-center">
                   Choose AI Agent templates to strengthen connections with your
                   customers. Each AI Agent transforms routine interactions into
-                  meaningful relationships through personalized, engaging
+                  meaningful relationships through personalized&#44; engaging
                   conversations.
                 </p>
 

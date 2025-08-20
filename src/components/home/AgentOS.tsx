@@ -15,13 +15,13 @@ const AgentOS = () => {
                     // data-aos="fade-up"
                     className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
                 >
-                    Autonomous Doesn’t Mean Isolated
+                    Autonomous Doesn&apos;t Mean Isolated
                 </h2>
                 <p
                     className="w-75 mb-16 text-center m-auto mt-3 subHeading paraColor"
                     // data-aos="fade-up"
                 >
-                    Your AI Agents share signals, escalate across channels, and optimize
+                    Your AI Agents share signals&#44; escalate across channels&#44; and optimize
                     workflows together. Think of it as a mesh network of AI — tailored to your
                     business.
                 </p>

@@ -19,7 +19,7 @@ const BlogSection = () => {
                 Fuel Your Teams with Engineering-Driven Insights
               </h2>
               <p className="subHeading w-75 mb-16 mt-3 subHeading paraColor aos-init aos-animate">
-                Boost productivity, innovation, and operational security across
+                Boost productivity&#44; innovation&#44; and operational security across
                 departments with curated updates from the minds behind Kogents
                 AI Agents. Our engineering blog is where thought leadership
                 meets practical AI application—built for businesses navigating
@@ -110,8 +110,8 @@ const BlogSection = () => {
                   <p>
                     Think of us as your 24/7 customer service superheroes and
                     essential AI powered business Solutions! We provide
-                    real-time assistance, answer questions, guide users through
-                    forms, and solve problems instantly, without the wait.
+                    real-time assistance&#44; answer questions&#44; guide users through
+                    forms&#44; and solve problems instantly&#44; without the wait.
                   </p>
                   <div className="d-flex justify-content-between">
                     <div className="pxl-post--author pxl-mr-10">
@@ -127,7 +127,7 @@ const BlogSection = () => {
                     </div>
                     <div className="pxl-date-tag">
                       <div className="pxl-post--date pxl-mr-10">
-                        16th Apr '25
+                        16th Apr 25
                       </div>
                       <div className="pxl-post--tag pxl-ml-10">AI agency</div>
                     </div>
@@ -167,7 +167,7 @@ const BlogSection = () => {
                     </div>
                     <div className="pxl-date-tag">
                       <div className="pxl-post--date pxl-mr-10">
-                        16th Apr '25
+                        16th Apr 25
                       </div>
                       <div className="pxl-post--tag pxl-ml-10">AI agency</div>
                     </div>
@@ -207,7 +207,7 @@ const BlogSection = () => {
                     </div>
                     <div className="pxl-date-tag">
                       <div className="pxl-post--date pxl-mr-10">
-                        16th Apr '25
+                        16th Apr 25
                       </div>
                       <div className="pxl-post--tag pxl-ml-10">AI agency</div>
                     </div>
@@ -247,7 +247,7 @@ const BlogSection = () => {
                     </div>
                     <div className="pxl-date-tag">
                       <div className="pxl-post--date pxl-mr-10">
-                        16th Apr '25
+                        16th Apr 25
                       </div>
                       <div className="pxl-post--tag pxl-ml-10">AI agency</div>
                     </div>

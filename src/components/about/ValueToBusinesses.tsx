@@ -24,10 +24,10 @@ const ValueToBusinesses = () => {
                         className="w-75 mb-16 mx-auto text-center paraColor subHeading"
                         // data-aos="fade-up"
                     >
-                        Our AI agents are trained on your data, your workflows, and your
+                        Our AI agents are trained on your data&#44; your workflows&#44; and your
                         systems. They handle frontline interactions across platforms like
-                        WhatsApp, Voice, CRM, and web—responding in real time, resolving
-                        issues efficiently, and surfacing insights that drive decisions.
+                        WhatsApp&#44; Voice&#44; CRM&#44; and web—responding in real time&#44; resolving
+                        issues efficiently&#44; and surfacing insights that drive decisions.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] mt-4">
@@ -73,7 +73,7 @@ const ValueToBusinesses = () => {
               */}
                             <p className="text-base text-w-100">
                                 {/* Global <span className="block"></span> Integration */}
-                                Clearer data across sales, service, and CX touchpoints
+                                Clearer data across sales&#44; service&#44; and CX touchpoints
                             </p>
                         </div>
                     </div>

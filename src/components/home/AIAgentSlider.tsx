@@ -30,11 +30,11 @@ const AIAgentSlider = () => {
                   More Than Just Smart Replies
                 </h2>
                 <p className="paraColor mx-auto text-center subHeading maxWidth39">
-                  Our agents aren’t siloed bots. They collaborate.
+                  Our agents aren&apos;t siloed bots. They collaborate.
                 </p>
                 <p className="paraColor mx-auto text-center subHeading maxWidth39 mb-1">
                   Your Shopify AI syncs with your WhatsApp AI. Your kiosk agent flags
-                  issues your phone agent hears daily. Together, they form a mesh of
+                  issues your phone agent hears daily. Together&#44; they form a mesh of
                   automation — one that evolves with your business.
                 </p>
                 <a

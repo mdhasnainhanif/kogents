@@ -4,12 +4,12 @@ import { useState, useMemo } from "react";
 export default function AiAgentSection() {
     const [activeTab, setActiveTab] = useState("industries"); // 'industries' | 'profession' | 'type'
 
-    const isActive = (key) => activeTab === key;
+    const isActive = (key: any) => activeTab === key;
 
     // tiny helper to join classes
-    const cx = (...cls) => cls.filter(Boolean).join(" ");
+    const cx = (...cls: any) => cls.filter(Boolean).join(" ");
 
-    const TabCard = ({ img, title, points = [] }) => (
+    const TabCard = ({ img,  title, points = [] }: any) => (
         <div className="col-lg-4 col-md-6 col-12">
             <div className="p-6 md:p-12 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
                 <img className="w-full" src={img} alt="media image" />
@@ -21,7 +21,7 @@ export default function AiAgentSection() {
                         {title}
                     </a>
                     <div className="flex flex-wrap gap-2 cardPoints">
-                        {points.map((p, i) => (
+                        {points.map((p: any, i: any) => (
                             <a
                                 key={i}
                                 className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900"

@@ -28,7 +28,7 @@ const ContactBanner = () => {
               at scale? Our B2B sales team is ready to guide you through
               tailored AI agent solutions that align with your business goals.
               Whether you manage support across departments or lead innovation
-              across product lines, we’re here to help.
+              across product lines&#44; we&apos;re here to help.
             </p>
           </div>
         </div>

@@ -32,9 +32,9 @@ const AIAgentSection = () => {
                 className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto aos-init aos-animate"
                 data-aos="fade-up"
               >
-                Kogents AI plugs directly into your business — no-code, real-time,
-                and trained on your systems. From handling 1,000+ tickets a day to
-                qualifying leads or syncing bookings, our AI agents act like
+                Kogents AI plugs directly into your business — no-code&#44; real-time&#44;
+                and trained on your systems. From handling 1&#44;000+ tickets a day to
+                qualifying leads or syncing bookings&#44; our AI agents act like
                 full-time staff across:
               </p>
             </div>
@@ -55,7 +55,7 @@ const AIAgentSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Responds instantly using your live knowledge base, so your
+                    Responds instantly using your live knowledge base&#44; so your
                     team isn't stuck replying to repetitive queries.
                   </li>
                   <li>
@@ -92,10 +92,10 @@ const AIAgentSection = () => {
                 <ul className="arrowPointUl">
                   <li>
                     Picks up every call 24/7 with voice AI that sounds human — no
-                    missed calls, no wait times.
+                    missed calls&#44; no wait times.
                   </li>
                   <li>
-                    Books appointments, routes calls intelligently, and handles
+                    Books appointments&#44; routes calls intelligently&#44; and handles
                     FAQs in real time.
                   </li>
                   <li>
@@ -131,11 +131,11 @@ const AIAgentSection = () => {
                     voice/text — no need to dig through systems.
                   </li>
                   <li>
-                    Connects directly to your backend for real-time, accurate
+                    Connects directly to your backend for real-time&#44; accurate
                     responses.
                   </li>
                   <li>
-                    Keeps your workforce agile, responsive, and aligned — wherever
+                    Keeps your workforce agile&#44; responsive&#44; and aligned — wherever
                     they are.
                   </li>
                 </ul>
@@ -164,7 +164,7 @@ const AIAgentSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Available 24/7 on your site, with smart responses drawn from
+                    Available 24/7 on your site&#44; with smart responses drawn from
                     your support history.
                   </li>
                   <li>
@@ -200,7 +200,7 @@ const AIAgentSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Engages in natural, context-aware conversations on calls,
+                    Engages in natural&#44; context-aware conversations on calls&#44;
                     trained on your support data.
                   </li>
                   <li>
@@ -242,7 +242,7 @@ const AIAgentSection = () => {
                         </h3>
                         <ul className="arrowPointUl">
                           <li>
-                            Handles product, order, refund, and shipping queries
+                            Handles product&#44; order&#44; refund&#44; and shipping queries
                             instantly by pulling live data from your store.
                           </li>
                           <li>
@@ -251,7 +251,7 @@ const AIAgentSection = () => {
                           </li>
                           <li>
                             Increases checkout completion rates and improves
-                            retention through faster, smarter post-sale support.
+                            retention through faster&#44; smarter post-sale support.
                           </li>
                         </ul>
                         <div className="button-center-ipad">
@@ -286,7 +286,7 @@ const AIAgentSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Answers Facebook DMs using up-to-date product, policy, and
+                    Answers Facebook DMs using up-to-date product&#44; policy&#44; and
                     order info.
                   </li>
                   <li>
@@ -294,7 +294,7 @@ const AIAgentSection = () => {
                     chat patterns.
                   </li>
                   <li>
-                    Boosts customer satisfaction and lead conversion through fast,
+                    Boosts customer satisfaction and lead conversion through fast&#44;
                     intelligent engagement.
                   </li>
                 </ul>
@@ -326,8 +326,8 @@ const AIAgentSection = () => {
                   </li>
                   <li>Learns from past queries and adapts on the fly.</li>
                   <li>
-                    Deploys instantly and scales effortlessly across support,
-                    sales, or onboarding.
+                    Deploys instantly and scales effortlessly across support&#44;
+                    sales&#44; or onboarding.
                   </li>
                 </ul>
 
@@ -396,7 +396,7 @@ const AIAgentSection = () => {
                 data-aos="fade-up"
                 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
               >
-                Industry Specific Solutions: One Platform, Infinite Possibilities!
+                Industry Specific Solutions: One Platform&#44; Infinite Possibilities!
               </h2>
               <p
                 className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto aos-init aos-animate"
@@ -459,10 +459,10 @@ const AIAgentSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Picks up calls, answers FAQs, and books appointments with ease
+                    Picks up calls&#44; answers FAQs&#44; and books appointments with ease
                   </li>
                   <li>
-                    Offers natural, voice-based conversations powered by real data
+                    Offers natural&#44; voice-based conversations powered by real data
                   </li>
                   <li>
                     Helps reduce wait times and frees up your human team for
@@ -499,7 +499,7 @@ const AIAgentSection = () => {
                     Easily connects to your backend to provide real-time responses
                   </li>
                   <li>
-                    Perfect for field reps, remote workers, or on-the-go teams
+                    Perfect for field reps&#44; remote workers&#44; or on-the-go teams
                   </li>
                 </ul>
                 <Link
@@ -527,7 +527,7 @@ const AIAgentSection = () => {
                 </h3>
                 <ul className="arrowPointUl">
                   <li>
-                    Chats with customers 24/7, pulling instant answers from your
+                    Chats with customers 24/7&#44; pulling instant answers from your
                     knowledge base
                   </li>
                   <li>
@@ -602,7 +602,7 @@ const AIAgentSection = () => {
                         </h3>
                         <ul className="arrowPointUl">
                           <li>
-                            Instantly answers product, order, and shipping
+                            Instantly answers product&#44; order&#44; and shipping
                             questions from your Shopify catalog
                           </li>
                           <li>
@@ -755,7 +755,7 @@ const AIAgentSection = () => {
                         </h3>
                         <ul className="arrowPointUl">
                           <li>
-                            Instantly answers product, order, and shipping
+                            Instantly answers product&#44; order&#44; and shipping
                             questions from your Shopify catalog
                           </li>
                           <li>

@@ -101,7 +101,7 @@ const ContactSection = () => {
                 <p className="supportText">
                   Jotform Enterprise clients receive real-time support with
                   priority access to our AI engineers. Book a consultation to
-                  discuss custom integrations, enterprise-grade AI workflows,
+                  discuss custom integrations&#44; enterprise-grade AI workflows&#44;
                   and support for cross-functional implementation.
                 </p>
                 <a
@@ -129,7 +129,7 @@ const ContactSection = () => {
               </h2>
               <p className="text-light">
                 Our experts will connect with you to understand your pain
-                points, identify automation opportunities, and explore how
+                points&#44; identify automation opportunities&#44; and explore how
                 Kogents AI agents can deliver measurable ROI.
               </p>
               <form
@@ -197,7 +197,7 @@ const ContactSection = () => {
                   <div className="error-box" style={{ display: "none" }}>
                     <div className="alert alert-warning">
                       <p className="form-messege">
-                        Error, please retry. Your message has not been sent.
+                        Error&#44; please retry. Your message has not been sent.
                       </p>
                     </div>
                   </div>

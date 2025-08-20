@@ -27,9 +27,9 @@ const Banner = () => {
                 <p
                   className="mb-8 paraColor text-base md:text-xl text-w-100"
                 >
-                  Kogents AI’s WhatsApp Agent empowers businesses to automate
+                  Kogents AI&apos;s WhatsApp Agent empowers businesses to automate
                   and personalize customer interactions at scale — handling
-                  support, inquiries, and transactional workflows with speed and
+                  support&#44; inquiries&#44; and transactional workflows with speed and
                   consistency.
                 </p>
 

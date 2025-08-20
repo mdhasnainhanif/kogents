@@ -19,13 +19,13 @@ const ConnectSmarter = () => {
             // data-aos="fade-up"
             className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
           >
-            Let’s Connect Smarter
+            Let&apos;s Connect Smarter
           </h2>
           <p
             className="w-75 mb-1 text-center paraColor subHeading"
             // data-aos="fade-up"
           >
-            Have questions, ideas, or a big vision? Let’s talk.
+            Have questions&#44; ideas&#44; or a big vision? Let&apos;s talk.
           </p>
           <p
             className="w-75 mb-16 text-center paraColor subHeading"

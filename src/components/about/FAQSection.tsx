@@ -37,8 +37,8 @@ const FAQSection = () => {
                         <span className="inline-block lg:block"></span>Questions
                     </h2>
                     <p className="mb-16 w-75 text-center mx-auto mt-2 subHeading paraColor">
-                        Learn the answers to common questions about our AI solutions, tools,
-                        and services, helping you understand how they can benefit your
+                        Learn the answers to common questions about our AI solutions&#44; tools&#44;
+                        and services&#44; helping you understand how they can benefit your
                         business and streamline operations.
                     </p>
 
@@ -63,8 +63,8 @@ const FAQSection = () => {
                                 style={{ maxHeight: open[0] ? 200 : 0, overflow: "hidden" }}
                             >
                                 <p className="pt-4 text-base text-w-100">
-                                    We support major CRMs, helpdesks, e-commerce platforms, and
-                                    communication channels, including custom setups.
+                                    We support major CRMs&#44; helpdesks&#44; e-commerce platforms&#44; and
+                                    communication channels&#44; including custom setups.
                                 </p>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ const FAQSection = () => {
                             >
                                 <p className="pt-4 text-base text-w-100">
                                     Absolutely. Our AI agents can be deployed independently or as
-                                    part of a unified system across support, sales, and
+                                    part of a unified system across support&#44; sales&#44; and
                                     operations.
                                 </p>
                             </div>

@@ -19,7 +19,7 @@ const WhatsappCommunicationSection = () => {
                     </h2>
                     <p className="text-light">
                       Empower your business with a reliable AI that never misses
-                      a message — purpose-built for growth, service, and scale.
+                      a message — purpose-built for growth&#44; service&#44; and scale.
                     </p>
                     <div>
                       <a
