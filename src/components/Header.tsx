@@ -127,13 +127,13 @@ export default function Header() {
                               </Link>
                             </li>
                             <li className="removeIcon ms-4">
-                              <a
+                              <Link
                                 className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
                                 href="/all-channels"
                               >
                                 See All Channels
                                 <i className="fa-solid fa-chevron-right"></i>
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </div>

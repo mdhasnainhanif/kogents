@@ -2,43 +2,266 @@
 
 import Link from "next/link";
 import Image from 'next/image';
+import React, { useEffect, useRef, useState } from "react";
 
-import React, { useEffect } from "react";
 const CaseStudySection = () => {
-  function updateServiceScrollerClass() {
-    const el = document.getElementById("serviceScrollerArea");
-    if (!el) return;
+  const [isDesktop, setIsDesktop] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<string>("tabScroll1");
+  const stackCardsRef = useRef<HTMLUListElement>(null);
+  const itemsRef = useRef<HTMLLIElement[]>([]);
+  const scrollingFnRef = useRef<(() => void) | null>(null);
+  const scrollingRef = useRef<boolean>(false);
+  const animationFrameRef = useRef<number | null>(null);
 
-    if (window.innerWidth > 1024) {
-      el.classList.remove("service-scrollerArea");
-    } else {
-      el.classList.add("service-scrollerArea");
+  // Helper functions
+  const hasClass = (el: HTMLElement, className: string): boolean => {
+    if (el.classList) return el.classList.contains(className);
+    else return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
+  };
+
+  const addClass = (el: HTMLElement, className: string): void => {
+    const classList = className.split(' ');
+    if (el.classList) el.classList.add(classList[0]);
+    else if (!hasClass(el, classList[0])) el.className += " " + classList[0];
+    if (classList.length > 1) addClass(el, classList.slice(1).join(' '));
+  };
+
+  const removeClass = (el: HTMLElement, className: string): void => {
+    const classList = className.split(' ');
+    if (el.classList) el.classList.remove(classList[0]);
+    else if(hasClass(el, classList[0])) {
+      const reg = new RegExp('(\\s|^)' + classList[0] + '(\\s|$)');
+      el.className = el.className.replace(reg, ' ');
     }
-  }
+    if (classList.length > 1) removeClass(el, classList.slice(1).join(' '));
+  };
 
+  const osHasReducedMotion = (): boolean => {
+    if(!window.matchMedia) return false;
+    const matchMediaObj = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(matchMediaObj) return matchMediaObj.matches;
+    return false;
+  };
+
+  // Stack Cards functions
+  const setStackCards = (): void => {
+    const element = stackCardsRef.current;
+    if (!element) return;
+    
+    const items = itemsRef.current;
+    
+    // Reset all transformations if not desktop
+    if (!isDesktop) {
+      element.style.paddingBottom = '0px';
+      for(let i = 0; i < items.length; i++) {
+        items[i].style.transform = 'none';
+        // Remove stack card classes on mobile
+        items[i].classList.remove('service-scrollerItemContainer', 'stack-cards__item', 'js-stack-cards__item');
+        // Show all items on mobile
+        items[i].style.display = 'block';
+      }
+      return;
+    }
+
+    // Desktop setup - show all items with stack effect
+    for(let i = 0; i < items.length; i++) {
+      items[i].style.display = 'block';
+      // Ensure classes are present on desktop (don't add if already there)
+      if (!items[i].classList.contains('service-scrollerItemContainer')) {
+        items[i].classList.add('service-scrollerItemContainer', 'stack-cards__item', 'js-stack-cards__item');
+      }
+    }
+
+    const marginYValue = getComputedStyle(element).getPropertyValue('--stack-cards-gap');
+    const marginY = getIntegerFromProperty(marginYValue, element);
+    const elementHeight = element.offsetHeight;
+
+    const cardStyle = getComputedStyle(items[0]);
+    const cardTop = Math.floor(parseFloat(cardStyle.getPropertyValue('top')));
+    const cardHeight = Math.floor(parseFloat(cardStyle.getPropertyValue('height')));
+
+    if(isNaN(marginY)) {
+      element.style.paddingBottom = '0px';
+    } else {
+      element.style.paddingBottom = (marginY*(items.length - 1))+'px';
+    }
+
+    for(let i = 0; i < items.length; i++) {
+      if(isNaN(marginY)) {
+        items[i].style.transform = 'none';
+      } else {
+        items[i].style.transform = `translateY(${marginY*i}px)`;
+      }
+    }
+  };
+
+  const getIntegerFromProperty = (value: string, element: HTMLElement): number => {
+    const node = document.createElement('div');
+    node.setAttribute('style', 'opacity:0; visbility: hidden;position: absolute; height:'+value);
+    element.appendChild(node);
+    const intValue = parseInt(getComputedStyle(node).getPropertyValue('height'));
+    element.removeChild(node);
+    return intValue;
+  };
+
+  const animateStackCards = (): void => {
+    if (!isDesktop) {
+      scrollingRef.current = false;
+      return;
+    }
+
+    const element = stackCardsRef.current;
+    if (!element) return;
+    
+    const items = itemsRef.current;
+    const marginYValue = getComputedStyle(element).getPropertyValue('--stack-cards-gap');
+    const marginY = getIntegerFromProperty(marginYValue, element);
+
+    if(isNaN(marginY)) {
+      scrollingRef.current = false;
+      return;
+    }
+
+    const top = element.getBoundingClientRect().top;
+    const cardStyle = getComputedStyle(items[0]);
+    const cardTop = Math.floor(parseFloat(cardStyle.getPropertyValue('top')));
+    const cardHeight = Math.floor(parseFloat(cardStyle.getPropertyValue('height')));
+    const elementHeight = element.offsetHeight;
+    const windowHeight = window.innerHeight;
+
+    if(cardTop - top + windowHeight - elementHeight - cardHeight + marginY + marginY*items.length > 0) { 
+      scrollingRef.current = false;
+      return;
+    }
+
+    for(let i = 0; i < items.length; i++) {
+      const scrolling = cardTop - top - i*(cardHeight+marginY);
+      if(scrolling > 0) {  
+        const scaling = i === items.length - 1 ? 1 : (cardHeight - scrolling*0.05)/cardHeight;
+        items[i].style.transform = `translateY(${marginY*i}px) scale(${scaling})`;
+      } else {
+        items[i].style.transform = `translateY(${marginY*i}px)`;
+      }
+    }
+
+    scrollingRef.current = false;
+  };
+
+  const stackCardsScrolling = (): void => {
+    if (!isDesktop || scrollingRef.current) return;
+    scrollingRef.current = true;
+    animationFrameRef.current = requestAnimationFrame(animateStackCards);
+  };
+
+  const initStackCardsEffect = (): void => {
+    setStackCards();
+    if (!isDesktop) return;
+    
+    window.addEventListener('scroll', stackCardsScrolling);
+  };
+
+  const cleanupStackCards = (): void => {
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+    window.removeEventListener('scroll', stackCardsScrolling);
+  };
+
+  // Handle tab click for mobile
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    // Scroll to the tab if on mobile
+    if (!isDesktop) {
+      const element = document.getElementById(tabId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Handle resize
   useEffect(() => {
+    const handleResize = () => {
+      const desktop = window.innerWidth >= 1024;
+      setIsDesktop(desktop);
+      
+      // Clean up and reinitialize
+      cleanupStackCards();
+      initStackCardsEffect();
+    };
+
+    // Initial setup
+    const desktop = window.innerWidth >= 1024;
+    setIsDesktop(desktop);
+    
+    // Initialize only if not reduced motion
+    if (!osHasReducedMotion()) {
+      initStackCardsEffect();
+    }
+
+    // Set up resize listener
+    let resizeTimeout: NodeJS.Timeout;
+    const resizeListener = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResize, 500);
+    };
+
+    window.addEventListener('resize', resizeListener);
+
+    // Clean up
+    return () => {
+      cleanupStackCards();
+      window.removeEventListener('resize', resizeListener);
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+    };
+  }, [isDesktop, activeTab]);
+
+  // Update service scroller class
+  useEffect(() => {
+    const updateServiceScrollerClass = () => {
+      const el = document.getElementById("serviceScrollerArea");
+      if (!el) return;
+
+      if (window.innerWidth > 1024) {
+        removeClass(el as HTMLElement, "service-scrollerArea");
+      } else {
+        addClass(el as HTMLElement, "service-scrollerArea");
+      }
+    };
+
     updateServiceScrollerClass();
     window.addEventListener("resize", updateServiceScrollerClass);
     return () => {
       window.removeEventListener("resize", updateServiceScrollerClass);
     };
   }, []);
+
+  // Initialize items ref
+  useEffect(() => {
+    if (stackCardsRef.current) {
+      itemsRef.current = Array.from(
+        stackCardsRef.current.getElementsByClassName('js-stack-cards__item')
+      ) as HTMLLIElement[];
+      
+      // Only call setStackCards on mobile to remove classes
+      if (!isDesktop && itemsRef.current.length > 0) {
+        setStackCards();
+      }
+    }
+  }, [isDesktop]);
+
+
+
   return (
     <div className="sectionPadding pb-0 bg-[url('../img/bc/revolutionize-bg.png')] bg-cover">
       <section className="sectionPadding pt-0 pb_8">
         <div className="container-fluid">
           <div className="row align-items-center justify-content-center">
             <div className="col-md-10 text-center">
-              <span
-                
-                className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
-              >
+              <span className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo">
                 Agentic Workflows
               </span>
-              <h2
-                
-                className="tracking-[-0.02em] mb-16 lg:leading-[4rem] md:text-5xl font-semibold headingSize lineHeight-1 text-center"
-              >
+              <h2 className="tracking-[-0.02em] mb-16 lg:leading-[4rem] md:text-5xl font-semibold headingSize lineHeight-1 text-center">
                 Every Agent, Built to Perform
               </h2>
             </div>
@@ -61,53 +284,76 @@ const CaseStudySection = () => {
                       aria-orientation="vertical"
                     >
                       <Link
-                        className="nav-link scrollAnchor ps-3"
+                        className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll1" ? "active" : ""}`}
                         href="#tabScroll1"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick("tabScroll1");
+                        }}
                       >
                         WhatsApp AI Agent
                       </Link>
                       <Link
-                        className="nav-link scrollAnchor ps-3"
+                        className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll2" ? "active" : ""}`}
                         href="#tabScroll2"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick("tabScroll2");
+                        }}
                       >
                         Phone AI Agent
                       </Link>
                       <Link
-                        className="nav-link scrollAnchor ps-3"
+                        className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll3" ? "active" : ""}`}
                         href="#tabScroll3"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick("tabScroll3");
+                        }}
                       >
                         Shopify AI Agent
                       </Link>
                       <Link
-                        className="nav-link scrollAnchor ps-3"
+                        className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll4" ? "active" : ""}`}
                         href="#tabScroll4"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick("tabScroll4");
+                        }}
                       >
                         AI Assistant App
                       </Link>
                       <Link
-                        className="nav-link scrollAnchor ps-3"
+                        className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll5" ? "active" : ""}`}
                         href="#tabScroll5"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick("tabScroll5");
+                        }}
                       >
                         Voice + Chatbot Agents
                       </Link>
                       <Link
-                        className="nav-link scrollAnchor ps-3"
+                        className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll6" ? "active" : ""}`}
                         href="#tabScroll6"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleTabClick("tabScroll6");
+                        }}
                       >
                         Standalone AI Agent
                       </Link>
                     </div>
                   </div>
-                  <div className="col-12 text-center mt-4">
-                    <Link
-                      href="javascript:void(0);"
-                      className="buttonAnimation2 flex justify-center green items-center gap-2 mt-4 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
-                      data-modal-target="#welcomeModal"
-                    >
-                      Request Demo
-                      <Image src="/assets/img/icons/arrow-right.svg" alt="arrow"  width={25} height={25} />
-                    </Link>
-                  </div>
+                                     <div className="col-12 text-center mt-4">
+                     <button
+                       className="buttonAnimation2 flex justify-center green items-center gap-2 mt-4 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
+                       data-modal-target="#welcomeModal"
+                     >
+                       Request Demo
+                       <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                     </button>
+                   </div>
                 </div>
               </div>
               <div className="col-xl-7 col-lg-12 col-md-12 text-light">
@@ -115,8 +361,9 @@ const CaseStudySection = () => {
                   <ul
                     className="service-scrollerArea stack-cards js-stack-cards"
                     id="serviceScrollerArea"
+                    ref={stackCardsRef}
                   >
-                    {/* Human Resources */}
+                    {/* WhatsApp AI Agent */}
                     <li
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll1"
@@ -128,7 +375,7 @@ const CaseStudySection = () => {
                           </button>
                           <div className="margin-20 h_fit">
                             <h3 className="heading1">
-                              Turn Conversations into Revenue on the World’s
+                              Turn Conversations into Revenue on the World's
                               Most Active Messaging App
                             </h3>
                             <p className="text-white">
@@ -151,13 +398,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -166,7 +413,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Follows up automatically when Shopify agent
@@ -175,7 +422,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Escalates chats to Phone Agent when urgency is
@@ -184,7 +431,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Updates CRM after conversations using Standalone
@@ -193,7 +440,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Triggers Voice Agent callbacks for verification or
@@ -204,7 +451,7 @@ const CaseStudySection = () => {
                       </div>
                     </li>
 
-                    {/* Customer Service */}
+                    {/* Phone AI Agent */}
                     <li
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll2"
@@ -234,19 +481,19 @@ const CaseStudySection = () => {
                             <p>
                               Built to mirror your tone and powered by real
                               data, it brings down hold times and clears up your
-                              team’s schedule without sacrificing service
+                              team's schedule without sacrificing service
                               quality.
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -255,7 +502,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Connects with WhatsApp Agent to follow up on
@@ -264,7 +511,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Books meetings directly into your Google Calendar
@@ -273,7 +520,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Sends post-call summaries to Standalone Agent for
@@ -282,7 +529,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Flags high-volume issues to Chatbot Agent for
@@ -293,7 +540,7 @@ const CaseStudySection = () => {
                       </div>
                     </li>
 
-                    {/* Sales */}
+                    {/* Shopify AI Agent */}
                     <li
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll3"
@@ -309,7 +556,7 @@ const CaseStudySection = () => {
                               Post-Sale Journey
                             </h3>
                             <p className="text-white">
-                              Whether it’s order status, refund requests, or
+                              Whether it's order status, refund requests, or
                               shipping delays, your Shopify AI Agent handles
                               them instantly by syncing with your store data in
                               real time.
@@ -328,13 +575,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -343,7 +590,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Flags abandoned checkouts for WhatsApp Agent to
@@ -352,7 +599,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Syncs with Voice Agent to resolve high-friction
@@ -361,7 +608,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Surfaces product feedback to Assistant App for
@@ -370,7 +617,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Notifies Chatbot Agent to update product FAQs
@@ -397,7 +644,7 @@ const CaseStudySection = () => {
                               Ready, Always Synced
                             </h3>
                             <p className="text-white">
-                              Whether you’re in the field, remote, or in-store,
+                              Whether you're in the field, remote, or in-store,
                               your Assistant App gives you instant access to
                               internal data, documents, and workflows — using
                               voice or text.
@@ -411,19 +658,19 @@ const CaseStudySection = () => {
                             <p>
                               This mobile-first agent transforms how you
                               interact with your backend: need a document,
-                              insight, or task managed? Just ask — it’s already
+                              insight, or task managed? Just ask — it's already
                               done.
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -432,7 +679,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Pulls live customer context from Chatbot Agent
@@ -441,7 +688,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Logs answers from Voice Agent for internal
@@ -450,7 +697,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Adds calendar events triggered by Phone Agent
@@ -459,7 +706,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Syncs insights from Standalone Agent to update
@@ -486,7 +733,7 @@ const CaseStudySection = () => {
                               Reach You
                             </h3>
                             <p className="text-white">
-                              Whether it’s a voice command or a typed question,
+                              Whether it's a voice command or a typed question,
                               this hybrid agent delivers answers that feel
                               human, contextual, and instantly accurate across
                               all channels.
@@ -505,13 +752,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -520,7 +767,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Detects trending questions and signals Assistant
@@ -529,7 +776,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Collaborates with Phone Agent to handle
@@ -538,7 +785,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Pushes recurring feedback to Shopify Agent for
@@ -547,7 +794,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Syncs resolved tickets with WhatsApp Agent for
@@ -558,6 +805,7 @@ const CaseStudySection = () => {
                       </div>
                     </li>
 
+                    {/* Standalone AI Agent */}
                     <li
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll6"
@@ -573,7 +821,7 @@ const CaseStudySection = () => {
                               Platform Needed
                             </h3>
                             <p className="text-white">
-                              Whether you’re running lean or building fast, this
+                              Whether you're running lean or building fast, this
                               browser-based agent handles customer queries,
                               sales, and workflows independently — just plug and
                               launch.
@@ -592,13 +840,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -607,7 +855,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Shares real-time feedback to Chatbot Agent for web
@@ -616,7 +864,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Informs Phone Agent of user preferences before
@@ -625,7 +873,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Pushes lead data to WhatsApp Agent for nurturing
@@ -633,7 +881,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt=""  width={30} height={30} />
+                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Feeds insights into Assistant App for mobile

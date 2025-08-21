@@ -403,6 +403,7 @@ h1.headingSize {
   background-image: linear-gradient(to bottom, #9a8dec 0%, #7361e5 100%);
   border-radius: 6rem;
   border-color: rgb(154 141 236 / 1);
+  display: block !important;
 }
 
 .faqUl.line {
