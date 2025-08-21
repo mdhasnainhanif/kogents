@@ -10,17 +10,8 @@ import FAQSection from '../components/solutions/csr/FAQSection';
 import AIAgentSlider from '@/components/home/csr/AIAgentSlider';
 import AgentOS from '@/components/home/ssr/AgentOS';
 import KogentBenefits from '@/components/home/ssr/KogentBenefits';
-import { useEffect } from 'react';
-import Aos from 'aos';
 
 export default function HomePage() {
-  useEffect(() => {
-    Aos.init({
-      duration: 800, // Animation duration (ms)
-      easing: 'ease-in-out',
-      once: false, // Animate every time you scroll
-    });
-  }, []);
 
   return (
     <>
