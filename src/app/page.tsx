@@ -1,15 +1,15 @@
 'use client';
-import HeroSection from '../components/home/HeroSection';
+import HeroSection from '../components/home/ssr/HeroSection';
 import ProductSection from '../components/home/csr/ProductSection';
-import AIAgentSection from '../components/home/AIAgentSection';
+import AIAgentSection from '../components/home/ssr/AIAgentSection';
 import CaseStudySection from '../components/home/csr/CaseStudySection';
 import BenefitsSection from '../components/home/csr/BenefitsSection';
-import WorkflowsSection from '../components/home/WorkflowsSection';
-import FAQSection from '../components/FAQSection';
+import WorkflowsSection from '../components/home/ssr/WorkflowsSection';
+import FAQSection from '../components/solutions/csr/FAQSection';
 // import RequestDemoModal from '../components/RequestDemoModal';
 import AIAgentSlider from '@/components/home/csr/AIAgentSlider';
-import AgentOS from '@/components/home/AgentOS';
-import KogentBenefits from '@/components/home/KogentBenefits';
+import AgentOS from '@/components/home/ssr/AgentOS';
+import KogentBenefits from '@/components/home/ssr/KogentBenefits';
 import { useEffect } from 'react';
 import Aos from 'aos';
 

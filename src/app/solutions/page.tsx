@@ -1,7 +1,7 @@
-import FaqSection from "@/components/FAQSection"
-import AiAgentSection from "@/components/solutions/AiAgentSection"
-import AiBanner from "@/components/solutions/AiBanner"
-import BenefitsSection from "@/components/solutions/BenefitsSection"
+import FaqSection from "@/components/solutions/csr/FAQSection"
+import AiAgentSection from "@/components/solutions/csr/AiAgentSection"
+import AiBanner from "@/components/solutions/ssr/AiBanner"
+import BenefitsSection from "@/components/solutions/ssr/BenefitsSection"
 
 const page = () => {
     return (
