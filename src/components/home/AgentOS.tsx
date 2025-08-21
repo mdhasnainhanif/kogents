@@ -1,4 +1,3 @@
-"use client"
 import Image from 'next/image';
 const AgentOS = () => {
     return (
@@ -32,22 +31,22 @@ const AgentOS = () => {
                             <div className="img1">
                                 <div className="img1InnerDiv"></div>
                                 <div className="bothImgMain">
-                                    <Image src="/assets/img/t1.png" alt=""  width={80} height={80} />
-                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt=""  width={800} height={600} />
+                                    <Image src="/assets/img/t1.png" alt="" width={80} height={80} />
+                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt="" width={800} height={600} />
                                     <p className="boxSvgText">Email Triage Ai Agent</p>
                                 </div>
                             </div>
                             <div className="img2">
                                 <div className="bothImgMain">
-                                    <Image src="/assets/img/t2.png" alt=""  width={80} height={80} />
-                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt=""  width={800} height={600} />
+                                    <Image src="/assets/img/t2.png" alt="" width={80} height={80} />
+                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt="" width={800} height={600} />
                                     <p className="boxSvgText">Customer Service Ai Agent</p>
                                 </div>
                             </div>
                             <div className="img3">
                                 <div className="bothImgMain">
-                                    <Image src="/assets/img/t3.png" alt=""  width={80} height={80} />
-                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt=""  width={800} height={600} />
+                                    <Image src="/assets/img/t3.png" alt="" width={80} height={80} />
+                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt="" width={800} height={600} />
                                     <p className="boxSvgText">Data Extraction Ai Agent</p>
                                 </div>
                             </div>
@@ -55,8 +54,8 @@ const AgentOS = () => {
                         <div className="col-md-4 d-flex align-items-center justify-content-center">
                             <div className="img4">
                                 <div className="bothImgMain">
-                                    <Image src="/assets/img/t4.png" alt=""  width={80} height={80} />
-                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt=""  width={800} height={600} />
+                                    <Image src="/assets/img/t4.png" alt="" width={80} height={80} />
+                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt="" width={800} height={600} />
                                     <p className="boxSvgText">Order Management Ai Agent</p>
                                 </div>
                             </div>
@@ -64,22 +63,22 @@ const AgentOS = () => {
                         <div className="col-md-4">
                             <div className="img5">
                                 <div className="bothImgMain">
-                                    <Image src="/assets/img/t5.png" alt=""  width={80} height={80} />
-                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt=""  width={800} height={600} />
+                                    <Image src="/assets/img/t5.png" alt="" width={80} height={80} />
+                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt="" width={800} height={600} />
                                     <p className="boxSvgText">Sales Operation Ai Agent</p>
                                 </div>
                             </div>
                             <div className="img6">
                                 <div className="bothImgMain">
-                                    <Image src="/assets/img/t6.png" alt=""  width={80} height={80} />
-                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt=""  width={800} height={600} />
+                                    <Image src="/assets/img/t6.png" alt="" width={80} height={80} />
+                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt="" width={800} height={600} />
                                     <p className="boxSvgText">Sales Manager</p>
                                 </div>
                             </div>
                             <div className="img7">
                                 <div className="bothImgMain">
-                                    <Image src="/assets/img/t7.png" alt=""  width={80} height={80} />
-                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt=""  width={800} height={600} />
+                                    <Image src="/assets/img/t7.png" alt="" width={80} height={80} />
+                                    <Image className="boxSvg" src="/assets/img/box-01.svg" alt="" width={800} height={600} />
                                     <p className="boxSvgText">Product Listing Ai Agent</p>
                                 </div>
                             </div>
@@ -90,6 +89,6 @@ const AgentOS = () => {
         </div>
 
     )
-}   
+}
 
 export default AgentOS;
