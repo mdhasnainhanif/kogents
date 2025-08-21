@@ -17,15 +17,13 @@ export default function WorkflowsSection() {
             
             className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
           >
-            Workflows That Talk to Each Other
+            Smart Tools. Smarter Outcomes.
           </h2>
           <p
             className="maxWidth39 mb-16 text-center paraColor subHeading text-center mx-auto"
             
           >
-            Kogents doesn’t stop at handling support. It learns from patterns,
-            flags recurring friction, and keeps your FAQs alive without you
-            touching a doc. We integrate with:
+            With integrated analytics, live syncing, and action automation, Kogents AI Agents do more than reply — they act.
           </p>
         </div>
       </div>
@@ -91,8 +89,7 @@ export default function WorkflowsSection() {
                     Google Calendar
                   </div>
                   <p>
-                    Keeps your schedule organized and updates appointments with
-                    smart precision.
+                    Keeps your schedule organized and updates appointments with smart precision.
                   </p>
                 </div>
                 <div

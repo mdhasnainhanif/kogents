@@ -28,15 +28,10 @@ const AIAgentSlider = () => {
                   
                   className="headingSize text-center text-3xl md:text-5xl tracking-[-0.02em] font-semibold mt-2 maxWidth45"
                 >
-                  More Than Just Smart Replies
+                  Reliable. Adaptive. Always On.
                 </h2>
                 <p className="paraColor mx-auto text-center subHeading maxWidth39">
-                  Our agents aren&apos;t siloed bots. They collaborate.
-                </p>
-                <p className="paraColor mx-auto text-center subHeading maxWidth39 mb-1">
-                  Your Shopify AI syncs with your WhatsApp AI. Your kiosk agent flags
-                  issues your phone agent hears daily. Together&#44; they form a mesh of
-                  automation — one that evolves with your business.
+                  All agents are continuously learning from conversations, system signals, and customer outcomes — to deliver better support and smarter escalations.
                 </p>
                 <a
                   className="buttonAnimation2 green flex justify-center items-center gap-2 mt-4 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900   mb-16 open-modal-btn"

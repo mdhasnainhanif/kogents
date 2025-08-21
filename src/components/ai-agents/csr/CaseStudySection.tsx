@@ -262,7 +262,7 @@ const CaseStudySection = () => {
                 Agentic Workflows
               </span>
               <h2 className="tracking-[-0.02em] mb-16 lg:leading-[4rem] md:text-5xl font-semibold headingSize lineHeight-1 text-center">
-                Every Agent, Built to Perform
+                Instant AI Solutions That Work for You
               </h2>
             </div>
           </div>
@@ -271,9 +271,7 @@ const CaseStudySection = () => {
               <div className="col-xl-5 col-lg-12 col-md-12">
                 <div className="px-md-3 rounded scroll2 right-column hideOnipad">
                   <p className="paraColor subHeading">
-                    Your team spends 40% of their time answering repeat
-                    questions, chasing status updates, and managing delays.
-                    Kogents AI wipes that clean.
+                    Kogents AI adapts across industries — from eCommerce to healthcare, real estate to finance — automating support, bookings, and transactions through interconnected agents that deliver instant, accurate service and streamline operations at every customer touchpoint.
                   </p>
 
                   <div className="d-flex align-items-start mt-2">
@@ -291,7 +289,7 @@ const CaseStudySection = () => {
                           handleTabClick("tabScroll1");
                         }}
                       >
-                        WhatsApp AI Agent
+                        eCommerce & D2C
                       </Link>
                       <Link
                         className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll2" ? "active" : ""}`}
@@ -301,7 +299,7 @@ const CaseStudySection = () => {
                           handleTabClick("tabScroll2");
                         }}
                       >
-                        Phone AI Agent
+                        Healthcare & Clinics
                       </Link>
                       <Link
                         className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll3" ? "active" : ""}`}
@@ -311,7 +309,7 @@ const CaseStudySection = () => {
                           handleTabClick("tabScroll3");
                         }}
                       >
-                        Shopify AI Agent
+                        Real Estate & Property Management
                       </Link>
                       <Link
                         className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll4" ? "active" : ""}`}
@@ -321,7 +319,7 @@ const CaseStudySection = () => {
                           handleTabClick("tabScroll4");
                         }}
                       >
-                        AI Assistant App
+                        Education & EdTech
                       </Link>
                       <Link
                         className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll5" ? "active" : ""}`}
@@ -331,7 +329,7 @@ const CaseStudySection = () => {
                           handleTabClick("tabScroll5");
                         }}
                       >
-                        Voice + Chatbot Agents
+                        Logistics, Delivery & Transport
                       </Link>
                       <Link
                         className={`nav-link scrollAnchor ps-3 ${activeTab === "tabScroll6" ? "active" : ""}`}
@@ -341,7 +339,7 @@ const CaseStudySection = () => {
                           handleTabClick("tabScroll6");
                         }}
                       >
-                        Standalone AI Agent
+                        Financial Services & Insurance
                       </Link>
                     </div>
                   </div>
@@ -372,29 +370,27 @@ const CaseStudySection = () => {
                       <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
-                            <span>.</span> WhatsApp AI Agent
+                            <span>.</span> eCommerce & D2C
                           </button>
                           <div className="margin-20 h_fit">
                             <h3 className="heading1">
-                              Turn Conversations into Revenue on the World's
-                              Most Active Messaging App
+                              Deliver Support That Converts — From Product Page to Post-Sale
+
                             </h3>
                             <p className="text-white">
-                              Your WhatsApp AI Agent replies in real time,
-                              detects high-intent behavior, and nurtures
-                              customers through every stage of the funnel —
-                              without you typing a word.
+                              AI agents respond instantly to product questions, solve checkout issues, and manage returns — without ever escalating to your team.
+
+
                             </p>
 
                             <h3 className="heading1">
-                              Fast Answers. Smarter Follow-Ups. Full Coverage.
+                              Reduce Cart Abandonment, Maximize Repeat Purchases
                             </h3>
 
                             <p>
-                              From product inquiries to payment reminders, this
-                              agent handles it all instantly using your
-                              knowledge base, ticket history, and real-time
-                              business logic.
+                              Faster answers = faster decisions. Kogents builds buyer confidence at every stage of the funnel.
+
+
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
@@ -417,8 +413,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Follows up automatically when Shopify agent
-                              detects cart abandonment
+                              Chatbot handles product queries → Shopify agent triggers order
                             </p>
                           </div>
                           <div className="tabBox">
@@ -426,8 +421,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Escalates chats to Phone Agent when urgency is
-                              high
+                              WhatsApp agent follows up on abandoned carts
                             </p>
                           </div>
                           <div className="tabBox">
@@ -435,8 +429,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Updates CRM after conversations using Standalone
-                              Agent logic
+                              Voice agent resolves shipping inquiries
                             </p>
                           </div>
                           <div className="tabBox">
@@ -444,8 +437,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Triggers Voice Agent callbacks for verification or
-                              follow-up sales
+                              Assistant app pushes refund data to CRM in real time
                             </p>
                           </div>
                         </div>
@@ -460,30 +452,26 @@ const CaseStudySection = () => {
                       <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
-                            <span>.</span> Phone AI Agent
+                            <span>.</span> Healthcare & Clinics
                           </button>
                           <div className="margin-20 h_fit">
                             <h3 className="heading1">
-                              Every Call Answered, Routed, and Resolved — No
-                              Waiting, No Voicemail
+                              Book, Confirm, and Follow Up — Without Touching a Phone
+
                             </h3>
                             <p className="text-white">
-                              With human-sounding voice AI, your phone agent
-                              picks up 24/7, handles routine inquiries, books
-                              appointments, and transfers complex issues to the
-                              right human.
+                              Patients get automated appointment confirmations, pre-check triage, and instant answers to FAQs — all handled by your AI.
+
+
                             </p>
 
                             <h3 className="heading1">
-                              No Missed Opportunities, No Repetition — Just
-                              Resolution at Scale
+                              Reduce No-Shows, Improve Patient Experience, Free Up Staff
+
                             </h3>
 
                             <p>
-                              Built to mirror your tone and powered by real
-                              data, it brings down hold times and clears up your
-                              team's schedule without sacrificing service
-                              quality.
+                              Let your team focus on care, while AI handles scheduling, calls, and information flow
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
@@ -506,8 +494,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Connects with WhatsApp Agent to follow up on
-                              missed or dropped call
+                              Phone agent books consultations and reminders
                             </p>
                           </div>
                           <div className="tabBox">
@@ -515,8 +502,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Books meetings directly into your Google Calendar
-                              via Assistant App
+                              WhatsApp agent handles follow-up and document requests
                             </p>
                           </div>
                           <div className="tabBox">
@@ -524,8 +510,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Sends post-call summaries to Standalone Agent for
-                              future insights
+                              Chatbot explains procedures and insurance basics
                             </p>
                           </div>
                           <div className="tabBox">
@@ -533,8 +518,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Flags high-volume issues to Chatbot Agent for
-                              proactive site messaging
+                              Assistant app equips mobile staff with instant updates
                             </p>
                           </div>
                         </div>
@@ -549,29 +533,27 @@ const CaseStudySection = () => {
                       <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
-                            <span>.</span> Shopify AI Agent
+                            <span>.</span> Real Estate & Property Management
                           </button>
                           <div className="margin-20 h_fit">
                             <h3 className="heading1">
-                              From Cart to Confirmation — This Agent Owns the
-                              Post-Sale Journey
+                              Capture Every Lead, Qualify Every Prospect — Even at 2 AM
+
                             </h3>
                             <p className="text-white">
-                              Whether it's order status, refund requests, or
-                              shipping delays, your Shopify AI Agent handles
-                              them instantly by syncing with your store data in
-                              real time.
+                              From rental inquiries to maintenance requests, Kogents AI handles the frontlines across messaging, voice, and web.
+
+
                             </p>
 
                             <h3 className="heading1">
-                              More Orders Completed, Fewer Tickets Created
+                              Streamline Viewings, Contracts, and Tenant Support at Scale
                             </h3>
 
                             <p>
-                              By resolving customer issues before they ever hit
-                              your support team, it not only saves hours — it
-                              boosts satisfaction and retention where it matters
-                              most.
+                              AI ensures no one gets left on read, and every question gets answered instantly — from both sides of the deal.
+
+
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
@@ -594,8 +576,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Flags abandoned checkouts for WhatsApp Agent to
-                              follow up
+                              Messenger agent qualifies buyers/renters
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -603,8 +586,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Syncs with Voice Agent to resolve high-friction
-                              returns
+                             Voice agent schedules property tours
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -612,8 +596,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Surfaces product feedback to Assistant App for
-                              on-the-go reviews
+                              WhatsApp agent follows up with listings
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -621,8 +606,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Notifies Chatbot Agent to update product FAQs
-                              automatically
+                              Standalone agent processes tenant support queries 24/7
                             </p>
                           </div>
                         </div>
@@ -637,30 +621,28 @@ const CaseStudySection = () => {
                       <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
-                            <span>.</span> AI Assistant App
+                            <span>.</span> Education & EdTech
                           </button>
                           <div className="margin-20 h_fit">
                             <h3 className="heading1">
-                              The Smartest Teammate in Your Pocket — Always
-                              Ready, Always Synced
+                              Onboard Students, Answer FAQs, and Automate Admin Chaos
+
                             </h3>
                             <p className="text-white">
-                              Whether you're in the field, remote, or in-store,
-                              your Assistant App gives you instant access to
-                              internal data, documents, and workflows — using
-                              voice or text.
+                              AI helps with admissions, scheduling, and course queries — freeing up faculty and staff from operational overload.
+
+
                             </p>
 
                             <h3 className="heading1">
-                              Work Faster, Smarter, and from Anywhere Without
-                              Logging Into Anything
+                              Keep Students Engaged and Informed — Without Extra Hires
+
                             </h3>
 
                             <p>
-                              This mobile-first agent transforms how you
-                              interact with your backend: need a document,
-                              insight, or task managed? Just ask — it's already
-                              done.
+                              Every channel stays responsive, consistent, and aligned with institutional standards.
+
+
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
@@ -683,8 +665,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Pulls live customer context from Chatbot Agent
-                              when updates are needed
+                              Chatbot answers curriculum & enrollment questions
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -692,8 +675,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Logs answers from Voice Agent for internal
-                              knowledge access
+                              Phone agent confirms class schedules
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -701,8 +685,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Adds calendar events triggered by Phone Agent
-                              bookings
+                              WhatsApp agent sends deadline reminders
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -710,8 +695,7 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Syncs insights from Standalone Agent to update
-                              playbooks on the go
+                              Assistant app helps staff manage student cases on the go
                             </p>
                           </div>
                         </div>
@@ -726,29 +710,28 @@ const CaseStudySection = () => {
                       <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
-                            <span>.</span> Voice + Chatbot Agents
+                            <span>.</span> Logistics, Delivery & Transport
                           </button>
                           <div className="margin-20 h_fit">
                             <h3 className="heading1">
-                              Your Always-On Brand Voice, No Matter How People
-                              Reach You
+                              Track, Update, and Resolve — Before Anyone Asks
+
                             </h3>
                             <p className="text-white">
-                              Whether it's a voice command or a typed question,
-                              this hybrid agent delivers answers that feel
-                              human, contextual, and instantly accurate across
-                              all channels.
+                             Kogents AI handles shipment queries, route changes, and delivery updates — cutting down inbound calls and delays
+
+
                             </p>
 
                             <h3 className="heading1">
-                              Reduce Human Load, Raise Response Quality — 24/7,
-                              Multilingual, Multiplatform
+                              Optimize Fleet Support and Customer Communication, End to End
+
                             </h3>
 
                             <p>
-                              Trained on real conversations and support history,
-                              these agents not only talk — they listen, learn,
-                              and adapt to every interaction in real time.
+                              No more “where’s my order?” — AI agents keep everyone in the loop in real time.
+
+
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
@@ -771,8 +754,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Detects trending questions and signals Assistant
-                              App to update support scripts
+                              Shopify agent provides live order tracking
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -780,8 +764,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Collaborates with Phone Agent to handle
-                              language-specific inquiries
+                              Voice agent resolves last-mile delivery issues
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -789,8 +774,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Pushes recurring feedback to Shopify Agent for
-                              product improvement
+                              Messenger agent collects feedback post-delivery
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -798,8 +784,10 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Syncs resolved tickets with WhatsApp Agent for
-                              follow-up or upsell offers
+                              Assistant app supports drivers with location updates
+
+
+
                             </p>
                           </div>
                         </div>
@@ -814,29 +802,28 @@ const CaseStudySection = () => {
                       <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
-                            <span>.</span> Standalone AI Agent
+                            <span>.</span> Financial Services & Insurance
                           </button>
                           <div className="margin-20 h_fit">
                             <h3 className="heading1">
-                              Deploy One Link and Deliver Full-Service AI — No
-                              Platform Needed
+                              Turn Complex Questions into Clear, Trusted Answers
+
                             </h3>
                             <p className="text-white">
-                              Whether you're running lean or building fast, this
-                              browser-based agent handles customer queries,
-                              sales, and workflows independently — just plug and
-                              launch.
+                              From loan queries to claim updates, AI agents deliver fast, compliant, and reassuring responses.
+
+
                             </p>
 
                             <h3 className="heading1">
-                              Perfect for Onboarding, Support, Sales, or
-                              Internal Use — It Adapts to Your Flow
+                              Automate Client Interaction Without Compromising Security
+
                             </h3>
 
                             <p>
-                              It learns from each interaction, pulls data from
-                              integrated tools, and evolves to support every
-                              part of your business with zero dev effort.
+                             Handle high-volume customer engagement with built-in privacy, audit trails, and decision logic.
+
+
                             </p>
 
                             <div className="d-flex flex-wrap gap-2">
@@ -859,8 +846,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Shares real-time feedback to Chatbot Agent for web
-                              knowledge accuracy
+                              Chatbot explains policy or loan options
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -868,8 +856,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Informs Phone Agent of user preferences before
-                              callbacks
+                              Phone agent routes fraud inquiries to secure teams
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -877,7 +866,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Pushes lead data to WhatsApp Agent for nurturing
+                              WhatsApp agent pushes claim status updates
+
+
                             </p>
                           </div>
                           <div className="tabBox">
@@ -885,8 +876,9 @@ const CaseStudySection = () => {
                               <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
-                              Feeds insights into Assistant App for mobile
-                              access and action
+                              Standalone agent syncs user documents and IDs safely
+
+
                             </p>
                           </div>
                         </div>

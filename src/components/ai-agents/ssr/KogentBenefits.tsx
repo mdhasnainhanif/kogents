@@ -18,20 +18,20 @@ const KogentBenefits = () => {
                         
                         className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
                     >
-                        The Final Pitch
+                        Built for Speed. Trained to Scale.
                     </h2>
 
                     <p
                         
                         className="w-75 mb-16 text-center paraColor subHeading"
                     >
-                        You don’t need to hire more people to grow.
+                        Power every customer touchpoint with intelligent agents that never sleep.
                     </p>
                     <p
                         
                         className="w-75 mb-16 text-center paraColor subHeading"
                     >
-                        You need to deploy AI that thinks, acts, and adapts like a team — instantly.
+                       From voice to chat, they think, learn, and scale — so you don’t have to.
                     </p>
 
                     <div className="row appMain mt-4 rowGap">
