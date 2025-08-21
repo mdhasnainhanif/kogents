@@ -10,26 +10,26 @@ const ConnectSmarter = () => {
       <div className="container px-5 mx-auto xl:px-0">
         <div className="flex flex-col items-center justify-center">
           <span
-            // data-aos="fade-up"
+            // 
             className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
           >
             Benefits
           </span>
           <h2
-            // data-aos="fade-up"
+            // 
             className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
           >
             Let&apos;s Connect Smarter
           </h2>
           <p
             className="w-75 mb-1 text-center paraColor subHeading"
-            // data-aos="fade-up"
+            // 
           >
             Have questions&#44; ideas&#44; or a big vision? Let&apos;s talk.
           </p>
           <p
             className="w-75 mb-16 text-center paraColor subHeading"
-            // data-aos="fade-up"
+            // 
           >
             Our team is just one message away — and always ready to help.
           </p>
@@ -38,7 +38,7 @@ const ConnectSmarter = () => {
             <div className="col-md-7 p-md-0 appMainFirst">
               <div className="p-md-5">
                 <span
-                //   data-aos="fade-up"
+                //   
                   className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
                 >
                   Trusted By Many Clients

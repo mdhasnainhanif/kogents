@@ -6,14 +6,14 @@ const ValueToBusinesses = () => {
             <div className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('img/bc/unlocking-bg.png')]">
                 <div className="container px-5 mx-auto xl:px-0">
                     <span
-                        // data-aos="fade-up"
+                        // 
                         className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
                     >
                         Benefits
                     </span>
 
                     <h2
-                        // data-aos="fade-down"
+                        // 
                         className="mb-16 text-center headingSize aos-init aos-animate"
                     >
                         Our Value to Businesses
@@ -22,7 +22,7 @@ const ValueToBusinesses = () => {
 
                     <p
                         className="w-75 mb-16 mx-auto text-center paraColor subHeading"
-                        // data-aos="fade-up"
+                        // 
                     >
                         Our AI agents are trained on your data&#44; your workflows&#44; and your
                         systems. They handle frontline interactions across platforms like
@@ -47,7 +47,7 @@ const ValueToBusinesses = () => {
                         </div>
 
                         <div
-                            // data-aos="fade-up"
+                            // 
                             className="flex gap-6 p-6 border rounded-lg border-b-600 lg:p-12 bg-gd-tertiary"
                         >
                             {/* 

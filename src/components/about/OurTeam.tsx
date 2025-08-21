@@ -11,13 +11,13 @@ const OurTeam = () => {
         <div className="container px-5 mx-auto p-md-0">
           <div className="flex flex-col items-center justify-center">
             <span
-              // data-aos="fade-up"
+              // 
               className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
             >
               Benefits
             </span>
             <h2
-              // data-aos="fade-up"
+              // 
               className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
             >
               Our Team
@@ -25,7 +25,7 @@ const OurTeam = () => {
             </h2>
             <p
               className="w-75 mb-16 text-center paraColor subHeading"
-              // data-aos="fade-up"
+              // 
             >
               We are a cross-functional team of AI engineers, product operators,
               and service professionals who understand what’s at stake when
@@ -37,7 +37,7 @@ const OurTeam = () => {
               {/* Team Member 1 */}
               <div className="col-lg-6 col-md-6">
                 <div
-                  // data-aos="fade-up"
+                  // 
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
@@ -80,7 +80,7 @@ const OurTeam = () => {
               {/* Team Member 2 */}
               <div className="col-lg-6 col-md-6">
                 <div
-                  // data-aos="fade-up"
+                  // 
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
@@ -123,7 +123,7 @@ const OurTeam = () => {
               {/* Team Member 3 */}
               <div className="col-lg-6 col-md-6">
                 <div
-                  // data-aos="fade-up"
+                  // 
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
@@ -166,7 +166,7 @@ const OurTeam = () => {
               {/* Team Member 4 */}
               <div className="col-lg-6 col-md-6">
                 <div
-                  // data-aos="fade-up"
+                  // 
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
@@ -209,7 +209,7 @@ const OurTeam = () => {
               {/* Team Member 5 */}
               <div className="col-lg-6 col-md-6">
                 <div
-                  // data-aos="fade-up"
+                  // 
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
@@ -252,7 +252,7 @@ const OurTeam = () => {
               {/* Team Member 6 */}
               <div className="col-lg-6 col-md-6">
                 <div
-                  // data-aos="fade-up"
+                  // 
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image

@@ -70,7 +70,7 @@ const ProductSection = () => {
 
       <section className="newSection pb-0">
         <div
-          data-aos="fade-up"
+          
           className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto"
         >
           <div className="inline-flex logo_items animate-slides">

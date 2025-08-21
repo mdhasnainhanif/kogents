@@ -11,7 +11,7 @@ const ContactSection = () => {
             {/* Contact Box 1 */}
             <div className="contactBox border rounded-lg md:p-12 bg-gd-tertiary border-b-600 aos-init aos-animate">
               <span
-                // data-aos="fade-up"
+                // 
                 className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo mx-auto"
               >
                 Find By Industry

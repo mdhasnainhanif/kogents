@@ -225,20 +225,20 @@ export default function AiAgentSection() {
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <span
-                            // data-aos="fade-up"
+                            // 
                             className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo mx-auto"
                         >
                             Find By Industry
                         </span>
                         <h2
-                            // data-aos="fade-up"
+                            // 
                             className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
                         >
                             Discover AI Agents by Business
                             <span className="inline-block lg:block"> Use Case</span>
                         </h2>
                         <p
-                            // data-aos="fade-up"
+                            // 
                             className="mb-8 paraColor text-base md:text-xl text-w-100 text-center"
                         >
                             Filter and deploy AI agents designed for your industry and

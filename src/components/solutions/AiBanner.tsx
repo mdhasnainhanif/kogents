@@ -9,19 +9,19 @@ export default function AiBanner() {
                     <div className="col-lg-7">
                         <div className="flex flex-col items-center justify-center">
                             <p
-                                // data-aos="fade-up"
+                                // 
                                 className="subHeading">
                                 Ready to assist your customers with
                             </p>
                             <h1
-                                // data-aos="fade-up"
+                                // 
 
                                 className="text-center mt-2 mb-6 headingSize "
                             >
                                 7,000+ Specialized AI Agents for B2B Excellence
                             </h1>
                             <p
-                                // data-aos="fade-up"
+                                // 
 
                                 className="mb-8 paraColor text-base md:text-xl text-w-100 text-center"
                             >

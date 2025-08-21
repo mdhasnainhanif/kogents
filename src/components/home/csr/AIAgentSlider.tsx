@@ -19,13 +19,13 @@ const AIAgentSlider = () => {
             <div>
               <div className="flex flex-col items-center justify-center">
                 <span
-                  data-aos="fade-up"
+                  
                   className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
                 >
                   AI Agents
                 </span>
                 <h2
-                  data-aos="fade-down"
+                  
                   className="headingSize text-center text-3xl md:text-5xl tracking-[-0.02em] font-semibold mt-2 maxWidth45"
                 >
                   More Than Just Smart Replies

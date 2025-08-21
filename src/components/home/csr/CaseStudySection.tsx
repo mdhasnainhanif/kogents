@@ -30,13 +30,13 @@ const CaseStudySection = () => {
           <div className="row align-items-center justify-content-center">
             <div className="col-md-10 text-center">
               <span
-                data-aos="fade-up"
+                
                 className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
               >
                 Agentic Workflows
               </span>
               <h2
-                data-aos="fade-up"
+                
                 className="tracking-[-0.02em] mb-16 lg:leading-[4rem] md:text-5xl font-semibold headingSize lineHeight-1 text-center"
               >
                 Every Agent, Built to Perform

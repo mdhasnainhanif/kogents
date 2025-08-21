@@ -24,13 +24,13 @@ const FAQSection = () => {
             <div className="container px-5 mx-auto xl:px-0">
                 <div className="flex flex-col items-center justify-center">
                     <span
-                        // data-aos="fade-up"
+                        // 
                         className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
                     >
                         FAQs
                     </span>
                     <h2
-                        // data-aos="fade-down"
+                        // 
                         className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
                     >
                         Frequently Asked
@@ -43,7 +43,7 @@ const FAQSection = () => {
                     </p>
 
                     <div
-                        // data-aos="fade-up"
+                        // 
                         className="flex flex-col gap-4 w-full lg:max-w-[850px] mt-4"
                     >
                         {/* Item 1 */}

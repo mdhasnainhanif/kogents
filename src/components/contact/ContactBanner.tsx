@@ -9,19 +9,19 @@ const ContactBanner = () => {
         <div className="row justify-content-center">
           <div className="col-md-9">
             <span
-              // data-aos="fade-up"
+              // 
               className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo mx-auto"
             >
               Contact
             </span>
             <h1
-              // data-aos="fade-up"
+              // 
               className="text-center text-light headingSize"
             >
               Connect With Our Enterprise AI Specialists Our Sales Team
             </h1>
             <p
-              // data-aos="fade-up"
+              // 
               className="mt-6 text-base text-center md:text-xl text-light"
             >
               Looking to elevate operational efficiency and customer engagement

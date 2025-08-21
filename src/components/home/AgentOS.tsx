@@ -6,20 +6,20 @@ const AgentOS = () => {
         >
             <div className="container px-5 mx-auto xl:px-0">
                 <span
-                    data-aos="fade-up"
+                    
                     className="buttonAnimation width_fit purple d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo mx-auto"
                 >
                     Agent OS
                 </span>
                 <h2
-                    data-aos="fade-up"
+                    
                     className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
                 >
                     Autonomous Doesn&apos;t Mean Isolated
                 </h2>
                 <p
                     className="w-75 mb-16 text-center m-auto mt-3 subHeading paraColor"
-                    data-aos="fade-up"
+                    
                 >
                     Your AI Agents share signals&#44; escalate across channels&#44; and optimize
                     workflows together. Think of it as a mesh network of AI — tailored to your

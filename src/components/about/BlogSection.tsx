@@ -10,7 +10,7 @@ const BlogSection = () => {
           <div className="col-xl-5">
             <div className="scroller">
               <span
-                // data-aos="fade-up"
+                // 
                 className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
               >
                 Our Blogs

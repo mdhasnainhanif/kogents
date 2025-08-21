@@ -14,18 +14,18 @@ const AIAgentSection = () => {
           <div className="row justify-content-center">
             <div className="col-md-10">
               <span
-                data-aos="fade-up"
+                
                 className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
               >Case Studies</span>
               <h2
-                data-aos="fade-up"
+                
                 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
               >
                 AI That's Actually Operational
               </h2>
               <p
                 className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto aos-init aos-animate"
-                data-aos="fade-up"
+                
               >
                 Kogents AI plugs directly into your business — no-code&#44; real-time&#44;
                 and trained on your systems. From handling 1&#44;000+ tickets a day to
@@ -37,7 +37,7 @@ const AIAgentSection = () => {
           <div className="row rowGap justify-content-center mt-4">
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -73,7 +73,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -109,7 +109,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -145,7 +145,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -182,7 +182,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -268,7 +268,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -304,7 +304,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -337,7 +337,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -383,19 +383,19 @@ const AIAgentSection = () => {
           <div className="row justify-content-center">
             <div className="col-md-10">
               <span
-                data-aos="fade-up"
+                
                 className="buttonAnimation mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
               >Case Studies</span
               >
               <h2
-                data-aos="fade-up"
+                
                 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
               >
                 Industry Specific Solutions: One Platform&#44; Infinite Possibilities!
               </h2>
               <p
                 className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto aos-init aos-animate"
-                data-aos="fade-up"
+                
               >
                 Ready for some magic? Discover how we're revolutionizing
                 industries with a comprehensive platform that does it all. Let's
@@ -406,7 +406,7 @@ const AIAgentSection = () => {
           <div className="row rowGap justify-content-center mt-4">
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -441,7 +441,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -475,7 +475,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -508,7 +508,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -544,7 +544,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -628,7 +628,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -660,7 +660,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image
@@ -693,7 +693,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div
-                data-aos="fade-up"
+                
                 className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard"
               >
                 <Image

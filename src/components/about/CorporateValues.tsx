@@ -6,13 +6,13 @@ const CorporateValues = () => {
       <div className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('../img/bc/neurolinxaI-bg.png')]">
         <div className="container px-5 mx-auto xl:px-0">
           <span
-            // data-aos="fade-up"
+            // 
             className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
           >
             Benefits
           </span>
           <h2
-            // data-aos="fade-down"
+            // 
             className="mb-16 text-center headingSize aos-init aos-animate"
           >
             Neurolinx AI
@@ -20,7 +20,7 @@ const CorporateValues = () => {
           </h2>
         </div>
         <div
-          // data-aos="fade-up"
+          // 
           className="corporate-values relative z-[1] flex flex-col justify-center gap-3 aos-init aos-animate"
         >
           <div className="flex gap-4 overflow-hidden whitespace-nowrap">

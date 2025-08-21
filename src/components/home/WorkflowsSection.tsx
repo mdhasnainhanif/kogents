@@ -8,20 +8,20 @@ export default function WorkflowsSection() {
       <div className="row justify-content-center">
         <div className="col-md-8">
           <span
-            data-aos="fade-up"
+            
             className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
           >
             Case Studies
           </span>
           <h2
-            data-aos="fade-up"
+            
             className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
           >
             Workflows That Talk to Each Other
           </h2>
           <p
             className="maxWidth39 mb-16 text-center paraColor subHeading text-center mx-auto"
-            data-aos="fade-up"
+            
           >
             Kogents doesn’t stop at handling support. It learns from patterns,
             flags recurring friction, and keeps your FAQs alive without you

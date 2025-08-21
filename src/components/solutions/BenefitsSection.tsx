@@ -10,7 +10,7 @@ export default function BenefitsSection() {
         <div className="flex flex-col items-center justify-center">
           {/* Top Tag */}
           <span
-            // data-aos="fade-up"
+            // 
             className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
           >
             Benefits
@@ -18,7 +18,7 @@ export default function BenefitsSection() {
 
           {/* Heading */}
           <h2
-            // data-aos="fade-up"
+            // 
             className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
           >
             Solutions That Work While You Don’t
@@ -28,13 +28,13 @@ export default function BenefitsSection() {
           {/* Subheading */}
           <p
             className="w-75 mb-1 text-center paraColor subHeading"
-            // data-aos="fade-up"
+            // 
           >
             From eCommerce to healthcare, our AI adapts to your industry.
           </p>
           <p
             className="w-75 mb-16 text-center paraColor subHeading"
-            // data-aos="fade-up"
+            // 
           >
             Whatever you do, there’s a Kogents Agent ready to do it better.
           </p>
@@ -45,7 +45,7 @@ export default function BenefitsSection() {
             <div className="col-md-7 p-md-0 appMainFirst">
               <div className="p-md-5">
                 <span
-                //   data-aos="fade-up"
+                //   
                   className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
                 >
                   Real-time updates and management

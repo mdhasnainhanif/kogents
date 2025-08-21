@@ -5,7 +5,7 @@ const CorePrinciples = () => {
   return (
     <section>
       <span
-        // data-aos="fade-up"
+        // 
         className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
       >
         Benefits
@@ -14,7 +14,7 @@ const CorePrinciples = () => {
       <div className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('img/bc/milestones-bg.png')]">
         <div className="container px-5 mx-auto xl:px-0">
           <h2
-            // data-aos="fade-down"
+            // 
             className="mb-16 text-center headingSize aos-init aos-animate"
           >
             Core Principles
