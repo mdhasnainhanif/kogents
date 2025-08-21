@@ -357,7 +357,7 @@ const CaseStudySection = () => {
                 </div>
               </div>
               <div className="col-xl-7 col-lg-12 col-md-12 text-light">
-                <div className="p-4 tabBgbox">
+                <div className="px-4 tabBgbox">
                   <ul
                     className="service-scrollerArea stack-cards js-stack-cards"
                     id="serviceScrollerArea"
@@ -368,7 +368,7 @@ const CaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll1"
                     >
-                      <div className="row rowGap scrollerItem">
+                      <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> WhatsApp AI Agent
@@ -456,7 +456,7 @@ const CaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll2"
                     >
-                      <div className="row rowGap scrollerItem">
+                      <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Phone AI Agent
@@ -545,7 +545,7 @@ const CaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll3"
                     >
-                      <div className="row rowGap scrollerItem">
+                      <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Shopify AI Agent
@@ -633,7 +633,7 @@ const CaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll4"
                     >
-                      <div className="row rowGap scrollerItem">
+                      <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> AI Assistant App
@@ -722,7 +722,7 @@ const CaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll5"
                     >
-                      <div className="row rowGap scrollerItem">
+                      <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Voice + Chatbot Agents
@@ -810,7 +810,7 @@ const CaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll6"
                     >
-                      <div className="row rowGap scrollerItem">
+                      <div className="row rowGap scrollerItem py-4">
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Standalone AI Agent
