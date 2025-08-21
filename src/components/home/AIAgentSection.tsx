@@ -1,19 +1,11 @@
 'use client';
 
 import React from 'react';
-import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const AIAgentSection = () => {
-  useEffect(() => {
-    // Place any browser-only code here, e.g. document, window, localStorage
-    // Example:
-    // if (typeof document !== 'undefined') {
-    //   // document.querySelector(...)
-    // }
-  }, []);
-
+ 
   return (
     <>
       <section

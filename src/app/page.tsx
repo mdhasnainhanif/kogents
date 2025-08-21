@@ -10,9 +10,17 @@ import FAQSection from '../components/FAQSection';
 import AIAgentSlider from '@/components/home/AIAgentSlider';
 import AgentOS from '@/components/home/AgentOS';
 import KogentBenefits from '@/components/home/KogentBenefits';
+import { useEffect } from 'react';
+import Aos from 'aos';
 
 export default function HomePage() {
-
+  useEffect(() => {
+    Aos.init({
+      duration: 800, // Animation duration (ms)
+      easing: 'ease-in-out',
+      once: false, // Animate every time you scroll
+    });
+  }, []);
 
   return (
     <>
@@ -25,12 +33,13 @@ export default function HomePage() {
       >
         <CaseStudySection />
         <BenefitsSection />
+        <WorkflowsSection />
+        <AIAgentSlider />
+        <AgentOS />
+        <KogentBenefits />
+        <FAQSection />
       </div>
-      <WorkflowsSection />
-      <AIAgentSlider />
-      <AgentOS />
-      <KogentBenefits />
-      <FAQSection />
+
       {/* <RequestDemoModal isOpen={isModalOpen} onClose={closeModal} /> */}
     </>
   );
