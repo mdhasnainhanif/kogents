@@ -1,58 +1,57 @@
 import Image from "next/image";
 import React from "react";
+import { WhatsappCommunicationSectionData } from "../../types";
+import { ArrowRight } from "lucide-react";
 
-const WhatsappCommunicationSection = () => {
+interface Props {
+  data: WhatsappCommunicationSectionData;
+}
+
+const WhatsappCommunicationSection: React.FC<Props> = ({ data }) => {
   return (
-    <>
-      <section
-        className="paddingOnMobile2 sectionPadding bg-center bg-no-repeat bg-cover bg-[url('img/bc/video-bg.png')]"
-        id="benefitsSection"
-      >
-        <div>
-          <div className="container px-5 mx-auto xl:px-0">
-            <div className="flex flex-col justify-center">
-              <div className="row appMain p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate not rowGap">
-                <div className="col-lg-9 p-lg-0 appMainFirst social_content">
-                  <div className="p-5">
-                    <h2 className="text-light mt-1 headingSize">
-                      Ready to Elevate WhatsApp Communication?
-                    </h2>
-                    <p className="text-light">
-                      Empower your business with a reliable AI that never misses
-                      a message — purpose-built for growth&#44; service&#44; and scale.
-                    </p>
-                    <div>
-                      <a
-                        href="javascript:void(0);"
-                        className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                        data-modal-target="#welcomeModal"
-                      >
-                        Deploy My WhatsApp Agent
-                        <Image
-                          width={25} height={25}
-                          src="/assets/img/icons/arrow-right.svg"
-                          alt="arrow"
-                        />
-                      </a>
-                    </div>
+    <section
+      className="paddingOnMobile2 sectionPadding bg-center bg-no-repeat bg-cover"
+      style={{ backgroundImage: `url(${data.backgroundImage})` }}
+      id="benefitsSection"
+    >
+      <div>
+        <div className="container px-5 mx-auto xl:px-0">
+          <div className="flex flex-col justify-center">
+            <div className="row appMain p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate not rowGap">
+              <div className="col-lg-9 p-lg-0 appMainFirst social_content">
+                <div className="p-5">
+                  <h2 className="text-light mt-1 headingSize">
+                    {data.heading}
+                  </h2>
+                  <p className="text-light">{data.description}</p>
+                  <div>
+                    <a
+                      href="javascript:void(0);"
+                      className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
+                      data-modal-target={data.buttonModalTarget || "#welcomeModal"}
+                    >
+                      {data.buttonText}
+                      <ArrowRight />
+                    </a>
                   </div>
                 </div>
-                <div className="col-md-3 p-md-0 appMainFirst">
-                  <div>
-                    <Image
-                      width={800} height={600}
-                      className="botImage"
-                      src="/assets/img/Bot.webp"
-                      alt="arrow"
-                    />
-                  </div>
+              </div>
+              <div className="col-md-3 p-md-0 appMainFirst">
+                <div>
+                  <Image
+                    width={800}
+                    height={600}
+                    className="botImage"
+                    src={data.image}
+                    alt="bot"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

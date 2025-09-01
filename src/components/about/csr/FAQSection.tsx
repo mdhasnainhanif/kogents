@@ -61,7 +61,6 @@ const FaqSection: React.FC = () => {
         [visibleCount]
     );
 
-
     return (
         <div
             className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('img/bc/FAQ-bg.png')] faq-bg"
@@ -71,7 +70,7 @@ const FaqSection: React.FC = () => {
                 <div className="flex flex-col items-center justify-center">
                     <span
                         // 
-                        className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+                        className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
                     >
                         FAQs
                     </span>

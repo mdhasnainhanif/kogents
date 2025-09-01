@@ -11,7 +11,7 @@ const AppSection = () => {
         <div className="flex flex-col items-center justify-center">
           <span
             // 
-            className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+            className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
           >
             Benefits
           </span>
@@ -40,7 +40,7 @@ const AppSection = () => {
               <div className="p-md-5">
                 <span
                 //   
-                  className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+                  className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
                 >
                   Trusted By Many Clients
                 </span>

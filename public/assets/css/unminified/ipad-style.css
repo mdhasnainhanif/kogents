@@ -1,0 +1,355 @@
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) {
+  .bg_footer .footerUl {
+    gap: 2rem !important;
+    padding: 0rem;
+  }
+
+  .animationSectionMain .wfullMobile {
+    margin-right: 0rem !important;
+    margin-top: 8.5rem;
+  }
+  .headerContainer {
+    display: none;
+  }
+  .stepBoxMain {
+    margin-top: 8.5rem;
+  }
+  .social_content h2,
+  .social_content p {
+    text-align: center !important;
+  }
+
+  .section_product-image.wrapper {
+    padding: 0rem 4rem;
+  }
+
+  .teamCards_ipad .mt-6 {
+    margin-top: unset !important;
+  }
+
+  .aiAgentSection_ipad {
+    display: block !important;
+  }
+  .card_hide_ipadpro {
+    display: none !important;
+  }
+  .desktop-section-show {
+    display: none !important;
+  }
+
+  .flexColumnOnIpad {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .teamCards_ipad .mb-12 {
+    margin-bottom: 1rem !important;
+  }
+
+  .centerWrapper {
+    margin: 5.5rem 0rem !important;
+  }
+
+  .sync-line-down {
+    top: 18rem !important;
+    width: 5.5rem !important;
+  }
+
+  .sync-line-down2 {
+    width: 5.5rem !important;
+    top: 18rem !important;
+  }
+
+  #syncLineRight2 {
+    bottom: 8.525rem !important;
+  }
+
+  #syncLineRight {
+    bottom: 7rem !important;
+    right: -7.33rem !important;
+  }
+
+  .lineAnimtion1 {
+    bottom: 1.3rem !important;
+  }
+  #syncLineUp {
+    overflow: visible !important;
+    width: 5.5rem !important;
+  }
+  #syncLineUp2 {
+    overflow: visible !important;
+    width: 5.5rem !important;
+  }
+  /*   .mobileMenuItems > ul > li .dropdown {*/
+  /*  max-height: 0;*/
+  /*  opacity: 0;*/
+  /*  transform: translateY(-10px);*/
+  /*  overflow: hidden;*/
+  /*  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;*/
+  /*}*/
+
+  /*.mobileMenuItems > ul > li.open .dropdown {*/
+  /*  max-height: 500px; */
+  /*  opacity: 1;*/
+  /*  transform: translateY(0);*/
+  /*}*/
+
+  /*.firstCol{*/
+  /*left: 50% !important;*/
+  /*transform: translate(-50%, 0px) !important;*/
+  /*text-align: center !important;*/
+  /*top: 7rem !important;*/
+  /*}*/
+
+  .scroller > * {
+    /* margin: 0 auto !important; */
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  header .container.desk {
+    display: none !important;
+  }
+  .buttonAnimation {
+    margin: 0 auto;
+  }
+
+  /*.buttonAnimation2{*/
+  /*    margin: 0 auto;*/
+  /*} */
+
+  .custom_modal_close_btn {
+    right: 1.3rem !important;
+  }
+
+  img.botImage {
+    display: none;
+  }
+
+  .firstCol .buttonAnimation2 {
+    margin: 0 auto;
+  }
+
+  .appMainFirst {
+    text-align: center;
+  }
+
+  .heroSectionPadding {
+    padding: 0;
+    overflow: hidden;
+    height: unset;
+  }
+
+  #aiBanner {
+    padding: 120px 0 80px !important;
+    height: auto !important;
+  }
+
+  .firstCol {
+    position: static !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+    top: unset;
+    left: unset;
+    margin: 0 auto;
+  }
+
+  .firstCol h1 {
+    margin: 0 auto;
+  }
+
+  .pxl-item--inner {
+    display: none;
+  }
+
+  .scroller .buttonAnimation {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    width: fit-content !important;
+  }
+
+  .scroller h2 {
+    text-align: center;
+  }
+
+  .scroller p {
+    text-align: center;
+  }
+
+  .md\:max-w-\[630px\] {
+    max-width: 695px;
+  }
+
+  .contactFormHeading {
+    text-align: center;
+  }
+
+  .ipad-stack {
+    flex-direction: column !important;
+  }
+
+  .ipad-stack > [class^="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .button-center-ipad {
+    display: flex;
+    justify-content: start;
+  }
+
+  .caseStudySlider {
+    margin-top: 2rem;
+  }
+
+  #blogSection {
+    padding-top: 0 !important;
+  }
+  #benefitsSection {
+    padding-top: 3rem !important;
+  }
+
+  .rainbowImage .img5 p {
+    right: 26%;
+  }
+
+  .animationSectionMain {
+    background: none !important;
+    border: none !important;
+  }
+  .tilt-card img {
+    margin-top: 12px;
+  }
+
+  .tilt-card img:first-child {
+    max-width: 26rem !important;
+  }
+
+  /*.sync-line-down div svg {*/
+  /*height:500px!important;*/
+  /*}*/
+
+  /*.sync-line-down svg{*/
+  /*    height:500px;*/
+  /*}*/
+
+  .counterMain {
+    gap: 10px !important;
+  }
+
+  .counterMain {
+    display: flex;
+    flex-direction: column;
+    gap: 20px !important;
+  }
+
+  #serviceScrollerArea {
+    margin-bottom: 0rem !important;
+  }
+  #caseStudySection .pb_8 {
+    padding-bottom: 3.5rem !important;
+  }
+  header ul li a {
+    font-family: var(--font-poppins) !important;
+    font-size: 1.3rem !important;
+  }
+  .mobileMenuItems > ul > li {
+    padding: 1rem 0rem !important;
+  }
+
+  .headingSize.mb-16 {
+    margin-bottom: 2rem !important;
+  }
+
+  .chartMain > h2 {
+    bottom: 0rem !important;
+    font-size: 1.9rem !important;
+  }
+
+  .boxSvgText {
+    bottom: -0.4rem !important;
+  }
+
+  .img1::after {
+    left: -34% !important;
+  }
+
+  .img2::before {
+    width: 252px !important;
+  }
+
+  .rainbowImage .img2 p {
+    right: 40% !important;
+    bottom: -6px !important;
+  }
+
+  .img3::before {
+    right: -13rem !important;
+    width: 343px !important;
+  }
+
+  .img4::before {
+    right: -12rem !important;
+  }
+
+  .img4::after {
+    left: 10rem !important;
+  }
+
+  .img5::before {
+    right: -37% !important;
+    width: 379px !important;
+  }
+
+  .img5::after {
+    right: 18% !important;
+  }
+
+  .rainbowImage .img5 p {
+    right: 27% !important;
+    transform: translate(21%, 0%) !important;
+    top: 85% !important;
+  }
+
+  .rainbowImage .img7 p {
+    right: 40% !important;
+    bottom: -5px !important;
+  }
+
+  .appMainFirst h2 {
+    font-size: 2rem !important;
+    text-align: left;
+  }
+
+  .appMainFirst p {
+    text-align: left;
+  }
+
+  .appMainFirst .buttonAnimation {
+    left: -17%;
+  }
+
+  /*     .sync-line-down2 svg {*/
+  /*   width: 20px !important;*/
+  /*   height: 600px !important;*/
+  /* }*/
+
+  /* .sync-line-down2 div {*/
+  /*   width: 120px !important; */
+  /*   height: 650px !important;*/
+  /*   top: -100px !important;*/
+  /* }*/
+
+  /*.sync-line-right-svg {*/
+  /*   width: 600px !important;*/
+  /*   height: 40px !important;*/
+  /* }*/
+
+  /* .sync-line-right2 {*/
+  /*   right: -18rem !important;*/
+  /*   bottom: 6rem !important;*/
+  /* }   */
+}

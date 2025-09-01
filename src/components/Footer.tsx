@@ -1,23 +1,22 @@
-"use client"
-
+import { Logo } from "@/icons";
 import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer
-      className="py-5 bg-center bg_footer bg-no-repeat bg-cover bg-[url('../img/bc/footer-bg.png')]"
-    >
+    <footer className="py-5 bg-center bg_footer bg-no-repeat bg-cover bg-[url('../img/bc/footer-bg.png')]">
       <div className="container px-5 mx-auto xl:px-0">
         <div className="row">
           <div className="col">
             <div>
-              <Image
-                className="mx-auto d-block logo1"
-                width={220}
-                height={50} 
-                src="/assets/img/kogents-logo.svg"
-                alt="logo"
-              />
+              <div className="text-center">
+                <Logo
+                  style={{
+                    width: "220px",
+                    height: "52px",
+                    display: "inline-block",
+                  }}
+                />
+              </div>
               <ul className="d-flex flex-wrap gap-5 align-items-center justify-content-center mt-4 footerUl">
                 <li className="relative group">
                   <a

@@ -6,7 +6,7 @@ const CorePrinciples = () => {
     <section>
       <span
         // 
-        className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
+        className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
       >
         Benefits
       </span>
@@ -94,7 +94,7 @@ const CorePrinciples = () => {
             >
               <div className="inline-block p-6 rounded-full bg_purple btn-border">
                 {/* <img src="assets/img/icons/16.svg" alt="icon" /> */}
-                <Image
+                <img
                 width={80}
                   height={80}
                   src="/assets/img/icons/16.svg"

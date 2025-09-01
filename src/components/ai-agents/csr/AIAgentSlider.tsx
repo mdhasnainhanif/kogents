@@ -20,7 +20,7 @@ const AIAgentSlider = () => {
               <div className="flex flex-col items-center justify-center">
                 <span
                   
-                  className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+                  className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
                 >
                   AI Agents
                 </span>
@@ -77,13 +77,13 @@ const AIAgentSlider = () => {
                             Customer Complaint AI Agent
                           </a>
                           <div className="flex flex-wrap gap-2 cardPoints">
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Detects complaint tone and urgency.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Generates empathy-driven replies.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Escalates unresolved issues fast.
                             </a>
                           </div>
@@ -109,13 +109,13 @@ const AIAgentSlider = () => {
                             Client Call Log AI Agent
                           </a>
                           <div className="flex flex-wrap gap-2 cardPoints">
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Logs every client interaction securely.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Helps analyze call performance & issues.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Enables quick call recall for reference.
                             </a>
                           </div>
@@ -141,13 +141,13 @@ const AIAgentSlider = () => {
                             Support Satisfaction AI Agent
                           </a>
                           <div className="flex flex-wrap gap-2 cardPoints">
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Collects feedback instantly post-support.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Identifies satisfaction trends.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Optimizes future support experiences.
                             </a>
                           </div>
@@ -173,13 +173,13 @@ const AIAgentSlider = () => {
                             Support Request AI Agent
                           </a>
                           <div className="flex flex-wrap gap-2 cardPoints">
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Handles support queries efficiently.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Routes requests to the right department.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Reduces response time significantly.
                             </a>
                           </div>
@@ -205,13 +205,13 @@ const AIAgentSlider = () => {
                             Customer Support AI Agent
                           </a>
                           <div className="flex flex-wrap gap-2 cardPoints">
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Resolves common issues instantly.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Available 24/7 across channels.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Improves customer satisfaction rate.
                             </a>
                           </div>
@@ -237,13 +237,13 @@ const AIAgentSlider = () => {
                             Customer Service AI Agent
                           </a>
                           <div className="flex flex-wrap gap-2 cardPoints">
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Manages inquiries across platforms.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Boosts team productivity.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Ensures consistent messaging.
                             </a>
                           </div>
@@ -269,13 +269,13 @@ const AIAgentSlider = () => {
                             Customer Review AI Agent
                           </a>
                           <div className="flex flex-wrap gap-2 cardPoints">
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Collects & organizes customer feedback.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Highlights key themes in reviews.
                             </a>
-                            <a className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
+                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
                               Sends alerts on negative feedback.
                             </a>
                           </div>

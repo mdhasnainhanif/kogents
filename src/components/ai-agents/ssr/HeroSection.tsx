@@ -8,7 +8,7 @@ const HeroSection = () => {
         <div className="flex justify-center">
           <div className="w-full max-w-4xl">
             <div className="flex flex-col items-center justify-center">
-              <span className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo">
+              <span className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
                 Deep Dive With AI
               </span>
 
@@ -34,7 +34,6 @@ const HeroSection = () => {
                   alt="arrow"
                   width={25}
                   height={25}
-                  unoptimized={process.env.NODE_ENV !== "production"}
                 />
               </a>
             </div>

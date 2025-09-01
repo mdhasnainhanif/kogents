@@ -1,4 +1,5 @@
 "use client"
+import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
 import React, { useMemo, useState } from "react";
 
@@ -215,9 +216,8 @@ const AccordionItem: React.FC<{
 }> = ({ item, isOpen, onToggle }) => {
   return (
     <div
-      className={`p-6 border rounded-lg according border-b-600 bg-gd-tertiary content1 ${
-        isOpen ? "active" : ""
-      }`}
+      className={`p-6 border rounded-lg according border-b-600 bg-gd-tertiary content1 ${isOpen ? "active" : ""
+        }`}
     >
       <button
         type="button"
@@ -240,6 +240,8 @@ const AccordionItem: React.FC<{
 const FaqSection: React.FC = () => {
   // open the first item by default
   const [openIndex, setOpenIndex] = useState<number>(0);
+  const openModal = useModalStore((state) => state.openModal);
+
   // Load More logic (show N, then add chunks)
   const INITIAL_COUNT = 3;
   const CHUNK = 3;
@@ -261,7 +263,7 @@ const FaqSection: React.FC = () => {
         <div className="flex flex-col items-center justify-center">
           <span
             // 
-            className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+            className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
           >
             FAQs
           </span>
@@ -328,7 +330,7 @@ const FaqSection: React.FC = () => {
 
             <button
               className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
-              data-modal-target="#welcomeModal"
+              onClick={openModal}
               type="button"
             >
               Connect With Ai Agent

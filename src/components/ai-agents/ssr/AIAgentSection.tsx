@@ -13,7 +13,7 @@ const AIAgentSection = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-10">
-              <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
+              <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
                 Case Studies
               </span>
               <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
@@ -303,7 +303,7 @@ const AIAgentSection = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-10">
-              <span className="buttonAnimation mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
+              <span className="buttonAnimation mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
                 Case Studies
               </span>
               <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">

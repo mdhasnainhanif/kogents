@@ -1,14 +1,21 @@
-import React from 'react';
-import Image from 'next/image';
+"use client";
+import React from "react";
+import { useModalStore } from "@/stores/useModalStore";
+import Image from "next/image";
+import { Container } from "react-bootstrap";
+import { ArrowRightIcon } from "@/icons";
+import Link from "next/link";
 
 const HeroSection = () => {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
-    <div className="heroSectionPadding bg-center bg-no-repeat bg-cover bg-[url('/img/bc/hero-bg.webp')] pb-0 heroSection">
-      <div className="container px-5 mx-auto xl:px-0">
+    <section className="heroSectionPadding bg-center bg-no-repeat bg-cover bg-[url('/img/bc/hero-bg.webp')] pb-0 heroSection">
+      <Container className="px-5 mx-auto xl:px-0">
         <div className="flex justify-center">
           <div className="w-full max-w-4xl">
             <div className="flex flex-col items-center justify-center">
-              <span className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo">
+              <span className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
                 Deep Dive With AI
               </span>
 
@@ -28,25 +35,20 @@ const HeroSection = () => {
                 crave efficiency. We deliver all three.
               </p>
 
-              <a
-                href="#"
+              <Link
+                href="/chatbot/create"
+                // onClick={openModal}
                 className="buttonAnimation2 flex justify-center pink items-center gap-2 mb-8 lg:mb-14 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
+                aria-label="Request demo for Kogents AI"
               >
                 Request Demo
-                <Image 
-                  src="/assets/img/icons/arrow-right.svg" 
-                  alt="arrow"  
-                  width={25} 
-                  height={25}
-                  // Added unoptimized if the image is causing issues
-                  unoptimized={process.env.NODE_ENV !== "production"}
-                />
-              </a>
+                <ArrowRightIcon style={{ height: "24px" }} />
+              </Link>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </section>
   );
 };
 

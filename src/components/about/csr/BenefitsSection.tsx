@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -8,7 +8,7 @@ type CounterProps = {
 
 const Counter: React.FC<CounterProps> = ({ target }) => {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLParagraphElement | null>(null);
+  const countRef = useRef<HTMLParagraphElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -22,12 +22,12 @@ const Counter: React.FC<CounterProps> = ({ target }) => {
       { threshold: 0.5 } // 50% visible hone par start
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (countRef.current) {
+      observer.observe(countRef.current);
     }
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (countRef.current) observer.unobserve(countRef.current);
     };
   }, []);
 
@@ -49,7 +49,7 @@ const Counter: React.FC<CounterProps> = ({ target }) => {
   }, [isVisible, target]);
 
   return (
-    <p ref={ref} className="text-white text-lg font-semibold">
+    <p ref={countRef} className="text-white text-lg font-semibold">
       {count}%
     </p>
   );
@@ -63,7 +63,7 @@ const BenefitsSection: React.FC = () => {
     >
       <div className="container px-5 mx-auto p-0">
         <div className="flex flex-col items-center justify-center">
-          <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo">
+          <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
             Benefits
           </span>
           <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
@@ -72,10 +72,10 @@ const BenefitsSection: React.FC = () => {
             With Tremendous Benefits
           </h2>
           <p className="w-75 mb-16 text-center paraColor subHeading">
-            Deploy AI agents to streamline operations and amplify your business&apos;s
-            efficiency. These agents optimize processes, reduce delays, and
-            enhance output, ensuring you gain a competitive edge with speed and
-            precision.
+            Deploy AI agents to streamline operations and amplify your
+            business&apos;s efficiency. These agents optimize processes, reduce
+            delays, and enhance output, ensuring you gain a competitive edge
+            with speed and precision.
           </p>
 
           <div className="row rowGap w-100 mt-5">
@@ -85,8 +85,8 @@ const BenefitsSection: React.FC = () => {
                   Integerate AI Agents Into Your Organization Structure
                 </h2>
                 <Image
-                height={500}
-                width={500}
+                  height={500}
+                  width={500}
                   src="/assets/img/members.png"
                   alt="video image demo"
                   className="w-100"
@@ -130,7 +130,7 @@ const BenefitsSection: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
   );
 };

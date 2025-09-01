@@ -63,7 +63,7 @@ const BenefitsSection: React.FC = () => {
     >
       <div className="container px-5 mx-auto p-md-0">
         <div className="flex flex-col items-center justify-center">
-          <span className="buttonAnimation pink inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+          <span className="buttonAnimation pink inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
           >
             Benefits
           </span>

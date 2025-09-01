@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState, useMemo } from "react";
 
 export default function AiAgentSection() {
@@ -9,10 +10,10 @@ export default function AiAgentSection() {
     // tiny helper to join classes
     const cx = (...cls: any) => cls.filter(Boolean).join(" ");
 
-    const TabCard = ({ img,  title, points = [] }: any) => (
+    const TabCard = ({ img, title, points = [] }: any) => (
         <div className="col-lg-4 col-md-6 col-12">
             <div className="p-6 md:p-12 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
-                <img className="w-full" src={img} alt="media image" />
+                <Image className="w-full" height={500} width={500} src={img} alt="media image" />
                 <div className="p-3 pt-0 cardFullContent">
                     <a
                         href="javascript:void(0);"
@@ -24,7 +25,7 @@ export default function AiAgentSection() {
                         {points.map((p: any, i: any) => (
                             <a
                                 key={i}
-                                className="inline-block px-4 py-2 text-sm border rounded-full border-b-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900"
+                                href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900"
                             >
                                 {p}
                             </a>
@@ -38,7 +39,7 @@ export default function AiAgentSection() {
     const industriesCards = useMemo(
         () => [
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-complaint-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-complaint-ai-agent.webp",
                 title: "Visualize KPIs in real-time across departments",
                 points: [
                     "Detects complaint tone and urgency.",
@@ -47,7 +48,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/client-call-log-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/client-call-log-ai-agent.webp",
                 title: "Auto-refresh data from multiple sources",
                 points: [
                     "Logs every client interaction securely.",
@@ -56,7 +57,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/support-satisfaction-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/support-satisfaction-ai-agent.webp",
                 title: "Send periodic summaries to team leads",
                 points: [
                     "Collects feedback instantly post-support.",
@@ -65,7 +66,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/support-request-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/support-request-ai-agent.webp",
                 title: "Generate alert-based reports for anomalies",
                 points: [
                     "Handles support queries efficiently.",
@@ -74,7 +75,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-support-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-support-ai-agent.webp",
                 title: "Integrate with CRM/ERP systems",
                 points: [
                     "Resolves common issues instantly.",
@@ -83,7 +84,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-service-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-service-ai-agent.webp",
                 title: "Embed predictive insights for decision-making",
                 points: [
                     "Manages inquiries across platforms.",
@@ -98,7 +99,7 @@ export default function AiAgentSection() {
     const professionCards = useMemo(
         () => [
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/support-request-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/support-request-ai-agent.webp",
                 title: "Summarize meeting notes & action items",
                 points: [
                     "Handles support queries efficiently.",
@@ -107,7 +108,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-support-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-support-ai-agent.webp",
                 title: "Track project KPIs & milestones",
                 points: [
                     "Resolves common issues instantly.",
@@ -116,7 +117,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-service-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-service-ai-agent.webp",
                 title: "Generate task lists & reminders from chats/emails",
                 points: [
                     "Manages inquiries across platforms.",
@@ -125,7 +126,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-complaint-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-complaint-ai-agent.webp",
                 title: "Manage team requests & approvals",
                 points: [
                     "Detects complaint tone and urgency.",
@@ -134,7 +135,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/client-call-log-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/client-call-log-ai-agent.webp",
                 title: "Provide real-time performance dashboards",
                 points: [
                     "Logs every client interaction securely.",
@@ -143,7 +144,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/support-satisfaction-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/support-satisfaction-ai-agent.webp",
                 title: "Analyze employee engagement & productivity trends",
                 points: [
                     "Collects feedback instantly post-support.",
@@ -158,7 +159,7 @@ export default function AiAgentSection() {
     const typeCards = useMemo(
         () => [
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-complaint-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-complaint-ai-agent.webp",
                 title: "Visualize KPIs in real-time across departments",
                 points: [
                     "Detects complaint tone and urgency.",
@@ -167,7 +168,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/client-call-log-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/client-call-log-ai-agent.webp",
                 title: "Auto-refresh data from multiple sources",
                 points: [
                     "Logs every client interaction securely.",
@@ -176,7 +177,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/support-satisfaction-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/support-satisfaction-ai-agent.webp",
                 title: "Send periodic summaries to team leads",
                 points: [
                     "Collects feedback instantly post-support.",
@@ -185,7 +186,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/support-request-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/support-request-ai-agent.webp",
                 title: "Generate alert-based reports for anomalies",
                 points: [
                     "Handles support queries efficiently.",
@@ -194,7 +195,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-support-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-support-ai-agent.webp",
                 title: "Integrate with CRM/ERP systems",
                 points: [
                     "Resolves common issues instantly.",
@@ -203,7 +204,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "https://Kogents.ai/frontend/assets/img/team-slider/customer-service-ai-agent.webp",
+                img: "https://Kogents.ai/assets/img/team-slider/customer-service-ai-agent.webp",
                 title: "Embed predictive insights for decision-making",
                 points: [
                     "Manages inquiries across platforms.",
@@ -226,7 +227,7 @@ export default function AiAgentSection() {
                     <div className="col-md-8">
                         <span
                             // 
-                            className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo mx-auto"
+                            className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto"
                         >
                             Find By Industry
                         </span>

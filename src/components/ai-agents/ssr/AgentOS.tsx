@@ -7,7 +7,7 @@ const AgentOS = () => {
             <div className="container px-5 mx-auto xl:px-0">
                 <span
                     
-                    className="buttonAnimation width_fit purple d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo mx-auto"
+                    className="buttonAnimation width_fit purple d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto"
                 >
                     Agent OS
                 </span>

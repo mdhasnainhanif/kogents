@@ -9,7 +9,7 @@ export default function WorkflowsSection() {
         <div className="col-md-8">
           <span
             
-            className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+            className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
           >
             Case Studies
           </span>
@@ -17,7 +17,7 @@ export default function WorkflowsSection() {
             
             className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
           >
-            Smart Tools. Smarter Outcomes.
+            Smart Tools. Smarter Outcomes
           </h2>
           <p
             className="maxWidth39 mb-16 text-center paraColor subHeading text-center mx-auto"
@@ -100,7 +100,7 @@ export default function WorkflowsSection() {
                     <svg
                       width="400"
                       height="9"
-                      viewBox="0 0 5\00 20"
+                      viewBox="0 0 500 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -185,7 +185,7 @@ export default function WorkflowsSection() {
                     <svg
                       width="400"
                       height="9"
-                      viewBox="0 0 5\00 20"
+                      viewBox="0 0 500 20"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >

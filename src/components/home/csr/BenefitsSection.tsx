@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { BrowserView } from "react-device-detect";
 
 const CounterItem: React.FC<{ target: number; children: React.ReactNode }> = ({
   target,
@@ -53,7 +54,7 @@ const CounterItem: React.FC<{ target: number; children: React.ReactNode }> = ({
 const BenefitsSection: React.FC = () => {
   useEffect(() => {
     // Safe to use document/window here
-    document.getElementById('someId');
+    document.getElementById("someId");
   }, []);
 
   return (
@@ -63,8 +64,7 @@ const BenefitsSection: React.FC = () => {
     >
       <div className="container px-5 mx-auto p-md-0">
         <div className="flex flex-col items-center justify-center">
-          <span className="buttonAnimation pink inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
-          >
+          <span className="buttonAnimation pink inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
             Benefits
           </span>
           <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
@@ -75,22 +75,26 @@ const BenefitsSection: React.FC = () => {
           <p className="w-75 mb-16 text-center paraColor subHeading">
             Deploy AI agents to streamline operations and amplify your
             business's efficiency. These agents optimize processes&#44; reduce
-            delays&#44; and enhance output&#44; ensuring you gain a competitive edge
-            with speed and precision.
+            delays&#44; and enhance output&#44; ensuring you gain a competitive
+            edge with speed and precision.
           </p>
 
           <div className="row rowGap w-100 mt-5">
             <div className="col-xl-7 paddingX0">
-              <div className="chartMain">
-                <h2 className="d-none d-md-block">
-                  Integerate AI Agents Into Your Organization Structure
-                </h2>
-                <Image
-                  src="/assets/img/members.png"
-                  alt="video image demo"
-                  className="w-100"
-                 width={800} height={600} />
-              </div>
+              <BrowserView className="h-100">
+                <div className="chartMain">
+                  <h2 className="d-none d-md-block mt-5">
+                    Integerate AI Agents Into Your Organization Structure
+                  </h2>
+                  <Image
+                    src="/assets/img/members.png"
+                    alt="video image demo"
+                    className="w-100"
+                    width={800}
+                    height={600}
+                  />
+                </div>
+              </BrowserView>
             </div>
 
             <div className="col-xl-5 gap-4 paddingX0">
@@ -99,9 +103,7 @@ const BenefitsSection: React.FC = () => {
                   <CounterItem target={93}>
                     <h3 className="heading-4">Smart Tools. Smarter Outcomes</h3>
                     <p className="text-white small-text1">
-                      With integrated analytics&#44; live syncing&#44; and action
-                      automation&#44; Kogents AI Agents do more than reply — they
-                      act.
+                      Kogents AI Agents do more than reply — they act.
                     </p>
                   </CounterItem>
                 </div>
@@ -110,9 +112,7 @@ const BenefitsSection: React.FC = () => {
                   <CounterItem target={100}>
                     <h3 className="heading-4">Reliable. Adaptive. Always On</h3>
                     <p className="text-white small-text1">
-                      All agents are continuously learning from conversations&#44;
-                      system signals&#44; and customer outcomes — to deliver better
-                      support and smarter escalations.
+                      All agents are continuously learning from conversations.
                     </p>
                   </CounterItem>
                 </div>
@@ -123,9 +123,8 @@ const BenefitsSection: React.FC = () => {
                       Autonomous Doesn’t Mean Isolated
                     </h3>
                     <p className="text-white small-text1">
-                      Your AI Agents share signals, escalate across channels,
-                      and optimize workflows together. Think of it as a mesh
-                      network of AI — tailored to your business.
+                      Think of it as a mesh network of AI — tailored to your
+                      business.
                     </p>
                   </CounterItem>
                 </div>

@@ -11,7 +11,7 @@ const BlogSection = () => {
             <div className="scroller">
               <span
                 // 
-                className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+                className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
               >
                 Our Blogs
               </span>
@@ -35,12 +35,12 @@ const BlogSection = () => {
               </a>
               <div
                 className="pxl-client-review pxl-client-review1 style-1"
-                // data-wow-delay="ms"
+              // data-wow-delay="ms"
               >
                 <div className="pxl-item--inner">
                   <div className="pxl-item--images el-empty">
                     <div className="pxl-item--img">
-                      <img
+                      <Image
                         loading="lazy"
                         decoding="async"
                         width="129"
@@ -51,7 +51,7 @@ const BlogSection = () => {
                       />
                     </div>
                     <div className="pxl-item--img">
-                      <img
+                      <Image
                         loading="lazy"
                         decoding="async"
                         width="129"
@@ -62,7 +62,7 @@ const BlogSection = () => {
                       />
                     </div>
                     <div className="pxl-item--img">
-                      <img
+                      <Image
                         loading="lazy"
                         decoding="async"
                         width="129"
@@ -73,7 +73,7 @@ const BlogSection = () => {
                       />
                     </div>
                     <div className="pxl-item--img">
-                      <img
+                      <Image
                         loading="lazy"
                         decoding="async"
                         width="129"
@@ -96,10 +96,12 @@ const BlogSection = () => {
             <div className="blogCard">
               <div className="row rowGap">
                 <div className="col-md-4">
-                  <img
+                  <Image
+                    height={160}
+                    width={169}
                     className="blogImg"
                     src="https://demo.casethemes.net/aimo/wp-content/uploads/2025/04/img-post-update1-160x169.jpg"
-                    alt=""
+                    alt="image"
                   />
                 </div>
                 <div className="col-md-8">
@@ -115,7 +117,7 @@ const BlogSection = () => {
                   </p>
                   <div className="d-flex justify-content-between">
                     <div className="pxl-post--author pxl-mr-10">
-                      <img
+                      <Image
                         loading="lazy"
                         src="https://demo.casethemes.net/aimo/wp-content/uploads/2024/11/avatar3-150x150.webp"
                         width="40"
@@ -140,7 +142,9 @@ const BlogSection = () => {
             <div className="blogCard">
               <div className="row">
                 <div className="col-md-4">
-                  <img
+                  <Image
+                    height={160}
+                    width={169}
                     className="blogImg"
                     src="https://demo.casethemes.net/aimo/wp-content/uploads/2024/08/img-sg-post9-160x169.webp"
                     alt=""
@@ -155,7 +159,7 @@ const BlogSection = () => {
                   </p>
                   <div className="d-flex justify-content-between">
                     <div className="pxl-post--author pxl-mr-10">
-                      <img
+                      <Image
                         loading="lazy"
                         src="https://demo.casethemes.net/aimo/wp-content/uploads/2024/11/avatar3-150x150.webp"
                         width="40"
@@ -180,8 +184,10 @@ const BlogSection = () => {
             <div className="blogCard">
               <div className="row">
                 <div className="col-md-4">
-                  <img
+                  <Image
                     className="blogImg"
+                    height={160}
+                    width={169}
                     src="https://demo.casethemes.net/aimo/wp-content/uploads/2025/04/img-post-update1-160x169.jpg"
                     alt=""
                   />
@@ -195,7 +201,7 @@ const BlogSection = () => {
                   </p>
                   <div className="d-flex justify-content-between">
                     <div className="pxl-post--author pxl-mr-10">
-                      <img
+                      <Image
                         loading="lazy"
                         src="https://demo.casethemes.net/aimo/wp-content/uploads/2024/11/avatar3-150x150.webp"
                         width="40"
@@ -220,7 +226,9 @@ const BlogSection = () => {
             <div className="blogCard">
               <div className="row">
                 <div className="col-md-4">
-                  <img
+                  <Image
+                    height={160}
+                    width={169}
                     className="blogImg"
                     src="https://demo.casethemes.net/aimo/wp-content/uploads/2024/08/img-sg-post9-160x169.webp"
                     alt=""
@@ -235,7 +243,7 @@ const BlogSection = () => {
                   </p>
                   <div className="d-flex justify-content-between">
                     <div className="pxl-post--author pxl-mr-10">
-                      <img
+                      <Image
                         loading="lazy"
                         src="https://demo.casethemes.net/aimo/wp-content/uploads/2024/11/avatar3-150x150.webp"
                         width="40"

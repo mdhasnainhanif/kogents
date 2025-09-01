@@ -1,37 +1,167 @@
 "use client";
+import { ChevronIcon, Logo, PencilIcon } from "@/icons";
+import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+
+// Define types
+type MenuItem = {
+  title: string;
+  href: string;
+  icon: string;
+};
+
+type MenuSection = {
+  heading: string;
+  items: MenuItem[];
+  more?: {
+    title: string;
+    href: string;
+  };
+};
+
+const platformMenu: MenuSection[] = [
+  {
+    heading: "Platfarms",
+    items: [
+      {
+        title: "Whatsapp Agent",
+        href: "/platform/whatsapp-agent",
+        icon: "/assets/img/icons/whatsapp.svg",
+      },
+      {
+        title: "Instagram Agent",
+        href: "/platform/instagram-agent",
+        icon: "/assets/img/icons/instagram1.svg",
+      },
+      {
+        title: "Messenger Agent",
+        href: "/platform/messenger-agent",
+        icon: "/assets/img/icons/messenger.svg",
+      },
+      {
+        title: "Slack Agent",
+        href: "/platform/ai-slack-agent",
+        icon: "/assets/img/icons/slack.svg",
+      },
+    ],
+    // more: { title: "See All Channels", href: "/platfarms" },
+  },
+  {
+    heading: "Platfarms",
+    items: [
+      {
+        title: "Viber Agent",
+        href: "/platform/ai-viber-agent",
+        icon: "/assets/img/icons/viber.svg",
+      },
+      {
+        title: "Microsoft Teams",
+        href: "/platform/microsoft-teams-ai-agents",
+        icon: "/assets/img/icons/microsoft.svg",
+      },
+      {
+        title: "Telegram",
+        href: "/platform/ai-telegram-agent",
+        icon: "/assets/img/icons/telegram.svg",
+      },
+      {
+        title: "Line",
+        href: "/platform/ai-line-agent",
+        icon: "/assets/img/icons/line.svg",
+      },
+    ],
+    // more: { title: "See All Channels", href: "/platfarms" },
+  },
+  {
+    heading: "Integrations",
+    items: [
+      {
+        title: "HubSpot",
+        href: "/platform/hubspot",
+        icon: "/assets/img/icons/hubspot.svg",
+      },
+      {
+        title: "Zendesk",
+        href: "/platform/zendesk",
+        icon: "/assets/img/icons/zdesk-icon2.webp",
+      },
+      {
+        title: "Jira",
+        href: "/platform/jira",
+        icon: "/assets/img/icons/jira.svg",
+      },
+      {
+        title: "Calendly",
+        href: "/platform/calendly",
+        icon: "/assets/img/icons/calendly.png",
+      },
+    ],
+    // more: { title: "See All Integrations", href: "/platfarms" },
+  },
+  // {
+  //   heading: "LLM Providers",
+  //   items: [
+  //     { title: "OpenAI", href: "/platform/openai", icon: "/assets/img/icons/openai.png" },
+  //     { title: "Anthropic", href: "/platform/anthropic", icon: "/assets/img/icons/anthropic.png" },
+  //     { title: "Groq", href: "/platform/groq", icon: "/assets/img/icons/groq.png" },
+  //     { title: "Hugging Face", href: "/platform/hugging-face", icon: "/assets/img/icons/hugging-face.svg" },
+  //   ],
+  //   more: { title: "See All LLMs", href: "/platfarms" },
+  // },
+];
+
+const solutionsMenu = {
+  industries: [
+    { title: "Healthcare AI Agents", href: "/healthcare-ai-agent" },
+    { title: "Customer Service AI Agent", href: "/customer-service-ai-agents" },
+    { title: "Education AI Agents", href: "/ai-agent-for-education" },
+    { title: "HR AI Agents", href: "/ai-agent-for-hr" },
+  ],
+  professions: [
+    { title: "Managers Agents", href: "/managers" },
+    { title: "Event Planners Agents", href: "/ai-agent-event-planner" },
+    { title: "Marketers Agents", href: "/ai-agent-for-marketing" },
+    { title: "Teachers Agents", href: "/ai-teacher-assistant" },
+  ],
+  types: [
+    { title: "AI Dashboard Templates", href: "/dashboard-templates" },
+    { title: "Application AI Agents", href: "/application-agents" },
+    { title: "Survey AI Agents", href: "/survey-ai-agent" },
+    { title: "Feedback AI Agents", href: "/feedback-agents" },
+  ],
+};
 
 export default function Header() {
-  const [open, setOpen] = useState(false); // mobile menu toggle
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null); // track which dropdown is open
+  const [open, setOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
-  const toggleMenu = () => setOpen(!open);
-  const toggleDropdown = (menu: string) => {
-    setOpenDropdown(openDropdown === menu ? null : menu);
-  };
+  const toggleMenu = useCallback(() => setOpen((prev) => !prev), []);
+  const toggleDropdown = useCallback((menu: string) => {
+    setOpenDropdown((prev) => (prev === menu ? null : menu));
+  }, []);
 
-  // ✅ Close mobile menu on route change
   useEffect(() => {
     setOpen(false);
     setOpenDropdown(null);
   }, [pathname]);
+
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <>
-      <header className="absolute top-0 left-0 right-0 z-[9999] border border-w-900 border-opacity-[8%] bg-opacity-5 backdrop-blur-lg bg-w-900 sticky-header">
+      <header className="absolute top-0 left-0 right-0 z-[9999] border-b border-w-900 border-opacity-[8%] bg-opacity-5 backdrop-blur-lg bg-w-900 sticky-header">
         <div className="container px-5 mx-auto xl:px-0 headerContainer">
           <div className="items-center justify-between hidden md:flex">
-            <Link href="/" className="flex items-center justify-start gap-2">
-              <Image
-                width={150}
-                height={50}
-                src="/assets/img/kogents-logo.svg"
-                className="logo1"
-                alt="logo"
-              />
+            <Link
+              href="/"
+              className="flex items-center justify-start gap-2"
+              aria-label="Kogents"
+            >
+              <Logo style={{ width: 150, height: 50 }} />
             </Link>
             <nav>
               <ul className="flex items-center justify-center md:gap-4 lg:gap-8 relative">
@@ -45,26 +175,13 @@ export default function Header() {
                 </li>
                 <li className="cursor-pointer group nav-item customDropdown">
                   <Link
-                    href="javascript:void(0);"
+                    href="/platfarms"
                     className="flex items-center gap-2 text-sm font-semibold capitalize transition-all duration-300 text-w-100"
                   >
                     Platform
-                    <svg
-                      className="transition-transform duration-300 transform down-svg group-hover:rotate-180"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9.5 4.5 6 8 2.5 4.5"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ChevronIcon />
                   </Link>
+
                   <div className="megaMenuDropdown platform">
                     <div className="d-flex align-items-center">
                       <div>
@@ -74,170 +191,44 @@ export default function Header() {
                             height={200}
                             className="w-100"
                             src="/assets/img/platform.webp"
-                            alt="logo"
+                            alt="Platform overview"
+                            priority
                           />
                         </div>
                       </div>
+
                       <div className="ps-4 d-flex flex-wrap gap4rem">
-                        <div>
-                          <p className="menuHeading">Channels</p>
-                          <ul className="p-0 pe-4">
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/whatsapp.svg"
-                                  alt=""
-                                />
-                                Whatsapp Agent
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/instagram1.svg"
-                                  alt=""
-                                />
-                                Instagram Agent
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/messenger.svg"
-                                  alt=""
-                                />
-                                Messenger Agent
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/shopify.svg"
-                                  alt=""
-                                />
-                                Shopify Agent
-                              </Link>
-                            </li>
-                            <li className="removeIcon ms-4">
-                              <Link
-                                className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
-                                href="/all-channels"
-                              >
-                                See All Channels
-                                <i className="fa-solid fa-chevron-right"></i>
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="menuHeading">Integrations</p>
-                          <ul className="p-0 pe-4">
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/hubspot.svg"
-                                  alt=""
-                                />
-                                HubSpot
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/zdesk-icon2.webp"
-                                  alt=""
-                                />
-                                Zendesk
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image width={50} height={50} src="/assets/img/icons/jira.svg" alt="" />
-                                Jira
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/calendly.png"
-                                  alt=""
-                                />
-                                Calendly
-                              </Link>
-                            </li>
-                            <li className="removeIcon ms-4">
-                              <a
-                                className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
-                                href="/channels"
-                              >
-                                See All Integrations
-                                <i className="fa-solid fa-chevron-right"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="menuHeading">LLM Providers</p>
-                          <ul className="p-0 pe-4">
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image width={50} height={50} src="/assets/img/icons/openai.png" alt="" />
-                                OpenAI
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/anthropic.png"
-                                  alt=""
-                                />
-                                Anthropic
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image width={50} height={50} src="/assets/img/icons/groq.png" alt="" />
-                                Groq
-                              </Link>
-                            </li>
-                            <li className="removeIcon">
-                              <Link href="/ai-whatsapp-agent">
-                                <Image
-                                  width={50}
-                                  height={50}
-                                  src="/assets/img/icons/hugging-face.svg"
-                                  alt=""
-                                />
-                                Hugging Face
-                              </Link>
-                            </li>
-                            <li className="removeIcon ms-4">
-                              <a
-                                className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
-                                href="/channels"
-                              >
-                                See All LLMs
-                                <i className="fa-solid fa-chevron-right"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
+                        {platformMenu.map((section, idx) => (
+                          <div key={idx}>
+                            <p className="menuHeading">{section.heading}</p>
+                            <ul className="p-0 pe-4">
+                              {section.items.map((item, i) => (
+                                <li key={i} className="removeIcon">
+                                  <Link href={item.href}>
+                                    <Image
+                                      width={50}
+                                      height={50}
+                                      src={item.icon}
+                                      alt={item.title}
+                                    />
+                                    {item.title}
+                                  </Link>
+                                </li>
+                              ))}
+                              {section.more && (
+                                <li className="removeIcon ms-4">
+                                  <Link
+                                    className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
+                                    href={section.more.href}
+                                  >
+                                    {section.more.title}
+                                    <i className="fa-solid fa-chevron-right"></i>
+                                  </Link>
+                                </li>
+                              )}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -248,21 +239,7 @@ export default function Header() {
                     className="flex items-center gap-2 text-sm font-semibold capitalize transition-all duration-300 text-w-100"
                   >
                     Solutions
-                    <svg
-                      className="transition-transform duration-300 transform down-svg group-hover:rotate-180"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9.5 4.5 6 8 2.5 4.5"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ChevronIcon />
                   </a>
                   <div className="megaMenuDropdown">
                     <div className="d-flex align-items-center">
@@ -273,360 +250,92 @@ export default function Header() {
                             height={200}
                             className="w-100"
                             src="/assets/img/solutions.webp"
-                            alt="logo"
+                            alt="Solutions overview"
+                            priority
                           />
                         </div>
                       </div>
                       <div className="ps-4 d-flex flex-wrap gap4rem">
                         <div>
-                          <div>
-                            <p className="menuHeading">By Industries</p>
-                            <ul>
-                              <li>
-                                <Link href="/solutions">
+                          <p className="menuHeading">By Industries</p>
+                          <ul>
+                            {solutionsMenu.industries.map((industry, idx) => (
+                              <li key={idx}>
+                                <Link href={industry.href}>
                                   <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
+                                    <i>
+                                      <PencilIcon />
                                     </i>
                                   </div>
-                                  Healthcare AI Agents
+                                  {industry.title}
                                 </Link>
                               </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Customer Service AI Agent
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Education AI Agents
-                                </Link>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  HR AI Agents
-                                </a>
-                              </li>
-                              <li className="removeIcon noHover">
-                                <Link
-                                  className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
-                                  href="/solutions"
-                                >
-                                  See All Templates
-                                  <i className="fa-solid fa-chevron-right"></i>
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
+                            ))}
+                            <li className="removeIcon noHover">
+                              <Link
+                                className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
+                                href="/solutions"
+                              >
+                                See All Templates
+                                <i className="fa-solid fa-chevron-right"></i>
+                              </Link>
+                            </li>
+                          </ul>
                         </div>
                         <div>
-                          <div>
-                            <p className="menuHeading">By Profession</p>
-                            <ul>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Managers Agents
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Event Planners Agents
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Marketers Agents
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Teachers Agents
-                                </Link>
-                              </li>
-                              <li className="removeIcon noHover">
-                                <Link
-                                  className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
-                                  href="/solutions"
-                                >
-                                  See All Templates
-                                  <i className="fa-solid fa-chevron-right"></i>
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
+                          <p className="menuHeading">By Profession</p>
+                          <ul>
+                            {solutionsMenu.professions.map(
+                              (profession, idx) => (
+                                <li key={idx}>
+                                  <Link href={profession.href}>
+                                    <div className="icon">
+                                      <i>
+                                        <PencilIcon />
+                                      </i>
+                                    </div>
+                                    {profession.title}
+                                  </Link>
+                                </li>
+                              )
+                            )}
+                            <li className="removeIcon noHover">
+                              <Link
+                                className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
+                                href="/solutions"
+                              >
+                                See All Templates
+                                <i className="fa-solid fa-chevron-right"></i>
+                              </Link>
+                            </li>
+                          </ul>
                         </div>
                         <div>
-                          <div>
-                            <p className="menuHeading">By Type</p>
-                            <ul>
-                              <li>
-                                <Link href="/solutions">
+                          <p className="menuHeading">By Type</p>
+                          <ul>
+                            {solutionsMenu.types.map((type, idx) => (
+                              <li key={idx}>
+                                <Link href={type.href}>
                                   <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
+                                    <i>
+                                      <PencilIcon />
                                     </i>
                                   </div>
-                                  AI Dashboard Templates
+                                  {type.title}
                                 </Link>
                               </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Application AI Agents
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Survey AI Agents
-                                </Link>
-                              </li>
-                              <li>
-                                <Link href="/solutions">
-                                  <div className="icon">
-                                    <i className="fa-solid fa-pencil">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="lucide lucide-pencil-line-icon lucide-pencil-line"
-                                      >
-                                        <path d="M13 21h8" />
-                                        <path d="m15 5 4 4" />
-                                        <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                      </svg>
-                                    </i>
-                                  </div>
-                                  Feedback AI Agents
-                                </Link>
-                              </li>
-                              <li className="removeIcon noHover">
-                                <Link
-                                  className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
-                                  href="/solutions"
-                                >
-                                  See All Templates
-                                  <i className="fa-solid fa-chevron-right"></i>
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
+                            ))}
+                            <li className="removeIcon noHover">
+                              <Link
+                                className="dropdownBtnNew flex justify-center items-center gap-2 text-base font-medium open-modal-btn w_fit"
+                                href="/solutions"
+                              >
+                                See All Templates
+                                <i className="fa-solid fa-chevron-right"></i>
+                              </Link>
+                            </li>
+                          </ul>
                         </div>
-                        {/* Commented section left as-is */}
                       </div>
                     </div>
                   </div>
@@ -659,13 +368,13 @@ export default function Header() {
               </ul>
             </nav>
             <div className="flex items-center justify-end gap-2">
-              <a
-                href="javascript:void(0);"
+              <button
+                type="button"
                 className="buttonAnimation2 inline-block px-4 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary hover:bg-transparent text-w-900 open-modal-btn"
-                data-modal-target="#welcomeModal"
+                onClick={openModal}
               >
                 Request Demo
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -677,12 +386,11 @@ export default function Header() {
           open ? "openMobileMenu" : "hidden"
         }`}
       >
-        {/* Header with logo + close button */}
         <div className="w-full flex items-center justify-between">
           <Link href="/">
-            <Image width={100} height={70} src="/assets/img/kogents-logo.svg" alt="logo" />
+            <Logo style={{ width: 100, height: 25 }} />
           </Link>
-          <button onClick={toggleMenu}>
+          <button onClick={toggleMenu} aria-label="Toggle menu">
             {!open ? (
               <svg
                 width="30"
@@ -735,46 +443,51 @@ export default function Header() {
               <Link href="/">Home</Link>
             </li>
 
-            {/* Mobile Dropdown (same logic as desktop) */}
             <li
               className={`dropdownToggle ${
                 openDropdown === "platform" ? "open" : ""
               }`}
             >
-              <a
+              <button
+                type="button"
                 onClick={() => toggleDropdown("platform")}
                 className={`dropdownBtn flex items-center gap-2 capitalize transition-all duration-300 text-w-100 ${
                   openDropdown === "platform" ? "open" : ""
                 }`}
               >
                 Platform
-              </a>
+              </button>
+
               <div
                 className={`mobileDropdownUl transition-all overflow-hidden ${
                   openDropdown === "platform" ? "openDropdown" : "max-h-0"
                 }`}
                 style={{
-                  maxHeight: openDropdown === "platform" ? "500px" : "0px",
+                  maxHeight: openDropdown === "platform" ? "1000px" : "0px",
                 }}
               >
-                <p className="menuHeading text-light">Channels</p>
-                <ul>
-                  <li>
-                    <Link href="/ai-whatsapp-agent">Whatsapp Agent</Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-whatsapp-agent">Instagram Agent</Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-whatsapp-agent">Messenger Agent</Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-whatsapp-agent">Slack Agent</Link>
-                  </li>
-                  <li>
-                    <Link href="/ai-whatsapp-agent">Shopify Agent</Link>
-                  </li>
-                </ul>
+                {platformMenu.map((section, sectionIdx) => (
+                  <div key={sectionIdx}>
+                    <p
+                      className="menuHeading text-light mb-0"
+                      style={{ fontSize: 14 }}
+                    >
+                      {section.heading}
+                    </p>
+                    <ul>
+                      {section.items.map((item, itemIdx) => (
+                        <li key={itemIdx}>
+                          <Link
+                            href={item.href}
+                            className="flex items-center gap-2"
+                          >
+                            {item.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </li>
 
@@ -783,14 +496,15 @@ export default function Header() {
                 openDropdown === "solutions" ? "open" : ""
               }`}
             >
-              <a
+              <button
+                type="button"
                 onClick={() => toggleDropdown("solutions")}
                 className={`dropdownBtn flex items-center gap-2 capitalize transition-all duration-300 text-w-100 ${
                   openDropdown === "solutions" ? "open" : ""
                 }`}
               >
                 Solutions
-              </a>
+              </button>
 
               <div
                 className={`mobileDropdownUl transition-all overflow-hidden ${
@@ -802,50 +516,32 @@ export default function Header() {
               >
                 <p className="menuHeading text-light">By Industries</p>
                 <ul className="p-0">
-                  <li>
-                    <Link href="/solutions">Healthcare AI Agents</Link>
-                  </li>
-                  <li>
-                    <Link href="/solutions">Customer Service AI Agent</Link>
-                  </li>
-                  <li>
-                    <Link href="/solutions">Education AI Agents</Link>
-                  </li>
+                  {solutionsMenu.industries.map((industry, idx) => (
+                    <li key={idx}>
+                      <Link href={industry.href}>{industry.title}</Link>
+                    </li>
+                  ))}
                 </ul>
 
                 <div className="mt-3">
                   <p className="menuHeading text-light">By Profession</p>
                   <ul className="p-0 mobileDropdownUl1">
-                    <li>
-                      <Link href="/solutions">Managers Agents</Link>
-                    </li>
-                    <li>
-                      <Link href="/solutions">Event Planners Agents</Link>
-                    </li>
-                    <li>
-                      <Link href="/solutions">Marketers Agents</Link>
-                    </li>
-                    <li>
-                      <Link href="/solutions">Teachers Agents</Link>
-                    </li>
+                    {solutionsMenu.professions.map((profession, idx) => (
+                      <li key={idx}>
+                        <Link href={profession.href}>{profession.title}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
                 <div className="mt-3">
                   <p className="menuHeading text-light">By Type</p>
                   <ul className="p-0 mobileDropdownUl1">
-                    <li>
-                      <Link href="/solutions">AI Dashboard Templates</Link>
-                    </li>
-                    <li>
-                      <Link href="/solutions">Application AI Agents</Link>
-                    </li>
-                    <li>
-                      <Link href="/solutions">Survey AI Agents</Link>
-                    </li>
-                    <li>
-                      <Link href="/solutions">Feedback AI Agents</Link>
-                    </li>
+                    {solutionsMenu.types.map((type, idx) => (
+                      <li key={idx}>
+                        <Link href={type.href}>{type.title}</Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -862,7 +558,11 @@ export default function Header() {
             </li>
           </ul>
 
-          <button className="buttonAnimation2 mt-3 text-light">
+          <button
+            type="button"
+            className="buttonAnimation2 mt-3 text-light"
+            onClick={openModal}
+          >
             Request Demo
           </button>
         </div>

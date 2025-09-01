@@ -10,7 +10,7 @@ const ContactBanner = () => {
           <div className="col-md-9">
             <span
               // 
-              className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo mx-auto"
+              className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto"
             >
               Contact
             </span>

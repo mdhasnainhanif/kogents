@@ -7,7 +7,7 @@ const ValueToBusinesses = () => {
                 <div className="container px-5 mx-auto xl:px-0">
                     <span
                         // 
-                        className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
+                        className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate"
                     >
                         Benefits
                     </span>

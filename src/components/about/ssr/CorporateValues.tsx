@@ -7,7 +7,7 @@ const CorporateValues = () => {
         <div className="container px-5 mx-auto xl:px-0">
           <span
             // 
-            className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-b-400 bg-b-600 text-tropical-indigo"
+            className="buttonAnimation pink d-block w_fit mx-auto inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo"
           >
             Benefits
           </span>
@@ -25,48 +25,48 @@ const CorporateValues = () => {
         >
           <div className="flex gap-4 overflow-hidden whitespace-nowrap">
             <div className="flex items-center justify-center gap-3 item-scroll-left">
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Stellar
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Intense
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Calm
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Terrifying
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Lavish Setting
               </span>
             </div>
             <div className="flex items-center justify-center gap-3 item-scroll-left">
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Stellar
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Intense
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Calm
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Terrifying
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Lavish Setting
               </span>
             </div>
@@ -74,60 +74,60 @@ const CorporateValues = () => {
 
           <div className="flex gap-4 overflow-hidden whitespace-nowrap">
             <div className="flex items-center justify-center gap-3 item-scroll-right">
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Stellar
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Intense
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Calm
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Terrifying
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Lavish Setting
               </span>
             </div>
             <div className="flex items-center justify-center gap-3 item-scroll-right">
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Stellar
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Intense
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Calm
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Terrifying
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Lavish Setting
               </span>
             </div>
@@ -135,60 +135,60 @@ const CorporateValues = () => {
 
           <div className="flex gap-4 overflow-hidden whitespace-nowrap">
             <div className="flex items-center justify-center gap-3 item-scroll-left">
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Stellar
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Intense
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Calm
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Terrifying
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Lavish Setting
               </span>
             </div>
             <div className="flex items-center justify-center gap-3 item-scroll-left">
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Stellar
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Leisurely Walk
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Ironical Dialogue
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Intense
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Calm
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Terrifying
               </span>
-              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-b-400 bg-b-600 text-w-100">
+              <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
                 Lavish Setting
               </span>
             </div>
