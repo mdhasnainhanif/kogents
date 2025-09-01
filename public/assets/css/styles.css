@@ -3212,6 +3212,11 @@ header nav > ul > li:hover::before {
   font-size: 3rem;
 }
 
+.buttonAnimation2 svg {
+  width: 1.525rem;
+  height: 1.525rem;
+}
+
 .clientTestimonialSection {
   background-image: url("/assets/img/map.svg");
   background-size: contain;
@@ -3262,6 +3267,10 @@ header nav > ul > li:hover::before {
   }
 }
 @media (max-width: 576px) {
+  .sectionPadding{
+    background-image: none !important;
+    background: none !important;
+  } 
   .load-button p,
   .scroller h2,
   .scroller p {

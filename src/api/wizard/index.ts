@@ -147,7 +147,6 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
     // Non-blocking warning if URL is getting big (risk varies by infra)
     const SAFE_URL_WARN = 1800; // conservative; many stacks break ~2k
     if (urlLength > SAFE_URL_WARN) {
-      // eslint-disable-next-line no-console
       console.warn(
         `[CRM] Warning: Encoded URL length ${urlLength} bytes exceeds ${SAFE_URL_WARN}. ` +
           `Large metadata may cause 414/400 depending on proxies/servers.`

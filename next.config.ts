@@ -8,8 +8,17 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
+  // Performance optimizations
   experimental: {
-    optimizeCss: true,
+    // optimizePackageImports: ['@gsap/react', 'gsap', 'lucide-react'],
+    // turbo: {
+    //   rules: {
+    //     '*.svg': {
+    //       loaders: ['@svgr/webpack'],
+    //       as: '*.js',
+    //     },
+    //   },
+    // },
   },
   // Enable compression for static assets
   webpack: (config, { isServer }) => {
@@ -26,6 +35,24 @@ const nextConfig: NextConfig = {
       };
     }
     return config;
+  },
+  // Compression headers for static export
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Encoding',
+            value: 'gzip',
+          },
+          {
+            key: 'Vary',
+            value: 'Accept-Encoding',
+          },
+        ],
+      },
+    ];
   },
 };
 

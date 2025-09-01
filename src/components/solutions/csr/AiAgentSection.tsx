@@ -273,6 +273,7 @@ export default function AiAgentSection() {
                                         )}
                                         id="industries-tab1-tab"
                                         aria-controls="industries-tab1"
+                                        role="tab"
                                         aria-selected={isActive("industries")}
                                         onClick={() => setActiveTab("industries")}
                                     >
@@ -303,6 +304,7 @@ export default function AiAgentSection() {
                                         )}
                                         id="industries-tab2-tab"
                                         aria-controls="industries-tab2"
+                                        role="tab"
                                         aria-selected={isActive("profession")}
                                         onClick={() => setActiveTab("profession")}
                                     >
@@ -332,6 +334,7 @@ export default function AiAgentSection() {
                                         )}
                                         id="industries-tab3-tab"
                                         aria-controls="industries-tab3"
+                                        role="tab"
                                         aria-selected={isActive("type")}
                                         onClick={() => setActiveTab("type")}
                                     >

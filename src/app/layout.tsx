@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import "bootstrap/dist/css/bootstrap.min.css";
+import type { Metadata, Viewport } from "next";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import CTAModal from "@/components/popup/CTAModal";
 import { Poppins } from "next/font/google";
@@ -31,13 +31,19 @@ export const metadata: Metadata = {
       },
     ],
   },
-  viewport: 'width=device-width, initial-scale=1.0',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
 }
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-poppins",
+  display: 'swap', // Critical for performance
+  preload: true,
 });
 
 export default function RootLayout({
@@ -49,6 +55,11 @@ export default function RootLayout({
     <html lang="en" className={poppins.variable}>
       <head>
         <meta name="robots" content="noindex, nofollow" />
+        
+        {/* Preload critical fonts */}
+        <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
+        <link rel="preload" href="/assets/css/output.css" as="style" />
+        <link rel="preload" href="/assets/css/styles.css" as="style" />
 
         {/* GTM Head Script */}
         <Script id="gtm-head" strategy="afterInteractive">
@@ -63,6 +74,7 @@ export default function RootLayout({
 
         <meta name="google-site-verification" content="cEYCDr4BxPj1pOLtmiccT6MWc-aKV5U0EdsQuVha7jQ" />
 
+        <link rel="stylesheet" href="/assets/css/bootstrap.css" />
         <link rel="stylesheet" href="/assets/css/output.css" />
         {/* <link rel="stylesheet" href="/assets/css/ipad-style.css" /> */}
         <link rel="stylesheet" href="/assets/css/ipadpro-style.css" />

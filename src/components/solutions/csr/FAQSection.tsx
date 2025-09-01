@@ -1,4 +1,5 @@
 "use client"
+import { ArrowRightIcon } from "@/icons";
 import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
 import React, { useMemo, useState } from "react";
@@ -315,7 +316,7 @@ const FaqSection: React.FC = () => {
                   className="loadMoreBtn buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit"
                 >
                   Load More
-                  <Image width={25} height={25} src="/assets/img/icons/arrow-right.svg" alt="arrow" />
+                  <ArrowRightIcon />
                 </button>
               </div>
             ) : (
@@ -334,7 +335,7 @@ const FaqSection: React.FC = () => {
               type="button"
             >
               Connect With Ai Agent
-              <Image width={25} height={25} src="/assets/img/icons/arrow-right.svg" alt="arrow" />
+              <ArrowRightIcon />
             </button>
           </div>
         </div>

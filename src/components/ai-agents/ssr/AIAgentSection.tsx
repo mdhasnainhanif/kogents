@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRightIcon } from '@/icons';
 
 const AIAgentSection = () => {
   return (
@@ -48,7 +49,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -78,7 +79,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -108,7 +109,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -139,7 +140,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -167,7 +168,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -204,7 +205,7 @@ const AIAgentSection = () => {
                             data-modal-target="#welcomeModal"
                           >
                             Request Access
-                            <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                            <ArrowRightIcon />
                           </Link>
                         </div>
                       </div>
@@ -235,7 +236,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -261,7 +262,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets//img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -287,7 +288,7 @@ const AIAgentSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Request Access
-                  <Image src="/assets//img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -330,7 +331,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -347,7 +348,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -364,7 +365,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -381,7 +382,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -398,7 +399,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -423,7 +424,7 @@ const AIAgentSection = () => {
                       <div className="button-center-ipad">
                         <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                           Request Access
-                          <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                          <ArrowRightIcon />
                         </Link>
                       </div>
                     </div>
@@ -444,7 +445,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -461,7 +462,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -478,7 +479,7 @@ const AIAgentSection = () => {
                 </ul>
                 <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                   Request Access
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -503,7 +504,7 @@ const AIAgentSection = () => {
                       <div className="button-center-ipad">
                         <Link href="#" className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn" data-modal-target="#welcomeModal">
                           Request Access
-                          <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                          <ArrowRightIcon />
                         </Link>
                       </div>
                     </div>

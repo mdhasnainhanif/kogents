@@ -1,22 +1,46 @@
 'use client';
 
-import Link from "next/link";
+import Link from "next/link"; 
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { useModalStore } from "@/stores/useModalStore";
+import { ArrowRightIcon } from "@/icons";
+
+// Performance optimization: Cache DOM measurements
+interface CachedMeasurements {
+  elementHeight: number;
+  cardHeight: number;
+  marginY: number;
+  windowHeight: number;
+  lastUpdate: number;
+}
 
 const CaseStudySection = () => {
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("tabScroll1");
+  
   // refs (TOP)
   const stackCardsRef = useRef<HTMLUListElement>(null);
   const itemsRef = useRef<HTMLLIElement[]>([]);
   const scrollingFnRef = useRef<(() => void) | null>(null);
   const scrollingRef = useRef<boolean>(false);
   const animationFrameRef = useRef<number | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null); // ✅ moved up
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const openModal = useModalStore((state) => state.openModal);
 
+  // Performance optimization: Cache measurements to avoid repeated DOM queries
+  const measurementsRef = useRef<CachedMeasurements>({
+    elementHeight: 0,
+    cardHeight: 0,
+    marginY: 0,
+    windowHeight: 0,
+    lastUpdate: 0
+  });
+
+  // Performance optimization: Throttle scroll events
+  const throttleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastScrollTime = useRef<number>(0);
+  const THROTTLE_DELAY = 16; // ~60fps
 
   // Helper functions
   const hasClass = (el: HTMLElement, className: string): boolean => {
@@ -48,8 +72,51 @@ const CaseStudySection = () => {
     return false;
   };
 
+  // Performance optimization: Batch DOM queries and cache results
+  const updateMeasurements = useCallback((): void => {
+    const element = stackCardsRef.current;
+    if (!element || !itemsRef.current.length) return;
+
+    const now = Date.now();
+    // Only update measurements every 100ms to reduce DOM queries
+    if (now - measurementsRef.current.lastUpdate < 100) return;
+
+    try {
+      // Batch all DOM queries together
+      const elementHeight = element.offsetHeight;
+      const cardStyle = getComputedStyle(itemsRef.current[0]);
+      const cardHeight = Math.floor(parseFloat(cardStyle.getPropertyValue('height')));
+      const marginYValue = getComputedStyle(element).getPropertyValue('--stack-cards-gap');
+      const marginY = getIntegerFromProperty(marginYValue, element);
+      const windowHeight = window.innerHeight;
+
+      measurementsRef.current = {
+        elementHeight,
+        cardHeight,
+        marginY: isNaN(marginY) ? 0 : marginY,
+        windowHeight,
+        lastUpdate: now
+      };
+    } catch (error) {
+      console.warn('Failed to update measurements:', error);
+    }
+  }, []);
+
+  // Performance optimization: Use ResizeObserver instead of resize events
+  useEffect(() => {
+    if (!stackCardsRef.current) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateMeasurements();
+    });
+
+    resizeObserver.observe(stackCardsRef.current);
+
+    return () => resizeObserver.disconnect();
+  }, [updateMeasurements]);
+
   // Stack Cards functions
-  const setStackCards = (): void => {
+  const setStackCards = useCallback((): void => {
     const element = stackCardsRef.current;
     if (!element) return;
 
@@ -77,28 +144,23 @@ const CaseStudySection = () => {
       }
     }
 
-    const marginYValue = getComputedStyle(element).getPropertyValue('--stack-cards-gap');
-    const marginY = getIntegerFromProperty(marginYValue, element);
-    const elementHeight = element.offsetHeight;
+    updateMeasurements();
+    const { marginY } = measurementsRef.current;
 
-    const cardStyle = getComputedStyle(items[0]);
-    const cardTop = Math.floor(parseFloat(cardStyle.getPropertyValue('top')));
-    const cardHeight = Math.floor(parseFloat(cardStyle.getPropertyValue('height')));
-
-    if (isNaN(marginY)) {
+    if (marginY === 0) {
       element.style.paddingBottom = '0px';
     } else {
       element.style.paddingBottom = (marginY * (items.length - 1)) + 'px';
     }
 
     for (let i = 0; i < items.length; i++) {
-      if (isNaN(marginY)) {
+      if (marginY === 0) {
         items[i].style.transform = 'none';
       } else {
         items[i].style.transform = `translateY(${marginY * i}px)`;
       }
     }
-  };
+  }, [isDesktop, updateMeasurements]);
 
   const getIntegerFromProperty = (value: string, element: HTMLElement): number => {
     const node = document.createElement('div');
@@ -109,9 +171,11 @@ const CaseStudySection = () => {
     return intValue;
   };
 
-  const syncActiveByVisibility = () => {
+  // Performance optimization: Throttled scroll handler with RAF
+  const syncActiveByVisibility = useCallback(() => {
     const list = stackCardsRef.current;
     if (!list) return;
+    
     const cards = Array.from(list.querySelectorAll<HTMLElement>("li[id^='tabScroll']"));
     if (!cards.length) return;
 
@@ -121,29 +185,59 @@ const CaseStudySection = () => {
       : new DOMRect(0, 0, window.innerWidth, window.innerHeight);
 
     let bestId = activeTab, best = 0;
-    for (const el of cards) {
-      const r = el.getBoundingClientRect();
+    
+    // Batch all getBoundingClientRect calls
+    const cardRects = cards.map(el => el.getBoundingClientRect());
+    
+    for (let i = 0; i < cards.length; i++) {
+      const r = cardRects[i];
       const top = Math.max(r.top, rootRect.top);
       const bottom = Math.min(r.bottom, rootRect.bottom);
       const visible = Math.max(0, bottom - top);
       const ratio = r.height ? visible / r.height : 0;
-      if (ratio > best) { best = ratio; bestId = el.id; }
+      if (ratio > best) { best = ratio; bestId = cards[i].id; }
     }
+    
     if (bestId !== activeTab) setActiveTab(bestId);
-  };
+  }, [activeTab]);
+
+  // Performance optimization: Throttled scroll event
+  const throttledScrollHandler = useCallback(() => {
+    const now = Date.now();
+    if (now - lastScrollTime.current < THROTTLE_DELAY) return;
+    lastScrollTime.current = now;
+
+    if (throttleTimeoutRef.current) {
+      clearTimeout(throttleTimeoutRef.current);
+    }
+
+    throttleTimeoutRef.current = setTimeout(() => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      animationFrameRef.current = requestAnimationFrame(syncActiveByVisibility);
+    }, THROTTLE_DELAY);
+  }, [syncActiveByVisibility]);
 
   useEffect(() => {
     if (isDesktop) return; // desktop pe stack math hi chalegi
+    
     const root: any = scrollContainerRef.current ?? window;
-    let raf = 0;
-    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(syncActiveByVisibility); };
-    root.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    root.addEventListener('scroll', throttledScrollHandler, { passive: true });
+    window.addEventListener('resize', throttledScrollHandler, { passive: true });
+    
+    // Initial sync
     syncActiveByVisibility();
-    return () => { root.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(raf); };
-  }, [isDesktop]);
+    
+    return () => { 
+      root.removeEventListener('scroll', throttledScrollHandler); 
+      window.removeEventListener('resize', throttledScrollHandler);
+      if (throttleTimeoutRef.current) clearTimeout(throttleTimeoutRef.current);
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+    };
+  }, [isDesktop, throttledScrollHandler, syncActiveByVisibility]);
 
-  const animateStackCards = (): void => {
+  const animateStackCards = useCallback((): void => {
     if (!isDesktop) {
       scrollingRef.current = false;
       syncActiveByVisibility(); // mobile fallback
@@ -154,16 +248,17 @@ const CaseStudySection = () => {
     if (!element) return;
 
     const items = itemsRef.current;
-    const marginYValue = getComputedStyle(element).getPropertyValue('--stack-cards-gap');
-    const marginY = getIntegerFromProperty(marginYValue, element);
-    if (isNaN(marginY)) { scrollingRef.current = false; return; }
+    const { marginY, elementHeight, cardHeight, windowHeight } = measurementsRef.current;
+    
+    if (marginY === 0) { 
+      scrollingRef.current = false; 
+      return; 
+    }
 
+    // Single getBoundingClientRect call
     const top = element.getBoundingClientRect().top;
     const cardStyle = getComputedStyle(items[0]);
     const cardTop = Math.floor(parseFloat(cardStyle.getPropertyValue('top')));
-    const cardHeight = Math.floor(parseFloat(cardStyle.getPropertyValue('height')));
-    const elementHeight = element.offsetHeight;
-    const windowHeight = window.innerHeight;
 
     if (cardTop - top + windowHeight - elementHeight - cardHeight + marginY + marginY * items.length > 0) {
       scrollingRef.current = false;
@@ -193,32 +288,29 @@ const CaseStudySection = () => {
     if (id !== activeTab) setActiveTab(id);
 
     scrollingRef.current = false;
-  };
+  }, [isDesktop, syncActiveByVisibility, activeTab]);
 
-
-  const stackCardsScrolling = (): void => {
+  const stackCardsScrolling = useCallback((): void => {
     if (!isDesktop || scrollingRef.current) return;
     scrollingRef.current = true;
     animationFrameRef.current = requestAnimationFrame(animateStackCards);
-  };
+  }, [isDesktop, animateStackCards]);
 
-  const initStackCardsEffect = (): void => {
+  const initStackCardsEffect = useCallback((): void => {
     setStackCards();
     if (!isDesktop) return;
 
     window.addEventListener('scroll', stackCardsScrolling);
-  };
+  }, [isDesktop, setStackCards, stackCardsScrolling]);
 
-  const cleanupStackCards = (): void => {
+  const cleanupStackCards = useCallback((): void => {
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
     window.removeEventListener('scroll', stackCardsScrolling);
-  };
+  }, [stackCardsScrolling]);
 
-
-
-  const handleTabClick = (tabId: string) => {
+  const handleTabClick = useCallback((tabId: string) => {
     setActiveTab(tabId);
     const target = document.getElementById(tabId);
     if (!target) return;
@@ -241,25 +333,24 @@ const CaseStudySection = () => {
       target.getBoundingClientRect().top -
       80; // adjust if you have a sticky header
     window.scrollTo({ top: y, behavior: "smooth" });
-  };
-
+  }, []);
 
   // helper: fetch all card <li> by known ids (order preserved)
-  const getCardEls = () => (
+  const getCardEls = useCallback(() => (
     ["tabScroll1", "tabScroll2", "tabScroll3", "tabScroll4", "tabScroll5", "tabScroll6"]
       .map(id => document.getElementById(id))
       .filter(Boolean) as HTMLElement[]
-  );
+  ), []);
 
   // compute visible ratio of an element inside a root rect
-  const ratioInRoot = (rect: DOMRect, rootRect: DOMRect) => {
+  const ratioInRoot = useCallback((rect: DOMRect, rootRect: DOMRect) => {
     const top = Math.max(rect.top, rootRect.top);
     const bottom = Math.min(rect.bottom, rootRect.bottom);
     const visible = Math.max(0, bottom - top);
     return rect.height > 0 ? visible / rect.height : 0;
-  };
+  }, []);
 
-  // 🔁 robust scroll-based sync (no IO)
+  // 🔁 robust scroll-based sync (no IO) - Performance optimized
   useEffect(() => {
     const rootEl = scrollContainerRef.current ?? null;
 
@@ -279,12 +370,15 @@ const CaseStudySection = () => {
       let bestId = activeTab;
       let best = 0;
 
-      for (const el of cards) {
-        const r = el.getBoundingClientRect();
+      // Batch all getBoundingClientRect calls
+      const cardRects = cards.map(el => el.getBoundingClientRect());
+
+      for (let i = 0; i < cards.length; i++) {
+        const r = cardRects[i];
         const ratio = ratioInRoot(r, rootRect);
         if (ratio > best) {
           best = ratio;
-          bestId = el.id;
+          bestId = cards[i].id;
         }
       }
 
@@ -309,11 +403,9 @@ const CaseStudySection = () => {
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scrollContainerRef.current]); // only rewire if the scrolling root changes
+  }, [scrollContainerRef.current, activeTab, getCardEls, ratioInRoot]);
 
-
-  // Handle resize
+  // Handle resize - Performance optimized
   useEffect(() => {
     const handleResize = () => {
       const desktop = window.innerWidth >= 1024;
@@ -322,6 +414,9 @@ const CaseStudySection = () => {
       // Clean up and reinitialize
       cleanupStackCards();
       initStackCardsEffect();
+      
+      // Update measurements after resize
+      setTimeout(updateMeasurements, 100);
     };
 
     // Initial setup
@@ -333,7 +428,7 @@ const CaseStudySection = () => {
       initStackCardsEffect();
     }
 
-    // Set up resize listener
+    // Set up resize listener with throttling
     let resizeTimeout: NodeJS.Timeout;
     const resizeListener = () => {
       clearTimeout(resizeTimeout);
@@ -348,7 +443,7 @@ const CaseStudySection = () => {
       window.removeEventListener('resize', resizeListener);
       if (resizeTimeout) clearTimeout(resizeTimeout);
     };
-  }, [isDesktop, activeTab]);
+  }, [isDesktop, activeTab, cleanupStackCards, initStackCardsEffect, updateMeasurements]);
 
   // Update service scroller class
   useEffect(() => {
@@ -381,8 +476,11 @@ const CaseStudySection = () => {
       if (!isDesktop && itemsRef.current.length > 0) {
         setStackCards();
       }
+      
+      // Update measurements after items are available
+      setTimeout(updateMeasurements, 100);
     }
-  }, [isDesktop]);
+  }, [isDesktop, setStackCards, updateMeasurements]);
 
 
 
@@ -468,7 +566,7 @@ const CaseStudySection = () => {
                       onClick={openModal}
                     >
                       Request Demo
-                      <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                      <ArrowRightIcon />
                     </button>
                   </div>
                 </div>

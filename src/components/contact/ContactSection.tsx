@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import { useFormStore } from "@/stores/useFormStore";
 import { useTrackingParams } from "@/stores/useTrackingParams";
+import { ArrowRightIcon } from "@/icons";
 
 const ContactSection = () => {
   const {
@@ -146,12 +147,7 @@ const ContactSection = () => {
                   data-modal-target="#welcomeModal"
                 >
                   Contact Sales
-                  <Image
-                    width={25}
-                    height={25}
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                  />
+                  <ArrowRightIcon />
                 </a>
               </div>
             </div>
@@ -273,12 +269,7 @@ const ContactSection = () => {
                   className="w-100 buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[14px] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit mt-1"
                 >
                   Submit
-                  <img
-                    width={25}
-                    height={25}
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                  />
+                  <ArrowRightIcon />
                 </button>
               </form>
             </div>

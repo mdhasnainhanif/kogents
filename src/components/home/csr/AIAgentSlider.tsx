@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
+import { ArrowRightIcon } from "@/icons";
 
 
 const AIAgentSlider = () => {
@@ -48,7 +49,7 @@ const AIAgentSlider = () => {
                   style={{ display: "inline-flex" }}
                 >
                   Book Your Slot Now!
-                  <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                  <ArrowRightIcon />
                 </a>
                 <div
                 >

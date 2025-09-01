@@ -1,5 +1,6 @@
 'use client';
 
+import { ArrowRightIcon } from '@/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useMemo, useState } from 'react';
@@ -271,7 +272,7 @@ const AllChannelsCard: React.FC = () => {
                         data-modal-target="#welcomeModal"
                       >
                         Read More
-                        <Image width={25} height={25} src="/assets/img/icons/arrow-right.svg" alt="arrow" />
+                        <ArrowRightIcon />
                       </Link>
                     </div>
                   </div>

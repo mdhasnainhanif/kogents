@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { ArrowRightIcon } from '@/icons';
 
 const HeroSection = () => {
   return (
@@ -29,12 +30,7 @@ const HeroSection = () => {
                 className="buttonAnimation2 flex justify-center pink items-center gap-2 mb-8 lg:mb-14 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
               >
                 Request Demo
-                <Image
-                  src="/assets/img/icons/arrow-right.svg"
-                  alt="arrow"
-                  width={25}
-                  height={25}
-                />
+                <ArrowRightIcon />
               </a>
             </div>
           </div>

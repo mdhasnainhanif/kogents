@@ -2,7 +2,7 @@
 import React from "react";
 import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
-import { Container } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ const HeroSection = () => {
 
   return (
     <section className="heroSectionPadding bg-center bg-no-repeat bg-cover bg-[url('/img/bc/hero-bg.webp')] pb-0 heroSection">
-      <Container className="px-5 mx-auto xl:px-0">
+      <div className="px-5 mx-auto xl:px-0 container">
         <div className="flex justify-center">
           <div className="w-full max-w-4xl">
             <div className="flex flex-col items-center justify-center">
@@ -47,7 +47,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 };

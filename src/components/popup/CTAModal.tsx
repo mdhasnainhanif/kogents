@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useModalStore } from "@/stores/useModalStore";
 import { useFormStore } from "@/stores/useFormStore";
 import { useTrackingParams } from "@/stores/useTrackingParams";
+import { ArrowRightIcon } from "@/icons";
 
 const CTAModal = () => {
   const { isOpen, closeModal } = useModalStore();
@@ -212,7 +213,7 @@ const CTAModal = () => {
                       ) : (
                         <>
                           <span>Submit</span>
-                          <img src="/assets/img/icons/arrow-right.svg" alt="arrow" />
+                          <ArrowRightIcon />
                         </>
                       )}
                     </button>

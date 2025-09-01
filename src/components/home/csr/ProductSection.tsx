@@ -60,7 +60,8 @@ const ProductSection = () => {
               />
               <Image
                 src="/assets/img/back-img.svg"
-                loading="lazy"
+                fetchPriority="high"
+                priority
                 alt="background"
                 className="image_product-bg"
                 width={800}

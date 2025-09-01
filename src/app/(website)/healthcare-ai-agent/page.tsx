@@ -186,31 +186,31 @@ const page = () => {
             id: 2,
             q: "Deploy AI Agent Tailored to Workflow",
             a: "An AI healthcare assistant or clinical AI agent is deployed to fit existing workflows, supporting both administrative and clinical needs.",
-            image: "/assets/img/ai-healthcare/identify-pain-points-in-care-delivery.webp",
+            image: "/assets/img/ai-healthcare/deploy-ai-agent-tailored-to-workflow.webp",
           },
           {
             id: 3,
             q: "Train & Integrate with Existing Systems",
             a: "With EHR integration and workflow automation, staff training ensures AI adoption strengthens care delivery without disruption.",
-            image: "/assets/img/ai-healthcare/identify-pain-points-in-care-delivery.webp",
+            image: "/assets/img/ai-healthcare/train-integrate-with-existing-systems.webp",
           },
           {
             id: 4,
             q: "Monitor Performance",
             a: "We measure adoption and system outcomes, ensuring AI agents align with clinical goals while maintaining compliance with FDA guidelines.",
-            image: "/assets/img/ai-healthcare/identify-pain-points-in-care-delivery.webp",
+            image: "/assets/img/ai-healthcare/monitor-performance.webp",
           },
           {
             id: 5,
             q: "Optimize Continuously",
             a: "Performance data is reviewed and refined, allowing us to enhance workflows and improve results based on provider and patient feedback.",
-            image: "/assets/img/ai-healthcare/identify-pain-points-in-care-delivery.webp",
+            image: "/assets/img/ai-healthcare/optimize-continuously.webp",
           },
           {
             id: 6,
             q: "Scale with Confidence",
             a: "Drawing on best practices and NIH case studies, we expand successful implementations across departments or networks while preserving reliability and trust.",
-            image: "/assets/img/ai-healthcare/identify-pain-points-in-care-delivery.webp",
+            image: "/assets/img/ai-healthcare/scale-with-confidence.webp",
           },
         ]}
         rightImage="/assets/img/faq.png"

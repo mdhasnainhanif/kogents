@@ -65,12 +65,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -107,12 +101,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -149,12 +137,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -192,12 +174,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -234,12 +210,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -286,12 +256,7 @@ const AIAgentSection = () => {
                             onClick={openModal}
                           >
                             Request Access
-                            <Image
-                              src="/assets/img/icons/arrow-right.svg"
-                              alt="arrow"
-                              width={25}
-                              height={25}
-                            />
+                            <ArrowRightIcon />
                           </Link>
                         </div>
                       </div>
@@ -333,12 +298,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -373,12 +332,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -416,12 +369,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -484,12 +431,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -526,12 +467,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -567,12 +502,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -609,12 +538,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -648,12 +571,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -698,12 +615,7 @@ const AIAgentSection = () => {
                             onClick={openModal}
                           >
                             Request Access
-                            <Image
-                              src="/assets/img/icons/arrow-right.svg"
-                              alt="arrow"
-                              width={800}
-                              height={600}
-                            />
+                            <ArrowRightIcon />
                           </Link>
                         </div>
                       </div>
@@ -744,12 +656,6 @@ const AIAgentSection = () => {
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                  {/* <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={25}
-                    height={25}
-                  /> */}
                 </Link>
               </div>
             </div>
@@ -785,12 +691,7 @@ const AIAgentSection = () => {
                   onClick={openModal}
                 >
                   Request Access
-                  <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={800}
-                    height={600}
-                  />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -826,12 +727,7 @@ const AIAgentSection = () => {
                   onClick={openModal}
                 >
                   Request Access
-                  <Image
-                    src="/assets/img/icons/arrow-right.svg"
-                    alt="arrow"
-                    width={800}
-                    height={600}
-                  />
+                  <ArrowRightIcon />
                 </Link>
               </div>
             </div>
@@ -877,12 +773,7 @@ const AIAgentSection = () => {
                             onClick={openModal}
                           >
                             Request Access
-                            <Image
-                              src="/assets/img/icons/arrow-right.svg"
-                              alt="arrow"
-                              width={800}
-                              height={600}
-                            />
+                            <ArrowRightIcon />
                           </Link>
                         </div>
                       </div>

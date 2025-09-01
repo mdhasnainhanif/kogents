@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"; // Assuming Next.js Image component
 import { WhatsappSectionDataProps } from "../../types";
+import { ArrowRightIcon } from "@/icons";
 
 
 interface WhatsappSectionData {
@@ -83,12 +84,7 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data }) => {
                     data-modal-target={card.modalTargetId}
                   >
                     {card.buttonText}
-                    <Image
-                      src="/assets/img/icons/arrow-right.svg"
-                      alt="arrow"
-                      width={25}
-                      height={25}
-                    />
+                    <ArrowRightIcon />
                   </a>
                 </div>
               </div>
@@ -160,12 +156,7 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data }) => {
                     data-modal-target="#welcomeModal"
                   >
                     Request Access
-                    <Image
-                      src="/assets/img/icons/arrow-right.svg"
-                      alt="arrow"
-                      width={25}
-                      height={25}
-                    />
+                    <ArrowRightIcon />
                   </a>
                 </div>
               </div>

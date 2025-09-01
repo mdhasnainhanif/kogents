@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from "react";
 import { useModalStore } from "@/stores/useModalStore";
+import { ArrowRightIcon } from "@/icons";
 
 const CustomerServiceCaseStudy = () => {
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
@@ -309,7 +310,6 @@ const CustomerServiceCaseStudy = () => {
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollContainerRef.current]); // only rewire if the scrolling root changes
 
 
@@ -468,7 +468,7 @@ const CustomerServiceCaseStudy = () => {
                       onClick={openModal}
                     >
                       Request Demo
-                      <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
+                      <ArrowRightIcon />
                     </button>
                   </div>
                 </div>

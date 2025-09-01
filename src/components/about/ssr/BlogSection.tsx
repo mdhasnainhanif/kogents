@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "@/icons";
 import Image from "next/image";
 import React from "react";
 
@@ -31,7 +32,7 @@ const BlogSection = () => {
                 data-modal-target="#welcomeModal"
               >
                 Request Demo
-                <Image width={25} height={25} src="/assets/img/icons/arrow-right.svg" alt="arrow" />
+                <ArrowRightIcon />
               </a>
               <div
                 className="pxl-client-review pxl-client-review1 style-1"
