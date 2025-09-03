@@ -11,7 +11,7 @@ import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/Cust
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 import HealthCareCaseStudySection from "@/components/HealthcareAiAgent/HealthCareCaseStudySection";
- 
+import BlogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
 
@@ -132,7 +132,7 @@ const page = () => {
       />
       <HealthCareCaseStudySection />
       <BrandLogoSlider />
-       
+      <BlogList />
       <CustomerGrowthCards
         tag="Healthcare Solutions"
         heading="Our Healthcare AI Agent Solutions That Drive Results"
@@ -399,7 +399,7 @@ const page = () => {
         ]}
         buttonText="Connect With AI Agent"
       />
-       
+      <BlogList />
     </>
   );
 };

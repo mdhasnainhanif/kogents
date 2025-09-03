@@ -11,7 +11,7 @@ import CustomerServiceCaseStudy from "@/components/CustomerServiceAIAgents/Custo
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
- 
+import BLogList from "@/components/blog/BlogList";
 
 import React from "react";
 import type { Metadata } from 'next'
@@ -223,7 +223,7 @@ const page = () => {
         ]}
         buttonText="Connect With AI Agent"
       />
-       
+      <BLogList />
     </div>
   );
 };

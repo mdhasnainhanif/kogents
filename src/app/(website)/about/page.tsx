@@ -52,9 +52,9 @@ export default function AboutPage() {
       <ValueToBusinesses />
       <CorePrinciples />
       <OurTeam />
+      <BlogSection />
       <AppSection />
       <FAQSection />
     </>
   )
 }
- 
