@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="py-5 bg-center bg_footer bg-no-repeat bg-cover bg-[url('../img/bc/footer-bg.png')]">
+    <footer className="py-5 bg-center bg_footer bg-no-repeat bg-cover">
       <div className="container px-5 mx-auto xl:px-0">
         <div className="row">
           <div className="col">

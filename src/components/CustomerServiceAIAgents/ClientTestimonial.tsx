@@ -24,12 +24,18 @@ interface ClientTestimonialProps {
   description?: string;
   testimonials?: Testimonial[];
   statistics?: Statistic[];
+  showCTA?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
   tag = "Reviews",
   heading = "Client Testimonials",
   description,
+  showCTA = false,
+  ctaText = "Get Started",
+  ctaLink = "#",
   testimonials = [
     {
       id: 1,
@@ -286,6 +292,20 @@ const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
             </div>
           </div>
         </div>
+
+        {/* CTA Button Section */}
+        {showCTA && (
+          <div className="row mt-8">
+            <div className="col-12 text-center">
+              <a 
+                href={ctaLink}
+                className="buttonAnimation2 mx-auto flex justify-center green items-center gap-2 mt-4 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit"
+              >
+                {ctaText}
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

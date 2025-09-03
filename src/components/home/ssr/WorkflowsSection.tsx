@@ -635,9 +635,9 @@ export default function WorkflowsSection() {
 
                   <div className="centerWrapper">
                     <div className="centerBox d-flex align-items-center gap-2">
-                      <Image
+                      <Image loading="lazy"
                         src="/assets/img/agent-01.svg"
-                        alt="brand"
+                        alt="brand" 
                         className="mx-4"
                         width={800}
                         height={600}

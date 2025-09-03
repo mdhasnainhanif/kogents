@@ -22,7 +22,7 @@ interface FaqWithImageProps {
 const FaqWithImage: React.FC<FaqWithImageProps> = ({
   tag = "FAQ",
   heading = "Our Process to Train, Optimize, and Scale AI Service Agents",
-  description = "Implementing a customer service AI agent works best when approached as a structured workflow. Each step ensures smooth integration, consistent performance, and measurable results for support teams and customers alike. Here's how it works:",
+  description = "Implementing a customer service AI agent works best when approached as a structured workflow.\nEach step ensures smooth integration, consistent performance, and measurable results for support teams and customers alike.\nHere's how it works:",
   faqItems = [
     {
       id: 1,
@@ -59,6 +59,7 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
   rightImageAlt = "AI Service Process",
 }) => {
   const [openIndex, setOpenIndex] = useState<number>(0);
+  const [isImageTransitioning, setIsImageTransitioning] = useState<boolean>(false);
 
   // Get the current image to display based on the active FAQ item
   const getCurrentImage = () => {
@@ -70,6 +71,22 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
   const getCurrentImageAlt = () => {
     const activeItem = faqItems[openIndex];
     return activeItem?.image ? `Step ${activeItem.id}: ${activeItem.q}` : rightImageAlt;
+  };
+
+  // Handle FAQ item click with smooth image transition
+  const handleFaqClick = (idx: number) => {
+    if (idx === openIndex) return; // Don't animate if clicking the same item
+
+    setIsImageTransitioning(true);
+
+    // Small delay to allow fade out animation
+    setTimeout(() => {
+      setOpenIndex(idx);
+      // Small delay to allow fade in animation
+      setTimeout(() => {
+        setIsImageTransitioning(false);
+      }, 150);
+    }, 150);
   };
 
   return (
@@ -88,9 +105,17 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
             </h2>
 
             {/* Description */}
-            <p className="w-75 mb-16 text-center paraColor subHeading mx-auto mt-2 text-white">
-              {description}
-            </p>
+            <div className="w-75 mb-16 text-center paraColor subHeading mx-auto mt-2 text-white">
+              {description && description.includes('\n') ? (
+                description.split('\n').map((line, index) => (
+                  <p key={index} className={index > 0 ? "mt-2" : ""}>
+                    {line.trim()}
+                  </p>
+                ))
+              ) : (
+                <p>{description}</p>
+              )}
+            </div>
           </div>
         </div>
 
@@ -103,10 +128,9 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
                 return (
                   <div
                     key={item.id}
-                    className={`p-6 border rounded-lg according border-b-600 bg-gd-tertiary content1 cursor-pointer transition-all duration-300 ${
-                      isOpen ? "active border-blue-500" : "hover:border-blue-300"
-                    }`}
-                    onClick={() => setOpenIndex(idx)}
+                    className={`p-6 border rounded-lg according border-b-600 bg-gd-tertiary content1 cursor-pointer transition-all duration-300 ${isOpen ? "active border-blue-500" : "hover:border-blue-300"
+                      }`}
+                    onClick={() => handleFaqClick(idx)}
                   >
                     <button
                       type="button"
@@ -124,7 +148,17 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
                       className="according-content pl-[2.5rem]"
                       style={{ maxHeight: isOpen ? "12.5rem" : undefined }}
                     >
-                      <p className="pt-4 text-base text-w-100">{item.a}</p>
+                      <div className="pt-4 text-base text-w-100">
+                        {item.a && item.a.includes('\n') ? (
+                          item.a.split('\n').map((line, index) => (
+                            <p key={index} className={index > 0 ? "mt-2" : ""}>
+                              {line.trim()}
+                            </p>
+                          ))
+                        ) : (
+                          <p>{item.a}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
@@ -135,15 +169,14 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
           {/* Right Side Image */}
           <div className="col-lg-6 col-md-12">
             <div className="text-center">
-              <img
-                src={getCurrentImage()}
-                alt={getCurrentImageAlt()}
-                className="img-fluid rounded-3 shadow-lg transition-all duration-500"
-                style={{
-                  opacity: 1,
-                  transform: 'scale(1)',
-                }}
-              />
+              <div className="image-container">
+                <img
+                  src={getCurrentImage()}
+                  alt={getCurrentImageAlt()}
+                  className={`img-fluid rounded-3 shadow-lg transition-all duration-500 ${isImageTransitioning ? 'image-fade-out' : 'image-fade-in'
+                    }`}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -153,30 +186,67 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
         .bg-dark {
           background-color: #0f172a;
         }
+        .image - transition {
+          transition: all 0.6s ease-in-out;
+        max-width: 100%;
+  }
 
-        .according.active {
-          border-color: #3b82f6;
-          box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1);
+        .fade-in {
+          opacity: 1;
+        transform: scale(1) translateY(0);
+  }
+
+        .fade-out {
+          opacity: 0;
+        transform: scale(0.95) translateY(20px);
+  }
+
+        .image-container {
+          position: relative;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+  }
+
+      .image-container {
+        position: relative;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
         }
 
-        .according-content {
-          overflow: hidden;
-          transition: max-height 0.3s ease;
+      .image-fade-out {
+        opacity: 0;
+      transform: scale(0.95);
         }
 
-        .according-header {
-          transition: color 0.3s ease;
+      .image-fade-in {
+        opacity: 1;
+      transform: scale(1);
         }
 
-        .according-header:hover {
-          color: #3b82f6;
+      .according.active {
+        border - color: #3b82f6;
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1);
         }
 
-        .according:hover {
-          transform: translateY(-2px);
+      .according-content {
+        overflow: hidden;
+      transition: max-height 0.3s ease;
+        }
+
+      .according-header {
+        transition: color 0.3s ease;
+        }
+
+      .according:hover {
+        transform: translateY(-2px);
         }
       `}</style>
-    </div>
+    </div >
   );
 };
 

@@ -11,7 +11,7 @@ const CorePrinciples = () => {
         Benefits
       </span>
 
-      <div className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('img/bc/milestones-bg.png')]">
+      <div className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover milesToneBg">
         <div className="container px-5 mx-auto xl:px-0">
           <h2
             // 
@@ -29,6 +29,7 @@ const CorePrinciples = () => {
               <div className="inline-block p-6 rounded-full bg_purple btn-border">
                 {/* <img src="assets/img/icons/13.svg" alt="icon" /> */}
                 <Image
+                loading="lazy"
                   width={80}
                   height={80}
                   src="/assets/img/icons/13.svg"
@@ -50,6 +51,7 @@ const CorePrinciples = () => {
             >
               <div className="inline-block p-6 rounded-full bg_purple btn-border">
                 <Image
+                loading="lazy"
                   width={80}
                   height={80}
                   src="/assets/img/icons/14.svg"
@@ -73,6 +75,7 @@ const CorePrinciples = () => {
               <div className="inline-block p-6 rounded-full bg_purple btn-border">
                 {/* <img src="assets/img/icons/15.svg" alt="icon" /> */}
                 <Image
+                loading="lazy"
                   width={80}
                   height={80}
                   src="/assets/img/icons/15.svg"

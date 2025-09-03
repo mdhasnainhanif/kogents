@@ -114,14 +114,14 @@ const Counter: React.FC<CounterProps> = ({ data, labels, units, title, subtitle 
   return (
     <div className="sectionPadding py-16" ref={counterRef}>
       <div className="container">
-        {title && (
+        {/* {title && (
           <div className="row justify-content-center mb-5">
             <div className="col-lg-8 text-center">
               <h2 className="headingSize text-white mb-3">{title}</h2>
               {subtitle && <p className="mb-1 paraColor text-base text-center md:text-xl text-w-100">{subtitle}</p>}
             </div>
           </div>
-        )}
+        )} */}
         <div className="row justify-content-center">
           <div className="col-lg-10">
             <div className="counter-grid">

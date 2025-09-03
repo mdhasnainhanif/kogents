@@ -468,7 +468,7 @@ const CaseStudySection = () => {
                       onClick={openModal}
                     >
                       Request Demo
-                      <ArrowRightIcon />
+                      <ArrowRightIcon/>
                     </button>
                   </div>
                 </div>
@@ -515,13 +515,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -530,7 +530,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Follows up automatically when Shopify agent
@@ -539,7 +539,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Escalates chats to Phone Agent when urgency is
@@ -548,7 +548,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Updates CRM after conversations using Standalone
@@ -557,7 +557,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Triggers Voice Agent callbacks for verification or
@@ -604,13 +604,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -619,7 +619,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Connects with WhatsApp Agent to follow up on
@@ -628,7 +628,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Books meetings directly into your Google Calendar
@@ -637,7 +637,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Sends post-call summaries to Standalone Agent for
@@ -646,7 +646,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Flags high-volume issues to Chatbot Agent for
@@ -692,13 +692,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -707,7 +707,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Flags abandoned checkouts for WhatsApp Agent to
@@ -716,7 +716,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Syncs with Voice Agent to resolve high-friction
@@ -725,7 +725,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Surfaces product feedback to Assistant App for
@@ -734,7 +734,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Notifies Chatbot Agent to update product FAQs
@@ -781,13 +781,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -796,7 +796,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Pulls live customer context from Chatbot Agent
@@ -805,7 +805,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Logs answers from Voice Agent for internal
@@ -814,7 +814,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Adds calendar events triggered by Phone Agent
@@ -823,7 +823,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Syncs insights from Standalone Agent to update
@@ -869,13 +869,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -884,7 +884,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Detects trending questions and signals Assistant
@@ -893,7 +893,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Collaborates with Phone Agent to handle
@@ -902,7 +902,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Pushes recurring feedback to Shopify Agent for
@@ -911,7 +911,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Syncs resolved tickets with WhatsApp Agent for
@@ -957,13 +957,13 @@ const CaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                               </div>
                             </div>
                           </div>
@@ -972,7 +972,7 @@ const CaseStudySection = () => {
                           <h4 className="mb-4">Agentic Workflow</h4>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/iconss.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Shares real-time feedback to Chatbot Agent for web
@@ -981,7 +981,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Informs Phone Agent of user preferences before
@@ -990,7 +990,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon3.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Pushes lead data to WhatsApp Agent for nurturing
@@ -998,7 +998,7 @@ const CaseStudySection = () => {
                           </div>
                           <div className="tabBox">
                             <div>
-                              <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                              <Image loading="lazy" src="/assets/img/icon2.png" alt="" width={30} height={30} />
                             </div>
                             <p>
                               Feeds insights into Assistant App for mobile

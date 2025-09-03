@@ -18,7 +18,7 @@ const AccordionItem: React.FC<{
         onClick={onToggle}
         className="flex items-start gap-2 text-xl font-medium cursor-pointer according-header text-w-500 w-full text-left"
       >
-        <Image width={28} height={28} src="/assets/img/faq-icon.svg" alt="icon" />
+        <Image loading="lazy" width={28} height={28} src="/assets/img/faq-icon.svg" alt="icon" />
         {item.q}
       </button>
       <div

@@ -21,8 +21,9 @@ const Header = () => {
       {/* Desktop Header */}
       <div className="container px-5 mx-auto xl:px-0 desk">
         <div className="items-center justify-between hidden md:flex">
-          <Link href="/" className="flex items-center justify-start gap-2">
+          <Link href="/" aria-label="KOGENTS - Go to homepage" className="flex items-center justify-start gap-2">
             <Image
+            loading="lazy"
               width={150}
               height={50}
               src="/assets/img/kogents-logo.svg"
@@ -67,8 +68,9 @@ const Header = () => {
       {/* Mobile Header */}
       <div className="overflow-hidden mobileHeader">
         <div className="container flex items-center justify-between px-5 mx-auto xl:px-0">
-          <Link href="/" className="flex gap-2">
+          <Link href="/" aria-label="KOGENTS - Go to homepage" className="flex gap-2">
             <Image
+            loading="lazy"
               width="120"
               height="50"
               src="/assets/img/kogents-logo.svg"

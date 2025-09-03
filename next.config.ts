@@ -1,24 +1,25 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'kogents.ai',
+        port: '',
+        pathname: '/wordpress-blog/wp-content/uploads/**',
+      },
+    ],
   },
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
-  // Performance optimizations
+  // Disable all caching for fresh data
   experimental: {
-    // optimizePackageImports: ['@gsap/react', 'gsap', 'lucide-react'],
-    // turbo: {
-    //   rules: {
-    //     '*.svg': {
-    //       loaders: ['@svgr/webpack'],
-    //       as: '*.js',
-    //     },
-    //   },
-    // },
+    staleTimes: {
+      dynamic: 0,
+      static: 0,
+    },
   },
   // Enable compression for static assets
   webpack: (config, { isServer }) => {
@@ -33,26 +34,9 @@ const nextConfig: NextConfig = {
           },
         },
       };
+      // Note: jQuery ProvidePlugin removed - not needed for CDN approach
     }
     return config;
-  },
-  // Compression headers for static export
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Encoding',
-            value: 'gzip',
-          },
-          {
-            key: 'Vary',
-            value: 'Accept-Encoding',
-          },
-        ],
-      },
-    ];
   },
 };
 

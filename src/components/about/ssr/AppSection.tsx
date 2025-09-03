@@ -54,12 +54,14 @@ const AppSection = () => {
                   style={{ width: "100%" }}
                 >
                   <Image
+                  loading="lazy"
                     width={160}
                     height={100}
                     src="/assets/img/app-section/6.png"
                     alt="icon"
                   />
                   <Image
+                  loading="lazy"
                     height={100}
                     width={160}
                     src="/assets/img/app-section/7.png"
@@ -72,6 +74,7 @@ const AppSection = () => {
             <div className="col-md-5 p-md-0">
               <div>
                 <Image
+                loading="lazy"
                   height={200}
                   width={300}
                   className="appImage"
@@ -79,7 +82,7 @@ const AppSection = () => {
                   alt="icon"
                 />
                 <div className="qrCode text-light">
-                  <Image height={200} width={250} src="/assets/img/app-section/5.png" alt="icon" />
+                  <Image loading="lazy" height={200} width={250} src="/assets/img/app-section/5.png" alt="icon" />
                   <p className="m-0 mt-1">Scan Now</p>
                 </div>
               </div>

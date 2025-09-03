@@ -38,8 +38,8 @@ const CTAModal = () => {
     if (success) {
       // Close modal after successful submission
       setTimeout(() => {
-        closeModal();
         resetForm();
+        closeModal();
       }, 2000);
     }
   }, [success, closeModal, resetForm]);

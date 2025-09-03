@@ -608,14 +608,7 @@ h1.headingSize {
   width: 55rem;
 }
 
-@keyframes rotating {
-  0% {
-    --r: 0deg;
-  }
-  100% {
-    --r: 360deg;
-  }
-}
+
 
 .paraColor {
   color: rgba(255, 255, 255, 0.6);
@@ -629,39 +622,20 @@ h1.headingSize {
   max-width: 45rem;
 }
 
-.heroSectionPadding {
-  padding: 100px 0 70px;
-}
+
 
 .btnBorder {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-@keyframes slides {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
+
 
 header ul {
   margin: 0rem;
 }
 
-.hero-brand {
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0) 0%,
-    rgb(0, 0, 0) 25%,
-    rgb(0, 0, 0) 75%,
-    rgba(0, 0, 0, 0) 100%
-  );
-}
-.hero-brand:hover .animate-slides {
-  animation-play-state: paused;
-}
+
+
 
 .corporate-values {
   mask-image: linear-gradient(
@@ -708,11 +682,7 @@ header ul {
   animation: scroll-right 20s linear infinite;
 }
 
-@media screen and (max-width: 991px) {
-  .hero-brand .inline-flex.logo_items.animate-slides:first-child {
-    display: none;
-  }
-}
+
 
 @media (min-width: 768px) {
   #nav-container {
@@ -723,9 +693,7 @@ header ul {
 }
 
 @media (max-width: 768px) {
-  .heroSection {
-    padding-top: 5rem !important;
-  }
+
   .mobileHeader {
     padding: 1rem 0rem !important;
   }
@@ -1123,9 +1091,7 @@ header ul {
   transition: transform 0.3s ease-in-out;
 }
 /* mobile menu */
-.animate-slides {
-  animation: slides 30s infinite linear;
-}
+
 
 .glowing-button-gradient {
   animation: spin 4s linear infinite;
@@ -2416,26 +2382,7 @@ header {
   position: relative;
   z-index: 1;
 }
-section.newSection {
-  position: relative;
-}
 
-section.newSection {
-  background-color: #020202;
-  margin-top: -16rem;
-  min-height: 10rem;
-  padding-top: 12.33rem;
-  padding-bottom: 3rem !important;
-  -webkit-mask-composite: intersect;
-  mask-composite: intersect;
-  mask-image: /*linear-gradient(to right, transparent, black 5%, black 91%, transparent),*/ linear-gradient(
-      to top,
-      transparent,
-      black 0%
-    ),
-    linear-gradient(to bottom, black 90%, transparent),
-    linear-gradient(to top, black 30%, transparent);
-}
 
 img.botImage {
   position: absolute;
@@ -2484,56 +2431,9 @@ img.botImage {
   }
 }
 
-.bg_product-bg.is_bottom {
-  background-position: 0 100%;
-}
 
-/* .bg_product-bg {
-  background-image: url(https://cdn.prod.website-files.com/635c4ee…/6644d3a…_grid.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  position: absolute;
-  inset: 0%;
-} */
-
-.bg_product-image {
-  perspective: 1200px;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: -2rem;
-  margin-right: -2rem;
-  padding: 4rem 0;
-  display: flex;
-  position: relative;
-}
-
-.image_product-cards {
-  z-index: 1;
-  max-width: 69%;
-  margin-right: 11%;
-  position: absolute;
-}
-
-.image_product-bg {
-  border: 1px solid var(--dark--neutral-4);
-  border-radius: 0.5rem;
-  width: 100%;
-}
-
-.tilt-card img {
-  transition: transform 0.2s ease;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.tilt-card img:first-child {
-  max-width: 41rem;
-}
 
 .buttonAnimation2 {
-  background: conic-gradient(from var(--r), #5d51af 0%, #eee 10%, #5d51af 20%);
-  animation: rotating 3s linear infinite;
   position: relative;
   z-index: 1;
   font-size: 0.88rem;
@@ -3795,11 +3695,7 @@ header nav > ul > li:hover::before {
     max-width: 40rem !important;
     top: 8rem !important;
   }
-  .heroSectionPadding {
-    /* padding: 120px 0 150px; */
-    overflow: hidden;
-    height: 34rem !important;
-  }
+
 }
 
 /*@media(min-width: 1800px){*/
@@ -3842,9 +3738,7 @@ header nav > ul > li:hover::before {
   }
 }
 @media (max-width: 390px) {
-  .heroSectionPadding h1 {
-    max-width: 17rem;
-  }
+
 }
 
 @media (max-width: 576px) {
@@ -3933,12 +3827,7 @@ header nav > ul > li:hover::before {
   img.botImage {
     min-width: unset;
   }
-  .heroSectionPadding .firstCol {
-    position: static !important;
-  }
-  .heroSectionPadding {
-    padding: 40px 0rem;
-  }
+
   .contactSection .form2 .bookConsultation {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -4097,10 +3986,5 @@ header nav > ul > li:hover::before {
   .hrButton {
     margin-bottom: 1rem;
   }
-  .tilt-card img:first-child {
-    max-width: 12rem;
-  }
-  section.newSection {
-    padding: 40px 0px;
-  }
+
 }

@@ -149,7 +149,7 @@ export async function sendContact(input: SendContactInput): Promise<SendContactR
 
   // ---- 4) PHP Mailer POST (required) ----
   try {
-    const phpMailerUrl = "https://kogents.ai/send-email.php";
+    const phpMailerUrl = "https://kogents-email-service.vercel.app/api/contact-email";
     const toEmail = input.to ?? "info@kogents.ai";
 
     const params = new URLSearchParams({
@@ -186,7 +186,8 @@ export async function sendContact(input: SendContactInput): Promise<SendContactR
       // Non-JSON response is acceptable, server code handled that too
     }
 
-    const emailOk = emailRes.ok && (emailJson ? emailJson.status === "success" : true);
+    const emailOk = emailRes.ok && (emailJson ? emailJson.success === true:true);
+
     if (!emailOk) {
       return {
         status: "error",

@@ -12,6 +12,7 @@ const Footer = () => {
                     <div className="col">
                         <div>
                             <Image
+                            loading="lazy"
                                 className="mx-auto d-block logo1"
                                 width={220}
                                 height={50}
@@ -79,12 +80,14 @@ const Footer = () => {
 
                             <div className="d-flex gap-2 align-items-center justify-content-center mt-4">
                                 <Image
+                                loading="lazy"
                                     width={160}
                                     height={100}
                                     src="/assets/img/app-section/6.png"
                                     alt="icon"
                                 />
                                 <Image
+                                loading="lazy"
                                     height={100}
                                     width={160}
                                     src="/assets/img/app-section/7.png"

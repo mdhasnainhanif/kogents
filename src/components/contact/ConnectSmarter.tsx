@@ -52,13 +52,13 @@ const ConnectSmarter = () => {
                   className="d-flex align-items-center gap-3 mt-2 position-relative flex-md-nowrap flex-wrap appstoreMain"
                   style={{ width: "100%" }}
                 >
-                  <Image
+                  <Image loading="lazy"
                     width={160}
                     height={100}
                     src="/assets/img/app-section/6.png"
                     alt="icon"
                   />
-                  <Image
+                  <Image loading="lazy"
                   width={160}
                     height={100}
                     src="/assets/img/app-section/7.png"
@@ -70,7 +70,7 @@ const ConnectSmarter = () => {
 
             <div className="col-md-5 p-md-0">
               <div>
-                <Image
+                <Image loading="lazy"
                   height={200}
                   width={300}
                   className="appImage"
@@ -78,7 +78,7 @@ const ConnectSmarter = () => {
                   alt="icon"
                 />
                 <div className="qrCode text-light">
-                  <Image 
+                  <Image loading="lazy" 
                     height={150}
                     width={150}
                   src="/assets/img/app-section/5.png" alt="icon" />

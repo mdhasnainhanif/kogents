@@ -90,6 +90,7 @@ const BenefitsSection: React.FC = () => {
                   src="/assets/img/members.png"
                   alt="video image demo"
                   className="w-100"
+                  loading="lazy"
                 />
               </div>
             </div>

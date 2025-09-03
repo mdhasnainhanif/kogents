@@ -86,6 +86,7 @@ const BenefitsSection: React.FC = () => {
                   Integerate AI Agents Into Your Organization Structure
                 </h2>
                 <Image
+                loading="lazy"
                   src="/assets/img/members.png"
                   alt="video image demo"
                   className="w-100"

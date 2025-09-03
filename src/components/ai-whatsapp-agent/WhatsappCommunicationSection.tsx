@@ -38,7 +38,7 @@ const WhatsappCommunicationSection: React.FC<Props> = ({ data }) => {
               </div>
               <div className="col-md-3 p-md-0 appMainFirst">
                 <div>
-                  <Image
+                  <Image loading="lazy"
                     width={800}
                     height={600}
                     className="botImage"

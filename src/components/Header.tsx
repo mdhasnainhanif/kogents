@@ -1,5 +1,5 @@
 "use client";
-import { ChevronIcon, Logo, PencilIcon } from "@/icons";
+import { AiAgentDashboard, ApplicationAiAgents, ChevronIcon, CustomerServiceAiAgent, EducationAiAgents, EventPlannersAgents, FeedbackAiAgents, HealthcareAiAgents, HrAiAgents, Logo, ManagersAgents, MarketersAgents, PencilIcon, SurveyAiAgents, TeachersAgents } from "@/icons";
 import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
 import Link from "next/link";
@@ -115,24 +115,44 @@ const platformMenu: MenuSection[] = [
 
 const solutionsMenu = {
   industries: [
-    { title: "Healthcare AI Agents", href: "/healthcare-ai-agent" },
-    { title: "Customer Service AI Agent", href: "/customer-service-ai-agents" },
-    { title: "Education AI Agents", href: "/ai-agent-for-education" },
-    { title: "HR AI Agents", href: "/ai-agent-for-hr" },
+    { title: "Healthcare AI Agents", class: "redIcon", href: "/solutions/healthcare-ai-agent", icon: <HealthcareAiAgents /> },
+    { title: "Customer Service AI Agent", href: "/solutions/customer-service-ai-agents", icon: <CustomerServiceAiAgent /> },
+    { title: "Education AI Agents", href: "/solutions/ai-agent-for-education", icon: <EducationAiAgents /> },
+    { title: "HR AI Agents", href: "/solutions/ai-agent-for-hr", icon: <HrAiAgents /> },
   ],
   professions: [
-    { title: "Managers Agents", href: "/managers" },
-    { title: "Event Planners Agents", href: "/ai-agent-event-planner" },
-    { title: "Marketers Agents", href: "/ai-agent-for-marketing" },
-    { title: "Teachers Agents", href: "/ai-teacher-assistant" },
+    { title: "Managers Agents", href: "/solutions/ai-agent-event-planner", icon: <ManagersAgents /> },
+    { title: "Event Planners Agents", href: "/solutions/ai-agent-event-planner", icon: <EventPlannersAgents /> },
+    { title: "Marketers Agents", href: "/solutions/ai-agent-for-marketing", icon: <MarketersAgents /> },
+    { title: "Teachers Agents", href: "/solutions/ai-teacher-assistant", icon: <TeachersAgents /> },
   ],
   types: [
-    { title: "AI Dashboard Templates", href: "/dashboard-templates" },
-    { title: "Application AI Agents", href: "/application-agents" },
-    { title: "Survey AI Agents", href: "/survey-ai-agent" },
-    { title: "Feedback AI Agents", href: "/feedback-agents" },
+    { title: "AI Agent Dashboard", href: "/solutions/ai-agent-dashboard", icon: <AiAgentDashboard /> },
+    { title: "Application AI Agents", href: "/solutions/application-agents", icon: <ApplicationAiAgents /> },
+    { title: "Survey AI Agents", href: "/solutions/survey-ai-agent", icon: <SurveyAiAgents /> },
+    { title: "Feedback AI Agents", href: "/solutions/feedback-agents", icon: <FeedbackAiAgents /> },
   ],
 };
+// const solutionsMenu = {
+//   industries: [
+//     { title: "Healthcare AI Agents", href: "/solutions/healthcare-ai-agent", icon: "/assets/img/dropdwon_linear_icons/healthcare-ai-agents.svg" },
+//     { title: "Customer Service AI Agent", href: "/solutions/customer-service-ai-agents", icon: "/assets/img/dropdwon_linear_icons/customer-service-ai-agent.svg" },
+//     { title: "Education AI Agents", href: "/solutions/ai-agent-for-education", icon: "/assets/img/dropdwon_linear_icons/education-ai-agents.svg" },
+//     { title: "HR AI Agents", href: "/solutions/ai-agent-for-hr", icon: "/assets/img/dropdwon_linear_icons/hr-ai-agents.svg" },
+//   ],
+//   professions: [
+//     { title: "Managers Agents", href: "/solutions/managers", icon: "/assets/img/dropdwon_linear_icons/managers-agents.svg" },
+//     { title: "Event Planners Agents", href: "/solutions/ai-agent-event-planner", icon: "/assets/img/dropdwon_linear_icons/event-planners-agents.svg" },
+//     { title: "Marketers Agents", href: "/solutions/ai-agent-for-marketing", icon: "/assets/img/dropdwon_linear_icons/marketers-agents.svg" },
+//     { title: "Teachers Agents", href: "/solutions/ai-teacher-assistant", icon: "/assets/img/dropdwon_linear_icons/teachers-agents.svg" },
+//   ],
+//   types: [
+//     { title: "AI Agent Dashboard", href: "/solutions/ai-agent-dashboard", icon: "/assets/img/dropdwon_linear_icons/ai-agent-dashboard.svg" },
+//     { title: "Application AI Agents", href: "/solutions/application-agents", icon: "/assets/img/dropdwon_linear_icons/application-ai-agents.svg" },
+//     { title: "Survey AI Agents", href: "/solutions/survey-ai-agent", icon: "/assets/img/dropdwon_linear_icons/survey-ai-agents.svg" },
+//     { title: "Feedback AI Agents", href: "/solutions/feedback-agents", icon: "/assets/img/dropdwon_linear_icons/feedback-ai-agents.svg" },
+//   ],
+// };
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -159,7 +179,7 @@ export default function Header() {
             <Link
               href="/"
               className="flex items-center justify-start gap-2"
-              aria-label="Kogents"
+              aria-label="KOGENTS - Go to homepage"
             >
               <Logo style={{ width: 150, height: 50 }} />
             </Link>
@@ -169,6 +189,7 @@ export default function Header() {
                   <Link
                     href="/"
                     className="flex items-center gap-2 text-sm font-semibold capitalize transition-all duration-300 text-w-100"
+                    aria-label="KOGENTS - Go to homepage"
                   >
                     Home
                   </Link>
@@ -192,7 +213,7 @@ export default function Header() {
                             className="w-100"
                             src="/assets/img/platform.webp"
                             alt="Platform overview"
-                            priority
+                            loading="lazy"
                           />
                         </div>
                       </div>
@@ -210,6 +231,7 @@ export default function Header() {
                                       height={50}
                                       src={item.icon}
                                       alt={item.title}
+                                      loading="lazy"
                                     />
                                     {item.title}
                                   </Link>
@@ -251,7 +273,7 @@ export default function Header() {
                             className="w-100"
                             src="/assets/img/solutions.webp"
                             alt="Solutions overview"
-                            priority
+                            loading="lazy"
                           />
                         </div>
                       </div>
@@ -263,8 +285,8 @@ export default function Header() {
                               <li key={idx}>
                                 <Link href={industry.href}>
                                   <div className="icon">
-                                    <i>
-                                      <PencilIcon />
+                                    <i className="">
+                                      {industry?.icon}
                                     </i>
                                   </div>
                                   {industry.title}
@@ -291,7 +313,7 @@ export default function Header() {
                                   <Link href={profession.href}>
                                     <div className="icon">
                                       <i>
-                                        <PencilIcon />
+                                        {profession?.icon}
                                       </i>
                                     </div>
                                     {profession.title}
@@ -318,7 +340,7 @@ export default function Header() {
                                 <Link href={type.href}>
                                   <div className="icon">
                                     <i>
-                                      <PencilIcon />
+                                      {type?.icon}
                                     </i>
                                   </div>
                                   {type.title}
@@ -382,12 +404,11 @@ export default function Header() {
         {/* Mobile Menu */}
       </header>
       <div
-        className={`mobileMenu backdrop-blur-lg ${
-          open ? "openMobileMenu" : "hidden"
-        }`}
+        className={`mobileMenu backdrop-blur-lg ${open ? "openMobileMenu" : "hidden"
+          }`}
       >
         <div className="w-full flex items-center justify-between">
-          <Link href="/">
+          <Link href="/" aria-label="KOGENTS - Go to homepage">
             <Logo style={{ width: 100, height: 25 }} />
           </Link>
           <button onClick={toggleMenu} aria-label="Toggle menu">
@@ -440,28 +461,25 @@ export default function Header() {
         <div className="mobileMenuItems">
           <ul>
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/" aria-label="KOGENTS - Go to homepage">Home</Link>
             </li>
 
             <li
-              className={`dropdownToggle ${
-                openDropdown === "platform" ? "open" : ""
-              }`}
+              className={`dropdownToggle ${openDropdown === "platform" ? "open" : ""
+                }`}
             >
               <button
                 type="button"
                 onClick={() => toggleDropdown("platform")}
-                className={`dropdownBtn flex items-center gap-2 capitalize transition-all duration-300 text-w-100 ${
-                  openDropdown === "platform" ? "open" : ""
-                }`}
+                className={`dropdownBtn flex items-center gap-2 capitalize transition-all duration-300 text-w-100 ${openDropdown === "platform" ? "open" : ""
+                  }`}
               >
                 Platform
               </button>
 
               <div
-                className={`mobileDropdownUl transition-all overflow-hidden ${
-                  openDropdown === "platform" ? "openDropdown" : "max-h-0"
-                }`}
+                className={`mobileDropdownUl transition-all overflow-hidden ${openDropdown === "platform" ? "openDropdown" : "max-h-0"
+                  }`}
                 style={{
                   maxHeight: openDropdown === "platform" ? "1000px" : "0px",
                 }}
@@ -492,24 +510,21 @@ export default function Header() {
             </li>
 
             <li
-              className={`dropdownToggle ${
-                openDropdown === "solutions" ? "open" : ""
-              }`}
+              className={`dropdownToggle ${openDropdown === "solutions" ? "open" : ""
+                }`}
             >
               <button
                 type="button"
                 onClick={() => toggleDropdown("solutions")}
-                className={`dropdownBtn flex items-center gap-2 capitalize transition-all duration-300 text-w-100 ${
-                  openDropdown === "solutions" ? "open" : ""
-                }`}
+                className={`dropdownBtn flex items-center gap-2 capitalize transition-all duration-300 text-w-100 ${openDropdown === "solutions" ? "open" : ""
+                  }`}
               >
                 Solutions
               </button>
 
               <div
-                className={`mobileDropdownUl transition-all overflow-hidden ${
-                  openDropdown === "solutions" ? "openDropdown" : "max-h-0"
-                }`}
+                className={`mobileDropdownUl transition-all overflow-hidden ${openDropdown === "solutions" ? "openDropdown" : "max-h-0"
+                  }`}
                 style={{
                   maxHeight: openDropdown === "solutions" ? "500px" : "0px",
                 }}

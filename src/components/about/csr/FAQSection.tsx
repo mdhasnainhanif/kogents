@@ -35,7 +35,7 @@ const AccordionItem: React.FC<{
                 onClick={onToggle}
                 className="flex items-start gap-2 text-xl font-medium cursor-pointer according-header text-w-500 w-full text-left"
             >
-                <Image width={28} height={28} src="/assets/img/faq-icon.svg" alt="icon" />
+                <Image width={28} height={28} loading="lazy" src="/assets/img/faq-icon.svg" alt="icon" />
                 {item.q}
             </button>
             <div
@@ -63,7 +63,7 @@ const FaqSection: React.FC = () => {
 
     return (
         <div
-            className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('img/bc/FAQ-bg.png')] faq-bg"
+            className="lg:py-24 py-8 bg-center bg-no-repeat bg-cover faq-bg"
             id="faqSection"
         >
             <div className="container px-5 mx-auto xl:px-0">

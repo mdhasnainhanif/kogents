@@ -57,6 +57,30 @@ const BenefitsSection: React.FC = () => {
     document.getElementById("someId");
   }, []);
 
+  const counterData = [
+    {
+      id: 1,
+      target: 93,
+      title: "Smart Tools. Smarter Outcomes...",
+      description: "Kogents AI Agents do more than reply — they act.",
+      className: "counter1"
+    },
+    {
+      id: 2,
+      target: 100,
+      title: "Reliable. Adaptive. Always On",
+      description: "All agents are continuously learning from conversations.",
+      className: "counter2"
+    },
+    {
+      id: 3,
+      target: 85,
+      title: "Autonomous Doesn't Mean Isolated",
+      description: "Think of it as a mesh network of AI — tailored to your business.",
+      className: "counter3"
+    }
+  ];
+
   return (
     <div
       className="sectionPadding bg-center bg-no-repeat bg-cover bg-b-900 bg-[url('../img/bc/FAQ-bg.png')]"
@@ -97,37 +121,18 @@ const BenefitsSection: React.FC = () => {
               </BrowserView>
             </div>
 
-            <div className="col-xl-5 gap-4 paddingX0">
+            <div className="col-xl-5 gap-4 paddingX0"> 
               <div className="counterMain gap-4">
-                <div className="counter counter1">
-                  <CounterItem target={93}>
-                    <h3 className="heading-4">Smart Tools. Smarter Outcomes</h3>
-                    <p className="text-white small-text1">
-                      Kogents AI Agents do more than reply — they act.
-                    </p>
-                  </CounterItem>
-                </div>
-
-                <div className="counter counter2">
-                  <CounterItem target={100}>
-                    <h3 className="heading-4">Reliable. Adaptive. Always On</h3>
-                    <p className="text-white small-text1">
-                      All agents are continuously learning from conversations.
-                    </p>
-                  </CounterItem>
-                </div>
-
-                <div className="counter counter3">
-                  <CounterItem target={85}>
-                    <h3 className="heading-4">
-                      Autonomous Doesn’t Mean Isolated
-                    </h3>
-                    <p className="text-white small-text1">
-                      Think of it as a mesh network of AI — tailored to your
-                      business.
-                    </p>
-                  </CounterItem>
-                </div>
+                {counterData.map((item) => (
+                  <div key={item.id} className={`counter ${item.className}`}>
+                    <CounterItem target={item.target}>
+                      <h3 className="heading-4">{item.title}</h3>
+                      <p className="text-white small-text1">
+                        {item.description}
+                      </p>
+                    </CounterItem>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

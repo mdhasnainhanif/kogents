@@ -13,6 +13,79 @@ import { ArrowRightIcon } from "@/icons";
 const AIAgentSlider = () => {
   const openModal = useModalStore((state) => state.openModal);
 
+  const aiAgents = [
+    {
+      id: 1,
+      title: "Customer Complaint AI Agent",
+      image: "/assets/img/team-slider/customer-complaint-ai-agent.webp",
+      points: [
+        "Detects complaint tone and urgency.",
+        "Generates empathy-driven replies.",
+        "Escalates unresolved issues fast."
+      ]
+    },
+    {
+      id: 2,
+      title: "Client Call Log AI Agent",
+      image: "/assets/img/team-slider/client-call-log-ai-agent.webp",
+      points: [
+        "Logs every client interaction securely.",
+        "Helps analyze call performance & issues.",
+        "Enables quick call recall for reference."
+      ]
+    },
+    {
+      id: 3,
+      title: "Support Satisfaction AI Agent",
+      image: "/assets/img/team-slider/support-satisfaction-ai-agent.webp",
+      points: [
+        "Collects feedback instantly post-support.",
+        "Identifies satisfaction trends.",
+        "Optimizes future support experiences."
+      ]
+    },
+    {
+      id: 4,
+      title: "Support Request AI Agent",
+      image: "/assets/img/team-slider/support-request-ai-agent.webp",
+      points: [
+        "Handles support queries efficiently.",
+        "Routes requests to the right department.",
+        "Reduces response time significantly."
+      ]
+    },
+    {
+      id: 5,
+      title: "Customer Support AI Agent",
+      image: "/assets/img/team-slider/customer-support-ai-agent.webp",
+      points: [
+        "Resolves common issues instantly.",
+        "Available 24/7 across channels.",
+        "Improves customer satisfaction rate."
+      ]
+    },
+    {
+      id: 6,
+      title: "Customer Service AI Agent",
+      image: "/assets/img/team-slider/customer-service-ai-agent.webp",
+      points: [
+        "Manages inquiries across platforms.",
+        "Boosts team productivity.",
+        "Ensures consistent messaging."
+      ]
+    },
+    {
+      id: 7,
+      title: "Customer Review AI Agent",
+      image: "/assets/img/team-slider/customer-review-ai-agent.webp",
+      points: [
+        "Collects & organizes customer feedback.",
+        "Highlights key themes in reviews.",
+        "Sends alerts on negative feedback."
+      ]
+    }
+  ];
+
   return (
     <div
       className="bg-center relative bg-no-repeat bg-cover sectionPadding bg-[url('../img/bc/revolutionize-bg.png')] pt0Mobile"
@@ -68,230 +141,38 @@ const AIAgentSlider = () => {
                     // pagination={{ clickable: true }}
                     className="caseStudySlider relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.875rem] caseStudySlider"
                   >
-                    {/* Customer Complaint AI Agent */}
-                    <SwiperSlide
-                      className="item"
-                    >
-                      <div className="p-8 border rounded-lg md:p-12 border-b-600 bg-gd-tertiary aos-init aos-animate cardFull">
-                        <Image
-                          className="w-full"
-                          src="/assets/img/team-slider/customer-complaint-ai-agent.webp"
-                          alt="media image"
-                          width={800} height={600} />
-                        <div className="p-3 pt-0 cardFullContent">
-                          <a
-                            href="javascript:void(0);"
-                            className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
-                          >
-                            Customer Complaint AI Agent
-                          </a>
-                          <div className="flex flex-wrap gap-2 cardPoints">
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Detects complaint tone and urgency.
+                    {aiAgents.map((agent) => (
+                      <SwiperSlide key={agent.id} className="item">
+                        <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
+                          <Image
+                            className="w-full"
+                            src={agent.image}
+                            alt={agent.title}
+                            width={800} 
+                            height={600} 
+                          />
+                          <div className="p-3 pt-0 cardFullContent">
+                            <a
+                              href="javascript:void(0);"
+                              className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
+                            >
+                              {agent.title}
                             </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Generates empathy-driven replies.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Escalates unresolved issues fast.
-                            </a>
+                            <div className="flex flex-wrap gap-2 cardPoints">
+                              {agent.points.map((point, index) => (
+                                <a 
+                                  key={index}
+                                  href="#" 
+                                  className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900"
+                                >
+                                  {point}
+                                </a>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Client Call Log AI Agent */}
-                    <SwiperSlide
-                      className="item"
-                    >
-                      <div className="p-8 border rounded-lg md:p-12 border-b-600 bg-gd-tertiary aos-init aos-animate cardFull">
-                        <Image
-                          className="w-full"
-                          src="/assets/img/team-slider/client-call-log-ai-agent.webp"
-                          alt="media image"
-                          width={800} height={600} />
-                        <div className="p-3 pt-0 cardFullContent">
-                          <a
-                            href="javascript:void(0);"
-                            className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
-                          >
-                            Client Call Log AI Agent
-                          </a>
-                          <div className="flex flex-wrap gap-2 cardPoints">
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Logs every client interaction securely.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Helps analyze call performance & issues.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Enables quick call recall for reference.
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Support Satisfaction AI Agent */}
-                    <SwiperSlide
-                      className="item"
-                    >
-                      <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
-                        <Image
-                          className="w-full"
-                          src="/assets/img/team-slider/support-satisfaction-ai-agent.webp"
-                          alt="media image"
-                          width={800} height={600} />
-                        <div className="p-3 pt-0 cardFullContent">
-                          <a
-                            href="javascript:void(0);"
-                            className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
-                          >
-                            Support Satisfaction AI Agent
-                          </a>
-                          <div className="flex flex-wrap gap-2 cardPoints">
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Collects feedback instantly post-support.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Identifies satisfaction trends.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Optimizes future support experiences.
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Support Request AI Agent */}
-                    <SwiperSlide
-                      className="item"
-                    >
-                      <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
-                        <Image
-                          className="w-full"
-                          src="/assets/img/team-slider/support-request-ai-agent.webp"
-                          alt="media image"
-                          width={800} height={600} />
-                        <div className="p-3 pt-0 cardFullContent">
-                          <a
-                            href="javascript:void(0);"
-                            className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
-                          >
-                            Support Request AI Agent
-                          </a>
-                          <div className="flex flex-wrap gap-2 cardPoints">
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Handles support queries efficiently.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Routes requests to the right department.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Reduces response time significantly.
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Customer Support AI Agent */}
-                    <SwiperSlide
-                      className="item"
-                    >
-                      <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
-                        <Image
-                          className="w-full"
-                          src="/assets/img/team-slider/customer-support-ai-agent.webp"
-                          alt="media image"
-                          width={800} height={600} />
-                        <div className="p-3 pt-0 cardFullContent">
-                          <a
-                            href="javascript:void(0);"
-                            className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
-                          >
-                            Customer Support AI Agent
-                          </a>
-                          <div className="flex flex-wrap gap-2 cardPoints">
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Resolves common issues instantly.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Available 24/7 across channels.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Improves customer satisfaction rate.
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Customer Service AI Agent */}
-                    <SwiperSlide
-                      className="item"
-                    >
-                      <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
-                        <Image
-                          className="w-full"
-                          src="/assets/img/team-slider/customer-service-ai-agent.webp"
-                          alt="media image"
-                          width={800} height={600} />
-                        <div className="p-3 pt-0 cardFullContent">
-                          <a
-                            href="javascript:void(0);"
-                            className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
-                          >
-                            Customer Service AI Agent
-                          </a>
-                          <div className="flex flex-wrap gap-2 cardPoints">
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Manages inquiries across platforms.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Boosts team productivity.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Ensures consistent messaging.
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Customer Review AI Agent */}
-                    <SwiperSlide
-                      className="item"
-                    >
-                      <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
-                        <Image
-                          className="w-full"
-                          src="/assets/img/team-slider/customer-review-ai-agent.webp"
-                          alt="media image"
-                          width={800} height={600} />
-                        <div className="p-3 pt-0 cardFullContent">
-                          <a
-                            href="javascript:void(0);"
-                            className="inline-block mt-8 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"
-                          >
-                            Customer Review AI Agent
-                          </a>
-                          <div className="flex flex-wrap gap-2 cardPoints">
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Collects & organizes customer feedback.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Highlights key themes in reviews.
-                            </a>
-                            <a href="#" className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 hover:bg-tropical-indigo hover:text-w-900">
-                              Sends alerts on negative feedback.
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
+                      </SwiperSlide>
+                    ))}
                   </Swiper>
                   <div className="swiper-button-prev !left-[-40px] z-50"></div>
                   <div className="swiper-button-next !right-[-40px] z-50"></div>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from "react";
 import { useModalStore } from "@/stores/useModalStore";
-import { ArrowRightIcon } from "@/icons";
 
 const CustomerServiceCaseStudy = () => {
   const [isDesktop, setIsDesktop] = useState<boolean>(false);
@@ -55,28 +54,36 @@ const CustomerServiceCaseStudy = () => {
     if (!element) return;
 
     const items = itemsRef.current;
+    if (!items || items.length === 0) return;
 
     // Reset all transformations if not desktop
     if (!isDesktop) {
       element.style.paddingBottom = '0px';
       for (let i = 0; i < items.length; i++) {
-        items[i].style.transform = 'none';
-        // Remove stack card classes on mobile
-        items[i].classList.remove('service-scrollerItemContainer', 'stack-cards__item', 'js-stack-cards__item');
-        // Show all items on mobile
-        items[i].style.display = 'block';
+        if (items[i]) {
+          items[i].style.transform = 'none';
+          // Remove stack card classes on mobile
+          items[i].classList.remove('service-scrollerItemContainer', 'stack-cards__item', 'js-stack-cards__item');
+          // Show all items on mobile
+          items[i].style.display = 'block';
+        }
       }
       return;
     }
 
     // Desktop setup - show all items with stack effect
     for (let i = 0; i < items.length; i++) {
-      items[i].style.display = 'block';
-      // Ensure classes are present on desktop (don't add if already there)
-      if (!items[i].classList.contains('service-scrollerItemContainer')) {
-        items[i].classList.add('service-scrollerItemContainer', 'stack-cards__item', 'js-stack-cards__item');
+      if (items[i]) {
+        items[i].style.display = 'block';
+        // Ensure classes are present on desktop (don't add if already there)
+        if (!items[i].classList.contains('service-scrollerItemContainer')) {
+          items[i].classList.add('service-scrollerItemContainer', 'stack-cards__item', 'js-stack-cards__item');
+        }
       }
     }
+
+    // Check if we have at least one item before calling getComputedStyle
+    if (!items[0]) return;
 
     const marginYValue = getComputedStyle(element).getPropertyValue('--stack-cards-gap');
     const marginY = getIntegerFromProperty(marginYValue, element);
@@ -93,10 +100,12 @@ const CustomerServiceCaseStudy = () => {
     }
 
     for (let i = 0; i < items.length; i++) {
-      if (isNaN(marginY)) {
-        items[i].style.transform = 'none';
-      } else {
-        items[i].style.transform = `translateY(${marginY * i}px)`;
+      if (items[i]) {
+        if (isNaN(marginY)) {
+          items[i].style.transform = 'none';
+        } else {
+          items[i].style.transform = `translateY(${marginY * i}px)`;
+        }
       }
     }
   };
@@ -155,6 +164,11 @@ const CustomerServiceCaseStudy = () => {
     if (!element) return;
 
     const items = itemsRef.current;
+    if (!items || items.length === 0 || !items[0]) {
+      scrollingRef.current = false;
+      return;
+    }
+
     const marginYValue = getComputedStyle(element).getPropertyValue('--stack-cards-gap');
     const marginY = getIntegerFromProperty(marginYValue, element);
     if (isNaN(marginY)) { scrollingRef.current = false; return; }
@@ -176,6 +190,8 @@ const CustomerServiceCaseStudy = () => {
     let bestDist = Infinity;
 
     for (let i = 0; i < items.length; i++) {
+      if (!items[i]) continue;
+      
       const scrolling = cardTop - top - i * (cardHeight + marginY);
 
       if (scrolling > 0) {
@@ -204,10 +220,13 @@ const CustomerServiceCaseStudy = () => {
   };
 
   const initStackCardsEffect = (): void => {
-    setStackCards();
-    if (!isDesktop) return;
+    // Only initialize if we have the required elements
+    if (stackCardsRef.current && itemsRef.current && itemsRef.current.length > 0) {
+      setStackCards();
+      if (!isDesktop) return;
 
-    window.addEventListener('scroll', stackCardsScrolling);
+      window.addEventListener('scroll', stackCardsScrolling);
+    }
   };
 
   const cleanupStackCards = (): void => {
@@ -321,16 +340,21 @@ const CustomerServiceCaseStudy = () => {
 
       // Clean up and reinitialize
       cleanupStackCards();
-      initStackCardsEffect();
+      // Add a small delay to ensure DOM is ready
+      setTimeout(() => {
+        initStackCardsEffect();
+      }, 100);
     };
 
     // Initial setup
     const desktop = window.innerWidth >= 1024;
     setIsDesktop(desktop);
 
-    // Initialize only if not reduced motion
+    // Initialize only if not reduced motion and after a delay to ensure DOM is ready
     if (!osHasReducedMotion()) {
-      initStackCardsEffect();
+      setTimeout(() => {
+        initStackCardsEffect();
+      }, 200);
     }
 
     // Set up resize listener
@@ -372,16 +396,21 @@ const CustomerServiceCaseStudy = () => {
 
   // Initialize items ref
   useEffect(() => {
-    if (stackCardsRef.current) {
-      itemsRef.current = Array.from(
-        stackCardsRef.current.getElementsByClassName('js-stack-cards__item')
-      ) as HTMLLIElement[];
+    // Add a small delay to ensure DOM is fully rendered
+    const timer = setTimeout(() => {
+      if (stackCardsRef.current) {
+        itemsRef.current = Array.from(
+          stackCardsRef.current.getElementsByClassName('js-stack-cards__item')
+        ) as HTMLLIElement[];
 
-      // Only call setStackCards on mobile to remove classes
-      if (!isDesktop && itemsRef.current.length > 0) {
-        setStackCards();
+        // Only call setStackCards on mobile to remove classes
+        if (!isDesktop && itemsRef.current.length > 0) {
+          setStackCards();
+        }
       }
-    }
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [isDesktop]);
 
 
@@ -468,7 +497,7 @@ const CustomerServiceCaseStudy = () => {
                       onClick={openModal}
                     >
                       Request Demo
-                      <ArrowRightIcon />
+                      <Image src="/assets/img/icons/arrow-right.svg" alt="arrow" width={25} height={25} />
                     </button>
                   </div>
                 </div>

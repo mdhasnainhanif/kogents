@@ -20,7 +20,7 @@ export default function WorkflowsSection() {
             Smart Tools. Smarter Outcomes
           </h2>
           <p
-            className="maxWidth39 mb-16 text-center paraColor subHeading text-center mx-auto"
+            className="maxWidth39 mb-16 paraColor subHeading text-center mx-auto"
             
           >
             With integrated analytics, live syncing, and action automation, Kogents AI Agents do more than reply — they act.
@@ -467,7 +467,7 @@ export default function WorkflowsSection() {
   
                 <div className="centerWrapper">
                   <div className="centerBox d-flex align-items-center gap-2">
-                    <Image src="/assets/img/agent-01.svg" alt="brand" className="mx-4"  width={800} height={600} />
+                    <Image loading="lazy" src="/assets/img/agent-01.svg" alt="brand" className="mx-4"  width={800} height={600} />
                     <div>
                       <h3 className="text-light">AI Agents</h3>
                       {/*<h4 className="text-secondary">Tools Agents</h4>*/}

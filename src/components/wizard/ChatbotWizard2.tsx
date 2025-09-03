@@ -141,7 +141,7 @@ const GetStartedComponent: React.FC<GetStartedProps> = ({ set }) => {
                 get a perfect logo that you envisioned for
               </p>
               <Link
-                href="/"
+                href="/" aria-label="KOGENTS - Go to homepage"
                 className="w_fit buttonAnimation2 pink mt-3 d-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
               >
                 Request Access

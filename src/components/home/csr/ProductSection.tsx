@@ -17,12 +17,10 @@ const ProductSection = () => {
       ".visual-tilt-content",
       {
         scale: 0.6,
-        opacity: 0.4,
         transformOrigin: "center center",
       },
       {
         scale: 1,
-        opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: "#sectionTilt",
@@ -38,7 +36,7 @@ const ProductSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="section_product-image w-layout-blockcontainer1 wrapper"
+      className="section_product-image w-layout-blockcontainer1 wrapper d-none"
       id="sectionTilt"
     >
       <BrowserView>
@@ -48,7 +46,7 @@ const ProductSection = () => {
             <div
               className="bg_product-image tilt-card pt-0 visual-tilt-content"
               data-w-id="42972b79-e7c6-eecc-50b0-3013e4dfdf0d"
-              style={{ scale: 0.6, opacity: 0.4, transition: "ease-in-out" }}
+              style={{ scale: 0.6, transition: "ease-in-out" }}
             >
               <Image
                 src="/assets/img/erp-011.svg"
@@ -60,12 +58,11 @@ const ProductSection = () => {
               />
               <Image
                 src="/assets/img/back-img.svg"
-                fetchPriority="high"
-                priority
                 alt="background"
                 className="image_product-bg"
                 width={800}
                 height={600}
+                loading="lazy"
               />
             </div>
           </div>

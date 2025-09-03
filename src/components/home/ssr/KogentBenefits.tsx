@@ -54,8 +54,8 @@ const KogentBenefits = () => {
                                     className="d-flex align-items-center gap-3 mt-2 position-relative flex-md-nowrap flex-wrap appstoreMain"
                                     style={{ width: "100%" }}
                                 >
-                                    <Image width={160} src="/assets/img/app-section/6.png" alt="App Store"  height={600} />
-                                    <Image width={160} src="/assets/img/app-section/7.png" alt="Google Play"  height={600} />
+                                    <Image loading="lazy" width={160} src="/assets/img/app-section/6.png" alt="App Store"  height={600} />
+                                    <Image loading="lazy" width={160} src="/assets/img/app-section/7.png" alt="Google Play"  height={600} />
                                 </div>
                             </div>
                         </div>
@@ -63,9 +63,9 @@ const KogentBenefits = () => {
                         {/* Right column */}
                         <div className="col-md-5 p-md-0">
                             <div>
-                                <Image className="appImage" src="/assets/img/img.webp" alt="App Preview"  width={800} height={600} />
+                                <Image loading="lazy" className="appImage" src="/assets/img/img.webp" alt="App Preview"  width={800} height={600} />
                                 <div className="qrCode text-light">
-                                    <Image src="/assets/img/app-section/5.png" alt="QR Code"  width={800} height={600} />
+                                    <Image loading="lazy" src="/assets/img/app-section/5.png" alt="QR Code"  width={800} height={600} />
                                     <p className="m-0 mt-1">Scan Now</p>
                                 </div>
                             </div>

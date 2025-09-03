@@ -27,7 +27,7 @@ const AIAgentSection = () => {
             {/* WhatsApp AI Agent */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/whatsapp-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -57,7 +57,7 @@ const AIAgentSection = () => {
             {/* Phone AI Agent */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/phone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -87,7 +87,7 @@ const AIAgentSection = () => {
             {/* Chatbot & Messenger Agents */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/ai-assistant-app.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -117,7 +117,7 @@ const AIAgentSection = () => {
             {/* The rest stays as-is */}
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/ai-chatbot-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -147,7 +147,7 @@ const AIAgentSection = () => {
 
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/voice-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -178,7 +178,7 @@ const AIAgentSection = () => {
                 <div className="row rowGap ipad-stack">
                   <div className="col-md-8">
                     <div>
-                      <Image
+                      <Image loading="lazy"
                         src="/assets/img/home/shopify-ai-agent.webp"
                         alt="case studies"
                         className="rounded-lg"
@@ -217,7 +217,7 @@ const AIAgentSection = () => {
 
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/messenger-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -243,7 +243,7 @@ const AIAgentSection = () => {
 
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/standalone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -269,7 +269,7 @@ const AIAgentSection = () => {
 
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/kiosk-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -322,7 +322,7 @@ const AIAgentSection = () => {
             {/* WhatsApp AI Agent */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/whatsapp-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/whatsapp-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">WhatsApp AI Agent</h3>
                 <ul className="arrowPointUl">
                   <li>Instantly deliver answers by linking agents to your knowledge base</li>
@@ -339,7 +339,7 @@ const AIAgentSection = () => {
             {/* Phone AI Agent */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/phone-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/phone-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">Phone AI Agent</h3>
                 <ul className="arrowPointUl">
                   <li>Picks up calls, answers FAQs, and books appointments with ease</li>
@@ -356,7 +356,7 @@ const AIAgentSection = () => {
             {/* AI Assistant App */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/ai-assistant-app.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/ai-assistant-app.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">AI Assistant App</h3>
                 <ul className="arrowPointUl">
                   <li>Let users find answers just by typing or speaking a question</li>
@@ -373,7 +373,7 @@ const AIAgentSection = () => {
             {/* AI Chatbot Agent */}
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/ai-chatbot-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/ai-chatbot-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">AI Chatbot Agent</h3>
                 <ul className="arrowPointUl">
                   <li>Chats with customers 24/7, pulling instant answers from your knowledge base</li>
@@ -390,7 +390,7 @@ const AIAgentSection = () => {
             {/* Voice AI Agent */}
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/voice-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/voice-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">Voice AI Agent</h3>
                 <ul className="arrowPointUl">
                   <li>Responds to voice queries with clarity and context</li>
@@ -410,7 +410,7 @@ const AIAgentSection = () => {
                 <div className="row rowGap ipad-stack">
                   <div className="col-md-8">
                     <div>
-                      <Image src="/assets/img/home/shopify-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                      <Image loading="lazy" src="/assets/img/home/shopify-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                     </div>
                   </div>
                   <div className="col-md-4">
@@ -436,7 +436,7 @@ const AIAgentSection = () => {
             {/* Messenger AI Agent */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/messenger-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/messenger-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">Messenger AI Agent</h3>
                 <ul className="arrowPointUl">
                   <li>Responds instantly on Facebook Messenger using your live knowledge base</li>
@@ -453,7 +453,7 @@ const AIAgentSection = () => {
             {/* Standalone AI Agent */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/standalone-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/standalone-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">Standalone AI Agent</h3>
                 <ul className="arrowPointUl">
                   <li>Works independently to answer customer questions in real-time</li>
@@ -470,7 +470,7 @@ const AIAgentSection = () => {
             {/* Kiosk AI Agent */}
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image src="/assets/img/home/kiosk-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                <Image loading="lazy" src="/assets/img/home/kiosk-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                 <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">Kiosk AI Agent</h3>
                 <ul className="arrowPointUl">
                   <li>Provides quick answers to visitors via interactive touchscreen kiosks</li>
@@ -490,7 +490,7 @@ const AIAgentSection = () => {
                 <div className="row rowGap ipad-stack">
                   <div className="col-md-8">
                     <div>
-                      <Image src="/assets/img/home/shopify-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
+                      <Image loading="lazy" src="/assets/img/home/shopify-ai-agent.webp" alt="case studies" className="rounded-lg" width={800} height={600} />
                     </div>
                   </div>
                   <div className="col-md-4">

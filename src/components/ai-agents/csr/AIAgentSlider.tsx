@@ -66,6 +66,7 @@ const AIAgentSlider = () => {
                     >
                       <div className="p-8 border rounded-lg md:p-12 border-b-600 bg-gd-tertiary aos-init aos-animate cardFull">
                         <Image
+                        loading="lazy"
                           className="w-full"
                           src="/assets/img/team-slider/customer-complaint-ai-agent.webp"
                           alt="media image"
@@ -98,6 +99,7 @@ const AIAgentSlider = () => {
                     >
                       <div className="p-8 border rounded-lg md:p-12 border-b-600 bg-gd-tertiary aos-init aos-animate cardFull">
                         <Image
+                        loading="lazy"
                           className="w-full"
                           src="/assets/img/team-slider/client-call-log-ai-agent.webp"
                           alt="media image"
@@ -130,6 +132,7 @@ const AIAgentSlider = () => {
                     >
                       <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
                         <Image
+                        loading="lazy"
                           className="w-full"
                           src="/assets/img/team-slider/support-satisfaction-ai-agent.webp"
                           alt="media image"
@@ -162,6 +165,7 @@ const AIAgentSlider = () => {
                     >
                       <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
                         <Image
+                        loading="lazy"
                           className="w-full"
                           src="/assets/img/team-slider/support-request-ai-agent.webp"
                           alt="media image"
@@ -194,6 +198,7 @@ const AIAgentSlider = () => {
                     >
                       <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
                         <Image
+                        loading="lazy"
                           className="w-full"
                           src="/assets/img/team-slider/customer-support-ai-agent.webp"
                           alt="media image"
@@ -226,6 +231,7 @@ const AIAgentSlider = () => {
                     >
                       <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
                         <Image
+                        loading="lazy"
                           className="w-full"
                           src="/assets/img/team-slider/customer-service-ai-agent.webp"
                           alt="media image"
@@ -258,6 +264,7 @@ const AIAgentSlider = () => {
                     >
                       <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary cardFull">
                         <Image
+                        loading="lazy"
                           className="w-full"
                           src="/assets/img/team-slider/customer-review-ai-agent.webp"
                           alt="media image"

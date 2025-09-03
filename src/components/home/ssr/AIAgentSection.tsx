@@ -34,7 +34,7 @@ const AIAgentSection = () => {
           <div className="row rowGap justify-content-center mt-4">
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/whatsapp-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -70,7 +70,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/phone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -106,7 +106,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/ai-assistant-app.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -142,7 +142,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/ai-chatbot-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -179,7 +179,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/voice-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -218,7 +218,7 @@ const AIAgentSection = () => {
                 <div className="row rowGap ipad-stack">
                   <div className="col-md-8">
                     <div>
-                      <Image
+                      <Image loading="lazy"
                         src="/assets/img/home/shopify-ai-agent.webp"
                         alt="case studies"
                         className="rounded-lg"
@@ -267,7 +267,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/messenger-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -303,7 +303,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/standalone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -337,7 +337,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/kiosk-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -400,7 +400,7 @@ const AIAgentSection = () => {
           <div className="row rowGap justify-content-center mt-4">
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/whatsapp-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -436,7 +436,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/phone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -472,7 +472,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/ai-assistant-app.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -507,7 +507,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/ai-chatbot-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -543,7 +543,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/voice-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -579,7 +579,7 @@ const AIAgentSection = () => {
                 <div className="row rowGap ipad-stack">
                   <div className="col-md-8">
                     <div>
-                      <Image
+                      <Image loading="lazy"
                         src="/assets/img/home/shopify-ai-agent.webp"
                         alt="case studies"
                         className="rounded-lg"
@@ -626,7 +626,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/messenger-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -661,7 +661,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/standalone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -697,7 +697,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-sm-6">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
+                <Image loading="lazy"
                   src="/assets/img/home/kiosk-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
@@ -737,7 +737,7 @@ const AIAgentSection = () => {
                 <div className="row rowGap ipad-stack">
                   <div className="col-md-8">
                     <div>
-                      <Image
+                      <Image loading="lazy"
                         src="/assets/img/home/shopify-ai-agent.webp"
                         alt="case studies"
                         className="rounded-lg"

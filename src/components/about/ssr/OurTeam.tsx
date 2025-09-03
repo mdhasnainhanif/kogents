@@ -41,6 +41,7 @@ const OurTeam = () => {
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
+                  loading="lazy"
                   width={300}
                   height={200}
                     src="/assets/img/team/1.png"
@@ -55,6 +56,7 @@ const OurTeam = () => {
                     <div className="flex flex-row gap-4 mt-6 mb-12">
                       <a href="https://www.linkedin.com/feed/">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                           src="/assets/img/icons/linkedin.svg"
@@ -62,7 +64,8 @@ const OurTeam = () => {
                         />
                       </a>
                       <a href="https://x.com/home?lang=en">
-                        <Image 
+                        <Image
+                        loading="lazy" 
                           width={24}
                           height={24}
                         src="/assets/img/icons/x.svg" alt="twitter" />
@@ -84,6 +87,7 @@ const OurTeam = () => {
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
+                  loading="lazy"
                   width={300}
                   height={200}
                     src="/assets/img/team/2.png"
@@ -98,6 +102,7 @@ const OurTeam = () => {
                     <div className="flex flex-row gap-4 mt-6 mb-12">
                       <a href="https://www.linkedin.com/feed/">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                           src="/assets/img/icons/linkedin.svg"
@@ -106,6 +111,7 @@ const OurTeam = () => {
                       </a>
                       <a href="https://x.com/home?lang=en">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                         src="/assets/img/icons/x.svg" alt="twitter" />
@@ -127,6 +133,7 @@ const OurTeam = () => {
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
+                  loading="lazy"
                   width={300}
                   height={200}
                     src="/assets/img/team/3.png"
@@ -141,6 +148,7 @@ const OurTeam = () => {
                     <div className="flex flex-row gap-4 mt-6 mb-12">
                       <a href="https://www.linkedin.com/feed/">
                         <Image
+                        loading="lazy"
                           width={24}
                         height={24}
                           src="/assets/img/icons/linkedin.svg"
@@ -148,7 +156,8 @@ const OurTeam = () => {
                         />
                       </a>
                       <a href="https://x.com/home?lang=en">
-                        <Image 
+                        <Image
+                        loading="lazy" 
                           width={24}
                           height={24}
                         src="/assets/img/icons/x.svg" alt="twitter" />
@@ -170,6 +179,7 @@ const OurTeam = () => {
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
+                  loading="lazy"
                   width={300}
                   height={200}
                     src="/assets/img/team/4.png"
@@ -184,6 +194,7 @@ const OurTeam = () => {
                     <div className="flex flex-row gap-4 mt-6 mb-12">
                       <a href="https://www.linkedin.com/feed/">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                           src="/assets/img/icons/linkedin.svg"
@@ -192,6 +203,7 @@ const OurTeam = () => {
                       </a>
                       <a href="https://x.com/home?lang=en">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                         src="/assets/img/icons/x.svg" alt="twitter" />
@@ -213,6 +225,7 @@ const OurTeam = () => {
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
+                  loading="lazy"
                   width={300}
                   height={200}
                     src="/assets/img/team/5.png"
@@ -227,6 +240,7 @@ const OurTeam = () => {
                     <div className="flex flex-row gap-4 mt-6 mb-12">
                       <a href="https://www.linkedin.com/feed/">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                           src="/assets/img/icons/linkedin.svg"
@@ -235,6 +249,7 @@ const OurTeam = () => {
                       </a>
                       <a href="https://x.com/home?lang=en">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                         src="/assets/img/icons/x.svg" alt="twitter" />
@@ -256,6 +271,7 @@ const OurTeam = () => {
                   className="flex flex-col gap-12 p-12 border rounded-lg lg:flex-row border-b-600 bg-gd-tertiary aos-init aos-animate teamCards_ipadpro teamCards_ipad"
                 >
                   <Image
+                  loading="lazy"
                   width={300}
                   height={200}
                     src="/assets/img/team/6.png"
@@ -270,6 +286,7 @@ const OurTeam = () => {
                     <div className="flex flex-row gap-4 mt-6 mb-12">
                       <a href="https://www.linkedin.com/feed/">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                           src="/assets/img/icons/linkedin.svg"
@@ -278,6 +295,7 @@ const OurTeam = () => {
                       </a>
                       <a href="https://x.com/home?lang=en">
                         <Image
+                        loading="lazy"
                           width={24}
                           height={24}
                         src="/assets/img/icons/x.svg" alt="twitter" />

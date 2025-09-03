@@ -33,18 +33,18 @@ const AboutUsBanner = () => {
 
                 <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[1000px] mx-auto aboutBrandSlide">
                     <div className="inline-flex logo_items animate-slides">
-                        <Image src="/assets/img/brand/1.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/2.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/3.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/4.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/5.svg" alt="brand" className="mx-4" height={100} width={200} />
+                        <Image src="/assets/img/brand/1.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/2.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/3.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/4.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/5.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
                     </div>
                     <div className="inline-flex lg:ml-20 logo_items animate-slides">
-                        <Image src="/assets/img/brand/1.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/2.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/3.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/4.svg" alt="brand" className="mx-4" height={100} width={200} />
-                        <Image src="/assets/img/brand/5.svg" alt="brand" className="mx-4" height={100} width={200} />
+                        <Image src="/assets/img/brand/1.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/2.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/3.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/4.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
+                        <Image src="/assets/img/brand/5.svg" alt="brand" className="mx-4" height={100} width={200} loading="lazy" />
                     </div>
                 </div>
             </div>

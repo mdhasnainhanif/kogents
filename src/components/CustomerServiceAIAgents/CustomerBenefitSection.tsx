@@ -3,7 +3,7 @@ import Image from "next/image";
 interface CustomerBenefitSectionProps {
   tag: string;
   heading: string;
-  description: string;
+  description: string | string[];
   leftColumn: {
     tag: string;
     title: string;
@@ -17,6 +17,7 @@ interface CustomerBenefitSectionProps {
     qrCodeText: string;
   };
   backgroundImage?: string;
+  buttonText?: string;
 }
 
 const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
@@ -25,12 +26,13 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
   description,
   leftColumn,
   rightColumn,
-  backgroundImage = "/img/bc/video-bg.webp"
+  backgroundImage = "/img/bc/video-bg.webp",
+  buttonText = "Start AI Support"
 }) => {
   return (
     <div
       id="benefitsSection"
-      className="paddingOnMobile2 sectionPadding bg-center bg-no-repeat bg-cover bg-cover"
+      className="paddingOnMobile2 sectionPadding bg-center bg-no-repeat bg-cover"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="container px-5 mx-auto xl:px-0">
@@ -45,9 +47,17 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
                 {heading}
               </h2>
 
-              <p className="w-75 mb-16 text-center paraColor subHeading mx-auto">
-                {description}
-              </p>
+              <div className="w-75 mb-16 text-center paraColor subHeading mx-auto">
+                {Array.isArray(description) ? (
+                  description.map((paragraph, index) => (
+                    <p key={index} className="mb-2 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))
+                ) : (
+                  <p>{description}</p>
+                )}
+              </div>
             </div>
           </div>
 
@@ -63,8 +73,12 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
                 <p className="text-light">
                   {leftColumn.subtitle}
                 </p>
-
-                <div
+                <div>
+                  <button className="buttonAnimation2 mt-4 text-light px-4">
+                    {buttonText}
+                  </button>
+                </div>
+                {/* <div
                   className="d-flex align-items-center gap-3 mt-2 position-relative flex-md-nowrap flex-wrap appstoreMain"
                   style={{ width: "100%" }}
                 >
@@ -80,7 +94,7 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
                     alt="Google Play"
                     height={600}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
 

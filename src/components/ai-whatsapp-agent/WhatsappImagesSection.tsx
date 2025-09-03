@@ -32,7 +32,6 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data }) => {
       {/* WhatsApp Section */}
       <section
         className="sectionPadding bg-no-repeat bg-cover"
-        style={{ backgroundImage: `url(${bgImage})` }}
         id="whatsappIntegrationSection"
       >
         <div className="container">
@@ -59,7 +58,7 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data }) => {
               <div className="col-lg-4 col-md-6 col-12" key={index}>
                 <div className="p-6 border rounded-lg bg-gd-tertiary border-b-600 newServicesCard">
                   {card.imageSrc && (
-                    <Image
+                    <Image loading="lazy"
                       width={800}
                       height={600}
                       src={card.imageSrc}
@@ -133,7 +132,7 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data }) => {
               <div key={idx} className={`col-lg-${card.colLg || 4} col-md-6 col-12`}>
                 <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary newServicesCard">
                   {(card.image || card.imageSrc) && (
-                    <Image
+                    <Image loading="lazy"
                       width={800}
                       height={600}
                       src={card.image || card.imageSrc as string}

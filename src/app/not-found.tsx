@@ -17,7 +17,7 @@ export default function NotFound() {
       <Link
         href="/"
         className="buttonAnimation2 flex justify-center pink items-center gap-2 mb-8 lg:mb-14 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
-        aria-label="Go Back Home"
+        aria-label="KOGENTS - Go to homepage"
         >Go Back To Home</Link>
     </div>
     <Footer/>

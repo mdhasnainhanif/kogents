@@ -136,7 +136,7 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
 
   return (
     <div className="sectionPadding p-0">
-      <div className="container">
+      <div className="container-fluid p-0">
         <div className="row justify-content-center">
           <div className="col-lg-10 text-center">
             {/* Tag */}
@@ -152,7 +152,7 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
         </div>
 
         {/* Technology Rows */}
-        <div className="technologies-container">
+        <div className="technologies-container technologySliderFade">
           {/* Row 1 - Scrolling Left */}
           <div className="tech-row tech-row-left">
             <div className="tech-track">

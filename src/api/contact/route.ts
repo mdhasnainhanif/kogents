@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
     // Send admin notification email (via PHP mailer)
     console.log('📧 Sending email via PHP mailer endpoint...');
     try {
-      const phpMailerUrl = 'https://kogents.ai/send-email.php'; 
+      const phpMailerUrl = 'https://kogents-email-service.vercel.app/api/contact-email'; 
       const toEmail = 'info@kogents.ai'; // Destination admin email
       const phpResponse = await fetch(phpMailerUrl, {
         method: 'POST',

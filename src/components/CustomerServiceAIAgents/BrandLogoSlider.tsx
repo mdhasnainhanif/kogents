@@ -5,6 +5,11 @@ const BrandLogoSlider = () => {
   return (
     <>
       <section className="sectionPadding">
+        <div className="text-center mb-8">
+          <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mb-6">
+            Customers
+          </span>
+        </div>
         <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">
           <div className="inline-flex logo_items item-scroll-left">
             <Image
