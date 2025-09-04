@@ -102,28 +102,28 @@ const page = () => {
         benefits={[
           {
             id: 1,
-            icon: "/assets/img/icons/13.svg",
+            icon: "/assets/img/ai-healthcare/1.svg",
             title: "Reduce Administrative Burden",
             description:
               "By enabling administrative tasks automation and improving workflow efficiency, AI streamlines scheduling, claims, and documentation. This form of healthcare automation allows clinicians to focus more on patients, an approach emphasized by the Centers for Medicare & Medicaid Services (CMS) and the American Medical Association.",
           },
           {
             id: 2,
-            icon: "/assets/img/icons/13.svg",
+            icon: "/assets/img/ai-healthcare/2.svg",
             title: "Enhance Patient Experience",
             description:
               "An intelligent virtual health agent or AI patient support agent strengthens patient engagement through guided intake, reminders, and self-service support. Integrated into virtual care and telehealth programs, these solutions improve accessibility and create a more connected care experience.",
           },
           {
             id: 3,
-            icon: "/assets/img/icons/13.svg",
+            icon: "/assets/img/ai-healthcare/3.svg",
             title: "Ensure Compliance & Security",
             description:
               "AI systems built with HIPAA compliance protect sensitive records while meeting developing healthcare regulations. With secure data practices and alignment to HL7 standards, providers can remain confident under oversight from the FDA, HIPAA, and the HITECH Act.",
           },
           {
             id: 4,
-            icon: "/assets/img/icons/13.svg",
+            icon: "/assets/img/ai-healthcare/4.svg",
             title: "Drive Consistent Clinical Outcomes",
             description:
               "Through digital health solutions and clinical decision support, AI reduces errors and supports value-based care, helping providers deliver reliable outcomes and build long-term patient trust.",
@@ -132,7 +132,6 @@ const page = () => {
       />
       <HealthCareCaseStudySection />
       <BrandLogoSlider />
-      <BlogList />
       <CustomerGrowthCards
         tag="Healthcare Solutions"
         heading="Our Healthcare AI Agent Solutions That Drive Results"
@@ -171,35 +170,35 @@ const page = () => {
         differentiators={[
           {
             id: 1,
-            icon: "/assets/img/icons/17.svg",
+            icon: "/assets/img/ai-healthcare/5.svg",
             title: "HIPAA & GDPR Compliance",
             description:
               "Our platform is built on HIPAA standards and data privacy in healthcare practices while aligning with GDPR, giving providers confidence that patient data is always protected.",
           },
           {
             id: 2,
-            icon: "/assets/img/icons/17.svg",
+            icon: "/assets/img/ai-healthcare/6.svg",
             title: "Workflow-Ready AI Agents",
             description:
               "We design adaptable solutions with AI-driven healthcare automation that function as a healthcare AI co-pilot, supporting unique workflows across patient support, administration, and clinical tasks.",
           },
           {
             id: 3,
-            icon: "/assets/img/icons/17.svg",
+            icon: "/assets/img/ai-healthcare/7.svg",
             title: "Integration with EHR/EMR Systems",
             description:
               "Kogents integrate smoothly with platforms like Epic Systems and Cerner, ensuring smooth medical data interoperability without disrupting existing processes.",
           },
           {
             id: 4,
-            icon: "/assets/img/icons/17.svg",
+            icon: "/assets/img/ai-healthcare/8.svg",
             title: "Proven Accuracy with Clinical Data",
             description:
               "Our approach is validated by trusted sources, drawing on NIH research and insights from JAMA studies to deliver accuracy clinicians can rely on.",
           },
           {
             id: 5,
-            icon: "/assets/img/icons/17.svg",
+            icon: "/assets/img/ai-healthcare/9.svg",
             title: "Human-in-the-loop Oversight",
             description:
               "Every solution includes human-in-the-loop oversight, ensuring providers retain control and accountability while benefiting from AI-driven efficiency and support.",

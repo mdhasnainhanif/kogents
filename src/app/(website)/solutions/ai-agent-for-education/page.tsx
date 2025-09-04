@@ -102,35 +102,35 @@ const page = () => {
                 benefits={[
                     {
                         id: 1,
-                        icon: "/assets/img/icons/13.svg",
+                        icon: "/assets/img/ai-agent-for-education/1.svg",
                         title: "Personalized Learning",
                         description:
                             "An AI agent for education adapts lessons through adaptive learning tools and intelligent tutoring systems (ITS). This creates a personalized curriculum that improves engagement and outcomes, as shown in MDPI research on fairness and personalization.",
                     },
                     {
                         id: 2,
-                        icon: "/assets/img/icons/13.svg",
+                        icon: "/assets/img/ai-agent-for-education/2.svg",
                         title: "Accessibility and Inclusivity",
                         description:
                             "Educational chatbots built with natural language processing (NLP) and tutoring dialogue systems support multilingual communication and diverse learning needs. Getting Smart highlights how this makes education more inclusive and equitable.",
                     },
                     {
                         id: 3,
-                        icon: "/assets/img/icons/13.svg",
+                        icon: "/assets/img/ai-agent-for-education/3.svg",
                         title: "Supporting Teachers",
                         description:
                             "By automating grading, student Q&A, and AI-powered tutoring, an AI agent for education eases teacher workloads. Ethical frameworks on fairness and academic integrity, discussed in MDPI studies and Forbes, ensure teachers retain oversight while focusing on student growth.",
                     },
                     {
                         id: 4,
-                        icon: "/assets/img/icons/13.svg",
+                        icon: "/assets/img/ai-agent-for-education/4.svg",
                         title: "Future-Ready Skills",
                         description:
                             "Through adaptive learning and personalized curriculum, guided by a semantic AI agent, students build digital literacy and problem-solving skills. Projects like Georgia Tech’s Jill Watson and Forbes insights show how AI prepares learners for future workforce demands.",
                     },
                     {
                         id: 5,
-                        icon: "/assets/img/icons/13.svg",
+                        icon: "/assets/img/ai-agent-for-education/5.svg",
                         title: "Building Trust",
                         description:
                             "Responsible AI requires safeguards for data, fairness, and transparency. Academic research stresses these ethical standards, helping schools adopt AI confidently and responsibly.",
@@ -199,7 +199,7 @@ const page = () => {
                 differentiators={[
                     {
                         id: 1,
-                        icon: "/assets/img/icons/17.svg",
+                        icon: "/assets/img/ai-agent-for-education/6.svg",
                         title: "Compliance First",
                         description: [
                             "Fairness, privacy, and student data protection are at the core of our approach.",
@@ -208,7 +208,7 @@ const page = () => {
                     },
                     {
                         id: 2,
-                        icon: "/assets/img/icons/17.svg",
+                        icon: "/assets/img/ai-agent-for-education/7.svg",
                         title: "Customizable Agents",
                         description: [
                             "Every institution operates differently. With customizable AI educational agents, we adapt solutions to existing systems and workflows.",
@@ -217,7 +217,7 @@ const page = () => {
                     },
                     {
                         id: 3,
-                        icon: "/assets/img/icons/17.svg",
+                        icon: "/assets/img/ai-agent-for-education/8.svg",
                         title: "Adaptive Learning Personalization",
                         description: [
                             "Students progress at their own pace, and our technology supports that reality.",
@@ -226,7 +226,7 @@ const page = () => {
                     },
                     {
                         id: 4,
-                        icon: "/assets/img/icons/17.svg",
+                        icon: "/assets/img/ai-agent-for-education/9.svg",
                         title: "Proven Accuracy",
                         description: [
                             "Our solutions are grounded in research from peer-reviewed intelligent tutoring system studies.",
@@ -235,7 +235,7 @@ const page = () => {
                     },
                     {
                         id: 5,
-                        icon: "/assets/img/icons/17.svg",
+                        icon: "/assets/img/ai-agent-for-education/10.svg",
                         title: "Human Oversight",
                         description: [
                             "Technology is designed to support educators, not replace them.",
