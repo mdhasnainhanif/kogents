@@ -101,10 +101,6 @@ export default function RootLayout({
         {/* <link rel="stylesheet" href="/assets/css/ipad-style.css" /> */}
         <link rel="stylesheet" href="/assets/css/ipadpro-style.css" />
         <link rel="stylesheet" href="/assets/css/styles.css" />
-        {/* <link
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&display=swap"
-          rel="stylesheet"
-        /> */}
       </head>
       <body className="relative overflow-x-hidden font-normal bg-b-900">
         <noscript>
