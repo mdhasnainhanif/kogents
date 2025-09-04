@@ -87,7 +87,7 @@ export const useTrackingParams = () => {
     const loadFingerprintJS = async () => {
       try {
         const script = document.createElement('script');
-        script.src = 'https://kogents.ai/assets/js/fp.min.js';
+        script.src = '/assets/js/fp.min.js';
         script.async = true;
 
         script.onload = async () => {

@@ -98,8 +98,8 @@ export default function RootLayout({
 
         {/* <link rel="stylesheet" href="/assets/css/bootstrap.css" /> */}
         <link rel="stylesheet" href="/assets/css/output.css" />
-        {/* <link rel="stylesheet" href="/assets/css/ipad-style.css" /> */}
-        <link rel="stylesheet" href="/assets/css/ipadpro-style.css" />
+        <link rel="stylesheet" href="/assets/css/ipad-style.css" />
+        {/* <link rel="stylesheet" href="/assets/css/ipadpro-style.css" /> */}
         <link rel="stylesheet" href="/assets/css/styles.css" />
       </head>
       <body className="relative overflow-x-hidden font-normal bg-b-900">

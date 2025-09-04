@@ -54,8 +54,24 @@ const KogentBenefits = () => {
                                     className="d-flex align-items-center gap-3 mt-2 position-relative flex-md-nowrap flex-wrap appstoreMain"
                                     style={{ width: "100%" }}
                                 >
-                                    <Image loading="lazy" width={160} src="/assets/img/app-section/6.png" alt="App Store"  height={600} />
-                                    <Image loading="lazy" width={160} src="/assets/img/app-section/7.png" alt="Google Play"  height={600} />
+                                    <Image 
+                                      loading="lazy" 
+                                      width={160} 
+                                      src="/assets/img/app-section/6.png" 
+                                      alt="App Store"  
+                                      height={60}
+                                      style={{ width: '160px', height: '60px' }}
+                                      priority={false}
+                                    />
+                                    <Image 
+                                      loading="lazy" 
+                                      width={160} 
+                                      src="/assets/img/app-section/7.png" 
+                                      alt="Google Play"  
+                                      height={60}
+                                      style={{ width: '160px', height: '60px' }}
+                                      priority={false}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -63,9 +79,26 @@ const KogentBenefits = () => {
                         {/* Right column */}
                         <div className="col-md-5 p-md-0">
                             <div>
-                                <Image loading="lazy" className="appImage" src="/assets/img/img.webp" alt="App Preview"  width={800} height={600} />
+                                <Image 
+                                  loading="lazy" 
+                                  className="appImage" 
+                                  src="/assets/img/img.webp" 
+                                  alt="App Preview"  
+                                  width={800} 
+                                  height={600}
+                                  style={{ width: '100%', height: 'auto' }}
+                                  priority={false}
+                                />
                                 <div className="qrCode text-light">
-                                    <Image loading="lazy" src="/assets/img/app-section/5.png" alt="QR Code"  width={800} height={600} />
+                                    <Image 
+                                      loading="lazy" 
+                                      src="/assets/img/app-section/5.png" 
+                                      alt="QR Code"  
+                                      width={150} 
+                                      height={150}
+                                      style={{ width: '150px', height: '150px' }}
+                                      priority={false}
+                                    />
                                     <p className="m-0 mt-1">Scan Now</p>
                                 </div>
                             </div>

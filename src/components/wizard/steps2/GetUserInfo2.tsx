@@ -125,7 +125,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         try {
           // Load FingerprintJS script
           const script = document.createElement("script");
-          script.src = "https://www.tailoredlogo.com/assets/js/fp.min.js";
+          script.src = "/assets/js/fp.min.js";
           script.async = true;
 
           script.onload = async function () {

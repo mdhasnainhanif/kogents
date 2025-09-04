@@ -485,7 +485,7 @@ const HealthCareCaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll1"
                     >
-                      <div className="row rowGap scrollerItem py-4">
+                      <div className="row rowGap scrollerItem py-4" style={{ minHeight: '400px' }}>
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> WhatsApp AI Agent
@@ -515,13 +515,34 @@ const HealthCareCaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/iconss.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon2.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon3.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                             </div>
                           </div>
@@ -573,7 +594,7 @@ const HealthCareCaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll2"
                     >
-                      <div className="row rowGap scrollerItem py-4">
+                      <div className="row rowGap scrollerItem py-4" style={{ minHeight: '400px' }}>
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Phone AI Agent
@@ -604,13 +625,34 @@ const HealthCareCaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/iconss.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon2.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon3.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                             </div>
                           </div>
@@ -662,7 +704,7 @@ const HealthCareCaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll3"
                     >
-                      <div className="row rowGap scrollerItem py-4">
+                      <div className="row rowGap scrollerItem py-4" style={{ minHeight: '400px' }}>
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Shopify AI Agent
@@ -692,13 +734,34 @@ const HealthCareCaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/iconss.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon2.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon3.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                             </div>
                           </div>
@@ -750,7 +813,7 @@ const HealthCareCaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll4"
                     >
-                      <div className="row rowGap scrollerItem py-4">
+                      <div className="row rowGap scrollerItem py-4" style={{ minHeight: '400px' }}>
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> AI Assistant App
@@ -781,13 +844,34 @@ const HealthCareCaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/iconss.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon2.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon3.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                             </div>
                           </div>
@@ -839,7 +923,7 @@ const HealthCareCaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll5"
                     >
-                      <div className="row rowGap scrollerItem py-4">
+                      <div className="row rowGap scrollerItem py-4" style={{ minHeight: '400px' }}>
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Voice + Chatbot Agents
@@ -869,13 +953,34 @@ const HealthCareCaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/iconss.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon2.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon3.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                             </div>
                           </div>
@@ -927,7 +1032,7 @@ const HealthCareCaseStudySection = () => {
                       className="service-scrollerItemContainer stack-cards__item js-stack-cards__item"
                       id="tabScroll6"
                     >
-                      <div className="row rowGap scrollerItem py-4">
+                      <div className="row rowGap scrollerItem py-4" style={{ minHeight: '400px' }}>
                         <div className="col-md-6 d-flex flex-column">
                           <button className="hrButton">
                             <span>.</span> Standalone AI Agent
@@ -957,13 +1062,34 @@ const HealthCareCaseStudySection = () => {
 
                             <div className="d-flex flex-wrap gap-2">
                               <div className="greyIcon">
-                                <Image src="/assets/img/iconss.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/iconss.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon2.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon2.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                               <div className="greyIcon">
-                                <Image src="/assets/img/icon3.png" alt="" width={30} height={30} />
+                                <Image 
+                                  src="/assets/img/icon3.png" 
+                                  alt="" 
+                                  width={30} 
+                                  height={30}
+                                  style={{ width: '30px', height: '30px' }}
+                                  priority={false}
+                                />
                               </div>
                             </div>
                           </div>
