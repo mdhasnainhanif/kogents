@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import CTAModal from "@/components/popup/CTAModal";
 import { Poppins } from "next/font/google";
@@ -74,7 +74,7 @@ export default function RootLayout({
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
       <head>
         <meta name="robots" content="noindex, nofollow" />
-
+ 
         {/* Preload critical fonts */}
         {/* <link rel="preload" href="/assets/css/bootstrap.css" as="style" /> */}
         <link rel="preload" href="/assets/css/output.css" as="style" />
@@ -96,9 +96,9 @@ export default function RootLayout({
           content="cEYCDr4BxPj1pOLtmiccT6MWc-aKV5U0EdsQuVha7jQ"
         />
 
-        {/* <link rel="stylesheet" href="/assets/css/bootstrap.css" /> */}
+        <link rel="stylesheet" href="/assets/css/bootstrap.css" />
         <link rel="stylesheet" href="/assets/css/output.css" />
-        <link rel="stylesheet" href="/assets/css/ipad-style.css" />
+        {/* <link rel="stylesheet" href="/assets/css/ipad-style.css" /> */}
         {/* <link rel="stylesheet" href="/assets/css/ipadpro-style.css" /> */}
         <link rel="stylesheet" href="/assets/css/styles.css" />
       </head>

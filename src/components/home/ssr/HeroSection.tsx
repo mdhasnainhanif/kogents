@@ -98,15 +98,15 @@ const HeroSection = () => {
           >
             <Image
               src="/assets/img/erp-011.svg"
-              loading="lazy"
+              priority
               alt="erp"
               className="image_product-cards"
               width={800}
               height={600}
             />
             <Image
+            priority
               src="/assets/img/back-img.svg"
-              loading="lazy"
               alt="background"
               className="image_product-bg"
               width={800}
