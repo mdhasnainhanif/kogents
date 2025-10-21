@@ -57,7 +57,7 @@ const Counter: React.FC<CounterProps> = ({
   const animateCounter = (): void => {
     console.log("Animation started");
     let frame: number = 0;
-
+    console.log("Animation started again");
     const timer: NodeJS.Timeout = setInterval(() => {
       frame++;
       const progress: number = frame / totalFrames;
