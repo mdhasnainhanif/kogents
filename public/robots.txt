@@ -1,0 +1,54 @@
+# robots.txt — kogents.ai
+
+# =============================
+# Default rules (all crawlers)
+# =============================
+User-agent: *
+Allow: /
+# Allow critical Next.js + static assets
+Allow: /_next/static/
+Allow: /_next/image/
+Allow: /assets/
+
+# Explicitly allow common file types (anchor with $ so patterns are valid)
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.eot$
+Allow: /*.ico$
+Allow: /*.avif$
+Allow: /*.gif$
+
+# Block only non-essential / sensitive areas
+Disallow: /api/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /test-lightrays/
+
+# Block Next.js server internals (not needed for rendering)
+Disallow: /_next/webpack-runtime/
+Disallow: /_next/server/
+Disallow: /_next/edge-runtime/
+
+# =============================
+# Crawl pacing (engines that support it)
+# =============================
+User-agent: Bingbot
+Crawl-delay: 1
+
+User-agent: Yandex
+Crawl-delay: 1
+
+# =============================
+# Sitemaps
+# =============================
+Sitemap: https://kogents.ai/sitemap.xml
+Sitemap: https://kogents.ai/image-sitemap.xml
+Sitemap: https://kogents.ai/blog-sitemap.xml

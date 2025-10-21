@@ -1,0 +1,242 @@
+import type { MetadataRoute } from 'next'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date('2025-10-03')
+
+  return [
+    {
+      url: 'https://kogents.ai/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 1.0,
+    },
+    {
+      url: 'https://kogents.ai/platforms/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/whatsapp-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/instagram-agent-ai/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/viber-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/ai-agent-for-messenger/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/zendesk-ai-integration/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/ai-telegram-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/microsoft-teams-agents/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/calendly-ai-integration/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/line-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/slack-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/hubspot-ai-integration/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/jira-ai-integration/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/sunshine-conversation-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/intercom-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/shopify-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/customer-service-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/ai-agent-for-marketing/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/ai-agent-for-hr/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/ai-agent-for-education/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/ai-teacher-assistant/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/healthcare-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/survey-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/ai-agent-dashboard/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/ai-agent-event-planner/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/about-us/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/contact-us/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/case-studies/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/blogs/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/privacy-and-policy/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/security/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/terms-and-condition/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/client-testimonials/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/data-protection/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/refund-policy/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/privacy-statement/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/medical-ai-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+  ]
+}
