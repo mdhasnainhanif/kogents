@@ -59,7 +59,7 @@ const BlogListOwlCarousel: React.FC = () => {
 
   useEffect(() => {
     const timestamp = Date.now();
-    fetch(`https://kogents.ai/wordpress-blog/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`, {
+    fetch(`https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`, {
       cache: 'no-store' 
     })
       .then((res) => res.json())

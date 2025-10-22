@@ -123,7 +123,7 @@ export default function KogentsSitemapPage() {
         // Use the same WordPress API endpoint that other components use
         const timestamp = Date.now()
         const response = await fetch(
-          `https://kogents.ai/wordpress-blog/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
+          `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
           { 
             cache: 'no-store',
             headers: {

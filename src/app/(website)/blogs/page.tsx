@@ -8,7 +8,7 @@ async function getBlogPosts() {
   try {
     const timestamp = Date.now();
     const response = await fetch(
-      `https://kogents.ai/wordpress-blog/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
+      `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
       { 
         cache: 'no-store',
         next: { revalidate: 0 }
@@ -28,7 +28,7 @@ async function getBlogPosts() {
         data.map(async (post: any) => {
           try {
             const metaResponse = await fetch(
-              `https://kogents.ai/wordpress-blog/wp-json/wp/v2/posts/${post.id}?_embed&_=${timestamp}`,
+              `https://portal.kogents.ai/wp-json/wp/v2/posts/${post.id}?_embed&_=${timestamp}`,
               { 
                 cache: 'no-store',
                 next: { revalidate: 0 }

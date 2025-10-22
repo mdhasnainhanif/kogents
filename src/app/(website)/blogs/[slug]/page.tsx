@@ -82,7 +82,7 @@ export async function generateMetadata(
 
     const timestamp = Date.now();
     const res = await fetch(
-      `https://kogents.ai/wordpress-blog/wp-json/wp/v2/posts?slug=${encodeURIComponent(
+      `https://portal.kogents.ai/wp-json/wp/v2/posts?slug=${encodeURIComponent(
         slug
       )}&_embed&_=${timestamp}`,
       {
@@ -210,7 +210,7 @@ export default async function BlogPostPage({
   const timestamp = Date.now();
 
   const res = await fetch(
-    `https://kogents.ai/wordpress-blog/wp-json/wp/v2/posts?slug=${encodeURIComponent(
+    `https://portal.kogents.ai/wp-json/wp/v2/posts?slug=${encodeURIComponent(
       slug
     )}&_embed&_=${timestamp}`,
     {

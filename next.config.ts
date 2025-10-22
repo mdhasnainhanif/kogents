@@ -100,26 +100,28 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
+    
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'kogents.ai',
+        hostname: 'portal.kogents.ai',  // Changed from 'kogents.ai'
         port: '',
-        pathname: '/wordpress-blog/wp-content/uploads/**',
+        pathname: '/wp-content/uploads/**',  // Changed from '/wordpress-blog/wp-content/uploads/**'
       },
       {
         protocol: 'https',
-        hostname: 'kogents.ai',
+        hostname: 'portal.kogents.ai',  // Changed from 'kogents.ai'
         port: '',
         pathname: '/wp-content/uploads/**',
       },
       {
         protocol: 'https',
-        hostname: 'kogents.ai',
+        hostname: 'portal.kogents.ai',  // Changed from 'kogents.ai'
         port: '',
         pathname: '/**',
       },
     ],
+
   },
   compress: true,
   poweredByHeader: false,
