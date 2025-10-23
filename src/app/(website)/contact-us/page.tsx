@@ -77,11 +77,11 @@ const page = () => {
       <ContactSection />
       <div className='sectionPadding pt-0'>
         <CustomerBenefitSection
-          buttonText="Automate Feedback Now"
+          buttonText="Get Now"
           leftColumn={{
             tag: "Start Now",
-            title: "Design, Automate, and Optimize Your Surveys",
-            subtitle: "Overcome slow response rates and inconsistent feedback. With a survey AI agent, you eliminate manual effort through an intelligent survey assistant that drives higher engagement and faster insights. Our AI-powered survey tool automates collection, enhances accuracy, and delivers results you can act on in real time.",
+            title: "Let’s Build Smarter Connections",
+            subtitle: "Whether you have questions, fresh ideas, or bold ambitions, we’re here to listen. Our team is only a message away and always ready to help you take the next step.",
             appStoreImage: "/assets/img/app-section/6.png",
             googlePlayImage: "/assets/img/app-section/7.png",
           }}
