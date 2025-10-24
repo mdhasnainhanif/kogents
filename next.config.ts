@@ -3,10 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   trailingSlash: true,
   swcMinify: true,
-  
-  experimental: {
-    optimizeCss: true, // This will inline critical CSS
-  },
 
   // Comprehensive redirects as backup
   async redirects() {
@@ -19,7 +15,7 @@ const nextConfig: NextConfig = {
       // API routes should not be redirected
       // { source: '/api', destination: '/', permanent: true },
       // { source: '/api/', destination: '/', permanent: true },
-      { source: '/status', destination: '/', permanent: true },
+      { source: '/status', destination: '/', permanent: true }, 
       { source: '/status/', destination: '/', permanent: true },
       { source: '/agentic-insights', destination: '/', permanent: true },
       { source: '/agentic-insights/', destination: '/', permanent: true },
