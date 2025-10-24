@@ -14,8 +14,9 @@ const HeroSection = () => {
                 <div className="modal_form">
                   <div className="bannerForm hero">
                     <form id="contact_form" className="formBannerContact">
-                      <h1 className="bookConsultation modalBookFree">Book a
-                        <span className="textPurpleForm"> Free</span> Consultation
+                      <h1 className="bookConsultation modalBookFree">
+                        Book a<span className="textPurpleForm"> Free</span>{" "}
+                        Consultation
                       </h1>
 
                       <div className="form-group">
@@ -63,10 +64,10 @@ const HeroSection = () => {
                         />
                         <span className="validation-error text-light d-none"></span>
                       </div>
-                      
+
                       <div className="border-button">
-                        <button 
-                          type="submit" 
+                        <button
+                          type="submit"
                           className="buttonAnimation2 poppupBtn w-100 flex mt-3 justify-center items-center gap-2 px-6 py-[14px] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
                         >
                           <span>Submit</span>
@@ -87,7 +88,9 @@ const HeroSection = () => {
                     Hiring.
                   </h2>
                   <p className="paraColor text-base md:text-xl text-w-100">
-                    Kogents AI Agents handle customer support, calls, sales, and queries across WhatsApp, phone, web, and more without adding headcount
+                    Kogents AI Agents handle customer support, calls, sales, and
+                    queries across WhatsApp, phone, web, and more without adding
+                    headcount
                   </p>
                   <Link
                     href="/chatbot/brief"
@@ -100,8 +103,8 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-          </div >
-        </section >
+          </div>
+        </section>
         <section
           className="section_product-image w-layout-blockcontainer1 wrapper"
           id="sectionTilt"
@@ -123,6 +126,7 @@ const HeroSection = () => {
                   height={600}
                 />
                 <Image
+                  loading="lazy"
                   fetchPriority="high"
                   src="/assets/img/back-img.svg"
                   alt="background"
@@ -281,9 +285,7 @@ const HeroSection = () => {
             </div>
           </section>
         </section>
-        
-        
-      </div >
+      </div>
     </>
   );
 };

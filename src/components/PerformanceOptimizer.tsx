@@ -25,6 +25,13 @@ export default function PerformanceOptimizer() {
 
     window.addEventListener('scroll', optimizeScroll, { passive: true });
     
+    // Register service worker for CSS/JS caching only
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registered for CSS/JS caching'))
+        .catch(error => console.log('SW registration failed'));
+    }
+    
     return () => {
       window.removeEventListener('scroll', optimizeScroll);
     };
