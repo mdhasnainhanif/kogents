@@ -92,7 +92,7 @@ const AIAgentSlider = () => {
 
   return (
     <div
-      className="bg-center relative bg-no-repeat bg-cover sectionPadding bg-[url('../img/bc/revolutionize-bg.png')] pt0Mobile"
+      className="bg-center relative bg-no-repeat bg-cover sectionPadding pt0Mobile"
       id="aiTemplateSection">
       <div className="container px-5 mx-auto xl:px-0">
         <div className="row justify-content-center">
