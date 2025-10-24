@@ -33,8 +33,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/whatsapp-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={300}
                 />
                 <Link href="/platforms/whatsapp-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   WhatsApp AI Agent
@@ -68,8 +68,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/phone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={300}
                 />
                 <Link href="/platforms/calendly-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Calendly AI Agent
@@ -101,8 +101,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/ai-assistant-app.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={300}
                 />
                 <Link href="/platforms/hubspot-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   HubSpot AI Agent
@@ -134,8 +134,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/ai-chatbot-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={600}
+                  height={500}
                 />
                 <Link href="/platforms/instagram-agent-ai" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Instagram AI Agent
@@ -167,8 +167,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/voice-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={600}
+                  height={500}
                 />
                 <Link href="/platforms/zendesk-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Zendesk AI Agent
@@ -252,8 +252,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/messenger-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={300}
                 />
                 <Link href="/platforms/ai-agent-for-messenger" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Messenger AI Agent
@@ -288,8 +288,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/standalone-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={300}
                 />
                 <Link href="/platforms/slack-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Slack AI Agent
@@ -320,8 +320,8 @@ const AIAgentSection = () => {
                   src="/assets/img/home/kiosk-ai-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={300}
                 />
                 <Link href="/platforms/jira-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Jira AI Agent
