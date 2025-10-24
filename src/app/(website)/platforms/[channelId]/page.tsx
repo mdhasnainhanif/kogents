@@ -6,7 +6,7 @@ import { MetaDataType, platfarmPageDataType } from '../../../../types';
 import type { Metadata } from "next";
 import Counter from '@/components/CustomerServiceAIAgents/Counter';
 import BrandLogoSlider from '@/components/CustomerServiceAIAgents/BrandLogoSlider';
-import HealthCareCaseStudySection from '@/components/HealthcareAiAgent/HealthCareCaseStudySection';
+// import HealthCareCaseStudySection from '@/components/HealthcareAiAgent/HealthCareCaseStudySection';
 import CustomerCards from '@/components/CustomerServiceAIAgents/CustomerCards';
 import CustomerGrowthCards from '@/components/CustomerServiceAIAgents/CustomerGrowthCards';
 import FaqWithImage from '@/components/CustomerServiceAIAgents/FaqWithImage';
@@ -142,7 +142,9 @@ const Page = async ({ params }: PageProps) => {
           buttonText={pageData.whatsappImagesSection.buttonText}
         />
       )}
-      <HealthCareCaseStudySection />
+
+      {/* <HealthCareCaseStudySection /> */}
+
       {pageData.faqWithImageSection && (
         <FaqWithImage
           tag={pageData.faqWithImageSection.tag}

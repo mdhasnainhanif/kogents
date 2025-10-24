@@ -9,7 +9,6 @@ import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerSe
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
-import HealthCareCaseStudySection from "@/components/HealthcareAiAgent/HealthCareCaseStudySection";
 import BLogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
@@ -163,7 +162,7 @@ const page = () => {
           },
         ]}
       />
-      <HealthCareCaseStudySection />
+
       <div className="pt-5">
       <BrandLogoSlider />
       </div>
@@ -312,7 +311,7 @@ const page = () => {
           googlePlayImage: "/assets/img/app-section/7.png",
         }}
         rightColumn={{
-          appPreviewImage: "/assets/img/img.webp",
+          appPreviewImage: "/assets/img/img-new.webp",
           qrCodeImage: "/assets/img/app-section/5.png",
           qrCodeText: "Scan to Download",
         }}

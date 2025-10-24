@@ -4,7 +4,7 @@
 .img2::before,
 .img3::before,
 .img4::before {
-    animation: 5s linear infinite border-dance
+    animation: 5s linear infinite border-dance;
 }
 
 #sectionTilt,

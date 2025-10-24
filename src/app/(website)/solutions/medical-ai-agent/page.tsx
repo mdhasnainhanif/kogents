@@ -10,7 +10,6 @@ import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerSe
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
-import HealthCareCaseStudySection from "@/components/HealthcareAiAgent/HealthCareCaseStudySection";
 import BlogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
@@ -135,7 +134,7 @@ const page = () => {
                     },
                 ]}
             />
-            <HealthCareCaseStudySection />
+            
             <CustomerGrowthCards
                 tag="Solutions"
                 heading="Explore Comprehensive Medical AI Solutions by Kogents AI"

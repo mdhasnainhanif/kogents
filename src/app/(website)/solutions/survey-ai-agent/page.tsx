@@ -11,7 +11,6 @@ import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/Cust
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 import CustomerServiceCaseStudy from "@/components/CustomerServiceAIAgents/CustomerServiceCaseStudy";
-import HealthCareCaseStudySection from "@/components/HealthcareAiAgent/HealthCareCaseStudySection";
 import BlogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
@@ -150,7 +149,7 @@ const page = () => {
                     },
                 ]}
             />
-            <HealthCareCaseStudySection />
+            
             <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"

@@ -12,7 +12,6 @@ import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/Cust
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 import BLogList from "@/components/blog/BlogList";
-import HealthCareServiceCaseStudy from "@/components/HealthcareAiAgent/HealthCareCaseStudySection";
 
 import React from "react";
 import type { Metadata } from 'next'
@@ -103,7 +102,7 @@ const page = () => {
         subtitle="Transform your healthcare practice with intelligent automation"
       />
       <CustomerCards />
-      <HealthCareServiceCaseStudy />
+      
       <CustomerGrowthCards />
       <BrandLogoSlider />
       <CustomerServiceCard />

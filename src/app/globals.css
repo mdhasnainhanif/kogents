@@ -1763,3 +1763,11 @@ input::placeholder {
   color: #fff;
   opacity: 0.5;
 }
+
+
+
+
+.img1::after, .img1::before, .img1InnerDiv::after, .img2::after, .img2::before, .img3::before, 
+.img4::after, .img4::before, .img5::after, .img5::before {
+    animation: none !important;
+}
