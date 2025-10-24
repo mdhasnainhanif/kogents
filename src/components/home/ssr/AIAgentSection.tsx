@@ -1,11 +1,8 @@
-"use client";
 import React from "react";
-import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
 const AIAgentSection = () => {
-  const openModal = useModalStore((state) => state.openModal);
   return (
     <>
       <section
@@ -54,8 +51,8 @@ const AIAgentSection = () => {
                   </li>
                 </ul>
                 <a
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -87,8 +84,8 @@ const AIAgentSection = () => {
                 </ul>
                 <a
 
-                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -120,8 +117,8 @@ const AIAgentSection = () => {
                 </ul>
                 <a
 
-                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -153,8 +150,8 @@ const AIAgentSection = () => {
                 </ul>
                 <a
 
-                  className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -186,8 +183,8 @@ const AIAgentSection = () => {
                 </ul>
                 <a
 
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -233,8 +230,8 @@ const AIAgentSection = () => {
                         <div className="button-center-ipad">
                           <a
 
-                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                            onClick={openModal}
+                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                            href="/chatbot/brief"
                           >
                             Request Access
                             <ArrowRightIcon />
@@ -274,8 +271,8 @@ const AIAgentSection = () => {
                 </ul>
                 <a
 
-                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -306,8 +303,8 @@ const AIAgentSection = () => {
 
                 <a
 
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -340,8 +337,8 @@ const AIAgentSection = () => {
 
                 <a
 
-                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -387,9 +384,9 @@ const AIAgentSection = () => {
                         <div className="button-center-ipad">
                           <a
 
-                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                            onClick={openModal}
-                          >
+                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                            href="/chatbot/brief"
+                            >
                             Request Access
                             <ArrowRightIcon />
                           </a>
