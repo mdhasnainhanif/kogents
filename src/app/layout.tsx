@@ -17,6 +17,7 @@ const satoshi = localFont({
   src: [{ path: "../../public/assets/fonts/Satoshi-Variable.ttf", style: "normal" }],
   variable: "--font-satoshi",
   display: "swap",
+  preload: true,
 });
 
 const poppins = Poppins({
@@ -38,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="stylesheet" href="/assets/css/bootstrap.css" as="style" />
 
       {/* 3) Your styles */}
-      <link rel="stylesheet" href="/assets/css/styles.css" as="style" />
+      {/* <link rel="stylesheet" href="/assets/css/styles.css" as="style" /> */}
       <link rel="stylesheet" href="/assets/css/output.css" as="style" />
       <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/x-icon" />
     </head>

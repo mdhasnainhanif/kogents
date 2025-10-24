@@ -86,12 +86,12 @@ const ProductSection = () => {
                 height={600}
               />
               <Image
+                loading="lazy"
                 src="/assets/img/back-img.svg"
                 alt="background"
                 className="image_product-bg"
                 width={800}
                 height={600}
-                loading="lazy"
                 fetchPriority="high"
               />
             </div>
