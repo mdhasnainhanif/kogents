@@ -5,7 +5,6 @@ const STATIC_CACHE = 'static-v1';
 // Only cache CSS and JS files, not images
 const STATIC_ASSETS = [
   '/assets/css/output.css',
-  '/assets/js/main.js',
 ];
 
 // Install event - cache only CSS and JS
