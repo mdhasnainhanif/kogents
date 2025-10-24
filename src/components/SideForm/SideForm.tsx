@@ -6,6 +6,7 @@ import { ArrowRightIcon } from '@/icons';
 const SideForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [stylesLoaded, setStylesLoaded] = useState(false);
+  const [componentLoaded, setComponentLoaded] = useState(false);
   const [styles, setStyles] = useState<any>({});
   
   const {
@@ -19,7 +20,18 @@ const SideForm = () => {
   } = useFormStore();
 
   useEffect(() => {
-    // Load CSS module dynamically after component mounts
+    // Delay component loading by 30 seconds
+    const componentTimer = setTimeout(() => {
+      setComponentLoaded(true);
+    }, 30000);
+
+    return () => clearTimeout(componentTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!componentLoaded) return;
+
+    // Load CSS module dynamically after component is ready
     const loadStyles = async () => {
       try {
         // Import the CSS module dynamically
@@ -34,10 +46,8 @@ const SideForm = () => {
       }
     };
 
-    // Delay loading to avoid render blocking - load after 1 minute
-    const timer = setTimeout(loadStyles, 40000);
-    return () => clearTimeout(timer);
-  }, []);
+    loadStyles();
+  }, [componentLoaded]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,8 +65,8 @@ const SideForm = () => {
     }
   };
 
-  // Don't render until styles are loaded
-  if (!stylesLoaded) {
+  // Don't render until component is loaded and styles are loaded
+  if (!componentLoaded || !stylesLoaded) {
     return null;
   }
 
@@ -64,7 +74,7 @@ const SideForm = () => {
     <div className={styles['position-absolute'] || 'position-absolute'}>
       <div className={`${styles['static_form_main'] || 'static_form_main'} ${isOpen ? (styles['right_0_rem'] || 'right_0_rem') : ''}`}>
         {/* Toggle Icon */}
-        <div className={`${styles['staticform_icon'] || 'staticform_icon'} ${styles.letsGetStartedToggle || 'letsGetStartedToggle'}`} onClick={toggleForm}>
+        <div className={`sideFormIcon ${styles['staticform_icon'] || 'staticform_icon'} ${styles.letsGetStartedToggle || 'letsGetStartedToggle'}`} onClick={toggleForm}>
           <h6>Book a Free Consultation!</h6>
         </div>
         
