@@ -32,12 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
       {/* 1) Preload -> fetch early */}
-      <link  as="style" href="/assets/css/bootstrap.css" rel="preload"/>
+      <link  as="style" href="/assets/css/bootstrap.css" />
 
       {/* 2) Blocking apply (keeps layout stable) */}
-      {/* <link rel="stylesheet" href="/assets/css/bootstrap.css" as="style"/> */}
-      <noscript><link rel="stylesheet" href="/assets/css/bootstrap.css"/></noscript>
-
+      <link rel="stylesheet" href="/assets/css/bootstrap.css" as="style"/>
 
       {/* 3) Your styles */}
       <link rel="stylesheet" href="/assets/css/styles.css" as="style" />
