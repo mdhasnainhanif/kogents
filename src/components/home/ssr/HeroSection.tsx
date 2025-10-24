@@ -69,7 +69,7 @@ const HeroSection = () => {
   return (
     <>
       <div className="boxesBg ...">
-        <section className="heroSectionPadding bg-center bg-no-repeat bg-cover bg-[url('/img/bc/hero-bg.webp')] pb-0 heroSection">
+        <section className="heroSectionPadding pb-0 heroSection">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-lg-6">
@@ -192,7 +192,7 @@ const HeroSection = () => {
                     Automate Every Conversation. Close Every Loop. Scale Without
                     Hiring.
                   </h2>
-                  <p className=" paraColor text-base md:text-xl text-w-100">
+                  <p className="paraColor text-base md:text-xl text-w-100">
                     Kogents AI Agents handle customer support, calls, sales, and queries across WhatsApp, phone, web, and more without adding headcount
                   </p>
                   <Link

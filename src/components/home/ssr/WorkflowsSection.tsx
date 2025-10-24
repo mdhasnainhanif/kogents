@@ -133,13 +133,13 @@ export default function WorkflowsSection() {
                             d="M0 10h300"
                           ></path>
                           <circle r="5" cy="10" fill="url(#b)">
-                            {/* <animate
+                            <animate
                               attributeName="cx"
                               from="-10"
                               to="310"
                               dur="2s"
                               repeatCount="indefinite"
-                            ></animate> */}
+                            ></animate>
                           </circle>
                         </svg>
                       </div>
@@ -233,13 +233,13 @@ export default function WorkflowsSection() {
                             d="M0 10h300"
                           ></path>
                           <circle r="5" cy="10" fill="url(#b)">
-                            {/* <animate
+                            <animate
                               attributeName="cx"
                               from="-10"
                               to="310"
                               dur="2s"
                               repeatCount="indefinite"
-                            ></animate> */}
+                            ></animate>
                           </circle>
                         </svg>
                       </div>
@@ -295,12 +295,12 @@ export default function WorkflowsSection() {
                               ></stop>
                             </linearGradient>
                           </defs>
-                          {/* <animate
+                          <animate
                             attributeName="stroke-dashoffset"
                             to="-30"
                             dur="1s"
                             repeatCount="indefinite"
-                          ></animate> */}
+                          ></animate>
                         </svg>
                       </div>
                     </BrowserView>
@@ -437,13 +437,13 @@ export default function WorkflowsSection() {
                             d="M10 0v450"
                           />
                           <circle r="8" cx="10" fill="url(#b)">
-                            {/* <animate
+                            <animate
                               attributeName="cy"
                               from="-10"
                               to="310"
                               dur="1.5s"
                               repeatCount="indefinite"
-                            /> */}
+                            />
                           </circle>
                         </svg>
                       </div>
@@ -517,12 +517,12 @@ export default function WorkflowsSection() {
                               ></stop>
                             </linearGradient>
                           </defs>
-                          {/* <animate
+                          <animate
                             attributeName="stroke-dashoffset"
                             to="-30"
                             dur="1s"
                             repeatCount="indefinite"
-                          ></animate> */}
+                          ></animate>
                         </svg>
                       </div>
                     </BrowserView>
@@ -618,13 +618,13 @@ export default function WorkflowsSection() {
                             d="M10 0v450"
                           />
                           <circle r="8" cx="10" fill="url(#b)">
-                            {/* <animate
+                            <animate
                               attributeName="cy"
                               from="-10"
                               to="310"
                               dur="1.5s"
                               repeatCount="indefinite"
-                            /> */}
+                            />
                           </circle>
                         </svg>
                       </div>
@@ -695,13 +695,13 @@ export default function WorkflowsSection() {
                             d="M10 0v450"
                           />
                           <circle r="8" cx="10" fill="url(#b)">
-                            {/* <animate
+                            <animate
                               attributeName="cy"
                               from="310"
                               to="-10"
                               dur="1.3s"
                               repeatCount="indefinite"
-                            /> */}
+                            />
                           </circle>
                         </svg>
                       </div>
@@ -751,12 +751,12 @@ export default function WorkflowsSection() {
                               ></stop>
                             </linearGradient>
                           </defs>
-                          {/* <animate
+                          <animate
                             attributeName="stroke-dashoffset"
                             to="-30"
                             dur="1s"
                             repeatCount="indefinite"
-                          ></animate> */}
+                          ></animate>
                         </svg>
                       </div>
                     </BrowserView>
@@ -892,12 +892,12 @@ export default function WorkflowsSection() {
                               ></stop>
                             </linearGradient>
                           </defs>
-                          {/* <animate
+                          <animate
                             attributeName="stroke-dashoffset"
                             to="-30"
                             dur="1s"
                             repeatCount="indefinite"
-                          ></animate> */}
+                          ></animate>
                         </svg>
                       </div>
                     </BrowserView>
@@ -996,13 +996,13 @@ export default function WorkflowsSection() {
                             d="M10 0v450"
                           />
                           <circle r="8" cx="10" fill="url(#b)">
-                            {/* <animate
+                            <animate
                               attributeName="cy"
                               from="310"
                               to="-10"
                               dur="1.3s"
                               repeatCount="indefinite"
-                            /> */}
+                            />
                           </circle>
                         </svg>
                       </div>
@@ -1078,12 +1078,12 @@ export default function WorkflowsSection() {
                               ></stop>
                             </linearGradient>
                           </defs>
-                          {/* <animate
+                          <animate
                             attributeName="stroke-dashoffset"
                             to="-30"
                             dur="1s"
                             repeatCount="indefinite"
-                          ></animate> */}
+                          ></animate>
                         </svg>
                       </div>
                       <div
@@ -1130,12 +1130,12 @@ export default function WorkflowsSection() {
                               ></stop>
                             </linearGradient>
                           </defs>
-                          {/* <animate
+                          <animate
                             attributeName="stroke-dashoffset"
                             to="-30"
                             dur="1s"
                             repeatCount="indefinite"
-                          ></animate> */}
+                          ></animate>
                         </svg>
                       </div>
                     </BrowserView>
