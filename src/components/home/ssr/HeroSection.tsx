@@ -126,8 +126,7 @@ const HeroSection = () => {
                   height={600}
                 />
                 <Image
-                  loading="lazy"
-                  fetchPriority="high"
+                  priority  
                   src="/assets/img/back-img.svg"
                   alt="background"
                   className="image_product-bg"
