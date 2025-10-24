@@ -1,71 +1,9 @@
-"use client";
-import React, { useRef, useEffect } from "react";
-import { useModalStore } from "@/stores/useModalStore";
-import { useFormStore } from "@/stores/useFormStore";
-import { useTrackingParams } from "@/stores/useTrackingParams";
+import React from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 const HeroSection = () => {
-  const sectionRef = useRef(null);
-  const openModal = useModalStore((state) => state.openModal);
-  
-  const {
-    formData,
-    isLoading,
-    error,
-    success,
-    updateField,
-    submitForm,
-    resetForm,
-  } = useFormStore();
-
-  // Initialize tracking parameters
-  useTrackingParams();
-
-  useGSAP(() => {
-    gsap.fromTo(
-      ".visual-tilt-content",
-      {
-        scale: 0.6,
-        transformOrigin: "center center",
-      },
-      {
-        scale: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#sectionTilt",
-          start: "top 95%",
-          end: "bottom 90%",
-          scrub: true,
-          markers: false,
-        },
-      }
-    );
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await submitForm();
-  };
-
-  const handleInputChange = (field: keyof typeof formData, value: string) => {
-    updateField(field, value);
-  };
-
-  useEffect(() => {
-    if (success) {
-      // Reset form after successful submission
-      setTimeout(() => {
-        resetForm();
-      }, 5000);
-    }
-  }, [success, resetForm]);
   return (
     <>
       <div className="boxesBg ...">
@@ -75,24 +13,10 @@ const HeroSection = () => {
               <div className="col-lg-6">
                 <div className="modal_form">
                   <div className="bannerForm hero">
-                    <form id="contact_form" className="formBannerContact" onSubmit={handleSubmit}>
+                    <form id="contact_form" className="formBannerContact">
                       <h1 className="bookConsultation modalBookFree">Book a
                         <span className="textPurpleForm"> Free</span> Consultation
                       </h1>
-
-                      {/* Success Message */}
-                      {success && (
-                        <div className="border rounded-md p-3 mb-3" style={{background:'#0f5132', borderColor:'#badbcc'}}>
-                          <p className="m-0" style={{color:'#d1e7dd'}}>{success}</p>
-                        </div>
-                      )}
-
-                      {/* Error Message */}
-                      {error && (
-                        <div className="border rounded-md p-3 mb-3" style={{background:'#5c2623', borderColor:'#f5c2c7'}}>
-                          <p className="m-0" style={{color:'#f8d7da'}}><strong>Error:</strong> {error}</p>
-                        </div>
-                      )}
 
                       <div className="form-group">
                         <input
@@ -101,8 +25,6 @@ const HeroSection = () => {
                           name="name"
                           placeholder="Your Name Here"
                           className="form-control"
-                          value={formData.name}
-                          onChange={(e) => handleInputChange('name', e.target.value)}
                           required
                         />
                         <span className="validation-error text-light d-none"></span>
@@ -114,8 +36,6 @@ const HeroSection = () => {
                           name="phone"
                           placeholder="Phone Number"
                           className="form-control"
-                          value={formData.phone}
-                          onChange={(e) => handleInputChange('phone', e.target.value)}
                           required
                         />
                         <span className="validation-error text-light d-none"></span>
@@ -128,8 +48,6 @@ const HeroSection = () => {
                           name="email"
                           placeholder="Your Email"
                           className="form-control"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
                           required
                         />
                         <span className="validation-error text-light d-none"></span>
@@ -141,42 +59,18 @@ const HeroSection = () => {
                           name="project_need"
                           placeholder="Describe Your Project Need"
                           className="form-control bannerFormTextArea"
-                          value={formData.project_need}
-                          onChange={(e) => handleInputChange('project_need', e.target.value)}
                           required
                         />
                         <span className="validation-error text-light d-none"></span>
                       </div>
                       
-                      {/* Hidden Tracking Fields */}
-                      <input type="hidden" name="gclid" id="gclid" value={formData.gclid} />
-                      <input type="hidden" name="fbclid" id="fbclid" value={formData.fbclid} />
-                      <input type="hidden" name="igclid" id="igclid" value={formData.igclid} />
-                      <input type="hidden" name="ttclid" id="ttclid" value={formData.ttclid} />
-                      <input type="hidden" name="fingerprint" id="fingerprint" value={formData.fingerprint} />
-                      <input type="hidden" name="chat" id="chat" value={formData.chat} />
-                      <input type="hidden" name="stable_session_id" id="stable_session_id" value={formData.stable_session_id} />
-                      <input type="hidden" name="fingerprintdata" id="fingerprintdata" value={formData.fingerprintdata} />
-                      
                       <div className="border-button">
                         <button 
                           type="submit" 
                           className="buttonAnimation2 poppupBtn w-100 flex mt-3 justify-center items-center gap-2 px-6 py-[14px] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
-                          disabled={isLoading}
                         >
-                          {isLoading ? (
-                            <>
-                              <span>Submitting...</span>
-                              <div className="spinner-border spinner-border-sm" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                              </div>
-                            </>
-                          ) : (
-                            <>
-                              <span>Submit</span>
-                              <ArrowRightIcon />
-                            </>
-                          )}
+                          <span>Submit</span>
+                          <ArrowRightIcon />
                         </button>
                       </div>
                     </form>
@@ -209,39 +103,36 @@ const HeroSection = () => {
           </div >
         </section >
         <section
-          ref={sectionRef}
           className="section_product-image w-layout-blockcontainer1 wrapper"
           id="sectionTilt"
         >
-          {/* <BrowserView> */}
-            <div className="container new hideOn768">
-              <div className="position-relative">
-                <div className="bg_product-bg is_bottom"></div>
-                <div
-                  className="bg_product-image tilt-card pt-0 visual-tilt-content"
-                  data-w-id="42972b79-e7c6-eecc-50b0-3013e4dfdf0d"
-                  style={{ scale: 0.6, transition: "ease-in-out" }}
-                >
-                  <Image
-                    src="/assets/img/erp-011.svg"
-                    priority
-                    alt="erp"
-                    className="image_product-cards"
-                    width={800}
-                    height={600}
-                  />
-                  <Image
-                    priority
-                    src="/assets/img/back-img.svg"
-                    alt="background"
-                    className="image_product-bg"
-                    width={800}
-                    height={600}
-                  />
-                </div>
+          <div className="container new hideOn768">
+            <div className="position-relative">
+              <div className="bg_product-bg is_bottom"></div>
+              <div
+                className="bg_product-image tilt-card pt-0 visual-tilt-content"
+                data-w-id="42972b79-e7c6-eecc-50b0-3013e4dfdf0d"
+                style={{ scale: 0.6, transition: "ease-in-out" }}
+              >
+                <Image
+                  src="/assets/img/erp-011.svg"
+                  priority
+                  alt="erp"
+                  className="image_product-cards"
+                  width={800}
+                  height={600}
+                />
+                <Image
+                  fetchPriority="high"
+                  src="/assets/img/back-img.svg"
+                  alt="background"
+                  className="image_product-bg"
+                  width={800}
+                  height={600}
+                />
               </div>
             </div>
-          {/* </BrowserView> */ }
+          </div>
 
           <section className="newSection new pb-0 logoSlideSection">
             <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">

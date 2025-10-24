@@ -5,13 +5,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { Navigation } from "swiper/modules";
-import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
-import { ArrowRightIcon } from "@/icons";
 
 
 const AIAgentSlider = () => {
-  const openModal = useModalStore((state) => state.openModal);
 
   const aiAgents = [
     {
@@ -126,8 +123,7 @@ const AIAgentSlider = () => {
                   Book Your Slot Now!
                   <ArrowRightIcon />
                 </a> */}
-                <div
-                >
+                <div className="mt-5">
                   <Swiper
                     navigation={{
                       nextEl: ".swiper-button-next",
@@ -153,7 +149,7 @@ const AIAgentSlider = () => {
                             width={800}
                             height={600}
                           />
-                          <div className="pt-0 cardFullContent">
+                          <div className="pt-0 cardFullContent pb-3">
                             <a
                               href={agent.href}
                               className="inline-block mt-3 mb-6 text-2xl font-medium transition-all duration-300 text-w-500 hover:text-tropical-indigo"

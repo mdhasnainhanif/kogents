@@ -109,6 +109,7 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
                   alt="App Preview"
                   width={800}
                   height={600}
+                  style={{ width: '100%', height: 'auto' }}
                 />
               </div>
             </div>
