@@ -109,8 +109,8 @@ const BlogListOwlCarousel: React.FC = () => {
             autoplayTimeout: 3000,
             autoplayHoverPause: true,
             navText: [
-              '<span class="owl-nav-prev text-2xl cursor-pointer">&#10094;</span>',
-              '<span class="owl-nav-next text-2xl cursor-pointer">&#10095;</span>',
+              '<button class="owl-nav-prev text-2xl cursor-pointer p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center" aria-label="Previous blog posts">&#10094;</button>',
+              '<button class="owl-nav-next text-2xl cursor-pointer p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center" aria-label="Next blog posts">&#10095;</button>',
             ],
             responsive: {
               0: {
@@ -128,6 +128,15 @@ const BlogListOwlCarousel: React.FC = () => {
                 nav: true,
                 dots: false,
               },
+            },
+            onInitialized: function() {
+              // Add accessibility labels to dots
+              const dots = document.querySelectorAll('.owl-dots .owl-dot');
+              dots.forEach((dot, index) => {
+                dot.setAttribute('aria-label', `Go to blog post ${index + 1}`);
+                dot.setAttribute('role', 'button');
+                dot.setAttribute('tabindex', '0');
+              });
             },
           });
           carouselInitializedRef.current = true;
