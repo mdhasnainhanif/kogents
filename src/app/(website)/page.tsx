@@ -3,7 +3,7 @@ export const dynamic = "force-static";
 import HeroSection from '../../components/home/ssr/HeroSection';
 import ProductSection from '../../components/home/csr/ProductSection';
 import AIAgentSection from '../../components/home/ssr/AIAgentSection';
-import BenefitsSection from '../../components/home/csr/BenefitsSection';
+import BenefitsSection from '../../components/home/ssr/BenefitsSection';
 import WorkflowsSection from '../../components/home/ssr/WorkflowsSection';
 import FAQSection from '../../components/solutions/csr/FAQSection';
 import AIAgentSlider from '@/components/home/csr/AIAgentSlider';
