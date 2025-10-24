@@ -130,7 +130,7 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
+                <Image priority placeholder="blur"
                   src="/assets/img/home/ai-chatbot-agent.webp"
                   alt="case studies"
                   className="rounded-lg"
