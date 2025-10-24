@@ -155,7 +155,7 @@ export default function HomePage() {
         <section className="cv">
           <FAQSection />
         </section>
-        <BlogList />
+        {/* <BlogList /> */}
       </div>
     </>
   );
