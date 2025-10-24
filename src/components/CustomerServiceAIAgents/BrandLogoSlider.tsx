@@ -1,35 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
 
-// Brand logos data array
-const brandLogos = [
-  {
-    id: 1,
-    src: "/assets/img/brand/1.svg",
-    alt: "Brand Logo 1"
-  },
-  {
-    id: 2,
-    src: "/assets/img/brand/2.svg",
-    alt: "Brand Logo 2"
-  },
-  {
-    id: 3,
-    src: "/assets/img/brand/3.svg",
-    alt: "Brand Logo 3"
-  },
-  {
-    id: 4,
-    src: "/assets/img/brand/4.svg",
-    alt: "Brand Logo 4"
-  },
-  {
-    id: 5,
-    src: "/assets/img/brand/5.svg",
-    alt: "Brand Logo 5"
-  }
-]
-
 const BrandLogoSlider = () => {
   return (
     <>
@@ -41,31 +12,77 @@ const BrandLogoSlider = () => {
         </div>
         <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">
           <div className="inline-flex logo_items item-scroll-left">
-            {/* First set of logos with priority loading */}
-            {brandLogos.map((logo, index) => (
-              <Image
-                key={`first-${logo.id}`}
-                src={logo.src}
-                alt={logo.alt}
-                className="mx-4"
-                width={200}
-                height={100}
-                priority={index < 3} 
-                style={{ width: '100%', height: 'auto' }}
-              />
-            ))}
+            <Image
+              src="/assets/img/brand/1.svg"
+              alt="brand1"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/2.svg"
+              alt="brand2"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/3.svg"
+              alt="brand3"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/4.svg"
+              alt="brand4"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/5.svg"
+              alt="brand5"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
             {/* Duplicate logos for seamless loop */}
-            {brandLogos.map((logo) => (
-              <Image
-                key={`duplicate-${logo.id}`}
-                src={logo.src}
-                alt={logo.alt}
-                className="mx-4"
-                width={200}
-                height={100}
-                style={{ width: '100%', height: 'auto' }}
-              />
-            ))}
+            <Image
+              src="/assets/img/brand/1.svg"
+              alt="brand1"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/2.svg"
+              alt="brand2"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/3.svg"
+              alt="brand3"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/4.svg"
+              alt="brand4"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
+            <Image
+              src="/assets/img/brand/5.svg"
+              alt="brand5"
+              className="mx-4"
+              width={200}
+              height={100}
+            />
           </div>
         </div>
       </section>

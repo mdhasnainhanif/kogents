@@ -1,52 +1,14 @@
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { BrowserView } from "react-device-detect";
 
 const CounterItem: React.FC<{ target: number; children: React.ReactNode }> = ({
   target,
   children,
 }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const [hasRun, setHasRun] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasRun) {
-          setHasRun(true);
-          let start = 0;
-          const duration = 2000;
-          const stepTime = 20;
-          const steps = duration / stepTime;
-          const increment = target / steps;
-
-          const timer = setInterval(() => {
-            start += increment;
-            if (start >= target) {
-              setCount(target);
-              clearInterval(timer);
-            } else {
-              setCount(Math.floor(start));
-            }
-          }, stepTime);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [target, hasRun]);
-
   return (
-    <div ref={ref} className="counterNumber1">
+    <div className="counterNumber1">
       {children}
-      <p>{count}%</p>
+      <p>{target}%</p>
     </div>
   );
 };
@@ -89,10 +51,6 @@ const defaultCounterData: CounterDataItem[] = [
 ];
 
 const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
-  useEffect(() => {
-    document.getElementById("someId");
-  }, []);
-
   const data = counterData || defaultCounterData;
 
   return (
@@ -119,7 +77,6 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
 
           <div className="row rowGap w-100 mt-5">
             <div className="col-xl-7 paddingX0">
-              {/* <BrowserView className="h-100"> */}
                 <div className="chartMain hideOn768">
                   <h2 className="d-none d-md-block mt-5">
                     Integerate AI Agents Into Your Organization Structure
@@ -130,9 +87,9 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
                     className="w-100"
                     width={800}
                     height={600}
+                    priority
                   />
                 </div>
-              {/* </BrowserView> */}
             </div>
 
             <div className="col-xl-5 gap-4 paddingX0">

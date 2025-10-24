@@ -9,6 +9,35 @@ import { BrowserView } from "react-device-detect";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Brand logos data array
+const brandLogos = [
+  {
+    id: 1,
+    src: "/assets/img/brand/1.svg",
+    alt: "Brand Logo 1"
+  },
+  {
+    id: 2,
+    src: "/assets/img/brand/2.svg",
+    alt: "Brand Logo 2"
+  },
+  {
+    id: 3,
+    src: "/assets/img/brand/3.svg",
+    alt: "Brand Logo 3"
+  },
+  {
+    id: 4,
+    src: "/assets/img/brand/4.svg",
+    alt: "Brand Logo 4"
+  },
+  {
+    id: 5,
+    src: "/assets/img/brand/5.svg",
+    alt: "Brand Logo 5"
+  }
+];
+
 const ProductSection = () => {
   const sectionRef = useRef(null);
 
@@ -57,12 +86,13 @@ const ProductSection = () => {
                 height={600}
               />
               <Image
+                loading="lazy"
                 src="/assets/img/back-img.svg"
                 alt="background"
                 className="image_product-bg"
                 width={800}
                 height={600}
-                loading="lazy"
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -72,76 +102,31 @@ const ProductSection = () => {
       <section className="newSection pb-0 mask">
         <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">
           <div className="inline-flex logo_items animate-slides">
-            <Image
-              src="/assets/img/brand/1.svg"
-              alt="brand1"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/2.svg"
-              alt="brand2"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/3.svg"
-              alt="brand3"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/4.svg"
-              alt="brand4"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/5.svg"
-              alt="brand5"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/1.svg"
-              alt="brand1"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/2.svg"
-              alt="brand2"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/3.svg"
-              alt="brand3"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/4.svg"
-              alt="brand4"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
-            <Image
-              src="/assets/img/brand/5.svg"
-              alt="brand5"
-              className="mx-4"
-              width={800}
-              height={600}
-            />
+            {/* First set of logos */}
+            {brandLogos.map((logo) => (
+              <Image
+                key={`first-${logo.id}`}
+                src={logo.src}
+                alt={logo.alt}
+                className="mx-4"
+                width={800}
+                height={600}
+                priority
+                style={{ width: 'auto', height: 'auto' }}
+              />
+            ))}
+            {/* Duplicate logos for seamless loop */}
+            {brandLogos.map((logo) => (
+              <Image
+                key={`duplicate-${logo.id}`}
+                src={logo.src}
+                alt={logo.alt}
+                className="mx-4"
+                width={800}
+                height={600}
+                style={{ width: 'auto', height: 'auto' }}
+              />
+            ))}
           </div>
         </div>
       </section>

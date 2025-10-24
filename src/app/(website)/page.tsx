@@ -11,7 +11,6 @@ import AgentOS from '@/components/home/ssr/AgentOS';
 import KogentBenefits from '@/components/home/ssr/KogentBenefits';
 import type { Metadata } from 'next';
 import PerformanceOptimizer from '@/components/PerformanceOptimizer';
-import PerformanceMeta from '@/components/PerformanceMeta';
 import BlogList from '@/components/blog/BlogList';
 
 const BASE = "https://kogents.ai";
@@ -129,7 +128,6 @@ export default function HomePage() {
   
   return (
     <>
-      <PerformanceMeta />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

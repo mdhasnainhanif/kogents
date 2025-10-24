@@ -109,8 +109,8 @@ const NewFooter = () => {
             </div>
           </div>
           <div className="footer-engagement">
-            <div className="newsletter-section"> 
-              <h2 className="h5">Subscribe to our Newsletter</h2>
+            <div className="newsletter-section">
+              <h5>Subscribe to our Newsletter</h5>
 
               {/* Success Message */}
               {success && (
@@ -165,13 +165,12 @@ const NewFooter = () => {
               </form>
             </div>
             <div className="social-section">
-              <p className="h5">Get in Touch</p>
+              <h5>Get in Touch</h5>
               <div className="social-icons">
                 <a
                   href="https://www.linkedin.com/company/kogentsai/"
                   target="_blank"
                   className="social-icon"
-                  aria-label="Linkedin"
                 >
                   <LinkedinIcon />
                 </a>
@@ -179,7 +178,6 @@ const NewFooter = () => {
                   href="https://www.facebook.com/kogents/"
                   target="_blank"
                   className="social-icon"
-                  aria-label="Facebook"
                 >
                   <FacebookIcon />
                 </a>
@@ -187,7 +185,6 @@ const NewFooter = () => {
                   href="https://x.com/kogentsai"
                   target="_blank"
                   className="social-icon"
-                  aria-label="Twitter"
                 >
                   <TwitterXIcon />
                 </a>
@@ -195,7 +192,6 @@ const NewFooter = () => {
                   href="https://www.youtube.com/@kogentsai"
                   target="_blank"
                   className="social-icon"
-                  aria-label="Youtube"
                 >
                   <YoutubeIcon />
                 </a>
@@ -203,7 +199,6 @@ const NewFooter = () => {
                   href="https://www.instagram.com/kogentsai/"
                   target="_blank"
                   className="social-icon"
-                  aria-label="Instagram"
                 >
                   <InstagramIcon />
                 </a>
@@ -211,7 +206,6 @@ const NewFooter = () => {
                   href="https://www.pinterest.com/kogentsai/"
                   target="_blank"
                   className="social-icon"
-                  aria-label="Pinterest"
                 >
                   <PinterestIcon />
                 </a>
@@ -219,7 +213,6 @@ const NewFooter = () => {
                   href="https://www.tiktok.com/@kogentsai"
                   target="_blank"
                   className="social-icon"
-                  aria-label="TikTok"
                 >
                   <TikTokIcon />
                 </a>
@@ -233,7 +226,7 @@ const NewFooter = () => {
       <div className="footer-middle">
         <div className="footer-grid">
           <div className="footer-column">
-            <p className="h6">Channels</p>
+            <h6>Channels</h6>
             <div className="footer-links">
               {/* <h6 className="footer-subheading">Channels</h6> */}
               <ul>
@@ -305,7 +298,7 @@ const NewFooter = () => {
           </div>
 
           <div className="footer-column">
-            <p className="h6">Integrations</p>
+            <h6>Integrations</h6>
             <div className="footer-links">
               {/* <h6 className="footer-subheading">By Industries</h6> */}
               <ul>
@@ -357,7 +350,7 @@ const NewFooter = () => {
           </div>
 
           <div className="footer-column">
-            <p className="h6">By Industries</p>
+            <h6>By Industries</h6>
             <div className="footer-links">
             <ul>
                 <li>
@@ -407,7 +400,7 @@ const NewFooter = () => {
           </div>
 
           <div className="footer-column">
-            <p className="h6">By Professions</p>
+            <h6>By Professions</h6>
             <div className="footer-links">
             <ul>
                 {/* <li>
@@ -436,7 +429,7 @@ const NewFooter = () => {
           </div>
 
           <div className="footer-column">
-            <p className="h6">By Type</p>
+            <h6>By Type</h6>
             <div className="footer-links">
             <ul>
                 <li>

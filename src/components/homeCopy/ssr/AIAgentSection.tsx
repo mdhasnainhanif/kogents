@@ -1,11 +1,9 @@
-"use client";
 import React from "react";
-import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
+
 const AIAgentSection = () => {
-  const openModal = useModalStore((state) => state.openModal);
   return (
     <>
       <section
@@ -29,12 +27,13 @@ const AIAgentSection = () => {
           <div className="row rowGap justify-content-center mt-4">
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
+                <Image
                   src="/assets/img/home/whatsapp-ai-agent.webp"
-                  alt="case studies"
+                  alt="WhatsApp AI Agent"
                   className="rounded-lg"
                   width={400}
                   height={300}
+                  priority
                 />
                 <Link href="/platforms/whatsapp-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   WhatsApp AI Agent
@@ -53,13 +52,13 @@ const AIAgentSection = () => {
                     conversions through automated conversations.
                   </li>
                 </ul>
-                <a
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                <Link
+                  href="/chatbot/brief"
+                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
@@ -85,14 +84,14 @@ const AIAgentSection = () => {
                     Syncs with CRMs to confirm meetings instantly and reduce friction.
                   </li>
                 </ul>
-                <a
+                <Link
 
-                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
@@ -118,14 +117,14 @@ const AIAgentSection = () => {
                     Provides real-time insights to boost conversions and customer retention.
                   </li>
                 </ul>
-                <a
+                <Link
 
-                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
@@ -151,14 +150,14 @@ const AIAgentSection = () => {
                     Improves engagement while reducing manual social media workload.
                   </li>
                 </ul>
-                <a
+                <Link
 
-                  className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-6 col-lg-6 col-md-6 col-12">
@@ -184,14 +183,14 @@ const AIAgentSection = () => {
                     Reduces support backlog while improving customer satisfaction.
                   </li>
                 </ul>
-                <a
+                <Link
 
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-lg-12 col-md-6 col-12 card_hide_ipadpro">
@@ -231,14 +230,14 @@ const AIAgentSection = () => {
                           </li>
                         </ul>
                         <div className="button-center-ipad">
-                          <a
+                          <Link
 
-                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                            onClick={openModal}
+                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                            href="/chatbot/brief"
                           >
                             Request Access
                             <ArrowRightIcon />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -272,14 +271,14 @@ const AIAgentSection = () => {
                     fast&#44; intelligent engagement.
                   </li>
                 </ul>
-                <a
+                <Link
 
-                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
@@ -304,14 +303,14 @@ const AIAgentSection = () => {
                   </li>
                 </ul>
 
-                <a
+                <Link
 
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
@@ -338,14 +337,14 @@ const AIAgentSection = () => {
                   </li>
                 </ul>
 
-                <a
+                <Link
 
-                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                  onClick={openModal}
+                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                  href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-lg-12 col-md-6 col-12 card_showhide_desktop">
@@ -385,14 +384,14 @@ const AIAgentSection = () => {
                           </li>
                         </ul>
                         <div className="button-center-ipad">
-                          <a
+                          <Link
 
-                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo open-modal-btn"
-                            onClick={openModal}
+                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
+                            href="/chatbot/brief"
                           >
                             Request Access
                             <ArrowRightIcon />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>

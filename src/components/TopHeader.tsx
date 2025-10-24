@@ -35,37 +35,42 @@ const TopHeader = () => {
             <div className="social_media d-flex gap-3">
               <a
                 target="_blank"
-                href="https://www.linkedin.com/company/kogentsai/" aria-label="Linkedin">
-
+                href="https://www.linkedin.com/company/kogentsai/">
                 <LinkedinIcon />
               </a>
               <a
                 target="_blank"
                 href="https://www.facebook.com/kogents/"
-                aria-label="Facebook">
+              >
                 <FacebookIcon />
               </a>
               <a
                 target="_blank"
-                href="https://x.com/kogentsai" aria-label="Twitter">
+                href="https://x.com/kogentsai">
                 <TwitterXIcon />
               </a>
               <a
                 target="_blank"
-                href="https://www.youtube.com/@kogentsai" aria-label="Youtube">
+                href="https://www.youtube.com/@kogentsai">
                 <YoutubeIcon />
               </a>
               <a
                 target="_blank"
                 href="https://www.instagram.com/kogentsai/"
-                aria-label="Instagram">
+              >
                 <InstagramIcon />
               </a>
               <a
                 target="_blank"
                 href="https://www.pinterest.com/kogentsai/"
-                aria-label="Pinterest">
-                  <PinterestIcon />
+              >
+                <PinterestIcon />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.tiktok.com/@kogentsai"
+              >
+                <TikTokIcon />
               </a>
             </div>
           </div>

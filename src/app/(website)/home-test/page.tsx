@@ -1,16 +1,15 @@
 export const dynamic = "force-static";
 
-import HeroSection from '@/components/home/ssr/HeroSection';
-import ProductSection from '@/components/home/csr/ProductSection';
-import AIAgentSection from '@/components/home/ssr/AIAgentSection';
-import BenefitsSection from '@/components/home/csr/BenefitsSection';
-import WorkflowsSection from '@/components/home/ssr/WorkflowsSection';
+import HeroSection from '@/components/homeCopy/ssr/HeroSection';
+import ProductSection from '@/components/homeCopy/csr/ProductSection';
+import AIAgentSection from '@/components/homeCopy/ssr/AIAgentSection';
+import BenefitsSection from '@/components/homeCopy/csr/BenefitsSection';
+import WorkflowsSection from '@/components/homeCopy/ssr/WorkflowsSection';
 import FAQSection from '@/components/solutions/csr/FAQSection';
-import AIAgentSlider from '@/components/home/csr/AIAgentSlider';
-import AgentOS from '@/components/home/ssr/AgentOS';
-import KogentBenefits from '@/components/home/ssr/KogentBenefits';
+import AIAgentSlider from '@/components/homeCopy/csr/AIAgentSlider';
+import AgentOS from '@/components/homeCopy/ssr/AgentOS';
+import KogentBenefits from '@/components/homeCopy/ssr/KogentBenefits';
 import type { Metadata } from 'next';
-import PerformanceOptimizer from '@/components/PerformanceOptimizer';
 import BlogList from '@/components/blog/BlogList';
 
 const BASE = "https://kogents.ai";
@@ -132,7 +131,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <PerformanceOptimizer />
       <HeroSection />
       <section className="cv">
         <ProductSection />

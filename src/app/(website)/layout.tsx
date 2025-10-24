@@ -15,7 +15,7 @@ export default function LandingLayout({
       <Header />
       {children}
       {/* <Footer /> */}
-      <SideForm /> 
+      <SideForm />
       <NewFooter />
     </>
   );

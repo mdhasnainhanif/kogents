@@ -17,7 +17,6 @@ const satoshi = localFont({
   src: [{ path: "../../public/assets/fonts/Satoshi-Variable.ttf", style: "normal" }],
   variable: "--font-satoshi",
   display: "swap",
-  preload: true,
 });
 
 const poppins = Poppins({
