@@ -34,8 +34,8 @@ const SideForm = () => {
       }
     };
 
-    // Delay loading to avoid render blocking
-    const timer = setTimeout(loadStyles, 200);
+    // Delay loading to avoid render blocking - load after 1 minute
+    const timer = setTimeout(loadStyles, 40000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,7 +48,7 @@ const SideForm = () => {
     updateField(field, value);
   };
 
-  const toggleForm = () => {
+  const toggleForm = () => { 
     setIsOpen(!isOpen);
     if (!isOpen) {
       resetForm();

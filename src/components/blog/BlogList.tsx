@@ -211,7 +211,7 @@ const BlogListOwlCarousel: React.FC = () => {
                   alt={alt}
                 />
 
-                <p className="blog-category mb-4 text-w-500">{category}</p>
+                <p className="blog-category mb-4 text-light">{category}</p>
                 
                 <Link href={`/blogs/${post.slug}`}>
                 <h3 className="block mb-3 text-2xl font-medium text-w-500">

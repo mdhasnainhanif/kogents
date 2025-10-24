@@ -165,9 +165,9 @@ export default function Header() {
                 width={150}
                 height={50}
                 priority
+                style={{ width: '150px', height: '50px' }}
               />
 
-              {/* <Logo style={{ width: 150, height: 50 }} /> */}
 
             </Link>
             <nav>

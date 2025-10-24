@@ -156,7 +156,7 @@ const NewFooter = () => {
                 />
                 <button
                   type="submit"
-                  className="buttonAnimation2 px-4"
+                  className="buttonAnimation2 px-4 subscribeBtn"
                   disabled={isLoading}
                   onClick={() => console.log("Subscribe button clicked")}
                 >
