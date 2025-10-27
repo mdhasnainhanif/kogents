@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCalendarAlt, FaClock } from "react-icons/fa";
-import BlogCardLoading from "@/components/blog/BlogCardLoading"; // ✅ skeleton
+import BlogListLoading from "@/components/blog/BlogListLoading";
 
-// ---- jQuery + Owl type augment (local) ----
+// jQuery + Owl types (local, to stop TS errors)
 declare global {
   interface JQuery {
     owlCarousel(options?: any): JQuery;
@@ -55,14 +55,13 @@ const hasText = (v: unknown): v is string =>
 
 const BlogListOwlCarousel: React.FC = () => {
   const [posts, setPosts] = useState<Blog[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);   // ✅ loader first paint
+  const [loading, setLoading] = useState<boolean>(true);
   const [didFetch, setDidFetch] = useState<boolean>(false);
-  const [carouselReady, setCarouselReady] = useState<boolean>(false);
 
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const carouselInitializedRef = useRef(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const initializedRef = useRef(false);
 
-  // Fetch latest posts (UI keeps only first 4 as before)
+  // Fetch posts (first 4)
   useEffect(() => {
     const controller = new AbortController();
 
@@ -74,19 +73,15 @@ const BlogListOwlCarousel: React.FC = () => {
           `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
           { cache: "no-store", signal: controller.signal }
         );
-
         if (!res.ok) {
           console.error("Error fetching posts:", res.status);
           setPosts([]);
           return;
         }
-
-        const data = (await res.json()) as Blog[];
+        const data = await res.json();
         setPosts(Array.isArray(data) ? data.slice(0, 4) : []);
-      } catch (err: any) {
-        if (err?.name !== "AbortError") {
-          console.error("Error fetching posts:", err);
-        }
+      } catch (e: any) {
+        if (e?.name !== "AbortError") console.error("Error fetching posts:", e);
         setPosts([]);
       } finally {
         setLoading(false);
@@ -97,40 +92,19 @@ const BlogListOwlCarousel: React.FC = () => {
     return () => controller.abort();
   }, []);
 
-  const isCarousel = !loading && posts.length > 3;
-
-  // Init / destroy Owl
+  // Progressive Owl init: enhance only after posts are rendered
   useEffect(() => {
-    // Grid mode -> ensure carouselReady false (not required)
-    if (!isCarousel) {
-      // if we switch from carousel to grid, make sure any old instance is cleaned
-      if (
-        carouselInitializedRef.current &&
-        typeof window !== "undefined" &&
-        (window as any).$ &&
-        carouselRef.current
-      ) {
-        try {
-          (window as any).$(carouselRef.current).trigger("destroy.owl.carousel");
-        } catch (e) {
-          console.error("Error destroying carousel:", e);
-        } finally {
-          carouselInitializedRef.current = false;
-        }
-      }
-      setCarouselReady(false);
-      return;
-    }
+    const needsCarousel = !loading && posts.length > 3;
+    if (!needsCarousel || initializedRef.current) return;
+    if (!wrapperRef.current || typeof window === "undefined") return;
 
-    if (loading || !carouselRef.current || typeof window === "undefined") return;
-
-    const init = async () => {
+    (async () => {
       try {
         const jQuery = (await import("jquery")).default as any;
         (window as any).$ = jQuery;
         (window as any).jQuery = jQuery;
 
-        // @ts-expect-error no types
+        // @ts-expect-error: plugin no types
         await import("owl.carousel");
 
         // Inject Owl CSS once
@@ -142,76 +116,67 @@ const BlogListOwlCarousel: React.FC = () => {
           document.head.appendChild(link);
         }
 
-        // Initialize only once per mount
-        if (jQuery.fn?.owlCarousel && !carouselInitializedRef.current) {
-          jQuery(carouselRef.current).owlCarousel({
-            loop: true,
-            margin: 30,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            navText: [
-              '<span class="owl-nav-prev text-2xl cursor-pointer">&#10094;</span>',
-              '<span class="owl-nav-next text-2xl cursor-pointer">&#10095;</span>',
-            ],
-            responsive: {
-              0: { items: 1, nav: false, dots: true },
-              768: { items: 2, nav: false, dots: false },
-              1024: { items: 3, nav: true, dots: false },
-            },
-            onInitialized: () => {
-              // a11y for dots
-              const dots = document.querySelectorAll(".owl-dots .owl-dot");
-              dots.forEach((dot, index) => {
-                dot.setAttribute("aria-label", `Go to blog post ${index + 1}`);
-                dot.setAttribute("role", "button");
-                dot.setAttribute("tabindex", "0");
-              });
-              // ✅ mark carousel as ready so we can hide the loader
-              setCarouselReady(true);
-            },
-          });
-          carouselInitializedRef.current = true;
-        } else {
-          // If already initialized somehow, consider it ready
-          setCarouselReady(true);
-        }
+        // Don't re-init
+        if (initializedRef.current) return;
+
+        // Add owl classes before init (helps with styles)
+        wrapperRef.current?.classList.add("owl-carousel", "owl-theme", "blog-list-slider");
+
+        jQuery(wrapperRef.current).owlCarousel({
+          loop: true,
+          margin: 30,
+          nav: true,
+          dots: false,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true,
+          navText: [
+            '<span class="owl-nav-prev text-2xl cursor-pointer">&#10094;</span>',
+            '<span class="owl-nav-next text-2xl cursor-pointer">&#10095;</span>',
+          ],
+          responsive: {
+            0: { items: 1, nav: false, dots: true },
+            768: { items: 2, nav: false, dots: false },
+            1024: { items: 3, nav: true, dots: false },
+          },
+          onInitialized: () => {
+            const dots = document.querySelectorAll(".owl-dots .owl-dot");
+            dots.forEach((dot, index) => {
+              dot.setAttribute("aria-label", `Go to blog post ${index + 1}`);
+              dot.setAttribute("role", "button");
+              dot.setAttribute("tabindex", "0");
+            });
+          },
+        });
+
+        initializedRef.current = true;
       } catch (e) {
-        console.error("Error loading carousel:", e);
-        // fail-safe: don't block UI forever
-        setCarouselReady(true);
+        console.error("Error initializing carousel:", e);
       }
-    };
+    })();
 
-    // keep loader until we finish initializing
-    setCarouselReady(false);
-    init();
-
-    // Cleanup when unmount / deps change
+    // Cleanup if we ever unmount
     return () => {
       if (
-        carouselInitializedRef.current &&
+        initializedRef.current &&
         typeof window !== "undefined" &&
         (window as any).$ &&
-        carouselRef.current
+        wrapperRef.current
       ) {
         try {
-          (window as any).$(carouselRef.current).trigger("destroy.owl.carousel");
+          (window as any).$(wrapperRef.current).trigger("destroy.owl.carousel");
         } catch (e) {
           console.error("Error destroying carousel:", e);
         } finally {
-          carouselInitializedRef.current = false;
-          setCarouselReady(false);
+          initializedRef.current = false;
+          wrapperRef.current.classList.remove("owl-carousel", "owl-theme", "blog-list-slider");
         }
       }
     };
-  }, [loading, isCarousel]);
+  }, [loading, posts.length]);
 
-  // ✅ Only render content when it's actually ready to show
-  const renderReady =
-    !loading && posts.length > 0 && (!isCarousel || carouselReady);
+  // Render
+  if (loading) return <BlogListLoading />;
 
   return (
     <section>
@@ -223,23 +188,20 @@ const BlogListOwlCarousel: React.FC = () => {
           Recent Blogs
         </h2>
 
-        {/* ✅ Skeleton: show until fetch done AND (if carousel) owl initialized */}
-        {!renderReady && <div className="mt-5"><BlogCardLoading /></div>}
-
-        {/* ✅ Empty state only AFTER fetch completes */}
-        {!loading && didFetch && posts.length === 0 && (
+        {/* Empty state */}
+        {/* {didFetch && posts.length === 0 && (
           <div className="mt-8 flex justify-center items-center">
             <div className="text-w-500 text-lg">No blog posts found.</div>
           </div>
-        )}
+        )} */}
 
-        {/* ✅ Content: carousel (>3) or grid (<=3) — only when ready */}
-        {renderReady && (
+        {/* Content: grid by default; Owl enhances if >3 posts */}
+        {posts.length > 0 && (
           <div
-            ref={carouselRef}
+            ref={wrapperRef}
             className={
               posts.length > 3
-                ? "owl-carousel owl-theme blog-list-slider mt-5"
+                ? "mt-5" // owl classes are added dynamically in effect
                 : "mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             }
           >
@@ -274,7 +236,9 @@ const BlogListOwlCarousel: React.FC = () => {
                     className="w-full rounded-lg blog-img mb-4"
                     alt={alt}
                   />
+
                   <p className="blog-category mb-4 text-light">{category}</p>
+
                   <Link href={`/blogs/${post.slug}`}>
                     <h3 className="block mb-3 text-2xl font-medium text-w-500">
                       {truncate(stripHTML(post.title.rendered), 50)}
@@ -286,6 +250,7 @@ const BlogListOwlCarousel: React.FC = () => {
                       <FaCalendarAlt className="text-sm" />
                       {dateStr}
                     </p>
+
                     {readingTime ? (
                       <p className="blog-reading-time flex items-center gap-2 text-sm">
                         <FaClock className="text-sm" />
