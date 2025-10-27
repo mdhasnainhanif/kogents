@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Header from '@/components/Header'
-import NewFooter from '@/components/NewFooter'
 import styles from './Sitemap.module.css'
 
 const BASE_URL = 'https://kogents.ai'

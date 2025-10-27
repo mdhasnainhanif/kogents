@@ -6,7 +6,6 @@ import OurTeam from '@/components/about/ssr/OurTeam'
 import type { Metadata } from 'next'
 import CustomerBenefitSection from '@/components/CustomerServiceAIAgents/CustomerBenefitSection'
 import AboutUsBanner1 from '@/components/about/ssr/AboutUsBanner1'
-import Breadcrumb from '@/components/Breadcrumb'
 
 
 export const metadata: Metadata = {

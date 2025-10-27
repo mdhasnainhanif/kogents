@@ -27,7 +27,10 @@ interface Blog {
 }
 
 const stripHTML = (html = "") =>
-  html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
 const truncate = (s = "", n = 50) =>
   s.length > n ? s.slice(0, n).trimEnd() + "…" : s;
@@ -59,9 +62,12 @@ const BlogListOwlCarousel: React.FC = () => {
 
   useEffect(() => {
     const timestamp = Date.now();
-    fetch(`https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`, {
-      cache: 'no-store' 
-    })
+    fetch(
+      `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
+      {
+        cache: "no-store",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // Keep behavior the same: show up to 4 latest posts
@@ -76,7 +82,8 @@ const BlogListOwlCarousel: React.FC = () => {
 
   useEffect(() => {
     // Only load Owl Carousel when we actually need it (>3 posts)
-    if (!isCarousel || !carouselRef.current || typeof window === "undefined") return;
+    if (!isCarousel || !carouselRef.current || typeof window === "undefined")
+      return;
 
     const initCarousel = async () => {
       try {
@@ -109,8 +116,8 @@ const BlogListOwlCarousel: React.FC = () => {
             autoplayTimeout: 3000,
             autoplayHoverPause: true,
             navText: [
-              '<button class="owl-nav-prev text-2xl cursor-pointer p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center" aria-label="Previous blog posts">&#10094;</button>',
-              '<button class="owl-nav-next text-2xl cursor-pointer p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 min-w-[48px] min-h-[48px] flex items-center justify-center" aria-label="Next blog posts">&#10095;</button>',
+              '<span class="owl-nav-prev text-2xl cursor-pointer">&#10094;</span>',
+              '<span class="owl-nav-next text-2xl cursor-pointer">&#10095;</span>',
             ],
             responsive: {
               0: {
@@ -129,13 +136,13 @@ const BlogListOwlCarousel: React.FC = () => {
                 dots: false,
               },
             },
-            onInitialized: function() {
+            onInitialized: function () {
               // Add accessibility labels to dots
-              const dots = document.querySelectorAll('.owl-dots .owl-dot');
+              const dots = document.querySelectorAll(".owl-dots .owl-dot");
               dots.forEach((dot, index) => {
-                dot.setAttribute('aria-label', `Go to blog post ${index + 1}`);
-                dot.setAttribute('role', 'button');
-                dot.setAttribute('tabindex', '0');
+                dot.setAttribute("aria-label", `Go to blog post ${index + 1}`);
+                dot.setAttribute("role", "button");
+                dot.setAttribute("tabindex", "0");
               });
             },
           });
@@ -156,7 +163,9 @@ const BlogListOwlCarousel: React.FC = () => {
         (window as any).$
       ) {
         try {
-          (window as any).$(carouselRef.current).trigger("destroy.owl.carousel");
+          (window as any)
+            .$(carouselRef.current)
+            .trigger("destroy.owl.carousel");
         } catch (error) {
           console.error("Error destroying carousel:", error);
         } finally {
@@ -196,7 +205,10 @@ const BlogListOwlCarousel: React.FC = () => {
 
             const category = getCategory(post);
             const dateStr = formatDate(post.date);
-            const excerpt = truncate(stripHTML(post.excerpt?.rendered || ""), 80);
+            const excerpt = truncate(
+              stripHTML(post.excerpt?.rendered || ""),
+              80
+            );
 
             // Normalize reading time per post at render time
             const rawRT = post.meta?._kogents_reading_time;
@@ -221,11 +233,11 @@ const BlogListOwlCarousel: React.FC = () => {
                 />
 
                 <p className="blog-category mb-4 text-light">{category}</p>
-                
+
                 <Link href={`/blogs/${post.slug}`}>
-                <h3 className="block mb-3 text-2xl font-medium text-w-500">
-                  {truncate(stripHTML(post.title.rendered), 50)}
-                </h3>
+                  <h3 className="block mb-3 text-2xl font-medium text-w-500">
+                    {truncate(stripHTML(post.title.rendered), 50)}
+                  </h3>
                 </Link>
 
                 <div className="flex items-center gap-4 mb-3 text-w-500">
