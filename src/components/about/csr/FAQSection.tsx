@@ -49,8 +49,8 @@ const AccordionItem: React.FC<{
 };
 
 const FaqSection: React.FC = () => {
-    // open the first item by default
-    const [openIndex, setOpenIndex] = useState<number>(0);
+    // All items closed by default
+    const [openIndex, setOpenIndex] = useState<number>(-1);
     // Load More logic (show N, then add chunks)
     const INITIAL_COUNT = 3;
     const CHUNK = 3;
@@ -86,24 +86,22 @@ const FaqSection: React.FC = () => {
                         business and streamline operations.
                     </p> */}
 
-                    <div
-                        // 
-                        className="flex flex-col gap-4 w-full lg:max-w-[850px] mt-4"
-                    >
+                    <div className="row mt-4">
                         {visibleFaqs.map((item, idx) => {
                             const absoluteIndex = idx; // within current slice, 0-based
                             const isOpen = openIndex === absoluteIndex;
                             return (
-                                <AccordionItem
-                                    key={item.q}
-                                    item={item}
-                                    isOpen={isOpen}
-                                    onToggle={() =>
-                                        setOpenIndex((prev) =>
-                                            prev === absoluteIndex ? -1 : absoluteIndex
-                                        )
-                                    }
-                                />
+                                <div key={item.q} className="col-md-6 mb-4">
+                                    <AccordionItem
+                                        item={item}
+                                        isOpen={isOpen}
+                                        onToggle={() =>
+                                            setOpenIndex((prev) =>
+                                                prev === absoluteIndex ? -1 : absoluteIndex
+                                            )
+                                        }
+                                    />
+                                </div>
                             );
                         })}
                     </div>

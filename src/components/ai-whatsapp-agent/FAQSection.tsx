@@ -32,7 +32,7 @@ const AccordionItem: React.FC<{
 };
 
 const FaqSection: React.FC<{ data: FaqSectionData }> = ({ data }) => {
-  const [openIndex, setOpenIndex] = useState<number>(0);
+  const [openIndex, setOpenIndex] = useState<number>(-1);
   const INITIAL_COUNT = 3;
   const [visibleCount, setVisibleCount] = useState<number>(INITIAL_COUNT);
 
@@ -53,7 +53,7 @@ const FaqSection: React.FC<{ data: FaqSectionData }> = ({ data }) => {
 
           {data.heading && (
             <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
-              {data.heading}...
+              {data.heading}
             </h2>
           )}
 
@@ -63,18 +63,19 @@ const FaqSection: React.FC<{ data: FaqSectionData }> = ({ data }) => {
             </p>
           )}
 
-          <div className="flex flex-col gap-4 w-full lg:max-w-[850px] mt-4">
+          <div className="row mt-4">
             {visibleFaqs.map((item, idx) => {
               const isOpen = openIndex === idx;
               return (
-                <AccordionItem
-                  key={item.q}
-                  item={item}
-                  isOpen={isOpen}
-                  onToggle={() =>
-                    setOpenIndex((prev) => (prev === idx ? -1 : idx))
-                  }
-                />
+                <div key={item.q} className="col-md-6 mb-4">
+                  <AccordionItem
+                    item={item}
+                    isOpen={isOpen}
+                    onToggle={() =>
+                      setOpenIndex((prev) => (prev === idx ? -1 : idx))
+                    }
+                  />
+                </div>
               );
             })}
           </div>

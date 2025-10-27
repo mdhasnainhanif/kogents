@@ -2,11 +2,10 @@ import { notFound } from 'next/navigation';
 import Banner from '@/components/ai-whatsapp-agent/Banner';
 import WhatsappImagesSection from '@/components/ai-whatsapp-agent/WhatsappImagesSection';
 import { Data } from './data';
-import { MetaDataType, platfarmPageDataType } from '../../../../types';
+import { platfarmPageDataType } from '../../../../types';
 import type { Metadata } from "next";
 import Counter from '@/components/CustomerServiceAIAgents/Counter';
 import BrandLogoSlider from '@/components/CustomerServiceAIAgents/BrandLogoSlider';
-// import HealthCareCaseStudySection from '@/components/HealthcareAiAgent/HealthCareCaseStudySection';
 import CustomerCards from '@/components/CustomerServiceAIAgents/CustomerCards';
 import CustomerGrowthCards from '@/components/CustomerServiceAIAgents/CustomerGrowthCards';
 import FaqWithImage from '@/components/CustomerServiceAIAgents/FaqWithImage';
@@ -174,7 +173,7 @@ const Page = async ({ params }: PageProps) => {
           />
         </div>
       )}
-      {pageData.faq && <FaqSection data={pageData.faq.items} />}
+      {pageData.faq && <FaqSection data={pageData.faq.items} showLoadMore={false} />}
       <BlogList />
     </>
   );
