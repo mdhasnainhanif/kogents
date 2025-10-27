@@ -160,6 +160,17 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
+  // Check for www subdomain and redirect to non-www
+  const hostname = req.headers.get('host') || url.hostname;
+  if (hostname.startsWith('www.')) {
+    const newHost = hostname.replace(/^www\./, '');
+    const newUrl = new URL(pathname, `https://${newHost}`);
+    newUrl.search = url.search;
+    const res = NextResponse.redirect(newUrl.toString(), 301);
+    res.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+    return res;
+  }
+
   // 1) Force HTTPS first (handles http://... cases you listed)
   const isHttps =
     req.headers.get('x-forwarded-proto') === 'https' ||
