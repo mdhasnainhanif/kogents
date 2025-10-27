@@ -4,16 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCalendarAlt, FaClock } from "react-icons/fa";
-import BlogListLoading from "@/components/blog/BlogListLoading";
-
-// jQuery + Owl types (local, to stop TS errors)
-declare global {
-  interface JQuery {
-    owlCarousel(options?: any): JQuery;
-    trigger(event: string, ...params: any[]): JQuery;
-    fn: any;
-  }
-}
+import SkeletonBlogList from "./SkeletonBlogList";
 
 interface Blog {
   id: number;
@@ -58,10 +49,10 @@ const BlogListOwlCarousel: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [didFetch, setDidFetch] = useState<boolean>(false);
 
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const initializedRef = useRef(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const carouselInitializedRef = useRef(false);
 
-  // Fetch posts (first 4)
+  // fetch posts (keep UI same: show up to 4 latest)
   useEffect(() => {
     const controller = new AbortController();
 
@@ -78,7 +69,7 @@ const BlogListOwlCarousel: React.FC = () => {
           setPosts([]);
           return;
         }
-        const data = await res.json();
+        const data = (await res.json()) as Blog[];
         setPosts(Array.isArray(data) ? data.slice(0, 4) : []);
       } catch (e: any) {
         if (e?.name !== "AbortError") console.error("Error fetching posts:", e);
@@ -92,22 +83,21 @@ const BlogListOwlCarousel: React.FC = () => {
     return () => controller.abort();
   }, []);
 
-  // Progressive Owl init: enhance only after posts are rendered
-  useEffect(() => {
-    const needsCarousel = !loading && posts.length > 3;
-    if (!needsCarousel || initializedRef.current) return;
-    if (!wrapperRef.current || typeof window === "undefined") return;
+  const isCarousel = !loading && posts.length > 3;
 
-    (async () => {
+  // init/destroy owl when needed
+  useEffect(() => {
+    if (loading || !isCarousel || !carouselRef.current || typeof window === "undefined") return;
+
+    const init = async () => {
       try {
         const jQuery = (await import("jquery")).default as any;
         (window as any).$ = jQuery;
         (window as any).jQuery = jQuery;
 
-        // @ts-expect-error: plugin no types
+        // @ts-expect-error - plugin has no types
         await import("owl.carousel");
 
-        // Inject Owl CSS once
         if (!document.querySelector('link[href*="owl.carousel.min.css"]')) {
           const link = document.createElement("link");
           link.rel = "stylesheet";
@@ -116,67 +106,59 @@ const BlogListOwlCarousel: React.FC = () => {
           document.head.appendChild(link);
         }
 
-        // Don't re-init
-        if (initializedRef.current) return;
-
-        // Add owl classes before init (helps with styles)
-        wrapperRef.current?.classList.add("owl-carousel", "owl-theme", "blog-list-slider");
-
-        jQuery(wrapperRef.current).owlCarousel({
-          loop: true,
-          margin: 30,
-          nav: true,
-          dots: false,
-          autoplay: true,
-          autoplayTimeout: 3000,
-          autoplayHoverPause: true,
-          navText: [
-            '<span class="owl-nav-prev text-2xl cursor-pointer">&#10094;</span>',
-            '<span class="owl-nav-next text-2xl cursor-pointer">&#10095;</span>',
-          ],
-          responsive: {
-            0: { items: 1, nav: false, dots: true },
-            768: { items: 2, nav: false, dots: false },
-            1024: { items: 3, nav: true, dots: false },
-          },
-          onInitialized: () => {
-            const dots = document.querySelectorAll(".owl-dots .owl-dot");
-            dots.forEach((dot, index) => {
-              dot.setAttribute("aria-label", `Go to blog post ${index + 1}`);
-              dot.setAttribute("role", "button");
-              dot.setAttribute("tabindex", "0");
-            });
-          },
-        });
-
-        initializedRef.current = true;
+        if (jQuery.fn?.owlCarousel && !carouselInitializedRef.current) {
+          jQuery(carouselRef.current).owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            navText: [
+              '<span class="owl-nav-prev text-2xl cursor-pointer">&#10094;</span>',
+              '<span class="owl-nav-next text-2xl cursor-pointer">&#10095;</span>',
+            ],
+            responsive: {
+              0: { items: 1, nav: false, dots: true },
+              768: { items: 2, nav: false, dots: false },
+              1024: { items: 3, nav: true, dots: false },
+            },
+            onInitialized: function () {
+              const dots = document.querySelectorAll(".owl-dots .owl-dot");
+              dots.forEach((dot, index) => {
+                dot.setAttribute("aria-label", `Go to blog post ${index + 1}`);
+                dot.setAttribute("role", "button");
+                dot.setAttribute("tabindex", "0");
+              });
+            },
+          });
+          carouselInitializedRef.current = true;
+        }
       } catch (e) {
-        console.error("Error initializing carousel:", e);
+        console.error("Error loading carousel:", e);
       }
-    })();
+    };
 
-    // Cleanup if we ever unmount
+    init();
+
     return () => {
       if (
-        initializedRef.current &&
+        carouselInitializedRef.current &&
         typeof window !== "undefined" &&
         (window as any).$ &&
-        wrapperRef.current
+        carouselRef.current
       ) {
         try {
-          (window as any).$(wrapperRef.current).trigger("destroy.owl.carousel");
+          (window as any).$(carouselRef.current).trigger("destroy.owl.carousel");
         } catch (e) {
           console.error("Error destroying carousel:", e);
         } finally {
-          initializedRef.current = false;
-          wrapperRef.current.classList.remove("owl-carousel", "owl-theme", "blog-list-slider");
+          carouselInitializedRef.current = false;
         }
       }
     };
-  }, [loading, posts.length]);
-
-  // Render
-  if (loading) return <BlogListLoading />;
+  }, [loading, isCarousel]);
 
   return (
     <section>
@@ -188,20 +170,23 @@ const BlogListOwlCarousel: React.FC = () => {
           Recent Blogs
         </h2>
 
-        {/* Empty state */}
-        {/* {didFetch && posts.length === 0 && (
+        {/* skeleton while loading */}
+        {loading && <SkeletonBlogList />}
+
+        {/* empty state after fetch */}
+        {!loading && didFetch && posts.length === 0 && (
           <div className="mt-8 flex justify-center items-center">
             <div className="text-w-500 text-lg">No blog posts found.</div>
           </div>
-        )} */}
+        )}
 
-        {/* Content: grid by default; Owl enhances if >3 posts */}
-        {posts.length > 0 && (
+        {/* content: carousel (>3) or grid (<=3) */}
+        {!loading && posts.length > 0 && (
           <div
-            ref={wrapperRef}
+            ref={carouselRef}
             className={
-              posts.length > 3
-                ? "mt-5" // owl classes are added dynamically in effect
+              isCarousel
+                ? "owl-carousel owl-theme blog-list-slider mt-5"
                 : "mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             }
           >
@@ -223,7 +208,7 @@ const BlogListOwlCarousel: React.FC = () => {
                 <div
                   key={post.id}
                   className={
-                    posts.length > 3
+                    isCarousel
                       ? "p-6 border rounded-lg border-b-600 bg-gd-tertiary mx-2"
                       : "p-6 border rounded-lg border-b-600 bg-gd-tertiary"
                   }

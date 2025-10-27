@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaCalendarAlt, FaClock } from "react-icons/fa";
-import BlogCardLoading from "./BlogCardLoading";
+import SkeletonBlogCard from "./SkeletonBlogCard";
 
 interface Blog {
   id: number;
@@ -53,11 +53,12 @@ const hasText = (v: unknown): v is string =>
 const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
   const initialHasPosts = (initialPosts?.length ?? 0) > 0;
 
+  // state
   const [posts, setPosts] = useState<Blog[]>(initialPosts || []);
   const [currentPage, setCurrentPage] = useState(1);
-  // start loading if no initial posts to avoid "no posts" flash
+  // start with loader if no initial posts (avoid "no posts" flash)
   const [loading, setLoading] = useState<boolean>(() => !initialHasPosts);
-  // mark when the first fetch cycle has finished
+  // track first fetch completion to show empty state correctly
   const [didFetch, setDidFetch] = useState<boolean>(() => initialHasPosts);
 
   useEffect(() => {
@@ -83,7 +84,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
 
         let data = await response.json();
 
-        if (data.length > 0 && !data[0].meta) {
+        // Fetch meta if missing
+        if (Array.isArray(data) && data.length > 0 && !data[0]?.meta) {
           const postsWithMeta = await Promise.all(
             data.map(async (post: any) => {
               try {
@@ -101,7 +103,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
           data = postsWithMeta;
         }
 
-        setPosts(data || []);
+        setPosts(Array.isArray(data) ? data : []);
       } catch (err: any) {
         if (err?.name !== "AbortError") {
           console.error("Error fetching posts:", err);
@@ -125,17 +127,21 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
     <section>
       <div className="sectionPadding bg-no-repeat bg-cover bg-[url('../img/bc/explore-bg.png')]">
         <div className="container px-5 mx-auto xl:px-0">
-          {/* Loader */}
-          {loading && <BlogCardLoading />}
+          {/* Loader (react-loading-skeleton) */}
+          {loading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <SkeletonBlogCard />
+            </div>
+          )}
 
-          {/* Empty state: only after fetch completes */}
-          {/* { didFetch && posts.length === 0 && (
+          {/* Empty state: only after the fetch completes */}
+          {/* {!loading && didFetch && posts.length === 0 && (
             <div className="flex justify-center items-center py-12">
               <div className="text-w-500 text-lg">No blog posts found.</div>
             </div>
           )} */}
 
-          {/* Grid */}
+          {/* Grid with real data */}
           {!loading && posts.length > 0 && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
