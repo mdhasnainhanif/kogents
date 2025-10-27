@@ -53,7 +53,7 @@ const FaqSection: React.FC<{ data: FaqSectionData }> = ({ data }) => {
 
           {data.heading && (
             <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
-              {data.heading}
+              {data.heading}...
             </h2>
           )}
 
