@@ -250,7 +250,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
   const openModal = useModalStore((state) => state.openModal);
 
   // Load More logic (show N, then add chunks)
-  const INITIAL_COUNT = 8;
+  const INITIAL_COUNT = 10;
   const CHUNK = 4;
   const [visibleCount, setVisibleCount] = useState<number>(INITIAL_COUNT);
 
