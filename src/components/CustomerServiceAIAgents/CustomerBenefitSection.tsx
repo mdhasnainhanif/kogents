@@ -39,7 +39,7 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
     <div
       id="benefitsSection"
       className="paddingOnMobile2 pb-0 bg-center bg-no-repeat bg-cover pt-0"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      // style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="container px-5 mx-auto xl:px-0">
         <div className="flex flex-col items-center justify-center">

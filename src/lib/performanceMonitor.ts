@@ -14,7 +14,7 @@ class PerformanceMonitor {
     if (!this.isEnabled) return;
 
     // Monitor layout thrashing
-    this.monitorLayoutThrashing();
+    // this.monitorLayoutThrashing();
     
     // Monitor forced reflows
     this.monitorForcedReflows();
@@ -23,52 +23,52 @@ class PerformanceMonitor {
     this.monitorScrollPerformance();
   }
 
-  private monitorLayoutThrashing() {
-    let lastOffsetHeight = 0;
-    let lastOffsetWidth = 0;
-    let lastClientHeight = 0;
-    let lastClientWidth = 0;
+  // private monitorLayoutThrashing() {
+  //   let lastOffsetHeight = 0;
+  //   let lastOffsetWidth = 0;
+  //   let lastClientHeight = 0;
+  //   let lastClientWidth = 0;
 
-    const checkForThrashing = () => {
-      const elements = document.querySelectorAll('*');
-      let thrashingDetected = false;
+  //   const checkForThrashing = () => {
+  //     const elements = document.querySelectorAll('*');
+  //     let thrashingDetected = false;
 
-      elements.forEach((el) => {
-        if (el instanceof HTMLElement) {
-          const currentOffsetHeight = el.offsetHeight;
-          const currentOffsetWidth = el.offsetWidth;
-          const currentClientHeight = el.clientHeight;
-          const currentClientWidth = el.clientWidth;
+  //     elements.forEach((el) => {
+  //       if (el instanceof HTMLElement) {
+  //         const currentOffsetHeight = el.offsetHeight;
+  //         const currentOffsetWidth = el.offsetWidth;
+  //         const currentClientHeight = el.clientHeight;
+  //         const currentClientWidth = el.clientWidth;
 
-          if (currentOffsetHeight !== lastOffsetHeight ||
-              currentOffsetWidth !== lastOffsetWidth ||
-              currentClientHeight !== lastClientHeight ||
-              currentClientWidth !== lastClientWidth) {
-            thrashingDetected = true;
-          }
+  //         if (currentOffsetHeight !== lastOffsetHeight ||
+  //             currentOffsetWidth !== lastOffsetWidth ||
+  //             currentClientHeight !== lastClientHeight ||
+  //             currentClientWidth !== lastClientWidth) {
+  //           thrashingDetected = true;
+  //         }
 
-          lastOffsetHeight = currentOffsetHeight;
-          lastOffsetWidth = currentOffsetWidth;
-          lastClientHeight = currentClientHeight;
-          lastClientWidth = currentClientWidth;
-        }
-      });
+  //         lastOffsetHeight = currentOffsetHeight;
+  //         lastOffsetWidth = currentOffsetWidth;
+  //         lastClientHeight = currentClientHeight;
+  //         lastClientWidth = currentClientWidth;
+  //       }
+  //     });
 
-      if (thrashingDetected) {
-        this.logWarning('Layout thrashing detected - multiple DOM measurements in quick succession');
-      }
-    };
+  //     if (thrashingDetected) {
+  //       this.logWarning('Layout thrashing detected - multiple DOM measurements in quick succession');
+  //     }
+  //   };
 
-    // Check every 100ms
-    setInterval(checkForThrashing, 100);
-  }
+  //   // Check every 100ms
+  //   setInterval(checkForThrashing, 100);
+  // }
 
   private monitorForcedReflows() {
     const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
     const originalOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
     const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
-    const originalClientHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'clientHeight');
-    const originalClientWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'clientWidth');
+    // const originalClientHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'clientHeight');
+    // const originalClientWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'clientWidth');
 
     let lastCallTime = 0;
     const THRESHOLD = 16; // 60fps threshold
