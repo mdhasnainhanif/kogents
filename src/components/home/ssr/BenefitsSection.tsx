@@ -63,17 +63,21 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
           <span className="buttonAnimation pink inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
             Benefits
           </span>
-          <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+          <div className="row">
+            <div className="col-md-12">
+          <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize w-100">
             Kogents Ai Agents Come
             <span className="inline-block lg:block"></span>With Tremendous
             Benefits
           </h2>
-          <p className="w-75 mb-16 text-center paraColor subHeading">
+          <p className="w-75 mb-16 text-center paraColor subHeading w-100">
             Deploy AI agents to streamline operations and amplify your
             business's efficiency. These agents optimize processes&#44; reduce
             delays&#44; and enhance output&#44; ensuring you gain a competitive
             edge with speed and precision.
           </p>
+          </div>
+          </div>
 
           <div className="row rowGap w-100 mt-5">
             <div className="col-xl-7 paddingX0">

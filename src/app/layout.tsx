@@ -37,10 +37,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       {/* 2) Blocking apply (keeps layout stable) */}
       <link rel="preload" href="/assets/css/bootstrap.css" as="style" />          
-      <link rel="stylesheet" href="/assets/css/bootstrap.css" as="style" />          
+      <link rel="stylesheet" href="/assets/css/bootstrap.css" />
 
       {/* 3) Your styles */}
-      <link rel="stylesheet" href="/assets/css/styles.css" as="style" />
+      <link rel="stylesheet" href="/assets/css/styles.css" />
       {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          
       <link rel="preload" href="/assets/css/output.css" as="style" />           */}
       <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/x-icon" />
