@@ -33,16 +33,14 @@ export async function POST(req: NextRequest) {
         // Email content
         const mailOptions = {
             from: "Kogents",
-            to: email,
-            subject: "Thank You for Getting in Touch!",
+            to: "info@kogents.ai",
+            subject: "Customer Query",
             html: `
                 <div style="font-family:sans-serif; line-height:1.5; color:#333;">
-                <h2>Hi,</h2>
-                <p>Thank you for reaching out to us! We truly appreciate your interest.</p>
-                <p>Our team will get back to you shortly.</p>
-                <br/>
-                <p>Warm regards,</p>
-                <p><strong>Kogents Team</strong></p>
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Phone: ${phone}</p>
+                <p>Description: ${description}</p>
                 </div>
       `,
         };
