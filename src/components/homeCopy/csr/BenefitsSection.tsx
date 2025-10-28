@@ -30,7 +30,7 @@ const defaultCounterData: CounterDataItem[] = [
   {
     id: 1,
     target: 93,
-    title: "Smart Tools. Smarter Outcomes...",
+    title: "Smart Tools. Smarter Outcomes",
     description: "Kogents AI Agents do more than reply — they act.",
     className: "counter1"
   },

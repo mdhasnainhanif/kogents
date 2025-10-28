@@ -6,6 +6,9 @@
   transform: translateY(-50%);
   z-index: 1;
   display: none;
+  width: auto;
+  height: auto;
+  pointer-events: none;
 }
 
 .formControl {
@@ -37,6 +40,7 @@ textarea.formControl {
 @media (max-width: 768px) {
   .position-absolute {
     display: block;
+    border: 2px solid red;
   }
 }
 
