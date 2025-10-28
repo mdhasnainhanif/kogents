@@ -5,6 +5,7 @@ import { useModalStore } from "@/stores/useModalStore";
 import { useFormStore } from "@/stores/useFormStore";
 import { useTrackingParams } from "@/stores/useTrackingParams";
 import { ArrowRightIcon } from "@/icons";
+import { handleContactFormSubmit } from "@/services/contactFormService";
 
 const CTAModal = () => {
   const { isOpen, closeModal } = useModalStore();
@@ -52,9 +53,9 @@ const CTAModal = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await submitForm();
+    await handleContactFormSubmit(e);
   };
 
   const handleInputChange = (field: keyof typeof formData, value: string) => {

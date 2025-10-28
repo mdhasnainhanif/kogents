@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useFormStore } from "@/stores/useFormStore";
 import { useTrackingParams } from "@/stores/useTrackingParams";
 import { ArrowRightIcon } from "@/icons";
+import { handleContactFormSubmit } from "@/services/contactFormService";
 
 const ContactSection = () => {
   const {
@@ -219,7 +220,7 @@ const ContactSection = () => {
               <form
                 className="mt-4 flex flex-col gap-3 contactForm"
                 id="contact_form2"
-                onSubmit={onSubmit}
+                onSubmit={handleContactFormSubmit}
               >
                 {/* Success / Error */}
                 {success && (

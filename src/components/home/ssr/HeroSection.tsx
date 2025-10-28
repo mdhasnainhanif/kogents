@@ -1,9 +1,13 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
+import { handleContactFormSubmit } from "@/services/contactFormService";
 
 const HeroSection = () => {
+
+ 
   return (
     <>
       <div className="boxesBg ...">
@@ -13,7 +17,7 @@ const HeroSection = () => {
               <div className="col-lg-6">
                 <div className="modal_form">
                   <div className="bannerForm hero">
-                    <form id="contact_form" className="formBannerContact">
+                    <form id="contact_form" onSubmit={handleContactFormSubmit} className="formBannerContact">
                       <h1 className="bookConsultation modalBookFree">Book a
                         <span className="textPurpleForm"> Free</span> Consultation
                       </h1>
@@ -63,10 +67,10 @@ const HeroSection = () => {
                         />
                         <span className="validation-error text-light d-none"></span>
                       </div>
-                      
+
                       <div className="border-button">
-                        <button 
-                          type="submit" 
+                        <button
+                          type="submit"
                           className="buttonAnimation2 poppupBtn w-100 flex mt-3 justify-center items-center gap-2 px-6 py-[14px] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
                         >
                           <span>Submit</span>
@@ -281,8 +285,8 @@ const HeroSection = () => {
             </div>
           </section>
         </section>
-        
-        
+
+
       </div >
     </>
   );
