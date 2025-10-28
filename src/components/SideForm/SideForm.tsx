@@ -22,7 +22,7 @@ const SideForm = () => {
     // Delay component loading by 30 seconds
     const componentTimer = setTimeout(() => {
       setComponentLoaded(true);
-    }, 3000);
+    }, 30000);
 
     return () => clearTimeout(componentTimer);
   }, []);
