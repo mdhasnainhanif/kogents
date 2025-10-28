@@ -2,12 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useFormStore } from '@/stores/useFormStore';
 import { ArrowRightIcon } from '@/icons';
+import styles from './SideForm.module.css';
 
 const SideForm = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [stylesLoaded, setStylesLoaded] = useState(false);
   const [componentLoaded, setComponentLoaded] = useState(false);
-  const [styles, setStyles] = useState<any>({});
   
   const {
     formData,
@@ -23,31 +22,11 @@ const SideForm = () => {
     // Delay component loading by 30 seconds
     const componentTimer = setTimeout(() => {
       setComponentLoaded(true);
-    }, 30000);
+    }, 3000);
 
     return () => clearTimeout(componentTimer);
   }, []);
 
-  useEffect(() => {
-    if (!componentLoaded) return;
-
-    // Load CSS module dynamically after component is ready
-    const loadStyles = async () => {
-      try {
-        // Import the CSS module dynamically
-        const stylesModule = await import('./SideForm.module.css');
-        setStyles(stylesModule.default);
-        setStylesLoaded(true);
-      } catch (error) {
-        console.error('Failed to load SideForm styles:', error);
-        // Fallback: create empty styles object
-        setStyles({});
-        setStylesLoaded(true);
-      }
-    };
-
-    loadStyles();
-  }, [componentLoaded]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,31 +38,34 @@ const SideForm = () => {
   };
 
   const toggleForm = () => { 
+    console.log('Toggle clicked, current isOpen:', isOpen);
     setIsOpen(!isOpen);
     if (!isOpen) {
       resetForm();
     }
   };
 
-  // Don't render until component is loaded and styles are loaded
-  if (!componentLoaded || !stylesLoaded) {
+  // Don't render until component is loaded
+  if (!componentLoaded) {
     return null;
   }
 
+  console.log('Rendering SideForm, isOpen:', isOpen, 'componentLoaded:', componentLoaded);
+  
   return (
-    <div className={styles['position-absolute'] || 'position-absolute'}>
-      <div className={`${styles['static_form_main'] || 'static_form_main'} ${isOpen ? (styles['right_0_rem'] || 'right_0_rem') : ''}`}>
+    <div className={styles['position-absolute']}>
+      <div className={`${styles['static_form_main']} ${isOpen ? styles['right_0_rem'] : ''}`}>
         {/* Toggle Icon */}
-        <div className={`sideFormIcon ${styles['staticform_icon'] || 'staticform_icon'} ${styles.letsGetStartedToggle || 'letsGetStartedToggle'}`} onClick={toggleForm}>
+        <div className={`sideFormIcon ${styles['staticform_icon']} ${styles.letsGetStartedToggle}`} onClick={toggleForm}>
           <h6>Book a Free Consultation!</h6>
         </div>
         
         {/* Form Content */}
-        <div className={`${styles['side_form'] || 'side_form'} pt-4 pb-3 px-4 mx-auto`}>
-          <h3 className={`${styles.heading || 'heading'} text-center text-white fw-bold h3`}>
+        <div className={`${styles['side_form']} pt-4 pb-3 px-4 mx-auto`}>
+          <h3 className={`${styles.heading} text-center text-white fw-bold h3`}>
             Book a <span className="textPurpleForm">Free</span> Consultation
           </h3>
-          <form className={`mt-2 contactForm ${styles['sidepopup-form'] || 'sidepopup-form'}`} onSubmit={handleSubmit}>
+          <form className={`mt-2 contactForm ${styles['sidepopup-form']}`} onSubmit={handleSubmit}>
             {/* Success Message */}
             {success && (
               <div className="border rounded-md p-3 mb-3" style={{background:'#0f5132', borderColor:'#badbcc'}}>
@@ -105,7 +87,7 @@ const SideForm = () => {
                 id="name"
                 name="name"
                 placeholder="Your Name Here"
-                className={`${styles.formControl || 'formControl'}`}
+                className={styles.formControl}
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 required
@@ -120,7 +102,7 @@ const SideForm = () => {
                 id="phone"
                 name="phone"
                 placeholder="Phone Number"
-                className={`${styles.formControl || 'formControl'} mt-3`}
+                className={`${styles.formControl} mt-3`}
                 value={formData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
                 required
@@ -135,7 +117,7 @@ const SideForm = () => {
                 id="email"
                 name="email"
                 placeholder="Your Email"
-                className={`${styles.formControl || 'formControl'} mt-3`}
+                className={`${styles.formControl} mt-3`}
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
                 required
@@ -150,7 +132,7 @@ const SideForm = () => {
                 id="project_need"
                 name="project_need"
                 placeholder="Describe Your Project Need"
-                className={`${styles.formControl || 'formControl'} bannerFormTextArea mt-3`}
+                className={`${styles.formControl} bannerFormTextArea mt-3`}
                 value={formData.project_need}
                 onChange={(e) => handleInputChange('project_need', e.target.value)}
                 required

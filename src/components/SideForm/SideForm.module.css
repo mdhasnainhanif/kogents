@@ -40,7 +40,6 @@ textarea.formControl {
 @media (max-width: 768px) {
   .position-absolute {
     display: block;
-    border: 2px solid red;
   }
 }
 
@@ -75,6 +74,7 @@ textarea.formControl {
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
   border-top-left-radius: 0.63rem;
   border-bottom-left-radius: 0.63rem;
+  pointer-events: auto;
 }
 
 .side_form {
