@@ -19,64 +19,87 @@ const NewFooter = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const handleSubscribe = async (e) => {
+  // const handleSubscribe = async (e) => {
+  //   e.preventDefault();
+  //   console.log("Newsletter form submitted with email:", email);
+
+  //   if (!email) {
+  //     setError("Email is required");
+  //     return;
+  //   }
+
+  //   setIsLoading(true);
+  //   setError(null);
+  //   setSuccess(null);
+
+  //   try {
+  //     console.log("Sending newsletter subscription request...");
+  //     const response = await fetch("/api/contact/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         name: "Newsletter Subscriber",
+  //         email: email,
+  //         phone: "",
+  //         project_need: "Newsletter subscription request",
+  //         gclid: "",
+  //         fbclid: "",
+  //         igclid: "",
+  //         ttclid: "",
+  //         fingerprint: "",
+  //         chat: "",
+  //         stable_session_id: "",
+  //         fingerprintdata: "",
+  //       }),
+  //     });
+
+  //     console.log("Response status:", response.status);
+  //     const result = await response.json();
+  //     console.log("Response result:", result);
+
+  //     if (result.status === "success") {
+  //       setSuccess("Thank you for subscribing to our newsletter!");
+  //       setEmail("");
+        
+  //       // Auto-hide success message after 4 seconds
+  //       setTimeout(() => {
+  //         setSuccess(null);
+  //       }, 4000);
+  //     } else {
+  //       setError(result.message || "Subscription failed. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Newsletter subscription error:", error);
+  //     setError("Network error. Please check your connection and try again.");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
+    const handleSubscribe = async (e) => {
     e.preventDefault();
-    console.log("Newsletter form submitted with email:", email);
 
     if (!email) {
-      setError("Email is required");
+      setError("Please enter a valid email address.");
       return;
     }
 
-    setIsLoading(true);
-    setError(null);
-    setSuccess(null);
+    const res = await fetch("/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ to: email }),
+    });
 
-    try {
-      console.log("Sending newsletter subscription request...");
-      const response = await fetch("/api/contact/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: "Newsletter Subscriber",
-          email: email,
-          phone: "",
-          project_need: "Newsletter subscription request",
-          gclid: "",
-          fbclid: "",
-          igclid: "",
-          ttclid: "",
-          fingerprint: "",
-          chat: "",
-          stable_session_id: "",
-          fingerprintdata: "",
-        }),
-      });
-
-      console.log("Response status:", response.status);
-      const result = await response.json();
-      console.log("Response result:", result);
-
-      if (result.status === "success") {
-        setSuccess("Thank you for subscribing to our newsletter!");
-        setEmail("");
-        
-        // Auto-hide success message after 4 seconds
-        setTimeout(() => {
-          setSuccess(null);
-        }, 4000);
-      } else {
-        setError(result.message || "Subscription failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Newsletter subscription error:", error);
-      setError("Network error. Please check your connection and try again.");
-    } finally {
-      setIsLoading(false);
+    const data = await res.json();
+    if (!res.ok) { throw new Error(data.error || "Failed to send email") }
+    else {
+      setSuccess("Subscribed successfully!");
+      setEmail("");
     }
-  };
+  }
+
 
   return (
     <footer className="footer-main bg-center bg_footer new bg-no-repeat bg-cover">
