@@ -111,7 +111,7 @@ const AIAgentSlider = () => {
                 >
                   AI Agents Built for Every Business Need
                 </h2>
-                <p className="paraColor mx-auto text-center subHeading maxWidth39 mb-2">
+                <p className="paraColor mx-auto text-center subHeading maxWidth39 mb-5">
                   Our agents don’t just reply, they adapt to your industry and workflow. Whether in healthcare, HR, or education, Kogents AI Agents integrate seamlessly into your operations to deliver speed, scale, and efficiency.
                 </p>
                 {/* <a

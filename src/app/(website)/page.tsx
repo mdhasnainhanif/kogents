@@ -156,7 +156,7 @@ export default function HomePage() {
         <AgentOS />
         <KogentBenefits />
         <section className="cv">
-          <FAQSection />
+          <FAQSection showLoadMore={true} />
         </section>
         <BlogList />
       </div>

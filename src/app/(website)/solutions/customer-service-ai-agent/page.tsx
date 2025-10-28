@@ -7,7 +7,6 @@ import CustomerBenefitSection from "@/components/CustomerServiceAIAgents/Custome
 import CustomerCards from "@/components/CustomerServiceAIAgents/CustomerCards";
 import CustomerGrowthCards from "@/components/CustomerServiceAIAgents/CustomerGrowthCards";
 import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerServiceCard";
-import CustomerServiceCaseStudy from "@/components/CustomerServiceAIAgents/CustomerServiceCaseStudy";
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";

@@ -2,7 +2,7 @@
 import { ArrowRightIcon } from "@/icons";
 import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 
 type Faq = { q: string; a: string };
 
@@ -25,16 +25,6 @@ const CustomerServiceFaqSection: React.FC<CustomerServiceFaqSectionProps> = ({
 }) => {
   const { openModal } = useModalStore();
   const [openIndex, setOpenIndex] = useState<number>(-1);
-  const INITIAL_COUNT = 5;
-  const CHUNK = 5;
-  const [visibleCount, setVisibleCount] = useState<number>(INITIAL_COUNT);
-
-  const visibleFaqs = useMemo(
-    () => faqItems.slice(0, visibleCount),
-    [faqItems, visibleCount]
-  );
-
-  const hasMore = visibleCount < faqItems.length;
 
   return (
     <div
@@ -58,23 +48,22 @@ const CustomerServiceFaqSection: React.FC<CustomerServiceFaqSectionProps> = ({
             {description}
           </p>
 
-          <div
-            className="flex flex-col gap-4 w-full lg:max-w-[850px] mt-4"
-          >
-            {visibleFaqs.map((item, idx) => {
-              const absoluteIndex = idx; // within current slice, 0-based
+          <div className="row mt-4">
+            {faqItems.map((item, idx) => {
+              const absoluteIndex = idx;
               const isOpen = openIndex === absoluteIndex;
               return (
-                <AccordionItem
-                  key={item.q}
-                  item={item}
-                  isOpen={isOpen}
-                  onToggle={() =>
-                    setOpenIndex((prev) =>
-                      prev === absoluteIndex ? -1 : absoluteIndex
-                    )
-                  }
-                />
+                <div key={item.q} className="col-md-6 mb-4">
+                  <AccordionItem
+                    item={item}
+                    isOpen={isOpen}
+                    onToggle={() =>
+                      setOpenIndex((prev) =>
+                        prev === absoluteIndex ? -1 : absoluteIndex
+                      )
+                    }
+                  />
+                </div>
               );
             })}
           </div>
@@ -82,29 +71,6 @@ const CustomerServiceFaqSection: React.FC<CustomerServiceFaqSectionProps> = ({
 
         <div className="row py-4">
           <div className="load-button d-flex  justify-center flex-wrap align-items-center gap-3">
-            {hasMore ? (
-              <div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setVisibleCount((c) => Math.min(c + CHUNK, faqItems.length))
-                  }
-                  className="loadMoreBtn buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit"
-                >
-                  Load More
-                  <ArrowRightIcon />
-                </button>
-              </div>
-            ) : (
-              <div>
-                <span className="buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit opacity-50 cursor-default">
-                  No More FAQs
-                </span>
-              </div>
-            )}
-
-            <p className="m-0 text-light">or</p>
-
             <button
               className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
               onClick={openModal}

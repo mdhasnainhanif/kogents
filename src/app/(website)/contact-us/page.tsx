@@ -93,7 +93,7 @@ const page = () => {
           backgroundImage="/assets/img/bc/video-bg.webp"
         />
       </div>
-      <FaqSection />
+      <FaqSection showLoadMore={true} />
     </>
   )
 }

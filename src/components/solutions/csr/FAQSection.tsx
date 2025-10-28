@@ -241,27 +241,28 @@ const AccordionItem: React.FC<{
 
 interface FaqSectionProps {
   data?: Faq[];
+  showLoadMore?: boolean;
 }
 
-const FaqSection: React.FC<FaqSectionProps> = ({ data }) => {
-  // open the first item by default
-  const [openIndex, setOpenIndex] = useState<number>(0);
+const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) => {
+  // All items closed by default
+  const [openIndex, setOpenIndex] = useState<number>(-1);
   const openModal = useModalStore((state) => state.openModal);
 
   // Load More logic (show N, then add chunks)
-  const INITIAL_COUNT = 3;
-  const CHUNK = 3;
+  const INITIAL_COUNT = 8;
+  const CHUNK = 4;
   const [visibleCount, setVisibleCount] = useState<number>(INITIAL_COUNT);
 
   // Use provided data if available, otherwise fallback to static FAQ_ITEMS
   const faqs = data && data.length > 0 ? data : FAQ_ITEMS;
 
   const visibleFaqs = useMemo(
-    () => faqs.slice(0, visibleCount),
-    [faqs, visibleCount]
+    () => showLoadMore ? faqs.slice(0, visibleCount) : faqs,
+    [faqs, visibleCount, showLoadMore]
   );
 
-  const hasMore = visibleCount < faqs.length;
+  const hasMore = showLoadMore && visibleCount < faqs.length;
 
   return (
     <div
@@ -280,67 +281,77 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data }) => {
           >
             Frequently Asked Questions
           </h2>
-          {/* <p className="mb-16 w-75 text-center mx-auto mt-2 subHeading paraColor">
-            Learn the answers to common questions about our AI solutions, tools,
-            and services, helping you understand how they can benefit your
-            business and streamline operations.
-          </p> */}
-
-          <div className="flex flex-col gap-4 w-full lg:max-w-[850px] mt-4">
+          <div className="row mt-4">
             {visibleFaqs.map((item, idx) => {
               const absoluteIndex = idx; // within current slice, 0-based
               const isOpen = openIndex === absoluteIndex;
               return (
-                <AccordionItem
-                  key={item.q}
-                  item={item}
-                  isOpen={isOpen}
-                  onToggle={() =>
-                    setOpenIndex((prev) =>
-                      prev === absoluteIndex ? -1 : absoluteIndex
-                    )
-                  }
-                />
+                <div key={item.q} className="col-md-6 mb-4">
+                  <AccordionItem
+                    item={item}
+                    isOpen={isOpen}
+                    onToggle={() =>
+                      setOpenIndex((prev) =>
+                        prev === absoluteIndex ? -1 : absoluteIndex
+                      )
+                    }
+                  />
+                </div>
               );
             })}
           </div>
         </div>
 
-        <div className="row py-4">
-          <div className="load-button d-flex  justify-center flex-wrap align-items-center gap-3">
-            {hasMore ? (
-              <div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setVisibleCount((c) => Math.min(c + CHUNK, faqs.length))
-                  }
-                  className="loadMoreBtn buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit"
-                >
-                  Load More
-                  <ArrowRightIcon />
-                </button>
-              </div>
-            ) : (
-              <div>
-                <span className="buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit opacity-50 cursor-default">
-                  No More FAQs
-                </span>
-              </div>
-            )}
+        {showLoadMore ? (
+          <div className="row py-4">
+            <div className="load-button d-flex  justify-center flex-wrap align-items-center gap-3">
+              {hasMore ? (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setVisibleCount((c) => Math.min(c + CHUNK, faqs.length))
+                    }
+                    className="loadMoreBtn buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit"
+                  >
+                    Load More
+                    <ArrowRightIcon />
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <span className="buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit opacity-50 cursor-default">
+                    No More FAQs
+                  </span>
+                </div>
+              )}
 
-            <p className="m-0 text-light">or</p>
+              <p className="m-0 text-light">or</p>
 
-            <button
-              className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
-              onClick={openModal}
-              type="button"
-            >
-              Connect With Ai Agent
-              <ArrowRightIcon />
-            </button>
+              <button
+                className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
+                onClick={openModal}
+                type="button"
+              >
+                Connect With Ai Agent
+                <ArrowRightIcon />
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="row py-4">
+            <div className="load-button d-flex  justify-center flex-wrap align-items-center gap-3">
+              <button
+                className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
+                onClick={openModal}
+                type="button"
+              >
+                Connect With Ai Agent
+                <ArrowRightIcon />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
