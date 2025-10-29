@@ -32,14 +32,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
+    <link
+      rel="preload"
+      href="/assets/fonts/Satoshi-Variable.ttf"
+      as="font"
+      type="font/ttf"
+      crossOrigin="anonymous"
+    />
       {/* 1) Preload -> fetch early */}
       {/* <link rel="preload" as="style" href="/assets/css/bootstrap.css" /> */}
 
       {/* 2) Blocking apply (keeps layout stable) */}
-      <link rel="preload" href="/assets/css/bootstrap.css" as="style" />          
+      <link rel="preload" href="/assets/css/bootstrap.css" as="style" />      
       <link rel="stylesheet" href="/assets/css/bootstrap.css" />
 
       {/* 3) Your styles */}
+      <link rel="stylesheet" href="/assets/css/styles.css" />
       <link rel="stylesheet" href="/assets/css/styles.css" />
       {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          
       <link rel="preload" href="/assets/css/output.css" as="style" />           */}

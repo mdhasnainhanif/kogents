@@ -298,7 +298,7 @@ const NewFooter = () => {
                   <Link href="/platforms/line-ai-agent">Line Agents</Link>
                 </li> */}
               </ul>
-              <h6 className="footCate">Resources</h6>
+              <p className="h6 footCate">Resources</p>
               <ul>
                 <li>
                   <Link href="/security">Security</Link>
@@ -347,7 +347,7 @@ const NewFooter = () => {
                   </Link>
                 </li>
               </ul>
-              <h6 className="footCate1">Company</h6>
+              <p className="h6 footCate1">Company</p>
               <ul>
                 <li>
                   <Link href="/about-us">About Us</Link>
@@ -405,7 +405,7 @@ const NewFooter = () => {
                   <Link href="/solutions">See All</Link>
                 </li>
               </ul>
-              <h6 className="footCate">Legal</h6>
+              <p className="h6 footCate">Legal</p>
               <ul>
                 <li>
                   <Link href="/privacy-statement">Privacy Policy</Link>

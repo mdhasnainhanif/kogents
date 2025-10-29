@@ -15,17 +15,45 @@ export const handleContactFormSubmit = async (e: React.FormEvent<HTMLFormElement
         return;
     }
 
-    const res = await fetch("/api/contactForm", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, description }),
-    });
+    console.log("📤 Submitting Contact Form...");
+    console.log("- Name:", name);
+    console.log("- Email:", email);
+    console.log("- Phone:", phone);
+    console.log("- Description:", description);
 
-    const data = await res.json();
-    console.log(data)
-    if (!res.ok) { throw new Error(data.error || "Failed to send email") }
-    else {
-        form.reset();
-        alert("Message sent successfully!");
+    try {
+        const res = await fetch("/api/contactForm", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, phone, description }),
+        });
+
+        const data = await res.json();
+        
+        console.log("📥 API Response Received:");
+        console.log("- Status:", res.status);
+        console.log("- Status OK:", res.ok);
+        console.log("- Response Data:", data);
+
+        if (!res.ok) {
+            console.error("❌ API Error Response:");
+            console.error("- Error:", data.error);
+            console.error("- Details:", data.details);
+            console.error("- Code:", data.code);
+            throw new Error(data.error || data.details || "Failed to send email");
+        } else {
+            console.log("✅ Email sent successfully!");
+            console.log("- Message ID:", data.messageId);
+            form.reset();
+            alert("Message sent successfully!");
+        }
+    } catch (fetchError: any) {
+        console.error("❌ Fetch Error:");
+        console.error("- Error Type:", fetchError.constructor.name);
+        console.error("- Error Message:", fetchError.message);
+        console.error("- Full Error:", fetchError);
+        
+        alert(`Error: ${fetchError.message || "Failed to send message. Please try again."}`);
+        throw fetchError;
     }
 }
