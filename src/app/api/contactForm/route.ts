@@ -111,33 +111,83 @@ export async function POST(req: NextRequest) {
       </div>
     `;
 
+    // Try sending to info@kogents.ai
+    const mailOptions = {
+      from: `"Kogents" <${user}>`,
+      to: "info@kogents.ai",
+      replyTo: body.email,
+      subject: "Customer Query - Contact Form",
+      html,
+    };
+
     console.log("📤 Sending Email...");
-    console.log("- From:", user);
-    console.log("- To: info@kogents.ai");
-    console.log("- Subject: Customer Query - Contact Form");
+    console.log("- From:", mailOptions.from);
+    console.log("- To:", mailOptions.to);
+    console.log("- ReplyTo:", mailOptions.replyTo);
+    console.log("- Subject:", mailOptions.subject);
 
     // Send email with timeout
     const info = await Promise.race([
-      transporter.sendMail({
-        from: `"Kogents" <${user}>`,
-        to: "info@kogents.ai",
-        replyTo: body.email,
-        subject: "Customer Query - Contact Form",
-        html,
-      }),
+      transporter.sendMail(mailOptions),
       new Promise((_, reject) =>
         setTimeout(() => reject(new Error("Email sending timeout")), 20000)
       )
     ]) as any;
 
+    console.log("📧 Raw SMTP Response Details:");
+    console.log("- Full Info Object:", JSON.stringify({
+      messageId: info.messageId,
+      accepted: info.accepted,
+      rejected: info.rejected,
+      pending: info.pending,
+      response: info.response,
+      envelope: info.envelope
+    }, null, 2));
+
     const duration = Date.now() - startTime;
     console.log("✅ Email Sent Successfully!");
     console.log("- Message ID:", info.messageId);
+    console.log("- Response:", info.response);
+    console.log("- Accepted Recipients:", info.accepted);
+    console.log("- Rejected Recipients:", info.rejected);
+    console.log("- Pending Recipients:", info.pending);
     console.log("- Duration:", duration + "ms");
+
+    // Check if email was actually accepted by SMTP server
+    if (info.accepted && info.accepted.length > 0) {
+      console.log("✅ Email accepted by SMTP server for:", info.accepted.join(", "));
+    }
+    if (info.rejected && info.rejected.length > 0) {
+      console.error("❌ Email REJECTED by SMTP server for:", info.rejected.join(", "));
+    }
+    if (info.pending && info.pending.length > 0) {
+      console.warn("⚠️ Email PENDING for:", info.pending.join(", "));
+    }
+
+    // Also check the envelope to see what addresses were actually sent to
+    if (info.envelope) {
+      console.log("📮 Envelope Details:");
+      console.log("- From:", info.envelope.from);
+      console.log("- To:", info.envelope.to);
+    }
+
+    // Warning if info@kogents.ai is not in accepted array
+    const infoEmailAccepted = info.accepted?.includes("info@kogents.ai");
+    if (!infoEmailAccepted) {
+      console.warn("⚠️ WARNING: info@kogents.ai is NOT in accepted recipients!");
+      console.warn("- This means SMTP server may not deliver the email");
+      console.warn("- Check SMTP server restrictions or domain verification");
+    }
 
     return NextResponse.json({ 
       message: "Email sent successfully", 
-      messageId: info.messageId 
+      messageId: info.messageId,
+      accepted: info.accepted || [],
+      rejected: info.rejected || [],
+      pending: info.pending || [],
+      response: info.response || "No response from SMTP server",
+      envelope: info.envelope || null,
+      warning: !infoEmailAccepted ? "info@kogents.ai not in accepted recipients - may not be delivered" : undefined
     });
   } catch (err: any) {
     const duration = Date.now() - startTime;
