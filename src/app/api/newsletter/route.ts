@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;     // 30 seconds for Vercel/serverless (Pro plan allows up to 60s)
 
 interface EmailRequestBody {
   to: string;
@@ -56,15 +57,20 @@ export async function POST(req: NextRequest) {
         minVersion: "TLSv1.2",
         rejectUnauthorized: false, // Fix for self-signed certificate error
       },
-      connectionTimeout: 15000,
-      greetingTimeout: 15000,
-      socketTimeout: 20000,
+      connectionTimeout: 10000,  // Reduced for faster failure in production
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     });
 
-    // Verify transporter connection
+    // Verify transporter connection (with timeout)
     console.log("🔐 Verifying SMTP Connection...");
     try {
-      await transporter.verify();
+      await Promise.race([
+        transporter.verify(),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error("SMTP verification timeout")), 8000)
+        )
+      ]);
       console.log("✅ SMTP Connection Verified Successfully");
     } catch (verifyError: any) {
       console.error("❌ SMTP Verification Failed:");
@@ -105,8 +111,13 @@ export async function POST(req: NextRequest) {
     console.log("- To:", mailOptions.to);
     console.log("- Subject:", mailOptions.subject);
 
-    // Send the email
-    const info = await transporter.sendMail(mailOptions);
+    // Send the email with timeout
+    const info = await Promise.race([
+      transporter.sendMail(mailOptions),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Email sending timeout")), 20000)
+      )
+    ]) as any;
 
     console.log("✅ Newsletter Email Sent Successfully!");
     console.log("- Message ID:", info.messageId);
