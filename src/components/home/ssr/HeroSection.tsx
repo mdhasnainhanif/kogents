@@ -6,8 +6,11 @@ import Link from "next/link";
 import { handleContactFormSubmit } from "@/services/contactFormService";
 
 const HeroSection = () => {
+  // Brand images data for mapping
+  const brands = [1, 2, 3, 4, 5];
+  // Repeat brands 3 times for infinite scroll animation
+  const brandImages = [...brands, ...brands, ...brands];
 
- 
   return (
     <>
       <div className="boxesBg ...">
@@ -141,146 +144,17 @@ const HeroSection = () => {
           <section className="newSection new pb-0 logoSlideSection">
             <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">
               <div className="inline-flex logo_items animate-slides">
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
+                {brandImages.map((brandNum, index) => (
+                  <Image
+                    key={`brand-${brandNum}-${index}`}
+                    src={`/assets/img/brand/${brandNum}.svg`}
+                    alt={`brand${brandNum}`}
+                    className="mx-4 flex-shrink-0"
+                    width={150}
+                    height={80}
+                    style={{ width: "150px", height: "auto" }}
+                  />
+                ))}
               </div>
             </div>
           </section>

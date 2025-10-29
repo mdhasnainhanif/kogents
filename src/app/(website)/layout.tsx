@@ -13,7 +13,9 @@ export default function LandingLayout({
   return (
     <>
       <Header />
-      {children}
+      <main>
+        {children}
+      </main>
       {/* <Footer /> */}
       <SideForm />
       <NewFooter />
