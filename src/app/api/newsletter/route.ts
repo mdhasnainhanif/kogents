@@ -15,12 +15,12 @@ export async function POST(req: NextRequest) {
                 { error: "Missing required fields: to or name" },
                 { status: 400 }
             );
-        } 
+        }
 
         const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST, // e.g. smtp.gmail.com or smtp.mail.us-east-1.awsapps.com
             port: 587,
-            secure: false, 
+            secure: false,
             auth: {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASS,
@@ -29,8 +29,9 @@ export async function POST(req: NextRequest) {
 
         // Email content
         const mailOptions = {
-            from: "Kogents",
+            from: `Kogents <${process.env.SMTP_USER}>`,
             to,
+            cc: process.env.SMTP_USER,
             subject: "Thank You for Getting in Touch!",
             html: `
                 <div style="font-family:sans-serif; line-height:1.5; color:#333;">
