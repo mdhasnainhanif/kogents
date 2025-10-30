@@ -91,6 +91,18 @@ export const ChevronIcon = () => (
   </svg>
 );
 
+export const ChevronRightIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fillOpacity=".01" d="M0 0h48v48H0z"/><path d="m19 12 12 12-12 12" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+);
+
+export const ChevronLeftIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fillOpacity=".01" d="M0 0h48v48H0z"/><path d="M31 36 19 24l12-12" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+);
+
+export const CheckIcon = ({ style }: { style?: React.CSSProperties }) => (
+  <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={style}><path fill="currentColor" fillOpacity=".01" d="M0 0h48v48H0z"/><path d="M43 11 16.875 37 5 25.182" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+);
+
 export const ArrowRightIcon = ({ style }: { style?: React.CSSProperties }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

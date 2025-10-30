@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { ChevronLeft, ChevronRight, Save, Rocket } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/icons";
 
 interface WizardNavigationProps {
   currentStep: number;
   totalSteps: number;
-  canGoNext: boolean;
+  canGoNext: boolean; 
   canGoPrev: boolean;
   isLastStep: boolean;
   isDraft: boolean;
@@ -42,7 +42,7 @@ const ActionButtons = React.memo<{
           className="buttonAnimation inline-flex gap-2 items-center px-5 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary 
         hover:bg-transparent text-w-900 open-modal-btn"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeftIcon />
           Previous
         </button>
       )}
@@ -55,7 +55,7 @@ const ActionButtons = React.memo<{
         hover:bg-transparent text-w-900 open-modal-btn"
         >
           Next
-          <ChevronRight className="w-4 h-4" />
+          &#10093;
         </button>
       ) : (
         <button
@@ -64,7 +64,7 @@ const ActionButtons = React.memo<{
           className="buttonAnimation2 ms-auto inline-flex gap-2 align-items-center px-5 py-2"
         >
           Next
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRightIcon/>
         </button>
       )}
     </div>

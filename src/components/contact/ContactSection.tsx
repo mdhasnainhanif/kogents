@@ -22,8 +22,8 @@ const ContactSection = () => {
 
   useEffect(() => {
     if (success) {
-      // clear after success to ready next submission
-      const t = setTimeout(() => resetForm(), 2000);
+      // hide success after 3 seconds
+      const t = setTimeout(() => resetForm(), 1000);
       return () => clearTimeout(t);
     }
   }, [success, resetForm]);

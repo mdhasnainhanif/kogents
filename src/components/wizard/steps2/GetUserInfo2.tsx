@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
-import { AnimatePresence, motion } from "motion/react";
+import InViewAnimate from "@/components/InViewAnimate";
 import { PaperPlaneIcon } from "@/icons";
 import { filesToBlobs, validateFile } from "@/utils/fileUtils";
 
@@ -654,17 +654,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-6 chatbot-left-content-wrapper">
-              <AnimatePresence>
-                <motion.div
-                  initial={{ y: 200, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -200, opacity: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeInOut",
-                  }}
-                  className="chatbot-content-wrapper"
-                >
+              <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
                   <div className="chatbot-content">
                     <div className="ps-0 pt-0">
                       <div className="stepText my-2">Step 4 of 5</div>
@@ -775,8 +765,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                       </div>
                     )}
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                </InViewAnimate>
 
               <div className="chatbot-content-wrapper footer">
                 <WizardNavigation2 {...footerOptions} />

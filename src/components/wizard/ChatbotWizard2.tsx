@@ -12,9 +12,9 @@ import {
 } from "./optimized2/LazyWizardSteps";
 import { useRouter } from "next/navigation";
 import { WizardProgress2 } from "./WizardProgress2";
-import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRightIcon } from "@/icons";
 
 
 // Memoized step renderer to prevent unnecessary re-renders

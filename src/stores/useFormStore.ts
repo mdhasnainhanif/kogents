@@ -166,15 +166,17 @@ export const useFormStore = create<FormState & FormActions>((set, get) => ({
             ? `Email sent to ${result.details.data.email_to}`
             : "Form submitted successfully!");
             
+        // Mark success and immediately clear only the fields
         set({ success: successMsg, isLoading: false, isSubmitted: true });
+        set({ formData: initialFormData });
 
         // Optional: inspect CRM/email sub-results in console for debugging
         if (result.crm) console.log("🧾 CRM:", result.crm);
         if (result.email) console.log("📧 Email:", result.email);
 
-        // Reset form after a short delay
+        // Auto-hide success after 3 seconds
         setTimeout(() => {
-          get().resetForm();
+          set({ success: null });
         }, 3000);
       } else {
         const errMsg =

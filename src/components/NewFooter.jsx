@@ -137,36 +137,6 @@ const NewFooter = () => {
             <div className="newsletter-section">
               <p className="h5">Subscribe to our Newsletter</p>
 
-              {/* Success Message */}
-              {success && (
-                <div
-                  className="alert alert-success mb-3 w_fit p-3"
-                  style={{
-                    background: "#0f5132",
-                    borderColor: "#badbcc",
-                    color: "#d1e7dd",
-                  }}
-                >
-                  <p className="m-0">{success}</p>
-                </div>
-              )}
-
-              {/* Error Message */}
-              {error && (
-                <div
-                  className="alert alert-danger mb-3"
-                  style={{
-                    background: "#5c2623",
-                    borderColor: "#f5c2c7",
-                    color: "#f8d7da",
-                  }}
-                >
-                  <p className="m-0">
-                    <strong>Error:</strong> {error}
-                  </p>
-                </div>
-              )}
-
               <form onSubmit={handleSubscribe} className="newsletter-form">
                 <input
                   type="email"
@@ -188,6 +158,14 @@ const NewFooter = () => {
                   {isLoading ? "Subscribing..." : "Subscribe"}
                 </button>
               </form>
+
+              {/* Messages below the input/button */}
+              {success && (
+                <p className="m-0 mt-2" style={{ color: "#22c55e" }}>{success}</p>
+              )}
+              {error && (
+                <p className="m-0 mt-2" style={{ color: "#ef4444" }}>{error}</p>
+              )}
             </div>
             <div className="social-section">
               <p className="h5">Get in Touch</p>
