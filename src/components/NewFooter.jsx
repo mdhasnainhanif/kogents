@@ -97,6 +97,8 @@ const NewFooter = () => {
     else {
       setSuccess("Subscribed successfully!");
       setEmail("");
+      // Auto-hide after 3 seconds
+      setTimeout(() => setSuccess(null), 3000);
     }
   }
 
