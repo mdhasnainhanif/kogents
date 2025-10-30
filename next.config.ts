@@ -7,15 +7,28 @@ const nextConfig: NextConfig = {
   // Comprehensive redirects as backup
   async redirects() {
     return [
+      // --- WWW to Non-WWW redirect ---
+      {
+        source: '/:path*',
+        destination: 'https://kogents.ai/:path*',
+        permanent: true,
+        has: [
+          {
+            type: 'header',
+            key: 'host',
+            value: '^www\\.kogents\\.ai(:80|:443)?$',
+          },
+        ],
+      },
       // Main redirects
       { source: '/pricing', destination: '/', permanent: true },
       { source: '/pricing/', destination: '/', permanent: true },
-      { source: '/imprint', destination: '/', permanent: true }, 
+      { source: '/imprint', destination: '/', permanent: true },
       { source: '/imprint/', destination: '/', permanent: true },
       // API routes should not be redirected
       // { source: '/api', destination: '/', permanent: true },
       // { source: '/api/', destination: '/', permanent: true },
-      { source: '/status', destination: '/', permanent: true }, 
+      { source: '/status', destination: '/', permanent: true },
       { source: '/status/', destination: '/', permanent: true },
       { source: '/agentic-insights', destination: '/', permanent: true },
       { source: '/agentic-insights/', destination: '/', permanent: true },
@@ -23,7 +36,7 @@ const nextConfig: NextConfig = {
       { source: '/documentation/', destination: '/', permanent: true },
       { source: '/request-demo', destination: '/', permanent: true },
       { source: '/request-demo/', destination: '/', permanent: true },
-      
+
       // Use cases redirects
       { source: '/use-cases', destination: '/case-studies/', permanent: true },
       { source: '/use-cases/', destination: '/case-studies/', permanent: true },
@@ -66,7 +79,7 @@ const nextConfig: NextConfig = {
       { source: '/platforms/instagram-agent-ai', destination: '/platforms/instagram-ai-agent/', permanent: true },
       { source: '/platforms/instagram-agent-ai/', destination: '/platforms/instagram-ai-agent/', permanent: true },
 
-// Solutions redirects
+      // Solutions redirects
 
       // Solutions redirects
       { source: '/solutions/feedback-ai-agent', destination: '/solutions/', permanent: true },
@@ -101,7 +114,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
-    
+
     remotePatterns: [
       {
         protocol: 'https',
