@@ -441,7 +441,7 @@ const NewFooter = () => {
                     width={20}
                     height={20}
                     className=""
-                    src="/assets/img/phone.svg"
+                    src="/assets/img/email.svg"
                     alt="icon"
                   /> info@kogents.ai</Link>
                 </li>
