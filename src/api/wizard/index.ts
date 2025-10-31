@@ -51,8 +51,8 @@ export interface CRMResponse {
 // -------------------- CRM CONFIG + HELPERS --------------------
 // Keep in sync with your working CONTACT API file
 export const CRM_CONFIG = {
-  BASE_URL: "https://kogents.ai/",
-  ENDPOINT: "crm/lead/create/briefform",
+  BASE_URL: "https://portal.kogents.ai/",
+  ENDPOINT: "crm/lead/create/briefform/",
   TIMEOUT: 30000,
   USER_AGENT: "Kogents-AI-CRM/1.0", // browsers can't set this; we pass user_agent in body
 };

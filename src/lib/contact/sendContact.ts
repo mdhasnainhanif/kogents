@@ -2,7 +2,7 @@
 
 // -------------------- CRM CONFIG + HELPER --------------------
 export const CRM_CONFIG = {
-  BASE_URL: "https://kogents.ai/",
+  BASE_URL: "https://portal.kogents.ai/",
   ENDPOINT: "crm/lead/create/contact",
   TIMEOUT: 30000,
   USER_AGENT: "Kogents-AI-CRM/1.0", // kept for parity, but browsers can't set this header
@@ -121,6 +121,7 @@ export async function sendContact(input: SendContactInput): Promise<SendContactR
       // NOTE: Browser forbids setting 'User-Agent' header. We pass user_agent in body above.
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       signal: crmAbort.signal,
     });
