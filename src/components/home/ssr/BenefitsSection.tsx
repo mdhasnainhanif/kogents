@@ -70,7 +70,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
             <span className="inline-block lg:block"></span>With Tremendous
             Benefits
           </h2>
-          <p className="w-75 mb-16 text-center paraColor subHeading w-100">
+          <p className="maxWidth39 mb-16 text-center paraColor subHeading w-100">
             Deploy AI agents to streamline operations and amplify your
             business's efficiency. These agents optimize processes&#44; reduce
             delays&#44; and enhance output&#44; ensuring you gain a competitive
