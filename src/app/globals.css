@@ -1767,3 +1767,9 @@ input::placeholder {
 .fade-up-100 {
   --inview-y: 100px;
 }
+.fillWhite{
+    fill: #fff;
+}
+.companyInfo{
+    margin-top: 8rem !important;
+}
