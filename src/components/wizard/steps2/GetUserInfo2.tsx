@@ -309,6 +309,7 @@ const URLManagementSection = ({
               type="text"
               placeholder="Enter your website URL"
               value={newUrl}
+              autoComplete="off"
               onChange={handleInputChange}
               onBlur={handleBlur}
               onKeyDown={handleKeyDown}

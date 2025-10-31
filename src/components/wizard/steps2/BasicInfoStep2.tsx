@@ -308,6 +308,7 @@ export const BasicInfoStep2 = React.memo<BasicInfoStepProps>(
                         type="text"
                         id="botname"
                         value={data.botname || ""}
+                        autoComplete="off"
                         onChange={(e) => {
                           console.log("Bot name changed to:", e.target.value);
                           onUpdate({ botname: e.target.value });

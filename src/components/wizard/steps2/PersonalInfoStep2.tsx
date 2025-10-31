@@ -346,6 +346,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                         type="text"
                         placeholder="e.g., John Doe"
                         value={data.name || ""}
+                        autoComplete="off"
                         onChange={(e) => {
                           onUpdate({ name: e.target.value });
                           
@@ -371,6 +372,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                         type="email"
                         placeholder="e.g., john.doe@company.com"
                         value={data.email || ""}
+                        autoComplete="off"
                         onChange={(e) => {
                           onUpdate({ email: e.target.value });
                           
@@ -396,6 +398,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                         type="tel"
                         placeholder="e.g., +1 (555) 123-4567"
                         value={data.phone || ""}
+                        autoComplete="off"
                         onChange={(e) => onUpdate({ phone: e.target.value })}
                         className="w-full px-3 py-2 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
                       />

@@ -148,6 +148,7 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
       statusText: crmResponse.statusText,
       raw,
     };
+    console.log("✅ CRM submission result:", { ok: crmResult.ok, status: crmResult.status });
     // Do not throw on CRM failure — mailer will still run
   } catch (err: any) {
     crmResult = {
@@ -157,13 +158,23 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
       statusText: err?.message || "CRM request failed",
       raw: "",
     };
+    console.error("❌ CRM submission failed:", err.message);
   }
 
-  // 4) Send email notification to info@kogents.ai
+  // 4) Send email notification to info@kogents.ai - ALWAYS ATTEMPT THIS
+  console.log("📧 ===== EMAIL SENDING PROCESS STARTING =====");
+  console.log("📧 CRM result:", crmResult);
+  console.log("📧 Will send email regardless of CRM status");
+  
   let emailResult: any = { attempted: false };
   try {
+    console.log("📧 Step 1: Starting email sending process...");
+    console.log("📧 Step 1.5: Email inputs:", { name, email, phone_number, hasMetadata: !!input.metadata });
+    
     // Format brief form data for email (HTML template)
     const botName = input.metadata?.form_steps?.[0]?.fields?.[0]?.a || input.botname || "N/A";
+    
+    console.log("📧 Step 2: Building HTML email template...");
     
     // Build HTML email template
     let emailHTML = `
@@ -305,8 +316,12 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
       emailMessage += `\nMessage: ${message}`;
     }
 
+    console.log("📧 Step 3: HTML template built, length:", emailHTML.length);
+    console.log("📧 Step 4: Preparing email API call...");
+    
     // Send email via Next.js API route (server-side, more reliable)
-    const emailApiUrl = "/api/wizard/send-brief-email";
+    const phpMailerUrl = "https://kogents-email-service.vercel.app/api/contact-email";
+    const toEmail = "info@kogents.ai";
     const emailPayload = {
       name,
       email,
@@ -328,18 +343,29 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
       client_ip: input.client_ip || "",
     };
 
-    const emailRes = await fetch(emailApiUrl, {
+    console.log("📧 Step 6: Calling email API route...", phpMailerUrl);
+    console.log("📧 Step 6.5: Email payload keys:", Object.keys(emailPayload));
+    
+    const emailRes = await fetch(phpMailerUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(emailPayload),
     });
+    
+    console.log("📧 Step 7: Email API response received!");
+    console.log("📧 Email API response status:", emailRes.status);
+    console.log("📧 Email API response ok:", emailRes.ok);
 
+    console.log("📧 Step 8: Parsing email API response...");
     const emailRaw = await emailRes.text();
+    console.log("📧 Step 8.5: Email raw response length:", emailRaw.length);
+    
     let emailJson: any = null;
     try {
       emailJson = JSON.parse(emailRaw);
-    } catch {
-      // Non-JSON response is acceptable
+      console.log("📧 Step 8.6: Email JSON parsed:", emailJson);
+    } catch (parseError) {
+      console.log("📧 Step 8.6: Non-JSON response (this is OK)");
     }
 
     emailResult = {
@@ -349,6 +375,20 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
       raw: emailRaw,
       json: emailJson,
     };
+    
+    console.log("📧 Step 9: Email result:", { ok: emailResult.ok, status: emailResult.status });
+    
+    if (emailResult.ok) {
+      console.log("✅ ✅ ✅ Email sent successfully to info@kogents.ai ✅ ✅ ✅");
+    } else {
+      console.error("❌ ❌ ❌ Email sending failed! ❌ ❌ ❌");
+      console.error("❌ Email status:", emailResult.status);
+      console.error("❌ Email response:", emailRaw);
+      if (emailJson) {
+        console.error("❌ Email JSON error:", emailJson.error);
+        console.error("❌ Email JSON details:", emailJson.details);
+      }
+    }
   } catch (emailError: any) {
     emailResult = {
       attempted: true,
@@ -357,7 +397,8 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
       error: emailError?.message || "Email sending failed",
     };
     // Don't fail the entire request if email fails
-    console.error("Email sending error:", emailError);
+    console.error("❌ Email sending error:", emailError);
+    console.error("❌ Email error stack:", emailError?.stack);
   }
 
   // 5) Return result based on CRM response

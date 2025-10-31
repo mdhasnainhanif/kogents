@@ -138,20 +138,64 @@ export function useOptimizedWizard() {
   useEffect(() => {
     const loadDraft = async () => {
       try {
-        // Clear old cache keys to force fresh start
+        // CHECK FLAG FIRST - before doing anything else
+        const wasSubmitted = typeof window !== 'undefined' 
+          ? sessionStorage.getItem('wizard_form_submitted')
+          : null;
+        
+        if (wasSubmitted === 'true') {
+          // Form was submitted - clear everything IMMEDIATELY
+          if (typeof window !== 'undefined') {
+            // FORCE clear all draft keys FIRST (before any read)
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem('chatbot-wizard-draft');
+            localStorage.removeItem('chatbot-wizard-draft-v2');
+            // Double-check and clear again (race condition protection)
+            if (localStorage.getItem(STORAGE_KEY)) {
+              localStorage.removeItem(STORAGE_KEY);
+            }
+            // Verify cleared
+            const verify = localStorage.getItem(STORAGE_KEY);
+            if (verify) {
+              console.error('⚠️ localStorage still has data after clear! Force clearing...');
+              localStorage.removeItem(STORAGE_KEY);
+            }
+            // Remove the flag so user can start a new form
+            sessionStorage.removeItem('wizard_form_submitted');
+          }
+          setData(INITIAL_DATA);
+          setIsDraft(false);
+          setIsLoading(false);
+          return; // EXIT EARLY - don't load any draft
+        }
+        
+        // Only proceed with loading draft if form was NOT submitted
+        // Clear old cache keys (only if not submitted)
         const oldKeys = [
           "chatbot-wizard-draft",
           "chatbot-wizard-draft-v2"
         ];
         oldKeys.forEach(key => localStorage.removeItem(key));
         
+        // Only load draft if form was NOT submitted
         const savedDraft = localStorage.getItem(STORAGE_KEY)
-        if (savedDraft) {
-          const parsedData = JSON.parse(savedDraft)
-          // Validate the loaded data structure
-          if (parsedData && typeof parsedData === "object") {
-            setData({ ...INITIAL_DATA, ...parsedData })
-            setIsDraft(true)
+        if (savedDraft && savedDraft.trim() !== '') {
+          try {
+            const parsedData = JSON.parse(savedDraft)
+            // Validate the loaded data structure
+            if (parsedData && typeof parsedData === "object") {
+              setData({ ...INITIAL_DATA, ...parsedData })
+              setIsDraft(true)
+            } else {
+              // Invalid data - clear it
+              localStorage.removeItem(STORAGE_KEY);
+              setData(INITIAL_DATA);
+            }
+          } catch (error) {
+            // Invalid JSON - clear it
+            console.error("Invalid draft data, clearing:", error);
+            localStorage.removeItem(STORAGE_KEY);
+            setData(INITIAL_DATA);
           }
         } else {
           // If no saved draft, use INITIAL_DATA directly
@@ -171,11 +215,32 @@ export function useOptimizedWizard() {
 
   // Auto-save functionality
   const scheduleAutoSave = useCallback(() => {
+    // Don't auto-save if form was submitted (prevent saving after submission)
+    if (typeof window !== 'undefined') {
+      const wasSubmitted = sessionStorage.getItem('wizard_form_submitted');
+      if (wasSubmitted === 'true') {
+        // Clear any pending timeout to prevent saving
+        if (autoSaveTimeoutRef.current) {
+          clearTimeout(autoSaveTimeoutRef.current);
+          autoSaveTimeoutRef.current = null;
+        }
+        return; // Skip auto-save if form was submitted
+      }
+    }
+    
     if (autoSaveTimeoutRef.current) {
       clearTimeout(autoSaveTimeoutRef.current)
     }
 
     autoSaveTimeoutRef.current = setTimeout(() => {
+      // Double-check flag before actually saving
+      if (typeof window !== 'undefined') {
+        const wasSubmitted = sessionStorage.getItem('wizard_form_submitted');
+        if (wasSubmitted === 'true') {
+          return; // Don't save if submitted
+        }
+      }
+      
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(dataRef.current))
         setIsDraft(true)
@@ -507,7 +572,14 @@ export function useOptimizedWizard() {
 
   const clearDraft = useCallback(() => {
     try {
-      localStorage.removeItem(STORAGE_KEY)
+      if (typeof window !== 'undefined') {
+        // Clear all draft keys
+        localStorage.removeItem(STORAGE_KEY)
+        localStorage.removeItem('chatbot-wizard-draft')
+        localStorage.removeItem('chatbot-wizard-draft-v2')
+        // Also clear sessionStorage submission flag if exists
+        sessionStorage.removeItem('wizard_form_submitted')
+      }
       setIsDraft(false)
       setData(INITIAL_DATA)
       setCurrentStep(0)
@@ -518,10 +590,29 @@ export function useOptimizedWizard() {
 
   // Reset wizard
   const resetWizard = useCallback(() => {
-    setData(INITIAL_DATA)
-    setCurrentStep(0)
-    clearDraft()
-  }, [clearDraft])
+    // Clear any pending auto-save timeout FIRST
+    if (autoSaveTimeoutRef.current) {
+      clearTimeout(autoSaveTimeoutRef.current);
+      autoSaveTimeoutRef.current = null;
+    }
+    
+    // Clear localStorage immediately
+    try {
+      if (typeof window !== 'undefined') {
+        // Clear all draft keys
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem('chatbot-wizard-draft');
+        localStorage.removeItem('chatbot-wizard-draft-v2');
+      }
+      setIsDraft(false);
+      setData(INITIAL_DATA);
+      setCurrentStep(0);
+    } catch (error) {
+      console.warn("Failed to clear draft in resetWizard:", error);
+    }
+    // Note: Don't clear sessionStorage flag here - we want it to persist
+    // so that on next page load, we can detect and clear localStorage again
+  }, [])
 
   // Computed values
   const canGoNext = stepValidations[currentStep]?.isValid ?? false
