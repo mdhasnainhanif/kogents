@@ -9,12 +9,9 @@ import {
   YoutubeIcon,
   PinterestIcon,
   TikTokIcon,
-  EmailIcon,
-  CallIcon,
 } from "@/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail } from "lucide-react";
 
 const NewFooter = () => {
   const [email, setEmail] = useState("");
@@ -440,10 +437,22 @@ const NewFooter = () => {
               <p className="h6 companyInfo">Company Info</p>
               <ul>
                 <li >
-                  <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><EmailIcon className="fillWhite"/> info@kogents.ai</Link>
+                  <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><Image
+                    width={20}
+                    height={20}
+                    className=""
+                    src="/assets/img/phone.svg"
+                    alt="icon"
+                  /> info@kogents.ai</Link>
                 </li>
                 <li >
-                  <Link className="d-flex align-items-center gap-2" href="tel:+12672489454"><CallIcon/> +1 (267) 248-9454</Link>
+                  <Link className="d-flex align-items-center gap-2" href="tel:+12672489454"><Image
+                    width={20}
+                    height={20}
+                    className=""
+                    src="/assets/img/phone.svg"
+                    alt="icon"
+                  /> +1 (267) 248-9454</Link>
                 </li>
               </ul>
 
