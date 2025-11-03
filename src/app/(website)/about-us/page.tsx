@@ -89,7 +89,7 @@ export default function AboutPage() {
         tag="Solutions"
         title="What We Do"
         description="We design and deploy AI agents that integrate directly into your operations, across industries and functions. From customer support and sales to HR and ecommerce."
-        imageSrc="/assets/img/members.png"
+        imageSrc="/assets/img/members.webp"
         imageAlt="Custom alt text"
         cards={[
           { title: "Streamline Operations", description: "Automate repetitive tasks and reduce bottlenecks." },

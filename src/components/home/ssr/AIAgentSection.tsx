@@ -1,8 +1,183 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+interface AIAgentCard {
+  id: string;
+  image: string;
+  imageAlt: string;
+  title: string;
+  href: string;
+  description: string[];
+  buttonColor: string;
+  buttonAnimation: string;
+  colClass: string;
+  isLarge?: boolean;
+}
+
+const AIAgentCarousel = dynamic<{ agentCards: AIAgentCard[] }>(
+  () => import("./AIAgentCarousel")
+);
+
 const AIAgentSection = () => {
+  const agentCards: AIAgentCard[] = [
+    {
+      id: "1",
+      image: "/assets/img/home/whatsapp-ai-agent.webp",
+      imageAlt: "WhatsApp AI Agent",
+      title: "WhatsApp AI Agent",
+      href: "/platforms/whatsapp-ai-agent",
+      description: [
+        "Responds instantly using your live knowledge base, so your team isn't stuck replying to repetitive queries.",
+        "Identifies upgrade or cross-sell opportunities from ticket patterns.",
+        "Reduces human ticket volume and increases qualified conversions through automated conversations.",
+      ],
+      buttonColor: "pink",
+      buttonAnimation: "buttonAnimation2 pink",
+      colClass: "col-xl-4 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "2",
+      image: "/assets/img/home/phone-ai-agent.webp",
+      imageAlt: "Calendly AI Agent",
+      title: "Calendly AI Agent",
+      href: "/platforms/calendly-ai-integration",
+      description: [
+        "Embeds Calendly booking Links directly into AI conversations.",
+        "Triggers after product inquiries, support needs, or sales interest.",
+        "Syncs with CRMs to confirm meetings instantly and reduce friction.",
+      ],
+      buttonColor: "green",
+      buttonAnimation: "buttonAnimation2 green",
+      colClass: "col-xl-4 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "3",
+      image: "/assets/img/home/ai-assistant-app.webp",
+      imageAlt: "HubSpot AI Agent",
+      title: "HubSpot AI Agent",
+      href: "/platforms/hubspot-ai-integration",
+      description: [
+        "Captures and syncs lead data from chats directly into HubSpot.",
+        "Automates follow-ups with workflows for sales and support teams.",
+        "Provides real-time insights to boost conversions and customer retention.",
+      ],
+      buttonColor: "yellow",
+      buttonAnimation: "buttonAnimation2 yellow",
+      colClass: "col-xl-4 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "4",
+      image: "/assets/img/home/ai-chatbot-agent.webp",
+      imageAlt: "Instagram AI Agent",
+      title: "Instagram AI Agent",
+      href: "/platforms/instagram-agent-ai",
+      description: [
+        "Replies instantly to DMs and comments with up-to-date product info.",
+        "Qualifies leads and drives sales directly inside Instagram.",
+        "Improves engagement while reducing manual social media workload.",
+      ],
+      buttonColor: "",
+      buttonAnimation: "buttonAnimation2",
+      colClass: "col-xl-6 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "5",
+      image: "/assets/img/home/voice-ai-agent.webp",
+      imageAlt: "Zendesk AI Agent",
+      title: "Zendesk AI Agent",
+      href: "/platforms/zendesk-ai-integration",
+      description: [
+        "Resolves common tickets instantly by pulling answers from Zendesk.",
+        "Escalates complex cases with full context for faster resolution.",
+        "Reduces support backlog while improving customer satisfaction.",
+      ],
+      buttonColor: "pink",
+      buttonAnimation: "buttonAnimation2 pink",
+      colClass: "col-xl-6 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "6",
+      image: "/assets/img/home/shopify-ai-agent.webp",
+      imageAlt: "Shopify AI Agent",
+      title: "Shopify AI Agent",
+      href: "/platforms/shopify-ai-agent",
+      description: [
+        "Handles product, order, refund, and shipping queries instantly by pulling live data from your store.",
+        "Detects customer drop-offs and friction points in the purchase journey.",
+        "Increases checkout completion rates and improves retention through faster, smarter post-sale support.",
+      ],
+      buttonColor: "green",
+      buttonAnimation: "buttonAnimation2 green",
+      colClass: "col-lg-12 col-md-6 col-12 card_hide_ipadpro longCard",
+      isLarge: true,
+    },
+    {
+      id: "7",
+      image: "/assets/img/home/messenger-ai-agent.webp",
+      imageAlt: "Messenger AI Agent",
+      title: "Messenger AI Agent",
+      href: "/platforms/ai-agent-for-messenger",
+      description: [
+        "Answers Facebook DMs using up-to-date product, policy, and order info.",
+        "Flags high-volume support topics and recurring friction in chat patterns.",
+        "Boosts customer satisfaction and lead conversion through fast, intelligent engagement.",
+      ],
+      buttonColor: "yellow",
+      buttonAnimation: "buttonAnimation2 yellow",
+      colClass: "col-xl-4 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "8",
+      image: "/assets/img/home/standalone-ai-agent.webp",
+      imageAlt: "Slack AI Agent",
+      title: "Slack AI Agent",
+      href: "/platforms/slack-ai-agent",
+      description: [
+        "Answer team questions instantly using your internal knowledge.",
+        "Automates workflows, reminders, and daily standup updates in Slack.",
+        "Reduces response time and boosts team productivity across channels.",
+      ],
+      buttonColor: "pink",
+      buttonAnimation: "buttonAnimation2 pink",
+      colClass: "col-xl-4 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "9",
+      image: "/assets/img/home/kiosk-ai-agent.webp",
+      imageAlt: "Jira AI Agent",
+      title: "Jira AI Agent",
+      href: "/platforms/jira-ai-integration",
+      description: [
+        "Creates, updates, and assigns Jira tickets automatically from chat.",
+        "Summarizes issues and provides instant status updates for teams.",
+        "Reduces manual work and keeps projects moving without delays.",
+      ],
+      buttonColor: "green",
+      buttonAnimation: "buttonAnimation2 green",
+      colClass: "col-xl-4 col-lg-6 col-md-6 col-12",
+    },
+    {
+      id: "10",
+      image: "/assets/img/home/shopify-ai-agent.webp",
+      imageAlt: "Shopify AI Agent",
+      title: "Shopify AI Agent",
+      href: "/platforms/shopify-ai-agent",
+      description: [
+        "Handles product, order, refund, and shipping queries instantly by pulling live data from your store.",
+        "Detects customer drop-offs and friction points in the purchase journey.",
+        "Increases checkout completion rates and improves retention through faster, smarter post-sale support.",
+      ],
+      buttonColor: "green",
+      buttonAnimation: "buttonAnimation2 green",
+      colClass: "col-lg-12 col-md-6 col-12 card_showhide_desktop",
+      isLarge: true,
+    },
+  ];
+
   return (
     <>
       <section
@@ -15,7 +190,7 @@ const AIAgentSection = () => {
               <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
                 What Kogents AI Does
               </span>
-              <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+              <h2 className="maxWidth39 mx-auto text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
                 AI That's Actually Operational
               </h2>
               <p className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto aos-init aos-animate">
@@ -23,182 +198,19 @@ const AIAgentSection = () => {
               </p>
             </div>
           </div>
-          <div className="row rowGap justify-content-center mt-4">
-            <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/whatsapp-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
-                <Link href="/platforms/whatsapp-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  WhatsApp AI Agent
-                </Link>
-                <ul className="arrowPointUl">
-                  <li>
-                    Responds instantly using your live knowledge base&#44; so
-                    your team isn't stuck replying to repetitive queries.
-                  </li>
-                  <li>
-                    Identifies upgrade or cross-sell opportunities from ticket
-                    patterns.
-                  </li>
-                  <li>
-                    Reduces human ticket volume and increases qualified
-                    conversions through automated conversations.
-                  </li>
-                </ul>
-                <a
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
-                >
-                  Request Access
-                  <ArrowRightIcon style={{ height: 24 }} />
-                </a>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/phone-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
-                <Link href="/platforms/calendly-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  Calendly AI Agent
-                </Link>
-                <ul className="arrowPointUl">
-                  <li>
-                    Embeds Calendly booking Links directly into AI conversations.
-                  </li>
-                  <li>
-                    Triggers after product inquiries, support needs, or sales interest.
-                  </li>
-                  <li>
-                    Syncs with CRMs to confirm meetings instantly and reduce friction.
-                  </li>
-                </ul>
-                <a
-
-                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
-                >
-                  Request Access
-                  <ArrowRightIcon style={{ height: 24 }} />
-                </a>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/ai-assistant-app.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
-                <Link href="/platforms/hubspot-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  HubSpot AI Agent
-                </Link>
-                <ul className="arrowPointUl">
-                  <li>
-                    Captures and syncs lead data from chats directly into HubSpot.
-                  </li>
-                  <li>
-                    Automates follow-ups with workflows for sales and support teams.
-                  </li>
-                  <li>
-                    Provides real-time insights to boost conversions and customer retention.
-                  </li>
-                </ul>
-                <a
-
-                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
-                >
-                  Request Access
-                  <ArrowRightIcon style={{ height: 24 }} />
-                </a>
-              </div>
-            </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 col-12">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/ai-chatbot-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={600}
-                  height={500}
-                />
-                <Link href="/platforms/instagram-agent-ai" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  Instagram AI Agent
-                </Link>
-                <ul className="arrowPointUl">
-                  <li>
-                    Replies instantly to DMs and comments with up-to-date product info.
-                  </li>
-                  <li>
-                    Qualifies leads and drives sales directly inside Instagram.
-                  </li>
-                  <li>
-                    Improves engagement while reducing manual social media workload.
-                  </li>
-                </ul>
-                <a
-
-                  className="w_fit buttonAnimation2 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
-                >
-                  Request Access
-                  <ArrowRightIcon style={{ height: 24 }} />
-                </a>
-              </div>
-            </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 col-12">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/voice-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={600}
-                  height={500}
-                />
-                <Link href="/platforms/zendesk-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  Zendesk AI Agent
-                </Link>
-                <ul className="arrowPointUl">
-                  <li>
-                    Resolves common tickets instantly by pulling answers from Zendesk.
-                  </li>
-                  <li>
-                    Escalates complex cases with full context for faster resolution.
-                  </li>
-                  <li>
-                    Reduces support backlog while improving customer satisfaction.
-                  </li>
-                </ul>
-                <a
-
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
-                >
-                  Request Access
-                  <ArrowRightIcon style={{ height: 24 }} />
-                </a>
-              </div>
-            </div>
-            <div className="col-lg-12 col-md-6 col-12 card_hide_ipadpro">
+          {/* Desktop Grid */}
+          <div className="row rowGap justify-content-center mt-4 d-none d-md-flex">
+            {agentCards.map((card) => (
+              <div key={card.id} className={card.colClass}>
+                {card.isLarge ? (
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard newServicesCard1">
                 <div className="row rowGap ipad-stack">
                   <div className="col-md-8">
                     <div>
-                      <Image loading="lazy"
-                        src="/assets/img/home/shopify-ai-agent.webp"
-                        alt="case studies"
+                          <Image
+                            loading="lazy"
+                            src={card.image}
+                            alt={card.imageAlt}
                         className="rounded-lg"
                         width={800}
                         height={600}
@@ -208,30 +220,18 @@ const AIAgentSection = () => {
                   <div className="col-md-4">
                     <div>
                       <div>
-                        <Link href="/platforms/shopify-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                          Shopify AI Agent
+                            <Link href={card.href} className="mt-8 mb-6 text-2xl font-medium text-w-500">
+                              {card.title}
                         </Link>
                         <ul className="arrowPointUl">
-                          <li>
-                            Handles product&#44; order&#44; refund&#44; and
-                            shipping queries instantly by pulling live data from
-                            your store.
-                          </li>
-                          <li>
-                            Detects customer drop-offs and friction points in
-                            the purchase journey.
-                          </li>
-                          <li>
-                            Increases checkout completion rates and improves
-                            retention through faster&#44; smarter post-sale
-                            support.
-                          </li>
+                              {card.description.map((item, index) => (
+                                <li key={index}>{item}</li>
+                              ))}
                         </ul>
                         <div className="button-center-ipad">
                           <a
-
-                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                            href="/chatbot/brief"
+                                className={`w_fit ${card.buttonAnimation} inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo`}
+                                href="/chatbot/brief"
                           >
                             Request Access
                             <ArrowRightIcon />
@@ -242,162 +242,39 @@ const AIAgentSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-12">
+                ) : (
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/messenger-ai-agent.webp"
-                  alt="case studies"
+                    <Image
+                      loading="lazy"
+                      src={card.image}
+                      alt={card.imageAlt}
                   className="rounded-lg"
-                  width={400}
-                  height={300}
+                      width={card.colClass.includes("col-xl-6") ? 600 : 400}
+                      height={card.colClass.includes("col-xl-6") ? 500 : 300}
                 />
-                <Link href="/platforms/ai-agent-for-messenger" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  Messenger AI Agent
+                    <Link href={card.href} className="mt-8 mb-6 text-2xl font-medium text-w-500">
+                      {card.title}
                 </Link>
                 <ul className="arrowPointUl">
-                  <li>
-                    Answers Facebook DMs using up-to-date product&#44;
-                    policy&#44; and order info.
-                  </li>
-                  <li>
-                    Flags high-volume support topics and recurring friction in
-                    chat patterns.
-                  </li>
-                  <li>
-                    Boosts customer satisfaction and lead conversion through
-                    fast&#44; intelligent engagement.
-                  </li>
+                      {card.description.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
                 </ul>
                 <a
-
-                  className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
+                      className={`w_fit ${card.buttonAnimation} inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo`}
+                      href="/chatbot/brief"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
                 </a>
               </div>
+                )}
             </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/standalone-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
-                <Link href="/platforms/slack-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  Slack AI Agent
-                </Link>
-                <ul className="arrowPointUl">
-                  <li>
-                    Answer team questions instantly using your internal knowledge.
-                  </li>
-                  <li> Automates workflows, reminders, and daily standup updates in Slack.</li>
-                  <li>
-                    Reduces response time and boosts team productivity across channels.
-                  </li>
-                </ul>
-
-                <a
-
-                  className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
-                >
-                  Request Access
-                  <ArrowRightIcon style={{ height: 24 }} />
-                </a>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/home/kiosk-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
-                <Link href="/platforms/jira-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                  Jira AI Agent
-                </Link>
-                <ul className="arrowPointUl">
-                  <li>
-                    Creates, updates, and assigns Jira tickets automatically from chat.
-                  </li>
-                  <li>
-                    Summarizes issues and provides instant status updates for teams.
-                  </li>
-                  <li>
-                    Reduces manual work and keeps projects moving without delays.
-                  </li>
-                </ul>
-
-                <a
-
-                  className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
-                >
-                  Request Access
-                  <ArrowRightIcon style={{ height: 24 }} />
-                </a>
-              </div>
-            </div>
-            <div className="col-lg-12 col-md-6 col-12 card_showhide_desktop">
-              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard newServicesCard1">
-                <div className="row rowGap ipad-stack">
-                  <div className="col-md-8">
-                    <div>
-                      <Image loading="lazy"
-                        src="/assets/img/home/shopify-ai-agent.webp"
-                        alt="case studies"
-                        className="rounded-lg"
-                        width={800}
-                        height={600}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div>
-                      <div>
-                        <Link href="/platforms/shopify-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                          Shopify AI Agent
-                        </Link>
-                        <ul className="arrowPointUl">
-                          <li>
-                            Handles product&#44; order&#44; refund&#44; and
-                            shipping queries instantly by pulling live data from
-                            your store.
-                          </li>
-                          <li>
-                            Detects customer drop-offs and friction points in
-                            the purchase journey.
-                          </li>
-                          <li>
-                            Increases checkout completion rates and improves
-                            retention through faster&#44; smarter post-sale
-                            support.
-                          </li>
-                        </ul>
-                        <div className="button-center-ipad">
-                          <a
-
-                            className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                            href="/chatbot/brief"
-                            >
-                            Request Access
-                            <ArrowRightIcon />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
+
+          {/* Mobile Owl Carousel */}
+          <AIAgentCarousel agentCards={agentCards} />
         </div>
       </section>
     </>

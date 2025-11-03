@@ -30,7 +30,7 @@ const defaultCounterData: CounterDataItem[] = [
   {
     id: 1,
     target: 93,
-    title: "Smart Tools. Smarter Outcomes...",
+    title: "Smart Tools. Smarter Outcomes",
     description: "Kogents AI Agents do more than reply — they act.",
     className: "counter1"
   },
@@ -64,7 +64,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
             Benefits
           </span>
           <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
-            Kogents Ai Agents Come
+            Kogents AI Agents Come
             <span className="inline-block lg:block"></span>With Tremendous
             Benefits
           </h2>
@@ -82,7 +82,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
                     Integerate AI Agents Into Your Organization Structure
                   </h2>
                   <Image
-                    src="/assets/img/members.png"
+                    src="/assets/img/members.webp"
                     alt="video image demo"
                     className="w-100"
                     width={800}

@@ -4,7 +4,7 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
-import { AnimatePresence, motion } from "motion/react";
+import InViewAnimate from "@/components/InViewAnimate";
 import { fileToBlob, dataUrlToBlob, validateFile } from "@/utils/fileUtils";
 
 interface KnowledgeSourcesStepProps {
@@ -120,17 +120,7 @@ export function KnowledgeSourcesStep2({
       <div className="row">
         {/* Left Panel */}
         <div className="col-lg-6 chatbot-left-content-wrapper">
-          <AnimatePresence>
-            <motion.div
-              initial={{ y: 200, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -200, opacity: 0 }}
-              transition={{
-                duration: 0.5,
-                ease: "easeInOut",
-              }}
-              className="chatbot-content-wrapper"
-            >
+          <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
               <div className="chatbot-content">
                 <div className="grid gap-6 lg:grid-cols-2">
                   <div className="space-y-6 content-center">
@@ -233,8 +223,7 @@ export function KnowledgeSourcesStep2({
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </InViewAnimate>
           <div className="chatbot-content-wrapper footer">
             <WizardNavigation2 {...footerOptions} />
           </div>

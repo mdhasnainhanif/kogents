@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Check } from "lucide-react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
-import { AnimatePresence, motion } from "motion/react"
+import InViewAnimate from "@/components/InViewAnimate"
 
 interface AppearanceStepProps {
   data: ChatbotWizardData;
@@ -123,17 +123,7 @@ export function AppearanceStep2({
         <div className="row">
           {/* Left Panel */}
           <div className="col-lg-6 chatbot-left-content-wrapper">
-            <AnimatePresence>
-              <motion.div
-                initial={{ y: 200, opacity: 0 }} // Start from -y (up from the viewport)
-                animate={{ y: 0, opacity: 1 }} // Animate to the normal position (y = 0)
-                exit={{ y: -200, opacity: 0 }} // Exit to +y (down out of the viewport)
-                transition={{
-                  duration: 0.5,
-                  ease: "easeInOut", // Smooth easing effect
-                }}
-                className="chatbot-content-wrapper"
-              >
+            <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
                 <div className="chatbot-content">
                   <div className="mb-4">
                     <div className="stepText my-2">Step 2 of 5</div>
@@ -188,8 +178,7 @@ export function AppearanceStep2({
                     </div>
                   )}
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </InViewAnimate>
             <div className="chatbot-content-wrapper footer">
               <WizardNavigation2 {...modifiedFooterOptions} />
             </div>

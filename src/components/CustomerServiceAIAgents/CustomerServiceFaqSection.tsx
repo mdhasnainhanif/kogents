@@ -20,7 +20,7 @@ const CustomerServiceFaqSection: React.FC<CustomerServiceFaqSectionProps> = ({
   heading="Frequently Asked Questions",
   description,
   faqItems,
-  buttonText = "Connect With Ai Agent",
+  buttonText = "Connect With AI Agent",
   backgroundImage = "img/bc/faq-bg.png"
 }) => {
   const { openModal } = useModalStore();

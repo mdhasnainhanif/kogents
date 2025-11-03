@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useFormStore } from "@/stores/useFormStore";
 import { useTrackingParams } from "@/stores/useTrackingParams";
 import { ArrowRightIcon } from "@/icons";
+import { handleContactFormSubmit } from "@/services/contactFormService";
 
 const ContactSection = () => {
   const {
@@ -21,8 +22,8 @@ const ContactSection = () => {
 
   useEffect(() => {
     if (success) {
-      // clear after success to ready next submission
-      const t = setTimeout(() => resetForm(), 2000);
+      // hide success after 3 seconds
+      const t = setTimeout(() => resetForm(), 1000);
       return () => clearTimeout(t);
     }
   }, [success, resetForm]);
@@ -34,9 +35,9 @@ const ContactSection = () => {
 
   const onChange =
     (field: keyof typeof formData) =>
-      (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        updateField(field, e.target.value);
-      };
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      updateField(field, e.target.value);
+    };
 
   return (
     <div className="sectionPadding bg-center bg-no-repeat bg-cover bg-[url('img/bc/contact-bg.png')]">
@@ -48,7 +49,6 @@ const ContactSection = () => {
           Contact Us Now
         </span>
         <div className="row rowGap">
-
           {/* Left Column */}
           <div className="col-lg-6 contact_boxes_height">
             {/* Contact Box 1 */}
@@ -60,8 +60,7 @@ const ContactSection = () => {
                 Kogents Enterprise clients receive real-time support with
                 priority access to our AI engineers. Book a consultation to
                 discuss custom integrations&#44; enterprise-grade AI
-                workflows&#44; and support for cross-functional
-                implementation.
+                workflows&#44; and support for cross-functional implementation.
               </p>
               <div className="aboutContent">
                 <a href="tel:+12672489454" className="aboutIconPhone">
@@ -71,8 +70,8 @@ const ContactSection = () => {
                     className=""
                     src="/assets/img/phone.svg"
                     alt="icon"
-                  /> +12672489454
-
+                  />{" "}
+                  +12672489454
                 </a>
                 <a href="mailto:info@kogents.ai" className="aboutIconPhone">
                   <Image
@@ -81,7 +80,8 @@ const ContactSection = () => {
                     className=""
                     src="/assets/img/email.svg"
                     alt="icon"
-                  /> info@kogents.ai
+                  />{" "}
+                  info@kogents.ai
                 </a>
                 <a className="aboutIconPhone">
                   <Image
@@ -90,7 +90,9 @@ const ContactSection = () => {
                     className=""
                     src="/assets/img/address.svg"
                     alt="icon"
-                  />  4492, 1007 N Orange St. 4th Floor , Wilmington, DE, New Castle, US, 19801
+                  />{" "}
+                  4492, 1007 N Orange St. 4th Floor , Wilmington, DE, New
+                  Castle, US, 19801
                 </a>
               </div>
               <div className="contactSocial">
@@ -122,7 +124,11 @@ const ContactSection = () => {
                     alt="icon"
                   />
                 </a>
-                <a className="Zoom" href="https://x.com/kogentsai" style={{ background: "#000000" }}>
+                <a
+                  className="Zoom"
+                  href="https://x.com/kogentsai"
+                  style={{ background: "#000000" }}
+                >
                   Twitter
                   <Image
                     width={50}
@@ -132,7 +138,11 @@ const ContactSection = () => {
                     alt="icon"
                   />
                 </a>
-                <a className="Voice" href="https://www.youtube.com/@kogentsai" style={{ background: "#F61C0D" }}>
+                <a
+                  className="Voice"
+                  href="https://www.youtube.com/@kogentsai"
+                  style={{ background: "#F61C0D" }}
+                >
                   Youtube
                   <Image
                     width={50}
@@ -142,7 +152,11 @@ const ContactSection = () => {
                     alt="icon"
                   />
                 </a>
-                <a className="Chat" href="https://www.instagram.com/kogentsai/" style={{ background: "#6C1CD1" }}>
+                <a
+                  className="Chat"
+                  href="https://www.instagram.com/kogentsai/"
+                  style={{ background: "#6C1CD1" }}
+                >
                   Instagram
                   <Image
                     width={50}
@@ -152,7 +166,11 @@ const ContactSection = () => {
                     alt="icon"
                   />
                 </a>
-                <a className="Phone" href="https://www.pinterest.com/kogentsai/" style={{ background: "#D50012" }}>
+                <a
+                  className="Phone"
+                  href="https://www.pinterest.com/kogentsai/"
+                  style={{ background: "#D50012" }}
+                >
                   Pinterest
                   <Image
                     width={50}
@@ -162,7 +180,11 @@ const ContactSection = () => {
                     alt="icon"
                   />
                 </a>
-                <a className="Phone" href="https://www.tiktok.com/@kogentsai" style={{ background: "#000000" }}>
+                <a
+                  className="Phone"
+                  href="https://www.tiktok.com/@kogentsai"
+                  style={{ background: "#000000" }}
+                >
                   TikTok
                   <Image
                     width={50}
@@ -174,9 +196,25 @@ const ContactSection = () => {
                 </a>
               </div>
               <div className="contactIcons">
-                <img src="/assets/img/brand/5.svg" width={176} height={30} alt="culture amp" />
-                <img src="/assets/img/brand/2.svg" width={176} height={30} alt="spendesk" />
-                <img className="contactIcons3" width={176} height={30} src="/assets/img/brand/4.svg" alt="new relic" />
+                <img
+                  src="/assets/img/brand/5.svg"
+                  width={176}
+                  height={30}
+                  alt="culture amp"
+                />
+                <img
+                  src="/assets/img/brand/2.svg"
+                  width={176}
+                  height={30}
+                  alt="spendesk"
+                />
+                <img
+                  className="contactIcons3"
+                  width={176}
+                  height={30}
+                  src="/assets/img/brand/4.svg"
+                  alt="new relic"
+                />
               </div>
             </div>
 
@@ -219,7 +257,18 @@ const ContactSection = () => {
               <form
                 className="mt-4 flex flex-col gap-3 contactForm"
                 id="contact_form2"
-                onSubmit={onSubmit}
+                onSubmit={(e) =>
+                  handleContactFormSubmit(
+                    e,
+                    () => {
+                      resetForm();
+                      console.log("resetForm here");
+                    },
+                    () => {
+                      console.error("Failed to send message. Please try again.");
+                    }
+                  )
+                }
               >
                 {/* Success / Error */}
                 {success && (
@@ -251,6 +300,7 @@ const ContactSection = () => {
                     className="form-control"
                     value={formData.name}
                     onChange={onChange("name")}
+                    autoComplete="off"
                     required
                   />
                   <span className="validation-error text-light d-none"></span>
@@ -264,6 +314,7 @@ const ContactSection = () => {
                     className="form-control"
                     value={formData.email}
                     onChange={onChange("email")}
+                    autoComplete="off"
                     required
                   />
                   <span className="validation-error text-light d-none"></span>
@@ -277,6 +328,7 @@ const ContactSection = () => {
                     className="form-control"
                     value={formData.phone}
                     onChange={onChange("phone")}
+                    autoComplete="off"
                     required
                   />
                   <span className="validation-error text-light d-none"></span>
@@ -290,6 +342,7 @@ const ContactSection = () => {
                     className="form-control"
                     value={formData.project_need}
                     onChange={onChange("project_need")}
+                    autoComplete="off"
                     required
                   ></textarea>
                   <span className="validation-error text-light d-none"></span>

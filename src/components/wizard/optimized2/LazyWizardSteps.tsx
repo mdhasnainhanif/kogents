@@ -1,8 +1,7 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
-// import { GetUserInfo2 } from "../steps2/GetUserInfo2";
 
 // Lazy load wizard steps
 const LazyBasicInfoStep = React.lazy(() =>

@@ -250,7 +250,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
   const openModal = useModalStore((state) => state.openModal);
 
   // Load More logic (show N, then add chunks)
-  const INITIAL_COUNT = 8;
+  const INITIAL_COUNT = 10;
   const CHUNK = 4;
   const [visibleCount, setVisibleCount] = useState<number>(INITIAL_COUNT);
 
@@ -277,7 +277,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
             FAQs
           </span>
           <h2
-            className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize"
+            className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize mb125"
           >
             Frequently Asked Questions
           </h2>
@@ -333,7 +333,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
                 onClick={openModal}
                 type="button"
               >
-                Connect With Ai Agent
+                Connect With AI Agent
                 <ArrowRightIcon />
               </button>
             </div>
@@ -346,7 +346,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
                 onClick={openModal}
                 type="button"
               >
-                Connect With Ai Agent
+                Connect With AI Agent
                 <ArrowRightIcon />
               </button>
             </div>

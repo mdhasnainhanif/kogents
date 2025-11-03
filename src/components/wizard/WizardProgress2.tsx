@@ -4,7 +4,6 @@ import React from "react";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { WizardStep } from "@/types/wizard";
-import { div } from "motion/react-client";
 import Link from "next/link";
 
 interface WizardProgressProps {

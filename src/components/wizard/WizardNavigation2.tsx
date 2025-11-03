@@ -1,15 +1,16 @@
 "use client";
 
 import React from "react";
-import { ChevronLeft, ChevronRight, Save, Rocket } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/icons";
 
 interface WizardNavigationProps {
   currentStep: number;
   totalSteps: number;
-  canGoNext: boolean;
+  canGoNext: boolean; 
   canGoPrev: boolean;
   isLastStep: boolean;
   isDraft: boolean;
+  isLoading?: boolean;  // ADD THIS
   onPrevious: () => void;
   onNext: () => void;
   onSaveDraft: () => void;
@@ -20,6 +21,7 @@ const ActionButtons = React.memo<{
   canGoPrev: boolean;
   canGoNext: boolean;
   isLastStep: boolean;
+  isLoading?: boolean;  // ADD THIS
   onPrevious: () => void;
   onNext: () => void;
   onSaveDraft: () => void;
@@ -29,6 +31,7 @@ const ActionButtons = React.memo<{
     canGoPrev,
     canGoNext,
     isLastStep,
+    isLoading = false,  // ADD THIS
     onPrevious,
     onNext,
     onSaveDraft,
@@ -38,11 +41,11 @@ const ActionButtons = React.memo<{
       {canGoPrev && (
         <button
           onClick={onPrevious}
-          disabled={!canGoPrev}
+          disabled={!canGoPrev || isLoading}  // ADD isLoading check
           className="buttonAnimation inline-flex gap-2 items-center px-5 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary 
         hover:bg-transparent text-w-900 open-modal-btn"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeftIcon />
           Previous
         </button>
       )}
@@ -50,21 +53,29 @@ const ActionButtons = React.memo<{
       {isLastStep ? (
         <button
           onClick={onComplete}
-          disabled={!canGoNext}
+          disabled={!canGoNext || isLoading}  // ADD isLoading check
           className="buttonAnimation2 inline-flex gap-2 items-center px-5 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary 
-        hover:bg-transparent text-w-900 open-modal-btn"
+        hover:bg-transparent text-w-900 open-modal-btn disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Next
-          <ChevronRight className="w-4 h-4" />
+          {isLoading ? (  // ADD LOADING STATE
+            <>
+              Submitting...
+            </>
+          ) : (
+            <>
+              Next
+              &#10093;
+            </>
+          )}
         </button>
       ) : (
         <button
           onClick={onNext}
-          disabled={!canGoNext}
+          disabled={!canGoNext || isLoading}  // ADD isLoading check
           className="buttonAnimation2 ms-auto inline-flex gap-2 align-items-center px-5 py-2"
         >
           Next
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRightIcon/>
         </button>
       )}
     </div>
@@ -81,6 +92,7 @@ export const WizardNavigation2 = React.memo<WizardNavigationProps>(
     canGoPrev,
     isLastStep,
     isDraft,
+    isLoading = false,  // ADD THIS
     onPrevious,
     onNext,
     onSaveDraft,
@@ -92,6 +104,7 @@ export const WizardNavigation2 = React.memo<WizardNavigationProps>(
           canGoPrev={canGoPrev}
           canGoNext={canGoNext}
           isLastStep={isLastStep}
+          isLoading={isLoading}  // ADD THIS
           onPrevious={onPrevious}
           onNext={onNext}
           onSaveDraft={onSaveDraft}

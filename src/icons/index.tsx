@@ -91,6 +91,18 @@ export const ChevronIcon = () => (
   </svg>
 );
 
+export const ChevronRightIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fillOpacity=".01" d="M0 0h48v48H0z"/><path d="m19 12 12 12-12 12" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+);
+
+export const ChevronLeftIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fillOpacity=".01" d="M0 0h48v48H0z"/><path d="M31 36 19 24l12-12" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+);
+
+export const CheckIcon = ({ style }: { style?: React.CSSProperties }) => (
+  <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style={style}><path fill="currentColor" fillOpacity=".01" d="M0 0h48v48H0z"/><path d="M43 11 16.875 37 5 25.182" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+);
+
 export const ArrowRightIcon = ({ style }: { style?: React.CSSProperties }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -154,8 +166,8 @@ export const LocationIcon = ({ style }: { style?: React.CSSProperties }) => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M12.574 21.819a1 1 0 0 1-1.149 0l-.002-.002-.006-.004-.018-.014a10 10 0 0 1-.305-.225A25 25 0 0 1 7.757 18.5C5.964 16.508 4 13.61 4 10.364c0-2.203.831-4.324 2.325-5.896C7.821 2.894 9.861 2 12 2s4.179.894 5.674 2.468C19.17 6.04 20 8.16 20 10.364c0 3.246-1.964 6.144-3.757 8.135a25 25 0 0 1-3.337 3.075 15 15 0 0 1-.305.225l-.018.014-.006.004h-.002zM9 10a3 3 0 1 1 6 0 3 3 0 0 1-6 0" fill="#fff"/></svg>
 );
 
-export const EmailIcon = ({ style }: { style?: React.CSSProperties }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 52 52"><path d="M24.9 30.1c.6.6 1.5.6 2.1 0l22.6-21c.4-.8.3-2.1-1.3-2.1l-44.7.1c-1.2 0-2.2 1.1-1.3 2.1z"/><path d="M50 17.3c0-1-1.2-1.6-2-.9L30.3 32.7c-1.2 1.1-2.7 1.7-4.3 1.7s-3.1-.6-4.3-1.6L4.1 16.4c-.8-.7-2-.2-2 .9C2 17 2 40 2 40c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4z"/></svg>
+export const EmailIcon = ({ className }: { className?: string }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 52 52"><path d="M24.9 30.1c.6.6 1.5.6 2.1 0l22.6-21c.4-.8.3-2.1-1.3-2.1l-44.7.1c-1.2 0-2.2 1.1-1.3 2.1z"/><path d="M50 17.3c0-1-1.2-1.6-2-.9L30.3 32.7c-1.2 1.1-2.7 1.7-4.3 1.7s-3.1-.6-4.3-1.6L4.1 16.4c-.8-.7-2-.2-2 .9C2 17 2 40 2 40c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4z"/></svg>
 );
 
 export const CallIcon = ({ style }: { style?: React.CSSProperties }) => (

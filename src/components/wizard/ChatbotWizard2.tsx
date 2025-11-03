@@ -12,9 +12,9 @@ import {
 } from "./optimized2/LazyWizardSteps";
 import { useRouter } from "next/navigation";
 import { WizardProgress2 } from "./WizardProgress2";
-import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRightIcon } from "@/icons";
 
 
 // Memoized step renderer to prevent unnecessary re-renders
@@ -26,6 +26,7 @@ interface FooterOptions {
   canGoPrev: boolean;
   isLastStep: boolean;
   isDraft: boolean;
+  isLoading?: boolean;
   onPrevious: () => void;
   onNext: () => void;
   onSaveDraft: () => void;
@@ -241,21 +242,47 @@ function ChatbotWizard2() {
     prevStep,
     saveDraft,
     clearDraft,
+    resetWizard,
   } = useOptimizedWizard();
 
   const [isGetStarted, setIsGetStarted] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Clear localStorage on mount if form was submitted - RUNS BEFORE HOOK LOAD
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const wasSubmitted = sessionStorage.getItem('wizard_form_submitted');
+      if (wasSubmitted === 'true') {
+        // FORCE clear localStorage immediately on mount - BEFORE hook loads
+        try {
+          localStorage.removeItem('chatbot-wizard-draft-v3');
+          localStorage.removeItem('chatbot-wizard-draft');
+          localStorage.removeItem('chatbot-wizard-draft-v2');
+          // Verify and clear again if needed
+          if (localStorage.getItem('chatbot-wizard-draft-v3')) {
+            localStorage.removeItem('chatbot-wizard-draft-v3');
+          }
+        } catch (error) {
+          console.error('Failed to clear localStorage on mount:', error);
+        }
+        // Remove flag so user can start fresh
+        sessionStorage.removeItem('wizard_form_submitted');
+      }
+    }
+  }, []);
 
   // minimal debug only
 
-  const handleComplete = async () => {
-    try {
-      // keep function minimal; detailed logs removed
+  
 
-      setTimeout(() => {
-        // redirect after short delay
-        router.push("/thank-you");
-      }, 1000);
+  const handleComplete = async () => {
+    // Set loading state at start
+    setIsSubmitting(true);
+    setSubmitError(null);
+    
+    try {
+      // Remove the setTimeout redirect from here - we'll redirect only on success
       
       // Derive fields for appearance and training data
       const avatar = data.appearance?.avatar || "";
@@ -270,10 +297,8 @@ function ChatbotWizard2() {
       const urls = data.knowledgeSources?.urls || [];
       const files = data.knowledgeSources?.files || [];
       const textContent = data.knowledgeSources?.textContent || "";
-      // Keep it simple: prefer explicit websiteUrl first, else first from urls
       const rawUrl = (data.websiteUrl || urls[0] || "").trim();
       const firstUrl = rawUrl ? (/^https?:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`) : "";
-      // Simplify: if there is any non-empty websiteUrl in data or urls, use Website URL
       const trainingMethod = firstUrl
         ? "Website URL"
         : files.length > 0
@@ -281,13 +306,7 @@ function ChatbotWizard2() {
           : textContent
             ? "Text Content"
             : "None";      
-   
-      console.log("trainingMethod:", trainingMethod);
-      console.log("website firstUrl:", firstUrl);
-      console.log("blobData.trainingFiles:", data.blobData?.trainingFiles?.length || 0, "files converted to blobs");
-   
 
-      // Build the structured form data according to your JSON format
       const structuredData = {
         name: data.name || "",
         email: data.email || "",
@@ -375,25 +394,40 @@ function ChatbotWizard2() {
         link: "https://kogents.ai/"
       };
 
-      // Log full payload being submitted
-      console.log("after form submitted logs:", structuredData);
-      console.log("Structured brief ready");
-
+      console.log("🚀 ===== STARTING BRIEF SUBMISSION =====");
+      
       // Send to CRM using the API helper
       const result = await sendLeadToCRM(structuredData);
       
+      console.log("🔍 ===== BRIEF SUBMISSION RESULT =====");
+      
       if (result.success) {
-        console.log("✅ Brief submitted");
-        console.log("CRM response:", result);
-        // Handle success
+        console.log("✅ Brief submitted to CRM");
+        
+        // Clear localStorage and set flag
+        if (typeof window !== 'undefined') {
+          try {
+            localStorage.removeItem('chatbot-wizard-draft-v3');
+            localStorage.removeItem('chatbot-wizard-draft');
+            localStorage.removeItem('chatbot-wizard-draft-v2');
+            sessionStorage.setItem('wizard_form_submitted', 'true');
+          } catch (error) {
+            console.error('Failed to clear localStorage:', error);
+          }
+        }
+        
+        // Redirect IMMEDIATELY - no reset needed as user is leaving the page
+        router.push("/thank-you");
       } else {
         console.error("❌ Brief submission failed:", result.error);
         setSubmitError(result.error || "Form submission failed");
-        // Handle error
+        setIsSubmitting(false); // Stop loading on error
       }
 
     } catch (error) {
       console.error("❌ Error submitting brief:", error);
+      setSubmitError(error instanceof Error ? error.message : "Something went wrong");
+      setIsSubmitting(false); // Stop loading on error
     }
   };
 
@@ -422,10 +456,11 @@ function ChatbotWizard2() {
             footerOptions={{
               currentStep: currentStep,
               totalSteps: steps.length,
-              canGoNext: canGoNext,
+              canGoNext: canGoNext && !isSubmitting,  // Disable when submitting
               canGoPrev: canGoPrev,
               isLastStep: isLastStep,
               isDraft: isDraft,
+              isLoading: isSubmitting,
               onPrevious: prevStep,
               onNext: nextStep,
               onSaveDraft: saveDraft,

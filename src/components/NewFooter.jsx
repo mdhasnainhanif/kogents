@@ -19,64 +19,89 @@ const NewFooter = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const handleSubscribe = async (e) => {
+  // const handleSubscribe = async (e) => {
+  //   e.preventDefault();
+  //   console.log("Newsletter form submitted with email:", email);
+
+  //   if (!email) {
+  //     setError("Email is required");
+  //     return;
+  //   }
+
+  //   setIsLoading(true);
+  //   setError(null);
+  //   setSuccess(null);
+
+  //   try {
+  //     console.log("Sending newsletter subscription request...");
+  //     const response = await fetch("/api/contact/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         name: "Newsletter Subscriber",
+  //         email: email,
+  //         phone: "",
+  //         project_need: "Newsletter subscription request",
+  //         gclid: "",
+  //         fbclid: "",
+  //         igclid: "",
+  //         ttclid: "",
+  //         fingerprint: "",
+  //         chat: "",
+  //         stable_session_id: "",
+  //         fingerprintdata: "",
+  //       }),
+  //     });
+
+  //     console.log("Response status:", response.status);
+  //     const result = await response.json();
+  //     console.log("Response result:", result);
+
+  //     if (result.status === "success") {
+  //       setSuccess("Thank you for subscribing to our newsletter!");
+  //       setEmail("");
+        
+  //       // Auto-hide success message after 4 seconds
+  //       setTimeout(() => {
+  //         setSuccess(null);
+  //       }, 4000);
+  //     } else {
+  //       setError(result.message || "Subscription failed. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Newsletter subscription error:", error);
+  //     setError("Network error. Please check your connection and try again.");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
+    const handleSubscribe = async (e) => {
     e.preventDefault();
-    console.log("Newsletter form submitted with email:", email);
 
     if (!email) {
-      setError("Email is required");
+      setError("Please enter a valid email address.");
       return;
     }
 
-    setIsLoading(true);
-    setError(null);
-    setSuccess(null);
+    const res = await fetch("/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ to: email }),
+    });
 
-    try {
-      console.log("Sending newsletter subscription request...");
-      const response = await fetch("/api/contact/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: "Newsletter Subscriber",
-          email: email,
-          phone: "",
-          project_need: "Newsletter subscription request",
-          gclid: "",
-          fbclid: "",
-          igclid: "",
-          ttclid: "",
-          fingerprint: "",
-          chat: "",
-          stable_session_id: "",
-          fingerprintdata: "",
-        }),
-      });
+    const data = await res.json();
+    if (!res.ok) { throw new Error(data.error || "Failed to send email") }
+    else {
+      setSuccess("Subscribed successfully!");
+      setEmail("");
+      // Auto-hide after 3 seconds
+      setTimeout(() => setSuccess(null), 3000);
+    } 
+  }
 
-      console.log("Response status:", response.status);
-      const result = await response.json();
-      console.log("Response result:", result);
-
-      if (result.status === "success") {
-        setSuccess("Thank you for subscribing to our newsletter!");
-        setEmail("");
-        
-        // Auto-hide success message after 4 seconds
-        setTimeout(() => {
-          setSuccess(null);
-        }, 4000);
-      } else {
-        setError(result.message || "Subscription failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Newsletter subscription error:", error);
-      setError("Network error. Please check your connection and try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <footer className="footer-main bg-center bg_footer new bg-no-repeat bg-cover">
@@ -112,36 +137,6 @@ const NewFooter = () => {
             <div className="newsletter-section">
               <p className="h5">Subscribe to our Newsletter</p>
 
-              {/* Success Message */}
-              {success && (
-                <div
-                  className="alert alert-success mb-3 w_fit p-3"
-                  style={{
-                    background: "#0f5132",
-                    borderColor: "#badbcc",
-                    color: "#d1e7dd",
-                  }}
-                >
-                  <p className="m-0">{success}</p>
-                </div>
-              )}
-
-              {/* Error Message */}
-              {error && (
-                <div
-                  className="alert alert-danger mb-3"
-                  style={{
-                    background: "#5c2623",
-                    borderColor: "#f5c2c7",
-                    color: "#f8d7da",
-                  }}
-                >
-                  <p className="m-0">
-                    <strong>Error:</strong> {error}
-                  </p>
-                </div>
-              )}
-
               <form onSubmit={handleSubscribe} className="newsletter-form">
                 <input
                   type="email"
@@ -163,6 +158,14 @@ const NewFooter = () => {
                   {isLoading ? "Subscribing..." : "Subscribe"}
                 </button>
               </form>
+
+              {/* Messages below the input/button */}
+              {success && (
+                <p className="m-0 mt-2" style={{ color: "#22c55e" }}>{success}</p>
+              )}
+              {error && (
+                <p className="m-0 mt-2" style={{ color: "#ef4444" }}>{error}</p>
+              )}
             </div>
             <div className="social-section">
               <p className="h5">Get in Touch</p>
@@ -275,7 +278,7 @@ const NewFooter = () => {
                   <Link href="/platforms/line-ai-agent">Line Agents</Link>
                 </li> */}
               </ul>
-              <h6 className="footCate">Resources</h6>
+              <p className="h6 footCate">Resources</p>
               <ul>
                 <li>
                   <Link href="/security">Security</Link>
@@ -324,7 +327,7 @@ const NewFooter = () => {
                   </Link>
                 </li>
               </ul>
-              <h6 className="footCate1">Company</h6>
+              <p className="h6 footCate1">Company</p>
               <ul>
                 <li>
                   <Link href="/about-us">About Us</Link>
@@ -382,7 +385,7 @@ const NewFooter = () => {
                   <Link href="/solutions">See All</Link>
                 </li>
               </ul>
-              <h6 className="footCate">Legal</h6>
+              <p className="h6 footCate">Legal</p>
               <ul>
                 <li>
                   <Link href="/privacy-statement">Privacy Policy</Link>
@@ -431,7 +434,28 @@ const NewFooter = () => {
                   </Link>
                 </li>
               </ul>
-              
+              <p className="h6 companyInfo">Company Info</p>
+              <ul>
+                <li >
+                  <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><Image
+                    width={20}
+                    height={20}
+                    className=""
+                    src="/assets/img/email.svg"
+                    alt="icon"
+                  /> info@kogents.ai</Link>
+                </li>
+                <li >
+                  <Link className="d-flex align-items-center gap-2" href="tel:+12672489454"><Image
+                    width={20}
+                    height={20}
+                    className=""
+                    src="/assets/img/phone.svg"
+                    alt="icon"
+                  /> +1 (267) 248-9454</Link>
+                </li>
+              </ul>
+
             </div>
           </div>
 

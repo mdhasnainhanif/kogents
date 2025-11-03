@@ -1,9 +1,16 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
+import { handleContactFormSubmit } from "@/services/contactFormService";
 
 const HeroSection = () => {
+  // Brand images data for mapping
+  const brands = [1, 2, 3, 4, 5];
+  // Repeat brands 3 times for infinite scroll animation
+  const brandImages = [...brands, ...brands, ...brands];
+
   return (
     <>
       <div className="boxesBg ...">
@@ -13,7 +20,7 @@ const HeroSection = () => {
               <div className="col-lg-6">
                 <div className="modal_form">
                   <div className="bannerForm hero">
-                    <form id="contact_form" className="formBannerContact">
+                    <form id="contact_form" onSubmit={handleContactFormSubmit} className="formBannerContact">
                       <h1 className="bookConsultation modalBookFree">Book a
                         <span className="textPurpleForm"> Free</span> Consultation
                       </h1>
@@ -63,10 +70,10 @@ const HeroSection = () => {
                         />
                         <span className="validation-error text-light d-none"></span>
                       </div>
-                      
+
                       <div className="border-button">
-                        <button 
-                          type="submit" 
+                        <button
+                          type="submit"
                           className="buttonAnimation2 poppupBtn w-100 flex mt-3 justify-center items-center gap-2 px-6 py-[14px] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
                         >
                           <span>Submit</span>
@@ -82,7 +89,7 @@ const HeroSection = () => {
                   <span className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
                     Driven by Kogents AI
                   </span>
-                  <h2 className="headingSize mt-0">
+                  <h2 className="headingSize">
                     Automate Every Conversation. Close Every Loop. Scale Without
                     Hiring.
                   </h2>
@@ -137,152 +144,23 @@ const HeroSection = () => {
           <section className="newSection new pb-0 logoSlideSection">
             <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">
               <div className="inline-flex logo_items animate-slides">
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/1.svg"
-                  alt="brand1"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/2.svg"
-                  alt="brand2"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/3.svg"
-                  alt="brand3"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/4.svg"
-                  alt="brand4"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
-                <Image
-                  src="/assets/img/brand/5.svg"
-                  alt="brand5"
-                  className="mx-4 flex-shrink-0"
-                  width={150}
-                  height={80}
-                />
+                {brandImages.map((brandNum, index) => (
+                  <Image
+                    key={`brand-${brandNum}-${index}`}
+                    src={`/assets/img/brand/${brandNum}.svg`}
+                    alt={`brand${brandNum}`}
+                    className="mx-4 flex-shrink-0"
+                    width={150}
+                    height={80}
+                    style={{ width: "150px", height: "auto" }}
+                  />
+                ))}
               </div>
             </div>
           </section>
         </section>
-        
-        
+
+
       </div >
     </>
   );

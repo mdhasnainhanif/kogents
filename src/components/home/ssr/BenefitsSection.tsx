@@ -30,7 +30,7 @@ const defaultCounterData: CounterDataItem[] = [
   {
     id: 1,
     target: 93,
-    title: "Smart Tools. Smarter Outcomes...",
+    title: "Smart Tools. Smarter Outcomes",
     description: "Kogents AI Agents do more than reply — they act.",
     className: "counter1"
   },
@@ -63,17 +63,21 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
           <span className="buttonAnimation pink inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
             Benefits
           </span>
-          <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
-            Kogents Ai Agents Come
+          <div className="row w-100">
+            <div className="col-md-12">
+          <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize w-100">
+            Kogents AI Agents Come
             <span className="inline-block lg:block"></span>With Tremendous
             Benefits
           </h2>
-          <p className="w-75 mb-16 text-center paraColor subHeading">
+          <p className="maxWidth39 mb-16 text-center paraColor subHeading w-100 mx-auto">
             Deploy AI agents to streamline operations and amplify your
             business's efficiency. These agents optimize processes&#44; reduce
             delays&#44; and enhance output&#44; ensuring you gain a competitive
             edge with speed and precision.
           </p>
+          </div>
+          </div>
 
           <div className="row rowGap w-100 mt-5">
             <div className="col-xl-7 paddingX0">
@@ -82,7 +86,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
                   Integerate AI Agents Into Your Organization Structure
                 </h2>
                 <Image
-                  src="/assets/img/members.png"
+                  src="/assets/img/members.webp"
                   alt="video image demo"
                   className="w-100"
                   width={800}
