@@ -203,7 +203,7 @@ const page = () => {
       {/* Section 6: Customer Logos */}
       <BrandLogoSlider />
 
-      {/* Section 7: Why Kogents */}
+      
       <CustomerServiceCard
         tag="Why Kogents"
         heading="Why Choose Kogents AI Automation Agency?"
