@@ -1782,11 +1782,11 @@ input::placeholder {
   margin-top: 8rem !important;
 }
 .cardPoints a{
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 .cardPoints a:hover{
     transform: scale(1.025);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 .mt125{
     margin-top: 1.25rem !important;

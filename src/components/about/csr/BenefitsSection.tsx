@@ -21,7 +21,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({
   tag = "Benefits",
   title = "Kogents AI agents Come",
   description = "Deploy AI agents to streamline operations and amplify your business's efficiency. These agents optimize processes, reduce delays, and enhance output, ensuring you gain a competitive edge with speed and precision.",
-  imageSrc = "assets/img/members.webp",
+  imageSrc = "assets/img/members.png",
   imageAlt = "video image demo",
   cards = [
     {

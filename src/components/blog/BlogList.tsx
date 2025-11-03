@@ -174,11 +174,11 @@ const BlogListOwlCarousel: React.FC = () => {
         {loading && <SkeletonBlogList />}
 
         {/* empty state after fetch */}
-        {!loading && didFetch && posts.length === 0 && (
+        {/* {!loading && didFetch && posts.length === 0 && (
           <div className="mt-8 flex justify-center items-center">
             <div className="text-w-500 text-lg">No blog posts found.</div>
           </div>
-        )}
+        )} */}
 
         {/* content: carousel (>3) or grid (<=3) */}
         {!loading && posts.length > 0 && (
@@ -222,7 +222,7 @@ const BlogListOwlCarousel: React.FC = () => {
                     alt={alt}
                   />
 
-                  <p className="blog-category mb-4 text-light">{category}</p>
+                  <p className="blog-category mb-4 text-light capitalize">{category}</p>
 
                   <Link href={`/blogs/${post.slug}`}>
                     <h3 className="block mb-3 text-2xl font-medium text-w-500">
