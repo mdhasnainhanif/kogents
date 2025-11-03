@@ -86,7 +86,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
                   Integerate AI Agents Into Your Organization Structure
                 </h2>
                 <Image
-                  src="/assets/img/members.webp"
+                  src="/assets/img/members.png"
                   alt="video image demo"
                   className="w-100"
                   width={800}
