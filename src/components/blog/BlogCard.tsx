@@ -178,7 +178,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
                         alt={alt}
                       />
 
-                      <p className="blog-category mb-4 text-w-500">
+                      <p className="blog-category mb-4 text-w-500 capitalize">
                         {category}
                       </p>
 
