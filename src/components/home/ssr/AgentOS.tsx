@@ -15,7 +15,7 @@ const AgentOS = () => {
             <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
               Autonomous Doesn&apos;t Mean Isolated
             </h2>
-            <p className="w-75 mb-16 text-center m-auto mt-3 subHeading paraColor">
+            <p className="maxWidth39 mb-16 text-center paraColor mt125 subHeading mx-auto">
               Your AI Agents share signals, escalate across channels, and optimize workflows together. Think of it as a mesh network of AI, tailored to your business.
             </p>
             <div className="rainbowImage">
@@ -37,7 +37,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Email Triage Ai Agent</p>
+                      <p className="boxSvgText">Email Triage AI Agent</p>
                     </div>
                   </div>
                   <div className="img2">
@@ -55,7 +55,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Customer Service Ai Agent</p>
+                      <p className="boxSvgText">Customer Service AI Agent</p>
                     </div>
                   </div>
                   <div className="img3">
@@ -73,7 +73,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Data Extraction Ai Agent</p>
+                      <p className="boxSvgText">Data Extraction AI Agent</p>
                     </div>
                   </div>
                 </div>
@@ -93,7 +93,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Order Management Ai Agent</p>
+                      <p className="boxSvgText">Order Management AI Agent</p>
                     </div>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Sales Operation Ai Agent</p>
+                      <p className="boxSvgText">Sales Operation AI Agent</p>
                     </div>
                   </div>
                   <div className="img6">
@@ -149,7 +149,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Product Listing Ai Agent</p>
+                        <p className="boxSvgText">Product Listing AI Agent</p>
                     </div>
                   </div>
                 </div>

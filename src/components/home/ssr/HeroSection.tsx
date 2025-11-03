@@ -89,7 +89,7 @@ const HeroSection = () => {
                   <span className="buttonAnimation inline-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
                     Driven by Kogents AI
                   </span>
-                  <h2 className="headingSize mt-0">
+                  <h2 className="headingSize">
                     Automate Every Conversation. Close Every Loop. Scale Without
                     Hiring.
                   </h2>

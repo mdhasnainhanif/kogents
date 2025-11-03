@@ -19,9 +19,9 @@ interface BenefitsSectionProps {
 
 const BenefitsSection: React.FC<BenefitsSectionProps> = ({
   tag = "Benefits",
-  title = "Kogents Ai agents Come",
+  title = "Kogents AI agents Come",
   description = "Deploy AI agents to streamline operations and amplify your business's efficiency. These agents optimize processes, reduce delays, and enhance output, ensuring you gain a competitive edge with speed and precision.",
-  imageSrc = "assets/img/members.png",
+  imageSrc = "assets/img/members.webp",
   imageAlt = "video image demo",
   cards = [
     {

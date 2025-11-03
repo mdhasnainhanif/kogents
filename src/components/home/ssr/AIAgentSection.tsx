@@ -112,7 +112,7 @@ const AIAgentSection = () => {
       ],
       buttonColor: "green",
       buttonAnimation: "buttonAnimation2 green",
-      colClass: "col-lg-12 col-md-6 col-12 card_hide_ipadpro",
+      colClass: "col-lg-12 col-md-6 col-12 card_hide_ipadpro longCard",
       isLarge: true,
     },
     {
@@ -190,7 +190,7 @@ const AIAgentSection = () => {
               <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
                 What Kogents AI Does
               </span>
-              <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+              <h2 className="maxWidth39 mx-auto text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
                 AI That's Actually Operational
               </h2>
               <p className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto aos-init aos-animate">
