@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     "AI agents for WhatsApp, Instagram, Shopify, HubSpot, Zendesk & more.";
   const fullUrl = `https://kogents.ai/platforms/${channelId}`;
   const ogImage = "https://www.kogents.ai/assets/img/logo-new.svg";
+  const isAiVoiceAgent = channelId === "ai-voice-agent";
   return {
     title,
     description,
@@ -46,6 +47,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         "en-US": fullUrl,
       },
     },
+    robots: isAiVoiceAgent ? {
+      index: false,
+      follow: false,
+    } : undefined,
     openGraph: {
       title,
       description,
