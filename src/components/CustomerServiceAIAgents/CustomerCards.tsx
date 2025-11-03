@@ -71,7 +71,7 @@ const CustomerCards: React.FC<CustomerCardsProps> = ({
     },
   ],
   buttonText = "Learn More",
-  buttonAction = () => {},
+  buttonAction = () => { },
   showButton = false,
 }) => {
   const openModal = useModalStore((state) => state.openModal);
@@ -98,12 +98,8 @@ const CustomerCards: React.FC<CustomerCardsProps> = ({
                 <p>{description}</p>
               )}
             </div>
-
-            {/* Dynamic Button Section */}
           </div>
         </div>
-
-        {/* Benefits Grid */}
         <div className="row row-gap-4 mt-12 justify-content-center">
           {benefits.map((benefit) => (
             <div key={benefit.id} className={colSize}>

@@ -20,23 +20,21 @@ export const metadata: Metadata = {
     description:
         'Improve decision-making by using our survey AI agent that captures opinions, detects patterns, and generates instant reports. Learn more today.',
     keywords: [],
-
     alternates: {
         canonical: 'https://kogents.ai/solutions/survey-ai-agent',
         languages: {
             'en-US': 'https://kogents.ai/solutions/survey-ai-agent',
         },
     },
-
     openGraph: {
         title: 'Expert Survey AI Agent for Smarter Analytics | Kogents.ai',
         description:
             'Improve decision-making by using our survey AI agent that captures opinions, detects patterns, and generates instant reports. Learn more today.',
-        url: 'https://www.kogents.ai/solutions/survey-ai-agent', 
+        url: 'https://www.kogents.ai/solutions/survey-ai-agent',
         type: 'website',
         images: [
             {
-                url: 'https://www.kogents.ai/assets/img/logo-new.svg', 
+                url: 'https://www.kogents.ai/assets/img/logo-new.svg',
                 width: 1200,
                 height: 630,
                 alt: 'Team Kogents AI working together',
@@ -45,14 +43,12 @@ export const metadata: Metadata = {
         siteName: 'Kogents AI',
         locale: 'en_US',
     },
-
 }
 const page = () => {
     const breadcrumbItems = [
         { label: 'Solutions', href: '/solutions' },
         { label: 'Survey AI Agent', active: true }
     ];
-
     const pageData = {
         banner: {
             tag: "Survey AI Agent",
@@ -148,7 +144,7 @@ const page = () => {
                     },
                 ]}
             />
-            
+
             <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"

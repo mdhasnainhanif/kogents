@@ -70,7 +70,7 @@ export function generateStaticParams(): Params[] {
     'jira-ai-integration', 'calendly-ai-integration', 'openai', 'anthropic', 'groq', 'hugging-face',
     'slack-ai-agent', 'sunshine-conversation-ai-agent', 'intercom-ai-agent',
     'line-ai-agent', 'microsoft-teams-agents', 'viber-ai-agent',
-    'ai-zendesk-agent', 'ai-telegram-agent',
+    'ai-zendesk-agent', 'ai-telegram-agent','ai-voice-agent',
   ];
   return channelIds.map((channelId) => ({ channelId }));
 }

@@ -5125,4 +5125,357 @@ export const Data: AllPageDataType = {
             ],
         }
     },
+    "ai-voice-agent": {
+        metadata: {
+            metaTitle: "Kogents AI Voice Agent for Smart & Humanlike Call Automation",
+            metaDescription: "Answer every call instantly with humanlike automation. Boost trust, speed, and connection with the Kogents AI voice agent platform. Get Now!",
+            slug: "https://kogents.ai/platforms/ai-voice-agent/",
+            primaryKeyword: "AI Voice Agent",
+            variations: [
+                "",
+            ],
+            lsi: [
+                "",
+            ]
+        },
+        banner: {
+            tag: "AI Voice Agent",
+            title: "Never Miss a Call with an AI Voice Agent That Sounds Human",
+            description: "Every missed call costs connection and credibility.\nAt Kogents AI, our AI voice agent and intelligent voice assistant automate inbound and outbound phone calls with precision and reliability.\nPowered by human-sounding AI with advanced speech recognition, text-to-speech (TTS), and natural language processing (NLP), it manages conversations in real time so every caller is heard and connected quickly.\nBuilt by certified NLP and speech engineers, the Kogents AI voice automation platform meets GDPR, HIPAA, and SOC 2 standards to ensure secure and transparent voice automation for business.",
+            descriptionPoints: [
+                "24 / 7 smart call handling AI",
+                "Conversational AI for telephony that adapts to caller intent",
+                "Voice automation that prevents missed calls",
+            ],
+            button: {
+                text: "Get AI Voice Agent",
+                link: "/book-demo",
+            },
+            image: {
+                src: "/assets/img/ai-shopify/banner.webp",
+                alt: "Custom Banner",
+                width: 900,
+                height: 650,
+                className: "rounded-lg shadow-lg",
+            },
+        },
+        counterSection: {
+            title: "WhatsApp Agent by the Numbers",
+            counters: [
+                { label: "Call response rate", value: 99.8, symbol: "%" },
+                { label: "Faster resolutions", value: 80, symbol: "%" },
+                { label: "Fewer missed callss", value: 65, symbol: "%" },
+                { label: "Higher lead conversions", value: 120, symbol: "%" }
+            ]
+        },
+        customerCardsSection: {
+            tag: "Problems",
+            colSize: "col-lg-6 col-md-6 col-12",
+            heading: "Why Traditional Call Handling Fails to Keep Up",
+            description: "Missed calls create communication gaps that affect customer trust and satisfaction. These recurring challenges limit responsiveness and weaken relationships. Here are the key issues most businesses face when managing customer calls.",
+            showButton: false,
+            benefits: [
+                {
+                    id: 1,
+                    icon: "/assets/img/ai-shopify/1.svg",
+                    title: "Missed Calls and Overflow Handling",
+                    description:
+                        "The missed calls problem worsens after hours when no call overflow handling is in place. Unanswered calls cause lost leads from missed calls and customer frustration from wait times. Continuous real-time customer engagement through adaptive workflows keeps connections active and responsive.",
+                },
+                {
+                    id: 2,
+                    icon: "/assets/img/ai-shopify/2.svg",
+                    title: "Lack of Personalization in Customer Calls",
+                    description:
+                        "Generic replies result in inefficient call responses and reduce engagement. Without speech understanding or customer intent detection, teams miss callers' needs. The IEEE Speech Processing framework confirms that recognizing conversational context ensures accurate and natural interactions.",
+                },
+                {
+                    id: 3,
+                    icon: "/assets/img/ai-shopify/3.svg",
+                    title: "Slow and Frustrating Call Experiences",
+                    description:
+                        "Slow routing and long holds lower performance and cause a poor response rate on inbound calls. A structured voice-driven workflow interprets conversational context to speed up connections. Faster responses improve satisfaction and build long-term loyalty.",
+                },
+                {
+                    id: 4,
+                    icon: "/assets/img/ai-shopify/4.svg",
+                    title: "Inconsistent and Unreliable Communication",
+                    description:
+                        "Manual processes lead to business call management issues and communication gaps. These mistakes reduce reliability and customer confidence. Implementing speech understanding aligned with ISO IEC 30107-3 standards ensures consistent and accurate responses.",
+                },
+                {
+                    id: 5,
+                    icon: "/assets/img/ai-shopify/4.svg",
+                    title: "Limited Accessibility and Uneven Service",
+                    description:
+                        "High call volume and language barriers create uneven service. Many small teams face a voice automation need for SMBs to manage call overflow handling effectively. Inclusive real-time customer engagement provides equal support across every caller type and region.",
+                },
+                {
+                    id: 6,
+                    icon: "/assets/img/ai-shopify/4.svg",
+                    title: "Delayed Support and Poor Resolution Rates",
+                    description:
+                        "Delays weaken trust and affect customer perception. Repeated business call management issues slow resolution and limit first-contact success. Intent-based workflows and voice-driven automation guided by IEEE Speech Processing standards improve accuracy and restore confidence.",
+                },
+            ]
+        },
+        customerGrowthCardsSection: {
+            tag: "Solutions",
+            heading: "Comprehensive Solutions Offered by Kogents AI Voice Agent",
+            description: "Businesses across industries leverage the AI voice agent for phone calls from Kogents AI to transform customer communication. This conversational AI solution enables natural, intelligent, and secure interactions that strengthen reliability and connection.",
+            solutions: [
+                {
+                    id: 1,
+                    iconColor: "bg-pink-500",
+                    title: "Human-Sounding Voice AI for Natural Conversations",
+                    description:
+                        "Companies rely on Kogents AI’s human-sounding voice AI to engage callers with clarity and authenticity. Powered by neural voice technology and text-to-speech (TTS) conversion, it mirrors real human tone and emotion, ensuring conversations sound genuine and help build rapport.",
+                },
+                {
+                    id: 2,
+                    iconColor: "bg-purple-500",
+                    title: "Automated Voice Assistant That Manages Every Call",
+                    description:
+                        "Organizations use Kogents AI’s automated voice assistant to manage inbound and outbound calls efficiently. Integrated speech-to-text recognition and natural language understanding (NLU) process caller intent in real time, improving accuracy and consistency across every interaction. It also serves as an AI voice answering service for uninterrupted availability.",
+                },
+                {
+                    id: 3,
+                    iconColor: "bg-teal-500",
+                    title: "Smarter Call Routing and Contextual Engagement",
+                    description:
+                        "Through conversational call routing and adaptive contextual dialogue systems, Kogents AI connects callers to the right support without delay. This intelligent routing reduces complex menu navigation and acts as a smart IVR alternative for faster, more intuitive experiences.",
+                },
+                {
+                    id: 4,
+                    iconColor: "bg-blue-500",
+                    title: "Comprehensive AI Call Management Platform",
+                    description:
+                        "As an AI call management platform, Kogents AI centralizes inbound and outbound communication while delivering operational visibility. Its voice interaction automation ensures responses remain accurate and consistent, helping teams maintain quality at scale.",
+                },
+                {
+                    id: 5,
+                    iconColor: "bg-blue-500",
+                    title: "Enterprise-Grade Security and Compliance",
+                    description:
+                        "Every interaction on Kogents AI follows SOC 2 and GDPR frameworks to safeguard privacy and data integrity. Developed with insights from the Stanford NLP Group and MIT CSAIL, the system maintains transparency, accountability, and reliability through explainable AI standards.",
+                },
+            ],
+            buttonText: "Activate Smarter Conversations",
+            buttonLink: "#",
+        },
+        whatsappImagesSection: {
+            subtitle: "Outcomes",
+            title: "Results That Demonstrate Real Growth and Efficiency",
+            description: "Voice automation delivers measurable improvements in responsiveness, efficiency, and customer satisfaction while reducing missed calls and operational costs.",
+            backgroundImage: "/assets/img/bc/philosophyofsearch-bg.png",
+            agentCards: [
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-shopify/1.webp",
+                    title: "100% Call Response and Improved Response Rate",
+                    points: [
+                        "Businesses approach 100% call response with a 24/7 automated calling solution that manages every inquiry instantly. Intelligent routing improves the overall response rate and ensures first-contact resolution, creating faster and more reliable customer interactions.",
+                    ],
+                },
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-shopify/2.webp",
+                    title: "Enhanced Customer Satisfaction",
+                    points: [
+                        "Consistent communication ensures enhanced customer satisfaction and stronger trust. With call sentiment analysis and conversational accuracy metrics, every interaction remains clear and context-aware, helping customers feel understood and valued.",
+                    ],
+                },
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-shopify/3.webp",
+                    title: "Business Efficiency via Voice AI",
+                    points: [
+                        "Automating routine calls increases business efficiency via voice AI. Teams focus on higher-value work while AI-driven efficiency tracking and voice performance analytics maintain consistent service quality and throughput.",
+                    ],
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-shopify/4.webp",
+                    title: "Cost-Effective Call Handling",
+                    points: [
+                        "Smart routing and adaptive workflows create cost-effective call handling that scales with demand. Fewer missed calls and shorter queues lead to lower costs and stronger resource utilization.",
+                    ],
+                    imgHeight: true,
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-shopify/5.webp",
+                    title: "Increased Lead Capture and ROI",
+                    points: [
+                        "Consistent follow-ups boost lead capture and conversion outcomes. Through voice AI ROI tracking, organizations measure gains in engagement, time savings, and operational results based on anonymized deployment data.",
+                    ],
+                    imgHeight: true,
+                },
+            ],
+            showButton: true,
+            buttonText: "Get Started with Voice AI",
+        },
+        faqWithImageSection: {
+            tag: "Process",
+            heading: "How the Process Works",
+            description: "The Kogents AI platform follows a streamlined AI voice onboarding process built for clarity, compliance, and adaptability. Each step ensures fast deployment and reliable real-time performance.",
+            faqItems: [
+                {
+                    id: 1,
+                    q: "Voice Assistant Setup",
+                    a: "The voice assistant setup process configures the system to match communication goals. Using speech training models, the voice agent learns tone, phrasing, and intent for accurate, human-like interactions.",
+                    image: "/assets/img/ai-shopify/6.webp",
+                },
+                {
+                    id: 2,
+                    q: "Integration with CRM and Telephony",
+                    a: "Through integration with CRM and telephony, the AI voice workflow connects existing systems and customer data. This enables context-aware responses and consistent communication across every channel.",
+                    image: "/assets/img/ai-shopify/7.webp",
+                },
+                {
+                    id: 3,
+                    q: "Real-Time Voice Adaptation",
+                    a: "With real-time voice adaptation, the conversational AI pipeline adjusts tone and clarity during live interactions. Language model fine-tuning and real-time inference maintain natural, context-aware dialogue.",
+                    image: "/assets/img/ai-shopify/8.webp",
+                },
+                {
+                    id: 4,
+                    q: "Automated Outbound Call Scheduling",
+                    a: "The system handles automated outbound call scheduling based on response patterns and engagement timing. This ensures timely outreach and balanced communication without manual effort.",
+                    image: "/assets/img/ai-shopify/9.webp",
+                },
+                {
+                    id: 5,
+                    q: "Security and Voice Assurance",
+                    a: "Every phase upholds strict voice data privacy handling under SOC 2 and GDPR standards. Certified AI model governance and human-audited voice quality assurance ensure accuracy, ethics, and trust.",
+                    image: "/assets/img/ai-shopify/10.webp",
+                },
+            ],
+            rightImage: "/assets/img/faq.png",
+            rightImageAlt: "Healthcare AI Implementation Process",
+        },
+        clientTestimonialSection: {
+            tag: "Reviews",
+            heading: "Client Testimonails",
+            description: "",
+            testimonials: [
+                {
+                    id: 1,
+                    quote: "We've been using the healthcare AI agent for about four months now, and the results are incredible. Our patient response times have dropped dramatically, and patients actually appreciate how fast and accurate the medical information is. The system also frees up our medical staff to focus on complex patient care instead of answering the same appointment and billing questions over and over again. It feels like we added an extra team member without the cost, and the HIPAA compliance gives us peace of mind.",
+                    avatar: "DR",
+                    name: "Dr. Sarah Mitchell",
+                    title: "Medical Director, City General Hospital",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    quote: "I was skeptical at first, but the personalized patient support feature blew me away. It remembers past interactions and makes every conversation feel seamless while maintaining complete patient privacy.",
+                    avatar: "JR",
+                    name: "Jennifer Rodriguez",
+                    title: "Practice Manager, Family Care Clinic",
+                    rating: 5,
+                },
+                {
+                    id: 3,
+                    quote: "The physician-in-the-loop escalation is a lifesaver. Our patients never feel stuck talking to a bot — the system knows exactly when to bring in a real healthcare provider for medical decisions.",
+                    avatar: "AH",
+                    name: "Dr. Amir Hassan",
+                    title: "Cardiologist, Heart & Vascular Center",
+                    rating: 5,
+                },
+                {
+                    id: 4,
+                    quote: "What stood out for me was how simple the setup was with our existing EHR system. Within just a few days, the AI agent was already live and integrated with Epic. Our staff no longer waste time on routine administrative tasks because everything is automated. After a month of using it, I could already see a 60% improvement in patient satisfaction, and the cost savings compared to hiring additional administrative staff are significant.",
+                    avatar: "SL",
+                    name: "Dr. Sophia Lee",
+                    title: "Chief Medical Officer, Regional Medical Center",
+                    rating: 5,
+                },
+            ],
+            statistics: [
+                {
+                    id: 1,
+                    icon: "⭐⭐⭐",
+                    value: "85%",
+                    label: "Increase in Patient Satisfaction",
+                },
+                {
+                    id: 2,
+                    icon: "⚙️⏰",
+                    value: "65%",
+                    label: "Reduction in Administrative Workload",
+                },
+            ],
+        },
+        customerBenefitSection: {
+            buttonText: "Activate Your Agent Today",
+            leftColumn: {
+                tag: "Start Now",
+                title: "Engage, Respond, and Retain Every Call with Kogents AI Voice Agent",
+                subtitle: "Turn every missed ring into a real connection with the AI voice agent platform built for responsiveness.\nOur smart call automation and humanlike AI voice for business handle inbound and outbound conversations effortlessly, keeping you connected, responsive, and ready to close every opportunity.",
+                appStoreImage: "/assets/img/app-section/6.png",
+                googlePlayImage: "/assets/img/app-section/7.png",
+            },
+            rightColumn: {
+                appPreviewImage: "/assets/img/img-new.webp",
+                qrCodeImage: "/assets/img/app-section/5.png",
+                qrCodeText: "Scan to Download",
+            },
+            backgroundImage: "/assets/img/bc/video-bg.webp",
+        },
+        faq: {
+            tag: "FAQs",
+            heading: "Frequently Asked Questions",
+            items: [
+                {
+                    q: "What is the Kogents AI Voice Agent?",
+                    a: "The Kogents AI Voice Agent is an intelligent system that uses natural speech to manage customer communication. It understands spoken language, detects intent, and responds instantly to handle inbound and outbound calls, ensuring no interaction is missed and every conversation feels human and responsive.",
+                },
+                {
+                    q: "Why choose Kogents AI over other AI voice agent platforms?",
+                    a: "Kogents AI stands out for its certified NLP and speech engineering foundation, GDPR and SOC 2 compliance, and focus on voice automation for business. It combines accuracy, privacy, and natural conversation quality to deliver trustworthy, scalable communication.",
+                },
+                {
+                    q: "How do AI voice agents work?",
+                    a: "AI voice agents combine speech recognition, NLP, and text-to-speech to understand conversations and respond in real time. They automate calls, ensuring quick, consistent, and context-aware communication across every customer interaction.",
+                },
+                {
+                    q: "What is the difference between an AI voice agent and a chatbot?",
+                    a: "An AI voice agent interacts through spoken dialogue, while a chatbot communicates via text. Voice agents capture tone and emotion, making them ideal for phone-based customer service automation.",
+                },
+                {
+                    q: "How does NLP power AI voice assistants?",
+                    a: "NLP enables AI voice assistants to interpret language, tone, and intent. It helps them understand meaning beyond words, maintain conversational flow, and deliver accurate, context-driven responses.",
+                },
+                {
+                    q: "What are the benefits of using the Kogents AI Voice Agent for business?",
+                    a: "The Kogents AI Voice Agent helps businesses increase efficiency, reduce missed calls, and improve customer satisfaction. It provides 24/7 smart call handling, allowing teams to focus on high-value tasks while Kogents AI manages every customer interaction with accuracy and reliability.",
+                },
+                {
+                    q: "How are AI voice agent platforms used in call centers?",
+                    a: "AI voice agent platforms for call centers automate calls, route customers intelligently, and analyze performance. Integrated with CRM tools, they improve efficiency, maintain consistent engagement, and scale effortlessly with business needs.",
+                },
+                {
+                    q: "How much is the pricing for AI voice agent solutions?",
+                    a: "Pricing for AI voice agent solutions depends on features, call volume, and integrations. Plans range from small business setups to enterprise-level packages with analytics and language support.",
+                },
+                {
+                    q: "How can I buy enterprise voice assistant solutions from Kogents AI?",
+                    a: "You can purchase enterprise voice assistant solutions directly from Kogents AI, with secure deployment, CRM and telephony integration, and full compliance under GDPR and SOC 2 frameworks.",
+                },
+                {
+                    q: "What are AI voice customer service automation tools?",
+                    a: "AI voice customer service automation tools handle FAQs, confirm bookings, collect feedback, and route complex issues to agents. They improve speed, accuracy, and overall service quality.",
+                },
+                {
+                    q: "What is the difference between an AI voice agent and human customer support?",
+                    a: "An AI voice agent handles multiple calls simultaneously with consistent accuracy, while human customer support adds empathy for complex queries. Together, they create faster, more personalized experiences.",
+                },
+                {
+                    q: "What do AI voice technology ROI statistics show?",
+                    a: "AI voice technology ROI statistics show higher response rates, fewer missed calls, and better lead conversions. Businesses using AI voice automation report faster resolutions and measurable cost savings after deployment.",
+                },
+            ],
+        }
+    },
 }; 
