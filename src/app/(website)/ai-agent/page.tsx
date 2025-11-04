@@ -1,6 +1,6 @@
 export const dynamic = "force-static";
 
-import HeroSection from '@/components/homeCopy/ssr/HeroSection';
+import HeroSection from '@/components/ai-agent/HeroSection';
 import ProductSection from '@/components/homeCopy/csr/ProductSection';
 import AIAgentSection from '@/components/homeCopy/ssr/AIAgentSection';
 import BenefitsSection from '@/components/homeCopy/csr/BenefitsSection';
@@ -10,7 +10,8 @@ import AIAgentSlider from '@/components/homeCopy/csr/AIAgentSlider';
 import AgentOS from '@/components/homeCopy/ssr/AgentOS';
 import KogentBenefits from '@/components/homeCopy/ssr/KogentBenefits';
 import type { Metadata } from 'next';
-import BlogList from '@/components/blog/BlogList';
+import LightRaysWrapper from '@/components/ai-agent/LightRaysWrapper';
+import ScrollLock from '@/components/ai-agent/ScrollLock';
 
 const BASE = "https://kogents.ai";
 
@@ -127,33 +128,44 @@ export default function HomePage() {
   
   return (
     <>
+    <ScrollLock />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <HeroSection />
-      <section className="cv">
-        <ProductSection />
-      </section>
-      <AIAgentSection />
-      <div
-        className="bg-center bg-no-repeat bg-cover pb-0 newBgTheme"
-        id="caseStudySection"
-      >
+      <div className="relative w-full min-h-screen">
+        {/* LightRays background effect */}
+        <div className="fixed inset-0 w-full h-full z-0">
+          <LightRaysWrapper raysColor="#5D51AF" />
+        </div>
         
-        {/* <section className="cv">
-          <BenefitsSection counterData={counterData} />
-        </section> */}
-        <WorkflowsSection />
-        <section className="cv">
-          <AIAgentSlider />
-        </section>
-        {/* <AgentOS /> */}
-        {/* <KogentBenefits /> */}
-        <section className="cv">
-          <FAQSection showLoadMore={false} />
-        </section>
-        {/* <BlogList /> */}
+        {/* Page content */}
+        <div className="relative z-10">
+          <HeroSection />
+          <section className="cv">
+            <ProductSection />
+          </section>
+          <AIAgentSection />
+          <div
+            className="bg-center bg-no-repeat bg-cover pb-0 newBgTheme"
+            id="caseStudySection"
+          >
+            
+            {/* <section className="cv">
+              <BenefitsSection counterData={counterData} />
+            </section> */}
+            <WorkflowsSection />
+            <section className="cv">
+              <AIAgentSlider />
+            </section>
+            {/* <AgentOS /> */}
+            {/* <KogentBenefits /> */}
+            <section className="cv">
+              <FAQSection showLoadMore={false} />
+            </section>
+            {/* <BlogList /> */}
+          </div>
+        </div>
       </div>
     </>
   );

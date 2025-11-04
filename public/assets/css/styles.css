@@ -3401,7 +3401,7 @@ header nav > ul > li:hover::before {
     padding: 0 !important;
   }
   .buttonAnimation {
-    margin-bottom: 0.55rem;
+    margin-bottom: 1.25rem;
   }
   .newLineAnimation {
     display: block;

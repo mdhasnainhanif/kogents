@@ -226,14 +226,15 @@ section.customerservice-section {
   font-size: 3.6rem;
   font-display: swap;
 }
-.headingSize.mt-0{
-    margin-top: 0 !important;
+.headingSize.mt-0 {
+  margin-top: 0 !important;
 }
 .heroItems .buttonAnimation {
   margin-bottom: 0.75rem;
 }
-.heroItems p{
-    margin-top: 1.25rem;
+.heroItems p {
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
 }
 .active2 {
   color: #9a8dec !important;
@@ -1598,6 +1599,12 @@ a.aboutIconPhone {
   }
 }
 @media (max-width: 576px) {
+  .footCate {
+    margin-top: 2.5rem !important;
+}
+  p.companyInfo {
+    margin-top: 2rem !important;
+  }
   .app-btn,
   .solutionFaq ul li.custom-nav1 .nav-link {
     width: 100%;
@@ -1781,19 +1788,34 @@ input::placeholder {
 .companyInfo {
   margin-top: 8rem !important;
 }
-.cardPoints a{
-    transition: transform 0.2s ease-in-out;
+
+/* Move Company Info column to bottom in mobile view */
+@media (max-width: 576px) {
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  /* Move the entire "By Professions" column (which contains Company Info) to bottom */
+  .footer-column:has(.companyInfo) {
+    order: 999;
+  }
 }
-.cardPoints a:hover{
-    transform: scale(1.025);
-    transition: transform 0.2s ease-in-out;
+.cardPoints a {
+  transition: transform 0.2s ease-in-out;
 }
-.mt125{
-    margin-top: 1.25rem !important;
+.cardPoints a:hover {
+  transform: scale(1.025);
+  transition: transform 0.2s ease-in-out;
 }
-.mb125{
-    margin-bottom: 1.25rem !important;
+.mt125 {
+  margin-top: 1.25rem !important;
 }
-.longCard .arrowPointUl{
-    margin-top: 1.25rem;
+.mb125 {
+  margin-bottom: 1.25rem !important;
+}
+.longCard .arrowPointUl {
+  margin-top: 1.25rem;
+}
+.contactBanner p{
+  margin-top: 1.25rem;
 }
