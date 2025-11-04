@@ -234,6 +234,7 @@ section.customerservice-section {
 }
 .heroItems p {
   margin-top: 1.25rem;
+  font-size: 1.25rem;
 }
 .active2 {
   color: #9a8dec !important;
@@ -1598,6 +1599,9 @@ a.aboutIconPhone {
   }
 }
 @media (max-width: 576px) {
+  .footCate {
+    margin-top: 2.5rem !important;
+}
   p.companyInfo {
     margin-top: 2rem !important;
   }
@@ -1810,5 +1814,8 @@ input::placeholder {
   margin-bottom: 1.25rem !important;
 }
 .longCard .arrowPointUl {
+  margin-top: 1.25rem;
+}
+.contactBanner p{
   margin-top: 1.25rem;
 }

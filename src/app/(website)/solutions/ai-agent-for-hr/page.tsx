@@ -136,7 +136,7 @@ const page = () => {
         ]}
       />
       
-      <BrandLogoSlider />
+      {/* <BrandLogoSlider /> */}
       <CustomerGrowthCards
         tag="Solutions"
         heading="Our Comprehensive AI HR Solutions for Every Team"
