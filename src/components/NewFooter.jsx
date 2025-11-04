@@ -280,10 +280,10 @@ const NewFooter = () => {
               </ul>
               <p className="h6 footCate">Resources</p>
               <ul>
-                <li>
-                  <Link href="/security">Security</Link>
-                </li>
                 {/* <li><Link href="/pricing">Pricing</Link></li> */}
+                <li>
+                  <Link href="/blogs">Blogs</Link>
+                </li>
                 <li>
                   <Link href="/case-studies">Case Studies</Link>
                 </li>
@@ -337,9 +337,6 @@ const NewFooter = () => {
                 </li>
                 <li>
                   <Link href="/platforms">Platforms</Link>
-                </li>
-                <li>
-                  <Link href="/blogs">Blogs</Link>
                 </li>
                 <li>
                   <Link href="/contact-us">Contact Us</Link>
@@ -406,6 +403,7 @@ const NewFooter = () => {
                   <Link href="/">Imprint</Link>
                 </li>
               </ul>
+
             </div>
           </div>
 
@@ -434,25 +432,16 @@ const NewFooter = () => {
                   </Link>
                 </li>
               </ul>
-              <p className="h6 companyInfo">Company Info</p>
-              <ul className="company-info-list">
-                <li >
-                  <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><Image
-                    width={20}
-                    height={20}
-                    className=""
-                    src="/assets/img/email.svg"
-                    alt="icon"
-                  /> info@kogents.ai</Link>
+              <p className="h6 footCate1">Glossary</p>
+              <ul>
+                <li>
+                  <Link href="#">AI Voice Agent</Link>
                 </li>
-                <li >
-                  <Link className="d-flex align-items-center gap-2" href="tel:+12672489454"><Image
-                    width={20}
-                    height={20}
-                    className=""
-                    src="/assets/img/phone.svg"
-                    alt="icon"
-                  /> +1 (267) 248-9454</Link>
+                <li>
+                  <Link href="#">AI Automation</Link>
+                </li>
+                <li>
+                  <Link href="#">AI Recruiting</Link>
                 </li>
               </ul>
             </div>
@@ -479,7 +468,29 @@ const NewFooter = () => {
                   <Link href="/solutions">Application AI Agents</Link>
                 </li> */}
               </ul>
+              <p className="h6 companyInfo">Company Info</p>
+              <ul className="company-info-list">
+                <li >
+                  <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><Image
+                    width={20}
+                    height={20}
+                    className=""
+                    src="/assets/img/email.svg"
+                    alt="icon"
+                  /> info@kogents.ai</Link>
+                </li>
+                <li >
+                  <Link className="d-flex align-items-center gap-2" href="tel:+12672489454"><Image
+                    width={20}
+                    height={20}
+                    className=""
+                    src="/assets/img/phone.svg"
+                    alt="icon"
+                  /> +1 (267) 248-9454</Link>
+                </li>
+              </ul>
             </div>
+            
           </div>
         </div>
       </div>
