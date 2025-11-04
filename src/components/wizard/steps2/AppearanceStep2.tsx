@@ -187,9 +187,9 @@ export function AppearanceStep2({
           {/* Live Preview */}
           <div className="col-lg-6 step2ImgMain d-flex relative align-items-center justify-content-center" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
             <img
-              className="img-fluid step2Img"
+              className="img-fluid"
               src="/assets/img/chat-img-2.svg"
-              alt="Preview"
+              alt="Preview" 
               width={500}
             />
           </div>

@@ -702,6 +702,63 @@ media-theme-tailwind-audio {
   gap: 4rem;
   min-height: 67.17px;
 }
+
+/* Mobile: Fixed header */
+@media (max-width: 768px) {
+  .chat_header_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #0e0b1f;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  
+  .chatbot_header {
+    min-height: 60px;
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+  }
+  
+  .header_pogress_points {
+    width: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    justify-content: flex-start;
+  }
+  
+  /* Main content area - scrollable with padding for fixed header and footer */
+  .chatbot-main-content {
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 100px; /* Space for fixed footer */
+  }
+  
+  /* Footer fixed at bottom */
+  .chatbot_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: #0e0b1f;
+    border-top: 1px solid #374151;
+    padding: 1rem;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  
+  /* Adjust content wrapper padding when footer is fixed */
+  .chatbot-content-wrapper.footer {
+    padding-bottom: 0;
+  }
+}
 .header_pogress_points {
   width: 80%;
   display: flex;
@@ -1598,6 +1655,9 @@ a.aboutIconPhone {
     padding: 0 20px;
   }
 }
+.chatbot_footer .buttonAnimation{
+  margin-bottom: 0 !important;
+}
 @media (max-width: 576px) {
   .footCate {
     margin-top: 2.5rem !important;
@@ -1622,10 +1682,16 @@ a.aboutIconPhone {
   .heroSectionPadding h2.headingSize {
     font-size: 2.6rem !important;
   }
-  .hideOnMobile,
-  .step-3imgMain,
-  .step2ImgMain {
+  div.hideOnMobile,
+  div.step-3imgMain,
+  div.step2ImgMain {
     display: none !important;
+  }
+  div.chatbot-content-wrapper.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #110e20;
   }
   .step2Img {
     display: none;
