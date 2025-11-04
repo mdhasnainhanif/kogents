@@ -169,7 +169,7 @@ export async function sendLeadToCRM(input: ContactData, timeoutMs = 15000): Prom
   console.log("📧 Will send email regardless of CRM status");
 
 
-  let emailResult: any = { attempted: false };
+  const emailResult: any = { attempted: false };
   //   try {
   //     console.log("📧 Step 1: Starting email sending process...");
   //     console.log("📧 Step 1.5: Email inputs:", { name, email, phone_number, hasMetadata: !!input.metadata });
