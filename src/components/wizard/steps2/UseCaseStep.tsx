@@ -30,7 +30,7 @@ const USE_CASE_OPTIONS: UseCaseOption[] = [
   {
     id: "customer-support",
     title: "Customer Support AI Agent",
-    goal: "Highlight efficiency, cost savings, and service quality improvements.",
+    goal: "Goal: Highlight efficiency, cost savings, and service quality improvements.",
     benefits: [
       { 
         id: "a", 
@@ -52,7 +52,7 @@ const USE_CASE_OPTIONS: UseCaseOption[] = [
   {
     id: "lead-capture",
     title: "Lead Capture AI Agent",
-    goal: "Emphasize conversion, qualification speed, and lead pipeline growth.",
+    goal: "Goal: Emphasize conversion, qualification speed, and lead pipeline growth.",
     benefits: [
       { 
         id: "a", 
@@ -153,7 +153,7 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
           <div className="row">
             {/* Left Panel */}
             <div className="col-lg-6 chatbot-left-content-wrapper">
-              <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper pt-5" style={{ paddingBottom: '100px' }}>
+              <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper pt-5" style={{ paddingBottom: '6rem' }}>
                 <div className="chatbot-content">
                   <div className="mb-4">
                     <div className="stepText my-2">Step 3 of 6</div>
@@ -168,7 +168,7 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
                       return (
                         <div 
                           key={useCase.id} 
-                          className={`mb-3 pt-3 pb-2 px-3 rounded-lg border-2 ${
+                          className={`mb-3 pt-3 pb-2 px-3 rounded-4 border-2 ${
                             isSelected ? "border-purple-500 bg-purple-900" : "border-gray-700 bg-gray-900/30"
                           }`}
                           style={{ cursor: "pointer" }}
@@ -203,10 +203,10 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
                               <div>
                                 {useCase.benefits.map((benefit) => (
                                   <div key={benefit.id} className="mb-2">
-                                    <div className="fw-semibold text-white mb-1">
+                                    <div className="fw-semibold mb-1 text_primary">
                                       {benefit.id.toUpperCase()}. {benefit.title}
                                     </div>
-                                    <div className="text-secondary small">
+                                    <div className="text-white small">
                                       {benefit.description}
                                     </div>
                                   </div>

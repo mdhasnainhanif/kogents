@@ -309,13 +309,13 @@ const URLManagementSection = ({
                 urlError ? "border-red-500" : "border-gray-300"
               }`}
             />
-          <button
+          {/* <button
             onClick={addUrl}
             disabled={!newUrl.trim()}
             className="bg-purple-600 text-white hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center paperPlaneIconBtn"
             >
             <PaperPlaneIcon />
-          </button>
+          </button> */}
           </div>
         </div>
           <div className="d-block">

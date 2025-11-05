@@ -27,10 +27,10 @@ const PRESET_COLORS = [
 ];
 
 const AVATAR_OPTIONS = [
-  { id: "avatar1", src: "/assets/img/user1.png" },
-  { id: "avatar2", src: "/assets/img/user2.png" },
-  { id: "avatar3", src: "/assets/img/user3.png" },
-  { id: "avatar4", src: "/assets/img/bot-ai.svg" },
+  { id: "avatar1", src: "/assets/img/brief/avatar1.png" },
+  { id: "avatar2", src: "/assets/img/brief/avatar2.png" },
+  { id: "avatar3", src: "/assets/img/brief/avatar3.png" },
+  { id: "avatar4", src: "/assets/img/brief/avatar4.png" },
 ];
 
 export const CustomizationStep = React.memo<CustomizationStepProps>(

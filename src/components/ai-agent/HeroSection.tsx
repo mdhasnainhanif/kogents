@@ -15,7 +15,7 @@ const HeroSection = () => {
     <>
       <div className="boxesBg ... relative">
         {/* LightRays background effect - only in hero section */}
-        <div className="absolute top-0 left-0 right-0 w-full h-full z-0 overflow-hidden" style={{ background: 'transparent' }}>
+        <div className="absolute top-0 left-0 right-0 w-full h-full z-0 overflow-hidden hero-light-rays" style={{ background: 'transparent', top: 0 }}>
           <LightRaysWrapper raysColor="#5D51AF" />
         </div>
         <section className="heroSectionPadding pb-0 heroSection relative z-10">
