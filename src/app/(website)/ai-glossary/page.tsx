@@ -14,6 +14,14 @@ export const metadata: Metadata = {
         "process automation",
         "AI integration",
     ],
+    robots: {
+        index: true,
+        follow: true,
+    },
+    other: {
+        'googlebot': 'noindex, nofollow',
+        'bingbot': 'noindex, nofollow',
+    },
     alternates: {
         canonical: "https://kogents.ai/solutions/ai-glossary",
         languages: {
