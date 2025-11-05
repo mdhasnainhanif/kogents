@@ -844,9 +844,26 @@ header ul {
     height: 100vh;
   }
 
+  .mb-1.headingSizeContact{
+    margin-bottom: 0rem !important;
+  }
+
+  .appMainFirst p.text-light.mt-2{
+    margin-top: 1.25rem !important;
+    padding-top: 0rem !important;
+  }
+
+  .supportText.mt-2{
+    margin-top: 1.25rem !important;
+  }
+
+  .contactFormMain > p{
+    margin-top: 1.25rem;
+  }
+
   .mobileDropdownUl p,
   .text-base {
-    font-size: 1.11rem;
+    font-size: 1.25rem;
   }
 
   .mobileDropdownUl>ul {
