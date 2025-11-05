@@ -181,7 +181,6 @@ const page = () => {
         buttonText="Explore HR Solutions Today"
         buttonLink="#"
       />
-      <BrandLogoSlider />
       <CustomerServiceCard
         tag="Why Kogents HR"
         heading="What Makes Our AI HR Agents the Right Choice"

@@ -203,7 +203,6 @@ const page = () => {
                 buttonText="Get Your Survey AI Agent"
                 buttonLink="#"
             />
-            <BrandLogoSlider />
             <CustomerServiceCard
                 tag="Why Kogents"
                 heading="What Sets Our Survey AI Agent Apart from Others"

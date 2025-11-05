@@ -3,10 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './Sitemap.module.css'
-
 const BASE_URL = 'https://kogents.ai'
-
-// All platform channel IDs
 const platformChannels = [
   'whatsapp-ai-agent',
   'instagram-ai-agent',
@@ -22,10 +19,9 @@ const platformChannels = [
   'jira-ai-integration',
   'sunshine-conversation-ai-agent',
   'intercom-ai-agent',
-  'shopify-ai-agent'
+  'shopify-ai-agent',
+  'ai-voice-agent'
 ]
-
-// Organized page sections similar to Wix sitemap
 const pageSections = {
   main: {
     title: 'Main Pages',
@@ -38,7 +34,8 @@ const pageSections = {
       { path: '/contact-us', title: 'Contact Us', priority: 0.9, changeFrequency: 'daily' },
       { path: '/case-studies', title: 'Case Studies', priority: 0.9, changeFrequency: 'daily' },
       { path: '/client-testimonials', title: 'Testimonials', priority: 0.9, changeFrequency: 'daily' },
-      { path: '/blogs', title: 'Blogs', priority: 0.9, changeFrequency: 'daily' }
+      { path: '/blogs', title: 'Blogs', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/ai-glossary', title: 'AI Glossary', priority: 0.9, changeFrequency: 'daily' }
     ]
   },
   solutions: {
@@ -54,7 +51,9 @@ const pageSections = {
       { path: '/solutions/survey-ai-agent', title: 'Survey AI Agent', priority: 0.9, changeFrequency: 'daily' },
       { path: '/solutions/ai-agent-dashboard', title: 'AI Agent Dashboard', priority: 0.9, changeFrequency: 'daily' },
       { path: '/solutions/ai-agent-event-planner', title: 'AI Agent Event Planner', priority: 0.9, changeFrequency: 'daily' },
-      { path: '/solutions/medical-ai-agent', title: 'Medical AI Agent', priority: 0.9, changeFrequency: 'daily' }
+      { path: '/solutions/medical-ai-agent', title: 'Medical AI Agent', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/solutions/ai-recruiting-assistant', title: 'AI Recruiting Assistant', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/solutions/ai-automation-agency', title: 'AI Automation Agency', priority: 0.9, changeFrequency: 'daily' }
     ]
   },
   platforms: {
@@ -86,8 +85,6 @@ const pageSections = {
     ]
   }
 }
-
-// Blog post interface
 interface BlogPost {
   id: number
   title: {
@@ -106,23 +103,19 @@ interface BlogPost {
     }>
   }
 }
-
 export default function KogentsSitemapPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
         setLoading(true)
         setError(null)
-        
-        // Use the same WordPress API endpoint that other components use
         const timestamp = Date.now()
         const response = await fetch(
           `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
-          { 
+          {
             cache: 'no-store',
             headers: {
               'Accept': 'application/json',
@@ -130,13 +123,10 @@ export default function KogentsSitemapPage() {
             }
           }
         )
-
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-
         const posts = await response.json()
-        
         if (Array.isArray(posts)) {
           setBlogPosts(posts)
           console.log('✅ Successfully fetched blog posts:', posts.length)
@@ -152,19 +142,13 @@ export default function KogentsSitemapPage() {
         setLoading(false)
       }
     }
-    
     fetchBlogPosts()
   }, [])
-
-  // Calculate total pages
   const totalStaticPages = Object.values(pageSections).reduce((total, section) => total + section.pages.length, 0)
   const totalPages = totalStaticPages + blogPosts.length
-
-  // Helper function to clean HTML from title
   const cleanTitle = (title: string) => {
     return title.replace(/<[^>]*>/g, '').trim()
   }
-
   return (
     <>
       <div className={styles.sitemapContainer}>
@@ -173,8 +157,6 @@ export default function KogentsSitemapPage() {
             <h1 className={styles.sitemapTitle}>Kogents AI Sitemap</h1>
             <p className={styles.sitemapSubtitle}>Explore all pages and resources available on our AI-powered platform. Find everything from AI solutions to platform integrations and legal information.</p>
           </div>
-          
-          {/* Sections with Cards */}
           {Object.entries(pageSections).map(([key, section]) => (
             <div key={key} className={styles.sectionContainer}>
               <h2 className={styles.sectionTitle}>
@@ -185,7 +167,7 @@ export default function KogentsSitemapPage() {
                 {section.pages.map((page, index) => (
                   <div key={index} className="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <div className={styles.pageCard}>
-                      <Link 
+                      <Link
                         href={page.path}
                         className={styles.pageLink}
                       >
@@ -200,8 +182,6 @@ export default function KogentsSitemapPage() {
               </div>
             </div>
           ))}
-          
-          {/* Blog Posts Section */}
           <div className={styles.sectionContainer}>
             <h2 className={styles.sectionTitle}>
               <span className={styles.sectionIcon}>📝</span>
@@ -210,7 +190,6 @@ export default function KogentsSitemapPage() {
                 <span className={styles.postCount}>({blogPosts.length} posts)</span>
               )}
             </h2>
-            
             <div className={`${styles.cardsGrid} row`}>
               {loading ? (
                 <div className="col-12">
@@ -227,8 +206,8 @@ export default function KogentsSitemapPage() {
                       <strong>Error loading blog posts:</strong><br />
                       {error}
                     </div>
-                    <button 
-                      onClick={() => window.location.reload()} 
+                    <button
+                      onClick={() => window.location.reload()}
                       className={styles.retryButton}
                     >
                       Retry
@@ -240,7 +219,7 @@ export default function KogentsSitemapPage() {
                   {blogPosts.map((post, index) => (
                     <div key={post.id || index} className="col-lg-4 col-md-6 col-sm-12 mb-3">
                       <div className={styles.pageCard}>
-                        <Link 
+                        <Link
                           href={`/blogs/${post.slug}`}
                           className={styles.pageLink}
                           title={cleanTitle(post.title.rendered)}
@@ -269,8 +248,6 @@ export default function KogentsSitemapPage() {
               )}
             </div>
           </div>
-
-          {/* Site Statistics */}
           <div className={styles.sitemapStats}>
             <h3 className={styles.statsTitle}>Site Statistics</h3>
             <div className={`${styles.statsGrid} row`}>

@@ -179,7 +179,6 @@ const page = () => {
                 buttonText="Automate Your Recruitment"
                 buttonLink="#"
             />
-            <BrandLogoSlider />
             <CustomerServiceCard
                 tag="Why Kogents"
                 heading="Why Organizations Trust Kogents AI for Smarter Hiring"

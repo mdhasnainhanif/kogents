@@ -164,7 +164,7 @@ const page = () => {
       />
 
       <div className="pt-5">
-      <BrandLogoSlider />
+        <BrandLogoSlider />
       </div>
       <CustomerGrowthCards
         tag="Solutions"
@@ -209,7 +209,6 @@ const page = () => {
         buttonText="Request Demo"
         buttonLink="#"
       />
-      <BrandLogoSlider />
       <CustomerServiceCard
         tag="Why Kogents"
         heading="What Makes Our AI Marketing Agent Power Wins in Your Campaigns"

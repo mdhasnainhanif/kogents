@@ -10,11 +10,9 @@ import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/Cust
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 import BLogList from "@/components/blog/BlogList";
-
 import React from "react";
 import type { Metadata } from 'next'
 import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerServiceCard";
-
 export const metadata: Metadata = {
   title: 'AI Automation Agency for Growth & Efficiency | Kogents AI',
   description:
@@ -66,7 +64,7 @@ const page = () => {
       description:
         "Individuals and businesses alike struggle with repetitive tasks, fragmented systems, and increasing operational complexity.\nAt Kogents AI, we combine strategy, design, and technology to deliver AI-powered business automation that streamlines workflows and enhances productivity.\nAs a trusted AI automation agency, we help people and organizations achieve measurable AI-driven business growth through smarter process automation, effective workflow optimization, and advanced machine learning integration.",
       image: {
-        src: "/assets/img/customer-service-ai-agents/banner.webp",
+        src: "/assets/img/ai-automation-agency/banner.webp",
         alt: "AI Automation Agency",
         width: 800,
         height: 681,
@@ -111,28 +109,28 @@ const page = () => {
         benefits={[
           {
             id: 1,
-            icon: "/assets/img/customer-service-ai-agents/1.svg",
+            icon: "/assets/img/ai-automation-agency/1.svg",
             title: "Efficiency and Cost Savings",
             description:
               "AI automation for businesses and workflow automation support clear efficiency improvement by reducing repetitive activity. With business process optimization and intelligent systems, individuals and teams complete tasks with greater accuracy and speed while reducing time spent on routine work.",
           },
           {
             id: 2,
-            icon: "/assets/img/customer-service-ai-agents/2.svg",
+            icon: "/assets/img/ai-automation-agency/2.svg",
             title: "Scalability and Growth",
             description:
               "Through digital transformation and intelligent workflow solutions, work scales more easily as needs increase. Machine learning automation supports operational excellence by maintaining performance through structured processes and predictable task handling.",
           },
           {
             id: 3,
-            icon: "/assets/img/customer-service-ai-agents/3.svg",
+            icon: "/assets/img/ai-automation-agency/3.svg",
             title: "Data Driven Decision Making",
             description:
               "By using robotic process automation (RPA) and machine learning automation, information is processed faster and with more clarity. Better insights improve planning and support a stronger AI business impact, helping users make informed decisions with more consistency.",
           },
           {
             id: 4,
-            icon: "/assets/img/customer-service-ai-agents/4.svg",
+            icon: "/assets/img/ai-automation-agency/4.svg",
             title: "Enhanced Customer Experience",
             description:
               "With intelligent workflow solutions, workflow automation, and business process optimization, communication and service become clearer and more accurate. These automation benefits help deliver timely responses and consistent support that build trust and improve user satisfaction.",
@@ -211,42 +209,42 @@ const page = () => {
         differentiators={[
           {
             id: 1,
-            icon: "/assets/img/customer-service-ai-agents/1.svg",
+            icon: "/assets/img/ai-automation-agency/1.svg",
             title: "Tailored Automation Frameworks",
             description:
               "Each project begins with a custom AI workflow design based on specific goals. We plan systems carefully to support structure, accuracy, and measurable improvement without interrupting ongoing activity.",
           },
           {
             id: 2,
-            icon: "/assets/img/customer-service-ai-agents/2.svg",
+            icon: "/assets/img/ai-automation-agency/2.svg",
             title: "Human and AI Collaboration",
             description:
               "We apply human-in-the-loop AI automation to keep expertise in control and technology working in support. This balance strengthens quality, reduces errors, and maintains clear accountability across automated tasks.",
           },
           {
             id: 3,
-            icon: "/assets/img/customer-service-ai-agents/3.svg",
+            icon: "/assets/img/ai-automation-agency/3.svg",
             title: "Data Safe and Compliant Solutions",
             description:
               "We build secure automation systems designed around strong data privacy and compliance requirements. With consistent data governance, we protect information, maintain system health, and support trusted automation practices.",
           },
           {
             id: 4,
-            icon: "/assets/img/customer-service-ai-agents/4.svg",
+            icon: "/assets/img/ai-automation-agency/4.svg",
             title: "Scalability and Reliability",
             description:
               "Our solutions use scalable AI automation that adapts as needs change. Through transparent planning and continuous refinement, we support steady performance and reliable operations for individuals and large teams.",
           },
           {
             id: 5,
-            icon: "/assets/img/customer-service-ai-agents/5.svg",
+            icon: "/assets/img/ai-automation-agency/5.svg",
             title: "Precision and Trust at Every Stage",
             description:
               "We focus on precision, clarity, and dependable automation from planning to completion. This ensures consistent results and supports sustainable improvements in how work is organized and completed.",
           },
           {
             id: 6,
-            icon: "/assets/img/customer-service-ai-agents/6.svg",
+            icon: "/assets/img/ai-automation-agency/6.svg",
             title: "Industries We Support With AI Automation",
             description:
               "We assist many environments, including financial services, insurance, real estate, property management, healthcare, e-commerce, customer support, HR, recruitment, and BPO operations. Our systems help with compliance checks, onboarding, claims processing, tenant communication, patient scheduling, order management, support workflow, and hiring processes, along with personal and custom workflows that require organized and repeatable automation.",
@@ -267,25 +265,25 @@ const page = () => {
             id: 1,
             q: "1. Identify Pain Points",
             a: "We begin with workflow analysis to understand routines, repetitive tasks, and areas that benefit from automation. This helps define practical improvements for personal workflows and business operations.",
-            image: "/assets/img/customer-service-ai-agents/identify-pain-points-in-service-delivery.webp",
+            image: "/assets/img/ai-automation-agency/1.webp",
           },
           {
             id: 2,
             q: "2. Develop Custom Automation",
             a: "We design solutions with a focus on automation integration that fits current tools and processes. Each setup is planned to improve clarity, accuracy, and consistency without disrupting existing work.",
-            image: "/assets/img/customer-service-ai-agents/deploy-ai-agent-tailored-to-workflow.webp",
+            image: "/assets/img/ai-automation-agency/2.webp",
           },
           {
             id: 3,
             q: "3. Integrate AI Systems",
             a: "We manage the full integration process, including setup, model training and optimization, and alignment with tools and data. This supports ongoing decisions and maintains structure through each stage of the AI lifecycle.",
-            image: "/assets/img/customer-service-ai-agents/train-and-integrate-with-existing-systems.webp",
+            image: "/assets/img/ai-automation-agency/3.webp",
           },
           {
             id: 4,
             q: "4. Monitor and Optimize",
             a: "After deployment, we apply data-driven improvement and iterative optimization to strengthen performance. This ongoing automation setup refinement supports steady results and long-term business transformation, and personal workflow enhancement.",
-            image: "/assets/img/customer-service-ai-agents/monitor-and-optimize.webp",
+            image: "/assets/img/ai-automation-agency/4.webp",
           },
         ]}
         rightImage="/assets/img/faq.png"
