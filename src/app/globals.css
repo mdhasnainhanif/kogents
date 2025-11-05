@@ -274,15 +274,17 @@ section.customerservice-section {
   font-size: 3.6rem;
   font-display: swap;
 }
-.headingSize.mt-0{
-    margin-top: 0 !important;
+
+.headingSize.mt-0 {
+  margin-top: 0 !important;
 }
 
 .heroItems .buttonAnimation {
   margin-bottom: 0.75rem;
 }
-.heroItems p{
-    margin-top: 1.25rem;
+
+.heroItems p {
+  margin-top: 1.25rem;
 }
 
 .active2 {
@@ -845,6 +847,7 @@ media-theme-tailwind-audio {
   gap: 4rem;
   min-height: 67.17px;
 }
+
 .header_pogress_points {
   width: 80%;
   display: flex;
@@ -1094,6 +1097,7 @@ ul.chatbot_upload_files li {
   height: 100rem !important;
   pointer-events: none !important;
 }
+
 .boxesBg {
   background-image: linear-gradient(to bottom,
       rgba(255, 255, 255, 0.03) 1px,
@@ -1923,7 +1927,9 @@ a.aboutIconPhone {
     padding: 0 20px;
   }
 }
+
 @media (max-width: 576px) {
+
   .app-btn,
   .solutionFaq ul li.custom-nav1 .nav-link {
     width: 100%;
@@ -1945,11 +1951,13 @@ a.aboutIconPhone {
   .heroSectionPadding h2.headingSize {
     font-size: 2.6rem !important;
   }
+
   .hideOnMobile,
   .step-3imgMain,
   .step2ImgMain {
     display: none !important;
   }
+
   .step2Img {
     display: none;
   }
@@ -2135,19 +2143,24 @@ input::placeholder {
 .companyInfo {
   margin-top: 10rem !important;
 }
-.cardPoints a{
-    transition: transform 0.2s ease-in-out;
+
+.cardPoints a {
+  transition: transform 0.2s ease-in-out;
 }
-.cardPoints a:hover{
-    transform: scale(1.025);
-    transition: transform 0.2s ease-in-out;
+
+.cardPoints a:hover {
+  transform: scale(1.025);
+  transition: transform 0.2s ease-in-out;
 }
-.mt125{
-    margin-top: 1.25rem !important;
+
+.mt125 {
+  margin-top: 1.25rem !important;
 }
-.mb125{
-    margin-bottom: 1.25rem !important;
+
+.mb125 {
+  margin-bottom: 1.25rem !important;
 }
-.longCard .arrowPointUl{
-    margin-top: 1.25rem;
+
+.longCard .arrowPointUl {
+  margin-top: 1.25rem;
 }
