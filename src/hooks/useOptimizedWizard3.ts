@@ -4,18 +4,28 @@ import { useState, useCallback, useEffect, useMemo, useRef } from "react"
 import { useMemoryManagement } from "./useMemoryManagement"
 import type { ChatbotWizardData, WizardStep, ValidationErrors } from "@/types/wizard"
 
-const STORAGE_KEY = "chatbot-wizard-draft"
+const STORAGE_KEY = "chatbot-wizard-draft-v3-briefv2"
 const AUTO_SAVE_DELAY = 2000 // 2 seconds
 
 const INITIAL_DATA: ChatbotWizardData = {
+  botname: "",
   name: "",
   email: "",
   description: "",
-  botname: "",
-  phone: "",
+  phone: "", 
   role: "Kogents",
   heardAboutUs: "search-engine",
   deploymentTimeline: "immediately",
+  companyName: "",
+  industry: "",
+  // Tracking fields
+  gclid: "",
+  fbclid: "",
+  igclid: "",
+  ttclid: "",
+  fingerprint: "",
+  stableSessionId: "",
+  fingerprintData: "",
   knowledgeSources: {
     files: [],
     urls: [],
@@ -23,17 +33,12 @@ const INITIAL_DATA: ChatbotWizardData = {
   },
   appearance: {
     avatar: null,
-    primaryColor: "#3b82f6",
+    primaryColor: "#BE9FE8",
     secondaryColor: "#f1f5f9",
     chatBubbleStyle: "rounded",
     fontFamily: "system",
   },
-  // new required field
   getUserInfo: {
-    message: "Can I grab your info?",
-    initialPrompts: ["Your name?", "Your email?", "Your phone?"],
-  },
-  welcome: {
     message: "Hello! How can I help you today?",
     initialPrompts: [
       "How can I get started?",
@@ -41,50 +46,60 @@ const INITIAL_DATA: ChatbotWizardData = {
       "I need help with...",
     ],
   },
+  welcome: {
+    message: "Hello! How can I help you today?",
+    initialPrompts: ["How can I get started?", "Tell me about your services", "I need help with..."],
+  },
   integration: {
     type: "website",
     settings: {},
   },
-};
-
-
+  useCases: [],
+}
 
 const WIZARD_STEPS: WizardStep[] = [
   {
-    id: "basic-info",
-    title: "Basic setup",
-    description: "  ",
-    isComplete: false,
-    isValid: false,
-  },
-  {
-    id: "knowledge-sources",
-    title: "Add Training Data",
-    description: "",
-    isComplete: false,
-    isValid: false,
-  },
-  {
     id: "customization",
-    title: "Customize widget",
+    title: "Customization",
     description: "",
     isComplete: false,
     isValid: false,
   },
-  // {
-  //   id: "welcome-setup",
-  //   title: "Welcome & Prompts",
-  //   description: "Configure initial interactions",
-  //   isComplete: false,
-  //   isValid: false,
-  // },
-  // {
-  //   id: "integration",
-  //   title: "Integration",
-  //   description: "Choose how to deploy your chatbot",
-  //   isComplete: false,
-  //   isValid: false,
-  // },
+  {
+    id: "basic-setup",
+    title: "Basic Setup",
+    description: "",
+    isComplete: false,
+    isValid: false,
+  },
+  {
+    id: "use-case",
+    title: "Use Case",
+    description: "",
+    isComplete: false,
+    isValid: false,
+  },
+  {
+    id: "training-data",
+    title: "Training Data",
+    description: "",
+    isComplete: false,
+    isValid: false,
+  },
+  {
+    id: "about-you",
+    title: "About You",
+    description: "",
+    isComplete: false,
+    isValid: false,
+  },
+  {
+    id: "integration",
+    title: "Integration",
+    description: "",
+    isComplete: false,
+    isValid: false,
+  },
 ]
 
 interface ValidationResult {
@@ -92,7 +107,7 @@ interface ValidationResult {
   errors: string[]
 }
 
-export function useOptimizedWizard() {
+export function useOptimizedWizard3() {
   const [currentStep, setCurrentStep] = useState(0)
   const [data, setData] = useState<ChatbotWizardData>(INITIAL_DATA)
   const [steps, setSteps] = useState<WizardStep[]>(WIZARD_STEPS)
@@ -113,18 +128,52 @@ export function useOptimizedWizard() {
   useEffect(() => {
     const loadDraft = async () => {
       try {
-        const savedDraft = localStorage.getItem(STORAGE_KEY)
-        if (savedDraft) {
-          const parsedData = JSON.parse(savedDraft)
-          // Validate the loaded data structure
-          if (parsedData && typeof parsedData === "object") {
-            setData({ ...INITIAL_DATA, ...parsedData })
-            setIsDraft(true)
+        const wasSubmitted = typeof window !== 'undefined' 
+          ? sessionStorage.getItem('wizard_form_submitted')
+          : null;
+        
+        if (wasSubmitted === 'true') {
+          if (typeof window !== 'undefined') {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem('chatbot-wizard-draft');
+            localStorage.removeItem('chatbot-wizard-draft-v2');
+            sessionStorage.removeItem('wizard_form_submitted');
           }
+          setData(INITIAL_DATA);
+          setIsDraft(false);
+          setIsLoading(false);
+          return;
+        }
+        
+        const oldKeys = [
+          "chatbot-wizard-draft",
+          "chatbot-wizard-draft-v2"
+        ];
+        oldKeys.forEach(key => localStorage.removeItem(key));
+        
+        const savedDraft = localStorage.getItem(STORAGE_KEY)
+        if (savedDraft && savedDraft.trim() !== '') {
+          try {
+            const parsedData = JSON.parse(savedDraft)
+            if (parsedData && typeof parsedData === "object") {
+              setData({ ...INITIAL_DATA, ...parsedData })
+              setIsDraft(true)
+            } else {
+              localStorage.removeItem(STORAGE_KEY);
+              setData(INITIAL_DATA);
+            }
+          } catch (error) {
+            console.error("Invalid draft data, clearing:", error);
+            localStorage.removeItem(STORAGE_KEY);
+            setData(INITIAL_DATA);
+          }
+        } else {
+          setData(INITIAL_DATA)
         }
       } catch (error) {
         console.error("Failed to load draft:", error)
         localStorage.removeItem(STORAGE_KEY)
+        setData(INITIAL_DATA)
       } finally {
         setIsLoading(false)
       }
@@ -135,11 +184,29 @@ export function useOptimizedWizard() {
 
   // Auto-save functionality
   const scheduleAutoSave = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      const wasSubmitted = sessionStorage.getItem('wizard_form_submitted');
+      if (wasSubmitted === 'true') {
+        if (autoSaveTimeoutRef.current) {
+          clearTimeout(autoSaveTimeoutRef.current);
+          autoSaveTimeoutRef.current = null;
+        }
+        return;
+      }
+    }
+    
     if (autoSaveTimeoutRef.current) {
       clearTimeout(autoSaveTimeoutRef.current)
     }
 
     autoSaveTimeoutRef.current = setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const wasSubmitted = sessionStorage.getItem('wizard_form_submitted');
+        if (wasSubmitted === 'true') {
+          return;
+        }
+      }
+      
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(dataRef.current))
         setIsDraft(true)
@@ -159,150 +226,34 @@ export function useOptimizedWizard() {
   }, [])
 
   // Validation functions
-  const validateBasicInfo = useCallback((data: ChatbotWizardData): ValidationResult => {
+  const validateCustomization = useCallback((data: ChatbotWizardData): ValidationResult => {
     const errors: string[] = []
-
-    const name = data.name?.trim() ?? '';
-
-    // if (!name) {
-    //   errors.push("Chatbot name is required");
-    // } else if (name.length < 2) {
-    //   errors.push("Chatbot name must be at least 2 characters long");
-    // } else if (name.length > 50) {
-    //   errors.push("Chatbot name must be less than 50 characters");
-    // }
-
-
-    return { isValid: errors.length === 0, errors }
+    return { isValid: true, errors }
   }, [])
 
-  const validateKnowledgeSources = useCallback((data: ChatbotWizardData): ValidationResult => {
+  const validateBasicSetup = useCallback((data: ChatbotWizardData): ValidationResult => {
     const errors: string[] = []
-    const { files, urls, textContent } = data.knowledgeSources
-
-    const hasFiles = files.length > 0
-    const hasUrls = urls.length > 0
-    const hasText = textContent.trim().length > 0
-
-    // if (!hasFiles && !hasUrls && !hasText) {
-    //   errors.push("At least one knowledge source is required (files, URLs, or text content)")
-    // }
-
-    // Validate files
-    files.forEach((file, index) => {
-      const maxSize = 10 * 1024 * 1024 // 10MB
-      if (file.size > maxSize) {
-        errors.push(`File "${file.name}" is too large (max 10MB)`)
-      }
-
-      const allowedTypes = [
-        "text/plain",
-        "application/pdf",
-        "text/csv",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      ]
-      const allowedExtensions = [".md", ".txt", ".pdf", ".csv", ".docx"]
-
-      const hasValidType = allowedTypes.includes(file.type)
-      const hasValidExtension = allowedExtensions.some((ext) => file.name.toLowerCase().endsWith(ext))
-
-      if (!hasValidType && !hasValidExtension) {
-        errors.push(`File "${file.name}" has an unsupported format`)
-      }
-    })
-
-    // Validate URLs
-    urls.forEach((url, index) => {
-      try {
-        const urlObj = new URL(url)
-        if (!["http:", "https:"].includes(urlObj.protocol)) {
-          errors.push(`URL ${index + 1} must use HTTP or HTTPS protocol`)
-        }
-      } catch {
-        errors.push(`URL ${index + 1} is not valid: ${url}`)
-      }
-    })
-
-    // Validate text content
-    if (hasText) {
-      if (textContent.trim().length < 10) {
-        errors.push("Text content must be at least 10 characters long")
-      } else if (textContent.trim().length > 50000) {
-        errors.push("Text content must be less than 50,000 characters")
-      }
-    }
-
-    return { isValid: errors.length === 0, errors }
+    return { isValid: true, errors }
   }, [])
 
-  const validateAppearance = useCallback((data: ChatbotWizardData): ValidationResult => {
+  const validateUseCase = useCallback((data: ChatbotWizardData): ValidationResult => {
     const errors: string[] = []
-    const { primaryColor, secondaryColor, chatBubbleStyle, fontFamily } = data.appearance
-
-    if (!primaryColor) {
-      errors.push("Primary color is required")
-    } else if (!/^#[0-9A-F]{6}$/i.test(primaryColor)) {
-      errors.push("Primary color must be a valid hex color")
-    }
-
-    if (!secondaryColor) {
-      errors.push("Secondary color is required")
-    } else if (!/^#[0-9A-F]{6}$/i.test(secondaryColor)) {
-      errors.push("Secondary color must be a valid hex color")
-    }
-
-    if (!chatBubbleStyle) {
-      errors.push("Chat bubble style is required")
-    }
-
-    if (!fontFamily) {
-      errors.push("Font family is required")
-    }
-
-    return { isValid: errors.length === 0, errors }
+    return { isValid: true, errors }
   }, [])
 
-  const validateWelcomeSetup = useCallback((data: ChatbotWizardData): ValidationResult => {
+  const validateTrainingData = useCallback((data: ChatbotWizardData): ValidationResult => {
     const errors: string[] = []
-    const { message, initialPrompts } = data.welcome
+    return { isValid: true, errors }
+  }, [])
 
-    if (!message?.trim()) {
-      errors.push("Welcome message is required")
-    } else if (message.trim().length < 5) {
-      errors.push("Welcome message must be at least 5 characters long")
-    } else if (message.trim().length > 200) {
-      errors.push("Welcome message must be less than 200 characters")
-    }
-
-    if (!initialPrompts || initialPrompts.length === 0) {
-      errors.push("At least one initial prompt is required")
-    } else {
-      initialPrompts.forEach((prompt, index) => {
-        if (!prompt.trim()) {
-          errors.push(`Initial prompt ${index + 1} cannot be empty`)
-        } else if (prompt.trim().length > 100) {
-          errors.push(`Initial prompt ${index + 1} must be less than 100 characters`)
-        }
-      })
-    }
-
-    return { isValid: errors.length === 0, errors }
+  const validateAboutYou = useCallback((data: ChatbotWizardData): ValidationResult => {
+    const errors: string[] = []
+    return { isValid: true, errors }
   }, [])
 
   const validateIntegration = useCallback((data: ChatbotWizardData): ValidationResult => {
     const errors: string[] = []
-    const { type, settings } = data.integration
-
-    if (!type) {
-      errors.push("Integration type is required")
-    }
-
-    // Add specific validation based on integration type
-    if (type === "api" && (!settings.apiKey || !settings.endpoint)) {
-      errors.push("API integration requires API key and endpoint")
-    }
-
-    return { isValid: errors.length === 0, errors }
+    return { isValid: true, errors }
   }, [])
 
   // Main validation function
@@ -310,20 +261,22 @@ export function useOptimizedWizard() {
     (stepIndex: number, dataToValidate: ChatbotWizardData): ValidationResult => {
       switch (stepIndex) {
         case 0:
-          return validateBasicInfo(dataToValidate)
+          return validateCustomization(dataToValidate)
         case 1:
-          return validateKnowledgeSources(dataToValidate)
+          return validateBasicSetup(dataToValidate)
         case 2:
-          return validateAppearance(dataToValidate)
+          return validateUseCase(dataToValidate)
         case 3:
-          return validateWelcomeSetup(dataToValidate)
+          return validateTrainingData(dataToValidate)
         case 4:
+          return validateAboutYou(dataToValidate)
+        case 5:
           return validateIntegration(dataToValidate)
         default:
           return { isValid: true, errors: [] }
       }
     },
-    [validateBasicInfo, validateKnowledgeSources, validateAppearance, validateWelcomeSetup, validateIntegration],
+    [validateCustomization, validateBasicSetup, validateUseCase, validateTrainingData, validateAboutYou, validateIntegration],
   )
 
   // Memoized step validations
@@ -415,7 +368,12 @@ export function useOptimizedWizard() {
 
   const clearDraft = useCallback(() => {
     try {
-      localStorage.removeItem(STORAGE_KEY)
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem(STORAGE_KEY)
+        localStorage.removeItem('chatbot-wizard-draft')
+        localStorage.removeItem('chatbot-wizard-draft-v2')
+        sessionStorage.removeItem('wizard_form_submitted')
+      }
       setIsDraft(false)
       setData(INITIAL_DATA)
       setCurrentStep(0)
@@ -426,10 +384,24 @@ export function useOptimizedWizard() {
 
   // Reset wizard
   const resetWizard = useCallback(() => {
-    setData(INITIAL_DATA)
-    setCurrentStep(0)
-    clearDraft()
-  }, [clearDraft])
+    if (autoSaveTimeoutRef.current) {
+      clearTimeout(autoSaveTimeoutRef.current);
+      autoSaveTimeoutRef.current = null;
+    }
+    
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem('chatbot-wizard-draft');
+        localStorage.removeItem('chatbot-wizard-draft-v2');
+      }
+      setIsDraft(false);
+      setData(INITIAL_DATA);
+      setCurrentStep(0);
+    } catch (error) {
+      console.warn("Failed to clear draft in resetWizard:", error);
+    }
+  }, [])
 
   // Computed values
   const canGoNext = stepValidations[currentStep]?.isValid ?? false

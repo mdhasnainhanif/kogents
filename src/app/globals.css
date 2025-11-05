@@ -424,7 +424,7 @@ ul.custom-tabs .nav-link.custom-tab-link:hover {
 .chatbot-content,
 .chatbot_footer {
   margin: 0 auto;
-  max-width: 512px;
+  max-width: 36.25rem;
   width: 100%;
 }
 .tab-div .list01 li {
@@ -695,12 +695,71 @@ media-theme-tailwind-audio {
 }
 .chat_header_container {
   border-bottom: 1px solid #374151;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #0e0b1f;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 .chatbot_header {
   display: flex;
   align-items: center;
   gap: 4rem;
   min-height: 67.17px;
+}
+
+/* Desktop: Main content area - scrollable with padding for fixed header and footer */
+.chatbot-main-content {
+  margin-top: 67.17px;
+  height: calc(100vh - 67.17px);
+  overflow: hidden !important;
+}
+
+.chatbot-left-content-wrapper {
+  height: calc(100vh - 67.17px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatbot-content-wrapper:first-child {
+  flex: 1;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+}
+
+/* Custom scrollbar styling - Purple, simple, slim */
+.chatbot-content-wrapper:first-child::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbot-content-wrapper:first-child::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chatbot-content-wrapper:first-child::-webkit-scrollbar-thumb {
+  background: #5d51af;
+  border-radius: 3px;
+}
+
+.chatbot-content-wrapper:first-child::-webkit-scrollbar-thumb:hover {
+  background: #7c6fd8;
+}
+
+/* Firefox scrollbar */
+.chatbot-content-wrapper:first-child {
+  scrollbar-width: thin;
+  scrollbar-color: #5d51af transparent;
+}
+
+.chatbot-content-wrapper.footer {
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 /* Mobile: Fixed header */
@@ -715,13 +774,13 @@ media-theme-tailwind-audio {
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
   }
-  
+
   .chatbot_header {
     min-height: 60px;
     padding: 0.75rem 1rem;
     gap: 1rem;
   }
-  
+
   .header_pogress_points {
     width: auto;
     overflow-x: auto;
@@ -729,17 +788,58 @@ media-theme-tailwind-audio {
     flex: 1;
     justify-content: flex-start;
   }
-  
+
   /* Main content area - scrollable with padding for fixed header and footer */
   .chatbot-main-content {
     margin-top: 60px;
     height: calc(100vh - 60px);
+    overflow: hidden !important;
+  }
+
+  .chatbot-left-content-wrapper {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .chatbot-content-wrapper:first-child {
+    flex: 1;
     overflow-y: auto !important;
     overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 100px; /* Space for fixed footer */
+    padding-bottom: 1rem;
   }
-  
+
+  /* Custom scrollbar styling for mobile - Purple, simple, slim */
+  .chatbot-content-wrapper:first-child::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .chatbot-content-wrapper:first-child::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .chatbot-content-wrapper:first-child::-webkit-scrollbar-thumb {
+    background: #5d51af;
+    border-radius: 3px;
+  }
+
+  .chatbot-content-wrapper:first-child::-webkit-scrollbar-thumb:hover {
+    background: #7c6fd8;
+  }
+
+  /* Firefox scrollbar for mobile */
+  .chatbot-content-wrapper:first-child {
+    scrollbar-width: thin;
+    scrollbar-color: #5d51af transparent;
+  }
+
+  .chatbot-content-wrapper.footer {
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+
   /* Footer fixed at bottom */
   .chatbot_footer {
     position: fixed;
@@ -753,7 +853,7 @@ media-theme-tailwind-audio {
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
   }
-  
+
   /* Adjust content wrapper padding when footer is fixed */
   .chatbot-content-wrapper.footer {
     padding-bottom: 0;
@@ -825,10 +925,15 @@ section.bgpurple {
   justify-content: space-between;
   background-color: #110e20;
   padding: 0 !important;
+  height: calc(100vh - 67.17px);
+  overflow: hidden;
 }
 .chatbot-content-wrapper:first-child {
-  flex: auto;
+  flex: 1;
   align-content: center;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
 }
 .chatbot-content-wrapper input,
 .chatbot-content-wrapper select,
@@ -1655,13 +1760,13 @@ a.aboutIconPhone {
     padding: 0 20px;
   }
 }
-.chatbot_footer .buttonAnimation{
+.chatbot_footer .buttonAnimation {
   margin-bottom: 0 !important;
 }
 @media (max-width: 576px) {
   .footCate {
     margin-top: 2.5rem !important;
-}
+  }
   p.companyInfo {
     margin-top: 2rem !important;
   }
@@ -1687,7 +1792,7 @@ a.aboutIconPhone {
   div.step2ImgMain {
     display: none !important;
   }
-  div.chatbot-content-wrapper.footer{
+  div.chatbot-content-wrapper.footer {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -1882,6 +1987,18 @@ input::placeholder {
 .longCard .arrowPointUl {
   margin-top: 1.25rem;
 }
-.contactBanner p{
+.contactBanner p {
   margin-top: 1.25rem;
+}
+div.border-2.bg-purple-900 {
+  border: 2px solid #5d51af !important;
+}
+div.bg-purple-500.border-2 {
+  border: 2px solid #5d51af !important;
+}
+.chatbot-content-wrapper.footer {
+  position: fixed;
+  bottom: 0rem;
+  width: 50%;
+  background: #110e20;
 }
