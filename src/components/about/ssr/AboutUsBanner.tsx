@@ -38,14 +38,14 @@ const AboutUsBanner: React.FC<AboutUsBannerProps> = ({
     return (
         <div className={`sectionPadding bg-center bg-no-repeat bg-cover bg-[url('../img/bc/hero-bgtwo.png')] relative contactBanner ${className}`}>
             <div className="container px-5 mx-auto xl:px-0">
-                <span className="buttonAnimation purple width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">
+                <span className="buttonAnimation purple width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">
                     {tag}
                 </span>
                 <h1 className="text-center text-light headingSize">
                     {heading}
                     <span className="inline-block lg:block"> </span>
                 </h1>
-                <p className="mx-auto mt-2 text-base text-center md:text-xl text-b-100 mb-1 text-light">
+                <p className="maxWidth39 mx-auto text-base text-center md:text-xl text-b-100 mb-1 text-light">
                     {description.split('\n').map((line, idx) => (
                         <span key={idx}>
                             {line}

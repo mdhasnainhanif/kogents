@@ -52,10 +52,10 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({
           <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
             {tag}
           </span>
-          <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+          <h2 className="maxWidth39 mt-0 text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
             {title}
           </h2>
-          <p className="w-75 mb-16 text-center paraColor subHeading">
+          <p className="maxWidth39 mb-16 text-center paraColor subHeading">
             {description}
           </p>
 

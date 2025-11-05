@@ -1966,7 +1966,7 @@ input::placeholder {
   fill: #fff;
 }
 .companyInfo {
-  margin-top: 8rem !important;
+  margin-top: 10rem !important;
 }
 
 /* Move Company Info column to bottom in mobile view */
@@ -1997,7 +1997,7 @@ input::placeholder {
   margin-top: 1.25rem;
 }
 .contactBanner p {
-  margin-top: 1.25rem;
+  margin-top: 1.25rem !important;
 }
 div.border-2.bg-purple-900 {
   border: 2px solid #5d51af !important;
@@ -2030,4 +2030,12 @@ div.bg-purple-500.border-2 {
 
 .glossary {
   margin-top: 8rem !important;
+}
+
+#benefitsSection p{
+  margin-top: 1.25rem;
+}
+.tech-track > div > span{
+  background-color: #5d51af;
+  color: #fff;
 }
