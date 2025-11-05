@@ -436,7 +436,7 @@ ul.custom-tabs .nav-link.custom-tab-link:hover {
 .tab-div .list01 li:before {
   content: "";
   position: absolute;
-  top: 0.72rem;
+  top: 0.5rem;
   left: -0.14rem;
   height: 0.44rem;
   width: 0.44rem;
