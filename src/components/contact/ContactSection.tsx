@@ -44,7 +44,7 @@ const ContactSection = () => {
       <div className="container">
         <span
           //
-          className="buttonAnimation mb-4 width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto"
+          className="buttonAnimation width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto"
         >
           Contact Us Now
         </span>

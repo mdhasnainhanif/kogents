@@ -5,6 +5,7 @@ import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
 import { PaperPlaneIcon } from "@/icons";
+import { Link as LinkIcon, Folder } from "lucide-react";
 import { filesToBlobs, validateFile } from "@/utils/fileUtils";
 
 interface BasicInfoStepProps {
@@ -143,7 +144,6 @@ const FileUploadSection = ({
         onDragOver={handleDrag}
         onDrop={handleDrop}
         onClick={(e) => {
-          // Only trigger file input if not clicking on file items
           if (!(e.target as Element).closest('.file-item')) {
             if (fileInputRef.current) {
               fileInputRef.current.click();
@@ -173,7 +173,6 @@ const FileUploadSection = ({
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           style={{ pointerEvents: 'none' }}
         />
-        {/* Files display inside the upload box */}
         {files.length > 0 && (
           <div className="mt-1 space-y-3">
             <div className="flex items-center justify-between">
@@ -201,9 +200,6 @@ const FileUploadSection = ({
                   <div className="flex items-center gap-3 min-w-0">
                     <span className="text-lg">{getFileIcon(file.name)}</span><span className="text-sm">{file.name}</span>
                     <div className="min-w-0">
-                      {/* <div className="font-medium text-sm truncate">
-                        
-                      </div> */}
                       <div className="text-xs text-gray-500">
                         {formatFileSize(file.size)}
                       </div>
@@ -242,7 +238,6 @@ const URLManagementSection = ({
 
   const validateUrl = (url: string): boolean => {
     try {
-      // Add https:// if not present
       const urlToValidate = url.startsWith('http') ? url : `https://${url}`;
       new URL(urlToValidate);
       return true;
@@ -264,7 +259,6 @@ const URLManagementSection = ({
       return;
     }
 
-    // Add https:// if not present
     const finalUrl = trimmedUrl.startsWith('http') ? trimmedUrl : `https://${trimmedUrl}`;
     
     if (urls.includes(finalUrl)) {
@@ -282,11 +276,9 @@ const URLManagementSection = ({
     if (urlError) setUrlError("");
   };
 
-  // Auto-capture URL on blur to keep it simple for the user
   const handleBlur = () => {
     const trimmed = newUrl.trim();
     if (!trimmed) return;
-    // Validate and normalize
     if (!validateUrl(trimmed)) return;
     const finalUrl = trimmed.startsWith('http') ? trimmed : `https://${trimmed}`;
     if (urls.includes(finalUrl)) return;
@@ -313,7 +305,7 @@ const URLManagementSection = ({
               onChange={handleInputChange}
               onBlur={handleBlur}
               onKeyDown={handleKeyDown}
-              className={`w-full px-4 py-2 rounded-md w-100 ${
+              className={`w-full px-4 py-2 rounded-md w-100 text-gray-900 ${
                 urlError ? "border-red-500" : "border-gray-300"
               }`}
             />
@@ -338,55 +330,6 @@ const URLManagementSection = ({
   );
 };
 
-// Text content component
-const TextContentSection = ({
-  textContent,
-  onTextChange,
-}: {
-  textContent: string;
-  onTextChange: (text: string) => void;
-}) => {
-  const wordCount = useMemo(() => {
-    return textContent
-      .trim()
-      .split(/\s+/)
-      .filter((word) => word.length > 0).length;
-  }, [textContent]);
-
-  const characterCount = textContent.length;
-
-  return (
-    <div className="space-y-4">
-      <div className="space-y-2">
-        <label className="text-sm font-medium">Content</label>
-        <textarea
-          placeholder="Paste your content here... This could be FAQs, product information, policies, or any other text you want your chatbot to know about."
-          value={textContent}
-          onChange={(e) => onTextChange(e.target.value)}
-          className="w-full min-h-[200px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-        />
-        {/* <div className="flex items-center justify-between text-xs text-gray-500">
-          <span>{characterCount} characters</span>
-          <span>{wordCount} words</span>
-        </div> */}
-      </div>
-
-      {textContent.trim().length > 0 && (
-        <div className="p-3 bg-gray-50 rounded-lg border">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-green-600">✓</span>
-            <span className="text-sm font-medium">Content Preview</span>
-          </div>
-          <p className="text-sm text-gray-700 line-clamp-3">
-            {textContent.slice(0, 200)}
-            {textContent.length > 200 && "..."}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-};
-
 export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
   ({ data, onUpdate, errors = [], footerOptions }) => {
     const [activeTab, setActiveTab] = useState("urls");
@@ -403,7 +346,6 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
     // Initialize tracking parameters
     useEffect(() => {
       const initializeTracking = () => {
-        // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const gclid = urlParams.get('gclid') || '';
         const fbclid = urlParams.get('fbclid') || '';
@@ -411,35 +353,26 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         const ttclid = urlParams.get('ttclid') || '';
         const fingerprint = urlParams.get('fingerprint') || '';
 
-        // Handle GCLID
         if (gclid !== "") {
           setSessionStorage('gclid', gclid);
-          console.log('GCLID stored:', getSessionStorage('gclid'));
           removeSessionStorage(['fbclid', 'igclid', 'ttclid']);
         }
 
-        // Handle FBCLID
         if (fbclid !== "") {
           setSessionStorage('fbclid', fbclid);
-          console.log('FBCLID stored:', getSessionStorage('fbclid'));
           removeSessionStorage(['gclid', 'igclid', 'ttclid']);
         }
 
-        // Handle IGCLID
         if (igclid !== "") {
           setSessionStorage('igclid', igclid);
-          console.log('IGCLID stored:', getSessionStorage('igclid'));
           removeSessionStorage(['gclid', 'fbclid', 'ttclid']);
         }
 
-        // Handle TTCLID
         if (ttclid !== "") {
           setSessionStorage('ttclid', ttclid);
-          console.log('TTCLID stored:', getSessionStorage('ttclid'));
           removeSessionStorage(['gclid', 'fbclid', 'igclid']);
         }
 
-        // Set values from session storage
         const sessionGclid = getSessionStorage('gclid') || '';
         const sessionFbclid = getSessionStorage('fbclid') || '';
         const sessionIgclid = getSessionStorage('igclid') || '';
@@ -464,20 +397,14 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
     useEffect(() => {
       const initializeFingerprint = async () => {
         try {
-          // Load FingerprintJS script
           const script = document.createElement("script");
           script.src = "/assets/js/fp.min.js";
           script.async = true;
 
           script.onload = async function () {
             if ((window as any).FingerprintJS) {
-              console.log("FingerprintJS is available");
-
               try {
-                // Initialize FingerprintJS
                 const fpPromise = (window as any).FingerprintJS.load();
-                console.log("FingerprintJS instance loading...");
-
                 const fp = await fpPromise;
                 const result = await fp.get();
                 const visitorId = result.visitorId;
@@ -499,13 +426,9 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                 }));
 
                 (window as any).fingerprint = visitorId;
-
-                console.log("Visitor ID:", visitorId);
               } catch (error) {
                 console.error("Error generating fingerprint:", error);
               }
-            } else {
-              console.error("FingerprintJS is still not available.");
             }
           };
 
@@ -522,22 +445,6 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       initializeFingerprint();
     }, []);
 
-    // Function to capture and console log form data
-    const captureFormData = () => {
-      const formData = {
-        name: data.name || "",
-        email: data.email || "dummy@example.com",
-        description: data.description || "",
-        phone: data.phone || "",
-        role: data.role || "",
-        heardAboutUs: data.heardAboutUs || "",
-        deploymentTimeline: data.deploymentTimeline || ""
-      };
-
-      // console.log("Form Data Captured:", formData);
-      return formData;
-    };
-
     // Update wizard data with tracking information
     useEffect(() => {
       onUpdate({
@@ -551,19 +458,10 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       });
     }, [trackingData, onUpdate]);
 
-    // Console log data whenever form fields change
-    useEffect(() => {
-      if (data.name || data.email || data.description || data.phone) {
-        captureFormData();
-      }
-    }, [data.name, data.email, data.description, data.phone]);
-
     const handleFilesChange = useCallback(
       async (files: File[]) => {
         try {
-          // Convert files to blobs for CRM submission
           const blobFiles = await filesToBlobs(files);
-          console.log(`Converted ${files.length} training files to blobs`);
           
           onUpdate({
             knowledgeSources: {
@@ -577,7 +475,6 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           });
         } catch (error) {
           console.error('Error converting files to blobs:', error);
-          // Still update with original files even if blob conversion fails
           onUpdate({
             knowledgeSources: {
               ...data.knowledgeSources,
@@ -619,18 +516,6 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       [data.knowledgeSources, onUpdate]
     );
 
-    const handleTextChange = useCallback(
-      (textContent: string) => {
-        onUpdate({
-          knowledgeSources: {
-            ...data.knowledgeSources,
-            textContent,
-          },
-        });
-      },
-      [data.knowledgeSources, onUpdate]
-    );
-
     const knowledgeSourcesCount = useMemo(() => {
       const filesCount = data.knowledgeSources.files.length;
       const urlsCount = data.knowledgeSources.urls.length;
@@ -652,13 +537,13 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           <input name="fingerprintdata" type="hidden" value={trackingData.fingerprintData} readOnly />
         )}
         
-        <div className="container-fluid">
+        <div className="container-fluid getUserInfoContainer">
           <div className="row">
-            <div className="col-lg-6 chatbot-left-content-wrapper">
+            <div className="col-lg-12 chatbot-left-content-wrapper">
               <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
                   <div className="chatbot-content">
                     <div className="ps-0 pt-0">
-                      <div className="stepText my-2">Step 4 of 5</div>
+                      <div className="stepText my-2">Step 4 of 6</div>
                       <div className="h4 fw-bold">Provide Information to Train Your Bot</div>
                       <div className="mb-4">
                         Start by giving your bot a webpage or some files to kickstart your bot's learning.
@@ -700,17 +585,6 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                           <div className="text-2xl mb-2">📁</div>
                           <span className="text-sm font-medium">Files</span>
                         </button>
-                        {/* <button
-                          onClick={() => setActiveTab("text")}
-                          className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${
-                            activeTab === "text"
-                              ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
-                              : "forthTab"
-                          }`}
-                        >
-                          <div className="text-2xl mb-2">📝</div>
-                          <span className="text-sm font-medium">Text</span>
-                        </button> */}
                       </div>
 
                       {/* Tab Content */}
@@ -734,18 +608,6 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                               files={data.knowledgeSources.files}
                               onFilesChange={handleFilesChange}
                               onFileRemove={handleFileRemove}
-                            />
-                          </div>
-                        </div>
-                      )}
-
-                      {activeTab === "text" && (
-                        <div className="space-y-4 stepUploadTextarea">
-                          <div>
-                            <label className="block text-sm font-medium mb-2">Enter text content</label>
-                            <TextContentSection
-                              textContent={data.knowledgeSources.textContent}
-                              onTextChange={handleTextChange}
                             />
                           </div>
                         </div>
@@ -774,7 +636,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             </div>
 
             {/* Right Panel */}
-            <div
+            {/* <div
               className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile"
               style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}
             >
@@ -785,7 +647,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                 width={500}
                 height={382}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

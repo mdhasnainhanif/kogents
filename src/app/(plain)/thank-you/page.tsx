@@ -62,7 +62,7 @@ const page = () => {
                     aria-label="KOGENTS - Go to homepage"
                     className="w_fit buttonAnimation2 pink mt-3 d-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
                   >
-                    Request Access
+                    Let's Chat
                     <ArrowRightIcon style={{ height: 24 }} />
                   </Link>
                 </div>
@@ -89,7 +89,7 @@ const page = () => {
                     href="/about"
                     className="w_fit buttonAnimation2 green mt-3 d-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
                   >
-                    Request Access
+                    Know More About Us
                     <ArrowRightIcon style={{ height: 24 }} />
                   </Link>
                 </div>
@@ -116,7 +116,7 @@ const page = () => {
                     href="/solutions"
                     className="w_fit buttonAnimation2 yellow mt-3 d-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
                   >
-                    Request Access
+                    Explore More
                     <ArrowRightIcon style={{ height: 24 }} />
                   </Link>
                 </div>

@@ -42,7 +42,7 @@ const ActionButtons = React.memo<{
         <button
           onClick={onPrevious}
           disabled={!canGoPrev || isLoading}  // ADD isLoading check
-          className="buttonAnimation inline-flex gap-2 items-center px-5 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary 
+          className="buttonAnimation mb-0 inline-flex gap-2 items-center px-5 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary 
         hover:bg-transparent text-w-900 open-modal-btn"
         >
           <ChevronLeftIcon />

@@ -7,7 +7,7 @@ export default function GTMNoScript() {
     const onLoad = () => {
       setTimeout(() => {
         const iframe = document.createElement("iframe");
-        iframe.src = "https://www.googletagmanager.com/ns.html?id=GTM-TDRT95RZ";
+        iframe.src = "https://www.googletagmanager.com/ns.html?id=GTM-TVPKTNBM";
         iframe.height = "0";
         iframe.width = "0";
         iframe.style.display = "none";

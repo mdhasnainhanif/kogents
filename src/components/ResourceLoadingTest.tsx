@@ -79,7 +79,7 @@ export default function ResourceLoadingTest() {
 
   return (
     <div className="fixed bottom-4 right-4 bg-black bg-opacity-80 text-white p-4 rounded-lg max-w-sm z-50">
-      <div className="flex justify-between items-center mb-2">
+      {/* <div className="flex justify-between items-center mb-2">
         <h3 className="text-sm font-bold">Resource Loading Test</h3>
         <button 
           onClick={() => setIsVisible(!isVisible)}
@@ -87,7 +87,7 @@ export default function ResourceLoadingTest() {
         >
           {isVisible ? 'Hide' : 'Show'}
         </button>
-      </div>
+      </div> */}
       
       {isVisible && (
         <div className="space-y-1 text-xs">

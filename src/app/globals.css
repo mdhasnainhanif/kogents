@@ -274,17 +274,15 @@ section.customerservice-section {
   font-size: 3.6rem;
   font-display: swap;
 }
-
-.headingSize.mt-0 {
-  margin-top: 0 !important;
+.headingSize.mt-0{
+    margin-top: 0 !important;
 }
 
 .heroItems .buttonAnimation {
   margin-bottom: 0.75rem;
 }
-
-.heroItems p {
-  margin-top: 1.25rem;
+.heroItems p{
+    margin-top: 1.25rem;
 }
 
 .active2 {
@@ -508,7 +506,7 @@ ul.custom-tabs .nav-link.custom-tab-link:hover {
 .chatbot-content,
 .chatbot_footer {
   margin: 0 auto;
-  max-width: 512px;
+  max-width: 36.25rem;
   width: 100%;
 }
 
@@ -831,6 +829,14 @@ media-theme-tailwind-audio {
 
 .chat_header_container {
   border-bottom: 1px solid #374151;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #0e0b1f;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .chatbot_header {
@@ -839,7 +845,6 @@ media-theme-tailwind-audio {
   gap: 4rem;
   min-height: 67.17px;
 }
-
 .header_pogress_points {
   width: 80%;
   display: flex;
@@ -917,11 +922,16 @@ section.bgpurple {
   justify-content: space-between;
   background-color: #110e20;
   padding: 0 !important;
+  height: calc(100vh - 67.17px);
+  overflow: hidden;
 }
 
 .chatbot-content-wrapper:first-child {
-  flex: auto;
+  flex: 1;
   align-content: center;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chatbot-content-wrapper input,
@@ -1084,7 +1094,6 @@ ul.chatbot_upload_files li {
   height: 100rem !important;
   pointer-events: none !important;
 }
-
 .boxesBg {
   background-image: linear-gradient(to bottom,
       rgba(255, 255, 255, 0.03) 1px,
@@ -1914,9 +1923,7 @@ a.aboutIconPhone {
     padding: 0 20px;
   }
 }
-
 @media (max-width: 576px) {
-
   .app-btn,
   .solutionFaq ul li.custom-nav1 .nav-link {
     width: 100%;
@@ -1938,13 +1945,11 @@ a.aboutIconPhone {
   .heroSectionPadding h2.headingSize {
     font-size: 2.6rem !important;
   }
-
   .hideOnMobile,
   .step-3imgMain,
   .step2ImgMain {
     display: none !important;
   }
-
   .step2Img {
     display: none;
   }
@@ -2130,38 +2135,19 @@ input::placeholder {
 .companyInfo {
   margin-top: 10rem !important;
 }
-
-.cardPoints a {
-  transition: transform 0.2s ease-in-out;
+.cardPoints a{
+    transition: transform 0.2s ease-in-out;
 }
-
-.cardPoints a:hover {
-  transform: scale(1.025);
-  transition: transform 0.2s ease-in-out;
+.cardPoints a:hover{
+    transform: scale(1.025);
+    transition: transform 0.2s ease-in-out;
 }
-
-.mt125 {
-  margin-top: 1.25rem !important;
+.mt125{
+    margin-top: 1.25rem !important;
 }
-
-.mb125 {
-  margin-bottom: 1.25rem !important;
+.mb125{
+    margin-bottom: 1.25rem !important;
 }
-
-.longCard .arrowPointUl {
-  margin-top: 1.25rem;
-}
-
-.glossaryInput span {
-  left: 1rem;
-}
-
-.glossaryInput input {
-  padding-left: 2rem;
-  width: 100%;
-  min-width: 20rem;
-}
-
-.glossary {
-  margin-top: 8rem !important;
+.longCard .arrowPointUl{
+    margin-top: 1.25rem;
 }

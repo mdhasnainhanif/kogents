@@ -411,7 +411,7 @@ const NewFooter = () => {
                 </li>
               </ul>
               <p className="h6 companyInfo">Company Info</p>
-              <ul>
+              <ul className="company-info-list">
                 <li >
                   <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><Image
                     width={20}

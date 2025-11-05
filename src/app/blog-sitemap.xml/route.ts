@@ -1,49 +1,75 @@
 // app/blog-sitemap.xml/route.ts
-const SITE = "https://kogents.ai";
-
 export const runtime = "edge";
+export const dynamic = "force-dynamic";      // never prerender/cache
+export const revalidate = 0;                  // no ISR
+export const fetchCache = "force-no-store";   // Next.js 14+: all fetches bypass cache
 
-// Paste your raw links exactly as provided
-const RAW_LINKS = `
-https://kogents.ai/blogs/ai-health-assistants/
-https://kogents.ai/blogs/automated-patient-intake/
-https://kogents.ai/blogs/virtual-nursing-assistant/
-https://kogents.ai/blogs/agentic-ai-in-customer-experience/
-https://kogents.ai/blogs/ai-agents-in-customer-support-challenges/
-https://kogents.ai/blogs/ai-agents-for-customer-support-in-debt-collection/
-https://kogents.ai/blogs/ai-conversational-agents-for-dealership-customer-service/
-https://kogents.ai/blogs/how-ai-agents-work/
-https://kogents.ai/blogs/artificial-intelligence-crm/
-https://kogents.ai/blogs/whatsapp-crm-integration/
-https://kogents.ai/blogs/how-ai-is-changing-marketing/
-https://kogents.ai/blogs/ai-in-marketing/
-https://kogents.ai/blogs/ai-in-marketing/
-https://kogents.ai/blogs/ai-for-students/
-https://kogents.ai/blogs/artificial-intelligence-dashboard/
-https://kogents.ai/blogs/automated-grading-system/
-https://kogents.ai/blogs/ai-for-teachers/
-https://kogents.ai/blogs/ai-vs-machine-learning/
-https://kogents.ai/blogs/ai-tutoring-for-students/
-https://kogents.ai/blogs/mental-health-ai/
-https://kogents.ai/blogs/ai-doctor-diagnosis/
-https://kogents.ai/blogs/hipaa-compliant-ai/
-https://kogents.ai/blogs/remote-health-monitoring/
-https://kogents.ai/blogs/ai-patient-scheduling/
-https://kogents.ai/blogs/improve-customer-interactions/
-`.trim();
+const SITE_BLOG_BASE = "https://kogents.ai/blogs/";
+const WP_API = "https://portal.kogents.ai/wp-json/wp/v2/posts";
 
-function normalize(url: string): string | null {
-  try {
-    const u = new URL(url.trim());
-    if (!u.hostname.endsWith("kogents.ai")) return null;
-    if (!u.pathname.startsWith("/blogs/")) return null;
-    // force trailing slash, strip fragments
-    u.hash = "";
-    if (!u.pathname.endsWith("/")) u.pathname += "/";
-    return u.origin + u.pathname + (u.search || "");
-  } catch {
-    return null;
+function cb() {
+  // cache-bust value per request
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+}
+
+/** Always-fresh WP slug fetcher with pagination + cache-busting */
+async function fetchAllSlugs(): Promise<string[]> {
+  const perPage = 100;
+
+  const mkUrl = (page: number) =>
+    `${WP_API}?per_page=${perPage}&page=${page}&_fields=slug,status&_cb=${cb()}`;
+
+  const fetchOpts: RequestInit = {
+    cache: "no-store",
+    // Extra belt & suspenders for some proxies
+    headers: {
+      "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      Pragma: "no-cache",
+    },
+    next: { revalidate: 0 },
+  };
+
+  const firstRes = await fetch(mkUrl(1), fetchOpts);
+  if (!firstRes.ok) {
+    throw new Error(`WP API failed (page 1): ${firstRes.status} ${firstRes.statusText}`);
   }
+
+  const totalPages = Number(firstRes.headers.get("X-WP-TotalPages") || "1");
+  const slugs: string[] = [];
+
+  const addSlugs = async (res: Response) => {
+    const items: Array<{ slug: string; status?: string }> = await res.json();
+    for (const it of items) {
+      if (!it?.slug) continue;
+      if (it?.status && it.status !== "publish") continue;
+      slugs.push(String(it.slug).trim());
+    }
+  };
+
+  await addSlugs(firstRes);
+
+  const tasks: Promise<void>[] = [];
+  for (let page = 2; page <= totalPages; page++) {
+    tasks.push(
+      fetch(mkUrl(page), fetchOpts).then((r) => {
+        if (!r.ok) throw new Error(`WP API failed (page ${page}): ${r.status} ${r.statusText}`);
+        return addSlugs(r);
+      })
+    );
+  }
+  if (tasks.length) await Promise.all(tasks);
+
+  // de-dupe keep-order
+  const seen = new Set<string>();
+  const ordered: string[] = [];
+  for (const s of slugs) {
+    const norm = s.replace(/^\/+|\/+$/g, "");
+    if (norm && !seen.has(norm)) {
+      seen.add(norm);
+      ordered.push(norm);
+    }
+  }
+  return ordered;
 }
 
 function xmlEscape(s: string) {
@@ -66,26 +92,40 @@ function buildXml(urls: string[]): string {
 }
 
 export async function GET() {
-  // keep input order but drop duplicates after normalizing
-  const seen = new Set<string>();
-  const ordered: string[] = [];
+  try {
+    const slugs = await fetchAllSlugs();
+    const urls = slugs.map((slug) => `${SITE_BLOG_BASE}${slug.replace(/^\/+|\/+$/g, "")}/`);
+    const xml = buildXml(urls);
 
-  for (const line of RAW_LINKS.split(/\r?\n/)) {
-    const cleaned = normalize(line);
-    if (!cleaned) continue;
-    if (!seen.has(cleaned)) {
-      seen.add(cleaned);
-      ordered.push(cleaned);
-    }
+    return new Response(xml, {
+      status: 200,
+      headers: {
+        "Content-Type": "application/xml; charset=utf-8",
+        // Kill all downstream caching (browser + proxies + Vercel CDN)
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0, private",
+        Pragma: "no-cache",
+        Expires: "0",
+        "CDN-Cache-Control": "no-store",
+        "Vercel-CDN-Cache-Control": "no-store",
+        Vary: "*",
+      },
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    return new Response(
+      `<?xml version="1.0" encoding="UTF-8"?><error>${xmlEscape(message)}</error>`,
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/xml; charset=utf-8",
+          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0, private",
+          Pragma: "no-cache",
+          Expires: "0",
+          "CDN-Cache-Control": "no-store",
+          "Vercel-CDN-Cache-Control": "no-store",
+          Vary: "*",
+        },
+      }
+    );
   }
-
-  const xml = buildXml(ordered);
-
-  return new Response(xml, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, s-maxage=86400, max-age=86400",
-    },
-  });
 }

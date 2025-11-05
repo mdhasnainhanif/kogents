@@ -107,6 +107,12 @@ export default function KogentsSitemapPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  // visible blog posts for "Load more"
+  const INITIAL_VISIBLE = 6
+  const LOAD_STEP = 6
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
+
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
@@ -129,15 +135,19 @@ export default function KogentsSitemapPage() {
         const posts = await response.json()
         if (Array.isArray(posts)) {
           setBlogPosts(posts)
+          // reset visible count whenever we refresh posts
+          setVisibleCount(INITIAL_VISIBLE)
           console.log('✅ Successfully fetched blog posts:', posts.length)
         } else {
           console.warn('⚠️ Unexpected response format:', posts)
           setBlogPosts([])
+          setVisibleCount(INITIAL_VISIBLE)
         }
       } catch (error) {
         console.error('❌ Error fetching blog posts:', error)
         setError(error instanceof Error ? error.message : 'Failed to fetch blog posts')
         setBlogPosts([])
+        setVisibleCount(INITIAL_VISIBLE)
       } finally {
         setLoading(false)
       }
@@ -149,6 +159,14 @@ export default function KogentsSitemapPage() {
   const cleanTitle = (title: string) => {
     return title.replace(/<[^>]*>/g, '').trim()
   }
+
+  const showLoadMore = !loading && !error && blogPosts.length > visibleCount
+  const visiblePosts = blogPosts.slice(0, visibleCount)
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => Math.min(prev + LOAD_STEP, blogPosts.length))
+  }
+
   return (
     <>
       <div className={styles.sitemapContainer}>
@@ -157,6 +175,8 @@ export default function KogentsSitemapPage() {
             <h1 className={styles.sitemapTitle}>Kogents AI Sitemap</h1>
             <p className={styles.sitemapSubtitle}>Explore all pages and resources available on our AI-powered platform. Find everything from AI solutions to platform integrations and legal information.</p>
           </div>
+
+          {/* Sections with Cards */}
           {Object.entries(pageSections).map(([key, section]) => (
             <div key={key} className={styles.sectionContainer}>
               <h2 className={styles.sectionTitle}>
@@ -182,6 +202,8 @@ export default function KogentsSitemapPage() {
               </div>
             </div>
           ))}
+
+          {/* Blog Posts Section */}
           <div className={styles.sectionContainer}>
             <h2 className={styles.sectionTitle}>
               <span className={styles.sectionIcon}>📝</span>
@@ -216,7 +238,7 @@ export default function KogentsSitemapPage() {
                 </div>
               ) : blogPosts.length > 0 ? (
                 <>
-                  {blogPosts.map((post, index) => (
+                  {visiblePosts.map((post, index) => (
                     <div key={post.id || index} className="col-lg-4 col-md-6 col-sm-12 mb-3">
                       <div className={styles.pageCard}>
                         <Link
@@ -232,6 +254,20 @@ export default function KogentsSitemapPage() {
                       </div>
                     </div>
                   ))}
+
+                  {/* Load More */}
+                  {showLoadMore && (
+                    <div className="col-12 d-flex justify-content-center mt-2">
+                      <button
+                        type="button"
+                        onClick={handleLoadMore}
+                        className={styles.retryButton}
+                        aria-label="Load more blog posts"
+                      >
+                        Load more
+                      </button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <div className="col-12">

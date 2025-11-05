@@ -42,6 +42,10 @@ export const metadata: Metadata = {
         siteName: 'Kogents AI',
         locale: 'en_US',
     },
+    robots: {
+        index: false,
+        follow: false,
+      },
 }
 const page = () => {
     const breadcrumbItems = [
