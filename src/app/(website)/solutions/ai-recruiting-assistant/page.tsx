@@ -43,8 +43,8 @@ export const metadata: Metadata = {
         locale: 'en_US',
     },
     robots: {
-        index: false,
-        follow: false,
+        index: true,
+        follow: true,
       },
 }
 const page = () => {

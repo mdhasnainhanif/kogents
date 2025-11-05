@@ -109,7 +109,7 @@ export default function KogentsSitemapPage() {
   const [error, setError] = useState<string | null>(null)
 
   // visible blog posts for "Load more"
-  const INITIAL_VISIBLE = 6
+  const INITIAL_VISIBLE = 15
   const LOAD_STEP = 6
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
 
