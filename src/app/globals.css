@@ -1074,6 +1074,14 @@ ul.chatbot_upload_files li {
   height: 100rem !important;
   pointer-events: none !important;
 }
+
+/* LightRays in hero section - start from top 0 with transparent background */
+.heroSection .lightRays,
+.heroSection ~ * .lightRays,
+.boxesBg .lightRays {
+  top: 0 !important;
+  background: transparent !important;
+}
 .boxesBg {
   background-image: linear-gradient(
       to bottom,
@@ -2001,4 +2009,7 @@ div.bg-purple-500.border-2 {
   bottom: 0rem;
   width: 50%;
   background: #110e20;
+}
+.getUserInfoContainer .chatbot-content-wrapper.footer{
+  width: 100%;
 }

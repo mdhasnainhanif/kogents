@@ -537,9 +537,9 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           <input name="fingerprintdata" type="hidden" value={trackingData.fingerprintData} readOnly />
         )}
         
-        <div className="container-fluid">
+        <div className="container-fluid getUserInfoContainer">
           <div className="row">
-            <div className="col-lg-6 chatbot-left-content-wrapper">
+            <div className="col-lg-12 chatbot-left-content-wrapper">
               <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
                   <div className="chatbot-content">
                     <div className="ps-0 pt-0">
@@ -636,7 +636,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             </div>
 
             {/* Right Panel */}
-            <div
+            {/* <div
               className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile"
               style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}
             >
@@ -647,7 +647,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                 width={500}
                 height={382}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

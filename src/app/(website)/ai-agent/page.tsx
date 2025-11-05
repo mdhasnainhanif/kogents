@@ -10,7 +10,6 @@ import AIAgentSlider from '@/components/homeCopy/csr/AIAgentSlider';
 import AgentOS from '@/components/homeCopy/ssr/AgentOS';
 import KogentBenefits from '@/components/homeCopy/ssr/KogentBenefits';
 import type { Metadata } from 'next';
-import LightRaysWrapper from '@/components/ai-agent/LightRaysWrapper';
 import ScrollLock from '@/components/ai-agent/ScrollLock';
 
 const BASE = "https://kogents.ai";
@@ -134,11 +133,6 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="relative w-full min-h-screen">
-        {/* LightRays background effect */}
-        <div className="fixed inset-0 w-full h-full z-0">
-          <LightRaysWrapper raysColor="#5D51AF" />
-        </div>
-        
         {/* Page content */}
         <div className="relative z-10">
           <HeroSection />
@@ -161,7 +155,7 @@ export default function HomePage() {
             {/* <AgentOS /> */}
             {/* <KogentBenefits /> */}
             <section className="cv">
-              <FAQSection showLoadMore={false} />
+              <FAQSection showLoadMore={true} />
             </section>
             {/* <BlogList /> */}
           </div>
