@@ -2017,3 +2017,17 @@ div.bg-purple-500.border-2 {
 .text_primary{
   color: #7361e5;
 }
+
+.glossaryInput span {
+  left: 1rem;
+}
+
+.glossaryInput input {
+  padding-left: 2.5rem;
+  width: 100%;
+  min-width: 20rem;
+}
+
+.glossary {
+  margin-top: 8rem !important;
+}
