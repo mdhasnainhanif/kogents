@@ -190,7 +190,7 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
                               width: "65px",
                               height: "65px",
                               borderRadius: "50%",
-                              border: isSelected ? "2px solid #BE9FE8" : "2px solid #333",
+                              border: isSelected ? "2px solid #5D51AF" : "2px solid #333",
                               padding: "5px",
                               background: "transparent",
                               cursor: "pointer",

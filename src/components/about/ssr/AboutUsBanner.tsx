@@ -22,6 +22,16 @@ const defaultBrands: Brand[] = [
     { src: "/assets/img/brand/3.svg", alt: "brand" },
     { src: "/assets/img/brand/4.svg", alt: "brand" },
     { src: "/assets/img/brand/5.svg", alt: "brand" },
+    { src: "/assets/img/brand/1.svg", alt: "brand" },
+    { src: "/assets/img/brand/2.svg", alt: "brand" },
+    { src: "/assets/img/brand/3.svg", alt: "brand" },
+    { src: "/assets/img/brand/4.svg", alt: "brand" },
+    { src: "/assets/img/brand/5.svg", alt: "brand" },
+    { src: "/assets/img/brand/1.svg", alt: "brand" },
+    { src: "/assets/img/brand/2.svg", alt: "brand" },
+    { src: "/assets/img/brand/3.svg", alt: "brand" },
+    { src: "/assets/img/brand/4.svg", alt: "brand" },
+    { src: "/assets/img/brand/5.svg", alt: "brand" },
 ];
 
 const AboutUsBanner: React.FC<AboutUsBannerProps> = ({
@@ -60,19 +70,6 @@ const AboutUsBanner: React.FC<AboutUsBannerProps> = ({
                             {brands.map((brand, idx) => (
                                 <Image
                                     key={`brand1-${idx}`}
-                                    src={brand.src}
-                                    alt={brand.alt || "brand----"}
-                                    className="mx-4"
-                                    height={100}
-                                    width={200}
-                                    loading="lazy"
-                                />
-                            ))}
-                        </div>
-                        <div className="inline-flex lg:ml-20 logo_items animate-slides">
-                            {brands.map((brand, idx) => (
-                                <Image
-                                    key={`brand2-${idx}`}
                                     src={brand.src}
                                     alt={brand.alt || "brand"}
                                     className="mx-4"

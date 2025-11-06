@@ -142,6 +142,14 @@ const CARDS: Card[] = [
     tags: ["Platforms"],
     link: "/platforms/ai-telegram-agent",
   },
+  {
+    id: "Voice",
+    title: "AI Voice Agent",
+    icon: "/assets/img/icons/telegram.svg",
+    desc: "Chat with customers worldwide on Telegram 24/7 in multiple languages. From inquiries to orders to real-time updates.",
+    tags: ["Platforms"],
+    link: "/platforms/ai-voice-agent",
+  },
 ];
 
 export default function AllChannelsCard() {

@@ -1087,7 +1087,7 @@ export default function AIGlossaryPage() {
                             <button
                                 key={letter}
                                 onClick={() => handleScrollToLetter(letter)}
-                                className="paraColor subHeading mt-2"
+                                className="subHeading mt-2"
                             >
                                 {letter}
                             </button>

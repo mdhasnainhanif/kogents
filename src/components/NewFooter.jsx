@@ -244,9 +244,8 @@ const NewFooter = () => {
               <p className="h6 footCate">Resources</p>
               <ul>
                 <li>
-                  <Link href="/security">Security</Link>
+                  <Link href="/blogs">Blogs</Link>
                 </li>
-
                 <li>
                   <Link href="/case-studies">Case Studies</Link>
                 </li>
@@ -297,9 +296,6 @@ const NewFooter = () => {
                 </li>
                 <li>
                   <Link href="/platforms">Platforms</Link>
-                </li>
-                <li>
-                  <Link href="/blogs">Blogs</Link>
                 </li>
                 <li>
                   <Link href="/contact-us">Contact Us</Link>

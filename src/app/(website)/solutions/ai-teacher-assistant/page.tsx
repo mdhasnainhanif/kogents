@@ -137,8 +137,6 @@ const page = () => {
                     },
                 ]}
             />
-
-            <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"
                 heading="AI Classroom Assistant Services to Balance Teaching and Time"
@@ -176,6 +174,7 @@ const page = () => {
                 buttonText="Automate Your Tasks Now"
                 buttonLink="#"
             />
+            <BrandLogoSlider />
             <CustomerServiceCard
                 tag="Why Kogents"
                 heading="Why Our AI Classroom Assistant Leads the Way"

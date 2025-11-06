@@ -5152,7 +5152,7 @@ export const Data: AllPageDataType = {
                 link: "/book-demo",
             },
             image: {
-                src: "/assets/img/ai-shopify/banner.webp",
+                src: "/assets/img/ai-voice-agent/banner.webp",
                 alt: "Custom Banner",
                 width: 900,
                 height: 650,
@@ -5177,42 +5177,42 @@ export const Data: AllPageDataType = {
             benefits: [
                 {
                     id: 1,
-                    icon: "/assets/img/ai-shopify/1.svg",
+                    icon: "/assets/img/ai-voice-agent/1.svg",
                     title: "Missed Calls and Overflow Handling",
                     description:
                         "The missed calls problem worsens after hours when no call overflow handling is in place. Unanswered calls cause lost leads from missed calls and customer frustration from wait times. Continuous real-time customer engagement through adaptive workflows keeps connections active and responsive.",
                 },
                 {
                     id: 2,
-                    icon: "/assets/img/ai-shopify/2.svg",
+                    icon: "/assets/img/ai-voice-agent/2.svg",
                     title: "Lack of Personalization in Customer Calls",
                     description:
                         "Generic replies result in inefficient call responses and reduce engagement. Without speech understanding or customer intent detection, teams miss callers' needs. The IEEE Speech Processing framework confirms that recognizing conversational context ensures accurate and natural interactions.",
                 },
                 {
                     id: 3,
-                    icon: "/assets/img/ai-shopify/3.svg",
+                    icon: "/assets/img/ai-voice-agent/3.svg",
                     title: "Slow and Frustrating Call Experiences",
                     description:
                         "Slow routing and long holds lower performance and cause a poor response rate on inbound calls. A structured voice-driven workflow interprets conversational context to speed up connections. Faster responses improve satisfaction and build long-term loyalty.",
                 },
                 {
                     id: 4,
-                    icon: "/assets/img/ai-shopify/4.svg",
+                    icon: "/assets/img/ai-voice-agent/4.svg",
                     title: "Inconsistent and Unreliable Communication",
                     description:
                         "Manual processes lead to business call management issues and communication gaps. These mistakes reduce reliability and customer confidence. Implementing speech understanding aligned with ISO IEC 30107-3 standards ensures consistent and accurate responses.",
                 },
                 {
                     id: 5,
-                    icon: "/assets/img/ai-shopify/4.svg",
+                    icon: "/assets/img/ai-voice-agent/5.svg",
                     title: "Limited Accessibility and Uneven Service",
                     description:
                         "High call volume and language barriers create uneven service. Many small teams face a voice automation need for SMBs to manage call overflow handling effectively. Inclusive real-time customer engagement provides equal support across every caller type and region.",
                 },
                 {
                     id: 6,
-                    icon: "/assets/img/ai-shopify/4.svg",
+                    icon: "/assets/img/ai-voice-agent/6.svg",
                     title: "Delayed Support and Poor Resolution Rates",
                     description:
                         "Delays weaken trust and affect customer perception. Repeated business call management issues slow resolution and limit first-contact success. Intent-based workflows and voice-driven automation guided by IEEE Speech Processing standards improve accuracy and restore confidence.",
@@ -5271,7 +5271,7 @@ export const Data: AllPageDataType = {
             agentCards: [
                 {
                     colLg: 4,
-                    image: "/assets/img/ai-shopify/1.webp",
+                    image: "/assets/img/ai-voice-agent/1.webp",
                     title: "100% Call Response and Improved Response Rate",
                     points: [
                         "Businesses approach 100% call response with a 24/7 automated calling solution that manages every inquiry instantly. Intelligent routing improves the overall response rate and ensures first-contact resolution, creating faster and more reliable customer interactions.",
@@ -5279,7 +5279,7 @@ export const Data: AllPageDataType = {
                 },
                 {
                     colLg: 4,
-                    image: "/assets/img/ai-shopify/2.webp",
+                    image: "/assets/img/ai-voice-agent/2.webp",
                     title: "Enhanced Customer Satisfaction",
                     points: [
                         "Consistent communication ensures enhanced customer satisfaction and stronger trust. With call sentiment analysis and conversational accuracy metrics, every interaction remains clear and context-aware, helping customers feel understood and valued.",
@@ -5287,7 +5287,7 @@ export const Data: AllPageDataType = {
                 },
                 {
                     colLg: 4,
-                    image: "/assets/img/ai-shopify/3.webp",
+                    image: "/assets/img/ai-voice-agent/3.webp",
                     title: "Business Efficiency via Voice AI",
                     points: [
                         "Automating routine calls increases business efficiency via voice AI. Teams focus on higher-value work while AI-driven efficiency tracking and voice performance analytics maintain consistent service quality and throughput.",
@@ -5295,7 +5295,7 @@ export const Data: AllPageDataType = {
                 },
                 {
                     colLg: 6,
-                    image: "/assets/img/ai-shopify/4.webp",
+                    image: "/assets/img/ai-voice-agent/4.webp",
                     title: "Cost-Effective Call Handling",
                     points: [
                         "Smart routing and adaptive workflows create cost-effective call handling that scales with demand. Fewer missed calls and shorter queues lead to lower costs and stronger resource utilization.",
@@ -5304,7 +5304,7 @@ export const Data: AllPageDataType = {
                 },
                 {
                     colLg: 6,
-                    image: "/assets/img/ai-shopify/5.webp",
+                    image: "/assets/img/ai-voice-agent/5.webp",
                     title: "Increased Lead Capture and ROI",
                     points: [
                         "Consistent follow-ups boost lead capture and conversion outcomes. Through voice AI ROI tracking, organizations measure gains in engagement, time savings, and operational results based on anonymized deployment data.",
@@ -5324,31 +5324,31 @@ export const Data: AllPageDataType = {
                     id: 1,
                     q: "Voice Assistant Setup",
                     a: "The voice assistant setup process configures the system to match communication goals. Using speech training models, the voice agent learns tone, phrasing, and intent for accurate, human-like interactions.",
-                    image: "/assets/img/ai-shopify/6.webp",
+                    image: "/assets/img/ai-voice-agent/6.webp",
                 },
                 {
                     id: 2,
                     q: "Integration with CRM and Telephony",
                     a: "Through integration with CRM and telephony, the AI voice workflow connects existing systems and customer data. This enables context-aware responses and consistent communication across every channel.",
-                    image: "/assets/img/ai-shopify/7.webp",
+                    image: "/assets/img/ai-voice-agent/7.webp",
                 },
                 {
                     id: 3,
                     q: "Real-Time Voice Adaptation",
                     a: "With real-time voice adaptation, the conversational AI pipeline adjusts tone and clarity during live interactions. Language model fine-tuning and real-time inference maintain natural, context-aware dialogue.",
-                    image: "/assets/img/ai-shopify/8.webp",
+                    image: "/assets/img/ai-voice-agent/8.webp",
                 },
                 {
                     id: 4,
                     q: "Automated Outbound Call Scheduling",
                     a: "The system handles automated outbound call scheduling based on response patterns and engagement timing. This ensures timely outreach and balanced communication without manual effort.",
-                    image: "/assets/img/ai-shopify/9.webp",
+                    image: "/assets/img/ai-voice-agent/9.webp",
                 },
                 {
                     id: 5,
                     q: "Security and Voice Assurance",
                     a: "Every phase upholds strict voice data privacy handling under SOC 2 and GDPR standards. Certified AI model governance and human-audited voice quality assurance ensure accuracy, ethics, and trust.",
-                    image: "/assets/img/ai-shopify/10.webp",
+                    image: "/assets/img/ai-voice-agent/10.webp",
                 },
             ],
             rightImage: "/assets/img/faq.png",
