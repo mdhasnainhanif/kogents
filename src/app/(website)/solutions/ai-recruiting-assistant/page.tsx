@@ -43,15 +43,9 @@ export const metadata: Metadata = {
         locale: 'en_US',
     },
     robots: {
-<<<<<<< HEAD
-        index: false,
-        follow: false,
-    },
-=======
         index: true,
         follow: true,
       },
->>>>>>> bd01e1879be0638cab4de57b4178b3613e7be048
 }
 const page = () => {
     const breadcrumbItems = [
