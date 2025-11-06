@@ -165,7 +165,8 @@ export const BasicSetupStep = React.memo<BasicSetupStepProps>(
             <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
               <img
                 className="img-fluid"
-                src="/assets/img/chat-img-2.svg"
+                src="/assets/img/brief/brief-v2-2.webp"
+                style={{ maxWidth: "25rem" }}
                 alt="Preview"
                 width={500}
                 height={500}

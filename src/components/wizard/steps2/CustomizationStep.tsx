@@ -177,7 +177,7 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
 
                   {/* Pick An Avatar */}
                   <div className="mb-4">
-                    <label className="form-label mb-3 d-block">Pick An Avatar</label>
+                    <label className="form-label mb-3 d-block h3">Pick An Avatar</label>
                     <div className="d-flex gap-3 flex-wrap">
                       {AVATAR_OPTIONS.map((avatar) => {
                         const isSelected = (avatarPreview || data.appearance.avatar) === avatar.src;
@@ -190,7 +190,7 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
                               width: "65px",
                               height: "65px",
                               borderRadius: "50%",
-                              border: isSelected ? "3px solid #BE9FE8" : "2px solid #333",
+                              border: isSelected ? "2px solid #BE9FE8" : "2px solid #333",
                               padding: "5px",
                               background: "transparent",
                               cursor: "pointer",
@@ -244,11 +244,11 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
 
                   {/* Widget Color */}
                   <div className="mb-4">
-                    <label className="form-label mb-3 d-block">
+                    <label className="form-label mb-2 d-block h3">
                       Widget Color
                     </label>
                     <p className="text-secondary mb-3">
-                      select a color that compliments your business logo/website theme
+                      Select a color that compliments your business logo/website theme
                     </p>
                     <div className="d-flex gap-3 flex-wrap align-items-center">
                       {PRESET_COLORS.map((color) => {
@@ -286,14 +286,14 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
                           </button>
                         );
                       })}
-                    </div>
                     {data.appearance.primaryColor && (
-                      <div className="mt-3">
+                      <div>
                         <p className="text-white">
-                          Selected Color: <span className="text-purple">{data.appearance.primaryColor}</span>
+                          <span className="text-purple colorText">{data.appearance.primaryColor}</span>
                         </p>
                       </div>
                     )}
+                    </div>
                   </div>
 
                   {/* Validation Error Message */}
@@ -311,10 +311,11 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
             </div>
 
             {/* Right Panel (Preview) */}
-            <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
+            <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e' }}>
               <img
                 className="img-fluid"
-                src="/assets/img/step4img.svg"
+                style={{ maxWidth: "25rem" }}
+                src="/assets/img/brief/sarah.webp"
                 alt="Preview"
                 width={500}
                 height={500}
