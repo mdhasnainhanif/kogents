@@ -71,6 +71,28 @@ const USE_CASE_OPTIONS: UseCaseOption[] = [
       },
     ],
   },
+  {
+    id: "sales",
+    title: "Sales AI Agent",
+    goal: "Goal: Focus on revenue acceleration, efficiency, and buyer experience.",
+    benefits: [
+      { 
+        id: "a", 
+        title: "Increase sales productivity by 40–50%",
+        description: "AI handles prospecting, follow-ups, and scheduling — reps focus only on closing."
+      },
+      { 
+        id: "b", 
+        title: "Deliver 3.5× ROI within the first year",
+        description: "Each $1 spent on AI-assisted sales returns over $3.5 in new revenue opportunities."
+      },
+      { 
+        id: "c", 
+        title: "Cut response-to-lead time from hours to seconds",
+        description: "Engage prospects instantly when they're most interested — before competitors do."
+      },
+    ],
+  },
 ];
 
 export const UseCaseStep = React.memo<UseCaseStepProps>(
@@ -84,7 +106,7 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
       if (data.useCases && data.useCases.length > 0) {
         // Check if any use case is selected
         const useCaseId = data.useCases[0]?.split(":")[0] || "";
-        if (useCaseId && (useCaseId === "customer-support" || useCaseId === "lead-capture")) {
+        if (useCaseId && (useCaseId === "customer-support" || useCaseId === "lead-capture" || useCaseId === "sales")) {
           setSelectedUseCase(useCaseId);
         }
       }
@@ -198,7 +220,7 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
                               <h3 className="h5 fw-semibold text-white mb-2">
                                 {index + 1}. {useCase.title}
                               </h3>
-                              <p className="text-secondary mb-2">{useCase.goal}</p>
+                              <p className="mb-2 greenNeon">{useCase.goal}</p>
                               
                               <div>
                                 {useCase.benefits.map((benefit) => (
@@ -237,7 +259,8 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
             <div className="col-lg-6 step2ImgMain d-flex relative align-items-center justify-content-center" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
               <img
                 className="img-fluid"
-                src="/assets/img/chat-img-2.svg"
+                src="/assets/img/brief/brief-v2-3.webp"
+                style={{ maxWidth: "25rem" }}
                 alt="Preview"
                 width={500}
               />

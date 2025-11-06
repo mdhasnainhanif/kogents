@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback, useMemo } from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
-import { PaperPlaneIcon } from "@/icons";
+import { ArrowRightIcon2, PaperPlaneIcon } from "@/icons";
 import { Link as LinkIcon, Folder } from "lucide-react";
 import { filesToBlobs, validateFile } from "@/utils/fileUtils";
 
@@ -541,7 +541,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           <div className="row">
             <div className="col-lg-12 chatbot-left-content-wrapper">
               <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
-                  <div className="chatbot-content">
+                  <div className="chatbot-content mt--3">
                     <div className="ps-0 pt-0">
                       <div className="stepText my-2">Step 4 of 6</div>
                       <div className="h4 fw-bold">Provide Information to Train Your Bot</div>
@@ -613,6 +613,23 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                         </div>
                       )}
                     </div>
+                     {/* Note Section */}
+                     <div className="mt-2">
+                              <div className="text-secondary small">
+                                <strong>Note option:</strong> Since it's a demo version trained only on your website/document, it only reflects 10-15% capability. To unlock full potential, our engineering team will gather your requirements in detail to execute the fully featured version ahead.
+                              </div>
+                            </div>
+                            {/* Activate Agent Now Button */}
+                            <div className="mt-3">
+                              <button
+                                onClick={footerOptions.onNext}
+                                className="buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-purple-600 text-white hover:bg-purple-700"
+                                type="button"
+                              >
+                                <span>Activate Agent Now</span>
+                                <ArrowRightIcon2 style={{ height: "24px" }} />
+                              </button>
+                            </div>
 
                     {errors.length > 0 && (
                       <div className="p-4 bg-red-50 border border-red-200 rounded-lg">

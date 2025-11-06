@@ -2033,7 +2033,7 @@ div.bg-purple-500.border-2 {
   width: 100%;
 }
 .text_primary{
-  color: #7361e5;
+  color: #A295FE;
 }
 
 .glossaryInput span {
@@ -2067,4 +2067,10 @@ input.form-control, select.form-control{
   border: 1px solid #715ED7;
   padding: 0.25rem 0.425rem;
   border-radius: 0.325rem;
+}
+.greenNeon{
+  color: #1BFFD7;
+}
+.chatbot-content.mt--3{
+  margin-top: -3.25rem !important;
 }

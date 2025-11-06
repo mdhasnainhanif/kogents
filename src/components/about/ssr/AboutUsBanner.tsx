@@ -61,7 +61,7 @@ const AboutUsBanner: React.FC<AboutUsBannerProps> = ({
                                 <Image
                                     key={`brand1-${idx}`}
                                     src={brand.src}
-                                    alt={brand.alt || "brand"}
+                                    alt={brand.alt || "brand----"}
                                     className="mx-4"
                                     height={100}
                                     width={200}

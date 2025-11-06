@@ -103,7 +103,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
         <div className="container-fluid">
           <div className="row">
             {/* Left Panel */}
-            <div className="col-lg-6 chatbot-left-content-wrapper">
+            <div className="col-lg-12 chatbot-left-content-wrapper">
               <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
                 <div className="chatbot-content">
                   <div className="mb-4">
@@ -158,13 +158,13 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                 </div>
               </InViewAnimate>
 
-              <div className="chatbot-content-wrapper footer">
+              <div className="chatbot-content-wrapper footer flex items-center justify-between gap-3 w-100">
                 <WizardNavigation2 {...modifiedFooterOptions} />
               </div>
             </div>
 
             {/* Right Panel (Preview) */}
-            <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
+            {/* <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
               <img
                 className="img-fluid"
                 src="/assets/img/chat-img-2.svg"
@@ -172,7 +172,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                 width={500}
                 height={500}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
