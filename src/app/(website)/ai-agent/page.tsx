@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: BASE,
+    canonical: "https://kogents.ai/ai-agent",
     languages: {
-      "en-US": BASE,
+      "en-US": "https://kogents.ai/ai-agent",
     },
   },
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: 'Kogents Ai Agent | Top Agentic AI Automation & Integration ',
     description:
       'Discover Kogents AI Agent for agentic automation and easy integrations built for your workflows. Email info@kogents.ai,  Phone +12672489454.',
-    url: "https://www.kogents.ai",
+    url: "https://www.kogents.ai/ai-agent",
     type: 'website',
     siteName: 'Kogents AI',
     locale: 'en_US',

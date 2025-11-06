@@ -144,8 +144,6 @@ const page = () => {
                     },
                 ]}
             />
-
-            <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"
                 heading="Our End-to-End Survey AI Solutions for Modern Organizations"
@@ -203,6 +201,7 @@ const page = () => {
                 buttonText="Get Your Survey AI Agent"
                 buttonLink="#"
             />
+            <BrandLogoSlider />
             <CustomerServiceCard
                 tag="Why Kogents"
                 heading="What Sets Our Survey AI Agent Apart from Others"

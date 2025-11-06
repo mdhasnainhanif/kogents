@@ -305,7 +305,7 @@ const URLManagementSection = ({
               onChange={handleInputChange}
               onBlur={handleBlur}
               onKeyDown={handleKeyDown}
-              className={`w-full px-4 py-2 rounded-md w-100 text-gray-900 ${
+              className={`w-full px-4 py-2 rounded-md w-100 text-gray-900 form-control ${
                 urlError ? "border-red-500" : "border-gray-300"
               }`}
             />
