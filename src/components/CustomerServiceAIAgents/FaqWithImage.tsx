@@ -147,7 +147,7 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
             </span>
 
             {/* Main Heading */}
-            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb-6">
+            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125 mb-6">
               {heading}
             </h2>
 

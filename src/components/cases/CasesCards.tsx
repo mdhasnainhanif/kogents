@@ -28,15 +28,15 @@ const CaseCards: React.FC<CaseCardsProps> = ({ cards, cardColClass = "col-md-5 c
         <section className="sectionPadding">
             <div className="container">
                 {(tag || heading) && (
-                    <div className="row justify-content-center mb-4">
+                    <div className="row justify-content-center">
                         <div className="col-12 text-center">
                             {tag && (
-                                <span className="buttonAnimation width_fit d-block px-4 py-2 mb-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">
+                                <span className="buttonAnimation width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">
                                     {tag}
                                 </span>
                             )}
                             {heading && (
-                                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+                                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize mb125">
                                     {heading}
                                 </h2>
                             )}

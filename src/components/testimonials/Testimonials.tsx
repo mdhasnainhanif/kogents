@@ -97,14 +97,14 @@ const Testimonial: React.FC<ClientTestimonialProps> = ({
     <div className="sectionPadding">
       <div className="container clientTestimonialSection">
         <div className="row justify-content-center">
-          <div className="col-lg-10 text-center mb-6">
+          <div className="col-lg-10 text-center">
             {/* Tag */}
-            <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mb-2">
+            <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
               {tag}
             </span>
 
             {/* Main Heading */}
-            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white">
+            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125">
               {heading}
             </h2>
             {description && (
