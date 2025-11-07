@@ -247,9 +247,6 @@ const NewFooter = () => {
                   <Link href="/blogs">Blogs</Link>
                 </li>
                 <li>
-                  <Link href="/blogs">Blogs</Link>
-                </li>
-                <li>
                   <Link href="/case-studies">Case Studies</Link>
                 </li>
                 <li>

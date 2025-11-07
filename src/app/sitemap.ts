@@ -244,5 +244,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+
+    {
+      url: 'https://kogents.ai/solutions/ai-recruiting-assistant/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/solutions/ai-automation-agency/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/platforms/ai-voice-agent/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: 'https://kogents.ai/ai-glossary/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
   ]
 }
