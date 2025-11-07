@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Script from "next/script";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
@@ -62,6 +63,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
     });
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
+    const [isWidgetLoading, setIsWidgetLoading] = useState<boolean>(true);
 
     // Initialize tracking parameters
     useEffect(() => {
@@ -220,6 +222,41 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
         captureFormData();
       }
     }, [data.name, data.email, data.description, data.phone]);
+
+    // Center chat widget after it loads
+    useEffect(() => {
+      const centerWidget = () => {
+        // Try multiple selectors to find the widget
+        const selectors = [
+          '#kogents-chat-widget',
+          '[id*="kogents"]',
+          '[class*="kogents"]',
+          '[class*="chat-widget"]',
+          '[class*="widget"]'
+        ];
+
+        for (const selector of selectors) {
+          const widget = document.querySelector(selector) as HTMLElement;
+          if (widget) {
+            widget.style.position = 'relative';
+            widget.style.margin = 'auto';
+            widget.style.display = 'flex';
+            widget.style.alignItems = 'center';
+            widget.style.justifyContent = 'center';
+            break;
+          }
+        }
+      };
+
+      // Try to center immediately and also after a delay
+      const timer1 = setTimeout(centerWidget, 1000);
+      const timer2 = setTimeout(centerWidget, 3000);
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
+    }, []);
 
     // Validation function - only show error if user has attempted to proceed
     const validateSelection = () => {
@@ -443,15 +480,90 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
             {/* Right Panel */}
             <div
               className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile"
-              style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}
+              style={{ 
+                backgroundColor: '#02000e', 
+                height: 'calc(100vh - 68px)',
+                position: 'relative'
+              }}
             >
-              <img
+              {/* Container for chat widget */}
+              <div
+                id="kogents-chat-widget-container"
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {/* Loader while script is loading */}
+                {isWidgetLoading && (
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '1rem'
+                  }}>
+                    <div
+                      style={{
+                        width: '50px',
+                        height: '50px',
+                        border: '4px solid #6b7280',
+                        borderTop: '4px solid #a855f7',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite',
+                      }}
+                    />
+                    <style jsx>{`
+                      @keyframes spin {
+                        0% {
+                          transform: rotate(0deg);
+                        }
+                        100% {
+                          transform: rotate(360deg);
+                        }
+                      }
+                    `}</style>
+                    <p style={{ color: '#9ca3af', fontSize: '0.875rem' }}>
+                      Loading chat widget...
+                    </p>
+                  </div>
+                )}
+
+                {/* Load chat widget script */}
+                <Script
+                style={{width:400 }}
+                  id="kogents-chat-widget"
+                  strategy="afterInteractive"
+                  src="https://api-staging.kogents.com/widget/embed.js?key=690e30f9e2abcb2b1219c7b4"
+                  onLoad={() => {
+                    setIsWidgetLoading(false);
+                    // Center the widget after it loads
+                    const widget = document.getElementById('kogents-chat-widget') || 
+                                  document.querySelector('[id*="kogents"]') ||
+                                  document.querySelector('[class*="kogents"]');
+                    if (widget) {
+                      const widgetElement = widget as HTMLElement;
+                      widgetElement.style.position = 'relative';
+                      widgetElement.style.margin = 'auto';
+                    }
+                  }}
+                  onError={() => {
+                    setIsWidgetLoading(false);
+                    console.error('Failed to load chat widget script');
+                  }}
+                />
+              </div>
+              {/* <img
                 className="img-fluid"
                 src="/assets/img/step4img.svg"
                 alt="Step Image"
                 width={500}
                 height={500}
-              />
+              /> */}
             </div>
           </div>
         </div>
