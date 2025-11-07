@@ -164,7 +164,7 @@ const AIAgentSlider = () => {
                               {agent.points.map((point, index) => (
                                 <a
                                   key={index}
-                                  className="inline-block px-4 py-2 text-sm border rounded-full border-blue-400 text-w-100 bg-b-600 bg-tropical-indigo text-w-900"
+                                  className="inline-block px-4 py-2 text-sm rounded-full text-w-100 text-w-900"
                                 >
                                   {point}
                                 </a>

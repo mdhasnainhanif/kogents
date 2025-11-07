@@ -135,9 +135,6 @@ const page = () => {
           },
         ]}
       />
-      <div className="pt-5 mt-3">
-      <BrandLogoSlider />
-      </div>
       <CustomerGrowthCards
         tag="Solutions"
         heading="Our Comprehensive AI HR Solutions for Every Team"
@@ -182,6 +179,9 @@ const page = () => {
         buttonText="Explore HR Solutions Today"
         buttonLink="#"
       />
+       <div className="pt-5">
+      <BrandLogoSlider />
+      </div>
       <CustomerServiceCard
         tag="Why Kogents HR"
         heading="What Makes Our AI HR Agents the Right Choice"

@@ -136,6 +136,7 @@ const Page = () => {
         cards={cardsData} />
       <CustomerServiceCard
         tag="Why Kogents"
+        className="platformsPageCustomerServiceCard"
         heading="Why Choose Kogents Over Generic Chatbots"
         description=""
         differentiators={[
@@ -171,6 +172,7 @@ const Page = () => {
       />
       <ClientTestimonial
         tag="Reviews"
+        className="platformsPageClientTestimonial"
         heading="Client Testimonails"
         description=""
         testimonials={[

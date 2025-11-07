@@ -1791,6 +1791,18 @@ a.aboutIconPhone {
   margin-bottom: 0 !important;
 }
 @media (max-width: 576px) {
+  .platformsPageCustomerServiceCard {
+    padding-top: 1rem !important;
+  }
+  .platformsPageClientTestimonial {
+    padding-top: 1rem !important;
+  }
+  p.glossary {
+    margin-top: 2rem !important;
+}
+.pt0Mobile{
+  padding-top: 0 !important;
+}
   .solutionFaq .faqUl {
     margin-bottom: 2.5rem !important;
   }

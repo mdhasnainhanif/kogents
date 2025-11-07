@@ -44,7 +44,7 @@ const KogentBenefits = () => {
                                 <p className="text-light mt-2">
                                     You don’t need to hire more people to grow.
                                 </p>
-                                <p className='text-light w-75'>
+                                <p className='text-light w-75 mt-0'>
                                     You need to deploy AI that thinks, acts, and adapts like a team, instantly.
                                 </p>
 

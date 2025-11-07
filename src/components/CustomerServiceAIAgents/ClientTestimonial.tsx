@@ -20,6 +20,7 @@ interface Statistic {
 
 interface ClientTestimonialProps {
   tag?: string;
+  className?: string;
   heading?: string;
   description?: string;
   testimonials?: Testimonial[];
@@ -30,6 +31,7 @@ interface ClientTestimonialProps {
 }
 
 const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
+  className = "",
   tag = "Reviews",
   heading = "Client Testimonials",
   description,
@@ -94,7 +96,7 @@ const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
   };
 
   return (
-    <div className="sectionPadding">
+    <div className={`sectionPadding ${className}`}>
       <div className="container clientTestimonialSection">
         <div className="row justify-content-center">
           <div className="col-lg-10 text-center">

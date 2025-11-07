@@ -145,7 +145,7 @@ const CARDS: Card[] = [
   {
     id: "Voice",
     title: "AI Voice Agent",
-    icon: "/assets/img/icons/telegram.svg",
+    icon: "/assets/img/icons/ai-voice-agent.svg",
     desc: "Chat with customers worldwide on Telegram 24/7 in multiple languages. From inquiries to orders to real-time updates.",
     tags: ["Platforms"],
     link: "/platforms/ai-voice-agent",
@@ -156,16 +156,11 @@ export default function AllChannelsCard() {
   const [selectedFilters, setSelectedFilters] = useState<Filter[]>([]);
   const [isClient, setIsClient] = useState(false);
   const lastUrlRef = useRef<string>("");
-
-  // Handle client-side hydration
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  // URL State Management - Read query parameters and listen for changes
   useEffect(() => {
     if (!isClient) return;
-
     const urlParams = new URLSearchParams(window.location.search);
     const filterParam = urlParams.get("filter");
     console.log("URL filter:", filterParam);
