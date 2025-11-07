@@ -162,10 +162,6 @@ const page = () => {
           },
         ]}
       />
-
-      <div className="pt-5">
-      <BrandLogoSlider />
-      </div>
       <CustomerGrowthCards
         tag="Solutions"
         heading="AI-Driven Marketing Assistant Services to Grow Marketing Impact"
@@ -209,7 +205,9 @@ const page = () => {
         buttonText="Request Demo"
         buttonLink="#"
       />
-      <BrandLogoSlider />
+      <div className="pt-5">
+        <BrandLogoSlider />
+      </div>
       <CustomerServiceCard
         tag="Why Kogents"
         heading="What Makes Our AI Marketing Agent Power Wins in Your Campaigns"

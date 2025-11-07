@@ -9,38 +9,56 @@ const ScrollLock = ({ duration = 6000 }: { duration?: number }) => {
 
     // Get current scroll position
     const scrollY = window.scrollY;
+    const scrollX = window.scrollX;
     
-    // Disable scrolling
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
+    // Prevent scrolling but keep scrollbar visible
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+      window.scrollTo(scrollX, scrollY);
+    };
+
+    // Prevent scroll using multiple event types
+    const preventWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      window.scrollTo(scrollX, scrollY);
+    };
+
+    const preventTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
+    const preventKeyScroll = (e: KeyboardEvent) => {
+      // Prevent arrow keys, space, page up/down from scrolling
+      if (
+        ['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.key)
+      ) {
+        e.preventDefault();
+        window.scrollTo(scrollX, scrollY);
+      }
+    };
+
+    // Add event listeners to prevent scrolling
+    window.addEventListener('scroll', preventScroll, { passive: false });
+    window.addEventListener('wheel', preventWheel, { passive: false });
+    window.addEventListener('touchmove', preventTouchMove, { passive: false });
+    window.addEventListener('keydown', preventKeyScroll);
 
     // Re-enable scrolling after duration
     const timeout = setTimeout(() => {
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-      
-      // Restore scroll position
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      window.removeEventListener('scroll', preventScroll);
+      window.removeEventListener('wheel', preventWheel);
+      window.removeEventListener('touchmove', preventTouchMove);
+      window.removeEventListener('keydown', preventKeyScroll);
     }, duration);
 
     // Cleanup function
     return () => {
       clearTimeout(timeout);
-      // Ensure scrolling is re-enabled on unmount
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-      
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
+      // Remove all event listeners
+      window.removeEventListener('scroll', preventScroll);
+      window.removeEventListener('wheel', preventWheel);
+      window.removeEventListener('touchmove', preventTouchMove);
+      window.removeEventListener('keydown', preventKeyScroll);
     };
   }, [duration]);
 

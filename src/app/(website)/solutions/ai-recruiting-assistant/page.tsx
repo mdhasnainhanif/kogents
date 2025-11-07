@@ -43,8 +43,8 @@ export const metadata: Metadata = {
         locale: 'en_US',
     },
     robots: {
-        index: false,
-        follow: false,
+        index: true,
+        follow: true,
       },
 }
 const page = () => {
@@ -65,7 +65,7 @@ const page = () => {
             description:
                 "Accelerate talent acquisition with an AI recruiting assistant that automates sourcing, screening, and communication to improve accuracy and speed.\nKogents AI blends artificial intelligence and recruitment automation to simplify hiring workflows and strengthen collaboration.\nThe AI hiring assistant integrates with HR software to enhance the candidate experience and streamline the automated hiring process through compliant, data-driven HR automation.",
             image: {
-                src: "/assets/img/survey-ai-agent/banner.webp",
+                src: "/assets/img/ai-recruiting-assistant/banner.webp",
                 alt: "Customer Service AI Agents",
                 width: 800,
                 height: 681,
@@ -105,28 +105,28 @@ const page = () => {
                 benefits={[
                     {
                         id: 1,
-                        icon: "/assets/img/survey-ai-agent/1.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/1.svg",
                         title: "Efficiency and Time Savings",
                         description:
                             "With AI in hiring, tasks like resume screening and scheduling are automated, reducing recruiter workload and improving workflow optimization. Using natural language processing and intelligent scheduling, these systems accelerate shortlisting, optimize your talent pool, and achieve measurable time-to-hire reduction, allowing HR teams to focus on strategy and engagement.",
                     },
                     {
                         id: 2,
-                        icon: "/assets/img/survey-ai-agent/2.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/2.svg",
                         title: "Improved Candidate Quality",
                         description:
                             "AI improves hiring precision through predictive hiring analytics and candidate matching, identifying qualified talent while minimizing bias in hiring. Powered by semantic search and skills taxonomy, it interprets complex profiles to deliver stronger shortlists. This data-driven HR approach enhances talent analytics and supports consistent, fair hiring outcomes.",
                     },
                     {
                         id: 3,
-                        icon: "/assets/img/survey-ai-agent/3.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/3.svg",
                         title: "Enhanced Candidate Experience",
                         description:
                             "Personalized communication defines modern recruitment. With conversational AI, sentiment analysis, and automated updates, job seekers receive timely responses and transparent feedback. This improves the candidate experience, strengthens employer branding, and builds trust throughout the hiring journey.",
                     },
                     {
                         id: 4,
-                        icon: "/assets/img/survey-ai-agent/4.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/4.svg",
                         title: "Cost Reduction and Scalability",
                         description:
                             "AI-driven recruitment delivers measurable cost efficiency and scalability. By integrating HR automation tools and predictive pipeline forecasting, organizations lower hiring costs and manage larger applicant pools with the same team. These insights help optimize resources and scale recruitment efficiently across teams.",
@@ -183,7 +183,6 @@ const page = () => {
                 buttonText="Automate Your Recruitment"
                 buttonLink="#"
             />
-            <BrandLogoSlider />
             <CustomerServiceCard
                 tag="Why Kogents"
                 heading="Why Organizations Trust Kogents AI for Smarter Hiring"
@@ -193,7 +192,7 @@ const page = () => {
                 differentiators={[
                     {
                         id: 1,
-                        icon: "/assets/img/survey-ai-agent/7.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/5.svg",
                         title: "Customizable AI Recruiting Workflows",
                         description: [
                             "Kogents AI enables teams to design recruiting automation that fits their unique process. Its customizable AI recruiting workflows streamline sourcing and shortlisting while maintaining recruiting automation accuracy and full control throughout the hiring cycle."
@@ -201,7 +200,7 @@ const page = () => {
                     },
                     {
                         id: 2,
-                        icon: "/assets/img/survey-ai-agent/8.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/6.svg",
                         title: "Integration with HR Platforms and ATS Systems",
                         description: [
                             "The platform connects with HR platforms and applicant tracking systems to improve coordination and data flow. This integration reduces manual input, strengthens transparency, and delivers consistent, reliable metrics for better hiring outcomes."
@@ -209,7 +208,7 @@ const page = () => {
                     },
                     {
                         id: 3,
-                        icon: "/assets/img/survey-ai-agent/9.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/7.svg",
                         title: "Human-in-the-Loop Recruiting Oversight",
                         description: [
                             "Automation works best with human judgment. With human-in-the-loop recruiting oversight, teams can review and approve AI-generated recommendations using explainable AI hiring models that reinforce accountability and control."
@@ -217,7 +216,7 @@ const page = () => {
                     },
                     {
                         id: 4,
-                        icon: "/assets/img/survey-ai-agent/10.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/8.svg",
                         title: "Predictive Analytics for Smarter Hiring Decisions",
                         description: [
                             "Kogents AI applies predictive analytics for hiring decisions to forecast candidate success and enhance workforce planning. Its transparent AI models turn data into measurable insights that refine selection accuracy and hiring quality."
@@ -225,7 +224,7 @@ const page = () => {
                     },
                     {
                         id: 5,
-                        icon: "/assets/img/survey-ai-agent/11.svg",
+                        icon: "/assets/img/ai-recruiting-assistant/9.svg",
                         title: "Ethical and Transparent AI",
                         description: [
                             "Ethical design drives every feature. Kogents AI uses bias reduction algorithms and explainable frameworks aligned with Deloitte Human Capital Trends and Josh Bersin’s research on HR technology. Each process remains transparent, measurable, and compliant to ensure responsible automation."
@@ -243,25 +242,25 @@ const page = () => {
                         id: 1,
                         q: "Identify Talent Acquisition Pain Points",
                         a: "The process begins by analyzing workflows to identify inefficiencies and bottlenecks. Understanding challenges in sourcing, screening, and engagement enables data-driven hiring and ensures automation focuses on improving pipeline efficiency and shortlist quality.",
-                        image: "/assets/img/survey-ai-agent/1.webp",
+                        image: "/assets/img/ai-recruiting-assistant/1.webp",
                     },
                     {
                         id: 2,
                         q: "Deploy AI Recruiting Assistant Tailored to Workflow",
                         a: "After pain points are identified, the AI recruiting assistant is deployed and customized to align with organizational workflows. This ensures AI-assisted interview scheduling and candidate engagement follow internal processes while supporting consistent and accurate hiring decisions.",
-                        image: "/assets/img/survey-ai-agent/2.webp",
+                        image: "/assets/img/ai-recruiting-assistant/2.webp",
                     },
                     {
                         id: 3,
                         q: "Integrate with Existing HR Systems",
                         a: "Integration with HR software and applicant tracking systems ensures smooth data flow across the recruitment pipeline. Synchronizing platforms reduces manual work, enhances transparency, and improves reporting accuracy and overall hiring efficiency.",
-                        image: "/assets/img/survey-ai-agent/3.webp",
+                        image: "/assets/img/ai-recruiting-assistant/3.webp",
                     },
                     {
                         id: 4,
                         q: "Monitor, Analyze, and Optimize Recruitment Pipeline",
                         a: "Continuous monitoring lets recruiters track performance, analyze trends, and optimize the pipeline. An automation feedback loop supports continuous model improvement and incorporates bias audit checkpoints to maintain fairness, transparency, and measurable outcomes at every stage.",
-                        image: "/assets/img/survey-ai-agent/4.webp",
+                        image: "/assets/img/ai-recruiting-assistant/4.webp",
                     },
                 ]}
                 rightImage="/assets/img/faq.png"

@@ -12,26 +12,21 @@ import {
 } from "@/icons";
 import Link from "next/link";
 import Image from "next/image";
-
 const NewFooter = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-
   // const handleSubscribe = async (e) => {
   //   e.preventDefault();
   //   console.log("Newsletter form submitted with email:", email);
-
   //   if (!email) {
   //     setError("Email is required");
   //     return;
   //   }
-
   //   setIsLoading(true);
   //   setError(null);
   //   setSuccess(null);
-
   //   try {
   //     console.log("Sending newsletter subscription request...");
   //     const response = await fetch("/api/contact/", {
@@ -54,15 +49,13 @@ const NewFooter = () => {
   //         fingerprintdata: "",
   //       }),
   //     });
-
   //     console.log("Response status:", response.status);
   //     const result = await response.json();
   //     console.log("Response result:", result);
-
   //     if (result.status === "success") {
   //       setSuccess("Thank you for subscribing to our newsletter!");
   //       setEmail("");
-        
+
   //       // Auto-hide success message after 4 seconds
   //       setTimeout(() => {
   //         setSuccess(null);
@@ -77,35 +70,27 @@ const NewFooter = () => {
   //     setIsLoading(false);
   //   }
   // };
-
-    const handleSubscribe = async (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-
     if (!email) {
       setError("Please enter a valid email address.");
       return;
     }
-
     const res = await fetch("/api/newsletter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ to: email }),
     });
-
     const data = await res.json();
     if (!res.ok) { throw new Error(data.error || "Failed to send email") }
     else {
       setSuccess("Subscribed successfully!");
       setEmail("");
-      // Auto-hide after 3 seconds
       setTimeout(() => setSuccess(null), 3000);
-    } 
+    }
   }
-
-
   return (
     <footer className="footer-main bg-center bg_footer new bg-no-repeat bg-cover">
-      {/* Top Section */}
       <div className="footer-top">
         <div className="footer-top-container">
           <div className="footer-brand">
@@ -136,7 +121,6 @@ const NewFooter = () => {
           <div className="footer-engagement">
             <div className="newsletter-section">
               <p className="h5">Subscribe to our Newsletter</p>
-
               <form onSubmit={handleSubscribe} className="newsletter-form">
                 <input
                   type="email"
@@ -158,8 +142,6 @@ const NewFooter = () => {
                   {isLoading ? "Subscribing..." : "Subscribe"}
                 </button>
               </form>
-
-              {/* Messages below the input/button */}
               {success && (
                 <p className="m-0 mt-2" style={{ color: "#22c55e" }}>{success}</p>
               )}
@@ -231,14 +213,11 @@ const NewFooter = () => {
           </div>
         </div>
       </div>
-
-      {/* Middle Section - Navigation Links */}
       <div className="footer-middle">
         <div className="footer-grid">
           <div className="footer-column">
             <p className="h6">Channels</p>
             <div className="footer-links">
-              {/* <h6 className="footer-subheading">Channels</h6> */}
               <ul>
                 <li>
                   <Link href="/platforms/whatsapp-ai-agent">
@@ -261,26 +240,12 @@ const NewFooter = () => {
                 <li className="text-primary">
                   <Link href="/platforms">See All</Link>
                 </li>
-                {/* <li>
-                  <Link href="/platforms/viber-ai-agent">Viber Agents</Link>
-                </li>
-                <li>
-                  <Link href="/platforms/microsoft-teams-agents">
-                    Microsoft Teams Agents
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/platforms/ai-telegram-agent">
-                    Telegram Agents
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/platforms/line-ai-agent">Line Agents</Link>
-                </li> */}
               </ul>
               <p className="h6 footCate">Resources</p>
               <ul>
-                {/* <li><Link href="/pricing">Pricing</Link></li> */}
+                <li>
+                  <Link href="/blogs">Blogs</Link>
+                </li>
                 <li>
                   <Link href="/blogs">Blogs</Link>
                 </li>
@@ -303,14 +268,11 @@ const NewFooter = () => {
                   <Link href="/">Status</Link>
                 </li>
               </ul>
-              
             </div>
           </div>
-
           <div className="footer-column">
             <p className="h6">Integrations</p>
             <div className="footer-links">
-              {/* <h6 className="footer-subheading">By Industries</h6> */}
               <ul>
                 <li>
                   <Link href="/platforms/hubspot-ai-integration">Hubspot</Link>
@@ -351,15 +313,12 @@ const NewFooter = () => {
                   <Link href="/kogents-sitemap">Sitemap</Link>
                 </li>
               </ul>
-             
-              
             </div>
           </div>
-
           <div className="footer-column">
             <p className="h6">By Industries</p>
             <div className="footer-links">
-            <ul>
+              <ul>
                 <li>
                   <Link href="/solutions/healthcare-ai-agent">
                     Healthcare AI Agents
@@ -406,16 +365,10 @@ const NewFooter = () => {
 
             </div>
           </div>
-
           <div className="footer-column">
             <p className="h6">By Professions</p>
             <div className="footer-links">
-            <ul>
-                {/* <li>
-                  <Link href="/solutions/ai-agent-event-planner">
-                    Manager AI Agents
-                  </Link>
-                </li> */}
+              <ul>
                 <li>
                   <Link href="/solutions/ai-agent-event-planner">
                     Event Planner AI Agents
@@ -432,25 +385,20 @@ const NewFooter = () => {
                   </Link>
                 </li>
               </ul>
-              <p className="h6 footCate1">Glossary</p>
+              <p className="h6 glossary">Glossary</p>
               <ul>
                 <li>
-                  <Link href="#">AI Voice Agent</Link>
-                </li>
-                <li>
-                  <Link href="#">AI Automation</Link>
-                </li>
-                <li>
-                  <Link href="#">AI Recruiting</Link>
+                  <Link href="/ai-glossary">
+                    AI Glossary
+                  </Link>
                 </li>
               </ul>
             </div>
           </div>
-
           <div className="footer-column">
             <p className="h6">By Type</p>
             <div className="footer-links">
-            <ul>
+              <ul>
                 <li>
                   <Link href="/solutions/ai-agent-dashboard">
                     AI Dashboard Templates
@@ -461,12 +409,6 @@ const NewFooter = () => {
                     Survey AI Agents
                   </Link>
                 </li>
-                {/* <li>
-                  <Link href="/solutions">Feedback AI Agents</Link>
-                </li>
-                <li>
-                  <Link href="/solutions">Application AI Agents</Link>
-                </li> */}
               </ul>
               <p className="h6 companyInfo">Company Info</p>
               <ul className="company-info-list">
@@ -479,23 +421,17 @@ const NewFooter = () => {
                     alt="icon"
                   /> info@kogents.ai</Link>
                 </li>
-                <li >
-                  <Link className="d-flex align-items-center gap-2" href="tel:+12672489454"><Image
-                    width={20}
-                    height={20}
-                    className=""
-                    src="/assets/img/phone.svg"
-                    alt="icon"
-                  /> +1 (267) 248-9454</Link>
+                <li>
+                  <Link href="#">AI Automation</Link>
+                </li>
+                <li>
+                  <Link href="#">AI Recruiting</Link>
                 </li>
               </ul>
             </div>
-            
           </div>
         </div>
       </div>
-
-      {/* Bottom Section - Copyright */}
       <div className="footer-bottom">
         <div className="footer-bottom-container">
           <p className="copyright-text">

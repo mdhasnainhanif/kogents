@@ -18,12 +18,12 @@ const Banner = () => {
           <div className="row justify-content-center align-items-center">
             <div className="col-lg-8">
               <div className="flex flex-col items-center justify-center">
-                <span className="buttonAnimation width_fit d-block purple px-4 py-2 mb-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">Overview</span>
+                <span className="buttonAnimation width_fit d-block purple px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">Overview</span>
 
-                <h1 className="text-center mt-2 mb-2 headingSize">
+                <h1 className="text-center headingSize mb125">
                   AI Agents Advancing Customer Engagement on Top Platforms
                 </h1>
-                <p className="paraColor text-base md:text-xl text-w-100 text-center">
+                <p className="paraColor text-base md:text-xl text-w-100 text-center maxWidth39">
                   Managing customer conversations across multiple platforms is complex and time-consuming. Kogents streamlines engagement with AI agents that automate support, capture leads, and keep customers connected 24/7, wherever they interact with your brand.
                 </p>
                 <div className="w_fit mx-auto d-flex flex-wrap gap-4 solutionSearchMain">

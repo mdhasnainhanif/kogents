@@ -10,7 +10,55 @@ import CTAModalClient from "@/components/CTAModalClient";
 import ResourceErrorHandler from "@/components/ResourceErrorHandler";
 import ResourceLoadingTest from "@/components/ResourceLoadingTest";
 
-export const metadata: Metadata = { /* ...your same metadata... */ };
+export const metadata: Metadata = {
+  title: {
+    default: "Kogents AI",
+    template: "%s",
+  },
+  description:
+    "Kogents AI builds intelligent solutions to empower businesses through artificial intelligence.",
+  keywords: [
+    "Kogents AI",
+    "AI Solutions",
+    "Business Automation",
+    "AI for Business",
+  ],
+
+  // Robots
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  // Favicon
+  icons: {
+    icon: "/assets/img/favicon.svg",
+  },
+
+  // Open Graph (ordered like your ✅ example)
+  openGraph: {
+    title: "Kogents AI",
+    description:
+      "AI solutions to elevate business intelligence and operations.",
+    type: "website",
+    url: "https://kogents.ai",
+    images: [
+      {
+        url: "https://www.kogents.ai/images/default-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kogents AI Logo and branding",
+      },
+    ],
+    siteName: "Kogents AI",
+    locale: "en_US",
+  },
+
+  // Google Verification
+  verification: {
+    google: "Wn-Z_n5hlzgH--GwnqNaY1i6ShsJnJjli1r34QM2zLw",
+  },
+};
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
 const satoshi = localFont({

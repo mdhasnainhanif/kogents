@@ -3,10 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './Sitemap.module.css'
-
 const BASE_URL = 'https://kogents.ai'
-
-// All platform channel IDs
 const platformChannels = [
   'whatsapp-ai-agent',
   'instagram-ai-agent',
@@ -22,10 +19,9 @@ const platformChannels = [
   'jira-ai-integration',
   'sunshine-conversation-ai-agent',
   'intercom-ai-agent',
-  'shopify-ai-agent'
+  'shopify-ai-agent',
+  'ai-voice-agent'
 ]
-
-// Organized page sections similar to Wix sitemap
 const pageSections = {
   main: {
     title: 'Main Pages',
@@ -38,7 +34,8 @@ const pageSections = {
       { path: '/contact-us', title: 'Contact Us', priority: 0.9, changeFrequency: 'daily' },
       { path: '/case-studies', title: 'Case Studies', priority: 0.9, changeFrequency: 'daily' },
       { path: '/client-testimonials', title: 'Testimonials', priority: 0.9, changeFrequency: 'daily' },
-      { path: '/blogs', title: 'Blogs', priority: 0.9, changeFrequency: 'daily' }
+      { path: '/blogs', title: 'Blogs', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/ai-glossary', title: 'AI Glossary', priority: 0.9, changeFrequency: 'daily' }
     ]
   },
   solutions: {
@@ -54,7 +51,9 @@ const pageSections = {
       { path: '/solutions/survey-ai-agent', title: 'Survey AI Agent', priority: 0.9, changeFrequency: 'daily' },
       { path: '/solutions/ai-agent-dashboard', title: 'AI Agent Dashboard', priority: 0.9, changeFrequency: 'daily' },
       { path: '/solutions/ai-agent-event-planner', title: 'AI Agent Event Planner', priority: 0.9, changeFrequency: 'daily' },
-      { path: '/solutions/medical-ai-agent', title: 'Medical AI Agent', priority: 0.9, changeFrequency: 'daily' }
+      { path: '/solutions/medical-ai-agent', title: 'Medical AI Agent', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/solutions/ai-recruiting-assistant', title: 'AI Recruiting Assistant', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/solutions/ai-automation-agency', title: 'AI Automation Agency', priority: 0.9, changeFrequency: 'daily' }
     ]
   },
   platforms: {
@@ -86,8 +85,6 @@ const pageSections = {
     ]
   }
 }
-
-// Blog post interface
 interface BlogPost {
   id: number
   title: {
@@ -106,14 +103,13 @@ interface BlogPost {
     }>
   }
 }
-
 export default function KogentsSitemapPage() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   // visible blog posts for "Load more"
-  const INITIAL_VISIBLE = 6
+  const INITIAL_VISIBLE = 15
   const LOAD_STEP = 6
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
 
@@ -122,7 +118,6 @@ export default function KogentsSitemapPage() {
       try {
         setLoading(true)
         setError(null)
-
         const timestamp = Date.now()
         const response = await fetch(
           `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
@@ -134,13 +129,10 @@ export default function KogentsSitemapPage() {
             }
           }
         )
-
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-
         const posts = await response.json()
-
         if (Array.isArray(posts)) {
           setBlogPosts(posts)
           // reset visible count whenever we refresh posts
@@ -160,15 +152,10 @@ export default function KogentsSitemapPage() {
         setLoading(false)
       }
     }
-
     fetchBlogPosts()
   }, [])
-
-  // Calculate total pages
   const totalStaticPages = Object.values(pageSections).reduce((total, section) => total + section.pages.length, 0)
   const totalPages = totalStaticPages + blogPosts.length
-
-  // Helper function to clean HTML from title
   const cleanTitle = (title: string) => {
     return title.replace(/<[^>]*>/g, '').trim()
   }
@@ -225,7 +212,6 @@ export default function KogentsSitemapPage() {
                 <span className={styles.postCount}>({blogPosts.length} posts)</span>
               )}
             </h2>
-
             <div className={`${styles.cardsGrid} row`}>
               {loading ? (
                 <div className="col-12">
@@ -298,8 +284,6 @@ export default function KogentsSitemapPage() {
               )}
             </div>
           </div>
-
-          {/* Site Statistics */}
           <div className={styles.sitemapStats}>
             <h3 className={styles.statsTitle}>Site Statistics</h3>
             <div className={`${styles.statsGrid} row`}>

@@ -331,7 +331,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                   <div className="chatbot-content">
                     <form onSubmit={(e) => e.preventDefault()}>
                       <div className="ps-0 pt-0">
-                        <div className="stepText my-2">Step 5 of 5</div>
+                        <div className="stepText my-2">Step 5 of 6</div>
                         <div className="h4 fw-bold">Personal Information</div>
                         <div className="mb-4">
                           Let's get to know you better to personalize your experience.
@@ -360,7 +360,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                             onClearSubmitError();
                           }
                         }}
-                        className="w-full px-3 py-2 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        className="w-full form-control" 
                       />
                     </div>
 
@@ -386,7 +386,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                             onClearSubmitError();
                           }
                         }}
-                        className="w-full px-3 py-2 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        className="w-full form-control" 
                       />
                     </div>
 
@@ -400,7 +400,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                         value={data.phone || ""}
                         autoComplete="off"
                         onChange={(e) => onUpdate({ phone: e.target.value })}
-                        className="w-full px-3 py-2 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        className="w-full form-control" 
                       />
                     </div>
 

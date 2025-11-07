@@ -39,7 +39,7 @@ const CorporateValues = () => {
             <div className="tech-track">
               {[...corporateValues, ...corporateValues].map((value, index) => (
                 <div key={`left-${index}`} className="tech-card">
-                  <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
+                  <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap text-w-100">
                     {value}
                   </span>
                 </div>
@@ -52,7 +52,7 @@ const CorporateValues = () => {
             <div className="tech-track">
               {[...corporateValues.slice().reverse(), ...corporateValues.slice().reverse()].map((value, index) => (
                 <div key={`right-${index}`} className="tech-card">
-                  <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
+                  <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap text-w-100">
                     {value}
                   </span>
                 </div>
@@ -65,7 +65,7 @@ const CorporateValues = () => {
             <div className="tech-track">
               {[...corporateValues, ...corporateValues].map((value, index) => (
                 <div key={`left-3-${index}`} className="tech-card">
-                  <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap border-blue-400 bg-b-600 text-w-100">
+                  <span className="flex px-6 py-3 text-xl border rounded-full whitespace-nowrap text-w-100">
                     {value}
                   </span>
                 </div>

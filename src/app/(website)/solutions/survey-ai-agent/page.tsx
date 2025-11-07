@@ -144,8 +144,6 @@ const page = () => {
                     },
                 ]}
             />
-
-            <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"
                 heading="Our End-to-End Survey AI Solutions for Modern Organizations"

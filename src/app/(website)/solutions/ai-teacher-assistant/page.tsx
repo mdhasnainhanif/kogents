@@ -32,11 +32,11 @@ export const metadata: Metadata = {
         title: 'Best AI Teacher Assistant for Smarter Teaching | Kogents',
         description:
             'Support learning with our kogents AI teacher assistant that handles grading, planning, and student queries. Get started today.',
-        url: 'https://www.kogents.ai/solutions/ai-teacher-assistant', 
+        url: 'https://www.kogents.ai/solutions/ai-teacher-assistant',
         type: 'website',
         images: [
             {
-                url: 'https://www.kogents.ai/assets/img/logo-new.svg', 
+                url: 'https://www.kogents.ai/assets/img/logo-new.svg',
                 width: 1200,
                 height: 630,
                 alt: 'Team Kogents AI working together',
@@ -137,8 +137,6 @@ const page = () => {
                     },
                 ]}
             />
-            
-            <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"
                 heading="AI Classroom Assistant Services to Balance Teaching and Time"

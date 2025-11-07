@@ -191,6 +191,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: 'https://kogents.ai/ai-glossary/',
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
       url: 'https://kogents.ai/privacy-and-policy/',
       lastModified,
       changeFrequency: 'daily',

@@ -186,6 +186,22 @@ export default function AiAgentSection() {
                     "Creates insightful surveys quickly. Evaluates responses with AI-powered analysis. Generates actionable insights for business growth.",
                 ],
             },
+            {
+                img: "/assets/img/team-slider/client-call-log-ai-agent.webp",
+                title: "AI Recruiting Assistant ",
+                href: "/solutions/ai-recruiting-assistant",
+                points: [
+                    "Creates insightful surveys quickly. Evaluates responses with AI-powered analysis. Generates actionable insights for business growth.",
+                ],
+            },
+            {
+                img: "/assets/img/team-slider/client-call-log-ai-agent.webp",
+                title: "AI Automation Agency",
+                href: "/solutions/ai-automation-agency",
+                points: [
+                    "Creates insightful surveys quickly. Evaluates responses with AI-powered analysis. Generates actionable insights for business growth.",
+                ],
+            },
         ],
         []
     );

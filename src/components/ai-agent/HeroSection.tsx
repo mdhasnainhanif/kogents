@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import {ArrowRightIcon2 } from "@/icons";
 import Link from "next/link";
+import LightRaysWrapper from '@/components/ai-agent/LightRaysWrapper';
 
 const HeroSection = () => {
   // Brand images data for mapping
@@ -12,8 +13,12 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="boxesBg ...">
-        <section className="heroSectionPadding pb-0 heroSection">
+      <div className="boxesBg ... relative">
+        {/* LightRays background effect - only in hero section */}
+        <div className="absolute top-0 left-0 right-0 w-full h-full z-0 overflow-hidden hero-light-rays" style={{ background: 'transparent', top: 0 }}>
+          <LightRaysWrapper raysColor="#5D51AF" />
+        </div>
+        <section className="heroSectionPadding pb-0 heroSection relative z-10">
           <div className="container">
             <div className="row align-items-center justify-content-center">
               <div className="col-lg-9 col-sm-12">
@@ -28,7 +33,7 @@ const HeroSection = () => {
                     Transform your business with autonomous AI agents that handle conversations, automate workflows, and integrate seamlessly with your existing systems. Built for scale, designed for efficiency.
                   </p>
                   <Link
-                    href="/chatbot/brief"
+                    href="/chatbot/briefv2"
                     className="mx-auto mt-2 buttonAnimation2 flex justify-center pink items-center gap-2 lg:mb-14 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
                     aria-label="Request demo for AI Agent Platform"
                   > 

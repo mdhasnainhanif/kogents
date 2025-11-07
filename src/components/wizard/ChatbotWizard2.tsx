@@ -442,7 +442,7 @@ function ChatbotWizard2() {
       />
       
       
-      <div className="overflow-hidden">
+      <div className="overflow-hidden chatbot-main-content">
         {isGetStarted ? (
           <GetStarted
             set={() => {
