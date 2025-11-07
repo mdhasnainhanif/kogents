@@ -187,7 +187,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "/assets/img/team-slider/client-call-log-ai-agent.webp",
+                img: "/assets/img/team-slider/ai-recruiting-assistant.webp",
                 title: "AI Recruiting Assistant ",
                 href: "/solutions/ai-recruiting-assistant",
                 points: [
@@ -195,7 +195,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "/assets/img/team-slider/client-call-log-ai-agent.webp",
+                img: "/assets/img/team-slider/ai-automation-agency.webp",
                 title: "AI Automation Agency",
                 href: "/solutions/ai-automation-agency",
                 points: [

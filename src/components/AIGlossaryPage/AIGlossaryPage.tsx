@@ -35,7 +35,7 @@ const aiData: AILetterSection[] = [
             {
                 title: "Automation",
                 definition: "The use of technology to perform repetitive processes with minimal human intervention.",
-                
+
                 technologies: ["Robotic process automation (RPA), APIs, and AI-driven workflow systems."],
                 industries: ["[HR], finance, logistics, and healthcare."],
                 useCase: "In HR, automation manages candidate data entry and screening to reduce administrative workload. You can also engage an [AI automation agency] for enterprise‑scale solutions."
@@ -151,7 +151,7 @@ const aiData: AILetterSection[] = [
                 title: "Deep Learning",
                 definition: "A branch of machine learning using neural networks with multiple layers to learn representations of data.",
                 technologies: ["CNNs, RNNs, and transformers."],
-                industries: ["CNNs, RNNs, and transformers."],
+                industries: ["Healthcare, manufacturing, and autonomous systems."],
                 useCase: "In healthcare, deep learning interprets MRI scans to detect anomalies automatically."
             },
             {
@@ -184,7 +184,7 @@ const aiData: AILetterSection[] = [
                 title: "Edge AI",
                 definition: "The deployment of artificial intelligence algorithms on devices or local servers close to the data source.",
                 technologies: ["Edge computing, IoT processors, and lightweight neural networks."],
-                industries: ["Edge computing, IoT processors, and lightweight neural networks."],
+                industries: ["Healthcare, manufacturing, logistics."],
                 useCase: "In healthcare, wearable devices with edge AI track patient vitals and provide real-time alerts to clinicians."
             },
             {
@@ -290,9 +290,9 @@ const aiData: AILetterSection[] = [
             },
             {
                 title: "Globalization Support",
-                definition: "In robotics, optimized gradients enhance motion prediction and path accuracy.",
+                definition: "Adapting AI systems to function across languages, cultures, and regions.",
                 technologies: ["Multilingual NLP, translation models, and localization APIs."],
-                industries: ["Multilingual NLP, translation models, and localization APIs."],
+                industries: ["E-commerce, education, and customer support."],
                 useCase: "In e-commerce, AI translation engines localize product listings for different markets, and companies [hire AI agents] to handle multilingual customer queries."
             }
         ]
@@ -325,7 +325,7 @@ const aiData: AILetterSection[] = [
                 title: "Healthcare Automation",
                 definition: "The use of AI to improve efficiency and accuracy in medical processes.",
                 technologies: ["NLP, ML diagnostics, and workflow automation."],
-                industries: ["Healthcare"],
+                industries: ["Healthcare."],
                 useCase: "In hospitals, automation manages patient scheduling and data entry to free up staff time."
             },
             {
@@ -357,7 +357,7 @@ const aiData: AILetterSection[] = [
             {
                 title: "Inference Engine",
                 definition: "The part of an AI system that applies rules or models to data inputs to generate conclusions.",
-                technologies: ["The part of an AI system that applies rules or models to data inputs to generate conclusions."],
+                technologies: ["Knowledge representation, rule-based reasoning, and neural inference frameworks."],
                 industries: ["Expert systems, diagnostics, and automation."],
                 useCase: "In diagnostics, inference engines analyze medical data to suggest possible conditions based on patterns."
             },
@@ -479,7 +479,7 @@ const aiData: AILetterSection[] = [
                 definition: "A continuous process where AI systems improve through exposure to new data or feedback.",
                 technologies: ["Reinforcement learning and data retraining pipelines."],
                 industries: ["Customer experience, education, and automation."],
-                useCase: ": In education technology, systems refine recommendations as students interact with learning materials."
+                useCase: "In education technology, systems refine recommendations as students interact with learning materials."
             },
             {
                 title: "Low-Code AI",
@@ -533,7 +533,7 @@ const aiData: AILetterSection[] = [
                 definition: "The automated process of moving trained AI models into production environments.",
                 technologies: ["CI/CD tools, containerization, and orchestration frameworks."],
                 industries: ["Enterprise IT, analytics, and cloud platforms."],
-                useCase: ": In enterprise analytics, deployment pipelines update AI models automatically with new data."
+                useCase: "In enterprise analytics, deployment pipelines update AI models automatically with new data."
             }
         ]
     },
@@ -824,7 +824,7 @@ const aiData: AILetterSection[] = [
                 title: "User Experience Intelligence",
                 definition: "The application of AI to analyze and enhance user interactions with digital systems.",
                 technologies: ["Behavioral analytics, sentiment analysis, and heat mapping."],
-                industries: ["E-commerce", "Education", "Customer service"],
+                industries: ["E-commerce, education, and customer service."],
                 useCase: "In e-commerce, AI evaluates navigation patterns to optimize website layouts and improve purchase completion rates."
             },
             {
@@ -1058,9 +1058,6 @@ const aiData: AILetterSection[] = [
         ]
     }
 ];
-
-// Mapping of keywords to their solution page URLs
-// Only words wrapped in [brackets] in the text will be linked
 const keywordLinks: Record<string, string> = {
     "Healthcare": "/solutions/healthcare-ai-agent/",
     "healthcare": "/solutions/healthcare-ai-agent/",
@@ -1110,8 +1107,8 @@ const keywordLinks: Record<string, string> = {
     "slack": "/platforms/slack-ai-agent/",
     "Viber": "/platforms/viber-ai-agent/",
     "viber": "/platforms/viber-ai-agent/",
-    "Microsoft Teams": "/platforms/microsoft-teams-ai-agent/",
-    "microsoft teams": "/platforms/microsoft-teams-ai-agent/",
+    "Microsoft Teams": "/platforms/microsoft-teams-agents/",
+    "microsoft teams": "/platforms/microsoft-teams-agents/",
     "Telegram": "/platforms/telegram-ai-agent/",
     "telegram": "/platforms/telegram-ai-agent/",
     "Line": "/platforms/line-ai-agent/",
@@ -1164,60 +1161,43 @@ const keywordLinks: Record<string, string> = {
     "voice agent": "/platforms/ai-voice-agent/",
     "AI Voice Agent": "/platforms/ai-voice-agent/",
 };
-
-// Function to convert text with [bracketed] keywords to JSX with links
-// Only words wrapped in [brackets] will be converted to links
 const renderTextWithLinks = (text: string): React.ReactNode => {
     if (!text) return text;
-    
     const parts: React.ReactNode[] = [];
     let lastIndex = 0;
     const bracketRegex = /\[([^\]]+)\]/g;
     let match;
     let linkIndex = 0;
-    
-    // Find all [word] patterns in the text
     while ((match = bracketRegex.exec(text)) !== null) {
-        const fullMatch = match[0]; // e.g., "[Healthcare]"
-        const wordInside = match[1]; // e.g., "Healthcare"
+        const fullMatch = match[0];
+        const wordInside = match[1];
         const matchStart = match.index;
         const matchEnd = matchStart + fullMatch.length;
-        
-        // Add text before the bracket
         if (matchStart > lastIndex) {
             parts.push(text.substring(lastIndex, matchStart));
         }
-        
-        // Check if the word inside brackets exists in keywordLinks
         const linkUrl = keywordLinks[wordInside] || keywordLinks[wordInside.toLowerCase()];
-        
         if (linkUrl) {
-            // Create a link for the word inside brackets (without the brackets)
             parts.push(
                 <Link
                     key={`link-${linkIndex++}`}
                     href={linkUrl}
-                    className="text-blue-600 hover:text-blue-800 underline"
+                    className="text-blue-600 hover:text-blue-800"
                 >
                     {wordInside}
                 </Link>
             );
         } else {
-            // If no link found, just show the word without brackets
+
             parts.push(wordInside);
         }
-        
         lastIndex = matchEnd;
     }
-    
-    // Add remaining text after the last bracket
     if (lastIndex < text.length) {
         parts.push(text.substring(lastIndex));
     }
-    
     return parts.length > 0 ? <>{parts}</> : text;
 };
-
 export default function AIGlossaryPage() {
     const [filter, setFilter] = useState("");
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -1282,37 +1262,43 @@ export default function AIGlossaryPage() {
                             }}
                             className="mb-10 scroll-mt-24"
                         >
+                            <h2 className="benefit-title" style={{ paddingTop: '1rem' }}>
+                                {section.letter}
+                            </h2>
                             <div className="grid gap-6">
                                 {section.topics.map((topic, idx) => (
                                     <div
                                         key={idx}
-                                        className="pt-4"
+                                        className=""
                                     >
+
                                         <h3 className="benefit-title">
                                             {topic.title}
                                         </h3>
-                                        <p className="benefit-description">
-                                            <strong >Definition:</strong>{" "}
-                                            {renderTextWithLinks(topic.definition)}
-                                        </p>
-                                        {topic.title === "API Integration" && (
-                                            <p className="benefit-description">
-                                                <strong>Platforms:</strong>{" "}
-                                                {renderTextWithLinks(topic.platforms || "")}
-                                            </p>
-                                        )}
-                                        <p className="benefit-description">
-                                            <strong >Technologies:</strong>{" "}
-                                            {topic.technologies.join(", ")}
-                                        </p>
-                                        <p className="benefit-description">
-                                            <strong >Industries Used:</strong>{" "}
-                                            {renderTextWithLinks(topic.industries.join(", "))}
-                                        </p>
-                                        <p className="benefit-description">
-                                            <strong >Use Case:</strong>{" "}
-                                            {renderTextWithLinks(topic.useCase)}
-                                        </p>
+                                        <ul className="ps-3">
+                                            <li className="benefit-description">
+                                                <strong >Definition:</strong>{" "}
+                                                {renderTextWithLinks(topic.definition)}
+                                            </li>
+                                            {topic.title === "API Integration" && (
+                                                <li className="benefit-description">
+                                                    <strong>Platforms:</strong>{" "}
+                                                    {renderTextWithLinks(topic.platforms || "")}
+                                                </li>
+                                            )}
+                                            <li className="benefit-description">
+                                                <strong >Technologies:</strong>{" "}
+                                                {topic.technologies.join(", ")}
+                                            </li>
+                                            <li className="benefit-description">
+                                                <strong >Industries Used:</strong>{" "}
+                                                {renderTextWithLinks(topic.industries.join(", "))}
+                                            </li>
+                                            <li className="benefit-description">
+                                                <strong >Use Case:</strong>{" "}
+                                                {renderTextWithLinks(topic.useCase)}
+                                            </li>
+                                        </ul>
                                     </div>
                                 ))}
                             </div>
