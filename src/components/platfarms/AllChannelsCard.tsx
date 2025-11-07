@@ -255,7 +255,7 @@ export default function AllChannelsCard() {
   }
 
   return (
-    <div id="all-channels-card" className="container">
+    <div id="all-channels-card" className="container mt-5">
       <div className="row">
         <div className="col-lg-3">
           <div className="solutionFaq">

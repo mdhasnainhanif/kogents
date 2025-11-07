@@ -1,6 +1,7 @@
 "use client";
 import { Search } from "@/icons";
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 interface AITopic {
     title: string;
     definition: string;
@@ -21,15 +22,15 @@ const aiData: AILetterSection[] = [
                 title: "Artificial Intelligence",
                 definition: "The science of creating systems capable of performing tasks that normally require human intelligence.",
                 technologies: ["Machine learning, neural networks, large language models (LLMs), and deep learning."],
-                industries: ["Healthcare, education, human resources, and marketing."],
-                useCase: "In medical settings, AI analyzes medical images to assist doctors in detecting diseases more accurately and efficiently."
+                industries: ["[Healthcare], education, human resources, and marketing."],
+                useCase: "In [medical] settings, AI analyzes medical images to assist doctors in detecting diseases more accurately and efficiently."
             },
             {
                 title: "Agents",
                 definition: "Autonomous software entities that can perceive, reason, and act toward achieving defined objectives.",
                 technologies: ["Natural language processing (NLP), reasoning algorithms, and automation frameworks."],
-                industries: ["Customer support, education, and public services."],
-                useCase: " In customer service, WhatsApp, Instagram, Messenger, and Slack agents respond to user queries through chat or voice interfaces, providing instant support and routing complex cases to humans. Also available for communication and enterprise use through Viber, Microsoft Teams, Telegram, and Line."
+                industries: ["Customer support, [education], and public services."],
+                useCase: " In [customer service], [WhatsApp], [Instagram], [Messenger], and [Slack] agents respond to user queries through chat or voice interfaces, providing instant support and routing complex cases to humans. Also available for communication and enterprise use through [Viber], [Microsoft Teams], [Telegram], and [Line]."
             },
             {
                 title: "Automation",
@@ -1057,6 +1058,96 @@ const aiData: AILetterSection[] = [
         ]
     }
 ];
+
+// Mapping of keywords to their solution page URLs
+// Only words wrapped in [brackets] in the text will be linked
+const keywordLinks: Record<string, string> = {
+    "Healthcare": "/solutions/healthcare-ai-agent/",
+    "healthcare": "/solutions/healthcare-ai-agent/",
+    "Medical": "/solutions/medical-ai-agent/",
+    "medical": "/solutions/medical-ai-agent/",
+    "HR": "/solutions/ai-agent-for-hr/",
+    "human resources": "/solutions/ai-agent-for-hr/",
+    "Human resources": "/solutions/ai-agent-for-hr/",
+    "Education": "/solutions/ai-agent-for-education/",
+    "education": "/solutions/ai-agent-for-education/",
+    "Marketing": "/solutions/ai-agent-for-marketing/",
+    "marketing": "/solutions/ai-agent-for-marketing/",
+    "Customer service": "/solutions/customer-service-ai-agent/",
+    "customer service": "/solutions/customer-service-ai-agent/",
+    "E-commerce": "/solutions/customer-service-ai-agent/",
+    "e-commerce": "/solutions/customer-service-ai-agent/",
+    "WhatsApp": "/platforms/whatsapp-ai-agent/",
+    "whatsapp": "/platforms/whatsapp-ai-agent/",
+    "Instagram": "/platforms/instagram-ai-agent/",
+    "instagram": "/platforms/instagram-ai-agent/",
+    "Messenger": "/platforms/ai-agent-for-messenger/",
+    "messenger": "/platforms/ai-agent-for-messenger/",
+    "Slack": "/platforms/slack-ai-agent/",
+    "slack": "/platforms/slack-ai-agent/",
+    "Viber": "/platforms/viber-ai-agent/",
+    "viber": "/platforms/viber-ai-agent/",
+    "Microsoft Teams": "/platforms/microsoft-teams-ai-agent/",
+    "microsoft teams": "/platforms/microsoft-teams-ai-agent/",
+    "Telegram": "/platforms/telegram-ai-agent/",
+    "telegram": "/platforms/telegram-ai-agent/",
+    "Line": "/platforms/line-ai-agent/",
+    "line": "/platforms/line-ai-agent/",
+};
+
+// Function to convert text with [bracketed] keywords to JSX with links
+// Only words wrapped in [brackets] will be converted to links
+const renderTextWithLinks = (text: string): React.ReactNode => {
+    if (!text) return text;
+    
+    const parts: React.ReactNode[] = [];
+    let lastIndex = 0;
+    const bracketRegex = /\[([^\]]+)\]/g;
+    let match;
+    let linkIndex = 0;
+    
+    // Find all [word] patterns in the text
+    while ((match = bracketRegex.exec(text)) !== null) {
+        const fullMatch = match[0]; // e.g., "[Healthcare]"
+        const wordInside = match[1]; // e.g., "Healthcare"
+        const matchStart = match.index;
+        const matchEnd = matchStart + fullMatch.length;
+        
+        // Add text before the bracket
+        if (matchStart > lastIndex) {
+            parts.push(text.substring(lastIndex, matchStart));
+        }
+        
+        // Check if the word inside brackets exists in keywordLinks
+        const linkUrl = keywordLinks[wordInside] || keywordLinks[wordInside.toLowerCase()];
+        
+        if (linkUrl) {
+            // Create a link for the word inside brackets (without the brackets)
+            parts.push(
+                <Link
+                    key={`link-${linkIndex++}`}
+                    href={linkUrl}
+                    className="text-blue-600 hover:text-blue-800 underline"
+                >
+                    {wordInside}
+                </Link>
+            );
+        } else {
+            // If no link found, just show the word without brackets
+            parts.push(wordInside);
+        }
+        
+        lastIndex = matchEnd;
+    }
+    
+    // Add remaining text after the last bracket
+    if (lastIndex < text.length) {
+        parts.push(text.substring(lastIndex));
+    }
+    
+    return parts.length > 0 ? <>{parts}</> : text;
+};
+
 export default function AIGlossaryPage() {
     const [filter, setFilter] = useState("");
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -1132,7 +1223,7 @@ export default function AIGlossaryPage() {
                                         </h3>
                                         <p className="benefit-description">
                                             <strong >Definition:</strong>{" "}
-                                            {topic.definition}
+                                            {renderTextWithLinks(topic.definition)}
                                         </p>
                                         {topic.title === "API Integration" && (
                                             <p className="benefit-description">
@@ -1146,11 +1237,11 @@ export default function AIGlossaryPage() {
                                         </p>
                                         <p className="benefit-description">
                                             <strong >Industries Used:</strong>{" "}
-                                            {topic.industries.join(", ")}
+                                            {renderTextWithLinks(topic.industries.join(", "))}
                                         </p>
                                         <p className="benefit-description">
                                             <strong >Use Case:</strong>{" "}
-                                            {topic.useCase}
+                                            {renderTextWithLinks(topic.useCase)}
                                         </p>
                                     </div>
                                 ))}

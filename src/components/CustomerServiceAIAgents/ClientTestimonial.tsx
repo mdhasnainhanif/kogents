@@ -104,7 +104,7 @@ const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
             </span>
 
             {/* Main Heading */}
-            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125">
+            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white">
               {heading}
             </h2>
             {description && (
@@ -116,9 +116,9 @@ const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
         </div>
 
         {/* Testimonials and Statistics Grid */}
-        <div className="row g-4">
+        <div className="row g-4 mt-5">
           {/* Top Row - Left: Long Testimonial */}
-          <div className="col-lg-6 col-md-12">
+          <div className="col-lg-6 col-md-12 mt-0">
             <div className="testimonial-card h-100 p-5 border border-b-600 bg-gd-tertiary rounded-lg">
               <div className="testimonial-content mb-4">
                 <p className="text-white paraColor mb-0 fs-6 lh-base">
@@ -147,7 +147,7 @@ const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
           </div>
 
           {/* Top Row - Right: Testimonial + Statistic */}
-          <div className="col-lg-6 col-md-12">
+          <div className="col-lg-6 col-md-12 mt-0">
             <div className="d-flex flex-column h-100">
               <div className="row h-100">
                 <div className="col-lg-6 col-md-12">

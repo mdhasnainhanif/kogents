@@ -36,14 +36,14 @@ const CaseCards: React.FC<CaseCardsProps> = ({ cards, cardColClass = "col-md-5 c
                                 </span>
                             )}
                             {heading && (
-                                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize mb125">
+                                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
                                     {heading}
                                 </h2>
                             )}
                         </div>
                     </div>
                 )}
-                <div className="row rowGap justify-content-center">
+                <div className="row rowGap justify-content-center mt-5">
                     {cards.slice(0, visibleCount).map((card, index) => (
                         <div className={cardColClass} key={index}>
                             <div

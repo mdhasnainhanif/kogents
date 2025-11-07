@@ -65,7 +65,7 @@ const CustomerServiceCard: React.FC<CustomerServiceCardProps> = ({
             <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
               {tag}
             </span>
-            <h2 className="mb125 text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125">
+            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white">
               {heading}
             </h2>
             <div className="text-center paraColor subHeading mx-auto text-white">
@@ -83,7 +83,7 @@ const CustomerServiceCard: React.FC<CustomerServiceCardProps> = ({
         </div>
 
         {/* Differentiators Grid */}
-        <div className="row">
+        <div className="row mt-5">
           <div className="col-12">
             <div className="row justify-content-center">
               {differentiators.map((differentiator, index) => (

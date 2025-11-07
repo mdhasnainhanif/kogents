@@ -135,8 +135,9 @@ const page = () => {
           },
         ]}
       />
-      
-      {/* <BrandLogoSlider /> */}
+      <div className="pt-5 mt-3">
+      <BrandLogoSlider />
+      </div>
       <CustomerGrowthCards
         tag="Solutions"
         heading="Our Comprehensive AI HR Solutions for Every Team"

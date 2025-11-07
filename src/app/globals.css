@@ -1791,6 +1791,19 @@ a.aboutIconPhone {
   margin-bottom: 0 !important;
 }
 @media (max-width: 576px) {
+  .solutionFaq .faqUl {
+    margin-bottom: 2.5rem !important;
+  }
+  .solutionFaq .faqUl .nav-item{
+    padding-left: 0 !important;
+  }
+  .solutionFaq .faqUl .form-check{
+    padding-left: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  div.bannerShadowCenter{
+    padding-bottom: 0 !important;
+  }
   .footCate {
     margin-top: 2.5rem !important;
   }
