@@ -30,19 +30,19 @@ const aiData: AILetterSection[] = [
                 definition: "Autonomous software entities that can perceive, reason, and act toward achieving defined objectives.",
                 technologies: ["Natural language processing (NLP), reasoning algorithms, and automation frameworks."],
                 industries: ["Customer support, [education], and public services."],
-                useCase: " In [customer service], [WhatsApp], [Instagram], [Messenger], and [Slack] agents respond to user queries through chat or voice interfaces, providing instant support and routing complex cases to humans. Also available for communication and enterprise use through [Viber], [Microsoft Teams], [Telegram], and [Line]."
+                useCase: " In customer service, [WhatsApp], [Instagram], [Messenger], and [Slack] agents respond to user queries through chat or voice interfaces, providing instant support and routing complex cases to humans. Also available for communication and enterprise use through [Viber], [Microsoft Teams], [Telegram], and [Line]."
             },
             {
                 title: "Automation",
                 definition: "The use of technology to perform repetitive processes with minimal human intervention.",
                 
                 technologies: ["Robotic process automation (RPA), APIs, and AI-driven workflow systems."],
-                industries: ["HR, finance, logistics, and healthcare."],
-                useCase: "In HR, automation manages candidate data entry and screening to reduce administrative workload. You can also engage an AI automation agency for enterprise‑scale solutions."
+                industries: ["[HR], finance, logistics, and healthcare."],
+                useCase: "In HR, automation manages candidate data entry and screening to reduce administrative workload. You can also engage an [AI automation agency] for enterprise‑scale solutions."
             },
             {
                 title: "API Integration",
-                platforms: "HubSpot, Zendesk, Jira, Calendly.",
+                platforms: "[HubSpot], [Zendesk], [Jira], [Calendly].",
                 definition: "The process of connecting different software systems to share data and functionality seamlessly.",
                 technologies: ["RESTful APIs, JSON, webhooks, and authentication protocols."],
                 industries: ["Education, e-commerce, and enterprise management."],
@@ -52,7 +52,7 @@ const aiData: AILetterSection[] = [
                 title: "Analytics",
                 definition: "The systematic examination of data to uncover meaningful insights and trends.",
                 technologies: ["Data mining, predictive modeling, and visualization tools."],
-                industries: ["Marketing, HR, and healthcare."],
+                industries: ["[Marketing], HR, and healthcare."],
                 useCase: "In marketing, analytics evaluates campaign data to optimize audience targeting and conversion rates."
             }
         ]
@@ -104,7 +104,7 @@ const aiData: AILetterSection[] = [
                 title: "Conversational AI",
                 definition: "Systems that enable natural, human-like dialogue between users and machines.",
                 technologies: ["NLP, LLMs, speech recognition, and intent classification."],
-                industries: ["Customer service, healthcare, and education."],
+                industries: ["[Customer service], healthcare, and education."],
                 useCase: "In education, conversational AI answers student questions and provides academic support 24/7."
             },
             {
@@ -119,7 +119,7 @@ const aiData: AILetterSection[] = [
                 definition: "On-demand computing resources delivered via the internet to host applications and data.",
                 technologies: ["Virtualization, Kubernetes, and cloud APIs."],
                 industries: ["Education, finance, and enterprise IT."],
-                useCase: "In education, cloud platforms host learning portals accessible to students and teachers anywhere."
+                useCase: "In education, cloud platforms host learning portals accessible to students and [teachers] anywhere."
             },
             {
                 title: "Customer Experience Automation",
@@ -145,7 +145,7 @@ const aiData: AILetterSection[] = [
                 definition: "The process of examining datasets to draw conclusions about their information.",
                 technologies: ["Statistical modeling, machine learning, and visualization tools."],
                 industries: ["Healthcare, education, and finance."],
-                useCase: ": In education, analytics evaluate learning outcomes to improve teaching methods."
+                useCase: " In education, analytics evaluate learning outcomes to improve teaching methods."
             },
             {
                 title: "Deep Learning",
@@ -293,7 +293,7 @@ const aiData: AILetterSection[] = [
                 definition: "In robotics, optimized gradients enhance motion prediction and path accuracy.",
                 technologies: ["Multilingual NLP, translation models, and localization APIs."],
                 industries: ["Multilingual NLP, translation models, and localization APIs."],
-                useCase: "In e-commerce, AI translation engines localize product listings for different markets, and companies hire AI agents to handle multilingual customer queries."
+                useCase: "In e-commerce, AI translation engines localize product listings for different markets, and companies [hire AI agents] to handle multilingual customer queries."
             }
         ]
     },
@@ -486,7 +486,7 @@ const aiData: AILetterSection[] = [
                 definition: "Platforms allowing users to build and deploy AI models with minimal coding.",
                 technologies: ["Drag-and-drop model builders, APIs, and AutoML."],
                 industries: ["HR, education, and business analytics."],
-                useCase: " In HR, low-code tools enable non-technical teams to automate reporting and candidate tracking, often integrated with AI recruiting assistants for smarter hiring workflows."
+                useCase: " In HR, low-code tools enable non-technical teams to automate reporting and candidate tracking, often integrated with [AI recruiting assistants] for smarter hiring workflows."
             },
             {
                 title: "Latency Optimization",
@@ -526,7 +526,7 @@ const aiData: AILetterSection[] = [
                 definition: "A visual interface displaying performance metrics for AI systems and workflows.",
                 technologies: ["Data visualization frameworks, APIs, and alert systems."],
                 industries: ["IT, HR, and operations."],
-                useCase: "In IT, dashboards monitor AI uptime, latency, and processing loads in real time."
+                useCase: "In IT, [dashboards] monitor AI uptime, latency, and processing loads in real time."
             },
             {
                 title: "Model Deployment Pipeline",
@@ -702,7 +702,7 @@ const aiData: AILetterSection[] = [
         topics: [
             {
                 title: "Reinforcement Learning",
-                definition: "A type of ML where AI agents learn optimal actions through trial and error, guided by rewards.",
+                definition: "A type of ML where [AI agents] learn optimal actions through trial and error, guided by rewards.",
                 technologies: ["Markov decision processes and policy gradient algorithms."],
                 industries: ["Robotics, logistics, and gaming."],
                 useCase: "In logistics, reinforcement learning optimizes delivery routing to minimize travel time."
@@ -872,7 +872,7 @@ const aiData: AILetterSection[] = [
                 definition: "Technology that enables machines to process and generate human speech.",
                 technologies: ["Speech-to-text, NLP, and neural speech synthesis."],
                 industries: ["Telecommunications, healthcare, and customer service."],
-                useCase: "In customer service, voice AI manages call routing and provides instant answers to user inquiries."
+                useCase: "In customer service, [voice AI] manages call routing and provides instant answers to user inquiries."
             },
             {
                 title: "Vector Database",
@@ -1067,8 +1067,31 @@ const keywordLinks: Record<string, string> = {
     "Medical": "/solutions/medical-ai-agent/",
     "medical": "/solutions/medical-ai-agent/",
     "HR": "/solutions/ai-agent-for-hr/",
+    "hr": "/solutions/ai-agent-for-hr/",
     "human resources": "/solutions/ai-agent-for-hr/",
     "Human resources": "/solutions/ai-agent-for-hr/",
+    "HR agent": "/solutions/ai-agent-for-hr/",
+    "hr agent": "/solutions/ai-agent-for-hr/",
+    "AI HR agent": "/solutions/ai-agent-for-hr/",
+    "ai hr agent": "/solutions/ai-agent-for-hr/",
+    "HR AI agent": "/solutions/ai-agent-for-hr/",
+    "hr ai agent": "/solutions/ai-agent-for-hr/",
+    "AI agent for HR": "/solutions/ai-agent-for-hr/",
+    "ai agent for hr": "/solutions/ai-agent-for-hr/",
+    "hire AI agents": "/solutions/ai-agent-for-hr/",
+    "hire ai agents": "/solutions/ai-agent-for-hr/",
+    "AI recruiting assistant": "/solutions/ai-recruiting-assistant/",
+    "ai recruiting assistant": "/solutions/ai-recruiting-assistant/",
+    "AI recruiting assistants": "/solutions/ai-recruiting-assistant/",
+    "ai recruiting assistants": "/solutions/ai-recruiting-assistant/",
+    "Recruiting assistant": "/solutions/ai-recruiting-assistant/",
+    "recruiting assistant": "/solutions/ai-recruiting-assistant/",
+    "Recruiting assistants": "/solutions/ai-recruiting-assistant/",
+    "recruiting assistants": "/solutions/ai-recruiting-assistant/",
+    "AI recruitment agent": "/solutions/ai-recruiting-assistant/",
+    "ai recruitment agent": "/solutions/ai-recruiting-assistant/",
+    "recruitment agent": "/solutions/ai-recruiting-assistant/",
+    "Recruitment agent": "/solutions/ai-recruiting-assistant/",
     "Education": "/solutions/ai-agent-for-education/",
     "education": "/solutions/ai-agent-for-education/",
     "Marketing": "/solutions/ai-agent-for-marketing/",
@@ -1093,6 +1116,53 @@ const keywordLinks: Record<string, string> = {
     "telegram": "/platforms/telegram-ai-agent/",
     "Line": "/platforms/line-ai-agent/",
     "line": "/platforms/line-ai-agent/",
+    "AI automation agency": "/solutions/ai-automation-agency/",
+    "ai automation agency": "/solutions/ai-automation-agency/",
+    "automation agency": "/solutions/ai-automation-agency/",
+    "Automation agency": "/solutions/ai-automation-agency/",
+    "AI automation": "/solutions/ai-automation-agency/",
+    "ai automation": "/solutions/ai-automation-agency/",
+    "HubSpot": "/platforms/hubspot-ai-integration/",
+    "hubspot": "/platforms/hubspot-ai-integration/",
+    "Zendesk": "/platforms/zendesk-ai-integration/",
+    "zendesk": "/platforms/zendesk-ai-integration/",
+    "Jira": "/platforms/jira-ai-integration/",
+    "jira": "/platforms/jira-ai-integration/",
+    "Calendly": "/platforms/calendly-ai-integration/",
+    "calendly": "/platforms/calendly-ai-integration/",
+    "Teacher": "/solutions/ai-teacher-assistant/",
+    "teacher": "/solutions/ai-teacher-assistant/",
+    "Teachers": "/solutions/ai-teacher-assistant/",
+    "teachers": "/solutions/ai-teacher-assistant/",
+    "AI teacher assistant": "/solutions/ai-teacher-assistant/",
+    "ai teacher assistant": "/solutions/ai-teacher-assistant/",
+    "Teacher assistant": "/solutions/ai-teacher-assistant/",
+    "teacher assistant": "/solutions/ai-teacher-assistant/",
+    "AI agent dashboard": "/solutions/ai-agent-dashboard/",
+    "ai agent dashboard": "/solutions/ai-agent-dashboard/",
+    "AI Agent Dashboard": "/solutions/ai-agent-dashboard/",
+    "Dashboard": "/solutions/ai-agent-dashboard/",
+    "dashboard": "/solutions/ai-agent-dashboard/",
+    "Dashboards": "/solutions/ai-agent-dashboard/",
+    "dashboards": "/solutions/ai-agent-dashboard/",
+    "AI dashboard": "/solutions/ai-agent-dashboard/",
+    "ai dashboard": "/solutions/ai-agent-dashboard/",
+    "Agent dashboard": "/solutions/ai-agent-dashboard/",
+    "agent dashboard": "/solutions/ai-agent-dashboard/",
+    "AI agents": "/",
+    "ai agents": "/",
+    "AI agent": "/",
+    "ai agent": "/",
+    "AI Agents": "/",
+    "Agents": "/",
+    "agents": "/",
+    "Voice AI": "/platforms/ai-voice-agent/",
+    "voice AI": "/platforms/ai-voice-agent/",
+    "AI voice agent": "/platforms/ai-voice-agent/",
+    "ai voice agent": "/platforms/ai-voice-agent/",
+    "Voice agent": "/platforms/ai-voice-agent/",
+    "voice agent": "/platforms/ai-voice-agent/",
+    "AI Voice Agent": "/platforms/ai-voice-agent/",
 };
 
 // Function to convert text with [bracketed] keywords to JSX with links
@@ -1228,7 +1298,7 @@ export default function AIGlossaryPage() {
                                         {topic.title === "API Integration" && (
                                             <p className="benefit-description">
                                                 <strong>Platforms:</strong>{" "}
-                                                {topic.platforms}
+                                                {renderTextWithLinks(topic.platforms || "")}
                                             </p>
                                         )}
                                         <p className="benefit-description">
