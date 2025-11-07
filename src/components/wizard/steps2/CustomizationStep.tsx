@@ -5,7 +5,7 @@ import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
 import { fileToBlob, validateFile } from "@/utils/fileUtils";
-import SamplePage from "@/app/sample/page";
+import { ChatWidget } from "../ChatWidget";
 interface CustomizationStepProps {
   data: ChatbotWizardData;
   onUpdate: (updates: Partial<ChatbotWizardData>) => void;
@@ -320,7 +320,7 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
                 width={500}
                 height={500}
               /> */}
-              <SamplePage 
+              <ChatWidget 
                 botName={data.botname || 'Sarah'}
                 avatar={avatarPreview || data.appearance?.avatar || undefined}
                 primaryColor={data.appearance?.primaryColor || '#4a90e2'}

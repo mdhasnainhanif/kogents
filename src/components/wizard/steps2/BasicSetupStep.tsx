@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
-import SamplePage from "@/app/sample/page";
+import { ChatWidget } from "../ChatWidget";
 
 interface BasicSetupStepProps {
   footerOptions: FooterOptions;
@@ -164,7 +164,7 @@ export const BasicSetupStep = React.memo<BasicSetupStepProps>(
 
             {/* Right Panel (Preview) */}
             <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
-              <SamplePage 
+              <ChatWidget 
                 botName={data.botname || 'Sarah'}
                 avatar={data.appearance?.avatar || undefined}
                 primaryColor={data.appearance?.primaryColor || '#4a90e2'}
