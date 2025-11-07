@@ -105,7 +105,6 @@ const CustomerServiceCard: React.FC<CustomerServiceCardProps> = ({
                     </div>
 
                 <div>
-                    {/* Title */}
                     <h3 className="text-white font-semibold mb-3 heading1">
                       {differentiator.title}
                     </h3>
