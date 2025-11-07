@@ -5,7 +5,7 @@ import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
 import { fileToBlob, validateFile } from "@/utils/fileUtils";
-
+import SamplePage from "@/app/sample/page";
 interface CustomizationStepProps {
   data: ChatbotWizardData;
   onUpdate: (updates: Partial<ChatbotWizardData>) => void;
@@ -311,14 +311,19 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
             </div>
 
             {/* Right Panel (Preview) */}
-            <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e' }}>
-              <img
+            <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
+              {/* <img
                 className="img-fluid"
                 style={{ maxWidth: "25rem" }}
                 src="/assets/img/brief/sarah.webp"
                 alt="Preview"
                 width={500}
                 height={500}
+              /> */}
+              <SamplePage 
+                botName={data.botname || 'Sarah'}
+                avatar={avatarPreview || data.appearance?.avatar || undefined}
+                primaryColor={data.appearance?.primaryColor || '#4a90e2'}
               />
             </div>
           </div>
