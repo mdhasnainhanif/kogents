@@ -359,6 +359,7 @@ const NewFooter = () => {
                   <Link href="/">Imprint</Link>
                 </li>
               </ul>
+
             </div>
           </div>
           <div className="footer-column">
@@ -417,14 +418,11 @@ const NewFooter = () => {
                     alt="icon"
                   /> info@kogents.ai</Link>
                 </li>
-                <li >
-                  <Link className="d-flex align-items-center gap-2" href="tel:+12672489454"><Image
-                    width={20}
-                    height={20}
-                    className=""
-                    src="/assets/img/phone.svg"
-                    alt="icon"
-                  /> +1 (267) 248-9454</Link>
+                <li>
+                  <Link href="#">AI Automation</Link>
+                </li>
+                <li>
+                  <Link href="#">AI Recruiting</Link>
                 </li>
               </ul>
             </div>
