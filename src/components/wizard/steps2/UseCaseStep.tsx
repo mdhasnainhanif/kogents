@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Check } from "lucide-react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
+import Image from "next/image";
 
 interface UseCaseStepProps {
   data: ChatbotWizardData;
@@ -95,6 +96,157 @@ const USE_CASE_OPTIONS: UseCaseOption[] = [
   },
 ];
 
+// Map use cases to images (3 images per use case based on main radio button selection)
+// Replace these paths with your actual image paths for each use case
+const getImagesForUseCase = (useCaseId: string): string[] => {
+  const imageMap: Record<string, string[]> = {
+    // Customer Support AI Agent (3 images)
+    'customer-support': [
+      '/assets/img/CustomerSupport/1.jpg',
+      '/assets/img/CustomerSupport/2.jpg',
+      '/assets/img/CustomerSupport/3.jpg',
+      '/assets/img/CustomerSupport/4.jpg',
+      '/assets/img/CustomerSupport/5.jpg',
+    ],
+    // Lead Capture AI Agent (3 images)
+    'lead-capture': [
+      '/assets/img/LeadCapture/1.jpg',
+      '/assets/img/LeadCapture/2.jpg',
+      '/assets/img/LeadCapture/3.jpg',
+      '/assets/img/LeadCapture/4.jpg',
+      '/assets/img/LeadCapture/5.jpg',
+    ],
+    // Sales AI Agent (3 images)
+    'sales': [
+      '/assets/img/Sales/1.jpg',
+      '/assets/img/Sales/2.jpg',
+      '/assets/img/Sales/3.jpg',
+      '/assets/img/Sales/4.jpg',
+      '/assets/img/Sales/5.jpg',
+    ],
+  };
+
+  return imageMap[useCaseId] || ['/assets/img/brief/brief-v2-3.webp'];
+};
+
+// Image Slider Component
+const ImageSlider: React.FC<{ images: string[] }> = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Reset to first image when images change
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [images]);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // Auto-slide every 3 seconds
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [images]);
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    // Reset the interval when manually changing slides
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+  };
+
+  if (images.length === 0) {
+    return (
+      <img
+        className="img-fluid"
+        src="/assets/img/brief/brief-v2-3.webp"
+        style={{ maxWidth: "25rem" }}
+        alt="Preview"
+        width={500}
+      />
+    );
+  }
+
+  return (
+    <div style={{ position: 'relative', width: '100%', maxWidth: '25rem', margin: '0 auto' }}>
+      <div style={{ 
+        position: 'relative', 
+        width: '100%', 
+        overflow: 'hidden', 
+        borderRadius: '8px',
+        minHeight: '400px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <div style={{
+          position: 'relative',
+          width: '100%',
+          opacity: 1,
+          transition: 'opacity 0.5s ease-in-out'
+        }}>
+          <Image
+            src={images[currentIndex]}
+            alt={`Slide ${currentIndex + 1}`}
+            width={500}
+            height={600}
+            className="img-fluid"
+            style={{ 
+              width: '100%', 
+              height: 'auto',
+              display: 'block',
+              maxWidth: '25rem'
+            }}
+          />
+        </div>
+      </div>
+      {/* Dots indicator */}
+      {images.length > 1 && (
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          gap: '8px', 
+          marginTop: '16px' 
+        }}>
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              style={{
+                width: currentIndex === index ? '24px' : '8px',
+                height: '8px',
+                borderRadius: '4px',
+                border: 'none',
+                backgroundColor: currentIndex === index ? '#a855f7' : '#6b7280',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                padding: 0,
+              }}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+
 export const UseCaseStep = React.memo<UseCaseStepProps>(
   ({ data, onUpdate, errors, footerOptions, onValidationChange, onValidate }) => {
     const [selectedUseCase, setSelectedUseCase] = useState<string>("");
@@ -105,7 +257,8 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
     useEffect(() => {
       if (data.useCases && data.useCases.length > 0) {
         // Check if any use case is selected
-        const useCaseId = data.useCases[0]?.split(":")[0] || "";
+        const firstUseCase = data.useCases[0] || "";
+        const [useCaseId] = firstUseCase.split(":") || [""];
         if (useCaseId && (useCaseId === "customer-support" || useCaseId === "lead-capture" || useCaseId === "sales")) {
           setSelectedUseCase(useCaseId);
         }
@@ -257,13 +410,17 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
 
             {/* Right Panel (Preview) */}
             <div className="col-lg-6 step2ImgMain d-flex relative align-items-center justify-content-center" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
-              <img
-                className="img-fluid"
-                src="/assets/img/brief/brief-v2-3.webp"
-                style={{ maxWidth: "25rem" }}
-                alt="Preview"
-                width={500}
-              />
+              {selectedUseCase ? (
+                <ImageSlider images={getImagesForUseCase(selectedUseCase)} />
+              ) : (
+                <img
+                  className="img-fluid"
+                  src="/assets/img/brief/brief-v2-3.webp"
+                  style={{ maxWidth: "25rem" }}
+                  alt="Preview"
+                  width={500}
+                />
+              )}
             </div>
           </div>
         </div>

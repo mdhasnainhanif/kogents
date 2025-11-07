@@ -72,10 +72,10 @@ const ActionButtons = React.memo<{
         <button
           onClick={onNext}
           disabled={!canGoNext || isLoading}  // ADD isLoading check
-          className="buttonAnimation2 ms-auto inline-flex gap-2 align-items-center px-5 py-2"
+          className="buttonAnimation2 ms-auto inline-flex gap-2 items-center px-5 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary hover:bg-transparent text-w-900 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Next
-          <ChevronRightIcon/>
+          {isLoading ? "Crawling..." : "Next"}
+          {!isLoading && <ChevronRightIcon/>}
         </button>
       )}
     </div>

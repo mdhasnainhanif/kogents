@@ -7,6 +7,7 @@ import InViewAnimate from "@/components/InViewAnimate";
 import { ArrowRightIcon2, PaperPlaneIcon } from "@/icons";
 import { Link as LinkIcon, Folder } from "lucide-react";
 import { filesToBlobs, validateFile } from "@/utils/fileUtils";
+import CrawlModal from "../CrawlModal";
 
 interface BasicInfoStepProps {
   footerOptions: FooterOptions;
@@ -343,6 +344,14 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       fingerprintData: null as string | null
     });
 
+    // Crawl API states
+    const [showCrawlModal, setShowCrawlModal] = useState<boolean>(false);
+    const [isCrawling, setIsCrawling] = useState<boolean>(false);
+    const [crawlProgress, setCrawlProgress] = useState<number>(0);
+    const [crawlError, setCrawlError] = useState<string | null>(null);
+    const [crawlComplete, setCrawlComplete] = useState<boolean>(false);
+    const [canProceed, setCanProceed] = useState<boolean>(false);
+
     // Initialize tracking parameters
     useEffect(() => {
       const initializeTracking = () => {
@@ -523,6 +532,94 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       return filesCount + urlsCount + hasText;
     }, [data.knowledgeSources]);
 
+    // Crawl API function
+    const crawlWebsite = async (url: string) => {
+      setIsCrawling(true);
+      setCrawlError(null);
+      setCrawlProgress(0);
+      setCrawlComplete(false);
+      setCanProceed(false);
+
+      let progressInterval: NodeJS.Timeout | null = null;
+
+      try {
+        // Simulate progress updates
+        progressInterval = setInterval(() => {
+          setCrawlProgress((prev) => {
+            if (prev >= 90) {
+              if (progressInterval) {
+                clearInterval(progressInterval);
+              }
+              return prev;
+            }
+            return prev + 10;
+          });
+        }, 500);
+
+        const response = await fetch("https://portal.kogents.ai/crm/api/crawl", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            websiteUrl: url,
+            maxPages: 100,
+            maxDepth: 3,
+            bot_id: 1,
+          }),
+        });
+
+        if (progressInterval) {
+          clearInterval(progressInterval);
+        }
+        setCrawlProgress(100);
+
+        const result = await response.json();
+
+        // Check if response contains an error (even if status is 200)
+        if (!response.ok || result.error) {
+          const errorMessage = result.error || result.message || `HTTP error! status: ${response.status}`;
+          throw new Error(errorMessage);
+        }
+
+        setCrawlComplete(true);
+        setIsCrawling(false);
+        setCanProceed(true);
+        
+        // Auto-close modal after 2 seconds and proceed
+        setTimeout(() => {
+          setShowCrawlModal(false);
+          footerOptions.onNext();
+        }, 2000);
+      } catch (error) {
+        if (progressInterval) {
+          clearInterval(progressInterval);
+        }
+        setIsCrawling(false);
+        setCrawlError(
+          error instanceof Error ? error.message : "Failed to crawl website. Please try again."
+        );
+      }
+    };
+
+    // Handle "Activate Agent Now" button click
+    const handleActivateAgent = async () => {
+      // If URL tab is active and has URLs, trigger crawl
+      if (activeTab === "urls" && data.knowledgeSources?.urls?.length > 0) {
+        const url = data.knowledgeSources.urls[0];
+        if (url && url.trim()) {
+          setShowCrawlModal(true);
+          await crawlWebsite(url);
+        } else {
+          // No URL, proceed directly
+          footerOptions.onNext();
+        }
+      } else {
+        // Files tab or no URL, proceed directly
+        footerOptions.onNext();
+      }
+    };
+
     return (
       <div>
         {/* Hidden tracking fields */}
@@ -622,12 +719,13 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                             {/* Activate Agent Now Button */}
                             <div className="mt-3">
                               <button
-                                onClick={footerOptions.onNext}
-                                className="buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-purple-600 text-white hover:bg-purple-700"
+                                onClick={handleActivateAgent}
+                                disabled={isCrawling || (activeTab === "urls" && (!data.knowledgeSources?.urls || data.knowledgeSources.urls.length === 0))}
+                                className="buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-purple-600 text-white hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
                                 type="button"
                               >
-                                <span>Activate Agent Now</span>
-                                <ArrowRightIcon2 style={{ height: "24px" }} />
+                                <span>{isCrawling ? "Crawling..." : "Activate Agent Now"}</span>
+                                {!isCrawling && <ArrowRightIcon2 style={{ height: "24px" }} />}
                               </button>
                             </div>
 
@@ -667,6 +765,20 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             </div> */}
           </div>
         </div>
+        {/* Crawl Modal */}
+        <CrawlModal
+          isOpen={showCrawlModal}
+          isLoading={isCrawling}
+          progress={crawlProgress}
+          message={crawlComplete ? "Crawling complete!" : "Crawling website..."}
+          error={crawlError}
+          onClose={() => {
+            if (!isCrawling) { // Only allow closing if not currently crawling
+              setShowCrawlModal(false);
+              setCrawlError(null);
+            }
+          }}
+        />
       </div>
     );
   }
