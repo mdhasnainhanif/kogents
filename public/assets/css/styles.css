@@ -233,6 +233,8 @@ a {
   margin-top: 7px;
   font-size: 0.75rem;
   cursor: pointer;
+  background: #322c51;
+  border: 1px solid #5d51af;
 }
 
 .cardPoints>a::before {
@@ -543,7 +545,7 @@ h1.headingSize {
   position: relative;
   color: #766bc5;
   z-index: 1;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.25rem !important;
 }
 
 .integrationDropdown,

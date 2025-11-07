@@ -40,7 +40,7 @@ const ContactSection = () => {
     };
 
   return (
-    <div className="sectionPadding bg-center bg-no-repeat bg-cover bg-[url('img/bc/contact-bg.png')]">
+    <div className="sectionPadding bg-center bg-no-repeat bg-cover bg-[url('img/bc/contact-bg.png')] pt0Mobile">
       <div className="container">
         <span
           //

@@ -84,10 +84,10 @@ const CustomerCards: React.FC<CustomerCardsProps> = ({
             <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
               {tag}
             </span>
-            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+            <h2 className=" text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
               {heading}
             </h2>
-            <div className="w-75 mb-16 text-center paraColor subHeading mx-auto mt-2">
+            <div className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto mt-2">
               {description && description.includes('\n') ? (
                 description.split('\n').map((line, index) => (
                   <p key={index} className={index > 0 ? "mt-4" : ""}>
