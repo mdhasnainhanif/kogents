@@ -2099,3 +2099,7 @@ input.form-control, select.form-control{
 .chatbot-content.mt--3{
   margin-top: -3.25rem !important;
 }
+#kogents-chat-widget-frame{
+  width: 400px !important;
+  height: 600px !important;
+}

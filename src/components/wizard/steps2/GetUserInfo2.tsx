@@ -330,10 +330,11 @@ const URLManagementSection = ({
     </div>
   );
 };
-
 export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
   ({ data, onUpdate, errors = [], footerOptions }) => {
     const [activeTab, setActiveTab] = useState("urls");
+    const [urlValidationError, setUrlValidationError] = useState<string>("");
+    const [hasAttemptedNext, setHasAttemptedNext] = useState(false);
     const [trackingData, setTrackingData] = useState({
       gclid: '',
       fbclid: '',
@@ -532,6 +533,36 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       return filesCount + urlsCount + hasText;
     }, [data.knowledgeSources]);
 
+    // Validation function for URLs
+    const validateUrls = (showError: boolean = true): boolean => {
+      if (activeTab === "urls") {
+        if (!data.knowledgeSources?.urls || data.knowledgeSources.urls.length === 0) {
+          if (showError) {
+            setUrlValidationError("Please enter your company website URL to continue.");
+            setHasAttemptedNext(true);
+          }
+          return false;
+        }
+      }
+      setUrlValidationError("");
+      return true;
+    };
+
+    // Clear validation error when URLs are added
+    useEffect(() => {
+      if (activeTab === "urls" && data.knowledgeSources?.urls && data.knowledgeSources.urls.length > 0) {
+        setUrlValidationError("");
+        setHasAttemptedNext(false);
+      }
+    }, [data.knowledgeSources.urls, activeTab]);
+
+    // Show error if user attempted next and there are no URLs
+    useEffect(() => {
+      if (hasAttemptedNext && activeTab === "urls" && (!data.knowledgeSources?.urls || data.knowledgeSources.urls.length === 0)) {
+        setUrlValidationError("Please enter your company website URL to continue.");
+      }
+    }, [hasAttemptedNext, activeTab, data.knowledgeSources?.urls]);
+
     // Crawl API function
     const crawlWebsite = async (url: string) => {
       setIsCrawling(true);
@@ -604,6 +635,13 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
 
     // Handle "Activate Agent Now" button click
     const handleActivateAgent = async () => {
+      // Validate URLs if on the URLs tab
+      if (activeTab === "urls") {
+        if (!validateUrls()) {
+          return; // Stop if validation fails
+        }
+      }
+
       // If URL tab is active and has URLs, trigger crawl
       if (activeTab === "urls" && data.knowledgeSources?.urls?.length > 0) {
         const url = data.knowledgeSources.urls[0];
@@ -618,6 +656,35 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         // Files tab or no URL, proceed directly
         footerOptions.onNext();
       }
+    };
+
+    // Custom onNext handler that validates before proceeding
+    const handleNext = () => {
+      // Validate URLs if on the URLs tab
+      if (activeTab === "urls") {
+        if (!validateUrls(true)) {
+          return; // Stop if validation fails (error is shown)
+        }
+      }
+      setHasAttemptedNext(false);
+      footerOptions.onNext();
+    };
+
+    // Determine if user can proceed to next step
+    const canProceedToNext = useMemo(() => {
+      if (activeTab === "urls") {
+        // On URLs tab, require at least one URL
+        return data.knowledgeSources?.urls && data.knowledgeSources.urls.length > 0;
+      }
+      // On files tab, allow proceeding (files are optional)
+      return footerOptions.canGoNext;
+    }, [activeTab, data.knowledgeSources?.urls, footerOptions.canGoNext]);
+
+    // Create modified footer options with validation
+    const modifiedFooterOptions = {
+      ...footerOptions,
+      onNext: handleNext,
+      canGoNext: canProceedToNext,
     };
 
     return (
@@ -688,11 +755,16 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                       {activeTab === "urls" && (
                         <div className="space-y-4">
                           <div>
-                            <label className="block text-sm font-medium mb-2">Enter your company website</label>
+                            <label className="block text-sm font-medium mb-2">Enter your company websitesss</label>
                             <URLManagementSection
                               urls={data.knowledgeSources.urls}
                               onUrlsChange={handleUrlsChange}
                             />
+                            {urlValidationError && (
+                              <p className="text-sm text-red-600 mt-2 flex items-center gap-1">
+                                ⚠️ {urlValidationError}
+                              </p>
+                            )}
                           </div>
                         </div>
                       )}
@@ -746,7 +818,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                 </InViewAnimate>
 
               <div className="chatbot-content-wrapper footer">
-                <WizardNavigation2 {...footerOptions} />
+                <WizardNavigation2 {...modifiedFooterOptions} />
               </div>
             </div>
 
