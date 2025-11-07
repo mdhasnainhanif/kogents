@@ -2,17 +2,11 @@ import type { Metadata } from "next";
 import AIGlossaryPage from "../../../components/AIGlossaryPage/AIGlossaryPage"; // client component
 
 export const metadata: Metadata = {
-    title: "AI Automation Agency for Growth & Efficiency | Kogents AI",
+    title: "AI Glossary: Understand AI from A to Z",
     description:
-        "Automate digital workflows, simplify daily tasks, and boost efficiency with personalized AI automation solutions from Kogents AI.",
+        "Kogents AI explains core AI terms, technologies, and use cases shaping industries like HR, healthcare, and education.",
     keywords: [
-        "AI automation agency",
-        "AI automation",
-        "business automation",
-        "workflow automation",
-        "AI consulting services",
-        "process automation",
-        "AI integration",
+        "",
     ],
     robots: {
         index: true,
@@ -23,16 +17,16 @@ export const metadata: Metadata = {
         'bingbot': 'noindex, nofollow',
     },
     alternates: {
-        canonical: "https://kogents.ai/solutions/ai-glossary",
+        canonical: "https://kogents.ai/ai-glossary",
         languages: {
-            "en-US": "https://kogents.ai/solutions/ai-glossary",
+            "en-US": "https://kogents.ai/ai-glossary",
         },
     },
     openGraph: {
-        title: "AI Automation Agency for Growth & Efficiency | Kogents AI",
+        title: "AI Glossary: Understand AI from A to Z",
         description:
-            "Automate digital workflows, simplify daily tasks, and boost efficiency with personalized AI automation solutions from Kogents AI.",
-        url: "https://www.kogents.ai/solutions/ai-glossary",
+            "Kogents AI explains core AI terms, technologies, and use cases shaping industries like HR, healthcare, and education.",
+        url: "https://www.kogents.ai/ai-glossary",
         type: "website",
         images: [
             {

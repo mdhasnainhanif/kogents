@@ -3619,6 +3619,7 @@ header nav>ul>li:hover::before {
   color: #cbd5e1;
   line-height: 1.6;
   font-size: 1rem;
+  list-style: disc;
 }
 
 @media (max-width: 768px) {
