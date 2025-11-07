@@ -48,7 +48,7 @@ const CustomerServiceFaqSection: React.FC<CustomerServiceFaqSectionProps> = ({
             {description}
           </p>
 
-          <div className="row mt-4">
+          <div className="row mt-5">
             {faqItems.map((item, idx) => {
               const absoluteIndex = idx;
               const isOpen = openIndex === absoluteIndex;

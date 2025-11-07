@@ -281,7 +281,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
           >
             Frequently Asked Questions
           </h2>
-          <div className="row mt-4">
+          <div className="row mt-5">
             {visibleFaqs.map((item, idx) => {
               const absoluteIndex = idx; // within current slice, 0-based
               const isOpen = openIndex === absoluteIndex;

@@ -80,13 +80,8 @@ const FaqSection: React.FC = () => {
                     >
                         Frequently Asked Questions
                     </h2>
-                    {/* <p className="mb-16 w-75 text-center mx-auto mt-2 subHeading paraColor">
-                        Learn the answers to common questions about our AI solutions, tools,
-                        and services, helping you understand how they can benefit your
-                        business and streamline operations.
-                    </p> */}
 
-                    <div className="row mt-4">
+                    <div className="row mt-5">
                         {visibleFaqs.map((item, idx) => {
                             const absoluteIndex = idx; // within current slice, 0-based
                             const isOpen = openIndex === absoluteIndex;

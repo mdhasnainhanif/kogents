@@ -20,7 +20,7 @@ const Banner = () => {
               <div className="flex flex-col items-center justify-center">
                 <span className="buttonAnimation width_fit d-block purple px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">Overview</span>
 
-                <h1 className="text-center headingSize mb125">
+                <h1 className="text-center headingSize">
                   AI Agents Advancing Customer Engagement on Top Platforms
                 </h1>
                 <p className="paraColor text-base md:text-xl text-w-100 text-center maxWidth39">

@@ -63,7 +63,7 @@ const FaqSection: React.FC<{ data: FaqSectionData }> = ({ data }) => {
             </p>
           )}
 
-          <div className="row mt-4">
+          <div className="row mt-5">
             {visibleFaqs.map((item, idx) => {
               const isOpen = openIndex === idx;
               return (

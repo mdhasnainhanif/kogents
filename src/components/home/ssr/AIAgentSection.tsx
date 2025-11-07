@@ -199,7 +199,7 @@ const AIAgentSection = () => {
             </div>
           </div>
           {/* Desktop Grid */}
-          <div className="row rowGap justify-content-center mt-4 d-none d-md-flex">
+          <div className="row rowGap justify-content-center mt-5 d-none d-md-flex">
             {agentCards.map((card) => (
               <div key={card.id} className={card.colClass}>
                 {card.isLarge ? (
