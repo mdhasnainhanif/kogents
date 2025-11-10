@@ -93,7 +93,7 @@ export const WizardProgress2 = React.memo<WizardProgressProps>(
       <div className="chat_header_container">
         <div className="container chatbot_header px-lg-0">
           <div>
-            <Link href="/">
+            <Link href="/ai-agent">
               <img width={150} src="/assets/img/kogents-logo.svg" alt="logo" />
             </Link>
           </div>
