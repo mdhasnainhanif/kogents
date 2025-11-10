@@ -1,9 +1,6 @@
 // app/(landing)/layout.tsx
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import NewFooter from "@/components/NewFooter";
-import SideForm from "@/components/SideForm/SideForm";
+import ConditionalLayout from "@/components/ConditionalLayout";
 
 export default function LandingLayout({
   children,
@@ -11,14 +8,8 @@ export default function LandingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <Header />
-      <main>
-        {children}
-      </main>
-      {/* <Footer /> */}
-      <SideForm />
-      <NewFooter />
-    </>
+    <ConditionalLayout>
+      {children}
+    </ConditionalLayout>
   );
 }

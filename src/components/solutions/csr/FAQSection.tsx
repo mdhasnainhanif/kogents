@@ -2,6 +2,7 @@
 import { ArrowRightIcon } from "@/icons";
 import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useMemo, useState } from "react";
 
 export type Faq = { q: string; a: string };
@@ -328,20 +329,22 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
 
               <p className="m-0 text-light">or</p>
 
+              <Link href="/chatbot/briefv2">
               <button
                 className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
-                onClick={openModal}
                 type="button"
               >
                 Connect With AI Agent
                 <ArrowRightIcon />
               </button>
+              </Link>
             </div>
           </div>
         ) : (
           <div className="row py-4">
             <div className="load-button d-flex  justify-center flex-wrap align-items-center gap-3">
-              <button
+              <Link href="/chatbot/briefv2">
+                <button
                 className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
                 onClick={openModal}
                 type="button"
@@ -349,6 +352,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
                 Connect With AI Agent
                 <ArrowRightIcon />
               </button>
+              </Link>
             </div>
           </div>
         )}

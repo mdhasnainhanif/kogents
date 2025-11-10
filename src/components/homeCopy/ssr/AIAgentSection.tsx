@@ -53,7 +53,7 @@ const AIAgentSection = () => {
                   </li>
                 </ul>
                 <Link
-                  href="/chatbot/brief"
+                  href="/chatbot/briefv2"
                   className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
                 >
                   Request Access
@@ -87,7 +87,7 @@ const AIAgentSection = () => {
                 <Link
 
                   className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
+                  href="/chatbot/briefv2"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -120,7 +120,7 @@ const AIAgentSection = () => {
                 <Link
 
                   className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                  href="/chatbot/brief"
+                  href="/chatbot/briefv2"
                 >
                   Request Access
                   <ArrowRightIcon style={{ height: 24 }} />
@@ -167,7 +167,7 @@ const AIAgentSection = () => {
                           <Link
 
                             className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
-                            href="/chatbot/brief"
+                            href="/chatbot/briefv2"
                           >
                             Request Access
                             <ArrowRightIcon />

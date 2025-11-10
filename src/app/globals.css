@@ -2079,7 +2079,8 @@ div.bg-purple-500.border-2 {
   margin-top: 1.25rem;
 }
 .tech-track > div > span{
-  background-color: #5d51af;
+  background: #322c51;
+    border: 1px solid #5d51af !important;
   color: #fff;
 }
 input.form-control, select.form-control{

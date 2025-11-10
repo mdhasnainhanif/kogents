@@ -137,7 +137,7 @@ const AgentOS = () => {
                   <div className="img7">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t7.png"
+                        src="/assets/img/ai-agent/agent6.png"
                         alt="team image"
                         width={80}
                         height={80}
