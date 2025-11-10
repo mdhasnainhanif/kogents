@@ -237,11 +237,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
                     <button
                       key={page}
                       onClick={() => setCurrentPage(page)}
-                      className={`pagination-btn ${
-                        page === currentPage
-                          ? "bg-pink-500 text-white"
-                          : "bg-gd-secondary text-w-900 hover:bg-pink-400"
-                      }`}
+                      className={`pagination-btn ${page === currentPage
+                        ? "bg-pink-500 text-white"
+                        : "bg-gd-secondary text-w-900 hover:bg-pink-400"
+                        }`}
                     >
                       {page}
                     </button>
