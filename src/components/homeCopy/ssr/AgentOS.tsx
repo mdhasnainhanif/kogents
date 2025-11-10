@@ -25,7 +25,7 @@ const AgentOS = () => {
                     <div className="img1InnerDiv"></div>
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t1.png"
+                        src="/assets/img/ai-agent/agent4.png"
                         alt="team image"
                         width={80}
                         height={80}
@@ -37,13 +37,13 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Email Triage Ai Agent</p>
+                      <p className="boxSvgText">Sales Operation Ai Agent</p>
                     </div>
                   </div>
                   <div className="img2">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t2.png"
+                        src="/assets/img/ai-agent/agent3.png"
                         alt="team image"
                         width={80}
                         height={80}
@@ -61,7 +61,7 @@ const AgentOS = () => {
                   <div className="img3">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t3.png"
+                        src="/assets/img/ai-agent/agent2.png"
                         alt="team image"
                         width={80}
                         height={80}
@@ -73,7 +73,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Data Extraction Ai Agent</p>
+                      <p className="boxSvgText">Human Resources Ai Agent</p>
                     </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ const AgentOS = () => {
                   <div className="img4">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t4.png"
+                        src="/assets/img/ai-agent/agent-01.webp"
                         alt="team image"
                         width={80}
                         height={80}
@@ -93,7 +93,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Order Management Ai Agent</p>
+                      <p className="boxSvgText">Cameron Brooks</p>
                     </div>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ const AgentOS = () => {
                   <div className="img5">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t5.png"
+                        src="/assets/img/ai-agent/agent1.png"
                         alt="team image"
                         width={80}
                         height={80}
@@ -113,13 +113,13 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Sales Operation Ai Agent</p>
+                      <p className="boxSvgText">Healthcare AI Agent</p>
                     </div>
                   </div>
                   <div className="img6">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t6.png"
+                        src="/assets/img/ai-agent/agent5.png"
                         alt="team image"
                         width={80}
                         height={80}
@@ -131,13 +131,13 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Sales Manager</p>
+                      <p className="boxSvgText">Finance & Banking AI Agent</p>
                     </div>
                   </div>
                   <div className="img7">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/t7.png"
+                        src="/assets/img/ai-agent/agent6.png"
                         alt="team image"
                         width={80}
                         height={80}
@@ -149,7 +149,7 @@ const AgentOS = () => {
                         width={800}
                         height={600}
                       />
-                      <p className="boxSvgText">Product Listing Ai Agent</p>
+                      <p className="boxSvgText">Transportation AI Agent</p>
                     </div>
                   </div>
                 </div>

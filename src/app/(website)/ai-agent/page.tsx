@@ -145,14 +145,14 @@ export default function HomePage() {
             id="caseStudySection"
           >
             
-            {/* <section className="cv">
+            <section className="cv">
               <BenefitsSection counterData={counterData} />
-            </section> */}
+            </section>
             <WorkflowsSection />
             <section className="cv">
               <AIAgentSlider />
             </section>
-            {/* <AgentOS /> */}
+            <AgentOS />
             {/* <KogentBenefits /> */}
             <section className="cv">
               <FAQSection showLoadMore={true} />

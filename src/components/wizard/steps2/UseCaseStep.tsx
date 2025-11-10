@@ -133,41 +133,70 @@ const getImagesForUseCase = (useCaseId: string): string[] => {
 const ImageSlider: React.FC<{ images: string[] }> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Reset to first image when images change
   useEffect(() => {
     setCurrentIndex(0);
   }, [images]);
 
+  // Start/stop slider based on hover state
   useEffect(() => {
     if (images.length <= 1) return;
 
     // Clear any existing interval
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
 
-    // Auto-slide every 3 seconds
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+    // Only start auto-slide if not hovered
+    if (!isHovered) {
+      // Auto-slide every 3 seconds
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000);
+    }
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     };
-  }, [images]);
+  }, [images, isHovered]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-    // Reset the interval when manually changing slides
+    // Reset the interval when manually changing slides (only if not hovered)
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+    if (!isHovered) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    // Clear interval on hover
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    // Resume interval when mouse leaves
+    if (images.length > 1 && !intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000);
+    }
   };
 
   if (images.length === 0) {
@@ -183,7 +212,11 @@ const ImageSlider: React.FC<{ images: string[] }> = ({ images }) => {
   }
 
   return (
-    <div style={{ position: 'relative', width: '100%', maxWidth: '25rem', margin: '0 auto' }}>
+    <div 
+      style={{ position: 'relative', width: '100%', maxWidth: '25rem', margin: '0 auto' }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div style={{ 
         position: 'relative', 
         width: '100%', 
@@ -198,7 +231,7 @@ const ImageSlider: React.FC<{ images: string[] }> = ({ images }) => {
           position: 'relative',
           width: '100%',
           opacity: 1,
-          transition: 'opacity 0.5s ease-in-out'
+          transition: 'opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1)'
         }}>
           <Image
             src={images[currentIndex]}
@@ -234,7 +267,7 @@ const ImageSlider: React.FC<{ images: string[] }> = ({ images }) => {
                 border: 'none',
                 backgroundColor: currentIndex === index ? '#a855f7' : '#6b7280',
                 cursor: 'pointer',
-                transition: 'all 0.3s ease',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 padding: 0,
               }}
               aria-label={`Go to slide ${index + 1}`}
@@ -252,18 +285,6 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
     const [selectedUseCase, setSelectedUseCase] = useState<string>("");
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
-
-    // Initialize selected use case from data
-    useEffect(() => {
-      if (data.useCases && data.useCases.length > 0) {
-        // Check if any use case is selected
-        const firstUseCase = data.useCases[0] || "";
-        const [useCaseId] = firstUseCase.split(":") || [""];
-        if (useCaseId && (useCaseId === "customer-support" || useCaseId === "lead-capture" || useCaseId === "sales")) {
-          setSelectedUseCase(useCaseId);
-        }
-      }
-    }, []);
 
     const handleUseCaseSelect = (useCaseId: string) => {
       setSelectedUseCase(useCaseId);
@@ -340,25 +361,32 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
                   <div className="mb-4">
                     {USE_CASE_OPTIONS.map((useCase, index) => {
                       const isSelected = selectedUseCase === useCase.id;
+                      const hasSelection = selectedUseCase !== "";
+                      const shouldShowFull = !hasSelection || isSelected;
                       return (
                         <div 
                           key={useCase.id} 
-                          className={`mb-3 pt-3 pb-2 px-3 rounded-4 border-2 ${
-                            isSelected ? "border-purple-500 bg-purple-900" : "border-gray-700 bg-gray-900/30"
+                          className={`mb-3 rounded-4 border-2 ${
+                            isSelected 
+                              ? "border-purple-500 bg-purple-900 pt-3 pb-2 px-3" 
+                              : shouldShowFull 
+                                ? "border-gray-700 bg-gray-900/30 pt-3 pb-2 px-3" 
+                                : "border-gray-700 bg-gray-900/30 py-2 px-3"
                           }`}
                           style={{ cursor: "pointer" }}
                           onClick={() => handleUseCaseSelect(useCase.id)}
                         >
-                          <div className="d-flex align-items-center mb-3">
-                            <div className="me-3 mt-1">
+                          <div className={`d-flex align-items-center ${shouldShowFull ? "mb-3" : "mb-0"}`}>
+                            <div className="me-3" style={{ marginTop: shouldShowFull ? "4px" : "0" }}>
                               <div
                                 className={`rounded-circle d-flex align-items-center justify-content-center ${
-                                  isSelected ? "bg-purple-500 border-2" : "border border-gray-600"
+                                  isSelected ? "bg-purple-500 border-2 border-purple-500" : "border border-gray-600"
                                 }`}
                                 style={{
                                   width: "24px",
                                   height: "24px",
                                   minWidth: "24px",
+                                  flexShrink: 0,
                                 }}
                               >
                                 {isSelected && (
@@ -370,23 +398,27 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
                               </div>
                             </div>
                             <div className="flex-grow-1">
-                              <h3 className="h5 fw-semibold text-white mb-2">
+                              <h3 className={`h5 fw-semibold text-white ${shouldShowFull ? "mb-2" : "mb-0"}`}>
                                 {index + 1}. {useCase.title}
                               </h3>
-                              <p className="mb-2 greenNeon">{useCase.goal}</p>
-                              
-                              <div>
-                                {useCase.benefits.map((benefit) => (
-                                  <div key={benefit.id} className="mb-2">
-                                    <div className="fw-semibold mb-1 text_primary">
-                                      {benefit.id.toUpperCase()}. {benefit.title}
-                                    </div>
-                                    <div className="text-white small">
-                                      {benefit.description}
-                                    </div>
+                              {shouldShowFull && (
+                                <>
+                                  <p className="mb-2 greenNeon">{useCase.goal}</p>
+                                  
+                                  <div>
+                                    {useCase.benefits.map((benefit) => (
+                                      <div key={benefit.id} className="mb-2">
+                                        <div className="fw-semibold mb-1 text_primary">
+                                          {benefit.id.toUpperCase()}. {benefit.title}
+                                        </div>
+                                        <div className="text-white small">
+                                          {benefit.description}
+                                        </div>
+                                      </div>
+                                    ))}
                                   </div>
-                                ))}
-                              </div>
+                                </>
+                              )}
                             </div>
                           </div>
                         </div>

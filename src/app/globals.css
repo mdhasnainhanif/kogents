@@ -2453,9 +2453,15 @@ div.bg-purple-500.border-2 {
 #benefitsSection p {
   margin-top: 1.25rem;
 }
+<<<<<<< HEAD
 
 .tech-track>div>span {
   background-color: #5d51af;
+=======
+.tech-track > div > span{
+  background: #322c51;
+    border: 1px solid #5d51af !important;
+>>>>>>> 853d83fc9f8d1625cd7fb7bd3af11753df524605
   color: #fff;
 }
 

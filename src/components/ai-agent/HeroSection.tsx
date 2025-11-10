@@ -58,7 +58,7 @@ const HeroSection = () => {
                 style={{ scale: 0.6, transition: "ease-in-out" }}
               >
                 <Image
-                  src="/assets/img/erp-011.svg"
+                  src="/assets/img/ai-agent/erp-ai-agent.svg"
                   priority
                   alt="AI Agent Platform"
                   className="image_product-cards"
