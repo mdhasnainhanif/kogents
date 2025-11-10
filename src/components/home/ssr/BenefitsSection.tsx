@@ -65,20 +65,19 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
           </span>
           <div className="row w-100">
             <div className="col-md-12">
-          <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize w-100">
-            Kogents AI Agents Come
-            <span className="inline-block lg:block"></span>With Tremendous
-            Benefits
-          </h2>
-          <p className="maxWidth39 mb-16 text-center paraColor subHeading w-100 mx-auto">
-            Deploy AI agents to streamline operations and amplify your
-            business's efficiency. These agents optimize processes&#44; reduce
-            delays&#44; and enhance output&#44; ensuring you gain a competitive
-            edge with speed and precision.
-          </p>
+              <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize w-100">
+                Kogents AI Agents Come
+                <span className="inline-block lg:block"></span>With Tremendous
+                Benefits
+              </h2>
+              <p className="maxWidth39 mb-16 text-center paraColor subHeading w-100 mx-auto">
+                Deploy AI agents to streamline operations and amplify your
+                business's efficiency. These agents optimize processes&#44; reduce
+                delays&#44; and enhance output&#44; ensuring you gain a competitive
+                edge with speed and precision.
+              </p>
+            </div>
           </div>
-          </div>
-
           <div className="row rowGap w-100 mt-5">
             <div className="col-xl-7 paddingX0">
               <div className="chartMain hideOn768">
@@ -95,7 +94,6 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
                 />
               </div>
             </div>
-
             <div className="col-xl-5 gap-4 paddingX0">
               <div className="counterMain gap-4 homecountermain">
                 {data.map((item) => (

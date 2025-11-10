@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 export function generateStaticParams(): Params[] {
   const channelIds = [
-    'instagram-agent-ai', 'whatsapp-ai-agent', 'shopify-ai-agent', 'hubspot-ai-integration', 'zendesk-ai-integration',
+    'instagram-agent-ai', 'whatsapp-ai-agent','whatsapp-ai-agent-v2', 'shopify-ai-agent', 'hubspot-ai-integration', 'zendesk-ai-integration',
     'jira-ai-integration', 'calendly-ai-integration', 'openai', 'anthropic', 'groq', 'hugging-face',
     'slack-ai-agent', 'sunshine-conversation-ai-agent', 'intercom-ai-agent',
     'line-ai-agent', 'microsoft-teams-agents', 'viber-ai-agent',

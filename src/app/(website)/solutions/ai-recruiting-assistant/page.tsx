@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     robots: {
         index: true,
         follow: true,
-      },
+    },
 }
 const page = () => {
     const breadcrumbItems = [
@@ -80,7 +80,7 @@ const page = () => {
                 data={{
                     responseTime: 95,
                     supportTickets: 85,
-                    resolutionRate: 77,
+                    resolutionRate: 70,
                     roi: 99,
                 }}
                 labels={{
@@ -136,7 +136,7 @@ const page = () => {
             <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"
-                heading="Explore the Capabilities of Kogents AI Recruitment Assistant"
+                heading="Explore the Capabilities of Kogents AI Recruitment Assistant Solutions"
                 description={`Kogents AI offers a unified suite of recruiting solutions that simplify sourcing, screening, and coordination. Each tool blends automation, analytics, and compliance to help organizations hire faster and maintain transparency across every stage of recruitment.`}
                 solutions={[
                     {

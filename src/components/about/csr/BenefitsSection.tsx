@@ -75,7 +75,6 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({
                 />
               </div>
             </div>
-
             <div className="col-xl-5 gap-4">
               <div className="counterMain">
                 {cards.map((card, idx) => (

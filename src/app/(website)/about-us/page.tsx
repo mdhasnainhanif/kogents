@@ -6,8 +6,6 @@ import OurTeam from '@/components/about/ssr/OurTeam'
 import type { Metadata } from 'next'
 import CustomerBenefitSection from '@/components/CustomerServiceAIAgents/CustomerBenefitSection'
 import AboutUsBanner1 from '@/components/about/ssr/AboutUsBanner1'
-
-
 export const metadata: Metadata = {
   title: 'About Kogents AI | Building Intelligent Agents for Business',
   description:
@@ -20,7 +18,6 @@ export const metadata: Metadata = {
       'en-US': 'https://kogents.ai/about-us',
     },
   },
-
   openGraph: {
     title: 'About Kogents AI | Building Intelligent Agents for Business',
     description:
@@ -49,8 +46,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 }
-
-// Structured data for about page
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
@@ -76,7 +71,6 @@ const structuredData = {
     ]
   }
 };
-
 export default function AboutPage() {
   return (
     <>

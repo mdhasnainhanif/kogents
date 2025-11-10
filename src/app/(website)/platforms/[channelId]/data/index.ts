@@ -334,6 +334,340 @@ export const Data: AllPageDataType = {
             ],
         }
     },
+    "whatsapp-ai-agent-v2": {
+        metadata: {
+            metaTitle: "Best WhatsApp AI Agent | Your 24/7 Chat Power | Kogents.ai",
+            metaDescription: "Kogents WhatsApp AI agent automates interactions, boosts customer engagement, and drives growth with intelligent support. Get Free Demo!",
+            slug: "https://kogents.ai/platforms/whatsapp-ai-agent/",
+            
+            primaryKeyword: "",
+            variations: [
+                "WhatsApp AI agent for business",
+                "WhatsApp AI customer service agent",
+                "WhatsApp AI chatbot vs agent",
+                "WhatsApp AI assistant integration",
+                "WhatsApp virtual assistant AI",
+                "WhatsApp intelligent agent",
+                "WhatsApp automated AI support"
+            ],
+            lsi: [
+                "WhatsApp Business API",
+                "large language models (LLMs)",
+                "automated messaging",
+                "natural language processing (NLP)",
+                "conversational AI",
+                "personalization",
+                "proactive messaging"
+            ]
+        },
+        banner: {
+            tag: "Whatsapp AI Agent",
+            title: "Kogents WhatsApp AI Agent for Faster Customer Engagement",
+            description: "Manual WhatsApp replies slow you down, frustrate customers, and hand business to competitors.\nEvery delayed response isn’t just a pause,  it’s a lost sale and a hit to your brand.\nWith Kogents WhatsApp AI agents,  your customers get the right reply at the right time without any delays.\nOur WhatsApp intelligent agents deliver instant, accurate replies around the clock through smooth integrations with your existing business systems.\nEvery conversation is automated, personalized, and handled on time, so your customers always feel heard, and your business never misses an opportunity.",
+            button: {
+                text: "Smart WhatsApp Support",
+                link: "/book-demo",
+            },
+            image: {
+                src: "/assets/img/ai-whatsapp/whatsapp-banner.webp",
+                alt: "Custom Banner",
+                width: 900,
+                height: 650,
+                className: "rounded-lg shadow-lg",
+            },
+        },
+        counterSection: {
+            title: "WhatsApp Agent by the Numbers",
+            counters: [
+                { label: "faster customer responses", value: 3, symbol: "X" },
+                { label: "chats automated", value: 85, symbol: "%" },
+                { label: "higher conversions", value: 5, symbol: "X" },
+                { label: "fewer missed replies", value: 75, symbol: "%" }
+            ]
+        },
+        customerCardsSection: {
+            tag: "Problems",
+            colSize: "col-lg-6 col-md-6 col-12",
+            heading: "Why Teams Struggle Without WhatsApp AI Customer Service Agent",
+            description: "As WhatsApp grows into the go-to channel for business-to-customer communication, outdated support processes start to break down. Without AI assistance, teams encounter recurring obstacles that hurt both efficiency and customer satisfaction.",
+            showButton: false,
+            benefits: [
+                {
+                    id: 1,
+                    icon: "/assets/img/ai-whatsapp/1.svg",
+                    title: "Repetitive and Manual Query Handling",
+                    description: "Support agents dedicate countless hours to sorting through incoming WhatsApp messages, tagging and directing queries that could be streamlined through WhatsApp AI integrations. This manual work causes backlogs and takes attention away from interactions with high-value customers."
+                },
+                {
+                    id: 2,
+                    icon: "/assets/img/ai-whatsapp/2.svg",
+                    title: "Lack of AI-Driven Conversation Management",
+                    description: "Without intelligent tools to suggest responses or guide conversations, employees rely on repetitive manual responses. This lengthens response times and makes it challenging to provide consistent, high-quality service."
+                },
+                {
+                    id: 3,
+                    icon: "/assets/img/ai-whatsapp/3.svg",
+                    title: "Difficulty Tracking and Prioritizing Requests",
+                    description: "WhatsApp threads can rapidly become overwhelming, particularly in the absence of AI support for prioritizing or categorizing. Keeping track of urgent requests in a timely manner is a challenge for teams, which leads to delayed fixes and frustrated customers."
+                },
+                {
+                    id: 4,
+                    icon: "/assets/img/ai-whatsapp/4.svg",
+                    title: "Missed Insights from Customer Conversations",
+                    description: "Valuable data frequently becomes lost in chat histories. Without emotional analysis or intelligent reporting, support teams fail to capitalize on opportunities to improve the customer experience, anticipate requirements, and optimize service processes."
+                }
+            ]
+        },
+        customerGrowthCardsSection: {
+            tag: "Solutions",
+            heading: "How WhatsApp AI Agent for Business Strengthens Client Relations",
+            description: "The WhatsApp AI agent and its smooth integrations assist businesses in improving customer relationships by automating chats, providing clarity, and maintaining meaningful interactions.",
+            solutions: [
+                {
+                    id: 1,
+                    iconColor: "bg-pink-500",
+                    title: "Proactive Support Clients Can Rely On",
+                    description:
+                        "Proactive messaging lets your WhatsApp AI agent anticipate customer needs before they contact you. Your customers receive service reminders and policy changes without having to ask.",
+                },
+                {
+                    id: 2,
+                    iconColor: "bg-purple-500",
+                    title: "Faster Responses That Strengthen Relations",
+                    description:
+                        "WhatsApp AI agent clears queues right away with automated messaging, so no customer feels left out. It handles thousands of requests at once, giving quick, correct answers on a large scale. This sort of responsiveness makes customer relationships stronger.",
+                },
+                {
+                    id: 3,
+                    iconColor: "bg-teal-500",
+                    title: "Accuracy That Ensures Every Message Counts",
+                    description:
+                        "Kogents WhatsApp AI agent uses large language models (LLMs) to understand the context and intent of a question, no matter how it is asked. This system makes sure that every answer is clear, accurate, and based on facts.",
+                },
+                {
+                    id: 4,
+                    iconColor: "bg-teal-500",
+                    title: "Personalized Engagement That Builds Trust",
+                    description:
+                        "The WhatsApp AI agent employs context from past interactions and customer preferences to craft replies that are both relevant and human-like through real-time personalization.",
+                },
+            ],
+            buttonText: "Automate with AI",
+            buttonLink: "#",
+        },
+        whatsappImagesSection: {
+            subtitle: "Outcomes",
+            title: "WhatsApp AI Agent Turns Conversations Into Lasting Trust",
+            description: "",
+            backgroundImage: "/assets/img/bc/philosophyofsearch-bg.png",
+            agentCards: [
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-whatsapp/1.webp",
+                    title: "Effortless Scalability for Growing Chat Volumes",
+                    points: [
+                        "Your WhatsApp AI agent can keep up with your growing customer base no matter how fast it grows. It can handle hundreds to thousands of chats right away without putting extra work on your team, so every message gets answered on time.",
+                    ],
+
+                },
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-whatsapp/2.webp",
+                    title: "Smarter Workflows That Free Up Your Team",
+                    points: [
+                        "Your support team should work on building relationships instead of giving the same answers over and over. With WhatsApp AI assistant integration that works perfectly, routine questions are handled automatically, freeing up your agents to have more important conversations.",
+                    ],
+
+                },
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-whatsapp/3.webp",
+                    title: "Instant Help Anytime Customers Reach Out",
+                    points: [
+                        "With the WhatsApp virtual assistant AI, your business can respond right away to customers where they are by giving them timely, correct answers that keep the conversation going.",
+                    ],
+
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-whatsapp/4.webp",
+                    title: "Trust That Outlives the Chat",
+                    points: [
+                        "A WhatsApp AI agent makes sure that responses are consistent, understandable, and empathetic, giving users a favorable impression that fosters loyalty long after the chat session is over.",
+                    ],
+
+                    imgHeight: true,
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-whatsapp/5.webp",
+                    title: "Consistent Messaging for Every Customer",
+                    points: [
+                        "A WhatsApp conversational AI agent, through its smart integrations with your business systems, makes sure that all chats maintain the same tone and level of accuracy. This way, your customers always receive clear, reliable communication that aligns with your brand’s values.",
+                    ],
+
+                    imgHeight: true,
+                },
+            ],
+            showButton: true,
+            buttonText: "Start Smart Scheduling",
+
+        },
+        faqWithImageSection: {
+            tag: "Process",
+            heading: "How WhatsApp AI Agent Powers Customer Support",
+            description: "Kogents WhatsApp AI agent has a clear process that makes every chat smooth. Each step is designed to make support fast, reliable, and easy, from starting a conversation to logging insights for future improvements.",
+            faqItems: [
+                {
+                    id: 1,
+                    q: "Customer Initiates Chat",
+                    a: "Every journey starts when a customer connects via WhatsApp, seeking answers, making requests, or sharing updates.",
+                    image: "/assets/img/ai-whatsapp//6.webp",
+                },
+                {
+                    id: 2,
+                    q: "Agent Detects Intent",
+                    a: "Whether a customer is inquiring about pricing, orders, or service details, the WhatsApp AI agent can quickly comprehend what they are asking.",
+                    image: "/assets/img/ai-whatsapp//7.webp",
+                },
+                {
+                    id: 3,
+                    q: "Automated Response Generated",
+                    a: "WhatsApp automated AI support instantly delivers relevant answers, ensuring a smooth conversation, leaving customers satisfied without any wait.",
+                    image: "/assets/img/ai-whatsapp//8.webp",
+                },
+                {
+                    id: 4,
+                    q: "Ongoing Assistance Provided",
+                    a: "The conversation flows seamlessly, addressing follow-up inquiries and guiding customers until their needs are fully met.",
+                    image: "/assets/img/ai-whatsapp//9.webp",
+                },
+                {
+                    id: 5,
+                    q: "Data Logged for Improvement",
+                    a: "Every conversation is recorded and analyzed through WhatsApp AI integrations, generating valuable insights that enhance future engagements and improve the overall quality of support.",
+                    image: "/assets/img/ai-whatsapp//10.webp",
+                },
+            ],
+            rightImage: "/assets/img/faq.png",
+            rightImageAlt: "Healthcare AI Implementation Process",
+        },
+        clientTestimonialSection: {
+            tag: "Reviews",
+            heading: "Client Testimonails",
+            description: "",
+            testimonials: [
+                {
+                    id: 1,
+                    quote:
+                        "We've been using the healthcare AI agent for about four months now, and the results are incredible. Our patient response times have dropped dramatically, and patients actually appreciate how fast and accurate the medical information is. The system also frees up our medical staff to focus on complex patient care instead of answering the same appointment and billing questions over and over again. It feels like we added an extra team member without the cost, and the HIPAA compliance gives us peace of mind.",
+                    avatar: "DR",
+                    name: "Dr. Sarah Mitchell",
+                    title: "Medical Director, City General Hospital",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    quote:
+                        "I was skeptical at first, but the personalized patient support feature blew me away. It remembers past interactions and makes every conversation feel seamless while maintaining complete patient privacy.",
+                    avatar: "JR",
+                    name: "Jennifer Rodriguez",
+                    title: "Practice Manager, Family Care Clinic",
+                    rating: 5,
+                },
+                {
+                    id: 3,
+                    quote:
+                        "The physician-in-the-loop escalation is a lifesaver. Our patients never feel stuck talking to a bot — the system knows exactly when to bring in a real healthcare provider for medical decisions.",
+                    avatar: "AH",
+                    name: "Dr. Amir Hassan",
+                    title: "Cardiologist, Heart & Vascular Center",
+                    rating: 5,
+                },
+                {
+                    id: 4,
+                    quote:
+                        "What stood out for me was how simple the setup was with our existing EHR system. Within just a few days, the AI agent was already live and integrated with Epic. Our staff no longer waste time on routine administrative tasks because everything is automated. After a month of using it, I could already see a 60% improvement in patient satisfaction, and the cost savings compared to hiring additional administrative staff are significant.",
+                    avatar: "SL",
+                    name: "Dr. Sophia Lee",
+                    title: "Chief Medical Officer, Regional Medical Center",
+                    rating: 5,
+                },
+            ],
+            statistics: [
+                {
+                    id: 1,
+                    icon: "⭐⭐⭐",
+                    value: "85%",
+                    label: "Increase in Patient Satisfaction",
+                },
+                {
+                    id: 2,
+                    icon: "⚙️⏰",
+                    value: "65%",
+                    label: "Reduction in Administrative Workload",
+                },
+            ],
+        },
+        customerBenefitSection: {
+            buttonText: "Start Automation Now",
+            leftColumn: {
+                tag: "Start Now",
+                title: "Grow Faster with Kogents WhatsApp AI Automate Today",
+                subtitle: "Let AI handle the chats while you focus on growing, faster responses, happier customers, bigger wins.",
+                appStoreImage: "/assets/img/app-section/6.png",
+                googlePlayImage: "/assets/img/app-section/7.png",
+            },
+            rightColumn: {
+                appPreviewImage: "/assets/img/img-new.webp",
+                qrCodeImage: "/assets/img/app-section/5.png",
+                qrCodeText: "Scan to Download",
+            },
+            backgroundImage: "/assets/img/bc/video-bg.webp",
+        },
+        faq: {
+            tag: "FAQs",
+            heading: "Frequently Asked Questions",
+            items: [
+                {
+                    q: "Why choose Kogents WhatsApp AI Agent over other providers?",
+                    a: "Kogents do more than just automate things. Advanced large language models (LLMs) designed for business use power our WhatsApp AI agents. Kogents doesn't work like other tools; instead, it works with your current processes, making sure that it can be scaled up or down as needed and that it can be personalized in real time to fit the needs of your brand's customers.",
+                },
+                {
+                    q: "Does Kogents WhatsApp AI Agent integrate with my existing systems?",
+                    a: "Yes. The Kogents WhatsApp AI assistant integration works well with your e-commerce, helpdesk, and CRM systems. This keeps conversations from getting stuck in one area. Instead, your customers get consistent, well-informed answers that use real-time data from your business.",
+                },
+                {
+                    q: "How secure is Kogents WhatsApp AI Agent?",
+                    a: "Kogents utilizes the official WhatsApp Business API, guaranteeing adherence to data protection regulations both in the U.S. and worldwide. Every conversation is secured with end-to-end encryption, safeguarding sensitive customer information and upholding trust.",
+                },
+                {
+                    q: "What is a WhatsApp AI agent?",
+                    a: "WhatsApp AI agents are intelligent support systems that automate WhatsApp interactions. Natural language processing (NLP) and large language models (LLMs) are used to understand queries, respond quickly, and provide personalized customer service.",
+                },
+                {
+                    q: "How does a WhatsApp AI agent differ from a traditional chatbot?",
+                    a: "A traditional chatbot follows scripted rules, while a WhatsApp AI agent understands context and intent. This allows it to provide accurate, human-like responses, handle complex queries, and personalize interactions at scale.",
+                },
+                {
+                    q: "What are the advantages of WhatsApp AI agents for businesses in the U.S.?",
+                    a: "WhatsApp AI agents provide 24/7 customer support, reduce response times, team workloads, and customer satisfaction. The WhatsApp Business API also lets U.S. businesses use integrations that are ready for compliance.",
+                },
+                {
+                    q: "How do WhatsApp AI agents use NLP and LLMs?",
+                    a: "They use NLP to understand customer language and intent, whereas LLMs generate accurate, context-aware responses. Together, they make every conversation feel natural and relevant.",
+                },
+                {
+                    q: "How does a WhatsApp AI agent handle context and personalization?",
+                    a: "It keeps track of conversations, changes responses based on past interactions, and uses customer preferences to give each person a unique, consistent experience in real time.",
+                },
+                {
+                    q: "What is the difference between a WhatsApp AI chatbot vs agent?",
+                    a: "A chatbot is limited and follows rules. An AI agent, on the other hand, is smart, knows what's going on in the world, and can handle complicated, multi-turn conversations with personalization and scalability.",
+                },
+            ],
+        }
+    },
     "instagram-ai-agent": {
         metadata: {
             metaTitle: "Smart Instagram AI Agent for Social Success | Kogents",

@@ -13,7 +13,7 @@ const BlogBanner: React.FC = () => {
           Our Blogs That Spark Ideas
           <span className="inline-block lg:block"></span>
         </h1>
-        <p className="text-base text-center md:text-xl text-white maxWidth39 mx-auto">
+        <p className="text-base text-center md:text-xl text-white maxWidth39 mx-auto maxWidth33">
           Discover stories, insights, and innovations from the team behind
           Kogents. Learn how intelligent AI agents are transforming operations
           worldwide.
