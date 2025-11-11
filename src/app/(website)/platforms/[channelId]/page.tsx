@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const fullUrl = `https://kogents.ai/platforms/${channelId}`;
   const ogImage = "https://www.kogents.ai/assets/img/logo-new.svg";
   const isAiVoiceAgent = channelId === "ai-voice-agent";
+  const isWhatsAppAIAgentV2 = channelId === "whatsapp-ai-agent-v2";
   return {
     title,
     description,
@@ -50,6 +51,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     robots: isAiVoiceAgent ? {
       index: false,
       follow: false,
+    } : isWhatsAppAIAgentV2 ? {
+      index: true,
+      follow: true,
     } : undefined,
     openGraph: {
       title,
