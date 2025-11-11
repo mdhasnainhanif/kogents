@@ -147,52 +147,81 @@ function ChatbotWizard3() {
     setSubmitError(null);
     
     try {
-      // Derive fields for appearance and training data
-      const avatar = data.appearance?.avatar || "";
-      const avatarIsBase64 = typeof avatar === "string" && avatar.startsWith("data:");
-      const avatarName = data.appearance?.avatarName || (avatar ? (avatar.split('/').pop() || "").split('?')[0] : "");
-
-      const defaultAccent = "#3b82f6";
-      const primaryColor = data.appearance?.primaryColor;
-      const isDefaultAccent = !primaryColor || primaryColor === defaultAccent;
-      const accentColorValue = isDefaultAccent ? "" : (primaryColor || "");
-
       const files = data.knowledgeSources?.files || [];
       const rawUrl = (data.websiteUrl || "").trim();
       const firstUrl = rawUrl ? (/^https?:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`) : "";
-      const trainingMethod = firstUrl
-        ? "Website URL"
-        : files.length > 0
-          ? "File Upload"
-          : "None";
 
-      // Process use cases
+      // Process Step 3 use cases - check if "customer-support" is selected for business field
       const useCasesList = data.useCases || [];
-      const formattedUseCases = useCasesList.join(", ");
+      // Map use case to business string value
+      let businessValue: string | undefined = undefined;
+      if (useCasesList.some((uc: string) => uc.startsWith("customer-support"))) {
+        businessValue = "customer-support";
+      } else if (useCasesList.some((uc: string) => uc.startsWith("lead-capture"))) {
+        businessValue = "lead-capture";
+      } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
+        businessValue = "sales";
+      }
 
-      // ================= Workspace API submission (skip Step 1 and Step 3) =================
+      // Process Step 6 integration type - map to info field
+      const integrationType = data.integration?.type || "";
+      // Map integration type to readable text for info field
+      const integrationInfoMap: Record<string, string> = {
+        "self-manage": "Do you manage your website yourself?",
+        "technical-person": "I have a technical person to do this for me",
+        "engineering-team": "Would you like our engineering team to do this for you?",
+      };
+      const infoValue = integrationType ? (integrationInfoMap[integrationType] || integrationType) : "";
+
+      // ================= Workspace API submission with ALL fields =================
       try {
         const wsFiles: File[] = (data.knowledgeSources?.files || []) as File[];
         const d: any = data as any;
 
-        // Build a strict allowlist payload. Do NOT include any fields from
-        // step 1 (BasicSetupStep) or step 3 (GetUserInfo2 / personal info).
-        // Only include website and company-facing fields and explicitly selected files.
+        // Complete payload with all fields from all steps
         const workspacePayload = {
-          userId: String(d.userId || ""),
-          companyName: String(d.companyName || ""),
-          industry: String(d.industry || ""),
+          // Step 2: Company Information (required)
+          companyName: String(data.companyName || ""), // maps to "name" (required)
+          industry: String(data.industry || ""), // maps to "vertical"
           companySize: String(d.companySize || ""),
           country: String(d.country || ""),
-          // NOTE: intentionally omitted email / personal info to avoid sending step 3 data
-          description: String(d.description || ""),
-          websiteUrl: firstUrl, // normalized URL only
-          // slug removed - backend no longer expects slug from client
-          files: wsFiles,
+          websiteUrl: firstUrl, // normalized URL from Step 4
+          files: wsFiles, // files from Step 4
+          
+          // Step 1: Bot Customization
+          botName: String(data.botname || ""),
+          
+          // Step 3: Use Cases → business field (now string, not boolean)
+          business: businessValue,
+          
+          // Step 5: Personal Information
+          fullName: String(data.name || ""),
+          emailAddress: String(data.email || ""), // Preferred over email
+          phoneNumber: String(data.phone || ""),
+          
+          // Step 6: Integration → info field
+          info: infoValue, // Step 6 integration option text
+          
+          // Step 6: Integration checkbox
+          infoCheckbox: integrationType === "website" ? true : undefined,
         };
 
-        await createWorkspaceWithFiles(workspacePayload);
-        console.log("✅ Workspace created with files");
+        const response = await createWorkspaceWithFiles(workspacePayload);
+        console.log("✅ Workspace created with kogent-bot API");
+        
+        // ✅ Store workspace _id for widget script
+        const workspaceId = response?.data?._id || response?._id;
+        if (workspaceId) {
+          // Store in localStorage for widget script
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('workspace_id', workspaceId);
+            console.log('✅ Workspace ID stored:', workspaceId);
+          }
+          // Update in wizard data
+          updateData({
+            workspaceId: workspaceId,
+          } as any);
+        }
 
         // On success, clear drafts and redirect
         if (typeof window !== 'undefined') {

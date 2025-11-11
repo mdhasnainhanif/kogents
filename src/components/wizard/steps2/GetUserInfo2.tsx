@@ -8,6 +8,9 @@ import { ArrowRightIcon2, PaperPlaneIcon } from "@/icons";
 import { Link as LinkIcon, Folder } from "lucide-react";
 import { filesToBlobs, validateFile } from "@/utils/fileUtils";
 import CrawlModal from "../CrawlModal";
+import axios from "axios";
+import { createWorkspaceWithFiles } from "@/api/workspace";
+import { io, Socket } from "socket.io-client";
 
 interface BasicInfoStepProps {
   footerOptions: FooterOptions;
@@ -362,6 +365,20 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
     const [crawlError, setCrawlError] = useState<string | null>(null);
     const [crawlComplete, setCrawlComplete] = useState<boolean>(false);
     const [canProceed, setCanProceed] = useState<boolean>(false);
+    const [socketInfo, setSocketInfo] = useState<{
+      step?: string;
+      data?: any;
+      timestamp?: string;
+      socketId?: string;
+      connected?: boolean;
+      userId?: string;
+      eventType?: string;
+      source?: string;
+      // Add missing fields
+      socketUrl?: string;
+      socketPort?: number;
+      socketEvent?: string;
+    } | null>(null);
 
     // Initialize tracking parameters
     useEffect(() => {
@@ -542,90 +559,549 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       return filesCount + hasWebsite;
     }, [data.knowledgeSources, data.websiteUrl]);
 
-    // Submit to user-provided workspace API (only: websiteUrl, name, vertical, slug, files)
+    // Submit to user-provided workspace API with WebSocket support
     const crawlWebsite = async (url?: string) => {
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:7001"; // Use env variable or fallback
-      const apiEndpoint = `${baseUrl}/workspace/with-files`;
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:7001";
+      const apiEndpoint = `${baseUrl}/workspace/kogent-bot`;
 
       const files = data.knowledgeSources?.files || [];
       const websiteUrl = (url && url.trim()) || data.websiteUrl || "";
 
-      const companyName = data.companyName || ""; // Extract company name
-      const industry = data.industry || ""; // Extract industry
-      // slug removed — do not derive or send slug
+      const companyName = data.companyName || "";
+      const industry = data.industry || "";
 
       if (!websiteUrl && files.length === 0) {
         footerOptions.onNext();
         return;
       }
 
-      setIsCrawling(true);
-      setCrawlError(null);
-      setCrawlProgress(0);
-      setCrawlComplete(false);
-      setCanProceed(false);
+        setIsCrawling(true);
+        setCrawlError(null);
+        setCrawlProgress(0);
+        setCrawlComplete(false);
+        setCanProceed(false);
+        
+        // Show initial message
+        setCrawlProgress(5); // Initial progress
 
       let progressInterval: NodeJS.Timeout | null = null;
+      let socket: Socket | null = null;
+      let userId: string | null = null;
 
       try {
-        // Simulate progress updates
-        progressInterval = setInterval(() => {
-          setCrawlProgress((prev) => {
-            if (prev >= 90) {
-              if (progressInterval) {
-                clearInterval(progressInterval);
-              }
-              return prev;
-            }
-            return prev + 10;
-          });
-        }, 500);
-
-        // Build multipart form data. Include required fields.
+        // Build multipart form data with all fields
         const form = new FormData();
         if (websiteUrl) form.append("websiteUrl", websiteUrl);
-        form.append("name", String(companyName || "")); // Ensure string
-        form.append("vertical", String(industry || "")); // Ensure string
-  // slug intentionally omitted
+        
+        // Required fields
+        form.append("name", String(companyName || ""));
+        const slug = (companyName || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+        form.append("slug", slug || "workspace");
+        form.append("vertical", String(industry || ""));
 
-        // Append uploaded files (if any). These are File objects from the browser file input.
+        // New kogent-bot fields
+        const d: any = data as any;
+        const useCasesList = data.useCases || [];
+        let businessValue: string | undefined = undefined;
+        if (useCasesList.some((uc: string) => uc.startsWith("customer-support"))) {
+          businessValue = "customer-support";
+        } else if (useCasesList.some((uc: string) => uc.startsWith("lead-capture"))) {
+          businessValue = "lead-capture";
+        } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
+          businessValue = "sales";
+        }
+        
+        // Map Step 6 integration type to info field
+        const integrationType = data.integration?.type || "";
+        const integrationInfoMap: Record<string, string> = {
+          "self-manage": "Do you manage your website yourself?",
+          "technical-person": "I have a technical person to do this for me",
+          "engineering-team": "Would you like our engineering team to do this for you?",
+        };
+        const infoValue = integrationType ? (integrationInfoMap[integrationType] || integrationType) : "";
+        
+        // Generate random brandId
+        const generateBrandId = () => {
+          const randomStr = Math.random().toString(36).substring(2, 15);
+          const timestamp = Date.now().toString(36);
+          return `brand-${randomStr}-${timestamp}`;
+        };
+        const brandId = generateBrandId();
+        
+        if (data.botname) form.append("botName", String(data.botname));
+        if (businessValue) form.append("business", String(businessValue));
+        if (data.name) form.append("fullName", String(data.name));
+        if (data.email) form.append("emailAddress", String(data.email));
+        if (data.phone) form.append("phoneNumber", String(data.phone));
+        form.append("info", infoValue);
+        form.append("brandId", brandId);
+        if (d.infoCheckbox !== undefined) form.append("infoCheckbox", String(d.infoCheckbox));
+
+        // Append uploaded files
         if (files && files.length > 0) {
-          files.forEach((f: File, idx: number) => {
+          files.forEach((f: File) => {
             form.append("files", f, f.name);
           });
         }
 
-        // Dev-only: print FormData keys (do not print file binary)
-        if (process.env.NODE_ENV !== 'production') {
-          try {
-            // eslint-disable-next-line no-console
-            console.debug('crawlWebsite: form entries (key => value summary)');
-            for (const entry of (form as any).entries()) {
-              const [key, value] = entry as [string, any];
-              if (value && typeof value === 'object' && (value as File).name) {
-                // It's a File
-                // eslint-disable-next-line no-console
-                console.debug(key, { name: (value as File).name, type: (value as File).type, size: (value as File).size });
-              } else {
-                // eslint-disable-next-line no-console
-                console.debug(key, String(value));
-              }
+        // ✅ Step 1: Connect to socket IMMEDIATELY (before API call completes)
+        // Use default socket URL - will update when API response comes
+        const defaultSocketUrl = baseUrl; // Use API base URL as default
+        const defaultSocketPort = 3001; // Common socket port
+        
+        console.log('🔌 Connecting to socket (before API response)...');
+        
+        try {
+          socket = io(defaultSocketUrl, {
+            transports: ['websocket', 'polling'],
+            reconnection: true,
+            reconnectionDelay: 1000,
+            reconnectionAttempts: 5,
+            timeout: 20000,
+          });
+
+          // ✅ Show socket info immediately in modal
+          setSocketInfo({
+            connected: false,
+            socketUrl: defaultSocketUrl,
+            socketPort: defaultSocketPort,
+            socketEvent: 'workspace:crawl-progress', // Default, will update from API
+            userId: undefined,
+            socketId: undefined,
+          });
+
+          socket.on('connect', () => {
+            console.log('✅ Socket connected (before API response):', socket?.id);
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: true,
+              socketId: socket?.id || undefined,
+            }));
+            // Update progress to show socket is connected
+            setCrawlProgress(20); // Show some progress
+          });
+
+          socket.on('connect_error', (error) => {
+            console.warn('Socket connection error:', error);
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: false,
+            }));
+          });
+
+          socket.on('disconnect', () => {
+            console.log('❌ Socket disconnected');
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: false,
+            }));
+          });
+
+          // ✅ COMMENTED OUT: Socket event listeners - not reading socket events anymore
+          // Just showing simple static messages in modal
+          /*
+          socket.on('crawl-progress', (payload: any) => {
+            console.log('📡 Event received:', payload.step, payload.data);
+            
+            // ✅ IMPORTANT: Don't filter events before userId is available
+            // Only filter if we have both userId and payload.userId and they don't match
+            if (userId && payload.userId && payload.userId !== userId) {
+              console.log('⚠️ Ignoring event for different userId');
+              return; // Ignore events for other users
             }
-          } catch (e) {
-            // ignore
-          }
+            
+            // ✅ Log for debugging
+            console.log('✅ Processing event:', payload.step);
+            
+            // Update socket info in real-time (preserve connection info)
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: prev?.connected ?? socket?.connected ?? false,
+              socketId: prev?.socketId ?? socket?.id ?? undefined,
+              step: payload.step,
+              data: payload.data,
+              timestamp: payload.timestamp || new Date().toISOString(),
+              userId: payload.userId || prev?.userId || userId || undefined,
+              eventType: payload.eventType,
+              source: payload.source,
+            }));
+            
+            // Map step to progress percentage
+            const stepProgressMap: Record<string, number> = {
+              'kogent_bot_creation_started': 5,
+              'upload_started': 10,
+              'processing_files': 15,
+              'uploading_to_supabase': 20,
+              'file_uploaded_to_supabase': 25,
+              'files_saved': 30,
+              'starting_website_crawl': 30,
+              'website_crawl_in_progress': 25,
+              'website_crawl_completed': 50,
+              'uploading_website_data_to_supabase': 60,
+              'website_data_uploaded_to_supabase': 75,
+              'sending_to_agent_builder': 80,
+              'agent_builder_success': 90,
+              'agent_builder_failed': 85,
+              'agent_builder_error': 85,
+              'agent_builder_service_unavailable': 80,
+              'kogent_bot_creation_in_progress': 95,
+              'kogent_bot_creation_success': 100,
+            };
+            
+            // Use progress from payload.data if available
+            const progress = payload.data?.progress !== undefined 
+              ? payload.data.progress 
+              : (stepProgressMap[payload.step] || 0);
+            
+            setCrawlProgress(progress);
+            
+            // Handle all events here
+            switch (payload.step) {
+              case 'kogent_bot_creation_started':
+                console.log('🚀 Bot creation started');
+                break;
+              
+              case 'slug_already_exists':
+                console.log('⚠️ Slug already exists, generating unique slug...');
+                break;
+              
+              case 'unique_slug_generated':
+                console.log('✅ Unique slug generated:', payload.data?.newSlug);
+                break;
+              
+              case 'upload_started':
+                console.log('📤 Upload process started...');
+                break;
+              
+              case 'processing_files':
+                console.log(`📄 Processing ${payload.data?.fileCount || 0} files...`);
+                break;
+              
+              case 'uploading_to_supabase':
+                console.log(`📤 Uploading ${payload.data?.filename || 'file'} to Supabase...`);
+                break;
+              
+              case 'file_uploaded_to_supabase':
+                console.log(`✅ File uploaded successfully: ${payload.data?.filename || 'file'}`);
+                break;
+              
+              case 'file_upload_error':
+                console.error('❌ File upload error:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'File upload failed');
+                break;
+              
+              case 'files_saved':
+                console.log('✅ Files saved successfully');
+                break;
+              
+              case 'starting_website_crawl':
+                console.log('🌐 Starting crawl:', payload.data?.url);
+                break;
+              
+              case 'website_crawl_in_progress':
+                console.log('⏳ Crawling...', payload.data?.progress + '%');
+                break;
+              
+              case 'website_crawl_completed':
+                const pagesCount = payload.data?.pages || payload.data?.totalPages || 0;
+                console.log('✅ Crawl completed:', pagesCount, 'pages');
+                console.log('📄 Total Pages:', payload.data?.totalPages);
+                console.log('📊 Pages Crawled:', payload.data?.pagesCrawled);
+                console.log('💬 Message:', payload.data?.message);
+                break;
+              
+              case 'uploading_website_data_to_supabase':
+                console.log('📤 Uploading website data to Supabase...', payload.data?.progress + '%');
+                break;
+              
+              case 'website_data_uploaded_to_supabase':
+                console.log('✅ Website data uploaded successfully');
+                break;
+              
+              case 'sending_to_agent_builder':
+                console.log('🤖 Sending to agent builder...');
+                break;
+              
+              case 'agent_builder_success':
+                console.log('✅ Agent builder success:', payload.data?.brandId);
+                break;
+              
+              case 'agent_builder_failed':
+                console.warn('⚠️ Agent builder failed:', payload.data?.error);
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                console.log('BrandId source:', payload.data?.brandIdSource || 'N/A');
+                break;
+              
+              case 'agent_builder_error':
+                console.warn('⚠️ Agent builder error:', payload.data?.error);
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                break;
+              
+              case 'agent_builder_service_unavailable':
+                console.warn('⚠️ Agent builder service unavailable');
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                break;
+              
+              case 'frontend_brandid_received':
+                console.log('✅ Using frontend brandId:', payload.data?.frontendBrandId || 'N/A');
+                break;
+              
+              case 'random_brandid_generated':
+                console.log('🔷 Generated random brandId:', payload.data?.generatedBrandId || 'N/A');
+                break;
+              
+              case 'converting_description_to_file':
+                console.log('📝 Converting description to file...');
+                break;
+              
+              case 'description_conversion_failed':
+                console.error('❌ Description conversion failed:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Description conversion failed');
+                break;
+              
+              case 'kogent_bot_creation_in_progress':
+                console.log('⏳ Bot creation in progress...', payload.data);
+                if (payload.data?.slug) {
+                  console.log('📝 Slug:', payload.data.slug);
+                }
+                if (payload.data?.brandId) {
+                  console.log('✅ Brand ID:', payload.data.brandId);
+                }
+                break;
+              
+              case 'kogent_bot_creation_success':
+                console.log('🎉 Bot created successfully!');
+                // Don't close modal here - let API response handler do it
+                break;
+              
+              case 'kogent_bot_creation_error':
+                console.error('❌ Bot creation error:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Bot creation failed');
+                setIsCrawling(false);
+                break;
+              
+              case 'website_crawl_failed':
+                console.error('❌ Crawl failed:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Website crawl failed');
+                setIsCrawling(false);
+                break;
+              
+              case 'website_crawler_unavailable':
+                console.warn('⚠️ Crawler unavailable:', payload.data?.message);
+                setCrawlError(payload.data?.message || 'Crawler service unavailable');
+                setIsCrawling(false);
+                break;
+              
+              default:
+                // Handle other events with generic message
+                if (payload.data?.message) {
+                  console.log('📊 Event:', payload.step, '-', payload.data.message);
+                }
+                if (payload.data?.progress !== undefined) {
+                  console.log('📊 Progress:', payload.data.progress + '%');
+                }
+            }
+          });
+          */
+
+          // ✅ COMMENTED OUT: Fallback listener for workspace-progress
+          /*
+          socket.on('workspace-progress', (payload: any) => {
+            console.log('📡 [workspace-progress] Event received:', payload.step, payload.data);
+            // Same handler as crawl-progress
+            if (userId && payload.userId && payload.userId !== userId) {
+              return;
+            }
+            setSocketInfo((prev) => ({
+              ...prev,
+              step: payload.step,
+              data: payload.data,
+              timestamp: payload.timestamp || new Date().toISOString(),
+              userId: payload.userId || prev?.userId || undefined,
+              eventType: payload.eventType,
+              source: payload.source,
+            }));
+            // Map step to progress percentage (same as above)
+            const stepProgressMap: Record<string, number> = {
+              'kogent_bot_creation_started': 5,
+              'upload_started': 10,
+              'processing_files': 15,
+              'uploading_to_supabase': 20,
+              'file_uploaded_to_supabase': 25,
+              'files_saved': 30,
+              'starting_website_crawl': 30,
+              'website_crawl_in_progress': 25,
+              'website_crawl_completed': 50,
+              'uploading_website_data_to_supabase': 60,
+              'website_data_uploaded_to_supabase': 75,
+              'sending_to_agent_builder': 80,
+              'agent_builder_success': 90,
+              'agent_builder_failed': 85,
+              'agent_builder_error': 85,
+              'agent_builder_service_unavailable': 80,
+              'kogent_bot_creation_in_progress': 95,
+              'kogent_bot_creation_success': 100,
+            };
+            const progress = payload.data?.progress !== undefined 
+              ? payload.data.progress 
+              : (stepProgressMap[payload.step] || 0);
+            setCrawlProgress(progress);
+            switch (payload.step) {
+              case 'kogent_bot_creation_started':
+                console.log('🚀 Bot creation started');
+                break;
+              
+              case 'slug_already_exists':
+                console.log('⚠️ Slug already exists, generating unique slug...');
+                break;
+              
+              case 'unique_slug_generated':
+                console.log('✅ Unique slug generated:', payload.data?.newSlug);
+                break;
+              
+              case 'upload_started':
+                console.log('📤 Upload process started...');
+                break;
+              
+              case 'processing_files':
+                console.log(`📄 Processing ${payload.data?.fileCount || 0} files...`);
+                break;
+              
+              case 'uploading_to_supabase':
+                console.log(`📤 Uploading ${payload.data?.filename || 'file'} to Supabase...`);
+                break;
+              
+              case 'file_uploaded_to_supabase':
+                console.log(`✅ File uploaded successfully: ${payload.data?.filename || 'file'}`);
+                break;
+              
+              case 'file_upload_error':
+                console.error('❌ File upload error:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'File upload failed');
+                break;
+              
+              case 'files_saved':
+                console.log('✅ Files saved successfully');
+                break;
+              
+              case 'starting_website_crawl':
+                console.log('🌐 Starting crawl:', payload.data?.url);
+                break;
+              
+              case 'website_crawl_in_progress':
+                console.log('⏳ Crawling...', payload.data?.progress + '%');
+                break;
+              
+              case 'website_crawl_completed':
+                const pagesCount = payload.data?.pages || payload.data?.totalPages || 0;
+                console.log('✅ Crawl completed:', pagesCount, 'pages');
+                console.log('📄 Total Pages:', payload.data?.totalPages);
+                console.log('📊 Pages Crawled:', payload.data?.pagesCrawled);
+                console.log('💬 Message:', payload.data?.message);
+                break;
+              
+              case 'uploading_website_data_to_supabase':
+                console.log('📤 Uploading website data to Supabase...', payload.data?.progress + '%');
+                break;
+              
+              case 'website_data_uploaded_to_supabase':
+                console.log('✅ Website data uploaded successfully');
+                break;
+              
+              case 'sending_to_agent_builder':
+                console.log('🤖 Sending to agent builder...');
+                break;
+              
+              case 'agent_builder_success':
+                console.log('✅ Agent builder success:', payload.data?.brandId);
+                break;
+              
+              case 'agent_builder_failed':
+                console.warn('⚠️ Agent builder failed:', payload.data?.error);
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                console.log('BrandId source:', payload.data?.brandIdSource || 'N/A');
+                break;
+              
+              case 'agent_builder_error':
+                console.warn('⚠️ Agent builder error:', payload.data?.error);
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                break;
+              
+              case 'agent_builder_service_unavailable':
+                console.warn('⚠️ Agent builder service unavailable');
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                break;
+              
+              case 'frontend_brandid_received':
+                console.log('✅ Using frontend brandId:', payload.data?.frontendBrandId || 'N/A');
+                break;
+              
+              case 'random_brandid_generated':
+                console.log('🔷 Generated random brandId:', payload.data?.generatedBrandId || 'N/A');
+                break;
+              
+              case 'converting_description_to_file':
+                console.log('📝 Converting description to file...');
+                break;
+              
+              case 'description_conversion_failed':
+                console.error('❌ Description conversion failed:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Description conversion failed');
+                break;
+              
+              case 'kogent_bot_creation_in_progress':
+                console.log('⏳ Bot creation in progress...', payload.data);
+                if (payload.data?.slug) {
+                  console.log('📝 Slug:', payload.data.slug);
+                }
+                if (payload.data?.brandId) {
+                  console.log('✅ Brand ID:', payload.data.brandId);
+                }
+                break;
+              
+              case 'kogent_bot_creation_success':
+                console.log('🎉 Bot created successfully!');
+                // Don't close modal here - let API response handler do it
+                break;
+              
+              case 'kogent_bot_creation_error':
+                console.error('❌ Bot creation error:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Bot creation failed');
+                setIsCrawling(false);
+                break;
+              
+              case 'website_crawl_failed':
+                console.error('❌ Crawl failed:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Website crawl failed');
+                setIsCrawling(false);
+                break;
+              
+              case 'website_crawler_unavailable':
+                console.warn('⚠️ Crawler unavailable:', payload.data?.message);
+                setCrawlError(payload.data?.message || 'Crawler service unavailable');
+                setIsCrawling(false);
+                break;
+              
+              default:
+                // Handle other events with generic message
+                if (payload.data?.message) {
+                  console.log('📊 Event:', payload.step, '-', payload.data.message);
+                }
+                if (payload.data?.progress !== undefined) {
+                  console.log('📊 Progress:', payload.data.progress + '%');
+                }
+            }
+          });
+          */
+        } catch (socketError) {
+          console.warn('Socket connection failed:', socketError);
         }
 
-        // POST to user API
+        // ✅ Step 2: Make API call (while socket is connecting)
         const response = await fetch(apiEndpoint, {
           method: "POST",
           body: form,
         });
-
-        if (progressInterval) {
-          clearInterval(progressInterval);
-        }
-        setCrawlProgress(100);
 
         const result = await response.json().catch(() => ({}));
 
@@ -634,41 +1110,438 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           throw new Error(errorMessage);
         }
 
-        setCrawlComplete(true);
-        setIsCrawling(false);
-        setCanProceed(true);
+        // ✅ Step 3: Update socket info with actual values from API response
+        userId = result.userId || result.data?.userId || d.userId || null;
+        const socketEvent = result.socketEvent || 'workspace:crawl-progress';
+        const socketUrl = result.socketUrl || baseUrl;
+        const socketPort = result.socketPort || defaultSocketPort;
+        
+        console.log('✅ API Response received:', result);
+        console.log('✅ Updating socket info with API response values');
+        
+        // Update socket info with actual values
+        setSocketInfo((prev) => ({
+          ...prev,
+          socketUrl: socketUrl,
+          socketPort: socketPort,
+          socketEvent: socketEvent,
+          userId: userId || undefined,
+        }));
 
-        // Auto-close modal after 1.5s and proceed
+        // ✅ COMMENTED OUT: Socket reconnection and event listeners
+        // Not reading socket events anymore - just showing simple messages
+        /*
+        if (socketUrl !== defaultSocketUrl && socket) {
+          console.log('🔄 Reconnecting to correct socket URL:', socketUrl);
+          socket.disconnect();
+          
+          socket = io(socketUrl, {
+            transports: ['websocket', 'polling'],
+            reconnection: true,
+            reconnectionDelay: 1000,
+            reconnectionAttempts: 5,
+            timeout: 20000,
+          });
+
+          socket.on('connect', () => {
+            console.log('✅ Socket reconnected to:', socketUrl, socket?.id);
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: true,
+              socketId: socket?.id || undefined,
+            }));
+            
+            // Subscribe to crawl-progress room
+            if (userId) {
+              socket?.emit('crawl-progress', {
+                userId: userId,
+                action: 'subscribe'
+              });
+              console.log('📡 Subscribed to crawl-progress room for userId:', userId);
+            }
+          });
+
+          socket.on('connect_error', (error) => {
+            console.warn('Socket reconnection error:', error);
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: false,
+            }));
+          });
+
+          socket.on('disconnect', () => {
+            console.log('❌ Socket disconnected');
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: false,
+            }));
+          });
+
+          // ✅ Sirf ek hi event listen karein - crawl-progress (same handler as above)
+          // Copy the same crawl-progress listener here too
+          socket.on('crawl-progress', (payload: any) => {
+            console.log('📡 Event received (reconnected):', payload.step, payload.data);
+            
+            // ✅ IMPORTANT: Don't filter events before userId is available
+            if (userId && payload.userId && payload.userId !== userId) {
+              return;
+            }
+            
+            // Update socket info in real-time
+            setSocketInfo((prev) => ({
+              ...prev,
+              connected: prev?.connected ?? socket?.connected ?? false,
+              socketId: prev?.socketId ?? socket?.id ?? undefined,
+              socketUrl: prev?.socketUrl ?? socketUrl,
+              socketPort: prev?.socketPort ?? socketPort,
+              socketEvent: prev?.socketEvent ?? socketEvent,
+              step: payload.step,
+              data: payload.data,
+              timestamp: payload.timestamp || new Date().toISOString(),
+              userId: payload.userId || prev?.userId || userId || undefined,
+              eventType: payload.eventType,
+              source: payload.source,
+            }));
+            
+            // Map step to progress percentage (same as above)
+            const stepProgressMap: Record<string, number> = {
+              'kogent_bot_creation_started': 5,
+              'upload_started': 10,
+              'processing_files': 15,
+              'uploading_to_supabase': 20,
+              'file_uploaded_to_supabase': 25,
+              'files_saved': 30,
+              'starting_website_crawl': 30,
+              'website_crawl_in_progress': 25,
+              'website_crawl_completed': 50,
+              'uploading_website_data_to_supabase': 60,
+              'website_data_uploaded_to_supabase': 75,
+              'sending_to_agent_builder': 80,
+              'agent_builder_success': 90,
+              'agent_builder_failed': 85,
+              'agent_builder_error': 85,
+              'agent_builder_service_unavailable': 80,
+              'kogent_bot_creation_in_progress': 95,
+              'kogent_bot_creation_success': 100,
+            };
+            
+            const progress = payload.data?.progress !== undefined 
+              ? payload.data.progress 
+              : (stepProgressMap[payload.step] || 0);
+            
+            setCrawlProgress(progress);
+            
+            // Handle all events (same switch statement as above)
+            switch (payload.step) {
+              case 'kogent_bot_creation_started':
+                console.log('🚀 Bot creation started');
+                break;
+              
+              case 'slug_already_exists':
+                console.log('⚠️ Slug already exists, generating unique slug...');
+                break;
+              
+              case 'unique_slug_generated':
+                console.log('✅ Unique slug generated:', payload.data?.newSlug);
+                break;
+              
+              case 'upload_started':
+                console.log('📤 Upload process started...');
+                break;
+              
+              case 'processing_files':
+                console.log(`📄 Processing ${payload.data?.fileCount || 0} files...`);
+                break;
+              
+              case 'uploading_to_supabase':
+                console.log(`📤 Uploading ${payload.data?.filename || 'file'} to Supabase...`);
+                break;
+              
+              case 'file_uploaded_to_supabase':
+                console.log(`✅ File uploaded successfully: ${payload.data?.filename || 'file'}`);
+                break;
+              
+              case 'file_upload_error':
+                console.error('❌ File upload error:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'File upload failed');
+                break;
+              
+              case 'files_saved':
+                console.log('✅ Files saved successfully');
+                break;
+              
+              case 'starting_website_crawl':
+                console.log('🌐 Starting crawl:', payload.data?.url);
+                break;
+              
+              case 'website_crawl_in_progress':
+                console.log('⏳ Crawling...', payload.data?.progress + '%');
+                break;
+              
+              case 'website_crawl_completed':
+                const pagesCount = payload.data?.pages || payload.data?.totalPages || 0;
+                console.log('✅ Crawl completed:', pagesCount, 'pages');
+                console.log('📄 Total Pages:', payload.data?.totalPages);
+                console.log('📊 Pages Crawled:', payload.data?.pagesCrawled);
+                console.log('💬 Message:', payload.data?.message);
+                break;
+              
+              case 'uploading_website_data_to_supabase':
+                console.log('📤 Uploading website data to Supabase...', payload.data?.progress + '%');
+                break;
+              
+              case 'website_data_uploaded_to_supabase':
+                console.log('✅ Website data uploaded successfully');
+                break;
+              
+              case 'sending_to_agent_builder':
+                console.log('🤖 Sending to agent builder...');
+                break;
+              
+              case 'agent_builder_success':
+                console.log('✅ Agent builder success:', payload.data?.brandId);
+                break;
+              
+              case 'agent_builder_failed':
+                console.warn('⚠️ Agent builder failed:', payload.data?.error);
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                console.log('BrandId source:', payload.data?.brandIdSource || 'N/A');
+                break;
+              
+              case 'agent_builder_error':
+                console.warn('⚠️ Agent builder error:', payload.data?.error);
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                break;
+              
+              case 'agent_builder_service_unavailable':
+                console.warn('⚠️ Agent builder service unavailable');
+                console.log('Using brandId:', payload.data?.usingBrandId || 'N/A');
+                break;
+              
+              case 'frontend_brandid_received':
+                console.log('✅ Using frontend brandId:', payload.data?.frontendBrandId || 'N/A');
+                break;
+              
+              case 'random_brandid_generated':
+                console.log('🔷 Generated random brandId:', payload.data?.generatedBrandId || 'N/A');
+                break;
+              
+              case 'converting_description_to_file':
+                console.log('📝 Converting description to file...');
+                break;
+              
+              case 'description_conversion_failed':
+                console.error('❌ Description conversion failed:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Description conversion failed');
+                break;
+              
+              case 'kogent_bot_creation_in_progress':
+                console.log('⏳ Bot creation in progress...', payload.data);
+                if (payload.data?.slug) {
+                  console.log('📝 Slug:', payload.data.slug);
+                }
+                if (payload.data?.brandId) {
+                  console.log('✅ Brand ID:', payload.data.brandId);
+                }
+                break;
+              
+              case 'kogent_bot_creation_success':
+                console.log('🎉 Bot created successfully!');
+                // Don't close modal here - let API response handler do it
+                break;
+              
+              case 'kogent_bot_creation_error':
+                console.error('❌ Bot creation error:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Bot creation failed');
+                setIsCrawling(false);
+                break;
+              
+              case 'website_crawl_failed':
+                console.error('❌ Crawl failed:', payload.data?.error);
+                setCrawlError(payload.data?.message || payload.data?.error || 'Website crawl failed');
+                setIsCrawling(false);
+                break;
+              
+              case 'website_crawler_unavailable':
+                console.warn('⚠️ Crawler unavailable:', payload.data?.message);
+                setCrawlError(payload.data?.message || 'Crawler service unavailable');
+                setIsCrawling(false);
+                break;
+              
+              default:
+                // Handle other events with generic message
+                if (payload.data?.message) {
+                  console.log('📊 Event:', payload.step, '-', payload.data.message);
+                }
+                if (payload.data?.progress !== undefined) {
+                  console.log('📊 Progress:', payload.data.progress + '%');
+                }
+            }
+          });
+        } else if (socket && socket.connected && userId) {
+          // Socket already connected, subscribe now with userId
+          socket.emit('crawl-progress', {
+            userId: userId,
+            action: 'subscribe'
+          });
+          console.log('📡 Subscribed to crawl-progress room with userId:', userId);
+        }
+        */
+
+        // ✅ Step 4: API Response aaya - Show success message and close modal
+        console.log('✅ API Response received:', result);
+        console.log('✅ Workspace created successfully:', result.data?._id);
+        
+        // ✅ Store workspace _id for widget script
+        const workspaceId = result.data?._id;
+        if (workspaceId) {
+          // Store in localStorage for widget script
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('workspace_id', workspaceId);
+            console.log('✅ Workspace ID stored:', workspaceId);
+          }
+          // Also update in wizard data
+          onUpdate({
+            workspaceId: workspaceId,
+          } as any);
+        }
+        
+        // Clean up any progress intervals
+        if (progressInterval) {
+          clearInterval(progressInterval);
+        }
+        
+        // Show success message - keep isLoading true to show the message
+        setCrawlProgress(100);
+        setCrawlComplete(true);
+        // Don't set isLoading to false yet - keep it true to show "Crawling is completed" message
+        
+        // ✅ Show "Crawling is completed" message for 2 seconds, then close modal
         setTimeout(() => {
+          setIsCrawling(false); // Stop loading spinner
           setShowCrawlModal(false);
+          
+          // Disconnect socket
+          if (socket) {
+            if (userId) {
+              socket.emit('crawl-progress', {
+                userId: userId,
+                action: 'unsubscribe'
+              });
+            }
+            socket.disconnect();
+          }
+          
+          // Proceed to next step
           footerOptions.onNext();
-        }, 1500);
+        }, 2000); // 2 seconds delay to show success message
+        
+        return;
+
       } catch (error) {
         if (progressInterval) {
           clearInterval(progressInterval);
         }
+        if (socket) {
+          if (userId) {
+            socket.emit('crawl-progress', {
+              userId: userId,
+              action: 'unsubscribe'
+            });
+          }
+          socket.disconnect();
+        }
         setIsCrawling(false);
-        setCrawlError(error instanceof Error ? error.message : "Failed to submit data. Please try again.");
+        setCrawlError(
+          error instanceof Error ? error.message : "Failed to submit. Please try again."
+        );
       }
     };
 
     // Handle "Activate Agent Now" button click
     const handleActivateAgent = async () => {
-      // Use websiteUrl (data.websiteUrl) and files only
-      const hasWebsite = data.websiteUrl && data.websiteUrl.trim().length > 0;
-      const hasFiles = data.knowledgeSources?.files && data.knowledgeSources.files.length > 0;
-
-      if (hasWebsite || hasFiles) {
-        // show modal for progress & submission
+      // If URL tab is active and has URLs, show modal and trigger crawl
+      if (activeTab === "urls" && data.knowledgeSources?.urls?.length > 0) {
+        const url = data.knowledgeSources.urls[0];
+        if (url && url.trim()) {
+          setShowCrawlModal(true);
+          await crawlWebsite(url);
+        } else {
+          // No URL, proceed directly
+          footerOptions.onNext();
+        }
+      } else {
+        // Files tab or no URL - still show modal and submit
         setShowCrawlModal(true);
-        const url = hasWebsite ? data.websiteUrl : "";
-        await crawlWebsite(url);
-        return;
+        try {
+          const wsFiles: File[] = (data.knowledgeSources?.files || []) as File[];
+          const d: any = data as any;
+          
+          // Process Step 3 use cases - map to business string value
+          const useCasesList = data.useCases || [];
+          let businessValue: string | undefined = undefined;
+          if (useCasesList.some((uc: string) => uc.startsWith("customer-support"))) {
+            businessValue = "customer-support";
+          } else if (useCasesList.some((uc: string) => uc.startsWith("lead-capture"))) {
+            businessValue = "lead-capture";
+          } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
+            businessValue = "sales";
+          }
+          
+          setIsCrawling(true);
+          setCrawlProgress(0);
+          setCrawlError(null);
+          
+          // Simulate progress for file upload
+          const progressInterval = setInterval(() => {
+            setCrawlProgress((prev) => {
+              if (prev >= 90) {
+                clearInterval(progressInterval);
+                return prev;
+              }
+              return prev + 15;
+            });
+          }, 300);
+          
+          await createWorkspaceWithFiles({
+            companyName: data.companyName || "",
+            industry: data.industry || "",
+            companySize: d.companySize || "",
+            country: d.country || "",
+            websiteUrl: (data.websiteUrl || "").trim(),
+            files: wsFiles,
+            botName: data.botname || "",
+            business: businessValue,
+            fullName: data.name || "",
+            emailAddress: data.email || "",
+            phoneNumber: data.phone || "",
+            info: data.description || "",
+          });
+          
+          clearInterval(progressInterval);
+          setCrawlProgress(100);
+          setCrawlComplete(true);
+          setIsCrawling(false);
+          
+          setTimeout(() => {
+            setShowCrawlModal(false);
+            footerOptions.onNext();
+          }, 1500);
+        } catch (wsErr) {
+          setIsCrawling(false);
+          setCrawlError(wsErr instanceof Error ? wsErr.message : "Failed to submit");
+        }
       }
-
-      // Nothing to send — just proceed
-      footerOptions.onNext();
     };
+
+    // Add this useEffect at component level (near other useEffects)
+    useEffect(() => {
+      // Cleanup function
+      return () => {
+        // Cleanup will be handled in the crawlWebsite function's error handler
+        // But we can also add a ref to track socket and cleanup here
+      };
+    }, []);
 
     return (
       <div>
@@ -820,12 +1693,14 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           isOpen={showCrawlModal}
           isLoading={isCrawling}
           progress={crawlProgress}
-          message={crawlComplete ? "Crawling complete!" : "Crawling website..."}
+          message={crawlComplete ? "Crawling is completed" : "Website pages is crawling......"}
           error={crawlError}
+          socketInfo={socketInfo || undefined}
           onClose={() => {
-            if (!isCrawling) { // Only allow closing if not currently crawling
+            if (!isCrawling) {
               setShowCrawlModal(false);
               setCrawlError(null);
+              setSocketInfo(null);
             }
           }}
         />
@@ -835,3 +1710,4 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
 );
 
 GetUserInfo2.displayName = "GetUserInfo2";
+

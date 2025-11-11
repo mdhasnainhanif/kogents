@@ -64,6 +64,26 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
     const [isWidgetLoading, setIsWidgetLoading] = useState<boolean>(true);
+    
+    // ✅ Get workspace _id from localStorage or data for widget script
+    const [workspaceId, setWorkspaceId] = useState<string | null>(null);
+    
+    useEffect(() => {
+      // Try to get from localStorage first (most recent)
+      if (typeof window !== 'undefined') {
+        const storedId = localStorage.getItem('workspace_id');
+        if (storedId) {
+          setWorkspaceId(storedId);
+          console.log('✅ Loaded workspace ID from localStorage:', storedId);
+          return; // Exit early if found in localStorage
+        }
+      }
+      // Fallback to data prop
+      if ((data as any).workspaceId) {
+        setWorkspaceId((data as any).workspaceId);
+        console.log('✅ Loaded workspace ID from data:', (data as any).workspaceId);
+      }
+    }, [data]);
 
     // Initialize tracking parameters
     useEffect(() => {
@@ -535,10 +555,14 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
 
                 {/* Load chat widget script */}
                 <Script
-                style={{width:400 }}
+                  key={workspaceId || 'default'} // Force reload when workspaceId changes
+                  style={{width:400 }}
                   id="kogents-chat-widget"
                   strategy="afterInteractive"
-                  src="https://api-staging.kogents.com/widget/embed.js?key=690e30f9e2abcb2b1219c7b4"
+                  src={workspaceId 
+                    ? `https://api-staging.kogents.com/widget/embed.js?key=${workspaceId}`
+                    : "https://api-staging.kogents.com/widget/embed.js?key=690e30f9e2abcb2b1219c7b4" // Fallback to default
+                  }
                   onLoad={() => {
                     setIsWidgetLoading(false);
                     // Center the widget after it loads

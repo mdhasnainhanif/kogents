@@ -1,15 +1,33 @@
 import axios from "axios";
+
+// Generate random brandId
+function generateBrandId(): string {
+  // Format: brand-{random-string}-{timestamp}
+  const randomStr = Math.random().toString(36).substring(2, 15);
+  const timestamp = Date.now().toString(36);
+  return `brand-${randomStr}-${timestamp}`;
+}
+
 export type WorkspacePayload = {
   userId?: string;
-  companyName: string; // maps to "name"
+  companyName: string; // maps to "name" (required)
   industry?: string; // maps to "vertical"
   companySize?: string;
   country?: string;
   email?: string;
   description?: string;
   websiteUrl?: string;
-  // slug intentionally omitted from client payload
   files?: File[];
+  // New kogent-bot fields
+  botName?: string;
+  business?: string; // Changed from boolean to string
+  fullName?: string;
+  emailAddress?: string;
+  phoneNumber?: string;
+  info?: string; // Step 6 integration data
+  infoCheckbox?: boolean;
+  brandId?: string; // Optional brandId (will be generated if not provided)
+  tags?: string[]; // New optional field
 };
 
 function slugify(input: string) {
@@ -23,20 +41,51 @@ function slugify(input: string) {
 export async function createWorkspaceWithFiles(data: WorkspacePayload) {
   const formData = new FormData();
 
-  if (data.userId) formData.append("userId", data.userId);
+  // Generate random brandId if not provided
+  const brandId = data.brandId || generateBrandId();
 
+  // Required fields
   const name = (data.companyName || "").trim();
-  if (name) formData.append("name", name);
+  if (!name) {
+    throw new Error("name (companyName) is required");
+  }
+  formData.append("name", name);
 
-  // slug is no longer sent from the client; backend will derive if needed
+  // Generate slug from name (required)
+  const slug = slugify(name);
+  if (!slug) {
+    throw new Error("Unable to generate slug from name");
+  }
+  formData.append("slug", slug);
 
+  // Optional workspace fields
+  if (data.userId) formData.append("userId", data.userId);
   if (data.industry) formData.append("vertical", data.industry);
   if (data.companySize) formData.append("companySize", data.companySize);
   if (data.country) formData.append("country", data.country);
   if (data.email) formData.append("email", data.email);
   if (data.description) formData.append("description", data.description);
   if (data.websiteUrl) formData.append("websiteUrl", data.websiteUrl);
+  if (data.tags && data.tags.length > 0) {
+    data.tags.forEach((tag) => formData.append("tags", tag));
+  }
 
+  // New kogent-bot fields
+  if (data.botName) formData.append("botName", String(data.botName));
+  if (data.business) formData.append("business", String(data.business));
+  if (data.fullName) formData.append("fullName", String(data.fullName));
+  if (data.emailAddress) formData.append("emailAddress", String(data.emailAddress));
+  if (data.phoneNumber) formData.append("phoneNumber", String(data.phoneNumber));
+  
+  // Send brandId as separate field
+  formData.append("brandId", brandId);
+  
+  // Send info field (Step 6 integration data)
+  formData.append("info", String(data.info || ""));
+  
+  if (data.infoCheckbox !== undefined) formData.append("infoCheckbox", String(data.infoCheckbox));
+
+  // Append files
   for (const file of data.files || []) {
     formData.append("files", file, (file as File).name);
   }
@@ -45,7 +94,7 @@ export async function createWorkspaceWithFiles(data: WorkspacePayload) {
     process.env.NEXT_PUBLIC_WORKSPACE_API_BASE_URL ||
     process.env.NEXT_PUBLIC_API_BASE_URL ||
     "http://localhost:7001";
-  const url = `${baseUrl.replace(/\/+$/, "")}/workspace/with-files`;
+  const url = `${baseUrl.replace(/\/+$/, "")}/workspace/kogent-bot`;
 
   try {
     // Try to attach an auth token if available (from localStorage or env)
