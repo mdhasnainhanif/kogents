@@ -117,18 +117,29 @@ const FileUploadSection = ({
     );
   };
 
-  const getFileIcon = (fileName: string) => {
-    const extension = fileName.split(".").pop()?.toLowerCase();
+  // Accepts a string filename or a File object (or undefined/null).
+  // Returns a safe default icon if the name is missing.
+  const getFileIcon = (file?: string | File | null) => {
+    const name = typeof file === "string" ? file : (file && (file as File).name) || "";
+    if (!name) return "📎";
+    const extension = name.split(".").pop()?.toLowerCase() || "";
     switch (extension) {
       case "pdf":
         return "📄";
-      case "txt":
-      case "md":
+      case "doc":
+      case "docx":
         return "📝";
+      case "png":
+      case "jpg":
+      case "jpeg":
+      case "gif":
+        return "🖼️";
       case "csv":
+      case "xls":
+      case "xlsx":
         return "📊";
       default:
-        return "📁";
+        return "📎";
     }
   };
 
@@ -526,14 +537,28 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
     );
 
     const knowledgeSourcesCount = useMemo(() => {
-      const filesCount = data.knowledgeSources.files.length;
-      const urlsCount = data.knowledgeSources.urls.length;
-      const hasText = data.knowledgeSources.textContent.trim().length > 0 ? 1 : 0;
-      return filesCount + urlsCount + hasText;
-    }, [data.knowledgeSources]);
+      const filesCount = data.knowledgeSources?.files?.length || 0;
+      const hasWebsite = data.websiteUrl && data.websiteUrl.trim().length > 0 ? 1 : 0;
+      return filesCount + hasWebsite;
+    }, [data.knowledgeSources, data.websiteUrl]);
 
-    // Crawl API function
-    const crawlWebsite = async (url: string) => {
+    // Submit to user-provided workspace API (only: websiteUrl, name, vertical, slug, files)
+    const crawlWebsite = async (url?: string) => {
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:7001"; // Use env variable or fallback
+      const apiEndpoint = `${baseUrl}/workspace/with-files`;
+
+      const files = data.knowledgeSources?.files || [];
+      const websiteUrl = (url && url.trim()) || data.websiteUrl || "";
+
+      const companyName = data.companyName || ""; // Extract company name
+      const industry = data.industry || ""; // Extract industry
+      // slug removed — do not derive or send slug
+
+      if (!websiteUrl && files.length === 0) {
+        footerOptions.onNext();
+        return;
+      }
+
       setIsCrawling(true);
       setCrawlError(null);
       setCrawlProgress(0);
@@ -556,17 +581,45 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           });
         }, 500);
 
-        const response = await fetch("https://portal.kogents.ai/crm/api/crawl", {
+        // Build multipart form data. Include required fields.
+        const form = new FormData();
+        if (websiteUrl) form.append("websiteUrl", websiteUrl);
+        form.append("name", String(companyName || "")); // Ensure string
+        form.append("vertical", String(industry || "")); // Ensure string
+  // slug intentionally omitted
+
+        // Append uploaded files (if any). These are File objects from the browser file input.
+        if (files && files.length > 0) {
+          files.forEach((f: File, idx: number) => {
+            form.append("files", f, f.name);
+          });
+        }
+
+        // Dev-only: print FormData keys (do not print file binary)
+        if (process.env.NODE_ENV !== 'production') {
+          try {
+            // eslint-disable-next-line no-console
+            console.debug('crawlWebsite: form entries (key => value summary)');
+            for (const entry of (form as any).entries()) {
+              const [key, value] = entry as [string, any];
+              if (value && typeof value === 'object' && (value as File).name) {
+                // It's a File
+                // eslint-disable-next-line no-console
+                console.debug(key, { name: (value as File).name, type: (value as File).type, size: (value as File).size });
+              } else {
+                // eslint-disable-next-line no-console
+                console.debug(key, String(value));
+              }
+            }
+          } catch (e) {
+            // ignore
+          }
+        }
+
+        // POST to user API
+        const response = await fetch(apiEndpoint, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            websiteUrl: url,
-            maxPages: 100,
-            maxDepth: 3,
-            bot_id: 1,
-          }),
+          body: form,
         });
 
         if (progressInterval) {
@@ -574,50 +627,47 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         }
         setCrawlProgress(100);
 
-        const result = await response.json();
+        const result = await response.json().catch(() => ({}));
 
-        // Check if response contains an error (even if status is 200)
-        if (!response.ok || result.error) {
-          const errorMessage = result.error || result.message || `HTTP error! status: ${response.status}`;
+        if (!response.ok || (result && result.error)) {
+          const errorMessage = (result && (result.error || result.message)) || `HTTP error! status: ${response.status}`;
           throw new Error(errorMessage);
         }
 
         setCrawlComplete(true);
         setIsCrawling(false);
         setCanProceed(true);
-        
-        // Auto-close modal after 2 seconds and proceed
+
+        // Auto-close modal after 1.5s and proceed
         setTimeout(() => {
           setShowCrawlModal(false);
           footerOptions.onNext();
-        }, 2000);
+        }, 1500);
       } catch (error) {
         if (progressInterval) {
           clearInterval(progressInterval);
         }
         setIsCrawling(false);
-        setCrawlError(
-          error instanceof Error ? error.message : "Failed to crawl website. Please try again."
-        );
+        setCrawlError(error instanceof Error ? error.message : "Failed to submit data. Please try again.");
       }
     };
 
     // Handle "Activate Agent Now" button click
     const handleActivateAgent = async () => {
-      // If URL tab is active and has URLs, trigger crawl
-      if (activeTab === "urls" && data.knowledgeSources?.urls?.length > 0) {
-        const url = data.knowledgeSources.urls[0];
-        if (url && url.trim()) {
-          setShowCrawlModal(true);
-          await crawlWebsite(url);
-        } else {
-          // No URL, proceed directly
-          footerOptions.onNext();
-        }
-      } else {
-        // Files tab or no URL, proceed directly
-        footerOptions.onNext();
+      // Use websiteUrl (data.websiteUrl) and files only
+      const hasWebsite = data.websiteUrl && data.websiteUrl.trim().length > 0;
+      const hasFiles = data.knowledgeSources?.files && data.knowledgeSources.files.length > 0;
+
+      if (hasWebsite || hasFiles) {
+        // show modal for progress & submission
+        setShowCrawlModal(true);
+        const url = hasWebsite ? data.websiteUrl : "";
+        await crawlWebsite(url);
+        return;
       }
+
+      // Nothing to send — just proceed
+      footerOptions.onNext();
     };
 
     return (
@@ -720,7 +770,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                             <div className="mt-3">
                               <button
                                 onClick={handleActivateAgent}
-                                disabled={isCrawling || (activeTab === "urls" && (!data.knowledgeSources?.urls || data.knowledgeSources.urls.length === 0))}
+                                disabled={isCrawling || (activeTab === "urls" && !(data.websiteUrl && data.websiteUrl.trim().length > 0))}
                                 className="buttonAnimation2 flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-purple-600 text-white hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
                                 type="button"
                               >

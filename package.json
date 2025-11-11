@@ -13,6 +13,7 @@
     "@ntegral/react-owl-carousel": "^1.0.1",
     "@types/jquery": "^3.5.33",
     "aos": "^2.3.4",
+    "axios": "^1.13.2",
     "clsx": "^2.1.1",
     "gsap": "^3.13.0",
     "html-entities": "^2.6.0",

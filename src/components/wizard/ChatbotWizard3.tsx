@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useOptimizedWizard3 } from "@/hooks/useOptimizedWizard3";
-import { sendLeadToCRM } from "@/api/wizard";
+import { createWorkspaceWithFiles } from "@/api/workspace";
 import {
   BasicSetupStep,
   UseCaseStep,
@@ -157,113 +157,44 @@ function ChatbotWizard3() {
       const isDefaultAccent = !primaryColor || primaryColor === defaultAccent;
       const accentColorValue = isDefaultAccent ? "" : (primaryColor || "");
 
-      const urls = data.knowledgeSources?.urls || [];
       const files = data.knowledgeSources?.files || [];
-      const textContent = data.knowledgeSources?.textContent || "";
-      const rawUrl = (data.websiteUrl || urls[0] || "").trim();
+      const rawUrl = (data.websiteUrl || "").trim();
       const firstUrl = rawUrl ? (/^https?:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`) : "";
       const trainingMethod = firstUrl
         ? "Website URL"
         : files.length > 0
           ? "File Upload"
-          : textContent
-            ? "Text Content"
-            : "None";
+          : "None";
 
       // Process use cases
       const useCasesList = data.useCases || [];
       const formattedUseCases = useCasesList.join(", ");
 
-      const structuredData = {
-        name: data.name || "",
-        email: data.email || "",
-        phone_number: data.phone || "",
-        message: data.description || "Looking for AI chatbot integration",
-        company_name: data.companyName || "",
-        service_id: 2,
-        metadata: {
-          brand: "kogents.ai",
-          gclid: data.gclid || null,
-          fbclid: data.fbclid || null,
-          igclid: data.igclid || null,
-          ttclid: data.ttclid || null,
-          fingerprint: data.fingerprint || null,
-          stable_session_id: data.stableSessionId || null,
-          fingerprintdata: data.fingerprintData || null,
-          form_steps: [
-            {
-              fields: [
-                { q: "Bot Name", a: data.botname || "N/A" },
-                { q: "Bot Image", a: avatarIsBase64 ? (avatarName || "") : avatar },
-                { q: "Selected Accent Color", a: isDefaultAccent ? "N/A" : (primaryColor || "N/A") }
-              ],
-              bot_image: {
-                name: avatarName,
-                size: data.appearance?.avatarBlob?.size || 0,
-                type: data.appearance?.avatarBlob?.type || "image/png",
-                url: avatarIsBase64 ? "" : avatar,
-                blob: data.appearance?.avatarBlob?.blob || ""
-              },
-              accent_color: accentColorValue
-            },
-            {
-              fields: [
-                { q: "Company Name", a: data.companyName || "N/A" },
-                { q: "Industry", a: data.industry || "N/A" }
-              ]
-            },
-            {
-              fields: [
-                { q: "Selected Use Cases", a: formattedUseCases || "N/A" }
-              ],
-              selected_options: useCasesList.length > 0 ? useCasesList : ["N/A"]
-            },
-            {
-              fields: [
-                { q: "Training Method", a: trainingMethod },
-                { q: "Website URL", a: firstUrl || "N/A" },
-                { q: "Files Uploaded", a: files.length > 0 ? `${files.length} file(s)` : "None" },
-                { q: "Text Content", a: textContent ? `${textContent.length} characters` : "None" }
-              ],
-              training_method: trainingMethod,
-              website_url: firstUrl,
-              files: files.map((file, index) => ({
-                name: file.name,
-                size: file.size,
-                type: file.type,
-                blob: data.blobData?.trainingFiles?.[index]?.blob || ""
-              }))
-            },
-            {
-              fields: [
-                { q: "Full Name", a: data.name || "N/A" },
-                { q: "Email", a: data.email || "N/A" },
-                { q: "Phone", a: data.phone || "N/A" }
-              ]
-            },
-            {
-              fields: [
-                { q: "Integration Option", a: data.integration?.type || "N/A" }
-              ]
-            }
-          ]
-        },
-        fingerprint: data.fingerprint || "fp-test-67890-xyz",
-        client_ip: data.client_ip || "127.0.0.1",
-        user_agent: navigator.userAgent,
-        session_id: data.stableSessionId || "sess-67890-abc",
-        link: "https://kogents.ai/"
-      };
+      // ================= Workspace API submission (skip Step 1 and Step 3) =================
+      try {
+        const wsFiles: File[] = (data.knowledgeSources?.files || []) as File[];
+        const d: any = data as any;
 
-      console.log("🚀 ===== STARTING BRIEF SUBMISSION =====");
-      
-      const result = await sendLeadToCRM(structuredData);
-      
-      console.log("🔍 ===== BRIEF SUBMISSION RESULT =====");
-      
-      if (result.success) {
-        console.log("✅ Brief submitted to CRM");
-        
+        // Build a strict allowlist payload. Do NOT include any fields from
+        // step 1 (BasicSetupStep) or step 3 (GetUserInfo2 / personal info).
+        // Only include website and company-facing fields and explicitly selected files.
+        const workspacePayload = {
+          userId: String(d.userId || ""),
+          companyName: String(d.companyName || ""),
+          industry: String(d.industry || ""),
+          companySize: String(d.companySize || ""),
+          country: String(d.country || ""),
+          // NOTE: intentionally omitted email / personal info to avoid sending step 3 data
+          description: String(d.description || ""),
+          websiteUrl: firstUrl, // normalized URL only
+          // slug removed - backend no longer expects slug from client
+          files: wsFiles,
+        };
+
+        await createWorkspaceWithFiles(workspacePayload);
+        console.log("✅ Workspace created with files");
+
+        // On success, clear drafts and redirect
         if (typeof window !== 'undefined') {
           try {
             localStorage.removeItem('chatbot-wizard-draft-v3-briefv2');
@@ -274,12 +205,13 @@ function ChatbotWizard3() {
             console.error('Failed to clear localStorage:', error);
           }
         }
-        
         router.push("/thank-you");
-      } else {
-        console.error("❌ Brief submission failed:", result.error);
-        setSubmitError(result.error || "Form submission failed");
+        return;
+      } catch (wsErr) {
+        console.error("❌ Workspace API failed:", wsErr);
+        setSubmitError(wsErr instanceof Error ? wsErr.message : "Workspace submission failed");
         setIsSubmitting(false);
+        return;
       }
 
     } catch (error) {
