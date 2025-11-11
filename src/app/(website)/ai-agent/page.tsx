@@ -3,7 +3,7 @@ export const dynamic = "force-static";
 import HeroSection from '@/components/ai-agent/HeroSection';
 import ProductSection from '@/components/homeCopy/csr/ProductSection';
 import AIAgentSection from '@/components/homeCopy/ssr/AIAgentSection';
-import BenefitsSection from '@/components/homeCopy/csr/BenefitsSection';
+import BenefitsNewSection from '@/components/ai-agent/BenefitsNewSection';
 import WorkflowsSection from '@/components/homeCopy/ssr/WorkflowsSection';
 import FAQSection from '@/components/solutions/csr/FAQSection';
 import AIAgentSlider from '@/components/homeCopy/csr/AIAgentSlider';
@@ -101,30 +101,6 @@ const structuredData = {
 };
 
 export default function HomePage() {
-  const counterData = [
-    {
-      id: 1,
-      target: 93,
-      title: "Smart Tools. Smarter Outcomes",
-      description: "Kogents AI Agents do more than reply, they act.",
-      className: "counter1"
-    },
-    {
-      id: 2,
-      target: 100,
-      title: "Reliable. Adaptive. Always On",
-      description: "All agents are continuously learning from conversations.",
-      className: "counter2"
-    },
-    {
-      id: 3,
-      target: 85,
-      title: "Autonomous Doesn't Mean Isolated",
-      description: "Think of it as a mesh network of AI, tailored to your business.",
-      className: "counter3"
-    }
-  ];
-  
   return (
     <>
     <ScrollLock />
@@ -146,7 +122,7 @@ export default function HomePage() {
           >
             
             <section className="cv">
-              <BenefitsSection counterData={counterData} />
+              <BenefitsNewSection />
             </section>
             <WorkflowsSection />
             <section className="cv">

@@ -62,7 +62,7 @@ const page = () => {
             description:
                 "Every manual workflow slows growth but automation accelerates it.\nKogents AI helps organizations automate business processes and streamline operations with automation, reducing delays and improving accuracy across teams.\nOur business workflow automation and AI-powered workflow automation approach uses digital workflow systems and intelligent task automation to bring structure and clarity to complex work, supporting long-term efficiency and consistent execution.\nBuilt on ISO 9001 practices, Lean Six Sigma principles, and PMI-aligned standards to deliver reliable, scalable enterprise workflow automation solutions and automated task workflows without operational disruption.",
             image: {
-                src: "/assets/img/survey-ai-agent/banner.webp",
+                src: "/assets/img/workflow-automation/banner.webp",
                 alt: "Customer Service AI Agents",
                 width: 800,
                 height: 681,
@@ -102,28 +102,28 @@ const page = () => {
                 benefits={[
                     {
                         id: 1,
-                        icon: "/assets/img/survey-ai-agent/1.svg",
+                        icon: "/assets/img/workflow-automation/benefits/faster-turnaround-responsiveness.svg",
                         title: "Faster Turnaround & Responsiveness",
                         description:
                             "Workflow automation reduces manual tasks and eliminates repetitive work, helping teams act faster, achieve better collaboration, and complete work sooner. With automation triggers and business rule automation, approvals move instantly and decisions progress without delays. This delivers workflow bottleneck reduction and real-time operational visibility.",
                     },
                     {
                         id: 2,
-                        icon: "/assets/img/survey-ai-agent/2.svg",
+                        icon: "/assets/img/workflow-automation/benefits/higher-accuracy-consistency.svg",
                         title: "Higher Accuracy & Consistency",
                         description:
                             "Automated workflows standardize processes and follow predefined rules, minimizing errors and improving reliability across operations. Consistent logic and workflow optimization ensure cleaner handoffs, aligned outcomes, and dependable performance every time.",
                     },
                     {
                         id: 3,
-                        icon: "/assets/img/survey-ai-agent/3.svg",
+                        icon: "/assets/img/workflow-automation/benefits/cost-efficiency.svg",
                         title: "Cost Efficiency",
                         description:
                             "Automation reduces operational effort and improves process standardization, lowering labor costs tied to routine tasks. Teams focus on higher-value work, driving measurable business productivity automation and reducing waste while maintaining output quality.",
                     },
                     {
                         id: 4,
-                        icon: "/assets/img/survey-ai-agent/4.svg",
+                        icon: "/assets/img/workflow-automation/benefits/transparency-control.svg",
                         title: "Transparency & Control",
                         description:
                             "Structured automation increases real-time tracking, audit-ready clarity, and accountability at each step. With defined business rule automation and clear process logic, leaders gain stronger oversight and governance, supported by insights from McKinsey, Harvard Business Review, and the NIST digital innovation framework.",
@@ -197,7 +197,7 @@ const page = () => {
                 differentiators={[
                     {
                         id: 1,
-                        icon: "/assets/img/survey-ai-agent/7.svg",
+                        icon: "/assets/img/workflow-automation/why-kogents/human-guided-automation-control.svg", 
                         title: "Human-Guided Automation Control",
                         description: [
                             "We build automation with human-in-the-loop workflow control so teams remain in command of decisions, exceptions, and approvals. With role-based workflow rules in place, accountability and operational authority are preserved where judgment matters most."
@@ -205,7 +205,7 @@ const page = () => {
                     },
                     {
                         id: 2,
-                        icon: "/assets/img/survey-ai-agent/8.svg",
+                        icon: "/assets/img/workflow-automation/why-kogents/custom-ai-workflows-built-for-your-operations.svg",
                         title: "Custom AI Workflows Built for Your Operations",
                         description: [
                             "Our team supports custom AI workflow deployment aligned to existing systems and operational standards. A modular workflow design approach ensures flexibility and low-risk automation rollouts. This controlled rollout model protects operational stability while introducing scalable automation programs."
@@ -213,7 +213,7 @@ const page = () => {
                     },
                     {
                         id: 3,
-                        icon: "/assets/img/survey-ai-agent/9.svg",
+                        icon: "/assets/img/workflow-automation/why-kogents/operational-visibility-and-security.svg",
                         title: "Operational Visibility and Security",
                         description: [
                             "Operational visibility is standard. With real-time insights and reporting, leaders monitor performance and maintain traceability across activity. Supported by enterprise-grade automation security practices, every workflow operates with structured protection and oversight."
@@ -221,7 +221,7 @@ const page = () => {
                     },
                     {
                         id: 4,
-                        icon: "/assets/img/survey-ai-agent/10.svg",
+                        icon: "/assets/img/workflow-automation/why-kogents/governance-built-into-every-layer.svg",
                         title: "Governance Built Into Every Layer",
                         description: [
                             "We implement automation aligned with ethical automation & audit standards, industry operational best practices bodies, and defined process governance frameworks. The result is automation that remains accountable, transparent, and rooted in long-term operational integrity."
@@ -239,31 +239,31 @@ const page = () => {
                         id: 1,
                         q: "Workflow Discovery and Analysis",
                         a: "We begin with workflow discovery and analysis to understand current processes, decision paths, and execution patterns. Guided by operational transformation principles, we use detailed process blueprinting to remove ambiguity and establish a clear foundation for automation.",
-                        image: "/assets/img/survey-ai-agent/1.webp",
+                        image: "/assets/img/workflow-automation/process/workflow-discovery-and-analysis.webp", 
                     },
                     {
                         id: 2,
                         q: "Automated Process Design",
                         a: "We conduct automated process design to configure logic flows, handoffs, and exception handling. Aligned with Prosci/ADKAR principles, this phase strengthens adoption readiness and ensures controlled decision pathways before execution begins.",
-                        image: "/assets/img/survey-ai-agent/2.webp",
+                        image: "/assets/img/workflow-automation/process/automated-process-design.webp",
                     },
                     {
                         id: 3,
                         q: "Modeling & Testing Workflows",
                         a: "We perform modeling and testing workflows in structured workflow testing environments to validate logic and data flow. This confirms readiness and aligns automation with enterprise governance models to maintain reliability and safeguard operational continuity.",
-                        image: "/assets/img/survey-ai-agent/3.webp",
+                        image: "/assets/img/workflow-automation/process/modeling-testing-workflows.webp",
                     },
                     {
                         id: 4,
                         q: "Deploy Automation Systems",
                         a: "Once validated, we deploy automation systems using a measured rollout approach aligned with internal controls. This maintains accountability and stable delivery across teams and systems.",
-                        image: "/assets/img/survey-ai-agent/4.webp",
+                        image: "/assets/img/workflow-automation/process/deploy-automation-systems.webp",
                     },
                     {
                         id: 5,
                         q: "Monitor, Refine, and Scale",
                         a: "After launch, we monitor, refine, and scale workflows through continuous optimization, ensuring ongoing performance and alignment with growing business needs.",
-                        image: "/assets/img/survey-ai-agent/5.webp",
+                        image: "/assets/img/workflow-automation/process/monitor-refine-and-scale.webp",
                     },
                 ]}
                 rightImage="/assets/img/faq.png"
