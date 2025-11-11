@@ -67,7 +67,7 @@ const OurTeam = () => {
               {/* <span className="inline-block lg:block"></span>With Tremendous Benefits */}
             </h2>
             <p
-              className="maxWidth39 mb-16 text-center paraColor subHeading"
+              className="Width39 mb-16 text-center paraColor subHeading"
               // 
             >
               We are a cross-functional team of AI engineers, product operators,

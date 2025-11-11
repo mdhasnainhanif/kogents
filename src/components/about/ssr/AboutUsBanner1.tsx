@@ -41,7 +41,7 @@ const AboutUsBanner1: React.FC<AboutUsBanner1Props> = ({
                     {heading}
                     <span className="inline-block lg:block"> </span>
                 </h2>
-                <p className="maxWidth39 mx-auto mt-2 text-base text-center md:text-xl text-b-100 mb-1 text-light">
+                <p className="maxWidth48 mx-auto mt-2 text-base text-center md:text-xl text-b-100 mb-1 text-light">
                     {description.split('\n').map((line, idx) => (
                         <span key={idx}>
                             {line}

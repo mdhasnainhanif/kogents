@@ -42,11 +42,11 @@ html {
   align-items: center;
 }
 
-.breadcrumb-item + .breadcrumb-item {
+.breadcrumb-item+.breadcrumb-item {
   padding-left: 0.5rem;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
   display: inline-block;
   padding-right: 0.5rem;
   color: #6c757d;
@@ -121,7 +121,7 @@ ul.list-4 {
 .heading1,
 .heading2,
 .list1 li,
-ul.custom-tabs .nav-link.custom-tab-link.active + .list01 li {
+ul.custom-tabs .nav-link.custom-tab-link.active+.list01 li {
   color: #fff;
 }
 
@@ -159,7 +159,7 @@ a {
   color: #000;
 }
 
-.buttonAnimation2.green > svg {
+.buttonAnimation2.green>svg {
   fill: #000;
 }
 
@@ -222,7 +222,7 @@ a {
   width: 18.1875rem;
 }
 
-.chartMain > h2 {
+.chartMain>h2 {
   left: 14%;
   text-align: center;
 }
@@ -296,7 +296,7 @@ ul.arrowPointUl {
   margin-bottom: 8.4px !important;
 }
 
-ul.arrowPointUl > li::before {
+ul.arrowPointUl>li::before {
   top: 11.2px;
 }
 
@@ -477,11 +477,11 @@ ul.custom-tabs .nav-link.custom-tab-link:hover {
   padding-left: 1.25rem;
 }
 
-.faqUl > li {
+.faqUl>li {
   flex-wrap: wrap;
 }
 
-.faqUl > li::before,
+.faqUl>li::before,
 .summarydivmobile {
   display: none;
 }
@@ -609,7 +609,7 @@ ul.custom-tabs li.active1 #imageCounter3 {
   line-height: 1.6;
 }
 
-.table-list li > a {
+.table-list li>a {
   color: #fff;
   font-size: 1rem;
   font-weight: 500;
@@ -619,7 +619,7 @@ ul.custom-tabs li.active1 #imageCounter3 {
 
 .active_url_bot_tab span,
 .active_url_bot_tab svg,
-.table-list li > a:hover {
+.table-list li>a:hover {
   color: #5d51af;
 }
 
@@ -668,7 +668,7 @@ ul.custom-tabs li.active1 #imageCounter3 {
   display: grid;
 }
 
-.socialshare-div > a {
+.socialshare-div>a {
   color: #fff;
   border-radius: 50%;
   padding: 0.6rem;
@@ -676,27 +676,27 @@ ul.custom-tabs li.active1 #imageCounter3 {
   z-index: 9;
 }
 
-.socialshare-div > a:first-child {
+.socialshare-div>a:first-child {
   background-color: #1877f2;
 }
 
-.socialshare-div > a:nth-child(2) {
+.socialshare-div>a:nth-child(2) {
   background-color: #4b4b4b;
 }
 
-.socialshare-div > a:nth-child(3) {
+.socialshare-div>a:nth-child(3) {
   background-color: #0077b5;
 }
 
-.socialshare-div > a:nth-child(4) {
+.socialshare-div>a:nth-child(4) {
   background-color: #25d366;
 }
 
-.socialshare-div > a:nth-child(5) {
+.socialshare-div>a:nth-child(5) {
   background-color: #bb001b;
 }
 
-.blog-list-slider .owl-nav > button {
+.blog-list-slider .owl-nav>button {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -704,15 +704,15 @@ ul.custom-tabs li.active1 #imageCounter3 {
   border-radius: 50%;
 }
 
-.blog-list-slider .owl-nav > button.owl-prev {
+.blog-list-slider .owl-nav>button.owl-prev {
   left: -35px;
 }
 
-.blog-list-slider .owl-nav > button.owl-next {
+.blog-list-slider .owl-nav>button.owl-next {
   right: -90px;
 }
 
-.blog-list-slider .owl-nav > button > span {
+.blog-list-slider .owl-nav>button>span {
   border-radius: 50%;
   padding: 0.8rem 1.3rem;
   background-color: #ff4772;
@@ -730,13 +730,13 @@ ul.custom-tabs li.active1 #imageCounter3 {
   color: #fff;
 }
 
-.blog-content ol > li::marker,
-.blog-content ul > li::marker {
+.blog-content ol>li::marker,
+.blog-content ul>li::marker {
   color: #7361e5;
 }
 
 .blog-content audio,
-.blog-content p > img,
+.blog-content p>img,
 .blog-content video {
   margin-bottom: 1.5rem;
 }
@@ -821,7 +821,7 @@ ul.custom-tabs li.active1 #imageCounter3 {
   font-weight: 500;
 }
 
-.blog-date > svg {
+.blog-date>svg {
   width: 1rem;
 }
 
@@ -1100,7 +1100,7 @@ section.bgpurple {
   resize: none;
 }
 
-.chatbot-content .mb-3 > label {
+.chatbot-content .mb-3>label {
   margin-bottom: 0.325rem;
 }
 
@@ -1136,8 +1136,7 @@ section.bgpurple {
   height: 14px;
   pointer-events: none;
   transform: translateY(-50%);
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>")
-    center/18px no-repeat;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") center/18px no-repeat;
 }
 
 .app-btn:hover,
@@ -1252,7 +1251,7 @@ ul.chatbot_upload_files li {
 
 /* LightRays in hero section - start from top 0 with transparent background */
 .heroSection .lightRays,
-.heroSection ~ * .lightRays,
+.heroSection~* .lightRays,
 .boxesBg .lightRays {
   top: 0 !important;
   background: transparent !important;
@@ -1260,11 +1259,9 @@ ul.chatbot_upload_files li {
 
 /* Ensure background pattern is visible behind LightRays */
 .boxesBg {
-  background-image: linear-gradient(
-      to bottom,
+  background-image: linear-gradient(to bottom,
       rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
+      transparent 1px),
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 20px 20px, 20px 20px;
   background-repeat: repeat, repeat;
@@ -1339,7 +1336,7 @@ ul.chatbot_upload_files li {
   margin-bottom: 1rem;
 }
 
-.summarydiv > div {
+.summarydiv>div {
   color: #fff;
   font-size: 18px;
   line-height: 1.5;
@@ -1381,6 +1378,7 @@ ul.chatbot_upload_files li {
 }
 
 @media (max-width: 650px) {
+
   body,
   html {
     overflow-x: hidden;
@@ -1406,7 +1404,7 @@ ul.chatbot_upload_files li {
     flex-direction: row;
   }
 
-  .socialshare-div > a {
+  .socialshare-div>a {
     z-index: 9;
   }
 
@@ -1514,11 +1512,11 @@ ul.chatbot_upload_files li {
     margin: 1rem 0 !important;
   }
 
-  .teamCards div > img {
+  .teamCards div>img {
     width: 100%;
   }
 
-  div.teamCards .flex > .flex-col {
+  div.teamCards .flex>.flex-col {
     padding: 0.8rem 1rem 0 !important;
   }
 
@@ -1538,7 +1536,7 @@ ul.chatbot_upload_files li {
     color: #fff !important;
   }
 
-  .mobileMenu button > svg > path {
+  .mobileMenu button>svg>path {
     fill: #6255af;
     stroke: #6255af;
   }
@@ -1555,7 +1553,7 @@ ul.chatbot_upload_files li {
     padding-top: 2rem !important;
   }
 
-  div.teamCards .flex > p {
+  div.teamCards .flex>p {
     padding: 0.3rem 0 0 !important;
   }
 }
@@ -1569,7 +1567,7 @@ ul.chatbot_upload_files li {
     padding-bottom: 3rem !important;
   }
 
-  .heroItems > span.buttonAnimation {
+  .heroItems>span.buttonAnimation {
     margin: 0 !important;
   }
 
@@ -2196,18 +2194,14 @@ a.aboutIconPhone {
   }
 
   .corporate-values {
-    mask-image: linear-gradient(
-      90deg,
-      #fff0 15%,
-      #000000 50%,
-      #fff0 85%
-    ) !important;
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      #fff0 -15%,
-      #000000 50%,
-      #fff0 100%
-    ) !important;
+    mask-image: linear-gradient(90deg,
+        #fff0 15%,
+        #000000 50%,
+        #fff0 85%) !important;
+    -webkit-mask-image: linear-gradient(90deg,
+        #fff0 -15%,
+        #000000 50%,
+        #fff0 100%) !important;
   }
 
   .chatbot-left-content-wrapper {
@@ -2297,13 +2291,11 @@ a.aboutIconPhone {
   border-radius: 0.5rem;
   margin: 0 auto;
   box-shadow: 0 0 13px #5d51af, inset 0 0 13px #9586f7;
-  background: linear-gradient(
-    332.81deg,
-    rgba(238, 235, 255, 0.08) 0,
-    rgba(238, 235, 255, 0.04) 0,
-    rgba(238, 235, 255, 0.1) 91.81%,
-    rgba(238, 235, 255, 0.08) 100%
-  );
+  background: linear-gradient(332.81deg,
+      rgba(238, 235, 255, 0.08) 0,
+      rgba(238, 235, 255, 0.04) 0,
+      rgba(238, 235, 255, 0.1) 91.81%,
+      rgba(238, 235, 255, 0.08) 100%);
 }
 
 .bannerFormTextArea {
@@ -2496,11 +2488,24 @@ select.form-control {
 .maxWidth33 {
   max-width: 33rem;
 }
-.tech-track > div > span {
+
+.tech-track>div>span {
   background-color: #5d51af;
 }
-.tech-track > div > span {
+
+.tech-track>div>span {
   background: #322c51;
   border: 1px solid #5d51af !important;
   color: #fff;
+}
+
+.maxWidth50 {
+  max-width: 50rem;
+}
+
+.maxWidth48 {
+  max-width: 48rem;
+}
+.Width39{
+  max-width: 39rem;
 }
