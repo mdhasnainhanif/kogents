@@ -58,8 +58,14 @@ export default function BenefitsSection() {
                   className="d-flex align-items-center gap-3 mt-2 position-relative flex-md-nowrap flex-wrap appstoreMain"
                   style={{ width: "100%" }}
                 >
-                  <Image height={100} width={160} src="/assets/img/app-section/6.png" alt="App Store" />
-                  <Image height={100} width={160} src="/assets/img/app-section/7.png" alt="Google Play" />
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Image height={100} width={160} src="/assets/img/app-section/6.png" alt="App Store" />
+                    <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Image height={100} width={160} src="/assets/img/app-section/7.png" alt="Google Play" />
+                    <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -52,24 +52,30 @@ const KogentBenefits = () => {
                                     className="d-flex align-items-center gap-3 mt-2 position-relative flex-md-nowrap flex-wrap home appstoreMain"
                                     style={{ width: "100%" }}
                                 >
-                                    <Image
-                                        loading="lazy"
-                                        width={160}
-                                        src="/assets/img/app-section/6.png"
-                                        alt="App Store"
-                                        height={60}
-                                        style={{ width: '160px', height: '60px', objectFit: 'contain', marginTop: '10px' }}
-                                        priority={false}
-                                    />
-                                    <Image
-                                        loading="lazy"
-                                        width={160}
-                                        src="/assets/img/app-section/7.png"
-                                        alt="Google Play"
-                                        height={60}
-                                        style={{ width: '160px', height: '60px', objectFit: 'contain', marginTop: '10px' }}
-                                        priority={false}
-                                    />
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                        <Image
+                                            loading="lazy"
+                                            width={160}
+                                            src="/assets/img/app-section/6.png"
+                                            alt="App Store"
+                                            height={60}
+                                            style={{ width: '160px', height: '60px', objectFit: 'contain', marginTop: '10px' }}
+                                            priority={false}
+                                        />
+                                        <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                                    </div>
+                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                        <Image
+                                            loading="lazy"
+                                            width={160}
+                                            src="/assets/img/app-section/7.png"
+                                            alt="Google Play"
+                                            height={60}
+                                            style={{ width: '160px', height: '60px', objectFit: 'contain', marginTop: '10px' }}
+                                            priority={false}
+                                        />
+                                        <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

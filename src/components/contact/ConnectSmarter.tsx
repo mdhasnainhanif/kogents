@@ -52,18 +52,24 @@ const ConnectSmarter = () => {
                   className="d-flex align-items-center gap-3 mt-2 position-relative home flex-md-nowrap mt-3 flex-wrap appstoreMain"
                   style={{ width: "100%" }}
                 >
-                  <Image loading="lazy"
-                    width={160}
-                    height={100}
-                    src="/assets/img/app-section/6.png"
-                    alt="icon"
-                  />
-                  <Image loading="lazy"
-                    width={160}
-                    height={100}
-                    src="/assets/img/app-section/7.png"
-                    alt="icon"
-                  />
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Image loading="lazy"
+                      width={160}
+                      height={100}
+                      src="/assets/img/app-section/6.png"
+                      alt="icon"
+                    />
+                    <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Image loading="lazy"
+                      width={160}
+                      height={100}
+                      src="/assets/img/app-section/7.png"
+                      alt="icon"
+                    />
+                    <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                  </div>
                 </div>
               </div>
             </div>

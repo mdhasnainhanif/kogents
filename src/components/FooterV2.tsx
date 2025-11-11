@@ -50,22 +50,28 @@ const FooterV2 = () => {
               innovation across industries.
             </p>
             <div className="app-download-buttons">
-              <a href="#" className="app-btn">
-                <Image
-                  src="/assets/img/app-section/6.png"
-                  alt="Google Play"
-                  width={140}
-                  height={50}
-                />
-              </a>
-              <a href="#" className="app-btn">
-                <Image
-                  src="/assets/img/app-section/7.png"
-                  alt="App Store"
-                  width={140}
-                  height={50}
-                />
-              </a>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <a href="#" className="app-btn">
+                  <Image
+                    src="/assets/img/app-section/6.png"
+                    alt="Google Play"
+                    width={140}
+                    height={50}
+                  />
+                </a>
+                <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <a href="#" className="app-btn">
+                  <Image
+                    src="/assets/img/app-section/7.png"
+                    alt="App Store"
+                    width={140}
+                    height={50}
+                  />
+                </a>
+                <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+              </div>
             </div>
           </div>
           <div className="footer-engagement">

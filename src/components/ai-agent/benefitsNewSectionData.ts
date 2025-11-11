@@ -42,7 +42,7 @@ export const benefitsNewSectionData: BenefitsNewSectionData = {
       stats: [
         {
           value: "52%",
-          label: "increase lead conversions"
+          label: "Increase Lead Conversions"
         },
         {
           value: "3x",

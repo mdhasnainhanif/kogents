@@ -45,18 +45,24 @@ const AppSection = () => {
                     className="d-flex align-items-center mt-3 gap-3 appstoreMain position-relative home flex-md-nowrap flex-wrap"
                     style={{ width: "100%" }}
                   >
-                    <Image
-                      width={160}
-                      height={100}
-                      src="/assets/img/app-section/6.png"
-                      alt="icon"
-                    />
-                    <Image
-                      width={160}
-                      height={100}
-                      src="/assets/img/app-section/7.png"
-                      alt="icon"
-                    />
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <Image
+                        width={160}
+                        height={100}
+                        src="/assets/img/app-section/6.png"
+                        alt="icon"
+                      />
+                      <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <Image
+                        width={160}
+                        height={100}
+                        src="/assets/img/app-section/7.png"
+                        alt="icon"
+                      />
+                      <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+                    </div>
                   </div>
                 </div>
               </div>
