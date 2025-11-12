@@ -115,6 +115,10 @@ ul.list-4 {
   padding: 0;
 }
 
+.blogcard-div{
+  height: 74vh;
+}
+
 .blog-content table tr td a,
 .heading-3,
 .heading-4,
