@@ -80,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
+    <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0"/>
     <link
       rel="preload"
       href="/assets/fonts/Satoshi-Variable.ttf"

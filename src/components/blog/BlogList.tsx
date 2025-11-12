@@ -209,8 +209,8 @@ const BlogListOwlCarousel: React.FC = () => {
                   key={post.id}
                   className={
                     isCarousel
-                      ? "p-6 border rounded-lg border-b-600 bg-gd-tertiary mx-2"
-                      : "p-6 border rounded-lg border-b-600 bg-gd-tertiary"
+                      ? "p-6 border rounded-lg border-b-600 bg-gd-tertiary mx-2 blogcard-div"
+                      : "p-6 border rounded-lg border-b-600 bg-gd-tertiary blogcard-div"
                   }
                 >
                   <Image
