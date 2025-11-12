@@ -65,26 +65,6 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
     const [isWidgetLoading, setIsWidgetLoading] = useState<boolean>(true);
     
-    // ✅ Get workspace _id from localStorage or data for widget script
-    const [workspaceId, setWorkspaceId] = useState<string | null>(null);
-    
-    useEffect(() => {
-      // Try to get from localStorage first (most recent)
-      if (typeof window !== 'undefined') {
-        const storedId = localStorage.getItem('workspace_id');
-        if (storedId) {
-          setWorkspaceId(storedId);
-          console.log('✅ Loaded workspace ID from localStorage:', storedId);
-          return; // Exit early if found in localStorage
-        }
-      }
-      // Fallback to data prop
-      if ((data as any).workspaceId) {
-        setWorkspaceId((data as any).workspaceId);
-        console.log('✅ Loaded workspace ID from data:', (data as any).workspaceId);
-      }
-    }, [data]);
-
     // Initialize tracking parameters
     useEffect(() => {
       const initializeTracking = () => {
@@ -206,6 +186,139 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
 
       initializeFingerprint();
     }, []);
+
+    // Load Kogents Chat Widget script with dynamic key
+    useEffect(() => {
+      if (typeof window === 'undefined') return;
+
+      // Get dynamic key from localStorage (stored after API response) or use default
+      const getWidgetKey = (): string => {
+        // Try localStorage first (most recent workspace_id)
+        if (typeof window !== 'undefined') {
+          const storedId = localStorage.getItem('workspace_id');
+          if (storedId) {
+            console.log('✅ Using workspace ID from localStorage:', storedId);
+            return storedId;
+          }
+        }
+        // Fallback to data prop
+        if ((data as any).workspaceId) {
+          console.log('✅ Using workspace ID from data:', (data as any).workspaceId);
+          return (data as any).workspaceId;
+        }
+        // Default fallback
+        return "690356bd59e93d9080d14de0";
+      };
+
+      const dynamicKey = getWidgetKey();
+      const w = window as any;
+      const CURRENT_KEY_STORAGE = '__kogents_current_key__';
+
+      // Load widget function
+      const loadWidget = (key: string) => {
+        console.log('🔵 Loading widget with key:', key);
+
+        // Clean up previous instance if key changed
+        const previousKey = w[CURRENT_KEY_STORAGE];
+        if (previousKey && previousKey !== key) {
+          console.log('🔄 Key changed, cleaning up previous widget');
+          
+          // Remove old script
+          const existingScript = document.getElementById('kogents-chat-widget');
+          if (existingScript) {
+            existingScript.remove();
+          }
+
+          // Reset global object
+          if (w.KogentsChat) {
+            delete w.KogentsChat;
+          }
+
+          // Remove old widget elements
+          const oldWidgets = document.querySelectorAll('[class*="kogents"], [id*="kogents-widget"], iframe[src*="kogents"]');
+          oldWidgets.forEach((widget) => {
+            if (widget.id !== 'kogents-chat-widget-container') {
+              widget.remove();
+            }
+          });
+        }
+
+        // Check if already loaded with same key
+        if (w[CURRENT_KEY_STORAGE] === key && w.KogentsChat) {
+          console.log('ℹ️ Widget already loaded with same key');
+          setIsWidgetLoading(false);
+          return;
+        }
+
+        // Check if script already exists
+        const existingScript = document.getElementById('kogents-chat-widget');
+        if (existingScript && w[CURRENT_KEY_STORAGE] === key) {
+          console.log('ℹ️ Script already exists with same key');
+          setIsWidgetLoading(false);
+          return;
+        }
+
+        // Store current key
+        w[CURRENT_KEY_STORAGE] = key;
+
+        // Load new widget
+        (function (d: Document, s: string, id: string, widgetKey: string) {
+          const kogentsChat = ((window as any).KogentsChat = function (c: any) {
+            (kogentsChat as any)._ = (kogentsChat as any)._ || [];
+            (kogentsChat as any)._!.push(c);
+          }) as any;
+          (kogentsChat as any)._ = [];
+
+          const e = d.createElement(s);
+          e.async = true;
+          e.id = id;
+          e.src = `https://api-staging.kogents.com/widget/embed.js?key=${widgetKey}`;
+          
+          e.onload = () => {
+            console.log('✅ Widget loaded successfully with key:', widgetKey);
+            setIsWidgetLoading(false);
+            
+            // Cleanup duplicates after load
+            setTimeout(() => {
+              const widgets = document.querySelectorAll('[class*="kogents"], iframe[src*="kogents"]');
+              const container = document.getElementById('kogents-chat-widget-container');
+              
+              if (widgets.length > 1 && container) {
+                console.log('🧹 Cleaning up duplicate widgets');
+                let foundFirst = false;
+                widgets.forEach((widget) => {
+                  if (container.contains(widget)) {
+                    if (!foundFirst) {
+                      foundFirst = true;
+                    } else {
+                      widget.remove();
+                    }
+                  } else if (!foundFirst) {
+                    container.appendChild(widget as Node);
+                    foundFirst = true;
+                  } else {
+                    widget.remove();
+                  }
+                });
+              }
+            }, 2000);
+          };
+          
+          e.onerror = () => {
+            console.error('❌ Failed to load widget with key:', widgetKey);
+            (window as any)[CURRENT_KEY_STORAGE] = null; // Allow retry
+            setIsWidgetLoading(false);
+          };
+
+          const t = d.getElementsByTagName(s)[0];
+          if (t && t.parentNode) {
+            t.parentNode.insertBefore(e, t);
+          }
+        })(document, "script", "kogents-chat-widget", key);
+      };
+
+      loadWidget(dynamicKey);
+    }, [data]); // Re-run when data changes (to catch workspaceId updates)
 
     // Function to capture and console log form data
     const captureFormData = () => {
@@ -553,33 +666,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                   </div>
                 )}
 
-                {/* Load chat widget script */}
-                <Script
-                  key={workspaceId || 'default'} // Force reload when workspaceId changes
-                  style={{width:400 }}
-                  id="kogents-chat-widget"
-                  strategy="afterInteractive"
-                  src={workspaceId 
-                    ? `https://api-staging.kogents.com/widget/embed.js?key=${workspaceId}`
-                    : "https://api-staging.kogents.com/widget/embed.js?key=690e30f9e2abcb2b1219c7b4" // Fallback to default
-                  }
-                  onLoad={() => {
-                    setIsWidgetLoading(false);
-                    // Center the widget after it loads
-                    const widget = document.getElementById('kogents-chat-widget') || 
-                                  document.querySelector('[id*="kogents"]') ||
-                                  document.querySelector('[class*="kogents"]');
-                    if (widget) {
-                      const widgetElement = widget as HTMLElement;
-                      widgetElement.style.position = 'relative';
-                      widgetElement.style.margin = 'auto';
-                    }
-                  }}
-                  onError={() => {
-                    setIsWidgetLoading(false);
-                    console.error('Failed to load chat widget script');
-                  }}
-                />
+                {/* Widget script loaded by useEffect above */}
               </div>
               {/* <img
                 className="img-fluid"
