@@ -248,8 +248,23 @@ const URLManagementSection = ({
   urls: string[];
   onUrlsChange: (urls: string[]) => void;
 }) => {
-  const [newUrl, setNewUrl] = useState("");
+  // Initialize with first URL if it exists, otherwise empty string
+  const [newUrl, setNewUrl] = useState(urls[0] || "");
   const [urlError, setUrlError] = useState("");
+
+  // Sync newUrl with urls prop when it changes (e.g., when switching tabs)
+  useEffect(() => {
+    // If there's a URL in the array, use it; otherwise keep current input
+    if (urls.length > 0 && urls[0]) {
+      // Only update if the current newUrl is empty or different
+      if (!newUrl || newUrl !== urls[0]) {
+        setNewUrl(urls[0]);
+      }
+    } else if (urls.length === 0 && newUrl) {
+      // If URLs array is cleared but we have input, keep the input
+      // Don't clear it
+    }
+  }, [urls]);
 
   const validateUrl = (url: string): boolean => {
     try {
@@ -276,13 +291,19 @@ const URLManagementSection = ({
 
     const finalUrl = trimmedUrl.startsWith('http') ? trimmedUrl : `https://${trimmedUrl}`;
     
+    // If URL already exists in array, just update it
     if (urls.includes(finalUrl)) {
-      setUrlError("This URL has already been added");
+      // URL already exists, no need to add again
+      setUrlError("");
       return;
     }
 
-    onUrlsChange([...urls, finalUrl]);
-    setNewUrl("");
+    // Replace the first URL or add new one
+    if (urls.length > 0) {
+      onUrlsChange([finalUrl]);
+    } else {
+      onUrlsChange([finalUrl]);
+    }
     setUrlError("");
   }, [newUrl, urls, onUrlsChange]);
 
@@ -293,11 +314,17 @@ const URLManagementSection = ({
 
   const handleBlur = () => {
     const trimmed = newUrl.trim();
-    if (!trimmed) return;
+    if (!trimmed) {
+      // If input is cleared, update the URLs array to be empty
+      if (urls.length > 0) {
+        onUrlsChange([]);
+      }
+      return;
+    }
     if (!validateUrl(trimmed)) return;
     const finalUrl = trimmed.startsWith('http') ? trimmed : `https://${trimmed}`;
-    if (urls.includes(finalUrl)) return;
-    onUrlsChange([finalUrl, ...urls]);
+    // Update the URLs array with the new URL
+    onUrlsChange([finalUrl]);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -324,13 +351,6 @@ const URLManagementSection = ({
                 urlError ? "border-red-500" : "border-gray-300"
               }`}
             />
-          {/* <button
-            onClick={addUrl}
-            disabled={!newUrl.trim()}
-            className="bg-purple-600 text-white hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center paperPlaneIconBtn"
-            >
-            <PaperPlaneIcon />
-          </button> */}
           </div>
         </div>
           <div className="d-block">
