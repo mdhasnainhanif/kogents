@@ -846,20 +846,20 @@ header ul {
     height: 100vh;
   }
 
-  .mb-1.headingSizeContact{
+  .mb-1.headingSizeContact {
     margin-bottom: 0rem !important;
   }
 
-  .appMainFirst p.text-light.mt-2{
+  .appMainFirst p.text-light.mt-2 {
     margin-top: 1.25rem !important;
     padding-top: 0rem !important;
   }
 
-  .supportText.mt-2{
+  .supportText.mt-2 {
     margin-top: 1.25rem !important;
   }
 
-  .contactFormMain > p{
+  .contactFormMain>p {
     margin-top: 1.25rem;
   }
 
@@ -2942,6 +2942,10 @@ ul.arrowPointUl>li {
 .newBg {
   background: #0c091d;
   border-top: 0.1px solid #221f33;
+}
+
+.newBgTwo {
+  background: #0c091d;
 }
 
 .appMain.not::before,
