@@ -267,7 +267,7 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
 
   return (
     <div
-      className="pb-0 lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('img/bc/faq-bg.png')] faq-bg"
+      className="sectionPadding bg-center bg-no-repeat bg-cover bg-[url('img/bc/faq-bg.png')] faq-bg"
       id="faqSection"
     >
       <div className="container px-5 mx-auto xl:px-0">
@@ -329,15 +329,17 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, showLoadMore = false }) =
 
               <p className="m-0 text-light">or</p>
 
-              <Link href="/chatbot/briefv2">
               <button
                 className="buttonAnimation2 newOrBtn flex justify-center items-center gap-2 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900 width_fit open-modal-btn"
                 type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openModal();
+                }}
               >
                 Connect With AI Agent
                 <ArrowRightIcon />
               </button>
-              </Link>
             </div>
           </div>
         ) : (

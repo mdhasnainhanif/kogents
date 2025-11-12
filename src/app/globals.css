@@ -1831,11 +1831,11 @@ a.aboutIconPhone {
 }
 
 .footer-top-container {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
   gap: 60px;
   align-items: start;
 }
@@ -1941,7 +1941,7 @@ a.aboutIconPhone {
 }
 
 .footer-grid {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
@@ -2004,10 +2004,28 @@ a.aboutIconPhone {
 }
 
 .footer-bottom-container {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
+}
+
+div.awardSectionFooter .col-lg-12{
+  gap: 0.5rem !important;
+}
+
+div.awardSectionFooter .col-lg-12 img{
+  width: 100%;
+  max-width: 6rem;
+  height: auto;
+}
+
+.awardSectionFooter .buttonAnimation{
+  display: none;
+}
+
+div.awardSectionFooter .col-lg-12 img:last-child{
+  display: none;
 }
 
 .copyright-text {
@@ -2109,6 +2127,10 @@ a.aboutIconPhone {
 }
 
 @media (max-width: 576px) {
+  .flexMobile{
+    display: flex;
+    gap: 0.5rem;
+  }
   .w56 {
     width: 100%;
   }
