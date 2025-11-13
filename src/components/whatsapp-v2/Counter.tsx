@@ -6,7 +6,7 @@ interface CounterState {
     resolutionRate: number;
     roi: number;
 }
-const Counter: React.FC = () => {
+const Counter: React.FC<{ className?: string }> = ({ className }) => {
     const data = {
         responseTime: 10,
         supportTickets: 24,
@@ -85,7 +85,7 @@ const Counter: React.FC = () => {
         return () => clearTimeout(timer);
     }, [hasAnimated]);
     return (
-        <div className="sectionPadding py-16 newBgTwo" ref={counterRef}>
+        <div className={`sectionPadding py-16 newBgTwo ${className}`} ref={counterRef}>
             <div className="container">
                 <div className="counterBg">
                     <div className="row justify-content-center">

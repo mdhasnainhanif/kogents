@@ -82,7 +82,7 @@ const HeroSection = () => {
                     </div> */}
                     <section className="newSectionSlider new pb-0 logoSlideSection">
                         <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">
-                            <div className="inline-flex logo_items animate-slides">
+                            <div className="inline-flex logo_items animate-slides whatsappBrandSlider">
                                 {brandImages.map((brandNum, index) => (
                                     <Image
                                         key={`brand-${brandNum}-${index}`}

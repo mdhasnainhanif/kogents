@@ -1316,6 +1316,9 @@ ul.chatbot_upload_files li {
 }
 
 @media (max-width: 992px) {
+  div.whatsappBrandSlider{
+    display: inline-flex !important;
+  }
   .solutionFaq ul li.custom-nav1 .nav-link {
     width: 100%;
   }
@@ -2143,6 +2146,9 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 576px) {
+  div.salesSeamless{
+    padding: 2.5rem 0.625rem !important;
+  }
   .salesCardsBg{
     display: none;
   }

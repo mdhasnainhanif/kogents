@@ -100,10 +100,11 @@ export default function HomePage() {
             <div className="relative w-full min-h-screen">
                 <div className="relative z-10">
                     <HeroSection />
-                    <Counter />
+                    <Counter className='pb-0' />
                     <WhatsappAgentSection />
                     <Engagement />
                     <ClientTestimonial
+                    className='pt-0'
                         tag="Reviews"
                         heading="Client Testimonails"
                         description=""
