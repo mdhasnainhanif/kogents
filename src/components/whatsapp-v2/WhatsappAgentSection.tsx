@@ -5,7 +5,7 @@ const WhatsappAgentSection = () => {
     return (
         <>
             <section
-                className="sectionPadding bg-center bg-no-repeat bg-cover newBgTwo"
+                className="sectionPadding bg-center bg-no-repeat bg-cover newBgTwo "
                 id="WhatsappAgentSection"
             >
                 <div className="container">

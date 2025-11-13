@@ -2146,6 +2146,19 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 576px) {
+  #WhatsappAgentSection{
+    padding-bottom: 0rem;
+  }
+  .marginTop>img{
+    display: none;
+  }
+  div.marginTop{
+    margin-top: 0 !important;
+  }
+  div.whatsappNewServicesCard{
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+  }
   div.salesSeamless{
     padding: 2.5rem 0.625rem !important;
   }
