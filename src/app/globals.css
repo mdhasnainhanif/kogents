@@ -115,7 +115,7 @@ ul.list-4 {
   padding: 0;
 }
 
-.blogcard-div{
+.blogcard-div {
   height: 74vh;
 }
 
@@ -2014,21 +2014,21 @@ a.aboutIconPhone {
   text-align: center;
 }
 
-div.awardSectionFooter .col-lg-12{
+div.awardSectionFooter .col-lg-12 {
   gap: 0.5rem !important;
 }
 
-div.awardSectionFooter .col-lg-12 img{
+div.awardSectionFooter .col-lg-12 img {
   width: 100%;
   max-width: 6rem;
   height: auto;
 }
 
-.awardSectionFooter .buttonAnimation{
+.awardSectionFooter .buttonAnimation {
   display: none;
 }
 
-div.awardSectionFooter .col-lg-12 img:last-child{
+div.awardSectionFooter .col-lg-12 img:last-child {
   display: none;
 }
 
@@ -2131,17 +2131,17 @@ div.awardSectionFooter .col-lg-12 img:last-child{
 }
 
 @media (max-width: 576px) {
-<<<<<<< HEAD
-  #benefitsSection {
-    text-align: center;
-=======
-  .flexMobile{
+  .flexMobile {
     display: flex;
     gap: 0.5rem;
   }
+
+  #benefitsSection {
+    text-align: center;
+  }
+
   .w56 {
     width: 100%;
->>>>>>> 583cb1d0648b8bf24a4fda341a5340129ed2c797
   }
 
   .platformsPageCustomerServiceCard {
