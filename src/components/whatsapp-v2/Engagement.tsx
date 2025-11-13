@@ -9,6 +9,15 @@ const Engagement = () => {
                 <div className="row justify-content-center rowGap">
                     <div className="col-lg-10 col-xl-10 col-sm-12 col-12">
                         <div className="row salesSeamless">
+                            <div className="salesCardsBg">
+                                <Image
+                                    src="/assets/img/whatsapp-v2/salse_cards_bg.png"
+                                    alt="salesSeamlessContent"
+                                    className="w-100"
+                                    width={417}
+                                    height={512}
+                                />
+                            </div>
                             <div className="col-lg-7 col-md-6 col-12">
                                 <div className='salesSeamlessContent'>
                                     <span className="buttonAnimation width_fit green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">Seamless Sales</span>
@@ -35,8 +44,8 @@ const Engagement = () => {
                                     src="/assets/img/whatsapp-v2/user_engagmnet.webp"
                                     alt="salesSeamlessContent"
                                     className="w-100"
-                                    width={576}
-                                    height={376}
+                                    width={365}
+                                    height={409}
                                 />
                             </div>
                             <div className="col-lg-8 col-md-8 col-12">
@@ -64,8 +73,8 @@ const Engagement = () => {
                                     src="/assets/img/whatsapp-v2/availibility.webp"
                                     alt="salesSeamlessContent"
                                     className="w-100"
-                                    width={576}
-                                    height={376}
+                                    width={460}
+                                    height={409}
                                 />
                             </div>
                         </div>

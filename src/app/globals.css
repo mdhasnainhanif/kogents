@@ -117,6 +117,7 @@ ul.list-4 {
 
 .blogcard-div {
   height: 74vh;
+  height: 100%;
 }
 
 .blog-content table tr td a,
@@ -2131,6 +2132,10 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 576px) {
+  .maxW54 {
+    width: 100% !important;
+  }
+
   .flexMobile {
     display: flex;
     gap: 0.5rem;
@@ -2517,7 +2522,7 @@ select.form-control {
 }
 
 .container .maxWidth33 {
-  max-width: 33rem !important;
+  max-width: 35rem !important;
 }
 
 .tech-track>div>span {
@@ -2609,6 +2614,9 @@ section.newSectionSlider {
   max-width: 64rem;
   justify-content: center;
   background-color: #0f0c1e;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .engagmentSection .col-lg-10 {
@@ -2629,6 +2637,7 @@ section.newSectionSlider {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
 }
 
 .salesSeamless p {
@@ -2649,6 +2658,7 @@ section.newSectionSlider {
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
   background-color: #030012;
+  position: relative;
 }
 
 .user_engagmnet img {
@@ -2667,4 +2677,13 @@ section.newSectionSlider {
 
 .maxW54 {
   max-width: 54% !important;
+}
+
+.salesCardsBg img {
+  position: absolute;
+  right: 0rem;
+  top: 0rem;
+  z-index: -1;
+  width: 100% !important;
+  max-width: 30rem !important;
 }
