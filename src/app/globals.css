@@ -2611,11 +2611,11 @@ section.newSectionSlider {
   padding: 2rem;
   border-radius: 0.8rem;
   width: 100%;
-  max-width: 64rem;
+  /* max-width: 64rem; */
   justify-content: center;
   background-color: #0f0c1e;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   z-index: 1;
 }
 
@@ -2654,6 +2654,10 @@ section.newSectionSlider {
   font-size: 2.7rem;
 }
 
+.engagmentSection .row {
+  row-gap: 3.5rem;
+}
+
 .engagmentSection {
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
@@ -2686,4 +2690,16 @@ section.newSectionSlider {
   z-index: -1;
   width: 100% !important;
   max-width: 30rem !important;
+  height: 100%;
+}
+
+.user_engagmnet .salesCardsBg img {
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  z-index: -1;
+  width: 100% !important;
+  max-width: 30rem !important;
+  transform: rotate(180deg);
+  height: 100%;
 }

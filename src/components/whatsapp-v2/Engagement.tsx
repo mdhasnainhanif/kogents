@@ -6,8 +6,8 @@ const Engagement = () => {
     return (
         <section>
             <div className="container engagmentSection">
-                <div className="row justify-content-center rowGap">
-                    <div className="col-lg-10 col-xl-10 col-sm-12 col-12">
+                <div className="row justify-content-center">
+                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12">
                         <div className="row salesSeamless">
                             <div className="salesCardsBg">
                                 <Image
@@ -37,9 +37,18 @@ const Engagement = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-8 col-xl-8 col-sm-12 col-12">
+                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12">
                         <div className="row salesSeamless user_engagmnet justify-content-center ">
-                            <div className="col-lg-4 col-md-4 col-12">
+                            <div className="salesCardsBg">
+                                <Image
+                                    src="/assets/img/whatsapp-v2/salse_cards_bg.png"
+                                    alt="salesSeamlessContent"
+                                    className="w-100"
+                                    width={417}
+                                    height={512}
+                                />
+                            </div>
+                            <div className="col-lg-5 col-md-4 col-12">
                                 <Image
                                     src="/assets/img/whatsapp-v2/user_engagmnet.webp"
                                     alt="salesSeamlessContent"
@@ -48,7 +57,7 @@ const Engagement = () => {
                                     height={409}
                                 />
                             </div>
-                            <div className="col-lg-8 col-md-8 col-12">
+                            <div className="col-lg-7 col-md-8 col-12">
                                 <div className='salesSeamlessContent'>
                                     <span className="buttonAnimation width_fit green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">Seamless Sales</span>
                                     <h2>Engage Users With Timely Message</h2>
@@ -58,8 +67,17 @@ const Engagement = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-10 col-xl-10 col-sm-12 col-12">
+                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12">
                         <div className="row salesSeamless availibility">
+                            <div className="salesCardsBg">
+                                <Image
+                                    src="/assets/img/whatsapp-v2/salse_cards_bg.png"
+                                    alt="salesSeamlessContent"
+                                    className="w-100"
+                                    width={417}
+                                    height={512}
+                                />
+                            </div>
                             <div className="col-lg-7 col-md-6 col-12">
                                 <div className='salesSeamlessContent'>
                                     <span className="buttonAnimation width_fit green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">Seamless Sales</span>
