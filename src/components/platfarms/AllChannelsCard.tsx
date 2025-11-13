@@ -296,7 +296,7 @@ export default function AllChannelsCard() {
                     />
                     {card.link ? (
                       <Link href={card.link} legacyBehavior>
-                        <a className="mt-2 mb-2 text-2xl font-medium text-w-500 d-block" style={{ cursor: 'pointer' }}>
+                        <a className="mt-2 mb-2 text-2xl font-medium text-white d-block" style={{ cursor: 'pointer' }}>
                           {card.title}
                         </a>
                       </Link>

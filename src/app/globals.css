@@ -2703,3 +2703,7 @@ section.newSectionSlider {
   transform: rotate(180deg);
   height: 100%;
 }
+
+.card-text {
+  color: rgb(255 255 255 / 0.6);
+}
