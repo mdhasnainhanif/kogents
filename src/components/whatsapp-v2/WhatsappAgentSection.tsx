@@ -22,7 +22,7 @@ const WhatsappAgentSection = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="row rowGap justify-content-center mt-4">
+                    <div className="row rowGap justify-content-center mt-5">
                         <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div className="whatsappNewServicesCard">
                                 <Link href="/platforms/whatsapp-ai-agent" className="whatsappNewServicesCardHeading">
@@ -46,7 +46,7 @@ const WhatsappAgentSection = () => {
                         <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div className="whatsappNewServicesCard">
                                 <Link href="/platforms/calendly-ai-integration" className="whatsappNewServicesCardHeading">
-                                    Contvert
+                                    Convert
                                 </Link>
                                 <p>
                                     Send personalized messages,

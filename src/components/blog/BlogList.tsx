@@ -44,7 +44,7 @@ const getCategory = (post: Blog) => {
 const hasText = (v: unknown): v is string =>
   typeof v === "string" && v.trim().length > 0;
 
-const BlogListOwlCarousel: React.FC = () => {
+const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean }> = ({ isShowBadge = false }) => {
   const [posts, setPosts] = useState<Blog[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [didFetch, setDidFetch] = useState<boolean>(false);
@@ -163,7 +163,7 @@ const BlogListOwlCarousel: React.FC = () => {
   return (
     <section>
       <div className="container pb-24">
-        <span className="buttonAnimation green width_fit purple d-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">
+        <span className={`${isShowBadge ? "d-none" : ""} buttonAnimation green width_fit purple d-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto`}>
           Blogs
         </span>
         <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">

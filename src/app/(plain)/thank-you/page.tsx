@@ -9,7 +9,8 @@ import ClientTestimonial from "@/components/CustomerServiceAIAgents/ClientTestim
 
 export const metadata: Metadata = {
   title: "Thank You | Kogents AI",
-  description: "Thank you for your interest in Kogents AI. Choose how you'd like to proceed with our AI solutions.",
+  description:
+    "Thank you for your interest in Kogents AI. Choose how you'd like to proceed with our AI solutions.",
   robots: {
     index: false,
     follow: false,
@@ -23,7 +24,12 @@ const page = () => {
         <header className="chatbot_header px-lg-0">
           <div className="container">
             <Link href="/">
-              <img width={150} height={50} src="/assets/img/kogents-logo.svg" alt="logo" />
+              <img
+                width={150}
+                height={50}
+                src="/assets/img/kogents-logo.svg"
+                alt="logo"
+              />
             </Link>
           </div>
         </header>
@@ -128,7 +134,9 @@ const page = () => {
             </div>
           </div>
         </section> */}
-        <BlogList />
+        <div className="pt-5">
+          <BlogList isShowBadge={true} />
+        </div>
         <ClientTestimonial
           tag="Reviews"
           className="platformsPageClientTestimonial pt-0"
@@ -187,7 +195,7 @@ const page = () => {
             },
           ]}
         />
-        <NewFooter />
+        <NewFooter showOnlyTop={true} />
       </div>
     </>
   );

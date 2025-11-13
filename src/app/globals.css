@@ -2028,9 +2028,9 @@ div.awardSectionFooter .col-lg-12 {
   gap: 0.5rem !important;
 }
 
-div.awardSectionFooter .col-lg-12 img {
+div.awardSectionFooter img {
   width: 100%;
-  max-width: 6rem;
+  max-width: 6.5rem;
   height: auto;
 }
 
@@ -2144,6 +2144,9 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 576px) {
+  .salesCardsBg{
+    display: none;
+  }
   .platformInnerBanner {
     text-align: center;
   }

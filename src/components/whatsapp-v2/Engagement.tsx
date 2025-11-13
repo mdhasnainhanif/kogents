@@ -7,8 +7,8 @@ const Engagement = () => {
         <section>
             <div className="container engagmentSection">
                 <div className="row justify-content-center">
-                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12">
-                        <div className="row salesSeamless">
+                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12 d-flex align-items-center justify-content-center">
+                        <div className="row salesSeamless rowGap">
                             <div className="salesCardsBg">
                                 <Image
                                     src="/assets/img/whatsapp-v2/salse_cards_bg.png"
@@ -37,8 +37,8 @@ const Engagement = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12">
-                        <div className="row salesSeamless salesSeamless1  user_engagmnet justify-content-center ">
+                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12 d-flex align-items-center justify-content-center">
+                        <div className="row rowGap salesSeamless salesSeamless1  user_engagmnet justify-content-center ">
                             <div className="salesCardsBg">
                                 <Image
                                     src="/assets/img/whatsapp-v2/salse_cards_bg.png"
@@ -52,7 +52,7 @@ const Engagement = () => {
                                 <Image
                                     src="/assets/img/whatsapp-v2/user_engagmnet.webp"
                                     alt="salesSeamlessContent"
-                                    className="w-100"
+                                    className="w-100 mx-auto d-block"
                                     width={365}
                                     height={409}
                                 />
@@ -67,8 +67,8 @@ const Engagement = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12">
-                        <div className="row salesSeamless availibility">
+                    <div className="col-lg-12 col-xl-12 col-sm-12 col-12 d-flex align-items-center justify-content-center">
+                        <div className="row rowGap salesSeamless availibility">
                             <div className="salesCardsBg">
                                 <Image
                                     src="/assets/img/whatsapp-v2/salse_cards_bg.png"
@@ -90,7 +90,7 @@ const Engagement = () => {
                                 <Image
                                     src="/assets/img/whatsapp-v2/availibility.webp"
                                     alt="salesSeamlessContent"
-                                    className="w-100"
+                                    className="w-100 mx-auto d-block"
                                     width={460}
                                     height={409}
                                 />

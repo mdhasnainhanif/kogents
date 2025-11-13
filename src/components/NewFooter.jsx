@@ -13,7 +13,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import AwardSection from "./CustomerServiceAIAgents/AwardSection";
-const NewFooter = () => {
+const NewFooter = ({ showOnlyTop = false }) => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -264,6 +264,7 @@ const NewFooter = () => {
           </div>
         </div>
       </div>
+      {!showOnlyTop && (
       <div className="footer-middle">
         <div className="footer-grid container">
           <div className="footer-column">
@@ -472,17 +473,19 @@ const NewFooter = () => {
                     info@kogents.ai
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="#">AI Automation</Link>
                 </li>
                 <li>
                   <Link href="#">AI Recruiting</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
         </div>
       </div>
+      )}
+      {!showOnlyTop && (
       <div className="footer-bottom container">
         <div className="footer-bottom-container">
           <p className="copyright-text">
@@ -490,6 +493,7 @@ const NewFooter = () => {
           </p>
         </div>
       </div>
+      )}
     </footer>
   );
 };
