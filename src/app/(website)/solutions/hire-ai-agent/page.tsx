@@ -60,7 +60,7 @@ const page = () => {
             description:
                 "Every repetitive task you delegate to an AI agent creates more time for focus and growth.\nKogents AI helps organizations, entrepreneurs, and professionals hire AI agent solutions that manage daily operations, handle communication, and improve workflow accuracy.\nOur AI automation for everyone framework combines smart AI agents for daily tasks, AI personal assistant features, and GPT-powered automation to create an intelligent AI workforce built around your workflows.\nFrom AI for small business to enterprise-level adoption, each agent adapts to your processes by reducing manual effort, improving accuracy, and maintaining consistency.",
             image: {
-                src: "/assets/img/survey-ai-agent/banner.webp",
+                src: "/assets/img/hire-ai-agent/banner.webp",
                 alt: "Customer Service AI Agents",
                 width: 800,
                 height: 681,
@@ -252,25 +252,25 @@ const page = () => {
                         id: 1,
                         q: "Define Goals",
                         a: "The process begins by identifying what you want to automate, such as communication, scheduling, data handling, or reporting. Setting clear objectives establishes the framework for intelligent automation that improves focus, resource management, and efficiency throughout your automation lifecycle.",
-                        image: "/assets/img/survey-ai-agent/1.webp",
+                        image: "/assets/img/hire-ai-agent/1.webp",
                     },
                     {
                         id: 2,
                         q: "Customize Your AI Agent",
                         a: "Once goals are defined, you can build your own AI agent suited to specific needs. Each configuration includes the right features, workflows, and data preferences to ensure accuracy and productivity. This stage ensures automation fits real operations and supports meaningful, measurable outcomes.",
-                        image: "/assets/img/survey-ai-agent/2.webp",
+                        image: "/assets/img/hire-ai-agent/2.webp",
                     },
                     {
                         id: 3,
                         q: "Integrate with Your Systems",
                         a: "After configuration, your agent enters the AI integration workflow stage. Through guided AI onboarding, the system connects with your tools, platforms, and daily routines. Integration includes review checkpoints for human oversight, ensuring collaboration between automation and users remains consistent and transparent.",
-                        image: "/assets/img/survey-ai-agent/3.webp",
+                        image: "/assets/img/hire-ai-agent/3.webp",
                     },
                     {
                         id: 4,
                         q: "Optimize and Scale Over Time",
                         a: "Each deployment is designed for continuous growth. Through training and optimization, your AI agent adapts based on performance insights and user feedback. This process supports scalable AI deployment that enhances responsiveness, accuracy, and consistency while maintaining reliability over time.",
-                        image: "/assets/img/survey-ai-agent/4.webp",
+                        image: "/assets/img/hire-ai-agent/4.webp",
                     },
                 ]}
                 rightImage="/assets/img/faq.png"
