@@ -45,10 +45,10 @@ export const Data: AllPageDataType = {
         counterSection: {
             title: "WhatsApp Agent by the Numbers",
             counters: [
-                { label: "faster customer responses", value: 3, symbol: "X" },
-                { label: "chats automated", value: 85, symbol: "%" },
-                { label: "higher conversions", value: 5, symbol: "X" },
-                { label: "fewer missed replies", value: 75, symbol: "%" }
+                { label: "Faster Customer Responses", value: 3, symbol: "X" },
+                { label: "Chats Automated", value: 85, symbol: "%" },
+                { label: "Higher Conversions", value: 5, symbol: "X" },
+                { label: "Fewer Missed Replies", value: 75, symbol: "%" }
             ]
         },
         customerCardsSection: {
@@ -339,7 +339,7 @@ export const Data: AllPageDataType = {
             metaTitle: "Best WhatsApp AI Agent | Your 24/7 Chat Power | Kogents.ai",
             metaDescription: "Kogents WhatsApp AI agent automates interactions, boosts customer engagement, and drives growth with intelligent support. Get Free Demo!",
             slug: "https://kogents.ai/platforms/whatsapp-ai-agent/",
-            
+
             primaryKeyword: "",
             variations: [
                 "WhatsApp AI agent for business",

@@ -70,7 +70,7 @@ const CustomerServiceCard: React.FC<CustomerServiceCardProps> = ({
             <h2 className="maxWidth39 mx-auto text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mt-0">
               {heading}
             </h2>
-            <div className="text-center paraColor subHeading mx-auto text-white maxWidth39">
+            <div className="paraColor subHeading mx-auto text-white maxWidth39">
               {Array.isArray(description) ? (
                 description.map((paragraph, index) => (
                   <p key={index} className="mb125 maxWidth39 mx-auto">
@@ -83,19 +83,16 @@ const CustomerServiceCard: React.FC<CustomerServiceCardProps> = ({
             </div>
           </div>
         </div>
-
-        {/* Differentiators Grid */}
         <div className="row mt-5">
           <div className="col-12">
             <div className="row justify-content-center">
               {differentiators.map((differentiator, index) => (
                 <div key={differentiator.id} className="col-lg-6 col-md-6 mb-4">
                   <div className="differentiator-card border border-b-600 bg-gd-tertiary p-4 rounded-lg h-100 d-flex gap-6">
-                    {/* Icon */}
                     <div className="d-flex mb-3">
                       <div className="differentiatorIcon bg-purple-400 rounded-circle d-flex align-items-center justify-content-center ">
-                        <img 
-                          src={differentiator.icon} 
+                        <img
+                          src={differentiator.icon}
                           alt={differentiator.title}
                           width={35}
                           height={35}
@@ -103,6 +100,7 @@ const CustomerServiceCard: React.FC<CustomerServiceCardProps> = ({
                         />
                       </div>
                     </div>
+<<<<<<< HEAD
 
                 <div>
                     <h3 className="text-white font-semibold mb-3 heading1">
@@ -119,8 +117,24 @@ const CustomerServiceCard: React.FC<CustomerServiceCardProps> = ({
                       ) : (
                         <p className="paraColor">{differentiator.description}</p>
                       )}
+=======
+                    <div>
+                      <h3 className="text-white font-semibold mb-3 heading1">
+                        {differentiator.title}
+                      </h3>
+                      <div className="paraColor mb-0">
+                        {Array.isArray(differentiator.description) ? (
+                          differentiator.description.map((paragraph, index) => (
+                            <p key={index} className="mb-2 last:mb-0">
+                              {paragraph}
+                            </p>
+                          ))
+                        ) : (
+                          <p>{differentiator.description}</p>
+                        )}
+                      </div>
+>>>>>>> 65427f738675110831012b54e03f695ffde8b86d
                     </div>
-                </div>
                   </div>
                 </div>
               ))}
