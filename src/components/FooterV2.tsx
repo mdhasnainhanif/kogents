@@ -421,6 +421,21 @@ const FooterV2 = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link
+                    className="d-flex align-items-center gap-2"
+                    href="mailto:info@kogents.ai"
+                  >
+                    <Image
+                      width={20}
+                      height={20}
+                      className=""
+                      src="/assets/img/phone.svg"
+                      alt="icon"
+                    />{" "}
+                    info@kogents.ai
+                  </Link>
+                </li>
+                <li>
                   <Link href="#">AI Automation</Link>
                 </li>
                 <li>

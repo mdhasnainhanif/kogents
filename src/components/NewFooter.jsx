@@ -473,6 +473,21 @@ const NewFooter = ({ showOnlyTop = false }) => {
                     info@kogents.ai
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    className="d-flex align-items-center gap-2"
+                    href="tel:+1 (267) 248-9454"
+                  >
+                    <Image
+                      width={20}
+                      height={20}
+                      className=""
+                      src="/assets/img/phone.svg"
+                      alt="icon"
+                    />{" "}
+                    +1 (267) 248-9454
+                  </Link>
+                </li>
                 {/* <li>
                   <Link href="#">AI Automation</Link>
                 </li>
