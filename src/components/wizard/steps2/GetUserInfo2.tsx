@@ -657,6 +657,21 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         form.append("brandId", brandId);
         if (d.infoCheckbox !== undefined) form.append("infoCheckbox", String(d.infoCheckbox));
 
+        // Bot appearance fields
+        if (data.appearance?.primaryColor) form.append("colors", String(data.appearance.primaryColor));
+        if (data.botname) form.append("displayTitle", String(data.botname));
+        if (data.appearance?.avatar) {
+          const avatarUrl = String(data.appearance.avatar);
+          // If it's a base64 data URL or absolute URL, use as-is
+          // Otherwise, prepend base URL for relative paths
+          if (avatarUrl.startsWith('data:') || avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
+            form.append("imageUrl", avatarUrl);
+          } else {
+            // Use https://kogents.ai as base URL for relative paths
+            form.append("imageUrl", `https://kogents.ai${avatarUrl.startsWith('/') ? avatarUrl : '/' + avatarUrl}`);
+          }
+        }
+
         // Append uploaded files
         if (files && files.length > 0) {
           files.forEach((f: File) => {

@@ -142,6 +142,8 @@ function ChatbotWizard3() {
     }
   }, []);
 
+  console.log("data", data);
+
   const handleComplete = async () => {
     setIsSubmitting(true);
     setSubmitError(null);
@@ -204,6 +206,20 @@ function ChatbotWizard3() {
           
           // Step 6: Integration checkbox
           infoCheckbox: integrationType === "website" ? true : undefined,
+          
+          // Bot appearance fields
+          colors: String(data.appearance?.primaryColor || "#000"),
+          displayTitle: String(data.botname || ""),
+          imageUrl: (() => {
+            const avatarUrl = String(data.appearance?.avatar || "");
+            if (!avatarUrl) return "";
+            // If it's a base64 data URL or absolute URL, use as-is
+            if (avatarUrl.startsWith('data:') || avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
+              return avatarUrl;
+            }
+            // For relative paths like /assets/img/brief/avatar3.png, prepend base URL
+            return `https://kogents.ai${avatarUrl.startsWith('/') ? avatarUrl : '/' + avatarUrl}`;
+          })(),
         };
 
         const response = await createWorkspaceWithFiles(workspacePayload);

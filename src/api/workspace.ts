@@ -28,6 +28,10 @@ export type WorkspacePayload = {
   infoCheckbox?: boolean;
   brandId?: string; // Optional brandId (will be generated if not provided)
   tags?: string[]; // New optional field
+  // Bot appearance fields
+  colors?: string; // primaryColor from appearance
+  displayTitle?: string; // botname
+  imageUrl?: string; // avatar from appearance
 };
 
 function slugify(input: string) {
@@ -84,6 +88,20 @@ export async function createWorkspaceWithFiles(data: WorkspacePayload) {
   formData.append("info", String(data.info || ""));
   
   if (data.infoCheckbox !== undefined) formData.append("infoCheckbox", String(data.infoCheckbox));
+
+  // Bot appearance fields
+  if (data.colors) formData.append("colors", String(data.colors));
+  if (data.displayTitle) formData.append("displayTitle", String(data.displayTitle));
+  if (data.imageUrl) {
+    const imageUrl = String(data.imageUrl);
+    // If it's already a full URL (base64 or absolute), use as-is
+    if (imageUrl.startsWith('data:') || imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      formData.append("imageUrl", imageUrl);
+    } else {
+      // For relative paths like /assets/img/brief/avatar3.png, prepend base URL
+      formData.append("imageUrl", `https://kogents.ai${imageUrl.startsWith('/') ? imageUrl : '/' + imageUrl}`);
+    }
+  }
 
   // Append files
   for (const file of data.files || []) {
