@@ -147,20 +147,20 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
             </span>
 
             {/* Main Heading */}
-            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125 mb-6">
+            <h2 className="text-center mt-0 maxWidth39 mx-auto tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125 mb-6">
               {heading}
             </h2>
 
             {/* Description */}
-            <div className="w-75 mb-16 text-center paraColor subHeading mx-auto mt-2 text-white">
+            <div className="w-75 mb-16 text-center subHeading mx-auto mt-2 text-white maxWidth39">
               {description && description.includes('\n') ? (
                 description.split('\n').map((line, index) => (
-                  <p key={index} className={index > 0 ? "mt-2" : ""}>
+                  <p key={index} className={index > 0 ? "mt-2 paraColor" : "paraColor"}>
                     {line.trim()}
                   </p>
                 ))
               ) : (
-                <p>{description}</p>
+                <p className="paraColor">{description}</p>
               )}
             </div>
           </div>

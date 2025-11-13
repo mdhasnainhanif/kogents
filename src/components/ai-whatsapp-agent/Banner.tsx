@@ -48,7 +48,7 @@ const Banner: React.FC<BannerProps> = ({ data, breadcrumbItems }) => {
   return (
     <div
 
-    className="position-relative sectionPadding bg-center bg-no-repeat bg-cover overflow-hidden bannerBgImg"
+    className="position-relative sectionPadding bg-center bg-no-repeat bg-cover overflow-hidden bannerBgImg platformInnerBanner"
       id="aiBanner"
     >
       <div className="container px-5 mx-auto xl:px-0">

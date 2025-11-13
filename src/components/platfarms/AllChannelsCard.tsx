@@ -305,7 +305,7 @@ export default function AllChannelsCard() {
                         {card.title}
                       </h5>
                     )}
-                    <p className="card-text">{card.desc}</p>
+                    <p className="card-text paraColor">{card.desc}</p>
                     {/* {card.link && (
                       <Link
                         href={card.link}

@@ -83,7 +83,7 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
                 <h2 className="text-light mt-2">{leftColumn.title}</h2>
                 <p className="text-light mt-2">
                   {leftColumn.subtitle.split("\n").map((line, index) => (
-                    <span key={index}>
+                    <span key={index} className="paraColor">
                       {line}
                       <br />
                     </span>

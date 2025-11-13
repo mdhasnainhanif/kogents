@@ -80,12 +80,12 @@ const CustomerGrowthCards: React.FC<CustomerGrowthCardsProps> = ({
             <div className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto mt-2 text-white">
               {Array.isArray(description) ? (
                 description.map((paragraph, index) => (
-                  <p key={index} className="mb-2 last:mb-0">
+                  <p key={index} className="mb-2 last:mb-0 paraColor">
                     {paragraph}
                   </p>
                 ))
               ) : (
-                <p>{description}</p>
+                <p className="paraColor">{description}</p>
               )}
             </div>
           </div>
@@ -127,15 +127,15 @@ const CustomerGrowthCards: React.FC<CustomerGrowthCardsProps> = ({
                       )}
                     </div>
                     <div className="d-flex justify-content-between flexReverse">
-                      <div className="text-white paraColor">
+                      <div className="text-white">
                         {Array.isArray(solution.description) ? (
                           solution.description.map((paragraph, index) => (
-                            <p key={index} className="mb-2 last:mb-0">
+                            <p key={index} className="mb-2 last:mb-0 paraColor">
                               {paragraph}
                             </p>
                           ))
                         ) : (
-                          <p>{solution.description}</p>
+                          <p className="paraColor">{solution.description}</p>
                         )}
                       </div>
                     </div>

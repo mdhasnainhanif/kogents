@@ -2051,6 +2051,9 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 1200px) {
+  .step2ImgMain img{
+    max-width: 23rem;
+  }
   .dropdownImgMain {
     display: none;
   }
@@ -2141,6 +2144,21 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 576px) {
+  .platformInnerBanner {
+    text-align: center;
+  }
+  .platformInnerBanner .buttonAnimation{
+    display: block;
+    margin: 0 auto;
+  }
+  div.platformInnerBanner ol.breadcrumb, .platformInnerBanner .aiWhatsappBtn{
+    display: flex;
+    justify-content: center;
+  }
+  div.platformInnerBanner a{
+    display: inline-block;
+    margin: 0 auto;
+  }
   .maxW54 {
     width: 100% !important;
   }

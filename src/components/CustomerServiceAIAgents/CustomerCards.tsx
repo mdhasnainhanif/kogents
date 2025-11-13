@@ -79,12 +79,11 @@ const CustomerCards: React.FC<CustomerCardsProps> = ({
     <div className="mobile-padding-top-0 sectionPadding pb-0 bg-center bg-no-repeat bg-cover bg-[url('img/bc/faq-bg.png')] faq-bg">
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-lg-12
-           text-center justify-content-center ">
+          <div className="col-lg-12 text-center justify-content-center ">
             <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
               {tag}
             </span>
-            <h2 className=" text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+            <h2 className="mt-0 mx-auto text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize maxWidth39">
               {heading}
             </h2>
             <div className="maxWidth39 mb-16 text-center paraColor subHeading mx-auto mt-2">
@@ -116,12 +115,12 @@ const CustomerCards: React.FC<CustomerCardsProps> = ({
                 <div className="benefit-description">
                   {benefit.description && benefit.description.includes('\n') ? (
                     benefit.description.split('\n').map((line, index) => (
-                      <p key={index} className={index > 0 ? "mt-2" : ""}>
+                      <p key={index} className={index > 0 ? "mt-2 paraColor" : "paraColor"}>
                         {line.trim()}
                       </p>
                     ))
                   ) : (
-                    <p>{benefit.description}</p>
+                    <p className="paraColor">{benefit.description}</p>
                   )}
                 </div>
               </div>

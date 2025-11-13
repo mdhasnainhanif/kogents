@@ -101,7 +101,7 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data, showButton =
                 </span>
               )}
               {title && (
-                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+                  <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize w-75 mx-auto">
                   {title}
                 </h2>
               )}
@@ -112,7 +112,7 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data, showButton =
               )}
             </div>
           </div>
-          <div className="row rowGap justify-content-center mt-4">
+          <div className="row rowGap justify-content-center mt-5">
             {agentCards.map((card, idx) => (
               <div key={idx} className={`col-lg-${card.colLg || 4} col-md-6 col-12`}>
                 <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary newServicesCard">
@@ -125,12 +125,12 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data, showButton =
                       className={`rounded-lg ${card.imgHeight ? "imgHeight" : ""}`}
                     />
                   )}
-                  <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">
+                  <h3 className="text-light mt-8 mb-6 text-2xl font-medium text-w-500">
                     {card.title}
                   </h3>
                   <ul className="arrowPointUl">
                     {card.points.map((point, pointIdx) => (
-                      <li key={pointIdx}><p>{point}</p></li>
+                      <li key={pointIdx}><p className="paraColor">{point}</p></li>
                     ))}
                   </ul>
                   {/* <a
