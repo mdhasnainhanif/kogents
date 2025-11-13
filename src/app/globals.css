@@ -1007,7 +1007,7 @@ media-theme-tailwind-audio {
 .header_pogress_points {
   width: 80%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -1017,13 +1017,21 @@ media-theme-tailwind-audio {
   width: 100%;
   max-width: 64px;
   flex: auto;
+  align-self: flex-start;
+  margin-top: 12px;
 }
 
 .contactIcons,
-.header_point,
 .header_point button,
 a.aboutIconPhone {
   align-items: center;
+  display: flex;
+}
+
+.header_point {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   display: flex;
 }
 
@@ -1041,6 +1049,7 @@ a.aboutIconPhone {
 .header_point .step_title {
   font-size: 14px;
   font-weight: 500;
+  text-align: center;
 }
 
 .header_point.bg_complete button {
@@ -1066,7 +1075,7 @@ section.bgpurple {
 }
 
 .chatbot-content-wrapper.footer {
-  border-top: 1px solid #374151;
+  border-top: 1px solid #151c28;
 }
 
 .chatbot_footer {
@@ -2613,11 +2622,18 @@ section.newSectionSlider {
   width: 100%;
   /* max-width: 64rem; */
   justify-content: center;
-  background-color: #0f0c1e;
+  /* background-color: #0f0c1e; */
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
   z-index: 1;
+  background: linear-gradient(to left, #0f0c1e 30%, rgb(255 255 255 / 15%));
 }
+
+.salesSeamless1 {
+  background: linear-gradient(to right, #0f0c1e 30%, rgb(255 255 255 / 15%));
+  margin: 3.5rem 0 !important;
+}
+
 
 .engagmentSection .col-lg-10 {
   display: flex;
@@ -2652,10 +2668,6 @@ section.newSectionSlider {
   color: #fff;
   font-weight: 700;
   font-size: 2.7rem;
-}
-
-.engagmentSection .row {
-  row-gap: 3.5rem;
 }
 
 .engagmentSection {

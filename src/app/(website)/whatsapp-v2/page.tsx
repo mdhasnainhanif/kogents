@@ -5,7 +5,6 @@ import Counter from '@/components/whatsapp-v2/Counter'
 import Engagement from '@/components/whatsapp-v2/Engagement';
 import FAQSection from '@/components/solutions/csr/FAQSection';
 import type { Metadata } from 'next';
-import ScrollLock from '@/components/ai-agent/ScrollLock';
 import WhatsappAgentSection from '@/components/whatsapp-v2/WhatsappAgentSection';
 import CustomerBenefitSection from '@/components/CustomerServiceAIAgents/CustomerBenefitSection';
 import ClientTestimonial from '@/components/CustomerServiceAIAgents/ClientTestimonial';
@@ -94,7 +93,6 @@ const structuredData = {
 export default function HomePage() {
     return (
         <>
-            <ScrollLock />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

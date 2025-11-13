@@ -43,8 +43,8 @@ const StepCircle = React.memo<{
           <span className="fw-medium">{index + 1}</span>
         )}
       </button>
-      {/* Step Label */}
-      <div className="ms-3 d-none d-sm-block">
+      {/* Step Label - Below the number */}
+      <div className="d-none d-sm-block">
         <div
           className={`step_title ${
             index <= currentStep ? "text-white" : "incomplete_title"
