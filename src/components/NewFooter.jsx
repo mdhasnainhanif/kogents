@@ -12,6 +12,7 @@ import {
 } from "@/icons";
 import Link from "next/link";
 import Image from "next/image";
+import AwardSection from "./CustomerServiceAIAgents/AwardSection";
 const NewFooter = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -82,145 +83,189 @@ const NewFooter = () => {
       body: JSON.stringify({ to: email }),
     });
     const data = await res.json();
-    if (!res.ok) { throw new Error(data.error || "Failed to send email") }
-    else {
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to send email");
+    } else {
       setSuccess("Subscribed successfully!");
       setEmail("");
       setTimeout(() => setSuccess(null), 3000);
     }
-  }
+  };
   return (
     <footer className="footer-main bg-center bg_footer new bg-no-repeat bg-cover">
       <div className="footer-top">
-        <div className="footer-top-container">
-          <div className="footer-brand">
-            <Logo style={{ width: 150, height: 50 }} />
-            <p className="footer-description">
-              Kogents AI develops agents that streamline workflows and drive
-              innovation across industries.
-            </p>
-            <div className="app-download-buttons">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <a href="#" className="app-btn">
-                  <Image
-                    src="/assets/img/app-section/6.png"
-                    alt="Google Play"
-                    width={140}
-                    height={50}
-                  />
-                </a>
-                <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <a href="#" className="app-btn">
-                  <Image
-                    src="/assets/img/app-section/7.png"
-                    alt="App Store"
-                    width={140}
-                    height={50}
-                  />
-                </a>
-                <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+        <div className="footer-top-container container">
+          <div className="row">
+            <div className="col-md-4">
+              <div className="footer-brand">
+                <Logo style={{ width: 150, height: 50 }} />
+                <p className="footer-description">
+                  Kogents AI develops agents that streamline workflows and drive
+                  innovation across industries.
+                </p>
+                <div className="app-download-buttons">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <a href="#" className="app-btn">
+                      <Image
+                        src="/assets/img/app-section/6.png"
+                        alt="Google Play"
+                        width={140}
+                        height={50}
+                      />
+                    </a>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        color: "#999",
+                        marginTop: "4px",
+                      }}
+                    >
+                      Coming Soon
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <a href="#" className="app-btn">
+                      <Image
+                        src="/assets/img/app-section/7.png"
+                        alt="App Store"
+                        width={140}
+                        height={50}
+                      />
+                    </a>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        color: "#999",
+                        marginTop: "4px",
+                      }}
+                    >
+                      Coming Soon
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="footer-engagement">
-            <div className="newsletter-section">
-              <p className="h5">Subscribe to our Newsletter</p>
-              <form onSubmit={handleSubscribe} className="newsletter-form">
-                <input
-                  type="email"
-                  placeholder="Enter Your Email"
-                  value={email}
-                  onChange={(e) => {
-                    console.log("Email changed:", e.target.value);
-                    setEmail(e.target.value);
-                  }}
-                  className="newsletter-input"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="buttonAnimation2 px-4 subscribeBtn"
-                  disabled={isLoading}
-                  onClick={() => console.log("Subscribe button clicked")}
-                >
-                  {isLoading ? "Subscribing..." : "Subscribe"}
-                </button>
-              </form>
-              {success && (
-                <p className="m-0 mt-2" style={{ color: "#22c55e" }}>{success}</p>
-              )}
-              {error && (
-                <p className="m-0 mt-2" style={{ color: "#ef4444" }}>{error}</p>
-              )}
+            <div className="col-md-4">
+              <div>
+                <AwardSection className="awardSectionFooter"/>
+              </div>
             </div>
-            <div className="social-section">
-              <p className="h5">Get in Touch</p>
-              <div className="social-icons">
-                <a
-                  href="https://www.linkedin.com/company/kogentsai/"
-                  target="_blank"
-                  className="social-icon"
-                  aria-label="Linkedin"
-                >
-                  <LinkedinIcon />
-                </a>
-                <a
-                  href="https://www.facebook.com/kogents/"
-                  target="_blank"
-                  className="social-icon"
-                  aria-label="Facebook"
-                >
-                  <FacebookIcon />
-                </a>
-                <a
-                  href="https://x.com/kogentsai"
-                  target="_blank"
-                  className="social-icon"
-                  aria-label="Twitter"
-                >
-                  <TwitterXIcon />
-                </a>
-                <a
-                  href="https://www.youtube.com/@kogentsai"
-                  target="_blank"
-                  className="social-icon"
-                  aria-label="Youtube"
-                >
-                  <YoutubeIcon />
-                </a>
-                <a
-                  href="https://www.instagram.com/kogentsai/"
-                  target="_blank"
-                  className="social-icon"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon />
-                </a>
-                <a
-                  href="https://www.pinterest.com/kogentsai/"
-                  target="_blank"
-                  className="social-icon"
-                  aria-label="Pinterest"
-                >
-                  <PinterestIcon />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@kogentsai"
-                  target="_blank"
-                  className="social-icon"
-                  aria-label="TikTok"
-                >
-                  <TikTokIcon />
-                </a>
+            <div className="col-md-4">
+              <div className="footer-engagement">
+                <div className="newsletter-section">
+                  <p className="h5">Subscribe to our Newsletter</p>
+                  <form onSubmit={handleSubscribe} className="newsletter-form">
+                    <input
+                      type="email"
+                      placeholder="Enter Your Email"
+                      value={email}
+                      onChange={(e) => {
+                        console.log("Email changed:", e.target.value);
+                        setEmail(e.target.value);
+                      }}
+                      className="newsletter-input"
+                      required
+                    />
+                    <button
+                      type="submit"
+                      className="buttonAnimation2 px-4 subscribeBtn"
+                      disabled={isLoading}
+                      onClick={() => console.log("Subscribe button clicked")}
+                    >
+                      {isLoading ? "Subscribing..." : "Subscribe"}
+                    </button>
+                  </form>
+                  {success && (
+                    <p className="m-0 mt-2" style={{ color: "#22c55e" }}>
+                      {success}
+                    </p>
+                  )}
+                  {error && (
+                    <p className="m-0 mt-2" style={{ color: "#ef4444" }}>
+                      {error}
+                    </p>
+                  )}
+                </div>
+                <div className="social-section">
+                  <p className="h5">Get in Touch</p>
+                  <div className="social-icons">
+                    <a
+                      href="https://www.linkedin.com/company/kogentsai/"
+                      target="_blank"
+                      className="social-icon"
+                      aria-label="Linkedin"
+                    >
+                      <LinkedinIcon />
+                    </a>
+                    <a
+                      href="https://www.facebook.com/kogents/"
+                      target="_blank"
+                      className="social-icon"
+                      aria-label="Facebook"
+                    >
+                      <FacebookIcon />
+                    </a>
+                    <a
+                      href="https://x.com/kogentsai"
+                      target="_blank"
+                      className="social-icon"
+                      aria-label="Twitter"
+                    >
+                      <TwitterXIcon />
+                    </a>
+                    <a
+                      href="https://www.youtube.com/@kogentsai"
+                      target="_blank"
+                      className="social-icon"
+                      aria-label="Youtube"
+                    >
+                      <YoutubeIcon />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/kogentsai/"
+                      target="_blank"
+                      className="social-icon"
+                      aria-label="Instagram"
+                    >
+                      <InstagramIcon />
+                    </a>
+                    <a
+                      href="https://www.pinterest.com/kogentsai/"
+                      target="_blank"
+                      className="social-icon"
+                      aria-label="Pinterest"
+                    >
+                      <PinterestIcon />
+                    </a>
+                    <a
+                      href="https://www.tiktok.com/@kogentsai"
+                      target="_blank"
+                      className="social-icon"
+                      aria-label="TikTok"
+                    >
+                      <TikTokIcon />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="footer-middle">
-        <div className="footer-grid">
+        <div className="footer-grid container">
           <div className="footer-column">
             <p className="h6">Channels</p>
             <div className="footer-links">
@@ -365,7 +410,6 @@ const NewFooter = () => {
                   <Link href="/">Imprint</Link>
                 </li>
               </ul>
-
             </div>
           </div>
           <div className="footer-column">
@@ -391,9 +435,7 @@ const NewFooter = () => {
               <p className="h6 glossary">Glossary</p>
               <ul>
                 <li>
-                  <Link href="/ai-glossary">
-                    AI Glossary
-                  </Link>
+                  <Link href="/ai-glossary">AI Glossary</Link>
                 </li>
               </ul>
             </div>
@@ -415,14 +457,20 @@ const NewFooter = () => {
               </ul>
               <p className="h6 companyInfo">Company Info</p>
               <ul className="company-info-list">
-                <li >
-                  <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><Image
-                    width={20}
-                    height={20}
-                    className=""
-                    src="/assets/img/email.svg"
-                    alt="icon"
-                  /> info@kogents.ai</Link>
+                <li>
+                  <Link
+                    className="d-flex align-items-center gap-2"
+                    href="mailto:info@kogents.ai"
+                  >
+                    <Image
+                      width={20}
+                      height={20}
+                      className=""
+                      src="/assets/img/email.svg"
+                      alt="icon"
+                    />{" "}
+                    info@kogents.ai
+                  </Link>
                 </li>
                 <li>
                   <Link href="#">AI Automation</Link>
@@ -435,7 +483,7 @@ const NewFooter = () => {
           </div>
         </div>
       </div>
-      <div className="footer-bottom">
+      <div className="footer-bottom container">
         <div className="footer-bottom-container">
           <p className="copyright-text">
             © Kogents AI. All Rights Reserved 2025

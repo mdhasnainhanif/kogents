@@ -35,8 +35,9 @@ const page = () => {
               Thank You
             </span> */}
                 <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
-                  How Would You Like To Proceed?
+                 You're in! Here's What Happens Next.
                 </h2>
+                <p className="text-center paraColor subHeading w-100 mx-auto mt125">Explore our blogs to learn how AI agents can transform workflows.</p>
               </div>
             </div>
             <div className="row rowGap justify-content-center mt-5">
