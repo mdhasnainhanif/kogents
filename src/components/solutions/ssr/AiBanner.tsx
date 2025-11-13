@@ -20,7 +20,7 @@ export default function AiBanner() {
               <h1 className="maxWidth39 mx-auto mt-0 text-center headingSize ">
                 AI Agentic Solutions for Modern Business Success
               </h1>
-              <p className="maxWidth39 mx-auto paraColor text-base md:text-xl text-w-100 text-center w56">
+              <p className="mx-auto paraColor text-base md:text-xl text-w-100 text-center wMax36">
                 Slow responses, missed opportunities, and overextended teams
                 hold businesses back.Meet the AI Agentic Solutions by Kogents,
                 built to accelerate growth, protect revenue, and deliver

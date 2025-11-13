@@ -25,8 +25,8 @@ const WhatsappAgentSection = () => {
                     <div className="row rowGap justify-content-center mt-4">
                         <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div className="whatsappNewServicesCard">
-                                <Link href="/platforms/whatsapp-ai-agent" className=" text-2xl font-medium text-w-500">
-                                    WhatsApp AI Agent
+                                <Link href="/platforms/whatsapp-ai-agent" className="whatsappNewServicesCardHeading">
+                                    Acquire
                                 </Link>
                                 <p>
                                     Send personalized messages,
@@ -38,15 +38,15 @@ const WhatsappAgentSection = () => {
                                     href="/chatbot/briefv2"
                                     className="w_fit buttonAnimation2 pink inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
                                 >
-                                    Request Access
+                                    Start Free Trail
                                     <ArrowRightIcon style={{ height: 24 }} />
                                 </Link>
                             </div>
                         </div>
                         <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div className="whatsappNewServicesCard">
-                                <Link href="/platforms/calendly-ai-integration" className=" text-2xl font-medium text-w-500">
-                                    Calendly AI Agent
+                                <Link href="/platforms/calendly-ai-integration" className="whatsappNewServicesCardHeading">
+                                    Contvert
                                 </Link>
                                 <p>
                                     Send personalized messages,
@@ -55,19 +55,18 @@ const WhatsappAgentSection = () => {
                                     acquire and engage users.
                                 </p>
                                 <Link
-
                                     className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
                                     href="/chatbot/briefv2"
                                 >
-                                    Request Access
+                                    Start Free Trail
                                     <ArrowRightIcon style={{ height: 24 }} />
                                 </Link>
                             </div>
                         </div>
                         <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                             <div className="whatsappNewServicesCard">
-                                <Link href="/platforms/hubspot-ai-integration" className=" text-2xl font-medium text-w-500">
-                                    HubSpot AI Agent
+                                <Link href="/platforms/hubspot-ai-integration" className="whatsappNewServicesCardHeading">
+                                    Support
                                 </Link>
                                 <p>
                                     Send personalized messages,
@@ -80,7 +79,7 @@ const WhatsappAgentSection = () => {
                                     className="w_fit buttonAnimation2 yellow inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
                                     href="/chatbot/briefv2"
                                 >
-                                    Request Access
+                                    Start Free Trail
                                     <ArrowRightIcon style={{ height: 24 }} />
                                 </Link>
                             </div>

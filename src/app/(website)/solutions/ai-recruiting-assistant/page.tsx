@@ -133,7 +133,6 @@ const page = () => {
                     },
                 ]}
             />
-            <BrandLogoSlider />
             <CustomerGrowthCards
                 tag="Solutions"
                 heading="Explore the Capabilities of Kogents AI Recruitment Assistant Solutions"
@@ -183,6 +182,7 @@ const page = () => {
                 buttonText="Automate Your Recruitment"
                 buttonLink="#"
             />
+            <BrandLogoSlider />
             <CustomerServiceCard
                 tag="Why Kogents"
                 heading="Why Organizations Trust Kogents AI for Smarter Hiring"

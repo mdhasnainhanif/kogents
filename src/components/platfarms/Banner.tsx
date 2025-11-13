@@ -23,7 +23,7 @@ const Banner = () => {
                 <h1 className="text-center headingSize">
                   AI Agents Advancing Customer Engagement on Top Platforms
                 </h1>
-                <p className="paraColor text-base md:text-xl text-w-100 text-center maxWidth39">
+                <p className="paraColor text-base md:text-xl text-w-100 text-center max39">
                   Managing customer conversations across multiple platforms is complex and time-consuming. Kogents streamlines engagement with AI agents that automate support, capture leads, and keep customers connected 24/7, wherever they interact with your brand.
                 </p>
                 <div className="w_fit mx-auto d-flex flex-wrap gap-4 solutionSearchMain">
