@@ -12,6 +12,7 @@ import {
 } from "@/icons";
 import Link from "next/link";
 import Image from "next/image";
+import AwardSection from "./CustomerServiceAIAgents/AwardSection";
 
 const FooterV2 = () => {
   const [email, setEmail] = useState("");
@@ -42,39 +43,76 @@ const FooterV2 = () => {
   return (
     <footer className="footer-main bg-center bg_footer new bg-no-repeat bg-cover">
       <div className="footer-top">
-        <div className="footer-top-container">
-          <div className="footer-brand">
-            <Logo style={{ width: 150, height: 50 }} />
-            <p className="footer-description">
-              Kogents AI develops agents that streamline workflows and drive
-              innovation across industries.
-            </p>
-            <div className="app-download-buttons">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <a href="#" className="app-btn">
-                  <Image
-                    src="/assets/img/app-section/6.png"
-                    alt="Google Play"
-                    width={140}
-                    height={50}
-                  />
-                </a>
-                <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <a href="#" className="app-btn">
-                  <Image
-                    src="/assets/img/app-section/7.png"
-                    alt="App Store"
-                    width={140}
-                    height={50}
-                  />
-                </a>
-                <span style={{ fontSize: '12px', color: '#999', marginTop: '4px' }}>Coming Soon</span>
+        <div className="footer-top-container container">
+          <div className="row">
+            <div className="col-md-4">
+              <div className="footer-brand">
+                <Logo style={{ width: 150, height: 50 }} />
+                <p className="footer-description">
+                  Kogents AI develops agents that streamline workflows and drive
+                  innovation across industries.
+                </p>
+                <div className="app-download-buttons">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <a href="#" className="app-btn">
+                      <Image
+                        src="/assets/img/app-section/6.png"
+                        alt="Google Play"
+                        width={140}
+                        height={50}
+                      />
+                    </a>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        color: "#999",
+                        marginTop: "4px",
+                      }}
+                    >
+                      Coming Soon
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <a href="#" className="app-btn">
+                      <Image
+                        src="/assets/img/app-section/7.png"
+                        alt="App Store"
+                        width={140}
+                        height={50}
+                      />
+                    </a>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        color: "#999",
+                        marginTop: "4px",
+                      }}
+                    >
+                      Coming Soon
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="footer-engagement">
+            <div className="col-md-4">
+              <div>
+                <AwardSection className="awardSectionFooter"/>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="footer-engagement">
             <div className="newsletter-section">
               <p className="h5">Subscribe to our Newsletter</p>
               <form onSubmit={handleSubscribe} className="newsletter-form">
@@ -166,11 +204,13 @@ const FooterV2 = () => {
                 </a>
               </div>
             </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div className="footer-middle">
-        <div className="footer-grid">
+        <div className="footer-grid container">
           <div className="footer-column">
             <p className="h6">Channels</p>
             <div className="footer-links">
@@ -365,14 +405,20 @@ const FooterV2 = () => {
               </ul>
               <p className="h6 companyInfo">Company Info</p>
               <ul className="company-info-list">
-                <li >
-                  <Link className="d-flex align-items-center gap-2" href="mailto:info@kogents.ai"><Image
-                    width={20}
-                    height={20}
-                    className=""
-                    src="/assets/img/email.svg"
-                    alt="icon"
-                  /> info@kogents.ai</Link>
+                <li>
+                  <Link
+                    className="d-flex align-items-center gap-2"
+                    href="mailto:info@kogents.ai"
+                  >
+                    <Image
+                      width={20}
+                      height={20}
+                      className=""
+                      src="/assets/img/email.svg"
+                      alt="icon"
+                    />{" "}
+                    info@kogents.ai
+                  </Link>
                 </li>
                 <li>
                   <Link href="#">AI Automation</Link>
@@ -385,7 +431,7 @@ const FooterV2 = () => {
           </div>
         </div>
       </div>
-      <div className="footer-bottom">
+      <div className="footer-bottom container">
         <div className="footer-bottom-container">
           <p className="copyright-text">
             © Kogents AI. All Rights Reserved 2025

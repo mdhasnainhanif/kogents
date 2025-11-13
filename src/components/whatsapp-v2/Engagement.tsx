@@ -38,7 +38,7 @@ const Engagement = () => {
                         </div>
                     </div>
                     <div className="col-lg-12 col-xl-12 col-sm-12 col-12">
-                        <div className="row salesSeamless user_engagmnet justify-content-center ">
+                        <div className="row salesSeamless salesSeamless1  user_engagmnet justify-content-center ">
                             <div className="salesCardsBg">
                                 <Image
                                     src="/assets/img/whatsapp-v2/salse_cards_bg.png"
