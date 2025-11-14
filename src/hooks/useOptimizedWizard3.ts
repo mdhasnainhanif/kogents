@@ -248,7 +248,26 @@ export function useOptimizedWizard3() {
 
   const validateAboutYou = useCallback((data: ChatbotWizardData): ValidationResult => {
     const errors: string[] = []
-    return { isValid: true, errors }
+    
+    // Check if name is filled
+    if (!data.name || data.name.trim().length === 0) {
+      errors.push("Full name is required")
+    }
+    
+    // Check if email is filled
+    if (!data.email || data.email.trim().length === 0) {
+      errors.push("Email address is required")
+    }
+    
+    // Also validate email format
+    if (data.email && data.email.trim().length > 0) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(data.email.trim())) {
+        errors.push("Please enter a valid email address")
+      }
+    }
+    
+    return { isValid: errors.length === 0, errors }
   }, [])
 
   const validateIntegration = useCallback((data: ChatbotWizardData): ValidationResult => {

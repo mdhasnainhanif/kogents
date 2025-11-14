@@ -1578,6 +1578,31 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       };
     }, []);
 
+    // Custom handleNext - intercept Next button to call API first
+    const handleNext = async () => {
+      // Check if we have URL or files to crawl
+      const files = data.knowledgeSources?.files || [];
+      const websiteUrl = data.websiteUrl || data.knowledgeSources?.urls?.[0] || "";
+
+      // If no URL and no files, proceed directly to next step
+      if (!websiteUrl && files.length === 0) {
+        footerOptions.onNext?.();
+        return;
+      }
+
+      // Show modal immediately
+      setShowCrawlModal(true);
+
+      // Call crawlWebsite - it will handle API call and call footerOptions.onNext() when complete
+      await crawlWebsite();
+    };
+
+    // Modify footerOptions to use custom handleNext
+    const modifiedFooterOptions = {
+      ...footerOptions,
+      onNext: handleNext,
+    };
+
     return (
       <div>
         {/* Hidden tracking fields */}
@@ -1675,7 +1700,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                               </div>
                             </div>
                             {/* Activate Agent Now Button */}
-                            <div className="mt-3">
+                            {/* <div className="mt-3">
                               <button
                                 onClick={handleActivateAgent}
                                 disabled={isCrawling || (activeTab === "urls" && !(data.websiteUrl && data.websiteUrl.trim().length > 0))}
@@ -1685,7 +1710,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                                 <span>{isCrawling ? "Crawling..." : "Activate Agent Now"}</span>
                                 {!isCrawling && <ArrowRightIcon2 style={{ height: "24px" }} />}
                               </button>
-                            </div>
+                            </div> */}
 
                     {errors.length > 0 && (
                       <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -1704,7 +1729,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                 </InViewAnimate>
 
               <div className="chatbot-content-wrapper footer">
-                <WizardNavigation2 {...footerOptions} />
+                <WizardNavigation2 {...modifiedFooterOptions} />
               </div>
             </div>
 

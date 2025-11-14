@@ -21,6 +21,7 @@ export interface ChatWidgetProps {
   primaryColor?: string;
   companyName?: string;
   step?: number;
+  customMessages?: Message[]; // Add this prop
 }
 
 export function ChatWidget({ 
@@ -28,7 +29,8 @@ export function ChatWidget({
   avatar, 
   primaryColor = '#4a90e2',
   companyName,
-  step
+  step,
+  customMessages // Add this
 }: ChatWidgetProps) {
   const [avatarError, setAvatarError] = useState(false);
   
@@ -36,13 +38,42 @@ export function ChatWidget({
 
   // Update messages when companyName changes (Basic Setup step)
   useEffect(() => {
+    // If customMessages provided, use them directly (for Step 3)
+    if (customMessages && customMessages.length > 0) {
+      setMessages(customMessages);
+      return;
+    }
     const currentTime = new Date().toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: '2-digit',
       hour12: true,
     });
 
-    if (step === 2) {
+    if (step === 1) {
+      // Step 1: Only one agent message (grey bubble) - simple default
+      setMessages([
+        {
+          id: 1,
+          sender: 'System',
+          senderIcon: 'outlet',
+          text: 'Connected to AI Agent',
+          time: '',
+          isAgent: false,
+          isSystem: true,
+          showStatus: false,
+        },
+        {
+          id: 2,
+          sender: botName || 'Sarah',
+          senderIcon: '👤',
+          text: 'Hey there, how can i help you?',
+          time: '4:18 PM',
+          isAgent: false,
+          isUser: false,
+          showStatus: false,
+        },
+      ]);
+    } else if (step === 2) {
       // Basic Setup step messages
       setMessages([
         {
@@ -67,7 +98,7 @@ export function ChatWidget({
         },
       ]);
     } else {
-      // Default messages (other steps)
+      // Default messages (other steps) - when no step specified
       setMessages([
         {
           id: 1,
@@ -121,7 +152,7 @@ export function ChatWidget({
         },
       ]);
     }
-  }, [companyName, botName, step]);
+  }, [companyName, botName, step, customMessages]); // Add customMessages to dependencies
 
   const [inputValue, setInputValue] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);

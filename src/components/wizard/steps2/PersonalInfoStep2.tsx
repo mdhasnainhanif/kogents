@@ -278,6 +278,21 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
             console.log('✅ Widget loaded successfully with key:', widgetKey);
             setIsWidgetLoading(false);
             
+            // Configure widget with bot name immediately after load
+            const botName = data.botname || '';
+            if (botName && w.KogentsChat) {
+              try {
+                w.KogentsChat({
+                  config: {
+                    displayTitle: botName,
+                  }
+                });
+                console.log('✅ Widget configured with bot name:', botName);
+              } catch (error) {
+                console.warn('⚠️ KogentsChat config failed:', error);
+              }
+            }
+            
             // Cleanup duplicates after load
             setTimeout(() => {
               const widgets = document.querySelectorAll('[class*="kogents"], iframe[src*="kogents"]');
@@ -318,7 +333,128 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
       };
 
       loadWidget(dynamicKey);
-    }, [data]); // Re-run when data changes (to catch workspaceId updates)
+    }, [(data as any).workspaceId]); // Only re-run when workspaceId changes, not all data changes
+
+    // Continuous monitoring to keep bot name updated (even after AI replies)
+    useEffect(() => {
+      const botName = data.botname || '';
+      if (!botName) return;
+
+      // Function to update bot name in widget
+      const updateBotName = () => {
+        // Method 1: Try KogentsChat config API
+        const w = window as any;
+        if (w.KogentsChat) {
+          try {
+            w.KogentsChat({
+              config: {
+                displayTitle: botName,
+              }
+            });
+          } catch (error) {
+            // Silent fail
+          }
+        }
+
+        // Method 2: DOM manipulation - find and replace "Sarah" with botName
+        const widgetSelectors = [
+          '[class*="kogents"]',
+          '[id*="kogents"]',
+          'iframe[src*="kogents"]',
+        ];
+
+        widgetSelectors.forEach((selector) => {
+          const widgets = document.querySelectorAll(selector);
+          widgets.forEach((widget) => {
+            // Search in all text nodes and elements
+            const walker = document.createTreeWalker(
+              widget,
+              NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT,
+              null
+            );
+
+            let node;
+            while ((node = walker.nextNode())) {
+              if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.textContent || '';
+                if (text.includes('Sarah') && text.trim() !== botName) {
+                  node.textContent = text.replace(/Sarah/g, botName);
+                }
+              } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const el = node as HTMLElement;
+                // Check text content
+                if (el.textContent && el.textContent.includes('Sarah') && el.textContent.trim() !== botName) {
+                  el.textContent = el.textContent.replace(/Sarah/g, botName);
+                }
+                // Check title attribute
+                if (el.title && el.title.includes('Sarah')) {
+                  el.title = el.title.replace(/Sarah/g, botName);
+                }
+                // Check aria-label
+                const ariaLabel = el.getAttribute('aria-label');
+                if (ariaLabel && ariaLabel.includes('Sarah')) {
+                  el.setAttribute('aria-label', ariaLabel.replace(/Sarah/g, botName));
+                }
+              }
+            }
+          });
+        });
+      };
+
+      // Initial update
+      updateBotName();
+
+      // Set up MutationObserver to watch for DOM changes (when AI replies)
+      const observer = new MutationObserver((mutations) => {
+        let shouldUpdate = false;
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList' || mutation.type === 'characterData') {
+            // Check if new nodes contain "Sarah"
+            if (mutation.addedNodes.length > 0) {
+              mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                  if ((node.textContent || '').includes('Sarah')) {
+                    shouldUpdate = true;
+                  }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                  const el = node as HTMLElement;
+                  if (el.textContent && el.textContent.includes('Sarah')) {
+                    shouldUpdate = true;
+                  }
+                }
+              });
+            }
+            // Check if text content changed
+            if (mutation.type === 'characterData' && mutation.target.textContent?.includes('Sarah')) {
+              shouldUpdate = true;
+            }
+          }
+        });
+        if (shouldUpdate) {
+          // Debounce updates
+          setTimeout(updateBotName, 100);
+        }
+      });
+
+      // Observe widget containers
+      const widgetContainers = document.querySelectorAll('[class*="kogents"], [id*="kogents"]');
+      widgetContainers.forEach((container) => {
+        observer.observe(container, {
+          childList: true,
+          subtree: true,
+          characterData: true,
+        });
+      });
+
+      // Also set up interval as backup (every 2 seconds)
+      const intervalId = setInterval(updateBotName, 2000);
+
+      // Cleanup
+      return () => {
+        observer.disconnect();
+        clearInterval(intervalId);
+      };
+    }, [data.botname]); // Only depend on botname, not all data
 
     // Function to capture and console log form data
     const captureFormData = () => {
