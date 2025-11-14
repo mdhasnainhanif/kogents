@@ -489,7 +489,7 @@ const NewFooter = ({ showOnlyTop = false }) => {
                   </Link>
                 </li>
                 <li className="mt-3">
-                  <Link className="d-flex align-items-start gap-2">
+                  <Link className="d-flex align-items-start gap-2" href="#">
                     <Image
                       width={20}
                       height={20}
