@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useOptimizedWizard3 } from "@/hooks/useOptimizedWizard3";
-import { sendLeadToCRM } from "@/api/wizard";
+import { createWorkspaceWithFiles } from "@/api/workspace";
 import {
   BasicSetupStep,
   UseCaseStep,
@@ -142,128 +142,104 @@ function ChatbotWizard3() {
     }
   }, []);
 
+  console.log("data", data);
+
   const handleComplete = async () => {
     setIsSubmitting(true);
     setSubmitError(null);
     
     try {
-      // Derive fields for appearance and training data
-      const avatar = data.appearance?.avatar || "";
-      const avatarIsBase64 = typeof avatar === "string" && avatar.startsWith("data:");
-      const avatarName = data.appearance?.avatarName || (avatar ? (avatar.split('/').pop() || "").split('?')[0] : "");
-
-      const defaultAccent = "#3b82f6";
-      const primaryColor = data.appearance?.primaryColor;
-      const isDefaultAccent = !primaryColor || primaryColor === defaultAccent;
-      const accentColorValue = isDefaultAccent ? "" : (primaryColor || "");
-
-      const urls = data.knowledgeSources?.urls || [];
       const files = data.knowledgeSources?.files || [];
-      const textContent = data.knowledgeSources?.textContent || "";
-      const rawUrl = (data.websiteUrl || urls[0] || "").trim();
+      const rawUrl = (data.websiteUrl || "").trim();
       const firstUrl = rawUrl ? (/^https?:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`) : "";
-      const trainingMethod = firstUrl
-        ? "Website URL"
-        : files.length > 0
-          ? "File Upload"
-          : textContent
-            ? "Text Content"
-            : "None";
 
-      // Process use cases
+      // Process Step 3 use cases - check if "customer-support" is selected for business field
       const useCasesList = data.useCases || [];
-      const formattedUseCases = useCasesList.join(", ");
+      // Map use case to business string value
+      let businessValue: string | undefined = undefined;
+      if (useCasesList.some((uc: string) => uc.startsWith("customer-support"))) {
+        businessValue = "customer-support";
+      } else if (useCasesList.some((uc: string) => uc.startsWith("lead-capture"))) {
+        businessValue = "lead-capture";
+      } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
+        businessValue = "sales";
+      }
 
-      const structuredData = {
-        name: data.name || "",
-        email: data.email || "",
-        phone_number: data.phone || "",
-        message: data.description || "Looking for AI chatbot integration",
-        company_name: data.companyName || "",
-        service_id: 2,
-        metadata: {
-          brand: "kogents.ai",
-          gclid: data.gclid || null,
-          fbclid: data.fbclid || null,
-          igclid: data.igclid || null,
-          ttclid: data.ttclid || null,
-          fingerprint: data.fingerprint || null,
-          stable_session_id: data.stableSessionId || null,
-          fingerprintdata: data.fingerprintData || null,
-          form_steps: [
-            {
-              fields: [
-                { q: "Bot Name", a: data.botname || "N/A" },
-                { q: "Bot Image", a: avatarIsBase64 ? (avatarName || "") : avatar },
-                { q: "Selected Accent Color", a: isDefaultAccent ? "N/A" : (primaryColor || "N/A") }
-              ],
-              bot_image: {
-                name: avatarName,
-                size: data.appearance?.avatarBlob?.size || 0,
-                type: data.appearance?.avatarBlob?.type || "image/png",
-                url: avatarIsBase64 ? "" : avatar,
-                blob: data.appearance?.avatarBlob?.blob || ""
-              },
-              accent_color: accentColorValue
-            },
-            {
-              fields: [
-                { q: "Company Name", a: data.companyName || "N/A" },
-                { q: "Industry", a: data.industry || "N/A" }
-              ]
-            },
-            {
-              fields: [
-                { q: "Selected Use Cases", a: formattedUseCases || "N/A" }
-              ],
-              selected_options: useCasesList.length > 0 ? useCasesList : ["N/A"]
-            },
-            {
-              fields: [
-                { q: "Training Method", a: trainingMethod },
-                { q: "Website URL", a: firstUrl || "N/A" },
-                { q: "Files Uploaded", a: files.length > 0 ? `${files.length} file(s)` : "None" },
-                { q: "Text Content", a: textContent ? `${textContent.length} characters` : "None" }
-              ],
-              training_method: trainingMethod,
-              website_url: firstUrl,
-              files: files.map((file, index) => ({
-                name: file.name,
-                size: file.size,
-                type: file.type,
-                blob: data.blobData?.trainingFiles?.[index]?.blob || ""
-              }))
-            },
-            {
-              fields: [
-                { q: "Full Name", a: data.name || "N/A" },
-                { q: "Email", a: data.email || "N/A" },
-                { q: "Phone", a: data.phone || "N/A" }
-              ]
-            },
-            {
-              fields: [
-                { q: "Integration Option", a: data.integration?.type || "N/A" }
-              ]
-            }
-          ]
-        },
-        fingerprint: data.fingerprint || "fp-test-67890-xyz",
-        client_ip: data.client_ip || "127.0.0.1",
-        user_agent: navigator.userAgent,
-        session_id: data.stableSessionId || "sess-67890-abc",
-        link: "https://kogents.ai/"
+      // Process Step 6 integration type - map to info field
+      const integrationType = data.integration?.type || "";
+      // Map integration type to readable text for info field
+      const integrationInfoMap: Record<string, string> = {
+        "self-manage": "Do you manage your website yourself?",
+        "technical-person": "I have a technical person to do this for me",
+        "engineering-team": "Would you like our engineering team to do this for you?",
       };
+      const infoValue = integrationType ? (integrationInfoMap[integrationType] || integrationType) : "";
 
-      console.log("🚀 ===== STARTING BRIEF SUBMISSION =====");
-      
-      const result = await sendLeadToCRM(structuredData);
-      
-      console.log("🔍 ===== BRIEF SUBMISSION RESULT =====");
-      
-      if (result.success) {
-        console.log("✅ Brief submitted to CRM");
+      // ================= Workspace API submission with ALL fields =================
+      try {
+        const wsFiles: File[] = (data.knowledgeSources?.files || []) as File[];
+        const d: any = data as any;
+
+        // Complete payload with all fields from all steps
+        const workspacePayload = {
+          // Step 2: Company Information (required)
+          companyName: String(data.companyName || ""), // maps to "name" (required)
+          industry: String(data.industry || ""), // maps to "vertical"
+          companySize: String(d.companySize || ""),
+          country: String(d.country || ""),
+          websiteUrl: firstUrl, // normalized URL from Step 4
+          files: wsFiles, // files from Step 4
+          
+          // Step 1: Bot Customization
+          botName: String(data.botname || ""),
+          
+          // Step 3: Use Cases → business field (now string, not boolean)
+          business: businessValue,
+          
+          // Step 5: Personal Information
+          fullName: String(data.name || ""),
+          emailAddress: String(data.email || ""), // Preferred over email
+          phoneNumber: String(data.phone || ""),
+          
+          // Step 6: Integration → info field
+          info: infoValue, // Step 6 integration option text
+          
+          // Step 6: Integration checkbox
+          infoCheckbox: integrationType === "website" ? true : undefined,
+          
+          // Bot appearance fields
+          colors: String(data.appearance?.primaryColor || "#000"),
+          displayTitle: String(data.botname || ""),
+          imageUrl: (() => {
+            const avatarUrl = String(data.appearance?.avatar || "");
+            if (!avatarUrl) return "";
+            // If it's a base64 data URL or absolute URL, use as-is
+            if (avatarUrl.startsWith('data:') || avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
+              return avatarUrl;
+            }
+            // For relative paths like /assets/img/brief/avatar3.png, prepend base URL
+            return `https://kogents.ai${avatarUrl.startsWith('/') ? avatarUrl : '/' + avatarUrl}`;
+          })(),
+        };
+
+        const response = await createWorkspaceWithFiles(workspacePayload);
+        console.log("✅ Workspace created with kogent-bot API");
         
+        // ✅ Store workspace _id for widget script
+        const workspaceId = response?.data?._id || response?._id;
+        if (workspaceId) {
+          // Store in localStorage for widget script
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('workspace_id', workspaceId);
+            console.log('✅ Workspace ID stored:', workspaceId);
+          }
+          // Update in wizard data
+          updateData({
+            workspaceId: workspaceId,
+          } as any);
+        }
+
+        // On success, clear drafts and redirect
         if (typeof window !== 'undefined') {
           try {
             localStorage.removeItem('chatbot-wizard-draft-v3-briefv2');
@@ -274,12 +250,13 @@ function ChatbotWizard3() {
             console.error('Failed to clear localStorage:', error);
           }
         }
-        
         router.push("/thank-you");
-      } else {
-        console.error("❌ Brief submission failed:", result.error);
-        setSubmitError(result.error || "Form submission failed");
+        return;
+      } catch (wsErr) {
+        console.error("❌ Workspace API failed:", wsErr);
+        setSubmitError(wsErr instanceof Error ? wsErr.message : "Workspace submission failed");
         setIsSubmitting(false);
+        return;
       }
 
     } catch (error) {

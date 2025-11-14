@@ -190,7 +190,7 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
                               width: "65px",
                               height: "65px",
                               borderRadius: "50%",
-                              border: isSelected ? "2px solid #5D51AF" : "2px solid #333",
+                              border: isSelected ? "2px solid #5d51af" : "2px solid #333",
                               padding: "5px",
                               background: "transparent",
                               cursor: "pointer",
@@ -312,18 +312,11 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
 
             {/* Right Panel (Preview) */}
             <div className="col-lg-6 d-flex align-items-center justify-content-center hideOnMobile" style={{ backgroundColor: '#02000e', height: 'calc(100vh - 68px)' }}>
-              {/* <img
-                className="img-fluid"
-                style={{ maxWidth: "25rem" }}
-                src="/assets/img/brief/sarah.webp"
-                alt="Preview"
-                width={500}
-                height={500}
-              /> */}
               <ChatWidget 
                 botName={data.botname || 'Sarah'}
                 avatar={avatarPreview || data.appearance?.avatar || undefined}
                 primaryColor={data.appearance?.primaryColor || '#4a90e2'}
+                step={1} // Add step prop to ensure default messages show
               />
             </div>
           </div>

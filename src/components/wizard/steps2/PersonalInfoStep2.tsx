@@ -64,7 +64,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
     const [isWidgetLoading, setIsWidgetLoading] = useState<boolean>(true);
-
+    
     // Initialize tracking parameters
     useEffect(() => {
       const initializeTracking = () => {
@@ -186,6 +186,275 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
 
       initializeFingerprint();
     }, []);
+
+    // Load Kogents Chat Widget script with dynamic key
+    useEffect(() => {
+      if (typeof window === 'undefined') return;
+
+      // Get dynamic key from localStorage (stored after API response) or use default
+      const getWidgetKey = (): string => {
+        // Try localStorage first (most recent workspace_id)
+        if (typeof window !== 'undefined') {
+          const storedId = localStorage.getItem('workspace_id');
+          if (storedId) {
+            console.log('✅ Using workspace ID from localStorage:', storedId);
+            return storedId;
+          }
+        }
+        // Fallback to data prop
+        if ((data as any).workspaceId) {
+          console.log('✅ Using workspace ID from data:', (data as any).workspaceId);
+          return (data as any).workspaceId;
+        }
+        // Default fallback
+        return "690356bd59e93d9080d14de0";
+      };
+
+      const dynamicKey = getWidgetKey();
+      const w = window as any;
+      const CURRENT_KEY_STORAGE = '__kogents_current_key__';
+
+      // Load widget function
+      const loadWidget = (key: string) => {
+        console.log('🔵 Loading widget with key:', key);
+
+        // Clean up previous instance if key changed
+        const previousKey = w[CURRENT_KEY_STORAGE];
+        if (previousKey && previousKey !== key) {
+          console.log('🔄 Key changed, cleaning up previous widget');
+          
+          // Remove old script
+          const existingScript = document.getElementById('kogents-chat-widget');
+          if (existingScript) {
+            existingScript.remove();
+          }
+
+          // Reset global object
+          if (w.KogentsChat) {
+            delete w.KogentsChat;
+          }
+
+          // Remove old widget elements
+          const oldWidgets = document.querySelectorAll('[class*="kogents"], [id*="kogents-widget"], iframe[src*="kogents"]');
+          oldWidgets.forEach((widget) => {
+            if (widget.id !== 'kogents-chat-widget-container') {
+              widget.remove();
+            }
+          });
+        }
+
+        // Check if already loaded with same key
+        if (w[CURRENT_KEY_STORAGE] === key && w.KogentsChat) {
+          console.log('ℹ️ Widget already loaded with same key');
+          setIsWidgetLoading(false);
+          return;
+        }
+
+        // Check if script already exists
+        const existingScript = document.getElementById('kogents-chat-widget');
+        if (existingScript && w[CURRENT_KEY_STORAGE] === key) {
+          console.log('ℹ️ Script already exists with same key');
+          setIsWidgetLoading(false);
+          return;
+        }
+
+        // Store current key
+        w[CURRENT_KEY_STORAGE] = key;
+
+        // Load new widget
+        (function (d: Document, s: string, id: string, widgetKey: string) {
+          const kogentsChat = ((window as any).KogentsChat = function (c: any) {
+            (kogentsChat as any)._ = (kogentsChat as any)._ || [];
+            (kogentsChat as any)._!.push(c);
+          }) as any;
+          (kogentsChat as any)._ = [];
+
+          const e = d.createElement(s);
+          e.async = true;
+          e.id = id;
+          e.src = `https://api-staging.kogents.com/widget/embed.js?key=${widgetKey}`;
+          
+          e.onload = () => {
+            console.log('✅ Widget loaded successfully with key:', widgetKey);
+            setIsWidgetLoading(false);
+            
+            // Configure widget with bot name immediately after load
+            const botName = data.botname || '';
+            if (botName && w.KogentsChat) {
+              try {
+                w.KogentsChat({
+                  config: {
+                    displayTitle: botName,
+                  }
+                });
+                console.log('✅ Widget configured with bot name:', botName);
+              } catch (error) {
+                console.warn('⚠️ KogentsChat config failed:', error);
+              }
+            }
+            
+            // Cleanup duplicates after load
+            setTimeout(() => {
+              const widgets = document.querySelectorAll('[class*="kogents"], iframe[src*="kogents"]');
+              const container = document.getElementById('kogents-chat-widget-container');
+              
+              if (widgets.length > 1 && container) {
+                console.log('🧹 Cleaning up duplicate widgets');
+                let foundFirst = false;
+                widgets.forEach((widget) => {
+                  if (container.contains(widget)) {
+                    if (!foundFirst) {
+                      foundFirst = true;
+                    } else {
+                      widget.remove();
+                    }
+                  } else if (!foundFirst) {
+                    container.appendChild(widget as Node);
+                    foundFirst = true;
+                  } else {
+                    widget.remove();
+                  }
+                });
+              }
+            }, 2000);
+          };
+          
+          e.onerror = () => {
+            console.error('❌ Failed to load widget with key:', widgetKey);
+            (window as any)[CURRENT_KEY_STORAGE] = null; // Allow retry
+            setIsWidgetLoading(false);
+          };
+
+          const t = d.getElementsByTagName(s)[0];
+          if (t && t.parentNode) {
+            t.parentNode.insertBefore(e, t);
+          }
+        })(document, "script", "kogents-chat-widget", key);
+      };
+
+      loadWidget(dynamicKey);
+    }, [(data as any).workspaceId]); // Only re-run when workspaceId changes, not all data changes
+
+    // Continuous monitoring to keep bot name updated (even after AI replies)
+    useEffect(() => {
+      const botName = data.botname || '';
+      if (!botName) return;
+
+      // Function to update bot name in widget
+      const updateBotName = () => {
+        // Method 1: Try KogentsChat config API
+        const w = window as any;
+        if (w.KogentsChat) {
+          try {
+            w.KogentsChat({
+              config: {
+                displayTitle: botName,
+              }
+            });
+          } catch (error) {
+            // Silent fail
+          }
+        }
+
+        // Method 2: DOM manipulation - find and replace "Sarah" with botName
+        const widgetSelectors = [
+          '[class*="kogents"]',
+          '[id*="kogents"]',
+          'iframe[src*="kogents"]',
+        ];
+
+        widgetSelectors.forEach((selector) => {
+          const widgets = document.querySelectorAll(selector);
+          widgets.forEach((widget) => {
+            // Search in all text nodes and elements
+            const walker = document.createTreeWalker(
+              widget,
+              NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT,
+              null
+            );
+
+            let node;
+            while ((node = walker.nextNode())) {
+              if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.textContent || '';
+                if (text.includes('Sarah') && text.trim() !== botName) {
+                  node.textContent = text.replace(/Sarah/g, botName);
+                }
+              } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const el = node as HTMLElement;
+                // Check text content
+                if (el.textContent && el.textContent.includes('Sarah') && el.textContent.trim() !== botName) {
+                  el.textContent = el.textContent.replace(/Sarah/g, botName);
+                }
+                // Check title attribute
+                if (el.title && el.title.includes('Sarah')) {
+                  el.title = el.title.replace(/Sarah/g, botName);
+                }
+                // Check aria-label
+                const ariaLabel = el.getAttribute('aria-label');
+                if (ariaLabel && ariaLabel.includes('Sarah')) {
+                  el.setAttribute('aria-label', ariaLabel.replace(/Sarah/g, botName));
+                }
+              }
+            }
+          });
+        });
+      };
+
+      // Initial update
+      updateBotName();
+
+      // Set up MutationObserver to watch for DOM changes (when AI replies)
+      const observer = new MutationObserver((mutations) => {
+        let shouldUpdate = false;
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList' || mutation.type === 'characterData') {
+            // Check if new nodes contain "Sarah"
+            if (mutation.addedNodes.length > 0) {
+              mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                  if ((node.textContent || '').includes('Sarah')) {
+                    shouldUpdate = true;
+                  }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                  const el = node as HTMLElement;
+                  if (el.textContent && el.textContent.includes('Sarah')) {
+                    shouldUpdate = true;
+                  }
+                }
+              });
+            }
+            // Check if text content changed
+            if (mutation.type === 'characterData' && mutation.target.textContent?.includes('Sarah')) {
+              shouldUpdate = true;
+            }
+          }
+        });
+        if (shouldUpdate) {
+          // Debounce updates
+          setTimeout(updateBotName, 100);
+        }
+      });
+
+      // Observe widget containers
+      const widgetContainers = document.querySelectorAll('[class*="kogents"], [id*="kogents"]');
+      widgetContainers.forEach((container) => {
+        observer.observe(container, {
+          childList: true,
+          subtree: true,
+          characterData: true,
+        });
+      });
+
+      // Also set up interval as backup (every 2 seconds)
+      const intervalId = setInterval(updateBotName, 2000);
+
+      // Cleanup
+      return () => {
+        observer.disconnect();
+        clearInterval(intervalId);
+      };
+    }, [data.botname]); // Only depend on botname, not all data
 
     // Function to capture and console log form data
     const captureFormData = () => {
@@ -533,29 +802,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                   </div>
                 )}
 
-                {/* Load chat widget script */}
-                <Script
-                style={{width:400 }}
-                  id="kogents-chat-widget"
-                  strategy="afterInteractive"
-                  src="https://api-staging.kogents.com/widget/embed.js?key=690e30f9e2abcb2b1219c7b4"
-                  onLoad={() => {
-                    setIsWidgetLoading(false);
-                    // Center the widget after it loads
-                    const widget = document.getElementById('kogents-chat-widget') || 
-                                  document.querySelector('[id*="kogents"]') ||
-                                  document.querySelector('[class*="kogents"]');
-                    if (widget) {
-                      const widgetElement = widget as HTMLElement;
-                      widgetElement.style.position = 'relative';
-                      widgetElement.style.margin = 'auto';
-                    }
-                  }}
-                  onError={() => {
-                    setIsWidgetLoading(false);
-                    console.error('Failed to load chat widget script');
-                  }}
-                />
+                {/* Widget script loaded by useEffect above */}
               </div>
               {/* <img
                 className="img-fluid"
