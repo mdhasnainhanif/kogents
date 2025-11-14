@@ -1315,6 +1315,11 @@ ul.chatbot_upload_files li {
   animation: 50s linear infinite logoSlide;
 }
 
+@media (max-width: 1400px) {
+  .footer-links ul li a {
+    font-size: 0.925rem !important;
+}
+}
 @media (max-width: 992px) {
   div.whatsappBrandSlider{
     display: inline-flex !important;
@@ -1722,7 +1727,7 @@ button.forthTabActive {
 }
 
 .footCate {
-  margin-top: 3.5rem !important;
+  margin-top: 3.625rem !important;
 }
 
 .footCate1 {
@@ -2146,6 +2151,10 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 576px) {
+  p.width57, p.maxW54  {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
   #WhatsappAgentSection{
     padding-bottom: 0rem;
   }
@@ -2535,7 +2544,7 @@ div.bg-purple-500.border-2 {
 }
 
 #benefitsSection p {
-  margin-top: 1.25rem;
+  margin-top: 0.725rem;
 }
 
 input.form-control,

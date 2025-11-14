@@ -189,7 +189,7 @@ const page = () => {
                         ],
                     },
                 ]}
-                buttonText="Get Your Perfect Workflow"
+                buttonText="Boost My Productivity"
                 buttonLink="#"
             />
             <BrandLogoSlider />
