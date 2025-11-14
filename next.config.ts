@@ -100,6 +100,7 @@ const nextConfig: NextConfig = {
       { source: '/solution/', destination: '/solutions/', permanent: true },
       { source: '/blog', destination: '/blogs/', permanent: true },
       { source: '/blog/', destination: '/blogs/', permanent: true },
+      { source: '/blogs/how-much-does-it-cost-to-build-an-ai-system-2', destination: '/blogs/how-much-does-it-cost-to-build-an-ai-system', permanent: true },
       { source: '/case-study', destination: '/case-studies/', permanent: true },
       { source: '/case-study/', destination: '/case-studies/', permanent: true },
       { source: '/testimonial', destination: '/client-testimonials/', permanent: true },

@@ -79,6 +79,7 @@ const redirects = new Map<string, string>([
   ['/solution/', '/solutions/'],
   ['/blog', '/blogs/'],
   ['/blog/', '/blogs/'],
+  ['/blogs/how-much-does-it-cost-to-build-an-ai-system-2', '/blogs/how-much-does-it-cost-to-build-an-ai-system'],
   ['/case-study', '/case-studies/'],
   ['/case-study/', '/case-studies/'],
   ['/testimonial', '/client-testimonials/'],
