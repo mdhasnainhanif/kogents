@@ -1,5 +1,4 @@
 // app/images_sitemap.xml/route.ts
-/* eslint-disable @typescript-eslint/no-unused-vars */
 type ImageEntry = {
   pageLoc: string;   // absolute page URL
   images: string[];  // absolute original asset URLs (no /_next/image)

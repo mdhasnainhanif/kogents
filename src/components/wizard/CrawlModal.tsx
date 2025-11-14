@@ -171,7 +171,6 @@ const CrawlModal: React.FC<CrawlModalProps> = ({
               </div>
               
               {/* COMMENTED OUT: Socket.IO Runtime Information - Not showing detailed socket info anymore */}
-              {/* @ts-ignore - Commented out code, not executed */}
               {false && socketInfo && (
                 <div
                   style={{
@@ -196,99 +195,99 @@ const CrawlModal: React.FC<CrawlModalProps> = ({
                   <div style={{ fontSize: "0.75rem", color: "#9ca3af", lineHeight: "1.6" }}>
                     <div style={{ marginBottom: "0.5rem" }}>
                       <span style={{ color: "#64748b" }}>Connection: </span>
-                      <span style={{ color: socketInfo.connected ? "#10b981" : "#ef4444" }}>
-                        {socketInfo.connected ? "✅ Connected" : "❌ Disconnected"}
+                      <span style={{ color: socketInfo?.connected ? "#10b981" : "#ef4444" }}>
+                        {socketInfo?.connected ? "✅ Connected" : "❌ Disconnected"}
                       </span>
                     </div>
-                    {socketInfo.socketUrl && (
+                    {socketInfo?.socketUrl && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Socket URL: </span>
                         <span style={{ color: "#60a5fa", fontSize: "0.7rem", wordBreak: "break-all" }}>
-                          {socketInfo.socketUrl}
+                          {socketInfo?.socketUrl}
                         </span>
                       </div>
                     )}
-                    {socketInfo.socketPort && (
+                    {socketInfo?.socketPort && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Socket Port: </span>
-                        <span style={{ color: "#fff" }}>{socketInfo.socketPort}</span>
+                        <span style={{ color: "#fff" }}>{socketInfo?.socketPort}</span>
                       </div>
                     )}
-                    {socketInfo.socketEvent && (
+                    {socketInfo?.socketEvent && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Socket Event: </span>
                         <span style={{ color: "#a855f7", fontSize: "0.7rem", wordBreak: "break-all" }}>
-                          {socketInfo.socketEvent}
+                          {socketInfo?.socketEvent}
                         </span>
                       </div>
                     )}
-                    {socketInfo.socketId && (
+                    {socketInfo?.socketId && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Socket ID: </span>
-                        <span style={{ color: "#fff" }}>{socketInfo.socketId}</span>
+                        <span style={{ color: "#fff" }}>{socketInfo?.socketId}</span>
                       </div>
                     )}
-                    {socketInfo.userId && (
+                    {socketInfo?.userId && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>User ID: </span>
                         <span style={{ color: "#fff", fontSize: "0.7rem", wordBreak: "break-all" }}>
-                          {socketInfo.userId}
+                          {socketInfo?.userId}
                         </span>
                       </div>
                     )}
-                    {socketInfo.step && (
+                    {socketInfo?.step && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Current Step: </span>
                         <span style={{ color: "#a855f7", textTransform: "capitalize" }}>
-                          {socketInfo.step.replace(/_/g, ' ')}
+                          {socketInfo?.step.replace(/_/g, ' ')}
                         </span>
                       </div>
                     )}
-                    {socketInfo.timestamp && (
+                    {socketInfo?.timestamp && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Last Update: </span>
                         <span style={{ color: "#fff" }}>
-                          {new Date(socketInfo.timestamp).toLocaleTimeString()}
+                          {socketInfo?.timestamp}
                         </span>
                       </div>
                     )}
-                    {socketInfo.data && (
+                    {socketInfo?.data && (
                       <>
-                        {socketInfo.data.message && (
+                        {socketInfo?.data.message && (
                           <div style={{ marginBottom: "0.5rem" }}>
                             <span style={{ color: "#64748b" }}>Message: </span>
-                            <span style={{ color: "#10b981" }}>{socketInfo.data.message}</span>
+                            <span style={{ color: "#10b981" }}>{socketInfo?.data.message}</span>
                           </div>
                         )}
-                        {socketInfo.data.status && (
+                        {socketInfo?.data.status && (
                           <div style={{ marginBottom: "0.5rem" }}>
                             <span style={{ color: "#64748b" }}>Status: </span>
                             <span style={{ color: "#fff", textTransform: "capitalize" }}>
-                              {socketInfo.data.status}
+                              {socketInfo?.data.status}
                             </span>
                           </div>
                         )}
-                        {socketInfo.data.url && (
+                        {socketInfo?.data.url && (
                           <div style={{ marginBottom: "0.5rem" }}>
                             <span style={{ color: "#64748b" }}>URL: </span>
                             <span style={{ color: "#60a5fa", wordBreak: "break-all", fontSize: "0.7rem" }}>
-                              {socketInfo.data.url}
+                              {socketInfo?.data.url}
                             </span>
                           </div>
                         )}
-                        {socketInfo.data.progress !== undefined && (
+                        {socketInfo?.data.progress !== undefined && (
                           <div style={{ marginBottom: "0.5rem" }}>
                             <span style={{ color: "#64748b" }}>Progress: </span>
                             <span style={{ color: "#a855f7", fontWeight: "bold" }}>
-                              {socketInfo.data.progress}%
+                              {socketInfo?.data.progress}%
                             </span>
                           </div>
                         )}
                         
                         {/* Pages Count Display - Enhanced */}
-                        {(socketInfo.data.pages !== undefined || 
-                          socketInfo.data.totalPages !== undefined || 
-                          socketInfo.data.pagesCrawled !== undefined) && (
+                        {(socketInfo?.data.pages !== undefined || 
+                          socketInfo?.data.totalPages !== undefined || 
+                          socketInfo?.data.pagesCrawled !== undefined) && (
                           <div 
                             style={{ 
                               marginTop: "0.75rem", 
@@ -301,36 +300,36 @@ const CrawlModal: React.FC<CrawlModalProps> = ({
                             <div style={{ color: "#a855f7", fontSize: "0.8rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
                               📄 Pages Information
                             </div>
-                            {socketInfo.data.pages !== undefined && (
+                            {socketInfo?.data.pages !== undefined && (
                               <div style={{ marginBottom: "0.4rem" }}>
                                 <span style={{ color: "#64748b" }}>Pages: </span>
                                 <span style={{ color: "#fff", fontWeight: "bold" }}>
-                                  {socketInfo.data.pages}
+                                  {socketInfo?.data.pages}
                                 </span>
                               </div>
                             )}
-                            {socketInfo.data.totalPages !== undefined && (
+                            {socketInfo?.data.totalPages !== undefined && (
                               <div style={{ marginBottom: "0.4rem" }}>
                                 <span style={{ color: "#64748b" }}>Total Pages: </span>
                                 <span style={{ color: "#fff", fontWeight: "bold" }}>
-                                  {socketInfo.data.totalPages}
+                                  {socketInfo?.data.totalPages}
                                 </span>
                               </div>
                             )}
-                            {socketInfo.data.pagesCrawled !== undefined && (
+                            {socketInfo?.data.pagesCrawled !== undefined && (
                               <div style={{ marginBottom: "0.4rem" }}>
                                 <span style={{ color: "#64748b" }}>Pages Crawled: </span>
                                 <span style={{ color: "#10b981", fontWeight: "bold" }}>
-                                  {socketInfo.data.pagesCrawled}
-                                  {socketInfo.data.totalPages !== undefined && ` / ${socketInfo.data.totalPages}`}
+                                  {socketInfo?.data.pagesCrawled}
+                                  {socketInfo?.data.totalPages !== undefined && ` / ${socketInfo?.data.totalPages}`}
                                 </span>
                               </div>
                             )}
-                            {socketInfo.data.sitemap && Array.isArray(socketInfo.data.sitemap) && socketInfo.data.sitemap.length > 0 && (
+                            {socketInfo?.data.sitemap && Array.isArray(socketInfo?.data.sitemap) && socketInfo?.data.sitemap.length > 0 && (
                               <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #334155" }}>
                                 <span style={{ color: "#64748b", fontSize: "0.7rem" }}>Sitemap URLs: </span>
                                 <span style={{ color: "#60a5fa", fontSize: "0.7rem" }}>
-                                  {socketInfo.data.sitemap.length} URLs
+                                  {socketInfo?.data.sitemap.length} URLs
                                 </span>
                               </div>
                             )}
@@ -353,27 +352,27 @@ const CrawlModal: React.FC<CrawlModalProps> = ({
                               maxHeight: "150px",
                             }}
                           >
-                            {JSON.stringify(socketInfo.data, null, 2)}
+                            {JSON.stringify(socketInfo?.data, null, 2)}
                           </pre>
                         </div>
                       </>
                     )}
-                    {socketInfo.userId && (
+                    {socketInfo?.userId && (
                       <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #334155" }}>
                         <span style={{ color: "#64748b" }}>User ID: </span>
-                        <span style={{ color: "#fff" }}>{socketInfo.userId}</span>
+                        <span style={{ color: "#fff" }}>{socketInfo?.userId}</span>
                       </div>
                     )}
-                    {socketInfo.eventType && (
+                    {socketInfo?.eventType && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Event Type: </span>
-                        <span style={{ color: "#fff" }}>{socketInfo.eventType}</span>
+                        <span style={{ color: "#fff" }}>{socketInfo?.eventType}</span>
                       </div>
                     )}
-                    {socketInfo.source && (
+                    {socketInfo?.source && (
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Source: </span>
-                        <span style={{ color: "#fff" }}>{socketInfo.source}</span>
+                        <span style={{ color: "#fff" }}>{socketInfo?.source}</span>
                       </div>
                     )}
                   </div>
