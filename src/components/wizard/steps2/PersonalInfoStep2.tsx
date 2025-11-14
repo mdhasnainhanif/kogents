@@ -270,9 +270,9 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
           (kogentsChat as any)._ = [];
 
           const e = d.createElement(s);
-          e.async = true;
-          e.id = id;
-          e.src = `https://api-staging.kogents.com/widget/embed.js?key=${widgetKey}`;
+          (e as any).async = true;
+          (e as any).id = id;
+          (e as any).src = `https://api-staging.kogents.com/widget/embed.js?key=${widgetKey}`;
           
           e.onload = () => {
             console.log('✅ Widget loaded successfully with key:', widgetKey);
