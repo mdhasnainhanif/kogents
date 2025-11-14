@@ -272,7 +272,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
           const e = d.createElement(s);
           e.async = true;
           e.id = id;
-          e.src = `https://api-staging.kogents.com/widget/embed.js?key=${widgetKey}`;
+          e.src = `https://api-staging.kogents.com/widget/embed.js?key=${widgetKey}&mode=testing`;
           
           e.onload = () => {
             console.log('✅ Widget loaded successfully with key:', widgetKey);

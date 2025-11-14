@@ -243,7 +243,16 @@ export function useOptimizedWizard3() {
 
   const validateTrainingData = useCallback((data: ChatbotWizardData): ValidationResult => {
     const errors: string[] = []
-    return { isValid: true, errors }
+    
+    // Check if either URL or files are provided
+    const hasUrl = data.knowledgeSources?.urls && data.knowledgeSources.urls.length > 0 && data.knowledgeSources.urls[0]?.trim().length > 0;
+    const hasFiles = data.knowledgeSources?.files && data.knowledgeSources.files.length > 0;
+    
+    if (!hasUrl && !hasFiles) {
+      errors.push("Please provide either a website URL or upload at least one file to continue")
+    }
+    
+    return { isValid: errors.length === 0, errors }
   }, [])
 
   const validateAboutYou = useCallback((data: ChatbotWizardData): ValidationResult => {

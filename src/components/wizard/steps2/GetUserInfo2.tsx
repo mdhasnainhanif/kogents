@@ -149,11 +149,10 @@ const FileUploadSection = ({
   return (
     <div className="space-y-4">
       <div
-        className={`stepUploadSection rounded-lg p-3 text-center transition-all duration-200 relative cursor-pointer ${
-          dragActive
-            ? "border-blue-500 bg-blue-50 scale-[1.02]"
-            : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
-        }`}
+        className={`stepUploadSection rounded-lg p-3 text-center transition-all duration-200 relative cursor-pointer ${dragActive
+          ? "border-blue-500 bg-blue-50 scale-[1.02]"
+          : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
+          }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
@@ -197,12 +196,12 @@ const FileUploadSection = ({
               <span className="text-xs bg-gray-100 px-2 py-1 rounded">
                 {files.reduce((acc, file) => acc + file.size, 0) > 1024 * 1024
                   ? `${(
-                      files.reduce((acc, file) => acc + file.size, 0) /
-                      (1024 * 1024)
-                    ).toFixed(1)} MB`
+                    files.reduce((acc, file) => acc + file.size, 0) /
+                    (1024 * 1024)
+                  ).toFixed(1)} MB`
                   : `${Math.round(
-                      files.reduce((acc, file) => acc + file.size, 0) / 1024
-                    )} KB`}
+                    files.reduce((acc, file) => acc + file.size, 0) / 1024
+                  )} KB`}
               </span>
             </div>
             <div className="space-y-2 max-h-60 overflow-y-auto">
@@ -290,7 +289,7 @@ const URLManagementSection = ({
     }
 
     const finalUrl = trimmedUrl.startsWith('http') ? trimmedUrl : `https://${trimmedUrl}`;
-    
+
     // If URL already exists in array, just update it
     if (urls.includes(finalUrl)) {
       // URL already exists, no need to add again
@@ -347,19 +346,18 @@ const URLManagementSection = ({
               onChange={handleInputChange}
               onBlur={handleBlur}
               onKeyDown={handleKeyDown}
-              className={`w-full px-4 py-2 rounded-md w-100 text-gray-900 form-control ${
-                urlError ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-2 rounded-md w-100 text-gray-900 form-control ${urlError ? "border-red-500" : "border-gray-300"
+                }`}
             />
           </div>
         </div>
-          <div className="d-block">
-            {urlError && (
-              <p className="text-sm text-red-600 mt-1 flex items-center gap-1">
-                ⚠️ {urlError}
-              </p>
-            )}
-          </div>
+        <div className="d-block">
+          {urlError && (
+            <p className="text-sm text-red-600 mt-1 flex items-center gap-1">
+              ⚠️ {urlError}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -519,7 +517,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       async (files: File[]) => {
         try {
           const blobFiles = await filesToBlobs(files);
-          
+
           onUpdate({
             knowledgeSources: {
               ...data.knowledgeSources,
@@ -595,14 +593,14 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         return;
       }
 
-        setIsCrawling(true);
-        setCrawlError(null);
-        setCrawlProgress(0);
-        setCrawlComplete(false);
-        setCanProceed(false);
-        
-        // Show initial message
-        setCrawlProgress(5); // Initial progress
+      setIsCrawling(true);
+      setCrawlError(null);
+      setCrawlProgress(0);
+      setCrawlComplete(false);
+      setCanProceed(false);
+
+      // Show initial message
+      setCrawlProgress(5); // Initial progress
 
       const progressInterval: NodeJS.Timeout | null = null;
       let socket: Socket | null = null;
@@ -612,7 +610,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         // Build multipart form data with all fields
         const form = new FormData();
         if (websiteUrl) form.append("websiteUrl", websiteUrl);
-        
+
         // Required fields
         form.append("name", String(companyName || ""));
         const slug = (companyName || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
@@ -630,7 +628,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
           businessValue = "sales";
         }
-        
+
         // Map Step 6 integration type to info field
         const integrationType = data.integration?.type || "";
         const integrationInfoMap: Record<string, string> = {
@@ -639,7 +637,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           "engineering-team": "Would you like our engineering team to do this for you?",
         };
         const infoValue = integrationType ? (integrationInfoMap[integrationType] || integrationType) : "";
-        
+
         // Generate random brandId
         const generateBrandId = () => {
           const randomStr = Math.random().toString(36).substring(2, 15);
@@ -647,7 +645,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           return `brand-${randomStr}-${timestamp}`;
         };
         const brandId = generateBrandId();
-        
+
         if (data.botname) form.append("botName", String(data.botname));
         if (businessValue) form.append("business", String(businessValue));
         if (data.name) form.append("fullName", String(data.name));
@@ -683,9 +681,9 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         // Use default socket URL - will update when API response comes
         const defaultSocketUrl = baseUrl; // Use API base URL as default
         const defaultSocketPort = 3001; // Common socket port
-        
+
         console.log('🔌 Connecting to socket (before API response)...');
-        
+
         try {
           socket = io(defaultSocketUrl, {
             transports: ['websocket', 'polling'],
@@ -1150,10 +1148,10 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         const socketEvent = result.socketEvent || 'workspace:crawl-progress';
         const socketUrl = result.socketUrl || baseUrl;
         const socketPort = result.socketPort || defaultSocketPort;
-        
+
         console.log('✅ API Response received:', result);
         console.log('✅ Updating socket info with API response values');
-        
+
         // Update socket info with actual values
         setSocketInfo((prev) => ({
           ...prev,
@@ -1426,7 +1424,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         // ✅ Step 4: API Response aaya - Show success message and close modal
         console.log('✅ API Response received:', result);
         console.log('✅ Workspace created successfully:', result.data?._id);
-        
+
         // ✅ Store workspace _id for widget script
         const workspaceId = result.data?._id;
         if (workspaceId) {
@@ -1440,22 +1438,22 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             workspaceId: workspaceId,
           } as any);
         }
-        
+
         // Clean up any progress intervals
         if (progressInterval) {
           clearInterval(progressInterval);
         }
-        
+
         // Show success message - keep isLoading true to show the message
         setCrawlProgress(100);
         setCrawlComplete(true);
         // Don't set isLoading to false yet - keep it true to show "Crawling is completed" message
-        
+
         // ✅ Show "Crawling is completed" message for 2 seconds, then close modal
         setTimeout(() => {
           setIsCrawling(false); // Stop loading spinner
           setShowCrawlModal(false);
-          
+
           // Disconnect socket
           if (socket) {
             if (userId) {
@@ -1466,11 +1464,11 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             }
             socket.disconnect();
           }
-          
+
           // Proceed to next step
           footerOptions.onNext();
         }, 2000); // 2 seconds delay to show success message
-        
+
         return;
 
       } catch (error) {
@@ -1511,7 +1509,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         try {
           const wsFiles: File[] = (data.knowledgeSources?.files || []) as File[];
           const d: any = data as any;
-          
+
           // Process Step 3 use cases - map to business string value
           const useCasesList = data.useCases || [];
           let businessValue: string | undefined = undefined;
@@ -1522,11 +1520,11 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
             businessValue = "sales";
           }
-          
+
           setIsCrawling(true);
           setCrawlProgress(0);
           setCrawlError(null);
-          
+
           // Simulate progress for file upload
           const progressInterval = setInterval(() => {
             setCrawlProgress((prev) => {
@@ -1537,7 +1535,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
               return prev + 15;
             });
           }, 300);
-          
+
           await createWorkspaceWithFiles({
             companyName: data.companyName || "",
             industry: data.industry || "",
@@ -1552,12 +1550,12 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             phoneNumber: data.phone || "",
             info: data.description || "",
           });
-          
+
           clearInterval(progressInterval);
           setCrawlProgress(100);
           setCrawlComplete(true);
           setIsCrawling(false);
-          
+
           setTimeout(() => {
             setShowCrawlModal(false);
             footerOptions.onNext();
@@ -1616,91 +1614,100 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         {trackingData.fingerprintData && (
           <input name="fingerprintdata" type="hidden" value={trackingData.fingerprintData} readOnly />
         )}
-        
+
         <div className="container-fluid getUserInfoContainer">
           <div className="row">
             <div className="col-lg-12 chatbot-left-content-wrapper">
               <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
-                  <div className="chatbot-content mt--3">
-                    <div className="ps-0 pt-0">
-                      <div className="stepText my-2">Step 4 of 6</div>
-                      <div className="h4 fw-bold">Provide Information to Train Your Bot</div>
+                <div className="chatbot-content mt--3">
+                  <div className="ps-0 pt-0">
+                    <div className="stepText my-2">Step 4 of 6</div>
+                    <div className="h4 fw-bold">Provide Information to Train Your Bot</div>
+                    <div className="mb-4">
+                      Start by giving your bot a webpage or some files to kickstart your bot's learning.
+                    </div>
+                    <div className="mb-4">
+                      You can add more content later.
+                    </div>
+                    {knowledgeSourcesCount > 0 && (
                       <div className="mb-4">
-                        Start by giving your bot a webpage or some files to kickstart your bot's learning.
+                        <span className="text-xs bg-gray-100 px-2 py-1 rounded">
+                          Choose one of the following
+                        </span>
                       </div>
-                      <div className="mb-4">
-                        You can add more content later.
-                      </div>
-                      {knowledgeSourcesCount > 0 && (
-                        <div className="mb-4">
-                          <span className="text-xs bg-gray-100 px-2 py-1 rounded">
-                            Choose one of the following
-                          </span>
-                        </div>
-                      )}
+                    )}
+                  </div>
+
+                  {/* Tab Buttons */}
+                  <div className="mb-6">
+                    <div className="flex gap-2 mb-4">
+                      <button
+                        onClick={() => setActiveTab("urls")}
+                        className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${activeTab === "urls"
+                          ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
+                          : "forthTab"
+                          }`}
+                      >
+                        <div className="text-2xl mb-2">🔗</div>
+                        <span className="text-sm font-medium">URL</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveTab("files")}
+                        className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${activeTab === "files"
+                          ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
+                          : "forthTab"
+                          }`}
+                      >
+                        <div className="text-2xl mb-2">📁</div>
+                        <span className="text-sm font-medium">Files</span>
+                      </button>
                     </div>
 
-                    {/* Tab Buttons */}
-                    <div className="mb-6">
-                      <div className="flex gap-2 mb-4">
-                        <button
-                          onClick={() => setActiveTab("urls")}
-                          className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${
-                            activeTab === "urls"
-                              ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
-                              : "forthTab"
-                          }`}
-                        >
-                          <div className="text-2xl mb-2">🔗</div>
-                          <span className="text-sm font-medium">URL</span>
-                        </button>
-                        <button
-                          onClick={() => setActiveTab("files")}
-                          className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${
-                            activeTab === "files"
-                              ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
-                              : "forthTab"
-                          }`}
-                        >
-                          <div className="text-2xl mb-2">📁</div>
-                          <span className="text-sm font-medium">Files</span>
-                        </button>
+                    {/* Tab Content */}
+                    {activeTab === "urls" && (
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">Enter your company website</label>
+                          <URLManagementSection
+                            urls={data.knowledgeSources.urls}
+                            onUrlsChange={handleUrlsChange}
+                          />
+                        </div>
                       </div>
+                    )}
 
-                      {/* Tab Content */}
-                      {activeTab === "urls" && (
-                        <div className="space-y-4">
-                          <div>
-                            <label className="block text-sm font-medium mb-2">Enter your company website</label>
-                            <URLManagementSection
-                              urls={data.knowledgeSources.urls}
-                              onUrlsChange={handleUrlsChange}
-                            />
-                          </div>
+                    {activeTab === "files" && (
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">Upload files</label>
+                          <FileUploadSection
+                            files={data.knowledgeSources.files}
+                            onFilesChange={handleFilesChange}
+                            onFileRemove={handleFileRemove}
+                          />
                         </div>
-                      )}
+                      </div>
+                    )}
+                  </div>
 
-                      {activeTab === "files" && (
-                        <div className="space-y-4">
-                          <div>
-                            <label className="block text-sm font-medium mb-2">Upload files</label>
-                            <FileUploadSection
-                              files={data.knowledgeSources.files}
-                              onFilesChange={handleFilesChange}
-                              onFileRemove={handleFileRemove}
-                            />
-                          </div>
+                  {errors.length > 0 && (
+                    <div className="text-xs text-red-700 space-y-1">
+                      {errors.map((error, index) => (
+                        <div key={index}>
+                          <span>⚠️</span>
+                          <span>{error}</span>
                         </div>
-                      )}
+                      ))}
                     </div>
-                     {/* Note Section */}
-                     <div className="mt-2">
-                              <div className="text-secondary small">
-                                <strong>Note option:</strong> Since it's a demo version trained only on your website/document, it only reflects 10-15% capability. To unlock full potential, our engineering team will gather your requirements in detail to execute the fully featured version ahead.
-                              </div>
-                            </div>
-                            {/* Activate Agent Now Button */}
-                            {/* <div className="mt-3">
+                  )}
+                  {/* Note Section */}
+                  <div className="mt-2">
+                    <div className="text-secondary small">
+                      <strong>Note option:</strong> Since it's a demo version trained only on your website/document, it only reflects 10-15% capability. To unlock full potential, our engineering team will gather your requirements in detail to execute the fully featured version ahead.
+                    </div>
+                  </div>
+                  {/* Activate Agent Now Button */}
+                  {/* <div className="mt-3">
                               <button
                                 onClick={handleActivateAgent}
                                 disabled={isCrawling || (activeTab === "urls" && !(data.websiteUrl && data.websiteUrl.trim().length > 0))}
@@ -1712,7 +1719,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                               </button>
                             </div> */}
 
-                    {errors.length > 0 && (
+                  {/* {errors.length > 0 && (
                       <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                         <div className="flex items-center gap-2 text-red-800 mb-2">
                           <span>⚠️</span>
@@ -1724,9 +1731,9 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                           ))}
                         </ul>
                       </div>
-                    )}
-                  </div>
-                </InViewAnimate>
+                    )} */}
+                </div>
+              </InViewAnimate>
 
               <div className="chatbot-content-wrapper footer">
                 <WizardNavigation2 {...modifiedFooterOptions} />
