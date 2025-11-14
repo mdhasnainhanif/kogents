@@ -473,10 +473,10 @@ const NewFooter = ({ showOnlyTop = false }) => {
                     info@kogents.ai
                   </Link>
                 </li>
-                <li>
+                <li className="mt-3">
                   <Link
                     className="d-flex align-items-center gap-2"
-                    href="tel:+1 (267) 248-9454"
+                    href="tel:+12672489454"
                   >
                     <Image
                       width={20}
@@ -484,8 +484,20 @@ const NewFooter = ({ showOnlyTop = false }) => {
                       className=""
                       src="/assets/img/phone.svg"
                       alt="icon"
-                    />{" "}
+                    />
                     +1 (267) 248-9454
+                  </Link>
+                </li>
+                <li className="mt-3">
+                  <Link className="d-flex align-items-start gap-2" href="#">
+                    <Image
+                      width={20}
+                      height={20}
+                      className=""
+                      src="/assets/img/address.svg"
+                      alt="icon"
+                    />
+                    4492, 1007 N Orange St. 4th Floor , Wilmington, DE, New Castle, US, 19801
                   </Link>
                 </li>
                 {/* <li>
