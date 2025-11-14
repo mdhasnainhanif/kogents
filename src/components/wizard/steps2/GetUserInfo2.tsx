@@ -604,7 +604,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         // Show initial message
         setCrawlProgress(5); // Initial progress
 
-      let progressInterval: NodeJS.Timeout | null = null;
+      const progressInterval: NodeJS.Timeout | null = null;
       let socket: Socket | null = null;
       let userId: string | null = null;
 
