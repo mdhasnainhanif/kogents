@@ -25,6 +25,8 @@ interface BlogCardProps {
 }
 
 const POSTS_PER_PAGE = 6;
+const MOBILE_BREAKPOINT = 640; // <= 640px = mobile
+const MOBILE_GROUP_SIZE = 3;   // show 3 page numbers at a time on mobile
 
 const stripHTML = (html = "") =>
   html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
@@ -56,11 +58,25 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
   // state
   const [posts, setPosts] = useState<Blog[]>(initialPosts || []);
   const [currentPage, setCurrentPage] = useState(1);
-  // start with loader if no initial posts (avoid "no posts" flash)
   const [loading, setLoading] = useState<boolean>(() => !initialHasPosts);
-  // track first fetch completion to show empty state correctly
   const [didFetch, setDidFetch] = useState<boolean>(() => initialHasPosts);
 
+  // mobile / desktop detection
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+      }
+    };
+
+    handleResize(); // run once on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // fetch posts if no initialPosts
   useEffect(() => {
     if (initialHasPosts) return;
 
@@ -118,10 +134,58 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
     return () => controller.abort();
   }, [initialHasPosts]);
 
+  // pagination calculations
   const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const currentPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  // mobile group logic (3 pages at a time)
+  const currentGroup = Math.floor((currentPage - 1) / MOBILE_GROUP_SIZE);
+  const groupStartPage = currentGroup * MOBILE_GROUP_SIZE + 1;
+  const groupEndPage = Math.min(
+    groupStartPage + MOBILE_GROUP_SIZE - 1,
+    totalPages
+  );
+  const totalGroups = Math.ceil(totalPages / MOBILE_GROUP_SIZE);
+  const mobilePages: number[] = [];
+  for (let p = groupStartPage; p <= groupEndPage; p++) {
+    mobilePages.push(p);
+  }
+
+  const handlePrevClick = () => {
+    if (isMobile) {
+      // go to previous group on mobile
+      if (currentGroup > 0) {
+        const newStart = (currentGroup - 1) * MOBILE_GROUP_SIZE + 1;
+        setCurrentPage(newStart);
+      }
+    } else {
+      // normal page-by-page on desktop
+      setCurrentPage((prev) => Math.max(prev - 1, 1));
+    }
+  };
+
+  const handleNextClick = () => {
+    if (isMobile) {
+      // go to next group on mobile
+      if (currentGroup < totalGroups - 1) {
+        const newStart = (currentGroup + 1) * MOBILE_GROUP_SIZE + 1;
+        setCurrentPage(newStart);
+      }
+    } else {
+      // normal page-by-page on desktop
+      setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+    }
+  };
+
+  const isPrevDisabled = isMobile
+    ? currentGroup === 0
+    : currentPage === 1;
+
+  const isNextDisabled = isMobile
+    ? currentGroup >= totalGroups - 1
+    : currentPage === totalPages;
 
   return (
     <section>
@@ -133,13 +197,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
               <SkeletonBlogCard />
             </div>
           )}
-
-          {/* Empty state: only after the fetch completes */}
-          {/* {!loading && didFetch && posts.length === 0 && (
-            <div className="flex justify-center items-center py-12">
-              <div className="text-w-500 text-lg">No blog posts found.</div>
-            </div>
-          )} */}
 
           {/* Grid with real data */}
           {!loading && posts.length > 0 && (
@@ -222,35 +279,49 @@ const BlogCard: React.FC<BlogCardProps> = ({ posts: initialPosts }) => {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex justify-center mt-12 gap-3">
+                <div className="flex justify-center mt-12 gap-3 blog-pagination">
                   <button
-                    disabled={currentPage === 1}
-                    onClick={() =>
-                      setCurrentPage((prev) => Math.max(prev - 1, 1))
-                    }
+                    disabled={isPrevDisabled}
+                    onClick={handlePrevClick}
                     className="pagination-btn bg-gd-secondary text-w-900 disabled:opacity-50"
                   >
                     Prev
                   </button>
 
-                  {pages.map((page) => (
-                    <button
-                      key={page}
-                      onClick={() => setCurrentPage(page)}
-                      className={`pagination-btn ${page === currentPage
-                        ? "bg-pink-500 text-white"
-                        : "bg-gd-secondary text-w-900 hover:bg-pink-400"
+                  {/* Desktop: show all pages / Mobile: show 3-page group */}
+                  {!isMobile &&
+                    pages.map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`pagination-btn ${
+                          page === currentPage
+                            ? "bg-pink-500 text-white"
+                            : "bg-gd-secondary text-w-900 hover:bg-pink-400"
                         }`}
-                    >
-                      {page}
-                    </button>
-                  ))}
+                      >
+                        {page}
+                      </button>
+                    ))}
+
+                  {isMobile &&
+                    mobilePages.map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`pagination-btn ${
+                          page === currentPage
+                            ? "bg-pink-500 text-white"
+                            : "bg-gd-secondary text-w-900 hover:bg-pink-400"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
 
                   <button
-                    disabled={currentPage === totalPages}
-                    onClick={() =>
-                      setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                    }
+                    disabled={isNextDisabled}
+                    onClick={handleNextClick}
                     className="pagination-btn bg-gd-secondary text-w-900 disabled:opacity-50"
                   >
                     Next
