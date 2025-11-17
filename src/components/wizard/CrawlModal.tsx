@@ -239,7 +239,7 @@ const CrawlModal: React.FC<CrawlModalProps> = ({
                       <div style={{ marginBottom: "0.5rem" }}>
                         <span style={{ color: "#64748b" }}>Current Step: </span>
                         <span style={{ color: "#a855f7", textTransform: "capitalize" }}>
-                          {socketInfo?.step.replace(/_/g, ' ')}
+                          {socketInfo?.step?.replace(/_/g, ' ')}
                         </span>
                       </div>
                     )}
