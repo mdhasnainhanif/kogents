@@ -49,10 +49,7 @@ const WhatsappAgentSection = () => {
                                     Convert
                                 </Link>
                                 <p>
-                                    Send personalized messages,
-                                    include promotional broadcasts,
-                                    and run targeted ad campaigns to
-                                    acquire and engage users.
+                                    Don the hat of a human sales assistant in offering intuitive product recommendations based on search criteria, past browsing history to help buyers find the exact products they're looking for!
                                 </p>
                                 <Link
                                     className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo "
@@ -69,10 +66,7 @@ const WhatsappAgentSection = () => {
                                     Support
                                 </Link>
                                 <p>
-                                    Send personalized messages,
-                                    include promotional broadcasts,
-                                    and run targeted ad campaigns to
-                                    acquire and engage users.
+                                   Offer phenomenal post-purchase support that exceeds buyer expectations, makes them feel valued and helps retain them as loyal customers.
                                 </p>
                                 <Link
 

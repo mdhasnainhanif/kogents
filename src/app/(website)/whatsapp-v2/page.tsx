@@ -8,6 +8,8 @@ import type { Metadata } from 'next';
 import WhatsappAgentSection from '@/components/whatsapp-v2/WhatsappAgentSection';
 import CustomerBenefitSection from '@/components/CustomerServiceAIAgents/CustomerBenefitSection';
 import ClientTestimonial from '@/components/CustomerServiceAIAgents/ClientTestimonial';
+import BlogList from '@/components/blog/BlogList';
+import { FaqItem } from '@/types';
 const BASE = "https://kogents.ai/whatsapp-v2";
 export const metadata: Metadata = {
     title: 'Kogents Ai Agent | Top Agentic AI Automation & Integration ',
@@ -90,6 +92,37 @@ const structuredData = {
         "category": "AI Services"
     }
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "GPT-powered Conversations",
+    a: "Improve quality and depth of customer-facing interactions by using GPT-powered WhatsApp chatbots."
+  },
+  {
+    q: "Product Catalogs",
+    a: "Showcase products and services to potential buyers in visually-rich form and drive increased conversions and sales."
+  },
+  {
+    q: "WhatsApp Flows",
+    a: "Collect qualified leads, reduce churn, and win lifelong customers with customized WhatsApp journeys."
+  },
+  {
+    q: "Chat Message Analytics",
+    a: "Stay on top of your brand messages such as number of messages sent, delivered and read to understand the effectiveness of your messages and if they are getting maximum response."
+  },
+  {
+    q: "WhatsApp Payments",
+    a: "Drive more sales with the in-app payment interface that reduces friction and increases buyer willingness to complete the transaction."
+  },
+  {
+    q: "Click-to-WhatsApp Ads",
+    a: "Boost customer acquisition with engaging Click-to-WhatsApp ads that increase your CTR, conversions and D2C sales while optimizing ad costs."
+  },
+ 
+];
+
+
+
 export default function HomePage() {
     return (
         <>
@@ -179,7 +212,9 @@ export default function HomePage() {
                             backgroundImage="/assets/img/bc/video-bg.webp"
                         />
                     </div>
-                    <FAQSection showLoadMore={true} />
+                    <FAQSection showLoadMore={true} data={FAQ_ITEMS} />
+                       <BlogList/>   
+
                 </div>
             </div>
         </>

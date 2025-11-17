@@ -21,8 +21,8 @@ const Engagement = () => {
                             <div className="col-lg-7 col-md-6 col-12">
                                 <div className='salesSeamlessContent'>
                                     <span className="buttonAnimation width_fit green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">Seamless Sales</span>
-                                    <h2>Make Sales Seamless & Friction-free</h2>
-                                    <p>Enable prospects to purchase hassle-free with customized product recommendations and an easier checkout process. Use upsell and cross-sell options to increase sales and derive a higher average order value (AOV) while offering an exceptional shopping experience.</p>
+                                    <h2>Engage Users with Timely Messages</h2>
+                                    <p>Continuously and effortlessly engage with prospects and existing customers by delivering back-in-stock alerts, personalized discounts, and cart abandonment reminders. With the WhatsApp chatbot, you can instantly respond to customer queries and show you care about their needs and pain points, which triggers loyalty and repeat business.</p>
                                     <Link className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo " href="/chatbot/briefv2/">Start Free Trail<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none"><path d="M17.127 11.25L11.4308 5.55387L12.5 4.50005L20 12L12.5 19.5L11.4308 18.4462L17.127 12.75L5.00005 12.75L5.00005 11.25L17.127 11.25Z" fill="currentColor"></path></svg></Link>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@ const Engagement = () => {
                             <div className="col-lg-7 col-md-8 col-12">
                                 <div className='salesSeamlessContent'>
                                     <span className="buttonAnimation width_fit green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">Seamless Sales</span>
-                                    <h2>Engage Users With Timely Message</h2>
+                                    <h2>Make Sales Seamless & Friction-free</h2>
                                     <p>Enable prospects to purchase hassle-free with customized product recommendations and an easier checkout process. Use upsell and cross-sell options to increase sales and derive a higher average order value (AOV) while offering an exceptional shopping experience.</p>
                                     <Link className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo " href="/chatbot/briefv2/">Start Free Trail<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none"><path d="M17.127 11.25L11.4308 5.55387L12.5 4.50005L20 12L12.5 19.5L11.4308 18.4462L17.127 12.75L5.00005 12.75L5.00005 11.25L17.127 11.25Z" fill="currentColor"></path></svg></Link>
                                 </div>
@@ -81,8 +81,8 @@ const Engagement = () => {
                             <div className="col-lg-7 col-md-6 col-12">
                                 <div className='salesSeamlessContent'>
                                     <span className="buttonAnimation width_fit green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">Seamless Sales</span>
-                                    <h2>Make Sales Seamless & Friction-free</h2>
-                                    <p>Enable prospects to purchase hassle-free with customized product recommendations and an easier checkout process. Use upsell and cross-sell options to increase sales and derive a higher average order value (AOV) while offering an exceptional shopping experience.</p>
+                                    <h2>Be Available On-demand to Customers</h2>
+                                    <p>Offer superior customer service that includes on-demand, round-the-clock support with less or no dependency on human agents. Send product order updates, delivery status, and payment reminders to keep your customers informed and offer peace of mind.</p>
                                     <Link className="w_fit buttonAnimation2 green inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo " href="/chatbot/briefv2/">Start Free Trail<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" fill="none"><path d="M17.127 11.25L11.4308 5.55387L12.5 4.50005L20 12L12.5 19.5L11.4308 18.4462L17.127 12.75L5.00005 12.75L5.00005 11.25L17.127 11.25Z" fill="currentColor"></path></svg></Link>
                                 </div>
                             </div>
