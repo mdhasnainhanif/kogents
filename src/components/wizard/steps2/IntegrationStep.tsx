@@ -641,7 +641,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
       ...footerOptions,
       onNext: handleNext,
       onComplete: handleCompleteWithoutWorkspaceAPI, // ✅ Override to prevent /workspace/kogent-bot API
-      isLoading: isSubmitting, // Show loading state
+      // Remove isLoading from here - it's not part of FooterOptions type
     };
 
     return (
@@ -705,8 +705,11 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                 </div>
               </InViewAnimate>
 
-              <div className="chatbot-content-wrapper footer flex items-center justify-between gap-3 w-100">
-                <WizardNavigation2 {...modifiedFooterOptions} />
+              <div className="chatbot-content-wrapper footer">
+                <WizardNavigation2 
+                  {...modifiedFooterOptions} 
+                  isLoading={isSubmitting} // ✅ Pass isLoading separately
+                />
               </div>
             </div>
 
@@ -744,5 +747,5 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
   }
 );
 
-// IntegrationStep.displayName = "IntegrationStep";
+IntegrationStep.displayName = "IntegrationStep";
 
