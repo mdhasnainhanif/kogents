@@ -4,8 +4,10 @@ import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
 import { handleContactFormSubmit } from "@/services/contactFormService";
+import { useModalStore } from "@/stores/useModalStore";
 
 const HeroSection = () => {
+  const { openModal } = useModalStore();
   // Brand images data for mapping
   const brands = [1, 2, 3, 4, 5];
   // Repeat brands 3 times for infinite scroll animation
@@ -96,14 +98,17 @@ const HeroSection = () => {
                   <p className="paraColor text-base md:text-xl text-w-100">
                     Kogents AI Agents handle customer support, calls, sales, and queries across WhatsApp, phone, web, and more without adding headcount
                   </p>
-                  <Link
-                    href="/chatbot/brief"
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openModal();
+                    }}
                     className="mt-2 buttonAnimation2 flex justify-center pink items-center gap-2 lg:mb-14 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
                     aria-label="Request demo for Kogents AI"
                   >
                     Request Demo
                     <ArrowRightIcon style={{ height: "24px" }} />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

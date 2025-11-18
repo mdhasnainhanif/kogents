@@ -33,25 +33,28 @@ const page = () => {
             </Link>
           </div>
         </header>
-        {/* <section
-          className="py-3 bg-center bg-no-repeat bg-cover newBg desktop-section-show vh-100"
+        <section
+          className="py-3 bg-center bg-no-repeat bg-cover newBg desktop-section-show"
           id="aiAgentSection"
         >
           <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-md-10"> */}
-        {/* <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
-              Thank You
-            </span> */}
-        {/* <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
-                 You're in! Here's What Happens Next.
+            <div className="row justify-content-center sectionPadding">
+              <div className="col-md-10">
+                <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
+                  Thank You
+                </span>
+                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+                  You're in! Here's What Happens Next.
                 </h2>
-                <p className="text-center paraColor subHeading w-100 mx-auto mt125">Explore our blogs to learn how AI agents can transform workflows.</p>
+                <p className="text-center paraColor subHeading w-100 mx-auto mt125">
+                  Explore our blogs to learn how AI agents can transform
+                  workflows.
+                </p>
               </div>
             </div>
-            <div className="row rowGap justify-content-center mt-5"> */}
-        {/* Card 1 */}
-        {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
+            {/* <div className="row rowGap justify-content-center mt-5"> */}
+            {/* Card 1 */}
+            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                 <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
                   <Image
                     src="/assets/img/steps/live_chat.webp"
@@ -78,8 +81,8 @@ const page = () => {
                 </div>
               </div> */}
 
-        {/* Card 2 */}
-        {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
+            {/* Card 2 */}
+            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                 <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
                   <Image
                     src="/assets/img/steps/about_us.webp"
@@ -105,8 +108,8 @@ const page = () => {
                 </div>
               </div> */}
 
-        {/* Card 3 */}
-        {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
+            {/* Card 3 */}
+            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
                 <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
                   <Image
                     src="/assets/img/steps/solutions.webp"
@@ -131,9 +134,9 @@ const page = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
-        </section> */}
+        </section>
         <div className="pt-5">
           <BlogList isShowBadge={true} />
         </div>
