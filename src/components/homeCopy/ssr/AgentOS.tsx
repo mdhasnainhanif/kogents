@@ -25,7 +25,7 @@ const AgentOS = () => {
                     <div className="img1InnerDiv"></div>
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/ai-agent/agent4.png"
+                        src="/assets/img/ai-agent/1.webp"
                         alt="team image"
                         width={80}
                         height={80}
@@ -43,7 +43,7 @@ const AgentOS = () => {
                   <div className="img2">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/ai-agent/agent3.png"
+                        src="/assets/img/ai-agent/2.webp"
                         alt="team image"
                         width={80}
                         height={80}
@@ -61,7 +61,7 @@ const AgentOS = () => {
                   <div className="img3">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/ai-agent/agent2.png"
+                        src="/assets/img/ai-agent/4.webp"
                         alt="team image"
                         width={80}
                         height={80}
@@ -81,7 +81,7 @@ const AgentOS = () => {
                   <div className="img4">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/ai-agent/agent-01.webp"
+                        src="/assets/img/ai-agent/3.webp"
                         alt="team image"
                         width={80}
                         height={80}
@@ -101,7 +101,7 @@ const AgentOS = () => {
                   <div className="img5">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/ai-agent/agent1.png"
+                        src="/assets/img/ai-agent/5.webp"
                         alt="team image"
                         width={80}
                         height={80}
@@ -119,7 +119,7 @@ const AgentOS = () => {
                   <div className="img6">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/ai-agent/agent5.png"
+                        src="/assets/img/ai-agent/6.webp"
                         alt="team image"
                         width={80}
                         height={80}
@@ -137,7 +137,7 @@ const AgentOS = () => {
                   <div className="img7">
                     <div className="bothImgMain">
                       <Image
-                        src="/assets/img/ai-agent/agent6.png"
+                        src="/assets/img/ai-agent/7.webp"
                         alt="team image"
                         width={80}
                         height={80}

@@ -39,6 +39,22 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
 
+    // ✅ Set default avatar on component mount if no avatar is selected
+    useEffect(() => {
+      // Only set default if no avatar is currently selected
+      if (!data.appearance?.avatar && !avatarPreview) {
+        const defaultAvatar = AVATAR_OPTIONS[0]; // First avatar (avatar1)
+        setAvatarPreview(defaultAvatar.src);
+        onUpdate({
+          appearance: {
+            ...data.appearance,
+            avatar: defaultAvatar.src,
+            avatarName: defaultAvatar.id,
+          },
+        });
+      }
+    }, []); // Run only once on mount
+
     const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (file) {
