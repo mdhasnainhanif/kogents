@@ -9,6 +9,7 @@ import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerSe
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
+import SummarySolution from "@/components/CustomerServiceAIAgents/SummarySolution";
 import BLogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
@@ -98,6 +99,10 @@ const page = () => {
         className: "mx-4",
       },
     },
+  summary: {
+    tag: "Summary",
+    text: "Kogents AI agent for marketing is an intelligent automation platform that helps businesses optimize digital advertising, streamline marketing workflows, and drive measurable revenue growth."
+  }
   };
   return (
     <>
@@ -315,6 +320,10 @@ const page = () => {
         }}
         backgroundImage="/img/bc/video-bg.webp"
       />
+
+      {/* Add SummarySolution component here */}
+      {pageData.summary && <SummarySolution data={pageData.summary} />}
+
       <CustomerServiceFaqSection
         tag="FAQs"
         heading="Frequently Asked Questions"

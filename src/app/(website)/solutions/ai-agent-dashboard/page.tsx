@@ -13,6 +13,7 @@ import TechnologiesSlider from "@/components/CustomerServiceAIAgents/Technologie
 import BlogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
+import SummarySolution from "@/components/CustomerServiceAIAgents/SummarySolution";
 
 
 export const metadata: Metadata = {
@@ -111,6 +112,10 @@ const page = () => {
                 className: "mx-4",
             },
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI unifies analytics, monitoring, and automation in one dashboard, giving teams instant visibility and control over performance."
+        }
     };
     return (
         <>
@@ -137,6 +142,7 @@ const page = () => {
                 title=""
                 subtitle=""
             />
+            
             <CustomerCards
                 tag="Benefits"
                 colSize="col-lg-6 col-md-6 col-12"
@@ -259,6 +265,7 @@ const page = () => {
                 ]}
             />
             <AwardSection />
+
             <FaqWithImage
                 tag="Process"
                 heading="The Process Behind Our AI Agent Dashboard"
@@ -372,6 +379,10 @@ const page = () => {
                 }}
                 backgroundImage="/assets/img/bc/video-bg.webp"
             />
+
+           {/* Add SummarySolution component here */}
+           {pageData.summary && <SummarySolution data={pageData.summary} />}
+
             <CustomerServiceFaqSection
                 tag="FAQs"
                 heading="Frequently Asked Questions"

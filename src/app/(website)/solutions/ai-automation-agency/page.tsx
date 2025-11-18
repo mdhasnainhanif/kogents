@@ -9,6 +9,7 @@ import CustomerGrowthCards from "@/components/CustomerServiceAIAgents/CustomerGr
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
+import SummarySolution from "@/components/CustomerServiceAIAgents/SummarySolution";
 import BLogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from "next";
@@ -83,6 +84,10 @@ const page = () => {
         className: "mx-4",
       },
     },
+    summary: {
+      tag: "Summary",
+      text: "Kogents AI provides end-to-end AI automation solutions that streamline workflows, enhance decision-making, and drive measurable business growth and profitability."
+  }
   };
 
   return (
@@ -326,6 +331,9 @@ const page = () => {
         }}
         buttonText="Build Your Automation Plan"
       />
+
+      {/* Add SummarySolution component here */}
+      {pageData.summary && <SummarySolution data={pageData.summary} />}
 
       {/* Section 13: FAQs */}
       <CustomerServiceFaqSection

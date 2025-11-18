@@ -179,6 +179,10 @@ export const Data: AllPageDataType = {
             buttonText: "Start Smart Scheduling",
 
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI delivers a fully automated WhatsApp support engine that provides instant, accurate, and personalized customer responses around the clock."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "How WhatsApp AI Agent Powers Customer Support",
@@ -512,6 +516,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Start Smart Scheduling",
 
+        },
+        summary: {
+            tag: "Your Tag Text Here",
+            text: "Your paragraph text here that will be displayed below the tag."
         },
         faqWithImageSection: {
             tag: "Process",
@@ -851,6 +859,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Start Smart Scheduling",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI offers an Instagram-native AI agent built to automate messaging, comment replies, and posting workflows while improving brand engagement at scale."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "How Instagram Automated Agent Manages Engagement at Scale",
@@ -1188,6 +1200,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Start Smart Scheduling",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI provides automated 24/7 Messenger support designed to reduce reply times and improve customer experience through NLP-driven responses."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "How Chat-Based Sales Assistant Guides Every Conversation",
@@ -1516,6 +1532,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Start Smart Scheduling",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI provides a structured Slack workflow system that converts unorganized conversations into automated tasks, creating measurable productivity gains across teams."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "How Slack Agentforce Captures Chats and Creates Workflows",
@@ -1834,6 +1854,10 @@ export const Data: AllPageDataType = {
             ],
             showButton: true,
             buttonText: "Boost ROI Today",
+        },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI Viber Agent is an intelligent automation system that manages Viber conversations, delivering instant responses and improving customer engagement and support efficiency."
         },
         faqWithImageSection: {
             tag: "Process",
@@ -2182,6 +2206,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Get Measurable Gains",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI provides an AI-powered Microsoft Teams automation agent designed to simplify workflows, centralize communication, and improve organizational productivity."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "Kogents Process for Microsoft Teams Agent Integration",
@@ -2524,6 +2552,10 @@ export const Data: AllPageDataType = {
             "showButton": true,
             "buttonText": "Boost Engagement Now"
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI transforms Telegram from a messaging app into a responsive, AI-driven interaction platform built for scale."
+        },
 
         "faqWithImageSection": {
             "tag": "Process",
@@ -2849,6 +2881,10 @@ export const Data: AllPageDataType = {
             ],
             showButton: true,
             buttonText: "Grow ROI Faster",
+        },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI delivers secure, scalable LINE automation powered by adaptive conversational intelligence."
         },
         faqWithImageSection: {
             tag: "Process",
@@ -3198,6 +3234,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Start Smart Scheduling",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI turns HubSpot into an intelligent CRM platform by combining predictive analytics, automated workflows, and smart content recommendations that scale customer engagement."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "How Kogents Delivers HubSpot AI Integration",
@@ -3531,6 +3571,10 @@ export const Data: AllPageDataType = {
             ],
             showButton: true,
             buttonText: " Drive Innovation Now",
+        },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI provides Zendesk users with AI-driven ticket automation, chatbots, and analytics to improve support efficiency and response quality."
         },
         faqWithImageSection: {
             tag: "Process",
@@ -3897,6 +3941,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Launch AI Workflows",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI provides an intelligent automation layer for Jira, reducing manual workload, accelerating issue resolution, and improving operational efficiency through the application of Atlassian Intelligence."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "How Kogents Integrate AI into Jira",
@@ -4241,6 +4289,10 @@ export const Data: AllPageDataType = {
             ],
             showButton: true,
             buttonText: "Start Smart Scheduling",
+        },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI integrates Calendly with predictive scheduling and automated workflows to reduce conflicts and improve coordination."
         },
         faqWithImageSection: {
             tag: "Process",
@@ -4607,6 +4659,10 @@ export const Data: AllPageDataType = {
             ],
             showButton: true,
             buttonText: "Deploy for Better ROI",
+        },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI integrates with Sunshine Conversations to provide a unified and AI-driven platform for automating customer interactions across channels."
         },
         faqWithImageSection: {
             tag: "Process",
@@ -4978,6 +5034,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Start Smart Scheduling",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI powers smarter support through the Intercom AI Agent, blending automation with on-brand personalization."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "What the Intercom AI Agent Implementation Looks Like",
@@ -5316,6 +5376,10 @@ export const Data: AllPageDataType = {
             showButton: true,
             buttonText: "Start Smart Scheduling",
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI provides a Shopify-native AI agent designed to automate customer support, sales workflows, and real-time store operations."
+        },
         faqWithImageSection: {
             tag: "Process",
             heading: "How Kogents Automates Sales with Shopify AI Agents",
@@ -5648,6 +5712,10 @@ export const Data: AllPageDataType = {
             ],
             showButton: true,
             buttonText: "Get Started with Voice AI",
+        },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI is a voice automation platform that uses speech recognition and natural language processing to handle inbound and outbound business calls."
         },
         faqWithImageSection: {
             tag: "Process",

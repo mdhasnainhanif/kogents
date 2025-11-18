@@ -13,6 +13,7 @@ import ClientTestimonial from '@/components/CustomerServiceAIAgents/ClientTestim
 import CustomerBenefitSection from '@/components/CustomerServiceAIAgents/CustomerBenefitSection';
 import FaqSection from '@/components/solutions/csr/FAQSection';
 import BlogList from '@/components/blog/BlogList';
+import Summary from '@/components/ai-whatsapp-agent/Summary';
 type Params = { channelId: string };
 interface PageProps {
   params: Promise<Params>;
@@ -182,6 +183,7 @@ const Page = async ({ params }: PageProps) => {
           />
         </div>
       )}
+      {pageData.summary && <Summary data={pageData.summary} />}
       {pageData.faq && <FaqSection data={pageData.faq.items} showLoadMore={false} />}
       <BlogList />
     </>

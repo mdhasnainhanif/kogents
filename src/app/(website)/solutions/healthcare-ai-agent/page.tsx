@@ -10,6 +10,7 @@ import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerSe
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
+import SummarySolution from "@/components/CustomerServiceAIAgents/SummarySolution";
 import BlogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
@@ -73,6 +74,10 @@ const page = () => {
         className: "mx-4",
       },
     },
+    summary: {
+      tag: "Summary",
+      text: "Kogents AI provides next-generation healthcare AI agents that simplify operations, ensure data compliance, and improve both provider productivity and patient experience."
+  }
   };
   return (
     <>
@@ -341,6 +346,10 @@ const page = () => {
         backgroundImage="/assets/img/bc/video-bg.webp"
         buttonText="Get Your AI Healthcare Co-pilot"
       />
+
+      {/* Add SummarySolution component here */}
+      {pageData.summary && <SummarySolution data={pageData.summary} />}
+
       <CustomerServiceFaqSection
         tag="FAQs"
         heading="Frequently Asked Questions"

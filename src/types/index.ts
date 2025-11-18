@@ -162,6 +162,10 @@ export interface platfarmPageDataType {
     };
     backgroundImage?: string;
   };
+  summary?: {
+    tag?: string;
+    text?: string;
+  };
   banner: PlatFarmsBannerProps;
   whatsappImagesSection: WhatsappSectionDataProps;
   faq: FaqSectionData;

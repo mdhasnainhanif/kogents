@@ -10,6 +10,7 @@ import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerSe
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
+import SummarySolution from "@/components/CustomerServiceAIAgents/SummarySolution";
 import BLogList from "@/components/blog/BlogList";
 
 import React from "react";
@@ -74,6 +75,10 @@ const page = () => {
         className: "mx-4",
       },
     },
+    summary: {
+      tag: "Summary",
+      text: "Kogents AI empowers businesses with intelligent automation that transforms customer service into scalable, secure, and data-driven experiences."
+  }
   };
   return (
     <div>
@@ -161,6 +166,10 @@ const page = () => {
           qrCodeText: "Scan Now",
         }}
       />
+
+      {/* Add SummarySolution component here */}
+      {pageData.summary && <SummarySolution data={pageData.summary} />}
+
       <CustomerServiceFaqSection
         tag="FAQs"
         heading="Frequently Asked Questions"

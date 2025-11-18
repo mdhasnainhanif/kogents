@@ -10,6 +10,7 @@ import CustomerServiceCard from "@/components/CustomerServiceAIAgents/CustomerSe
 import CustomerServiceFaqSection from "@/components/CustomerServiceAIAgents/CustomerServiceFaqSection";
 import FaqWithImage from "@/components/CustomerServiceAIAgents/FaqWithImage";
 import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
+import SummarySolution from "@/components/CustomerServiceAIAgents/SummarySolution";
 import BlogList from "@/components/blog/BlogList";
 import React from "react";
 import type { Metadata } from 'next'
@@ -72,6 +73,10 @@ const page = () => {
                 className: "mx-4",
             },
         },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI accelerates hiring through AI-powered sourcing, screening, and engagement tools designed to deliver accuracy, speed, and compliance."
+        }
     };
     return (
         <>
@@ -340,6 +345,10 @@ const page = () => {
                 }}
                 backgroundImage="/assets/img/bc/video-bg.webp"
             />
+
+            {/* Add SummarySolution component here */}
+            {pageData.summary && <SummarySolution data={pageData.summary} />}
+
             <CustomerServiceFaqSection
                 tag="FAQs"
                 heading="Frequently Asked Questions"
