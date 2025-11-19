@@ -46,10 +46,12 @@ const page = () => {
                 <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
                   You're in! Here's What Happens Next.
                 </h2>
-                <p className="text-center paraColor subHeading w-100 mx-auto mt125">
+
+                {/* <p className="text-center paraColor subHeading w-100 mx-auto mt125">
                   Explore our blogs to learn how AI agents can transform
                   workflows.
-                </p>
+                </p> */}
+
               </div>
             </div>
             {/* <div className="row rowGap justify-content-center mt-5"> */}
@@ -138,7 +140,10 @@ const page = () => {
           </div>
         </section>
         <div className="pt-5">
-          <BlogList isShowBadge={true} />
+          <BlogList 
+            isShowBadge={true} 
+            description="Explore our blogs to learn how AI agents can transform workflows."
+          />
         </div>
         <ClientTestimonial
           tag="Reviews"

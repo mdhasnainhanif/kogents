@@ -44,7 +44,7 @@ const getCategory = (post: Blog) => {
 const hasText = (v: unknown): v is string =>
   typeof v === "string" && v.trim().length > 0;
 
-const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean }> = ({ isShowBadge = false }) => {
+const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: string }> = ({ isShowBadge = false, description }) => {
   const [posts, setPosts] = useState<Blog[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [didFetch, setDidFetch] = useState<boolean>(false);
@@ -169,6 +169,12 @@ const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean }> = ({ isShowBadge 
         <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
           Recent Blogs
         </h2>
+
+        {description && (
+          <p className="text-center paraColor subHeading w-100 mt-3">
+            {description}
+          </p>
+        )}
 
         {/* skeleton while loading */}
         {loading && <SkeletonBlogList />}
