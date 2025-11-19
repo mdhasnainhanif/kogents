@@ -13,8 +13,8 @@ export const metadata: Metadata = {
         follow: true,
     },
     other: {
-        'googlebot': 'noindex, nofollow',
-        'bingbot': 'noindex, nofollow',
+        'googlebot': 'index, follow',
+        'bingbot': 'index, follow',
     },
     alternates: {
         canonical: "https://kogents.ai/ai-glossary",

@@ -50,8 +50,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     },
     robots: isAiVoiceAgent ? {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     } : isWhatsAppAIAgentV2 ? {
       index: true,
       follow: true,

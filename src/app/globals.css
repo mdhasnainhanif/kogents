@@ -116,7 +116,12 @@ ul.list-4 {
 }
 
 .blogcard-div {
-  height: 540px;
+  height: 585px;
+}
+img.blog-img{
+  height: 180px;
+  object-fit: cover;
+  width: 100% !important;
 }
 
 .blog-content table tr td a,
