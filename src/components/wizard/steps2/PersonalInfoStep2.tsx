@@ -61,7 +61,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
       stableSessionId: '',
       fingerprintData: null as string | null
     });
-    const [validationError, setValidationError] = useState<string>("");
+    const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
     const [isWidgetLoading, setIsWidgetLoading] = useState<boolean>(true);
     
@@ -529,28 +529,37 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
       };
     }, []);
 
+    // Email validation helper function
+    const validateEmailFormat = (email: string): boolean => {
+      if (!email || email.trim().length === 0) return false;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email.trim());
+    };
+
     // Validation function - only show error if user has attempted to proceed
     const validateSelection = () => {
       setHasAttemptedNext(true);
+      const errors: { [key: string]: string } = {};
       
       const hasName = data.name && data.name.trim().length > 0;
       const hasEmail = data.email && data.email.trim().length > 0;
       
       console.log("Validation check:", { hasName, hasEmail, name: data.name, email: data.email });
       
-      if (!hasName && !hasEmail) {
-        setValidationError("Please enter your full name and email address to continue.");
-        return false;
-      } else if (!hasName) {
-        setValidationError("Please enter your full name to continue.");
-        return false;
-      } else if (!hasEmail) {
-        setValidationError("Please enter your email address to continue.");
-        return false;
+      // Validate name
+      if (!hasName) {
+        errors.name = "Please enter your full name to continue.";
       }
       
-      setValidationError("");
-      return true;
+      // Validate email
+      if (!hasEmail) {
+        errors.email = "Please enter your email address to continue.";
+      } else if (!validateEmailFormat(data.email)) {
+        errors.email = "Please enter a valid email address (e.g., john.doe@company.com).";
+      }
+      
+      setFieldErrors(errors);
+      return Object.keys(errors).length === 0;
     };
 
     // Notify parent component about validation status (always allow clicking Next)
@@ -570,7 +579,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
       if (onValidate) {
         onValidate(validateSelection);
       }
-    }, [onValidate, validateSelection]);
+    }, [onValidate, data.name, data.email]);
 
     // Create custom onNext handler that validates before proceeding
     const handleNext = (e?: React.MouseEvent) => {
@@ -582,31 +591,13 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
       console.log("handleNext called");
       console.log("Current data:", { name: data.name, email: data.email });
       
-      // Set attempted next to true
-      setHasAttemptedNext(true);
-      
-      // Check validation directly
-      const hasName = data.name && data.name.trim().length > 0;
-      const hasEmail = data.email && data.email.trim().length > 0;
-      
-      console.log("Direct validation check:", { hasName, hasEmail });
-      
-      if (!hasName && !hasEmail) {
-        setValidationError("Please enter your full name and email address to continue.");
-        console.log("Validation failed: both fields empty");
-        return false;
-      } else if (!hasName) {
-        setValidationError("Please enter your full name to continue.");
-        console.log("Validation failed: name empty");
-        return false;
-      } else if (!hasEmail) {
-        setValidationError("Please enter your email address to continue.");
-        console.log("Validation failed: email empty");
+      // Validate using the validation function
+      if (!validateSelection()) {
+        console.log("Validation failed");
         return false;
       }
       
       console.log("Validation passed, proceeding to next step");
-      setValidationError("");
       // If validation passes, call the original onNext
       footerOptions.onNext();
       return true;
@@ -658,9 +649,13 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                         onChange={(e) => {
                           onUpdate({ name: e.target.value });
                           
-                          // Clear validation error when user types (only if they've attempted next before)
-                          if (e.target.value.trim().length > 0 && hasAttemptedNext && data.email && data.email.trim().length > 0) {
-                            setValidationError("");
+                          // Clear validation error when user types
+                          if (e.target.value.trim().length > 0 && hasAttemptedNext) {
+                            setFieldErrors((prev) => {
+                              const newErrors = { ...prev };
+                              delete newErrors.name;
+                              return newErrors;
+                            });
                           }
                           
                           // Clear submit error when user types
@@ -668,8 +663,15 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                             onClearSubmitError();
                           }
                         }}
-                        className="w-full form-control" 
+                        className={`w-full form-control ${
+                          fieldErrors.name && hasAttemptedNext ? "is-invalid" : ""
+                        }`}
                       />
+                      {fieldErrors.name && hasAttemptedNext && (
+                        <div className="text-danger mt-1 small">
+                          {fieldErrors.name}
+                        </div>
+                      )}
                     </div>
 
                     {/* Email */}
@@ -684,9 +686,15 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                         onChange={(e) => {
                           onUpdate({ email: e.target.value });
                           
-                          // Clear validation error when user types (only if they've attempted next before)
-                          if (e.target.value.trim().length > 0 && hasAttemptedNext && data.name && data.name.trim().length > 0) {
-                            setValidationError("");
+                          // Clear validation error when user types (if email format is valid)
+                          if (e.target.value.trim().length > 0 && hasAttemptedNext) {
+                            if (validateEmailFormat(e.target.value)) {
+                              setFieldErrors((prev) => {
+                                const newErrors = { ...prev };
+                                delete newErrors.email;
+                                return newErrors;
+                              });
+                            }
                           }
                           
                           // Clear submit error when user types
@@ -694,8 +702,26 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                             onClearSubmitError();
                           }
                         }}
-                        className="w-full form-control" 
+                        onBlur={(e) => {
+                          // Validate email format on blur if user has attempted next
+                          if (hasAttemptedNext && e.target.value.trim().length > 0) {
+                            if (!validateEmailFormat(e.target.value)) {
+                              setFieldErrors((prev) => ({
+                                ...prev,
+                                email: "Please enter a valid email address (e.g., john.doe@company.com).",
+                              }));
+                            }
+                          }
+                        }}
+                        className={`w-full form-control ${
+                          fieldErrors.email && hasAttemptedNext ? "is-invalid" : ""
+                        }`}
                       />
+                      {fieldErrors.email && hasAttemptedNext && (
+                        <div className="text-danger mt-1 small">
+                          {fieldErrors.email}
+                        </div>
+                      )}
                     </div>
 
                     {/* Phone Number */}
@@ -712,12 +738,6 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                       />
                     </div>
 
-                    {/* Validation Error Message - only show if user has attempted next */}
-                    {validationError && hasAttemptedNext && (
-                      <div>
-                        <p className="text-danger">{validationError}</p>
-                      </div>
-                    )}
 
                     {/* CRM Submission Error Message */}
                     {submitError && (

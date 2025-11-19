@@ -21,35 +21,36 @@ interface BasicInfoStepProps {
 
 // Session storage utility functions
 const setSessionStorage = (key: string, value: string) => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     sessionStorage.setItem(key, value);
   }
 };
 
 const getSessionStorage = (key: string): string | null => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     return sessionStorage.getItem(key);
   }
   return null;
 };
 
 const removeSessionStorage = (keys: string[]) => {
-  if (typeof window !== 'undefined') {
-    keys.forEach(key => sessionStorage.removeItem(key));
+  if (typeof window !== "undefined") {
+    keys.forEach((key) => sessionStorage.removeItem(key));
   }
 };
 
 // Generate stable session ID
 const generateStableSessionId = (): string => {
-  if (typeof window !== 'undefined') {
-    let stableSessionId = localStorage.getItem('stable_session_id');
+  if (typeof window !== "undefined") {
+    let stableSessionId = localStorage.getItem("stable_session_id");
     if (!stableSessionId) {
-      stableSessionId = 'sid_' + Math.random().toString(36).substr(2, 9) + Date.now();
-      localStorage.setItem('stable_session_id', stableSessionId);
+      stableSessionId =
+        "sid_" + Math.random().toString(36).substr(2, 9) + Date.now();
+      localStorage.setItem("stable_session_id", stableSessionId);
     }
     return stableSessionId;
   }
-  return '';
+  return "";
 };
 
 // File upload component
@@ -57,10 +58,16 @@ const FileUploadSection = ({
   files,
   onFilesChange,
   onFileRemove,
+  validationError,
+  hasAttemptedNext,
+  onFilesAdded,
 }: {
   files: File[];
   onFilesChange: (files: File[]) => void;
   onFileRemove: (index: number) => void;
+  validationError?: string;
+  hasAttemptedNext?: boolean;
+  onFilesAdded?: () => void;
 }) => {
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
@@ -94,9 +101,10 @@ const FileUploadSection = ({
 
       if (validFiles.length > 0) {
         onFilesChange([...files, ...validFiles]);
+        if (onFilesAdded) onFilesAdded();
       }
     },
-    [files, onFilesChange]
+    [files, onFilesChange, onFilesAdded]
   );
 
   const handleFileInput = useCallback(
@@ -104,10 +112,11 @@ const FileUploadSection = ({
       const selectedFiles = Array.from(e.target.files || []);
       if (selectedFiles.length > 0) {
         onFilesChange([...files, ...selectedFiles]);
+        if (onFilesAdded) onFilesAdded();
       }
       e.target.value = "";
     },
-    [files, onFilesChange]
+    [files, onFilesChange, onFilesAdded]
   );
 
   const formatFileSize = (bytes: number) => {
@@ -123,7 +132,8 @@ const FileUploadSection = ({
   // Accepts a string filename or a File object (or undefined/null).
   // Returns a safe default icon if the name is missing.
   const getFileIcon = (file?: string | File | null) => {
-    const name = typeof file === "string" ? file : (file && (file as File).name) || "";
+    const name =
+      typeof file === "string" ? file : (file && (file as File).name) || "";
     if (!name) return "📎";
     const extension = name.split(".").pop()?.toLowerCase() || "";
     switch (extension) {
@@ -149,16 +159,19 @@ const FileUploadSection = ({
   return (
     <div className="space-y-4">
       <div
-        className={`stepUploadSection rounded-lg p-3 text-center transition-all duration-200 relative cursor-pointer ${dragActive
-          ? "border-blue-500 bg-blue-50 scale-[1.02]"
-          : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
-          }`}
+        className={`stepUploadSection rounded-lg p-3 text-center transition-all duration-200 relative cursor-pointer ${
+          dragActive
+            ? "border-blue-500 bg-blue-50 scale-[1.02]"
+            : validationError && hasAttemptedNext
+            ? "border-red-500 border-2"
+            : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
+        }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
         onDrop={handleDrop}
         onClick={(e) => {
-          if (!(e.target as Element).closest('.file-item')) {
+          if (!(e.target as Element).closest(".file-item")) {
             if (fileInputRef.current) {
               fileInputRef.current.click();
             }
@@ -167,10 +180,22 @@ const FileUploadSection = ({
       >
         {files.length === 0 && (
           <>
-            <div className="text-4xl mb-1 fs_20">📁</div>
+            <div className="text-4xl mb-1 fs_20 d-flex align-items-center justify-content-center">
+              <svg
+                height={25}
+                width={25}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="#fed97f"
+              >
+                <path d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z"></path>
+              </svg>
+            </div>
             <div className="space-y-2">
               <p className="text-lg font-medium">
-                {dragActive ? "Drop files here" : "Drop files here or click to upload"}
+                {dragActive
+                  ? "Drop files here"
+                  : "Drop files here or click to upload"}
               </p>
               <p className="text-sm text-gray-500">
                 Supports PDF, TXT, CSV, Markdown, and DOCX files (max 10MB each)
@@ -185,7 +210,7 @@ const FileUploadSection = ({
           accept=".pdf,.txt,.csv,.md,.docx"
           onChange={handleFileInput}
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-          style={{ pointerEvents: 'none' }}
+          style={{ pointerEvents: "none" }}
         />
         {files.length > 0 && (
           <div className="mt-1 space-y-3">
@@ -196,12 +221,12 @@ const FileUploadSection = ({
               <span className="text-xs bg-gray-100 px-2 py-1 rounded">
                 {files.reduce((acc, file) => acc + file.size, 0) > 1024 * 1024
                   ? `${(
-                    files.reduce((acc, file) => acc + file.size, 0) /
-                    (1024 * 1024)
-                  ).toFixed(1)} MB`
+                      files.reduce((acc, file) => acc + file.size, 0) /
+                      (1024 * 1024)
+                    ).toFixed(1)} MB`
                   : `${Math.round(
-                    files.reduce((acc, file) => acc + file.size, 0) / 1024
-                  )} KB`}
+                      files.reduce((acc, file) => acc + file.size, 0) / 1024
+                    )} KB`}
               </span>
             </div>
             <div className="space-y-2 max-h-60 overflow-y-auto">
@@ -212,7 +237,8 @@ const FileUploadSection = ({
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="text-lg">{getFileIcon(file.name)}</span><span className="text-sm">{file.name}</span>
+                    <span className="text-lg">{getFileIcon(file.name)}</span>
+                    <span className="text-sm">{file.name}</span>
                     <div className="min-w-0">
                       <div className="text-xs text-gray-500">
                         {formatFileSize(file.size)}
@@ -235,6 +261,9 @@ const FileUploadSection = ({
           </div>
         )}
       </div>
+      {validationError && hasAttemptedNext && (
+        <div className="text-danger mt-2 small">{validationError}</div>
+      )}
     </div>
   );
 };
@@ -243,9 +272,15 @@ const FileUploadSection = ({
 const URLManagementSection = ({
   urls,
   onUrlsChange,
+  validationError,
+  hasAttemptedNext,
+  onInputChange,
 }: {
   urls: string[];
   onUrlsChange: (urls: string[]) => void;
+  validationError?: string;
+  hasAttemptedNext?: boolean;
+  onInputChange?: () => void;
 }) => {
   // Initialize with first URL if it exists, otherwise empty string
   const [newUrl, setNewUrl] = useState(urls[0] || "");
@@ -267,7 +302,7 @@ const URLManagementSection = ({
 
   const validateUrl = (url: string): boolean => {
     try {
-      const urlToValidate = url.startsWith('http') ? url : `https://${url}`;
+      const urlToValidate = url.startsWith("http") ? url : `https://${url}`;
       new URL(urlToValidate);
       return true;
     } catch {
@@ -288,7 +323,9 @@ const URLManagementSection = ({
       return;
     }
 
-    const finalUrl = trimmedUrl.startsWith('http') ? trimmedUrl : `https://${trimmedUrl}`;
+    const finalUrl = trimmedUrl.startsWith("http")
+      ? trimmedUrl
+      : `https://${trimmedUrl}`;
 
     // If URL already exists in array, just update it
     if (urls.includes(finalUrl)) {
@@ -309,6 +346,7 @@ const URLManagementSection = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewUrl(e.target.value);
     if (urlError) setUrlError("");
+    if (onInputChange) onInputChange();
   };
 
   const handleBlur = () => {
@@ -320,10 +358,20 @@ const URLManagementSection = ({
       }
       return;
     }
-    if (!validateUrl(trimmed)) return;
-    const finalUrl = trimmed.startsWith('http') ? trimmed : `https://${trimmed}`;
+    if (!validateUrl(trimmed)) {
+      // Show error if URL format is invalid and user has attempted to proceed
+      if (hasAttemptedNext) {
+        setUrlError("Please enter a valid URL (e.g., https://example.com)");
+      }
+      return;
+    }
+    const finalUrl = trimmed.startsWith("http")
+      ? trimmed
+      : `https://${trimmed}`;
     // Update the URLs array with the new URL
     onUrlsChange([finalUrl]);
+    // Clear any errors if URL is valid
+    setUrlError("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -346,8 +394,11 @@ const URLManagementSection = ({
               onChange={handleInputChange}
               onBlur={handleBlur}
               onKeyDown={handleKeyDown}
-              className={`w-full px-4 py-2 rounded-md w-100 text-gray-900 form-control ${urlError ? "border-red-500" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-2 rounded-md w-100 text-gray-900 form-control ${
+                urlError || (validationError && hasAttemptedNext)
+                  ? "border-red-500 is-invalid"
+                  : "border-gray-300"
+              }`}
             />
           </div>
         </div>
@@ -356,6 +407,9 @@ const URLManagementSection = ({
             <p className="text-sm text-red-600 mt-1 flex items-center gap-1">
               ⚠️ {urlError}
             </p>
+          )}
+          {validationError && hasAttemptedNext && !urlError && (
+            <p className="text-danger mt-2 small">{validationError}</p>
           )}
         </div>
       </div>
@@ -366,14 +420,18 @@ const URLManagementSection = ({
 export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
   ({ data, onUpdate, errors = [], footerOptions }) => {
     const [activeTab, setActiveTab] = useState("urls");
+    const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>(
+      {}
+    );
+    const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
     const [trackingData, setTrackingData] = useState({
-      gclid: '',
-      fbclid: '',
-      igclid: '',
-      ttclid: '',
-      fingerprint: '',
-      stableSessionId: '',
-      fingerprintData: null as string | null
+      gclid: "",
+      fbclid: "",
+      igclid: "",
+      ttclid: "",
+      fingerprint: "",
+      stableSessionId: "",
+      fingerprintData: null as string | null,
     });
 
     // Crawl API states
@@ -402,36 +460,36 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
     useEffect(() => {
       const initializeTracking = () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const gclid = urlParams.get('gclid') || '';
-        const fbclid = urlParams.get('fbclid') || '';
-        const igclid = urlParams.get('igclid') || '';
-        const ttclid = urlParams.get('ttclid') || '';
-        const fingerprint = urlParams.get('fingerprint') || '';
+        const gclid = urlParams.get("gclid") || "";
+        const fbclid = urlParams.get("fbclid") || "";
+        const igclid = urlParams.get("igclid") || "";
+        const ttclid = urlParams.get("ttclid") || "";
+        const fingerprint = urlParams.get("fingerprint") || "";
 
         if (gclid !== "") {
-          setSessionStorage('gclid', gclid);
-          removeSessionStorage(['fbclid', 'igclid', 'ttclid']);
+          setSessionStorage("gclid", gclid);
+          removeSessionStorage(["fbclid", "igclid", "ttclid"]);
         }
 
         if (fbclid !== "") {
-          setSessionStorage('fbclid', fbclid);
-          removeSessionStorage(['gclid', 'igclid', 'ttclid']);
+          setSessionStorage("fbclid", fbclid);
+          removeSessionStorage(["gclid", "igclid", "ttclid"]);
         }
 
         if (igclid !== "") {
-          setSessionStorage('igclid', igclid);
-          removeSessionStorage(['gclid', 'fbclid', 'ttclid']);
+          setSessionStorage("igclid", igclid);
+          removeSessionStorage(["gclid", "fbclid", "ttclid"]);
         }
 
         if (ttclid !== "") {
-          setSessionStorage('ttclid', ttclid);
-          removeSessionStorage(['gclid', 'fbclid', 'igclid']);
+          setSessionStorage("ttclid", ttclid);
+          removeSessionStorage(["gclid", "fbclid", "igclid"]);
         }
 
-        const sessionGclid = getSessionStorage('gclid') || '';
-        const sessionFbclid = getSessionStorage('fbclid') || '';
-        const sessionIgclid = getSessionStorage('igclid') || '';
-        const sessionTtclid = getSessionStorage('ttclid') || '';
+        const sessionGclid = getSessionStorage("gclid") || "";
+        const sessionFbclid = getSessionStorage("fbclid") || "";
+        const sessionIgclid = getSessionStorage("igclid") || "";
+        const sessionTtclid = getSessionStorage("ttclid") || "";
         const stableSessionId = generateStableSessionId();
 
         setTrackingData({
@@ -441,7 +499,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           ttclid: sessionTtclid,
           fingerprint: fingerprint,
           stableSessionId: stableSessionId,
-          fingerprintData: null
+          fingerprintData: null,
         });
       };
 
@@ -474,10 +532,10 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
 
                 const fingerprintJson = JSON.stringify(fingerprintData);
 
-                setTrackingData(prev => ({
+                setTrackingData((prev) => ({
                   ...prev,
                   fingerprint: visitorId,
-                  fingerprintData: fingerprintJson
+                  fingerprintData: fingerprintJson,
                 }));
 
                 (window as any).fingerprint = visitorId;
@@ -509,7 +567,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         ttclid: trackingData.ttclid,
         fingerprint: trackingData.fingerprint,
         stableSessionId: trackingData.stableSessionId,
-        fingerprintData: trackingData.fingerprintData || ""
+        fingerprintData: trackingData.fingerprintData || "",
       });
     }, [trackingData, onUpdate]);
 
@@ -528,17 +586,35 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
               trainingFiles: blobFiles,
             },
           });
+
+          // Clear validation error when files are added
+          if (files.length > 0 && hasAttemptedNext) {
+            setFieldErrors((prev) => {
+              const newErrors = { ...prev };
+              delete newErrors.files;
+              return newErrors;
+            });
+          }
         } catch (error) {
-          console.error('Error converting files to blobs:', error);
+          console.error("Error converting files to blobs:", error);
           onUpdate({
             knowledgeSources: {
               ...data.knowledgeSources,
               files,
             },
           });
+
+          // Clear validation error when files are added
+          if (files.length > 0 && hasAttemptedNext) {
+            setFieldErrors((prev) => {
+              const newErrors = { ...prev };
+              delete newErrors.files;
+              return newErrors;
+            });
+          }
         }
       },
-      [data.knowledgeSources, data.blobData, onUpdate]
+      [data.knowledgeSources, data.blobData, onUpdate, hasAttemptedNext]
     );
 
     const handleFileRemove = useCallback(
@@ -556,7 +632,11 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         const normalized = urls
           .map((u) => (u || "").trim())
           .filter((u) => u.length > 0)
-          .map((u) => (u.startsWith("http://") || u.startsWith("https://") ? u : `https://${u}`));
+          .map((u) =>
+            u.startsWith("http://") || u.startsWith("https://")
+              ? u
+              : `https://${u}`
+          );
 
         const websiteUrl = normalized[0] || "";
 
@@ -567,19 +647,30 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           },
           websiteUrl,
         });
+
+        // Clear validation error when URL is added
+        if (normalized.length > 0 && hasAttemptedNext) {
+          setFieldErrors((prev) => {
+            const newErrors = { ...prev };
+            delete newErrors.websiteUrl;
+            return newErrors;
+          });
+        }
       },
-      [data.knowledgeSources, onUpdate]
+      [data.knowledgeSources, onUpdate, hasAttemptedNext]
     );
 
     const knowledgeSourcesCount = useMemo(() => {
       const filesCount = data.knowledgeSources?.files?.length || 0;
-      const hasWebsite = data.websiteUrl && data.websiteUrl.trim().length > 0 ? 1 : 0;
+      const hasWebsite =
+        data.websiteUrl && data.websiteUrl.trim().length > 0 ? 1 : 0;
       return filesCount + hasWebsite;
     }, [data.knowledgeSources, data.websiteUrl]);
 
     // Submit to user-provided workspace API with WebSocket support
     const crawlWebsite = async (url?: string) => {
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:7001";
+      const baseUrl =
+        process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:7001";
       const apiEndpoint = `${baseUrl}/workspace/kogent-bot`;
 
       const files = data.knowledgeSources?.files || [];
@@ -613,7 +704,11 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
 
         // Required fields
         form.append("name", String(companyName || ""));
-        const slug = (companyName || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+        const slug = (companyName || "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "")
+          .slice(0, 80);
         form.append("slug", slug || "workspace");
         form.append("vertical", String(industry || ""));
 
@@ -621,9 +716,13 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         const d: any = data as any;
         const useCasesList = data.useCases || [];
         let businessValue: string | undefined = undefined;
-        if (useCasesList.some((uc: string) => uc.startsWith("customer-support"))) {
+        if (
+          useCasesList.some((uc: string) => uc.startsWith("customer-support"))
+        ) {
           businessValue = "customer-support";
-        } else if (useCasesList.some((uc: string) => uc.startsWith("lead-capture"))) {
+        } else if (
+          useCasesList.some((uc: string) => uc.startsWith("lead-capture"))
+        ) {
           businessValue = "lead-capture";
         } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
           businessValue = "sales";
@@ -634,9 +733,12 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         const integrationInfoMap: Record<string, string> = {
           "self-manage": "Do you manage your website yourself?",
           "technical-person": "I have a technical person to do this for me",
-          "engineering-team": "Would you like our engineering team to do this for you?",
+          "engineering-team":
+            "Would you like our engineering team to do this for you?",
         };
-        const infoValue = integrationType ? (integrationInfoMap[integrationType] || integrationType) : "";
+        const infoValue = integrationType
+          ? integrationInfoMap[integrationType] || integrationType
+          : "";
 
         // Generate random brandId
         const generateBrandId = () => {
@@ -653,20 +755,31 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         if (data.phone) form.append("phoneNumber", String(data.phone));
         form.append("info", infoValue);
         form.append("brandId", brandId);
-        if (d.infoCheckbox !== undefined) form.append("infoCheckbox", String(d.infoCheckbox));
+        if (d.infoCheckbox !== undefined)
+          form.append("infoCheckbox", String(d.infoCheckbox));
 
         // Bot appearance fields
-        if (data.appearance?.primaryColor) form.append("colors", String(data.appearance.primaryColor));
+        if (data.appearance?.primaryColor)
+          form.append("colors", String(data.appearance.primaryColor));
         if (data.botname) form.append("displayTitle", String(data.botname));
         if (data.appearance?.avatar) {
           const avatarUrl = String(data.appearance.avatar);
           // If it's a base64 data URL or absolute URL, use as-is
           // Otherwise, prepend base URL for relative paths
-          if (avatarUrl.startsWith('data:') || avatarUrl.startsWith('http://') || avatarUrl.startsWith('https://')) {
+          if (
+            avatarUrl.startsWith("data:") ||
+            avatarUrl.startsWith("http://") ||
+            avatarUrl.startsWith("https://")
+          ) {
             form.append("imageUrl", avatarUrl);
           } else {
             // Use https://kogents.ai as base URL for relative paths
-            form.append("imageUrl", `https://kogents.ai${avatarUrl.startsWith('/') ? avatarUrl : '/' + avatarUrl}`);
+            form.append(
+              "imageUrl",
+              `https://kogents.ai${
+                avatarUrl.startsWith("/") ? avatarUrl : "/" + avatarUrl
+              }`
+            );
           }
         }
 
@@ -682,11 +795,11 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         const defaultSocketUrl = baseUrl; // Use API base URL as default
         const defaultSocketPort = 3001; // Common socket port
 
-        console.log('🔌 Connecting to socket (before API response)...');
+        console.log("🔌 Connecting to socket (before API response)...");
 
         try {
           socket = io(defaultSocketUrl, {
-            transports: ['websocket', 'polling'],
+            transports: ["websocket", "polling"],
             reconnection: true,
             reconnectionDelay: 1000,
             reconnectionAttempts: 5,
@@ -698,13 +811,16 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             connected: false,
             socketUrl: defaultSocketUrl,
             socketPort: defaultSocketPort,
-            socketEvent: 'workspace:crawl-progress', // Default, will update from API
+            socketEvent: "workspace:crawl-progress", // Default, will update from API
             userId: undefined,
             socketId: undefined,
           });
 
-          socket.on('connect', () => {
-            console.log('✅ Socket connected (before API response):', socket?.id);
+          socket.on("connect", () => {
+            console.log(
+              "✅ Socket connected (before API response):",
+              socket?.id
+            );
             setSocketInfo((prev) => ({
               ...prev,
               connected: true,
@@ -714,16 +830,16 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             setCrawlProgress(20); // Show some progress
           });
 
-          socket.on('connect_error', (error) => {
-            console.warn('Socket connection error:', error);
+          socket.on("connect_error", (error) => {
+            console.warn("Socket connection error:", error);
             setSocketInfo((prev) => ({
               ...prev,
               connected: false,
             }));
           });
 
-          socket.on('disconnect', () => {
-            console.log('❌ Socket disconnected');
+          socket.on("disconnect", () => {
+            console.log("❌ Socket disconnected");
             setSocketInfo((prev) => ({
               ...prev,
               connected: false,
@@ -1127,7 +1243,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           });
           */
         } catch (socketError) {
-          console.warn('Socket connection failed:', socketError);
+          console.warn("Socket connection failed:", socketError);
         }
 
         // ✅ Step 2: Make API call (while socket is connecting)
@@ -1139,18 +1255,20 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         const result = await response.json().catch(() => ({}));
 
         if (!response.ok || (result && result.error)) {
-          const errorMessage = (result && (result.error || result.message)) || `HTTP error! status: ${response.status}`;
+          const errorMessage =
+            (result && (result.error || result.message)) ||
+            `HTTP error! status: ${response.status}`;
           throw new Error(errorMessage);
         }
 
         // ✅ Step 3: Update socket info with actual values from API response
         userId = result.userId || result.data?.userId || d.userId || null;
-        const socketEvent = result.socketEvent || 'workspace:crawl-progress';
+        const socketEvent = result.socketEvent || "workspace:crawl-progress";
         const socketUrl = result.socketUrl || baseUrl;
         const socketPort = result.socketPort || defaultSocketPort;
 
-        console.log('✅ API Response received:', result);
-        console.log('✅ Updating socket info with API response values');
+        console.log("✅ API Response received:", result);
+        console.log("✅ Updating socket info with API response values");
 
         // Update socket info with actual values
         setSocketInfo((prev) => ({
@@ -1422,16 +1540,16 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         */
 
         // ✅ Step 4: API Response aaya - Show success message and close modal
-        console.log('✅ API Response received:', result);
-        console.log('✅ Workspace created successfully:', result.data?._id);
+        console.log("✅ API Response received:", result);
+        console.log("✅ Workspace created successfully:", result.data?._id);
 
         // ✅ Store workspace _id for widget script
         const workspaceId = result.data?._id;
         if (workspaceId) {
           // Store in localStorage for widget script
-          if (typeof window !== 'undefined') {
-            localStorage.setItem('workspace_id', workspaceId);
-            console.log('✅ Workspace ID stored:', workspaceId);
+          if (typeof window !== "undefined") {
+            localStorage.setItem("workspace_id", workspaceId);
+            console.log("✅ Workspace ID stored:", workspaceId);
           }
           // Also update in wizard data
           onUpdate({
@@ -1457,9 +1575,9 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           // Disconnect socket
           if (socket) {
             if (userId) {
-              socket.emit('crawl-progress', {
+              socket.emit("crawl-progress", {
                 userId: userId,
-                action: 'unsubscribe'
+                action: "unsubscribe",
               });
             }
             socket.disconnect();
@@ -1470,23 +1588,24 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         }, 2000); // 2 seconds delay to show success message
 
         return;
-
       } catch (error) {
         if (progressInterval) {
           clearInterval(progressInterval);
         }
         if (socket) {
           if (userId) {
-            socket.emit('crawl-progress', {
+            socket.emit("crawl-progress", {
               userId: userId,
-              action: 'unsubscribe'
+              action: "unsubscribe",
             });
           }
           socket.disconnect();
         }
         setIsCrawling(false);
         setCrawlError(
-          error instanceof Error ? error.message : "Failed to submit. Please try again."
+          error instanceof Error
+            ? error.message
+            : "Failed to submit. Please try again."
         );
       }
     };
@@ -1507,17 +1626,24 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
         // Files tab or no URL - still show modal and submit
         setShowCrawlModal(true);
         try {
-          const wsFiles: File[] = (data.knowledgeSources?.files || []) as File[];
+          const wsFiles: File[] = (data.knowledgeSources?.files ||
+            []) as File[];
           const d: any = data as any;
 
           // Process Step 3 use cases - map to business string value
           const useCasesList = data.useCases || [];
           let businessValue: string | undefined = undefined;
-          if (useCasesList.some((uc: string) => uc.startsWith("customer-support"))) {
+          if (
+            useCasesList.some((uc: string) => uc.startsWith("customer-support"))
+          ) {
             businessValue = "customer-support";
-          } else if (useCasesList.some((uc: string) => uc.startsWith("lead-capture"))) {
+          } else if (
+            useCasesList.some((uc: string) => uc.startsWith("lead-capture"))
+          ) {
             businessValue = "lead-capture";
-          } else if (useCasesList.some((uc: string) => uc.startsWith("sales"))) {
+          } else if (
+            useCasesList.some((uc: string) => uc.startsWith("sales"))
+          ) {
             businessValue = "sales";
           }
 
@@ -1562,7 +1688,9 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           }, 1500);
         } catch (wsErr) {
           setIsCrawling(false);
-          setCrawlError(wsErr instanceof Error ? wsErr.message : "Failed to submit");
+          setCrawlError(
+            wsErr instanceof Error ? wsErr.message : "Failed to submit"
+          );
         }
       }
     };
@@ -1576,11 +1704,62 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       };
     }, []);
 
+    // URL validation helper function
+    const validateUrlFormat = (url: string): boolean => {
+      if (!url || url.trim().length === 0) return false;
+      try {
+        const urlToValidate = url.startsWith("http://") || url.startsWith("https://")
+          ? url
+          : `https://${url}`;
+        new URL(urlToValidate);
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    // Validation function
+    const validateSelection = () => {
+      setHasAttemptedNext(true);
+      const errors: { [key: string]: string } = {};
+
+      const files = data.knowledgeSources?.files || [];
+      const websiteUrl =
+        data.websiteUrl || data.knowledgeSources?.urls?.[0] || "";
+
+      // Validate that either URL or files are provided
+      if (!websiteUrl && files.length === 0) {
+        if (activeTab === "urls") {
+          errors.websiteUrl =
+            "Please enter a website URL or switch to Files tab to upload files.";
+        } else {
+          errors.files =
+            "Please upload files or switch to URL tab to enter a website URL.";
+        }
+      }
+
+      // Validate URL format if URL is provided
+      if (websiteUrl && websiteUrl.trim().length > 0) {
+        if (!validateUrlFormat(websiteUrl)) {
+          errors.websiteUrl = "Please enter a valid URL (e.g., https://example.com)";
+        }
+      }
+
+      setFieldErrors(errors);
+      return Object.keys(errors).length === 0;
+    };
+
     // Custom handleNext - intercept Next button to call API first
     const handleNext = async () => {
+      // Validate first
+      if (!validateSelection()) {
+        return;
+      }
+
       // Check if we have URL or files to crawl
       const files = data.knowledgeSources?.files || [];
-      const websiteUrl = data.websiteUrl || data.knowledgeSources?.urls?.[0] || "";
+      const websiteUrl =
+        data.websiteUrl || data.knowledgeSources?.urls?.[0] || "";
 
       // If no URL and no files, proceed directly to next step
       if (!websiteUrl && files.length === 0) {
@@ -1604,61 +1783,155 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
     return (
       <div>
         {/* Hidden tracking fields */}
-        <input name="gclid" id="gclid" type="hidden" value={trackingData.gclid} readOnly />
-        <input name="fbclid" id="fbclid" type="hidden" value={trackingData.fbclid} readOnly />
-        <input name="igclid" id="igclid" type="hidden" value={trackingData.igclid} readOnly />
-        <input name="ttclid" id="ttclid" type="hidden" value={trackingData.ttclid} readOnly />
-        <input name="fingerprint" id="fingerprint" type="hidden" value={trackingData.fingerprint} readOnly />
+        <input
+          name="gclid"
+          id="gclid"
+          type="hidden"
+          value={trackingData.gclid}
+          readOnly
+        />
+        <input
+          name="fbclid"
+          id="fbclid"
+          type="hidden"
+          value={trackingData.fbclid}
+          readOnly
+        />
+        <input
+          name="igclid"
+          id="igclid"
+          type="hidden"
+          value={trackingData.igclid}
+          readOnly
+        />
+        <input
+          name="ttclid"
+          id="ttclid"
+          type="hidden"
+          value={trackingData.ttclid}
+          readOnly
+        />
+        <input
+          name="fingerprint"
+          id="fingerprint"
+          type="hidden"
+          value={trackingData.fingerprint}
+          readOnly
+        />
         <input name="chat" id="chat" type="hidden" value="" readOnly />
-        <input name="stable_session_id" type="hidden" value={trackingData.stableSessionId} readOnly />
+        <input
+          name="stable_session_id"
+          type="hidden"
+          value={trackingData.stableSessionId}
+          readOnly
+        />
         {trackingData.fingerprintData && (
-          <input name="fingerprintdata" type="hidden" value={trackingData.fingerprintData} readOnly />
+          <input
+            name="fingerprintdata"
+            type="hidden"
+            value={trackingData.fingerprintData}
+            readOnly
+          />
         )}
 
         <div className="container-fluid getUserInfoContainer">
           <div className="row">
             <div className="col-lg-12 chatbot-left-content-wrapper">
-              <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
+              <InViewAnimate
+                animClass="fade-up-200"
+                className="chatbot-content-wrapper"
+              >
                 <div className="chatbot-content mt--3">
                   <div className="ps-0 pt-0">
                     <div className="stepText my-2">Step 4 of 6</div>
-                    <div className="h4 fw-bold">Provide Information to Train Your Bot</div>
-                    <div className="mb-4">
-                      Start by giving your bot a webpage or some files to kickstart your bot's learning.
+                    <div className="h4 fw-bold">
+                      Provide Information to Train Your Bot
                     </div>
                     <div className="mb-4">
-                      You can add more content later.
+                      Start by giving your bot a webpage or some files to
+                      kickstart your bot's learning.
                     </div>
-                    {knowledgeSourcesCount > 0 && (
+                    <div className="mb-4">You can add more content later.</div>
+                    {/* {knowledgeSourcesCount > 0 && (
                       <div className="mb-4">
                         <span className="text-xs bg-gray-100 px-2 py-1 rounded">
                           Choose one of the following
                         </span>
                       </div>
-                    )}
+                    )} */}
                   </div>
 
                   {/* Tab Buttons */}
                   <div className="mb-6">
                     <div className="flex gap-2 mb-4">
                       <button
-                        onClick={() => setActiveTab("urls")}
-                        className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${activeTab === "urls"
-                          ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
-                          : "forthTab"
-                          }`}
+                        onClick={() => {
+                          setActiveTab("urls");
+                          // Clear errors when switching tabs
+                          if (hasAttemptedNext) {
+                            setFieldErrors((prev) => {
+                              const newErrors = { ...prev };
+                              delete newErrors.files;
+                              return newErrors;
+                            });
+                          }
+                        }}
+                        className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${
+                          activeTab === "urls"
+                            ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
+                            : "forthTab"
+                        }`}
                       >
-                        <div className="text-2xl mb-2">🔗</div>
+                        <div className="text-2xl mb-2">
+                          <svg
+                            height={25}
+                            width={25}
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            viewBox="0 0 16 16"
+                            fill="#ffffff"
+                          >
+                            <path
+                              fill="#ffffff"
+                              d="M14.9 1.1c-1.4-1.4-3.7-1.4-5.1 0l-4.4 4.3c-1.4 1.5-1.4 3.7 0 5.2 0.1 0.1 0.3 0.2 0.4 0.3l1.5-1.5c-0.1-0.1-0.3-0.2-0.4-0.3-0.6-0.6-0.6-1.6 0-2.2l4.4-4.4c0.6-0.6 1.6-0.6 2.2 0s0.6 1.6 0 2.2l-1.3 1.3c0.4 0.8 0.5 1.7 0.4 2.5l2.3-2.3c1.5-1.4 1.5-3.7 0-5.1z"
+                            ></path>
+                            <path
+                              fill="#ffffff"
+                              d="M10.2 5.1l-1.5 1.5c0 0 0.3 0.2 0.4 0.3 0.6 0.6 0.6 1.6 0 2.2l-4.4 4.4c-0.6 0.6-1.6 0.6-2.2 0s-0.6-1.6 0-2.2l1.3-1.3c-0.4-0.8-0.1-1.3-0.4-2.5l-2.3 2.3c-1.4 1.4-1.4 3.7 0 5.1s3.7 1.4 5.1 0l4.4-4.4c1.4-1.4 1.4-3.7 0-5.1-0.2-0.1-0.4-0.3-0.4-0.3z"
+                            ></path>
+                          </svg>
+                        </div>
                         <span className="text-sm font-medium">URL</span>
                       </button>
                       <button
-                        onClick={() => setActiveTab("files")}
-                        className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${activeTab === "files"
-                          ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
-                          : "forthTab"
-                          }`}
+                        onClick={() => {
+                          setActiveTab("files");
+                          // Clear errors when switching tabs
+                          if (hasAttemptedNext) {
+                            setFieldErrors((prev) => {
+                              const newErrors = { ...prev };
+                              delete newErrors.websiteUrl;
+                              return newErrors;
+                            });
+                          }
+                        }}
+                        className={`flex flex-col items-center px-4 py-3 rounded-lg transition-all ${
+                          activeTab === "files"
+                            ? "border-purple-500 bg-purple-50 text-purple-700 forthTab forthTabActive"
+                            : "forthTab"
+                        }`}
                       >
-                        <div className="text-2xl mb-2">📁</div>
+                        <div className="text-2xl mb-2">
+                          <svg
+                            height={25}
+                            width={25}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="#fed97f"
+                          >
+                            <path d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z"></path>
+                          </svg>
+                        </div>
                         <span className="text-sm font-medium">Files</span>
                       </button>
                     </div>
@@ -1667,10 +1940,23 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                     {activeTab === "urls" && (
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm font-medium mb-2">Enter your company website</label>
+                          <label className="block text-sm font-medium mb-2">
+                            Enter your company website
+                          </label>
                           <URLManagementSection
                             urls={data.knowledgeSources.urls}
                             onUrlsChange={handleUrlsChange}
+                            validationError={fieldErrors.websiteUrl}
+                            hasAttemptedNext={hasAttemptedNext}
+                            onInputChange={() => {
+                              if (hasAttemptedNext) {
+                                setFieldErrors((prev) => {
+                                  const newErrors = { ...prev };
+                                  delete newErrors.websiteUrl;
+                                  return newErrors;
+                                });
+                              }
+                            }}
                           />
                         </div>
                       </div>
@@ -1679,11 +1965,24 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                     {activeTab === "files" && (
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm font-medium mb-2">Upload files</label>
+                          <label className="block text-sm font-medium mb-2">
+                            Upload files
+                          </label>
                           <FileUploadSection
                             files={data.knowledgeSources.files}
                             onFilesChange={handleFilesChange}
                             onFileRemove={handleFileRemove}
+                            validationError={fieldErrors.files}
+                            hasAttemptedNext={hasAttemptedNext}
+                            onFilesAdded={() => {
+                              if (hasAttemptedNext) {
+                                setFieldErrors((prev) => {
+                                  const newErrors = { ...prev };
+                                  delete newErrors.files;
+                                  return newErrors;
+                                });
+                              }
+                            }}
                           />
                         </div>
                       </div>
@@ -1703,7 +2002,11 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
                   {/* Note Section */}
                   <div className="mt-2">
                     <div className="text-secondary small">
-                      <strong>Note option:</strong> Since it's a demo version trained only on your website/document, it only reflects 10-15% capability. To unlock full potential, our engineering team will gather your requirements in detail to execute the fully featured version ahead.
+                      <strong>Note:</strong> Since it's a demo version
+                      trained only on your website/document, it only reflects
+                      10-15% capability. To unlock full potential, our
+                      engineering team will gather your requirements in detail
+                      to execute the fully featured version ahead.
                     </div>
                   </div>
                   {/* Activate Agent Now Button */}
@@ -1760,7 +2063,11 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
           isOpen={showCrawlModal}
           isLoading={isCrawling}
           progress={crawlProgress}
-          message={crawlComplete ? "Crawling is completed" : "Website pages is crawling......"}
+          message={
+            crawlComplete
+              ? "Crawling is completed"
+              : "Website pages is crawling......"
+          }
           error={crawlError}
           socketInfo={socketInfo || undefined}
           onClose={() => {
@@ -1777,4 +2084,3 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
 );
 
 GetUserInfo2.displayName = "GetUserInfo2";
-

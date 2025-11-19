@@ -388,8 +388,6 @@ export function ChatWidget({
           </button>
         </div> */}
       </div>
-
-      <button className={styles.floatingBtn}>N</button>
     </div>
   );
 }

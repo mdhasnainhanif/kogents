@@ -1502,7 +1502,8 @@ const ImageSlider: React.FC<{ images: string[] }> = ({ images }) => {
 
 export const UseCaseStep = React.memo<UseCaseStepProps>(
   ({ data, onUpdate, errors, footerOptions, onValidationChange, onValidate }) => {
-    const [selectedUseCase, setSelectedUseCase] = useState<string>("");
+    const [selectedUseCase, setSelectedUseCase] =
+      useState<string>("customer-support");
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
 
@@ -1584,23 +1585,35 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
                       const hasSelection = selectedUseCase !== "";
                       const shouldShowFull = !hasSelection || isSelected;
                       return (
-                        <div 
-                          key={useCase.id} 
-                          className={`mb-3 pt-3 pb-2 px-3 rounded-4    ${
-                            isSelected ? "border-purple-500  border-2" : "border-gray-700 bg-gray-900/30"
+                        <div
+                          key={useCase.id}
+                          className={`mb-3 pt-3 pb-2 px-3 rounded-3    ${
+                            isSelected
+                              ? "border-purple-500  border-2"
+                              : "border-gray-700 bg-gray-900/30"
                           }`}
-                          style={{ cursor: "pointer",border:"1px solid #221f33", 
-                            backgroundColor: isSelected ? "#7a64ea21" : "transparent",
-                            borderColor: isSelected ? "#7a64ea" : "#221f33"
-                            
+                          style={{
+                            cursor: "pointer",
+                            border: "1px solid #221f33",
+                            backgroundColor: isSelected
+                              ? "#7a64ea21"
+                              : "transparent",
+                            borderColor: isSelected ? "#7a64ea" : "#221f33",
                           }}
                           onClick={() => handleUseCaseSelect(useCase.id)}
                         >
-                          <div className={`d-flex align-items-center ${shouldShowFull ? "mb-3" : "mb-0"}`}>
-                            <div className="me-3" style={{ marginTop: shouldShowFull ? "4px" : "0" }}>
+                          <div className={`d-flex align-items-center mb-3`}>
+                            <div
+                              className="me-3"
+                              style={{
+                                marginTop: shouldShowFull ? "4px" : "0",
+                              }}
+                            >
                               <div
                                 className={`rounded-circle d-flex align-items-center justify-content-center ${
-                                  isSelected ? "bg-purple-500 border-2 border-white" : "border border-gray-600"
+                                  isSelected
+                                    ? "bg-purple-500 border-2 border-white"
+                                    : "border border-gray-600"
                                 }`}
                                 style={{
                                   width: "16px",
@@ -1609,26 +1622,30 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
                                 }}
                               >
                                 {isSelected && (
-                                  <Check
-                                    size={16}
-                                    className="text-white"
-                                  />
+                                  <Check size={16} className="text-white" />
                                 )}
                               </div>
                             </div>
                             <div className="flex-grow-1">
-                              <h3 className={`h5 fw-semibold text-white ${shouldShowFull ? "mb-2" : "mb-0"}`}>
+                              <h3
+                                className={`h5 fw-semibold text-white ${
+                                  shouldShowFull ? "mb-2" : "mb-0"
+                                }`}
+                              >
                                 {index + 1}. {useCase.title}
                               </h3>
                               {shouldShowFull && (
                                 <>
-                                  <p className="mb-2 greenNeon">{useCase.goal}</p>
-                                  
+                                  <p className="mb-2 greenNeon">
+                                    {useCase.goal}
+                                  </p>
+
                                   <div>
                                     {useCase.benefits.map((benefit) => (
                                       <div key={benefit.id} className="mb-2">
                                         <div className="fw-semibold mb-1 text_primary">
-                                          {benefit.id.toUpperCase()}. {benefit.title}
+                                          {benefit.id.toUpperCase()}.{" "}
+                                          {benefit.title}
                                         </div>
                                         <div className="text-white small">
                                           {benefit.description}

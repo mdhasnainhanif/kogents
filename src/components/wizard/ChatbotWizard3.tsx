@@ -142,8 +142,6 @@ function ChatbotWizard3() {
     }
   }, []);
 
-  console.log("data", data);
-
   const handleComplete = async () => {
     setIsSubmitting(true);
     setSubmitError(null);
