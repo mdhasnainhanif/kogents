@@ -146,7 +146,7 @@ const CARDS: Card[] = [
     id: "Voice",
     title: "AI Voice Agent",
     icon: "/assets/img/icons/ai-voice-agent.svg",
-    desc: "Chat with customers worldwide on Telegram 24/7 in multiple languages. From inquiries to orders to real-time updates.",
+    desc: "Turn every call into a smart and human-like conversation that builds trust and improves satisfaction.",
     tags: ["Platforms"],
     link: "/platforms/ai-voice-agent",
   },

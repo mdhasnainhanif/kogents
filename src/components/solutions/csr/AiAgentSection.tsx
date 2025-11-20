@@ -131,7 +131,7 @@ export default function AiAgentSection() {
                 title: "Medical AI Agent",
                 href: "/solutions/medical-ai-agent",
                 points: [
-                    "Automates patient support 24/7 with intelligent workflows that handle scheduling, insurance checks, and follow-ups.",
+                    "Enhance medical diagnostic accuracy, streamline patient data, and assist healthcare professionals with real-time insights for improved outcomes.",
                 ],
             },
         ],
@@ -164,6 +164,24 @@ export default function AiAgentSection() {
                     "Assists with grading assignments. Tracks student engagement and progress. Recommends personalized learning resources.",
                 ],
             },
+
+
+            {
+                img: "/assets/img/ai-recruiting-assistant/banner.webp",
+                title: "AI Recruiting Assistant",
+                href: "/solutions/ai-recruiting-assistant",
+                points: [
+                    "Identify top talent faster, automate interview coordination, and maintain personalized candidate engagement throughout the hiring process.",
+                ],
+            },
+            {
+                img: "/assets/img/hire-ai-agent/banner.webp",
+                title: "Hire AI Agent",
+                href: "/solutions/hire-ai-agent",
+                points: [
+                    "Automate daily tasks, manage workflows, and handle communication to boost productivity and streamline operations.",
+                ],
+            },
         ],
         []
     );
@@ -191,7 +209,7 @@ export default function AiAgentSection() {
                 title: "AI Recruiting Assistant ",
                 href: "/solutions/ai-recruiting-assistant",
                 points: [
-                    "Creates insightful surveys quickly. Evaluates responses with AI-powered analysis. Generates actionable insights for business growth.",
+                    "Identify top talent faster, automate interview coordination, and maintain personalized candidate engagement throughout the hiring process.",
                 ],
             },
             {
@@ -199,7 +217,17 @@ export default function AiAgentSection() {
                 title: "AI Automation Agency",
                 href: "/solutions/ai-automation-agency",
                 points: [
-                    "Creates insightful surveys quickly. Evaluates responses with AI-powered analysis. Generates actionable insights for business growth.",
+                    "Deliver end-to-end automation strategies, integrating intelligent workflows and scalable AI solutions tailored to your business operations.",
+                ],
+            },
+
+
+            {
+                img: "/assets/img/workflow-automation/banner.webp",
+                title: "Workflow Automation",
+                href: "/solutions/workflow-automation",
+                points: [
+                    "Optimize complex business processes by connecting systems, eliminating redundancies, and boosting efficiency through adaptive AI workflows.",
                 ],
             },
         ],
@@ -288,6 +316,8 @@ export default function AiAgentSection() {
                                         <li>AI Agent Event Planner</li>
                                         <li>AI Agent for Marketing</li>
                                         <li>AI Teacher Assistant</li>
+                                        <li>AI Recruiting Assistant</li>
+                                        <li>Hire ai agent</li>
                                     </ul>
                                     <div id="imageCounter2"></div>
                                 </li>
@@ -316,9 +346,12 @@ export default function AiAgentSection() {
                                     <ul className="list01">
                                         <li>AI Agent Dashboard</li>
                                         <li>Survey AI Agent</li>
+                                        <li>AI Automation Agency</li>
+                                        <li>Workflow Automation</li>
                                     </ul>
                                     <div id="imageCounter3"></div>
                                 </li>
+                                
                             </ul>
                         </div>
                     </div>
