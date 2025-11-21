@@ -914,6 +914,15 @@ media-theme-tailwind-audio {
 
 /* Mobile: Fixed header */
 @media (max-width: 768px) {
+
+  .blogcard-div > img{
+    height: 132px;
+    object-fit: cover;
+    width: 100% !important;
+  }
+  img.blog-img{
+    height: auto;
+  }
   
   .chat_header_container {
     position: fixed;
