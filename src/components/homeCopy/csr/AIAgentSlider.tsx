@@ -8,7 +8,7 @@ import { Navigation } from "swiper/modules";
 import Image from "next/image";
 
 
-const AIAgentSlider = () => {
+const AIAgentSlider = ({ className }: { className?: string }) => {
 
   const aiAgents = [
     {
@@ -92,7 +92,7 @@ const AIAgentSlider = () => {
 
   return (
     <div
-      className="bg-center relative bg-no-repeat bg-cover sectionPadding pt0Mobile"
+      className={`bg-center relative bg-no-repeat bg-cover sectionPadding pt0Mobile ${className}`}
       id="aiTemplateSection">
       <div className="container px-5 mx-auto xl:px-0">
         <div className="row justify-content-center">
@@ -137,7 +137,7 @@ const AIAgentSlider = () => {
                       1024: { slidesPerView: 3 },
                     }}
                     // pagination={{ clickable: true }}
-                    className="caseStudySlider  relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.875rem] caseStudySlider"
+                    className={`caseStudySlider  relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.875rem] caseStudySlider ${className}`}
                   >
                     {aiAgents.map((agent) => (
                       <SwiperSlide key={agent.id} className="item">

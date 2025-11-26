@@ -111,7 +111,16 @@ export default function HomePage() {
       <div className="relative w-full min-h-screen">
         {/* Page content */}
         <div className="relative z-10">
-          <HeroSection />
+          <HeroSection 
+            badge="AI Agent Platform"
+            title="Intelligent AI Agents That Work 24/7. Learn. Adapt. Deliver Results."
+            description="Transform your business with autonomous AI agents that handle conversations, automate workflows, and integrate seamlessly with your existing systems. Built for scale, designed for efficiency."
+            buttonText="Create Your <span class='star'>✦</span><span class='ai fw-bold'>AI</span><span class='star'>✦</span> Agent Now"
+            buttonLink="/chatbot/briefv2"
+            mainImage="/assets/img/ai-agent/erp-ai-agent.svg"
+            mainImageAlt="AI Agent Platform"
+            raysColor="#5D51AF"
+          />
           <section className="cv">
             <ProductSection />
           </section>

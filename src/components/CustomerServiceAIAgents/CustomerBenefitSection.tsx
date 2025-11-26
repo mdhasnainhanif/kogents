@@ -22,9 +22,11 @@ interface CustomerBenefitSectionProps {
   };
   backgroundImage?: string;
   buttonText?: string;
+  className?: string;
 }
 
 const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
+  className,
   tag,
   heading,
   description,
@@ -38,7 +40,7 @@ const CustomerBenefitSection: React.FC<CustomerBenefitSectionProps> = ({
   return (
     <div
       id="benefitsSection"
-      className="paddingOnMobile2 pb-0 bg-center bg-no-repeat bg-cover pt-0"
+      className={`paddingOnMobile2 pb-0 bg-center bg-no-repeat bg-cover pt-0 ${className}`}
       // style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="container px-5 mx-auto xl:px-0">

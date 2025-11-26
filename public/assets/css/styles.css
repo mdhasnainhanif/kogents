@@ -225,6 +225,10 @@ a {
   row-gap: 1.5rem;
 }
 
+.rowGap3 {
+  row-gap: 3rem;
+}
+
 .cardPoints>a {
   padding: 0.37rem 1.33rem !important;
   position: relative;
