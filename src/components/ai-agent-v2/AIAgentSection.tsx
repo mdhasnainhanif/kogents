@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowRightIcon, WhatsappIcon, FacebookIconNew, TelegramIconNew, InstagramIconNew, WebsiteIconNew, MSTeamsIconNew } from "@/icons";
+import { ArrowRightIcon, WhatsappIcon, FacebookIconNew, TelegramIconNew, WebsiteIconNew, MSTeamsIconNew } from "@/icons";
 import Link from "next/link";
 
 const AIAgentSection = () => {
@@ -228,7 +228,7 @@ const AIAgentSection = () => {
                   <div className="phone-screen phone-yellow">
                     <div className="phone-content">
                       <div className="phone-header">
-                        <InstagramIconNew/>
+                        <img width={30} height={30} src="/assets/img/instagram2.svg" alt="Instagram Icon" />
                         <span>AI Assistant</span>
                       </div>
                       <div className="phone-messages">
@@ -262,7 +262,11 @@ const AIAgentSection = () => {
                   <div className="phone-screen phone-green">
                     <div className="phone-content">
                       <div className="phone-header">
+                      <div style={{ width: '30px', height: '30px' }} className="relative bg-primary rounded-full flex items-center justify-center mr-2.5">
+                        <span className="text-blue-500 font-bold" style={{ color: '#fff' }}>
                         <WebsiteIconNew/>
+                        </span>
+                        </div>
                         <span>AI Assistant</span>
                       </div>
                       <div className="phone-messages">

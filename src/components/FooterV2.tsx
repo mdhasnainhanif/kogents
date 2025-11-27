@@ -242,18 +242,18 @@ const FooterV2 = () => {
                 <li>
                   <Link href="/blogs">Blogs</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/case-studies">Case Studies</Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href="/">Documentation</Link>
                 </li>
                 <li>
                   <Link href="/">API</Link>
                 </li>
-                <li>
-                  <Link href="/case-studies">Use Cases</Link>
-                </li>
+                {/* <li>
+                  <Link href="/case-studies">Use Cases</Link> 
+                </li> */}
                 <li>
                   <Link href="/">Agentic Insights</Link>
                 </li>

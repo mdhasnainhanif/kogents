@@ -131,6 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }
           })();`}
         </Script>
+        <script type="text/javascript" src="https://widget.clutch.co/static/js/widget.js"></script> <div className="clutch-widget" data-url="https://widget.clutch.co/" data-widget-type="2" data-height="45" data-nofollow="false" data-expandifr="true" data-scale="100" data-clutchcompany-id="2569263"></div>
 
       </body>
     </html>
