@@ -30,6 +30,8 @@ interface CounterProps {
   };
   title?: string;
   subtitle?: string;
+  showHeading?: boolean;
+  isShowBadges?: boolean;
 }
 
 const Counter: React.FC<CounterProps> = ({
@@ -37,7 +39,9 @@ const Counter: React.FC<CounterProps> = ({
   labels,
   units,
   title,
+  isShowBadges = false,
   subtitle,
+  showHeading = false,
 }) => {
   const [counts, setCounts] = useState<CounterState>({
     responseTime: 0,
@@ -123,14 +127,20 @@ const Counter: React.FC<CounterProps> = ({
   return (
     <div className="sectionPadding py-16" ref={counterRef}>
       <div className="container">
-        {/* {title && (
-          <div className="row justify-content-center mb-5">
+        {isShowBadges && (
+          <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
+          Our Stats
+        </span>
+        )}
+        {showHeading && title && (
+          <div className="row justify-content-center">
+
             <div className="col-lg-8 text-center">
-              <h2 className="headingSize text-white mb-3">{title}</h2>
+              <h2 className="headingSize text-white mb-5">{title}</h2>
               {subtitle && <p className="mb-1 paraColor text-base text-center md:text-xl text-w-100">{subtitle}</p>}
             </div>
           </div>
-        )} */}
+        )}
         <div className="counterBg">
           <div className="row justify-content-center">
             <div className="col-lg-3 col-md-6">

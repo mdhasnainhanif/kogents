@@ -35,14 +35,14 @@ const Footer = () => {
                     Ai Agents
                   </a>
                 </li>
-                <li className="cursor-pointer nav-item group integrationDropdownLi">
+                {/* <li className="cursor-pointer nav-item group integrationDropdownLi">
                   <a
                     href="/case-studies"
                     className="flex items-center gap-2 font-semibold capitalize transition-all duration-300 text-w-100"
                   >
                     Case Studies
                   </a>
-                </li>
+                </li> */}
                 <li className="cursor-pointer group nav-item solutionDropdownLi">
                   <a
                     href="#benefitsSection"

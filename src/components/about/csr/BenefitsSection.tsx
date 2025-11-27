@@ -9,6 +9,7 @@ type CardData = {
 };
 
 interface BenefitsSectionProps {
+  className?: string;
   tag?: string;
   title?: string;
   description?: string;
@@ -18,6 +19,7 @@ interface BenefitsSectionProps {
 }
 
 const BenefitsSection: React.FC<BenefitsSectionProps> = ({
+  className,
   tag = "Benefits",
   title = "Kogents AI agents Come",
   description = "Deploy AI agents to streamline operations and amplify your business's efficiency. These agents optimize processes, reduce delays, and enhance output, ensuring you gain a competitive edge with speed and precision.",
@@ -44,7 +46,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({
 }) => {
   return (
     <div
-      className="sectionPadding bg-center bg-no-repeat bg-cover bg-b-900 bg-[url('img/bc/faq-bg.png')] custom-padding"
+      className={`sectionPadding bg-center bg-no-repeat bg-cover bg-b-900 bg-[url('img/bc/faq-bg.png')] custom-padding ${className}`}
       id="benefitsSection"
     >
       <div className="container px-5 mx-auto p-0">

@@ -307,9 +307,9 @@ const NewFooter = ({ showOnlyTop = false }) => {
                 <li>
                   <Link href="/">API</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/case-studies">Use Cases</Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href="/">Agentic Insights</Link>
                 </li>

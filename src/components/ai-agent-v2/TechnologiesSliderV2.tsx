@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import Image from "next/image";
 
 interface Technology {
@@ -140,7 +137,7 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
     <div className="sectionPadding p-0">
       <div className="container-fluid p-0">
         <div className="row justify-content-center">
-          <div className="col-lg-10 text-center">
+          <div className="col-lg-6 text-center">
             {/* Tag */}
             <span className="buttonAnimation pink inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mb-6">
               {tag}

@@ -61,7 +61,7 @@ const page = () => {
             description:
                 "Every repetitive task you delegate to an AI agent creates more time for focus and growth.\nKogents AI helps organizations, entrepreneurs, and professionals hire AI agent solutions that manage daily operations, handle communication, and improve workflow accuracy.\nOur AI automation for everyone framework combines smart AI agents for daily tasks, AI personal assistant features, and GPT-powered automation to create an intelligent AI workforce built around your workflows.\nFrom AI for small business to enterprise-level adoption, each agent adapts to your processes by reducing manual effort, improving accuracy, and maintaining consistency.",
             image: {
-                src: "/assets/img/hire-ai-agent/banner.webp",
+                src: "/assets/img/hire-ai-agent/banner1.webp",
                 alt: "Customer Service AI Agents",
                 width: 800,
                 height: 681,

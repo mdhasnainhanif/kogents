@@ -28,18 +28,14 @@ const AwardSection = ({ className }: { className?: string }) => {
                   />
                 </div>
                 <div className="col-md-6 flexMobile">
-                  <img
-                    width={140}
-                    height={24}
-                    src="/assets/img/brand/brand2.svg"
-                    alt="brand logo"
-                  />
+                <a  href="https://www.provenexpert.com/kogents/?utm_source=Widget&amp;utm_medium=Widget&amp;utm_campaign=Widget" title="Customer reviews &amp; experiences for Kogents. Show more information." target="_blank" style={{textDecoration: "none", transition: "none"}} rel="noopener noreferrer"><img src="https://images.provenexpert.com/35/c7/1d56888440d22f32877ef2908b11/widget_portrait_170_us_1.png" alt="Ratings &amp; reviews for Kogents" width="170" height="204" style={{border: "0"}} /></a>
                   <img
                     width={140}
                     height={24}
                     src="/assets/img/trustpilot11.png"
                     alt="brand logo"
                   />
+                  
                 </div>
               </>
             ) : (

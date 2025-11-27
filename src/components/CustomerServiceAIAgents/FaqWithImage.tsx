@@ -12,6 +12,7 @@ interface FaqItem {
 }
 
 interface FaqWithImageProps {
+  className?: string;
   tag?: string;
   heading?: string;
   description?: string;
@@ -21,6 +22,7 @@ interface FaqWithImageProps {
 }
 
 const FaqWithImage: React.FC<FaqWithImageProps> = ({
+  className,
   tag = "FAQ",
   heading = "Our Process to Train, Optimize, and Scale AI Service Agents",
   description = "Implementing a customer service AI agent works best when approached as a structured workflow.\nEach step ensures smooth integration, consistent performance, and measurable results for support teams and customers alike.\nHere's how it works:",
@@ -137,7 +139,7 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
   };
 
   return (
-    <div className="sectionPadding">
+    <div className={`sectionPadding ${className ? className : ""}`}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-12 text-center">
@@ -168,14 +170,14 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
 
         <div className="row align-items-center mt-12">
           {/* FAQ Items - Left Side */}
-          <div className="col-lg-6 col-md-12 mb-5">
+          <div className="col-lg-6 col-md-12 mb-5 ">
             <div className="flex flex-col gap-4">
               {faqItems.map((item, idx) => {
                 const isOpen = openIndex === idx;
                 return (
                   <div
                     key={item.id}
-                    className={`p-6 border rounded-lg according border-b-600 bg-gd-tertiary content1 cursor-pointer transition-all duration-300 ${
+                    className={`p-3 border rounded-lg according border-b-600 bg-gd-tertiary content1 cursor-pointer transition-all duration-300 ${
                       isOpen ? "active border-blue-500" : "hover:border-blue-300"
                     }`}
                     onClick={() => handleFaqClick(idx)}
@@ -197,7 +199,7 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
                       className="according-content pl-[2.5rem]"
                       style={{ maxHeight: isOpen ? "12.5rem" : undefined }}
                     >
-                      <div className="pt-4 text-base text-w-100">
+                      <div className="pt-2 text-base text-w-100">
                         {item.a && item.a.includes('\n') ? (
                           item.a.split('\n').map((line, index) => (
                             <p key={index} className={index > 0 ? "mt-2" : ""}>
@@ -205,7 +207,7 @@ const FaqWithImage: React.FC<FaqWithImageProps> = ({
                             </p>
                           ))
                         ) : (
-                          <p>{item.a}</p>
+                          <p className="faqAnswer">{item.a}</p>
                         )}
                       </div>
                     </div>
