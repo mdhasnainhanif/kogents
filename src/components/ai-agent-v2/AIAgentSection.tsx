@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowRightIcon } from "@/icons";
+import { ArrowRightIcon, WhatsappIcon, FacebookIconNew, TelegramIconNew, InstagramIconNew, WebsiteIconNew, MSTeamsIconNew } from "@/icons";
 import Link from "next/link";
 
 const AIAgentSection = () => {
@@ -113,13 +113,28 @@ const AIAgentSection = () => {
                     </div>
                   </div>
                 </div> */}
-                <Image loading="lazy"
+                <div className="service-phone-mockup">
+                  <div className="phone-screen phone-green">
+                    <div className="phone-content">
+                      <div className="phone-header">
+                        <WhatsappIcon/>
+                        <span>AI Assistant</span>
+                      </div>
+                      <div className="phone-messages">
+                        <div className="phone-message">Hello! How can I help?</div>
+                        <div className="phone-message user-msg">I need support</div>
+                        <div className="phone-message">I'm here to assist you...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <Image loading="lazy"
                   src="/assets/img/ai-agent/whatsapp-ai-agent.webp"
                   alt="WhatsApp AI Agent"
                   className="rounded-lg"
                   width={400}
                   height={300}
-                />
+                /> */}
                 <Link href="/platforms/whatsapp-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   WhatsApp
                 </Link>
@@ -139,13 +154,21 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/ai-agent/instagram-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
+                <div className="service-phone-mockup">
+                  <div className="phone-screen phone-purple">
+                    <div className="phone-content">
+                      <div className="phone-header">
+                        <FacebookIconNew/>
+                        <span>AI Assistant</span>
+                      </div>
+                      <div className="phone-messages">
+                        <div className="phone-message">Hi! How can I help you today?</div>
+                        <div className="phone-message user-msg">I need product info</div>
+                        <div className="phone-message">I'd be happy to help with that...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <Link href="/platforms/calendly-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Facebook
                 </Link>
@@ -166,13 +189,21 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/ai-agent/zendesk-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
+                <div className="service-phone-mockup">
+                  <div className="phone-screen phone-blue">
+                    <div className="phone-content">
+                      <div className="phone-header">
+                        <TelegramIconNew/>
+                        <span>AI Assistant</span>
+                      </div>
+                      <div className="phone-messages">
+                        <div className="phone-message">Welcome! What can I do for you?</div>
+                        <div className="phone-message user-msg">Show me your services</div>
+                        <div className="phone-message">Here are our available services...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <Link href="/platforms/hubspot-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Telegram
                 </Link>
@@ -193,14 +224,21 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image
-                  src="/assets/img/ai-agent/whatsapp-ai-agent.webp"
-                  alt="WhatsApp AI Agent"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                  priority
-                />
+                <div className="service-phone-mockup">
+                  <div className="phone-screen phone-yellow">
+                    <div className="phone-content">
+                      <div className="phone-header">
+                        <InstagramIconNew/>
+                        <span>AI Assistant</span>
+                      </div>
+                      <div className="phone-messages">
+                        <div className="phone-message">Hey! Looking for something special?</div>
+                        <div className="phone-message user-msg">Yes, tell me about deals</div>
+                        <div className="phone-message">Check out our latest offers...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <Link href="/platforms/whatsapp-ai-agent" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Instagram
                 </Link>
@@ -220,13 +258,21 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/ai-agent/instagram-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
+                <div className="service-phone-mockup">
+                  <div className="phone-screen phone-green">
+                    <div className="phone-content">
+                      <div className="phone-header">
+                        <WebsiteIconNew/>
+                        <span>AI Assistant</span>
+                      </div>
+                      <div className="phone-messages">
+                        <div className="phone-message">Welcome to our website! How can I help?</div>
+                        <div className="phone-message user-msg">I need support</div>
+                        <div className="phone-message">I'm here to assist you right away...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <Link href="/platforms/calendly-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   Website
                 </Link>
@@ -247,13 +293,21 @@ const AIAgentSection = () => {
             </div>
             <div className="col-xl-4 col-lg-6 col-md-6 col-12">
               <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                <Image loading="lazy"
-                  src="/assets/img/ai-agent/zendesk-ai-agent.webp"
-                  alt="case studies"
-                  className="rounded-lg"
-                  width={400}
-                  height={300}
-                />
+                <div className="service-phone-mockup">
+                  <div className="phone-screen phone-purple">
+                    <div className="phone-content">
+                      <div className="phone-header">
+                        <MSTeamsIconNew/>
+                        <span>AI Assistant</span>
+                      </div>
+                      <div className="phone-messages">
+                        <div className="phone-message">Hello team! Ready to collaborate?</div>
+                        <div className="phone-message user-msg">Yes, let's get started</div>
+                        <div className="phone-message">Great! Let me help you organize...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <Link href="/platforms/hubspot-ai-integration" className="mt-8 mb-6 text-2xl font-medium text-w-500">
                   MS Teams
                 </Link>

@@ -2824,3 +2824,249 @@ section.newSectionSlider {
   font-size: 1.125rem;
   font-weight: 500; 
 }
+
+/* service cards images design */
+
+.ai-service-card .service-phone-mockup {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  margin: 0.5rem 0;
+}
+
+.ai-service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(255, 42, 64, 0.15);
+  border-color: #0686d8;
+}
+
+.service-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 auto 0.75rem;
+}
+
+.service-icon-green {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.service-icon-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
+
+.service-icon-yellow {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.service-icon-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.service-phone-mockup {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  min-height: 280px;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border-radius: 24px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-green {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.phone-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
+
+.phone-yellow {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.phone-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.phone-content {
+  background: #ffffff;
+  border-radius: 16px;
+  height: 100%;
+  min-height: 250px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.phone-header i {
+  color: #0686d8;
+  font-size: 1.2rem;
+}
+
+.phone-header span {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.phone-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.phone-message {
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  max-width: 85%;
+  background: #f3f4f6;
+  color: #000;
+}
+
+.phone-message.user-msg {
+  background: #0686d8;
+  color: #ffffff;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.ai-service-card h5 {
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.service-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.4;
+}
+
+.service-features li:last-child {
+  margin-bottom: 0;
+}
+
+.service-description {
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.service-features li i {
+  color: #0686d8;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 991.98px) {
+  .service-phone-mockup {
+    min-height: 260px;
+  }
+
+  .phone-screen {
+    min-height: 260px;
+  }
+
+  .phone-content {
+    min-height: 230px;
+  }
+
+  .ai-service-card {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .service-phone-mockup {
+    min-height: 240px;
+  }
+
+  .phone-screen {
+    min-height: 240px;
+  }
+
+  .phone-content {
+    min-height: 210px;
+  }
+
+  .service-icon-wrapper {
+    width: 45px;
+    height: 45px;
+    font-size: 1.25rem;
+  }
+
+  .phone-message {
+    font-size: 0.75rem;
+  }
+}
+
+/* AI Benefits Section */
+.ai-benefits-section {
+  padding: 70px 0;
+  background: var(--section-bg);
+}
+
+@media (max-width: 575.98px) {
+  .ai-benefits-section {
+    padding: 50px 0;
+  }
+
+  .ai-benefits-section h2 {
+    font-size: 1.75rem !important;
+  }
+
+  .ai-benefits-section .ai-section-badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .ai-benefits-section .text-muted {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+}

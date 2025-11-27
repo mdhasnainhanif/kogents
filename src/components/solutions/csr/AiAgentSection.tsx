@@ -176,7 +176,7 @@ export default function AiAgentSection() {
             },
             {
                 img: "/assets/img/hire-ai-agent/banner.webp",
-                title: "Hire AI Agent...",
+                title: "Hire AI Agent",
                 href: "/solutions/hire-ai-agent",
                 points: [
                     "Automate daily tasks, manage workflows, and handle communication to boost productivity and streamline operations.",
