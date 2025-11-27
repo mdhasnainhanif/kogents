@@ -239,42 +239,42 @@ aspect of being the most ‘complete’ chatbot platform.`}
                 q: "Onboarding Support and Guidance",
                 a: "From the moment you contact us, you will get a dedicated support agent to help you throughout your chatbot journey.",
                 image:
-                  "https://cdn.botpenguin.com/assets/website/icons/onboarding-icon.svg",
+                  "/assets/img/ai-agent-v2/faq2/onboarding-support-and-guidance.webp",
               },
               {
                 id: 2,
                 q: "No-code Chatflow Builder",
                 a: "Easily build your own chatflow without any coding requirements.",
                 image:
-                  "https://cdn.botpenguin.com/assets/website/icons/no-code-icon.svg",
+                  "/assets/img/ai-agent-v2/faq2/no-code-chatflow-builder.webp",
               },
               {
                 id: 3,
                 q: "Zero Setup Fee",
                 a: "Start creating your own chatbot with zero setup fee and test it with a free forever plan.",
                 image:
-                  "https://cdn.botpenguin.com/assets/website/icons/zero-setup-icon.svg",
+                  "/assets/img/ai-agent-v2/faq2/zero-setup-fee.webp",
               },
               {
                 id: 4,
                 q: "Multilingual Chatbot",
                 a: "Reach a global audience and talk to them in their native language with multilingual support.",
                 image:
-                  "https://cdn.botpenguin.com/assets/website/icons/multilingual-icon.svg",
+                  "/assets/img/ai-agent-v2/faq2/multilingual-chatbot.webp",
               },
               {
                 id: 5,
                 q: "Thorough AI Capabilities",
                 a: "Add custom LLMs, create desired AI persona, and much more with BotPenguin’s AI chatbot.",
                 image:
-                  "https://cdn.botpenguin.com/assets/website/icons/thorough-icon.svg",
+                  "/assets/img/ai-agent-v2/faq2/thorough-ai-capabilities.webp",
               },
               {
                 id: 6,
                 q: "Advanced Analytics",
                 a: "Ensure you keep track of all the leads and business value generated with an advanced analytical dashboard.",
                 image:
-                  "https://cdn.botpenguin.com/assets/website/icons/advanced-icon.svg",
+                  "/assets/img/ai-agent-v2/faq2/advanced-analytics.webp",
               },
             ]}
             rightImage="/assets/img/faq.png"
