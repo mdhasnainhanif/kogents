@@ -7,7 +7,7 @@ const AIAgentSection = () => {
   return (
     <>
       <section
-        className="sectionPadding bg-center bg-no-repeat bg-cover newBg"
+        className="sectionPadding bg-center bg-no-repeat bg-cover newBg aiAgentSectionV2"
         id="aiAgentSection"
       >
         <div className="container">

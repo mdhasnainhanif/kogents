@@ -20,7 +20,7 @@ import CustomerBenefitSection from "@/components/CustomerServiceAIAgents/Custome
 import ClientTestimonial from "@/components/CustomerServiceAIAgents/ClientTestimonial";
 import AgentOSTwo from "@/components/ai-agent-v2/AgentOSTwo";
 import AgentCta from "@/components/ai-agent-v2/AgentCta";
-import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
+import TechnologiesSlider from "@/components/ai-agent-v2/TechnologiesSliderV2";
 const BASE = "https://kogents.ai";
 
 export const metadata: Metadata = {
@@ -170,6 +170,7 @@ export default function HomePage() {
             <BenefitsNewSection />
           </section>
           <FaqWithImage
+          className="faqWithImageAiAgentV2"
             tag="One Platform"
             heading="One platform with all the features you want from your Chatbot Maker"
             description={`From customer support to AI conversations, Kogents covers every possible
@@ -230,6 +231,7 @@ aspect of being the most ‘complete’ chatbot platform.`}
           />
           <AgentCta />
           <FaqWithImage
+          className="faqWithImageAiAgentV2 pb-5 mb-4"
             tag="One Platform"
             heading="One platform with all the features you want from your Chatbot Maker"
             description={`From customer support to AI conversations, Kogents covers every possible
