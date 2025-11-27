@@ -175,7 +175,7 @@ export default function AiAgentSection() {
                 ],
             },
             {
-                img: "/assets/img/hire-ai-agent/banner.webp",
+                img: "/assets/img/team-slider/hire-ai-agent.webp",
                 title: "Hire AI Agent",
                 href: "/solutions/hire-ai-agent",
                 points: [
@@ -223,7 +223,7 @@ export default function AiAgentSection() {
 
 
             {
-                img: "/assets/img/workflow-automation/banner.webp",
+                img: "/assets/img/team-slider/workflow-automation.webp",
                 title: "Workflow Automation",
                 href: "/solutions/workflow-automation",
                 points: [

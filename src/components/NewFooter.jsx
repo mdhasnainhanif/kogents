@@ -298,9 +298,9 @@ const NewFooter = ({ showOnlyTop = false }) => {
                 <li>
                   <Link href="/blogs">Blogs</Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link href="/case-studies">Case Studies</Link>
-                </li> */}
+                </li>
                 <li>
                   <Link href="/">Documentation</Link>
                 </li>
