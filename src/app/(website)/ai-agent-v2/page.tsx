@@ -20,6 +20,7 @@ import CustomerBenefitSection from "@/components/CustomerServiceAIAgents/Custome
 import ClientTestimonial from "@/components/CustomerServiceAIAgents/ClientTestimonial";
 import AgentOSTwo from "@/components/ai-agent-v2/AgentOSTwo";
 import AgentCta from "@/components/ai-agent-v2/AgentCta";
+import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 const BASE = "https://kogents.ai";
 
 export const metadata: Metadata = {
@@ -280,7 +281,11 @@ aspect of being the most ‘complete’ chatbot platform.`}
             rightImage="/assets/img/faq.png"
             rightImageAlt="Healthcare AI Implementation Process"
           />
-          <AwardSection />
+          <TechnologiesSlider 
+            tag="Integrations"
+            heading="Integrate with your favorite applications and configure for a seamless experience"
+            description="Enjoy our 80+ native integrations. Whether it's CRMs, appointment schedulers or Analytics, we've got it all covered. Send data from your AI chatbot to your CRMs and other tools and vice versa."
+          />
           <div className="mb-16 mt-5">
             <CustomerBenefitSection
               buttonText="Plan with AI Now"

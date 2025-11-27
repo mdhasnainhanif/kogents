@@ -13,12 +13,14 @@ interface Technology {
 interface TechnologiesSliderProps {
   tag?: string;
   heading?: string;
+  description?: string;
   technologies?: Technology[];
 }
 
 const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
   tag = "Technologies",
   heading = "Technologies We Use",
+  description,
   technologies = [
     // Row 1 - Scrolling Left
     {
@@ -145,9 +147,16 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
             </span>
 
             {/* Main Heading */}
-            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125 mb-16">
+            <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize text-white mb125 mb-4">
               {heading}
             </h2>
+            
+            {/* Description - Only show if provided */}
+            {description && (
+              <p className="maxWidth39 mb-16 text-center paraColor mt125 subHeading mx-auto aos-init aos-animate">
+                {description}
+              </p>
+            )}
           </div>
         </div>
 

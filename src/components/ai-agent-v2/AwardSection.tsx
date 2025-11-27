@@ -164,7 +164,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                 View All Integrations
             </button>
           </div>
-        </div>
+</div>        
       </div>
     </>
   );
