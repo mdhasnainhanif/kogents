@@ -80,6 +80,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
+      {/* Google Tag Manager - Loads 10 seconds after page load */}
+      <Script id="google-tag-manager" strategy="afterInteractive">
+          {`(function(){
+            function loadGTM() {
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-TDRT95RZ');
+            }
+            
+            if(document.readyState==='complete'){
+              setTimeout(loadGTM,10000);
+            } else {
+              window.addEventListener('load',function(){
+                setTimeout(loadGTM,10000);
+              });
+            }
+          })();`}
+        </Script>
     <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0"/>
     <link
       rel="preload"
@@ -111,27 +131,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CTAModalClient />
         <ResourceLoadingTest />
 
-        {/* Google Tag Manager - Loads 10 seconds after page load */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`(function(){
-            function loadGTM() {
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-TDRT95RZ');
-            }
-            
-            if(document.readyState==='complete'){
-              setTimeout(loadGTM,10000);
-            } else {
-              window.addEventListener('load',function(){
-                setTimeout(loadGTM,10000);
-              });
-            }
-          })();`}
-        </Script>
-        <script type="text/javascript" src="https://widget.clutch.co/static/js/widget.js"></script> <div className="clutch-widget" data-url="https://widget.clutch.co/" data-widget-type="2" data-height="45" data-nofollow="false" data-expandifr="true" data-scale="100" data-clutchcompany-id="2569263"></div>
+  
+        
 
       </body>
     </html>

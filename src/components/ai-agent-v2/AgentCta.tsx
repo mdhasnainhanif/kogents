@@ -1,6 +1,6 @@
 const AgentCta = () => {
   return (
-    <section className="sectionPadding bgGradient bg-center bg-no-repeat bg-cover bg-[url('/assets/img/bc/updates&media-bg.png')] pt0Mobile">
+    <section className="sectionPadding bgGradient bg-center bg-no-repeat bg-cover bg-[url('/assets/img/bc/updates&media-bg.png')]">
         <div className="container">
             <div className="row">
                 <div className="col-md-12">

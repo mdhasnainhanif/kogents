@@ -2159,6 +2159,11 @@ div.awardSectionFooter .col-lg-12 img:last-child {
 }
 
 @media (max-width: 576px) {
+  .benefitSectionNew .heading-4{
+    width: 90% !important;
+    text-align: left;
+    font-size: 1rem;
+  }
   .benefitSectionNew{
     width: 100%
   }
@@ -2799,6 +2804,7 @@ section.newSectionSlider {
 
 .benefitSectionNew .heading-4{
   width: 75%;
+  text-align: left;
 }
 
 .AiAgentNewSlider .cardFullContent>a{

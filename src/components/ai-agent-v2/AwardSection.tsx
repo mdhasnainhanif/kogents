@@ -5,7 +5,7 @@ const AwardSection = ({ className }: { className?: string }) => {
   return (
     <>
       <div className={`sectionPadding pt-0  ${className}`}>
-        <div className="text-center mb-0">
+        <div className="text-center mb-0 container">
         <div className="row justify-content-center">
             <div className="col-md-6">
               <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
@@ -56,7 +56,7 @@ const AwardSection = ({ className }: { className?: string }) => {
               </>
             ) : (
                 <>
-              <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+              <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -65,7 +65,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   className="filterInvert"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -73,7 +73,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -81,7 +81,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -90,7 +90,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   className="filterInvert"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                     <img
                   width={140}
                   height={24}
@@ -98,7 +98,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -106,7 +106,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -114,7 +114,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -122,7 +122,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -130,7 +130,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -138,7 +138,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   alt="brand logo"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
@@ -147,7 +147,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   className="filterInvert"
                 />
                 </div>
-                <div className="col-lg-2 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
+                <div className="col-lg-2 col-6 newAwardSection d-flex gap-12 flex-wrap justify-content-center align-items-center">
                 <img
                   width={140}
                   height={24}
