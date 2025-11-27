@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
-  swcMinify: true,
+  // swcMinify: true,
 
   // Comprehensive redirects as backup
   async redirects() {

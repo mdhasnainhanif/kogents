@@ -14,7 +14,12 @@ const AwardSection = ({ className }: { className?: string }) => {
             {className === "awardSectionFooter" ? (
               <>
                 <div className="col-md-6 flexMobile">
-                <script type="text/javascript" src="https://widget.clutch.co/static/js/widget.js"></script> <div className="clutch-widget" data-url="https://widget.clutch.co/" data-widget-type="2" data-height="45" data-nofollow="false" data-expandifr="true" data-scale="100" data-clutchcompany-id="2569263"></div>
+                  <img
+                    width={140}
+                    height={24}
+                    src="/assets/img/brand/brand1.svg"
+                    alt="brand logo"
+                  />
                   <img
                     width={140}
                     height={24}
