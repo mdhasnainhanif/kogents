@@ -23,12 +23,10 @@ interface Blog {
 const POSTS_PER_PAGE = 6;
 const PAGE_GROUP_SIZE = 3; // pagination: 1 2 3 → Next: 4 5 6...
 
-// Base API: per_page & page dynamically add honge
-const API_BASE_URL =
-  "https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&orderby=date&order=desc";
+const API_URL =
+  "https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=60&orderby=date&order=desc";
 
-// Skeleton kitna time minimum dikhana hai (thoda kam kar diya)
-const MIN_SKELETON_MS = 500;
+const MIN_SKELETON_MS = 2000; // skeleton kam az kam 2s
 
 // strip HTML tags from WP content
 const stripHTML = (html = "") =>
@@ -66,20 +64,17 @@ const BlogCard: React.FC = () => {
   const [posts, setPosts] = useState<Blog[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [totalPages, setTotalPages] = useState(1);
-
   const [loading, setLoading] = useState(true);
   const [minDelayPassed, setMinDelayPassed] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // 🔄 Page-based fetch: sirf currentPage ke 6 posts aayenge
+  // 🔄 Client-side fetch + min 2s skeleton
   useEffect(() => {
     let mounted = true;
-    const controller = new AbortController();
+    const controller = new AbortController(); // sirf unmount cleanup ke liye
 
     setLoading(true);
     setError(null);
-    setMinDelayPassed(false);
 
     // minimum skeleton delay
     const minDelayTimer = setTimeout(() => {
@@ -88,15 +83,12 @@ const BlogCard: React.FC = () => {
 
     (async () => {
       try {
-        const url = `${API_BASE_URL}&per_page=${POSTS_PER_PAGE}&page=${currentPage}`;
-
-        const res = await fetch(url, {
-          // cache: "force-cache", // optional: agar explicitly cache allow karna ho
+        const res = await fetch(API_URL, {
+          cache: "no-store",
           signal: controller.signal,
         });
 
         if (!res.ok) {
-          // Agar user bahut aage page pe chala gaya (404)
           throw new Error(`Status ${res.status}`);
         }
 
@@ -104,24 +96,13 @@ const BlogCard: React.FC = () => {
         if (!mounted) return;
 
         setPosts(Array.isArray(data) ? data : []);
-
-        // WP headers se total pages read karo
-        const totalPagesHeader = res.headers.get("X-WP-TotalPages");
-        if (totalPagesHeader) {
-          const parsed = Number(totalPagesHeader);
-          if (!Number.isNaN(parsed) && parsed > 0) {
-            setTotalPages(parsed);
-          }
-        }
       } catch (err: any) {
         if (!mounted) return;
         console.error("Error fetching blogs:", err);
         setError("Unable to load blogs right now.");
         setPosts([]);
       } finally {
-        if (mounted) {
-          setLoading(false);
-        }
+        if (mounted) setLoading(false);
       }
     })();
 
@@ -130,29 +111,27 @@ const BlogCard: React.FC = () => {
       controller.abort();
       clearTimeout(minDelayTimer);
     };
-  }, [currentPage]);
+  }, []);
 
-  // Agar kisi reason se currentPage > totalPages ho gaya (headers update hone ke baad)
+  const totalPages = useMemo(
+    () => Math.max(1, Math.ceil((posts?.length ?? 0) / POSTS_PER_PAGE)),
+    [posts?.length]
+  );
+
+  // clamp currentPage when totalPages changes
   useEffect(() => {
     if (currentPage > totalPages) {
       setCurrentPage(totalPages);
     }
   }, [currentPage, totalPages]);
 
-  const hasPosts = posts && posts.length > 0;
-  const showSkeleton = loading || !minDelayPassed;
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const currentPosts =
+    posts?.slice(startIndex, startIndex + POSTS_PER_PAGE) ?? [];
 
   // group-based pagination (always 3 per group)
-  const totalGroups = useMemo(
-    () => Math.ceil(totalPages / PAGE_GROUP_SIZE),
-    [totalPages]
-  );
-
-  const currentGroup = useMemo(
-    () => Math.floor((currentPage - 1) / PAGE_GROUP_SIZE),
-    [currentPage]
-  );
-
+  const totalGroups = Math.ceil(totalPages / PAGE_GROUP_SIZE);
+  const currentGroup = Math.floor((currentPage - 1) / PAGE_GROUP_SIZE);
   const groupStartPage = currentGroup * PAGE_GROUP_SIZE + 1;
   const groupEndPage = Math.min(
     groupStartPage + PAGE_GROUP_SIZE - 1,
@@ -181,11 +160,14 @@ const BlogCard: React.FC = () => {
   const isPrevDisabled = currentGroup === 0;
   const isNextDisabled = currentGroup >= totalGroups - 1;
 
+  const hasPosts = posts && posts.length > 0;
+  const showSkeleton = loading || !minDelayPassed;
+
   return (
     <section>
       <div className="sectionPadding bg-no-repeat bg-cover bg-[url('../img/bc/explore-bg.png')]">
         <div className="container px-5 mx-auto xl:px-0">
-          {/* ⏳ Skeleton: current page ke liye */}
+          {/* ⏳ Skeleton: at least 2s, or until loading completes */}
           {showSkeleton && (
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               <SkeletonBlogCard />
@@ -197,11 +179,11 @@ const BlogCard: React.FC = () => {
             <p className="mt-8 text-center text-w-500">{error}</p>
           )}
 
-          {/* ✅ Real data (sirf current page ke 6 posts) */}
+          {/* ✅ Real data (only when skeleton done + posts available) */}
           {!showSkeleton && hasPosts && (
             <>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {posts.map((post) => {
+                {currentPosts.map((post) => {
                   const featuredImage =
                     post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
                     "/assets/img/previewimg.png";
@@ -277,7 +259,7 @@ const BlogCard: React.FC = () => {
                 })}
               </div>
 
-              {/* Pagination (page-wise, backend pagination ke sath) */}
+              {/* Pagination */}
               {totalPages > 1 && (
                 <div className="flex justify-center mt-12 gap-3 blog-pagination">
                   <button
@@ -312,13 +294,6 @@ const BlogCard: React.FC = () => {
                 </div>
               )}
             </>
-          )}
-
-          {/* Optional: jab no error & no posts ho (edge case) */}
-          {!showSkeleton && !hasPosts && !error && (
-            <p className="mt-8 text-center text-w-500">
-              No blogs found at the moment.
-            </p>
           )}
         </div>
       </div>
