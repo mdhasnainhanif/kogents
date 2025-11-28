@@ -1408,6 +1408,10 @@ ul.chatbot_upload_files li {
   padding: 0;
 }
 
+.heroSectionAiAgentV2 section.heroSectionPadding.pb-0 {
+  min-height: unset !important;
+}
+
 @media (max-width: 650px) {
   body,
   html {
@@ -1512,7 +1516,7 @@ ul.chatbot_upload_files li {
 
   #benefitsSection .container,
   div.appMain .p-5 {
-    padding: 0 !important;
+    padding: none !important;
   }
 
   #faqSection {
@@ -1725,6 +1729,10 @@ button.forthTabActive {
   right: 0.425rem;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.sideFormMain {
+  z-index: 99999;
 }
 
 .fs_20 {
@@ -2876,11 +2884,13 @@ section.newSectionSlider {
   margin-top: 0.525rem;
 }
 
-
-.bgDots{
-  background-image: 
-    linear-gradient(to left, #0f0c1e 30%, rgba(255, 255, 255, 0.15)),
-    url('/assets/img/whatsapp-v2/salse_cards_bg.png');
+.bgDots {
+  background-image: linear-gradient(
+      to left,
+      #0f0c1e 30%,
+      rgba(255, 255, 255, 0.15)
+    ),
+    url("/assets/img/whatsapp-v2/salse_cards_bg.png");
   background-size: 100% 100%, 100% 100%;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
@@ -3146,6 +3156,97 @@ section.newSectionSlider {
 
 .caseStudySlider .swiper-slide .cardFull {
   width: 100%;
+}
+
+.agentCtaSection {
+  background: url("../../public/assets/img/whatsapp-v2/salse_cards_bg.png")
+    no-repeat center center;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: repeat !important;
+}
+
+/* Show pagination dots on mobile, hide on desktop */
+#aiTemplateSection .swiper-pagination {
+  display: flex !important;
+  position: relative;
+  margin-top: 1.5rem;
+  width: 100% !important;
+  height: 3rem !important;
+}
+
+@media (min-width: 768px) {
+  #aiTemplateSection .swiper-pagination {
+    display: none !important;
+  }
+}
+
+/* Hide navigation arrows on mobile, show on desktop */
+#aiTemplateSection .swiper-button-prev,
+#aiTemplateSection .swiper-button-next {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  #aiTemplateSection .swiper-button-prev,
+  #aiTemplateSection .swiper-button-next {
+    display: flex !important;
+  }
+}
+
+/* Pagination dots - exact same style as blog slider */
+.aiAgentSliderV2 .swiper-pagination {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  margin-top: 2rem !important;
+  position: relative !important;
+}
+
+.aiAgentSliderV2 .swiper-pagination-bullet {
+  background: #dfdfdf !important;
+  opacity: 1 !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  border: none !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.aiAgentSliderV2 .swiper-pagination-bullet-active {
+  background: transparent !important;
+  border: 2px solid #7867e4 !important;
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  position: relative !important;
+  margin: 0 !important;
+}
+
+/* Inner purple dot for active bullet */
+.aiAgentSliderV2 .swiper-pagination-bullet-active::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #7867e4 !important;
+  border-radius: 50% !important;
+  display: block !important;
+}
+
+.aiAgentSliderV2 .swiper-pagination-bullet-active-next,
+.aiAgentSliderV2 .swiper-pagination-bullet-active-prev {
+  background: #dfdfdf !important;
+  opacity: 1 !important;
+  width: 1rem !important;
+  height: 1rem !important;
 }
 
 .agent-bg-yellow {

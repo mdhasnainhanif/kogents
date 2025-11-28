@@ -135,7 +135,7 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
 
   return (
     <div className="sectionPadding p-0">
-      <div className="container-fluid p-0">
+      <div className="container-fluid p-md-0">
         <div className="row justify-content-center">
           <div className="col-lg-6 text-center">
             {/* Tag */}

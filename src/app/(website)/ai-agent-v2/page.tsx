@@ -123,6 +123,7 @@ export default function HomePage() {
         {/* Page content */}
         <div className="relative z-10">
           <HeroSection
+            className="heroSectionAiAgentV2"
             badge="Meta Business Partner"
             title="Engage, Converse and Convert your visitors using AI Chatbot Agent"
             description="kogent's Chatbot Maker & Live Chat for Website, WhatsApp, Facebook, Instagram & Telegram"

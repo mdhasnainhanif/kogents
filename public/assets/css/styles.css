@@ -2120,6 +2120,10 @@ header {
   }
 }
 
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{
+  transform: scale(1) !important;
+}
+
 .counter1::before,
 .counter2::before,
 .counter3::before,
@@ -2129,6 +2133,7 @@ header {
   right: 0;
   content: "";
   bottom: 0;
+  z-index: -50 !important;
 }
 
 @media (min-width: 640px) {

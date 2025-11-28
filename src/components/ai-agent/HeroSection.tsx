@@ -16,6 +16,7 @@ interface Badge {
 }
  
 interface HeroSectionProps {
+  className?: string;
   badge?: string;
   title?: string;
   description?: string;
@@ -28,6 +29,7 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({
+  className = "",
   badge = "AI Agent Platform",
   title = "Intelligent AI Agents That Work 24/7. Learn. Adapt. Deliver Results.",
   description = "Transform your business with autonomous AI agents that handle conversations, automate workflows, and integrate seamlessly with your existing systems. Built for scale, designed for efficiency.",
@@ -123,7 +125,7 @@ const HeroSection = ({
 
   return (
     <>
-      <div className="boxesBg ... relative">
+      <div className={`boxesBg ... relative ${className}`}>
         {/* LightRays background effect - only in hero section */}
         <div className="absolute top-0 left-0 right-0 w-full h-full z-0 overflow-hidden hero-light-rays" style={{ background: 'transparent', top: 0 }}>
           <LightRaysWrapper raysColor="#5D51AF" />
@@ -158,7 +160,7 @@ const HeroSection = ({
         
         {/* Badges Section - Only show if badges are provided */}
         {badges && badges.length > 0 && (
-          <section style={{ padding: '3rem 0' }}>
+          <section className="pt0Mobile" style={{ padding: '3rem 0' }}>
             <div className="container">
               <div className="d-flex flex-wrap justify-content-center align-items-center" style={{ gap: '1rem' }}>
                 {badges.map((badgeItem, index) => (

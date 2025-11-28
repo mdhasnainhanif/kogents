@@ -3,11 +3,28 @@
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 100000 !important;
   display: block;
   width: auto;
   height: auto;
   pointer-events: none;
+}
+
+/* Enable pointer events for form when open */
+.position-absolute .static_form_main.right_0_rem {
+  pointer-events: auto !important;
+  z-index: 99999 !important;
+}
+
+.position-absolute .staticform_icon {
+  pointer-events: auto !important;
+  z-index: 100000 !important;
+}
+
+.position-absolute .side_form,
+.position-absolute .sidepopup-form,
+.position-absolute .sidepopup-form * {
+  pointer-events: auto !important;
 }
 .formControl {
   background: #030012c7;
@@ -37,6 +54,8 @@ textarea.formControl {
   transform: translateX(100%);
   width: 350px;
   max-width: 90vw;
+  pointer-events: auto !important;
+  z-index: 100000 !important;
 }
 .btn_primary:hover,
 .staticform_icon {
@@ -51,7 +70,6 @@ textarea.formControl {
   transform: translateX(0);
 }
 .staticform_icon {
-  z-index: 2;
   background: #5d51af;
   justify-content: center;
   align-items: center;
@@ -63,7 +81,8 @@ textarea.formControl {
   transform: translateY(-48%);
   border-top-left-radius: 0.63rem;
   border-bottom-left-radius: 0.63rem;
-  pointer-events: auto;
+  pointer-events: auto !important;
+  z-index: 100000 !important;
 }
 .side_form {
   box-shadow: 0 0 2px #5d51af, inset 0 0 8px #9586f7;
@@ -85,6 +104,21 @@ textarea.formControl {
 }
 .sidepopup-form {
   width: 100%;
+  pointer-events: auto;
+}
+
+.sidepopup-form input,
+.sidepopup-form textarea,
+.sidepopup-form button {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.sidepopup-form input[type="text"],
+.sidepopup-form input[type="tel"],
+.sidepopup-form input[type="email"],
+.sidepopup-form textarea {
+  cursor: text;
 }
 .validation-error {
   display: block;

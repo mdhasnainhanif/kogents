@@ -19,12 +19,8 @@ const SideForm = () => {
   } = useFormStore();
 
   useEffect(() => {
-    // Delay component loading by 30 seconds
-    const componentTimer = setTimeout(() => {
-      setComponentLoaded(true);
-    }, 30000);
-
-    return () => clearTimeout(componentTimer);
+    // Load component immediately
+    setComponentLoaded(true);
   }, []);
 
 
@@ -53,8 +49,8 @@ const SideForm = () => {
   console.log('Rendering SideForm, isOpen:', isOpen, 'componentLoaded:', componentLoaded);
   
   return (
-    <div className={styles['position-absolute']}>
-      <div className={`${styles['static_form_main']} ${isOpen ? styles['right_0_rem'] : ''}`}>
+    <div className={`${styles['position-absolute']} sideFormMain2`}>
+      <div className={`${styles['static_form_main']} ${isOpen ? styles['right_0_rem'] : ''} sideFormMain2`}>
         {/* Toggle Icon */}
         <div className={`sideFormIcon ${styles['staticform_icon']} ${styles.letsGetStartedToggle}`} onClick={toggleForm}>
           <h6>Book a Free Consultation!</h6>

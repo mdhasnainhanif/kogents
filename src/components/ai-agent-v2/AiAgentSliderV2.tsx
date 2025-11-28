@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 
@@ -197,7 +198,7 @@ const AiAgentSliderV2 = ({ className }: { className?: string }) => {
 
   return (
     <div
-      className={`bg-center relative bg-no-repeat bg-cover sectionPadding pt0Mobile ${className}`}
+      className={`bg-center aiAgentSliderV2 relative bg-no-repeat bg-cover sectionPadding pt0Mobile ${className}`}
       id="aiTemplateSection">
       <div className="container px-5 mx-auto xl:px-0">
         <div className="row justify-content-center">
@@ -234,14 +235,21 @@ const AiAgentSliderV2 = ({ className }: { className?: string }) => {
                       nextEl: ".swiper-button-next",
                       prevEl: ".swiper-button-prev",
                     }}
-                    modules={[Navigation]}
+                    autoplay={{
+                      delay: 2500,
+                      disableOnInteraction: false,
+                    }}
+                    pagination={{
+                      clickable: true,
+                      dynamicBullets: true,
+                    }}
+                    modules={[Navigation, Pagination, Autoplay]}
                     spaceBetween={30}
                     slidesPerView={1}
                     breakpoints={{
                       640: { slidesPerView: 2 },
                       1024: { slidesPerView: 3 },
                     }}
-                    // pagination={{ clickable: true }}
                     className={`caseStudySlider  relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.875rem] caseStudySlider ${className}`}
                   >
                     {aiAgents.map((agent) => (
