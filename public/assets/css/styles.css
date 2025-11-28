@@ -3099,16 +3099,20 @@ header nav>ul>li:hover::before {
   margin-top: 0.72rem;
 }
 
-.megaMenuDropdown ul>li {
+.megaMenuDropdown ul>li>a {
   position: relative;
   margin-top: 0 !important;
   padding: 1rem 0.625rem;
   transition: 0.3s;
 }
 
-.megaMenuDropdown ul>li:first-child {
-  margin-top: 0.35rem;
+.megaMenuDropdown ul>li {
+  padding: 0rem !important;
 }
+
+/* .megaMenuDropdown ul>li {
+  margin-top: 0.445rem !important;
+} */
 
 .megaMenuDropdown .menuHeading {
   color: #c6c2c6;
@@ -3161,7 +3165,7 @@ header nav>ul>li:hover::before {
   padding: 0.89rem !important;
 }
 
-.megaMenuDropdown ul>li:hover {
+.megaMenuDropdown ul>li>a:hover {
   background-color: #222032;
   border-radius: 0.5rem;
 }

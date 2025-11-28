@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
-import Link from "next/link";
 import { handleContactFormSubmit } from "@/services/contactFormService";
 import { useModalStore } from "@/stores/useModalStore";
 
