@@ -165,7 +165,7 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
 
                 (window as any).fingerprint = visitorId;
 
-                console.log("Visitor ID:", visitorId);
+                // console.log("Visitor ID:", visitorId);
               } catch (error) {
                 console.error("Error generating fingerprint:", error);
               }

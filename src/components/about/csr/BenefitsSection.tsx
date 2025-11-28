@@ -49,7 +49,7 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({
       className={`sectionPadding bg-center bg-no-repeat bg-cover bg-b-900 bg-[url('img/bc/faq-bg.png')] custom-padding ${className}`}
       id="benefitsSection"
     >
-      <div className="container px-5 mx-auto ">
+      <div className="container px-5 mx-auto p-md-0">
         <div className="flex flex-col items-center justify-center">
           <span className="buttonAnimation green inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo">
             {tag}

@@ -45,8 +45,8 @@ const SideForm = () => {
   if (!componentLoaded) {
     return null;
   }
-
-  console.log('Rendering SideForm, isOpen:', isOpen, 'componentLoaded:', componentLoaded);
+ 
+  // console.log('Rendering SideForm, isOpen:', isOpen, 'componentLoaded:', componentLoaded);
   
   return (
     <div className={`${styles['position-absolute']} sideFormMain2`}>

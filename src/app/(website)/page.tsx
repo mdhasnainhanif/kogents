@@ -105,6 +105,7 @@ const structuredData = {
 };
 
 export default function HomePage() {
+  console.log("This pages is Rendered on Server Side");
   const counterData = [
     {
       id: 1,

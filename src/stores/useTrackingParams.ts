@@ -112,7 +112,7 @@ export const useTrackingParams = () => {
                 fingerprintdata: fingerprintJson,
               });
 
-              console.log('Visitor ID:', visitorId);
+              // console.log('Visitor ID:', visitorId);
             } catch (error) {
               console.error('Error generating fingerprint:', error);
             }

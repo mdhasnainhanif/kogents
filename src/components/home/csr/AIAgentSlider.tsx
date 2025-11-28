@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { useModalStore } from "@/stores/useModalStore";
 import Image from "next/image";
-import { ArrowRightIcon } from "@/icons";
 
 
 const AIAgentSlider = () => {
