@@ -70,8 +70,7 @@ const pageSections = {
     title: 'Tools & Resources',
     icon: '🛠️',
     pages: [
-      { path: '/chatbot/brief', title: 'Chatbot Brief', priority: 0.9, changeFrequency: 'daily' },
-      { path: '/sitemap', title: 'Sitemap', priority: 0.8, changeFrequency: 'monthly' }
+      { path: '/chatbot/brief', title: 'Chatbot Brief', priority: 0.9, changeFrequency: 'daily' }
     ]
   },
   legal: {

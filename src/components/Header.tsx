@@ -128,6 +128,8 @@ const solutionsMenu = {
   types: [
     { title: "AI Agent Dashboard", href: "/solutions/ai-agent-dashboard", icon: <AiAgentDashboard /> },
     { title: "Survey AI Agents", href: "/solutions/survey-ai-agent", icon: <SurveyAiAgents /> },
+    { title: "Workflow Automation", href: "/solutions/workflow-automation", icon: <ApplicationAiAgents /> },
+    { title: "AI Automation Agency", href: "/solutions/ai-automation-agency", icon: <ApplicationAiAgents /> },
   ],
 };
 export default function Header() {

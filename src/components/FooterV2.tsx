@@ -385,6 +385,11 @@ const FooterV2 = () => {
                     AI Glossary
                   </Link>
                 </li>
+                <li>
+                  <Link href="/solutions/workflow-automation">
+                    Workflow Automation
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

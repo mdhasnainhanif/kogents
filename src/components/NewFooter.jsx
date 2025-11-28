@@ -438,6 +438,11 @@ const NewFooter = ({ showOnlyTop = false }) => {
                 <li>
                   <Link href="/ai-glossary">AI Glossary</Link>
                 </li>
+                <li>
+                  <Link href="/solutions/workflow-automation">
+                    Workflow Automation
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
