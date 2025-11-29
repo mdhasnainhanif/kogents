@@ -48,21 +48,20 @@ const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: strin
   const [posts, setPosts] = useState<Blog[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [didFetch, setDidFetch] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState(1); // for pagination
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const carouselInitializedRef = useRef(false);
 
-  // Fetch posts (only 6 recent posts)
+  // fetch posts (keep UI same: show up to 4 latest)
   useEffect(() => {
     const controller = new AbortController();
 
     (async () => {
       try {
         setLoading(true);
-        const timestamp = Date.now(); // to prevent caching issues
+        const timestamp = Date.now();
         const res = await fetch(
-          `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=6&page=${currentPage}&_=${timestamp}`,
+          `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=100&_=${timestamp}`,
           { cache: "no-store", signal: controller.signal }
         );
         if (!res.ok) {
@@ -71,7 +70,7 @@ const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: strin
           return;
         }
         const data = (await res.json()) as Blog[];
-        setPosts(Array.isArray(data) ? data : []);
+        setPosts(Array.isArray(data) ? data.slice(0, 4) : []);
       } catch (e: any) {
         if (e?.name !== "AbortError") console.error("Error fetching posts:", e);
         setPosts([]);
@@ -82,11 +81,11 @@ const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: strin
     })();
 
     return () => controller.abort();
-  }, [currentPage]); // fetch when currentPage changes
+  }, []);
 
-  const isCarousel = !loading && posts.length === 6; // Show carousel only when 6 posts loaded
+  const isCarousel = !loading && posts.length > 3;
 
-  // Initialize and destroy Owl carousel
+  // init/destroy owl when needed
   useEffect(() => {
     if (loading || !isCarousel || !carouselRef.current || typeof window === "undefined") return;
 
@@ -180,15 +179,27 @@ const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: strin
         {/* skeleton while loading */}
         {loading && <SkeletonBlogList />}
 
+        {/* empty state after fetch */}
+        {/* {!loading && didFetch && posts.length === 0 && (
+          <div className="mt-8 flex justify-center items-center">
+            <div className="text-w-500 text-lg">No blog posts found.</div>
+          </div>
+        )} */}
+
         {/* content: carousel (>3) or grid (<=3) */}
         {!loading && posts.length > 0 && (
           <div
             ref={carouselRef}
-            className={isCarousel ? "owl-carousel owl-theme blog-list-slider mt-5" : "mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"}
+            className={
+              isCarousel
+                ? "owl-carousel owl-theme blog-list-slider mt-5"
+                : "mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            }
           >
             {posts.map((post) => {
               const featuredImage =
-                post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? "/assets/img/previewimg.png";
+                post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
+                "/assets/img/previewimg.png";
               const alt =
                 post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text ||
                 stripHTML(post.title.rendered) ||
@@ -202,7 +213,11 @@ const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: strin
               return (
                 <div
                   key={post.id}
-                  className={isCarousel ? "p-6 border rounded-lg border-b-600 bg-gd-tertiary mx-2 blogcard-div" : "p-6 border rounded-lg border-b-600 bg-gd-tertiary blogcard-div"}
+                  className={
+                    isCarousel
+                      ? "p-6 border rounded-lg border-b-600 bg-gd-tertiary mx-2 blogcard-div"
+                      : "p-6 border rounded-lg border-b-600 bg-gd-tertiary blogcard-div"
+                  }
                 >
                   <Image
                     loading="lazy"
