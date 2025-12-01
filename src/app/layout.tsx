@@ -80,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
+
       {/* Google Tag Manager - Loads 10 seconds after page load */}
       <Script id="google-tag-manager" strategy="afterInteractive">
           {`(function(){
