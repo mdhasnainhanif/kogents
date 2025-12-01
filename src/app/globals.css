@@ -3414,3 +3414,40 @@ section.newSectionSlider {
   color: #9ca3af;
   margin-top: 2px;
 }
+
+
+
+
+
+/* Clutch wrapper ko hamesha visible rakho */
+.clutch-widget-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Mobile pe bhi force visible */
+@media (max-width: 700px) {
+  .clutch-widget-wrapper {
+    display: flex !important;
+    min-height: 40px;
+  }
+
+  /* Agar tumhari flexMobile kisi child ko hide kar rahi ho, override: */
+  .flexMobile .clutch-widget-wrapper {
+    display: flex !important;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .flexMobile .clutch-widget {
+    display: none;
+  }
+  /* ya phir */
+  .flexMobile > img:nth-child(n+3) {
+    display: none;
+  }
+}

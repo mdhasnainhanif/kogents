@@ -19,7 +19,7 @@ type Page = {
 const PAGES: Page[] = [
   {
     loc: "https://kogents.ai/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 1.0,
     images: [
@@ -59,7 +59,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/calendly-ai-integration/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -79,7 +79,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/microsoft-teams-agents/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -98,7 +98,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -118,7 +118,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/ai-telegram-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -140,7 +140,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/contact-us/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -157,7 +157,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/blogs/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -167,14 +167,14 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/security/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: ["https://kogents.ai/assets/img/badegs.webp"],
   },
   {
     loc: "https://kogents.ai/platforms/zendesk-ai-integration/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -194,7 +194,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/viber-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -215,7 +215,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-agent-dashboard/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -234,7 +234,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-agent-event-planner/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -256,7 +256,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/ai-agent-for-messenger/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -275,7 +275,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/survey-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -297,7 +297,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/healthcare-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -316,7 +316,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/about-us/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -333,7 +333,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/whatsapp-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -351,7 +351,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-teacher-assistant/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -370,7 +370,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-agent-for-hr/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -387,7 +387,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-agent-for-marketing/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -405,7 +405,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/jira-ai-integration/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -423,7 +423,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/hubspot-ai-integration/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -442,7 +442,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-agent-for-education/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -462,7 +462,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/shopify-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -480,7 +480,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/slack-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -499,7 +499,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/line-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -518,7 +518,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/customer-service-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -538,7 +538,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.9,
     images: [
@@ -556,7 +556,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-automation-agency/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.8,
     images: [
@@ -571,7 +571,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/intercom-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.8,
     images: [
@@ -589,7 +589,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/instagram-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.8,
     images: [
@@ -607,7 +607,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/ai-recruiting-assistant/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.8,
     images: [
@@ -625,7 +625,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/platforms/sunshine-conversation-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.8,
     images: [
@@ -647,7 +647,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/solutions/medical-ai-agent/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.8,
     images: [
@@ -669,7 +669,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/blogs/shopify-ai-customer-support/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.8,
     images: [
@@ -680,7 +680,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/blogs/enterprise-ai-development/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.7,
     images: [
@@ -691,7 +691,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/blogs/ai-governance-and-compliance/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.6,
     images: [
@@ -702,7 +702,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/blogs/ai-integration-for-legacy-systems/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.6,
     images: [
@@ -713,7 +713,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/blogs/ai-driven-customer-support/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.5,
     images: [
@@ -724,7 +724,7 @@ const PAGES: Page[] = [
   },
   {
     loc: "https://kogents.ai/blogs/how-to-create-an-ai-agent-from-scratch/",
-    lastmod: "2025-11-11",
+    lastmod: "2025-11-21",
     changefreq: "daily",
     priority: 0.5,
     images: [
