@@ -65,14 +65,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   src="/assets/img/brand/brand1.svg"
                   alt="brand logo"
                 />
-                <img
-                  width={140}
-                  height={24}
-                  src="/assets/img/brand/brand3.svg"
-                  alt="brand logo"
-                />
 
-                {/* ⭐ CLUTCH WIDGET WRAPPER */}
                 <div className="clutch-widget-wrapper">
                   <div
                     className="clutch-widget"
@@ -82,8 +75,15 @@ const AwardSection = ({ className }: { className?: string }) => {
                     data-nofollow="false"
                     data-expandifr="true"
                     data-scale="100"
-                    data-clutchcompany-id="2569263" style={{ marginTop: "20px" }}></div>
+                    data-clutchcompany-id="2569263" style={{ marginTop: "12px", marginBottom: "12px" }}></div>
                 </div>
+
+                <img
+                  width={140}
+                  height={24}
+                  src="/assets/img/brand/brand3.svg"
+                  alt="brand logo"
+                />
               </div>
 
               <div className="col-md-6 flexMobile">
