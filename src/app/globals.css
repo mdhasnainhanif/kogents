@@ -2513,6 +2513,10 @@ input::placeholder {
   margin-top: 6rem !important;
 }
 
+.solutionCustomerBenefitSection .appImage{
+  max-width: 17rem;
+}
+
 /* Move Company Info column to bottom in mobile view */
 @media (max-width: 576px) {
   .footer-grid {

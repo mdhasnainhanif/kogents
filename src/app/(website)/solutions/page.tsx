@@ -297,6 +297,7 @@ const Page = () => {
       <div style={{ marginBottom: "80px" }}>
         <CustomerBenefitSection
           buttonText="Find Your AI Solution"
+          className="solutionCustomerBenefitSection"
           leftColumn={{
             tag: "Start Now",
             title: "See AI Agent Solutions in Action",
