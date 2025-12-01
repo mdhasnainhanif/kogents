@@ -53,7 +53,9 @@ const pageSections = {
       { path: '/solutions/ai-agent-event-planner', title: 'AI Agent Event Planner', priority: 0.9, changeFrequency: 'daily' },
       { path: '/solutions/medical-ai-agent', title: 'Medical AI Agent', priority: 0.9, changeFrequency: 'daily' },
       { path: '/solutions/ai-recruiting-assistant', title: 'AI Recruiting Assistant', priority: 0.9, changeFrequency: 'daily' },
-      { path: '/solutions/ai-automation-agency', title: 'AI Automation Agency', priority: 0.9, changeFrequency: 'daily' }
+      { path: '/solutions/ai-automation-agency', title: 'AI Automation Agency', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/solutions/hire-ai-agent', title: 'Hire AI Agent', priority: 0.9, changeFrequency: 'daily' },
+      { path: '/solutions/workflow-automation', title: 'Workflow Automation', priority: 0.9, changeFrequency: 'daily' }
     ]
   },
   platforms: {
@@ -61,18 +63,18 @@ const pageSections = {
     icon: '🔗',
     pages: platformChannels.map(channel => ({
       path: `/platforms/${channel}`,
-      title: channel.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      title: channel.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()).replace(/\bAi\b/g, 'AI'),
       priority: 0.9,
       changeFrequency: 'daily'
     }))
   },
-  tools: {
-    title: 'Tools & Resources',
-    icon: '🛠️',
-    pages: [
-      { path: '/chatbot/brief', title: 'Chatbot Brief', priority: 0.9, changeFrequency: 'daily' }
-    ]
-  },
+  // tools: {
+  //   title: 'Tools & Resources',
+  //   icon: '🛠️',
+  //   pages: [
+  //     { path: '/chatbot/brief', title: 'Chatbot Brief', priority: 0.9, changeFrequency: 'daily' }
+  //   ]
+  // },
   legal: {
     title: 'Legal & Security',
     icon: '⚖️',
@@ -136,7 +138,7 @@ export default function KogentsSitemapPage() {
           setBlogPosts(posts)
           // reset visible count whenever we refresh posts
           setVisibleCount(INITIAL_VISIBLE)
-          console.log('✅ Successfully fetched blog posts:', posts.length)
+          // console.log('✅ Successfully fetched blog posts:', posts.length)
         } else {
           console.warn('⚠️ Unexpected response format:', posts)
           setBlogPosts([])

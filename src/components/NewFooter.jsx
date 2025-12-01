@@ -100,7 +100,7 @@ const NewFooter = ({ showOnlyTop = false }) => {
               <div className="footer-brand">
                 <Logo style={{ width: 150, height: 50 }} />
                 <p className="footer-description">
-          `2`        Kogents AI develops agents that streamline workflows and drive
+          Kogents AI develops agents that streamline workflows and drive
                   innovation across industries.
                 </p>
                 <div className="app-download-buttons">
@@ -313,9 +313,9 @@ const NewFooter = ({ showOnlyTop = false }) => {
                 <li>
                   <Link href="/">Agentic Insights</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/">Status</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -337,6 +337,9 @@ const NewFooter = ({ showOnlyTop = false }) => {
                     Calendly
                   </Link>
                 </li>
+                <li className="text-primary">
+                  <Link href="/platforms">See All</Link>
+                </li>
               </ul>
               <p className="h6 footCate1">Company</p>
               <ul>
@@ -357,9 +360,6 @@ const NewFooter = ({ showOnlyTop = false }) => {
                 </li>
                 <li>
                   <Link href="/client-testimonials">Testimonials</Link>
-                </li>
-                <li>
-                  <Link href="/kogents-sitemap">Sitemap</Link>
                 </li>
               </ul>
             </div>
@@ -432,16 +432,25 @@ const NewFooter = ({ showOnlyTop = false }) => {
                     Teacher AI Agents
                   </Link>
                 </li>
+                <li>
+                  <Link href="/solutions/ai-recruiting-assistant">
+                    AI Recruiting Assistant
+                  </Link>
+                </li>
+                <li className="text-primary">
+                  <Link href="/solutions">See All</Link>
+                </li>
               </ul>
               <p className="h6 glossary">Glossary</p>
               <ul>
                 <li>
                   <Link href="/ai-glossary">AI Glossary</Link>
                 </li>
+              </ul>
+              <p className="h6 mb-3 mt-4">Sitemap</p>
+              <ul>
                 <li>
-                  <Link href="/solutions/workflow-automation">
-                    Workflow Automation
-                  </Link>
+                  <Link href="/kogents-sitemap">Sitemap</Link>
                 </li>
               </ul>
             </div>
@@ -458,6 +467,16 @@ const NewFooter = ({ showOnlyTop = false }) => {
                 <li>
                   <Link href="/solutions/survey-ai-agent">
                     Survey AI Agents
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/solutions/ai-automation-agency">
+                    AI Automation Agency
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/solutions/workflow-automation">
+                    Workflow Automation
                   </Link>
                 </li>
               </ul>

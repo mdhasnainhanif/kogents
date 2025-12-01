@@ -317,7 +317,7 @@ export default function AiAgentSection() {
                                         <li>AI Agent for Marketing</li>
                                         <li>AI Teacher Assistant</li>
                                         <li>AI Recruiting Assistant</li>
-                                        <li>Hire ai agent</li>
+                                        <li>Hire AI Agent</li>
                                     </ul>
                                     <div id="imageCounter2"></div>
                                 </li>

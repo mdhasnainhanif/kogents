@@ -8,6 +8,7 @@ import ClientTestimonial from "@/components/CustomerServiceAIAgents/ClientTestim
 import CustomerBenefitSection from "@/components/CustomerServiceAIAgents/CustomerBenefitSection"
 import dynamic from 'next/dynamic'
 import type { Metadata } from 'next'
+import Summary from "@/components/ai-whatsapp-agent/Summary"
 
 export const metadata: Metadata = {
   title: 'Smart AI Agentic Solutions for Faster Growth | Kogents.ai',
@@ -311,6 +312,10 @@ const Page = () => {
           backgroundImage="/assets/img/bc/video-bg.webp"
         />
       </div >
+      <Summary data={{
+        tag: "Summary",
+        text: "Kogents AI provides platform-adapted customer engagement agents that use automation and conversational intelligence to streamline support across channels."
+      }} />
     </>
   )
 }

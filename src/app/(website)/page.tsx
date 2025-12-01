@@ -12,6 +12,7 @@ import KogentBenefits from "@/components/home/ssr/KogentBenefits";
 import type { Metadata } from "next";
 import PerformanceOptimizer from "@/components/PerformanceOptimizer";
 import BlogList from "@/components/blog/BlogList";
+import Summary from "@/components/ai-whatsapp-agent/Summary";
 
 const BASE = "https://kogents.ai";
 
@@ -105,10 +106,11 @@ const structuredData = {
 };
 
 export default function HomePage() {
-  console.log("This pages is Rendered on Server Side");
+  console.log("This pages is Rendered on Server Side...");
+
   const counterData = [
     {
-      id: 1,
+      id: 1, 
       target: 93,
       title: "Smart Tools. Smarter Outcomes",
       description: "Kogents AI Agents do more than reply, they act.",
@@ -130,6 +132,11 @@ export default function HomePage() {
       className: "counter3",
     },
   ];
+
+  const summaryData = {
+    tag: "Summary",
+    text: "Kogents AI is an automation platform that deploys intelligent agents to handle operations and workflows with human-level precision."
+  };
 
   return (
     <>
@@ -156,6 +163,7 @@ export default function HomePage() {
         </section>
         <AgentOS />
         <KogentBenefits />
+        <Summary data={summaryData} />
         <section className="cv">
           <FAQSection showLoadMore={true} />
         </section>

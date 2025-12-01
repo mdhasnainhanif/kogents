@@ -124,6 +124,7 @@ const solutionsMenu = {
     { title: "Event Planners Agents", href: "/solutions/ai-agent-event-planner", icon: <EventPlannersAgents /> },
     { title: "Marketers Agents", href: "/solutions/ai-agent-for-marketing", icon: <MarketersAgents /> },
     { title: "Teachers Agents", href: "/solutions/ai-teacher-assistant", icon: <TeachersAgents /> },
+    { title: "AI Recruiting Assistant", href: "/solutions/ai-recruiting-assistant", icon: <HrAiAgents /> },
   ],
   types: [
     { title: "AI Agent Dashboard", href: "/solutions/ai-agent-dashboard", icon: <AiAgentDashboard /> },
