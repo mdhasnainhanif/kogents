@@ -100,7 +100,7 @@ const NewFooter = ({ showOnlyTop = false }) => {
               <div className="footer-brand">
                 <Logo style={{ width: 150, height: 50 }} />
                 <p className="footer-description">
-                  Kogents AI develops agents that streamline workflows and drive
+          `2`        Kogents AI develops agents that streamline workflows and drive
                   innovation across industries.
                 </p>
                 <div className="app-download-buttons">
