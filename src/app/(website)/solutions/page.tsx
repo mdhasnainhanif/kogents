@@ -315,7 +315,7 @@ const Page = () => {
       </div >
       <Summary data={{
         tag: "Summary",
-        text: "Kogents AI provides platform-adapted customer engagement agents that use automation and conversational intelligence to streamline support across channels."
+        text: "Kogents AI turns workflows into self-driving systems, with intelligent agents that think, act, and deliver measurable impact without manual effort."
       }} />
     </>
   )

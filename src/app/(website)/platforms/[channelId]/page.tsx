@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { notFound } from 'next/navigation';
 import Banner from '@/components/ai-whatsapp-agent/Banner';
 import WhatsappImagesSection from '@/components/ai-whatsapp-agent/WhatsappImagesSection';
@@ -8,6 +10,7 @@ import Counter from '@/components/CustomerServiceAIAgents/Counter';
 import BrandLogoSlider from '@/components/CustomerServiceAIAgents/BrandLogoSlider';
 import CustomerCards from '@/components/CustomerServiceAIAgents/CustomerCards';
 import CustomerGrowthCards from '@/components/CustomerServiceAIAgents/CustomerGrowthCards';
+import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 import FaqWithImage from '@/components/CustomerServiceAIAgents/FaqWithImage';
 import ClientTestimonial from '@/components/CustomerServiceAIAgents/ClientTestimonial';
 import CustomerBenefitSection from '@/components/CustomerServiceAIAgents/CustomerBenefitSection';
@@ -164,6 +167,9 @@ const Page = async ({ params }: PageProps) => {
           rightImageAlt={pageData.faqWithImageSection.rightImageAlt}
         />
       )}
+
+      <TechnologiesSlider />  
+
       {pageData.clientTestimonialSection && (
         <ClientTestimonial
           tag={pageData.clientTestimonialSection.tag}

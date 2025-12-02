@@ -1,4 +1,4 @@
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 import HeroSection from "../../components/home/ssr/HeroSection";
 import ProductSection from "../../components/home/csr/ProductSection";
@@ -8,6 +8,7 @@ import WorkflowsSection from "../../components/home/ssr/WorkflowsSection";
 import FAQSection from "../../components/solutions/csr/FAQSection";
 import AIAgentSlider from "@/components/home/csr/AIAgentSlider";
 import AgentOS from "@/components/home/ssr/AgentOS";
+import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 import KogentBenefits from "@/components/home/ssr/KogentBenefits";
 import type { Metadata } from "next";
 import PerformanceOptimizer from "@/components/PerformanceOptimizer";
@@ -162,6 +163,7 @@ export default function HomePage() {
           <AIAgentSlider />
         </section>
         <AgentOS />
+        <TechnologiesSlider />
         <KogentBenefits />
         <Summary data={summaryData} />
         <section className="cv">
