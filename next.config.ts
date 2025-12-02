@@ -10,16 +10,16 @@ const nextConfig: NextConfig = {
       // --- WWW to Non-WWW redirect ---
       {
         source: '/:path*',
-        destination: 'https://kogents.ai/:path*',
-        permanent: true,
         has: [
           {
-            type: 'header',
-            key: 'host',
-            value: '^www\\.kogents\\.ai(:80|:443)?$',
+            type: 'host',
+            value: 'www.kogents.ai', // only host here, no "key"
           },
         ],
+        destination: 'https://kogents.ai/:path*',
+        permanent: true,
       },
+      
       // Main redirects
       { source: '/pricing', destination: '/', permanent: true },
       { source: '/pricing/', destination: '/', permanent: true },

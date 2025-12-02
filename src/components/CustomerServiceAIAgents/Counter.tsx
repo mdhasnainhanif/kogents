@@ -125,7 +125,7 @@ const Counter: React.FC<CounterProps> = ({
   }, [hasAnimated, data]);
 
   return (
-    <div className="sectionPadding py-16" ref={counterRef}>
+    <div className="sectionPadding py-16 mobile-padding-top-0" ref={counterRef}>
       <div className="container">
         {isShowBadges && (
           <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">

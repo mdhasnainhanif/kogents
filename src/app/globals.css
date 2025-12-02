@@ -3450,4 +3450,7 @@ section.newSectionSlider {
   .flexMobile > img:nth-child(n+3) {
     display: none;
   }
+  div.mobile-padding-top-0{
+    padding-top: 0;
+  }
 }

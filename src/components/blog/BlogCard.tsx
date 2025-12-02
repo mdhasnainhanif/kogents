@@ -183,7 +183,7 @@ const BlogCard: React.FC = () => {
 
   return (
     <section>
-      <div className="sectionPadding bg-no-repeat bg-cover bg-[url('../img/bc/explore-bg.png')]">
+      <div className="sectionPadding mobile-padding-top-0 bg-no-repeat bg-cover bg-[url('../img/bc/explore-bg.png')]">
         <div className="container px-5 mx-auto xl:px-0">
           {/* ⏳ Skeleton: current page ke liye */}
           {showSkeleton && (
