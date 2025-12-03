@@ -62,7 +62,7 @@ const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: strin
         setLoading(true);
         const timestamp = Date.now(); // to prevent caching issues
         const res = await fetch(
-          `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=6&page=${currentPage}&_=${timestamp}`,
+          `https://kogents.ai/wordpress/wp-json/wp/v2/posts?_embed&per_page=6&page=${currentPage}&_=${timestamp}`,
           { cache: "no-store", signal: controller.signal }
         );
         if (!res.ok) {
