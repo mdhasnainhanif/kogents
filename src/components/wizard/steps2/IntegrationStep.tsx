@@ -705,7 +705,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                 </div>
               </InViewAnimate>
 
-              <div className="chatbot-content-wrapper footer">
+              <div className="chatbot-content-wrapper footer w-100">
                 <WizardNavigation2 
                   {...modifiedFooterOptions} 
                   isLoading={isSubmitting} // ✅ Pass isLoading separately
