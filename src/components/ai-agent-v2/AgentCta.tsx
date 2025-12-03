@@ -1,9 +1,9 @@
 const AgentCta = () => {
   return (
-    <section className="agentCtaSection sectionPadding bgGradient bg-center bg-no-repeat bg-cover" >
+    <section className="agentCtaSection sectionPadding" >
         <div className="container">
-            <div className="row">
-                <div className="col-md-12">
+            <div className="row justify-content-center">
+                <div className="col-md-8">
                     <span className="buttonAnimation purple inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto width_fit d-block">Higher Conversions</span>
                     <h2 className="text-center text-3xl md:text-5xl font-semibold headingSize">Achieve 70% higher conversions <br />
                     with AI Chatbot</h2>
