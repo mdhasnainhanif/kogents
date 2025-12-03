@@ -619,7 +619,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
         const crmPayload = formatCRMData(data, selectedOption);
         console.log('📤 Sending lead data to CRM:', crmPayload);
         
-       let response =  await sendLeadToCRM(crmPayload);
+       const response =  await sendLeadToCRM(crmPayload);
         console.log('✅ Lead sent to CRM successfully');
         
         // ✅ Do NOT call footerOptions.onComplete() - this prevents /workspace/kogent-bot API
