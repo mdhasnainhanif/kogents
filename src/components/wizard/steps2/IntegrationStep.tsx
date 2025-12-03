@@ -619,15 +619,15 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
         const crmPayload = formatCRMData(data, selectedOption);
         console.log('📤 Sending lead data to CRM:', crmPayload);
         
-        await sendLeadToCRM(crmPayload);
+       let response =  await sendLeadToCRM(crmPayload);
         console.log('✅ Lead sent to CRM successfully');
         
         // ✅ Do NOT call footerOptions.onComplete() - this prevents /workspace/kogent-bot API
         // Just redirect or show success message
         // You can add redirect here if needed:
-        // if (typeof window !== 'undefined') {
-        //   window.location.href = '/thank-you';
-        // }
+        if (response.success) {
+          window.location.href = '/thank-you';
+        }
       } catch (error) {
         console.error('❌ Error sending lead to CRM:', error);
         setValidationError('Failed to submit. Please try again.');
