@@ -81,6 +81,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
 
+    
+
       {/* Google Tag Manager - Loads 10 seconds after page load */}
       <Script id="google-tag-manager" strategy="afterInteractive">
           {`(function(){
@@ -101,7 +103,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }
           })();`}
         </Script>
+
+        {/* Zopim Chat Widget */}
+        <Script id="zopim-chat" strategy="afterInteractive">
+                {`window.$zopim||(function(d,s){var z=$zopim=function(c){
+        z._.push(c)},$=z.s=
+        d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+        .push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+        $.src='https://v2.zopim.com/?57jax3RnqduL2zjEGsBWVsnalYJVkElA';z.t=+new Date;$.
+        type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');`}
+        </Script>
+
     <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0"/>
+    
     <link
       rel="preload"
       href="/assets/fonts/Satoshi-Variable.ttf"
