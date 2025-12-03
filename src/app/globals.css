@@ -115,14 +115,66 @@ ul.list-4 {
   padding: 0;
 }
 
-.blogcard-div {
-  height: 585px;
+.blogcard-div > img{
+  height: 166px;
+  object-fit: cover;
 }
+
+.blog-slider .swiper-button-prev{
+  left: -5rem !important;
+  top: 50% !important;
+}
+.blog-slider .swiper-button-next{
+  right: -5rem !important;
+  top: 50% !important;
+}
+
 img.blog-img {
   /* height: 10.3125rem; */
   object-fit: cover;
   width: 100% !important;
 }
+
+
+
+.blog-title {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* ---- Short Title (Default Visible) ---- */
+.blog-title .title-short {
+  display: inline-block;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Full Title (Default Hidden) ---- */
+.blog-title .title-full {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transform: translateY(6px); /* slide-up effect */
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: normal;
+}
+
+/* ---- Hover Effects ---- */
+.blog-title:hover .title-short {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.blog-title:hover .title-full {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 
 .blog-content table tr td a,
 .heading-3,

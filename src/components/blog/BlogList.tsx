@@ -1,11 +1,20 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendarAlt, FaClock } from "react-icons/fa";
+import { FaCalendarAlt, FaClock, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import SkeletonBlogList from "./SkeletonBlogList";
 
+// ---------------- TYPES ----------------
 interface Blog {
   id: number;
   slug: string;
@@ -20,10 +29,11 @@ interface Blog {
   };
 }
 
+// ---------------- HELPERS ----------------
 const stripHTML = (html = "") =>
   html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 
-const truncate = (s = "", n = 50) =>
+const truncate = (s = "", n = 30) =>
   s.length > n ? s.slice(0, n).trimEnd() + "…" : s;
 
 const formatDate = (iso: string) =>
@@ -36,7 +46,7 @@ const formatDate = (iso: string) =>
 const getCategory = (post: Blog) => {
   const groups = post._embedded?.["wp:term"];
   if (!groups || !Array.isArray(groups)) return "Uncategorized";
-  const flat = groups.flat?.() ?? ([] as any[]);
+  const flat = groups.flat?.() ?? [];
   const cat = flat.find((t: any) => t?.taxonomy === "category");
   return cat?.name || "Uncategorized";
 };
@@ -44,215 +54,171 @@ const getCategory = (post: Blog) => {
 const hasText = (v: unknown): v is string =>
   typeof v === "string" && v.trim().length > 0;
 
-const BlogListOwlCarousel: React.FC<{ isShowBadge?: boolean; description?: string }> = ({ isShowBadge = false, description }) => {
+// ---------------- COMPONENT ----------------
+export default function BlogListSwiper({
+  isShowBadge = false,
+  description,
+}: {
+  isShowBadge?: boolean;
+  description?: string;
+}) {
   const [posts, setPosts] = useState<Blog[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [didFetch, setDidFetch] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState(1); // for pagination
+  const [loading, setLoading] = useState(true);
 
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const carouselInitializedRef = useRef(false);
+  const paginationRef = useRef<HTMLDivElement | null>(null);
 
-  // Fetch posts (only 6 recent posts)
+  // ---------------- FETCH POSTS ----------------
   useEffect(() => {
-    const controller = new AbortController();
-
-    (async () => {
+    const load = async () => {
       try {
         setLoading(true);
-        const timestamp = Date.now(); // to prevent caching issues
+
+        const timestamp = Date.now();
         const res = await fetch(
-          `https://kogents.ai/wordpress/wp-json/wp/v2/posts?_embed&per_page=6&page=${currentPage}&_=${timestamp}`,
-          { cache: "no-store", signal: controller.signal }
+          `https://kogents.ai/wordpress/wp-json/wp/v2/posts?_embed&per_page=6&_=${timestamp}`,
+          { cache: "no-store" }
         );
+
         if (!res.ok) {
-          console.error("Error fetching posts:", res.status);
           setPosts([]);
           return;
         }
+
         const data = (await res.json()) as Blog[];
         setPosts(Array.isArray(data) ? data : []);
-      } catch (e: any) {
-        if (e?.name !== "AbortError") console.error("Error fetching posts:", e);
+      } catch {
         setPosts([]);
       } finally {
         setLoading(false);
-        setDidFetch(true);
-      }
-    })();
-
-    return () => controller.abort();
-  }, [currentPage]); // fetch when currentPage changes
-
-  const isCarousel = !loading && posts.length === 6; // Show carousel only when 6 posts loaded
-
-  // Initialize and destroy Owl carousel
-  useEffect(() => {
-    if (loading || !isCarousel || !carouselRef.current || typeof window === "undefined") return;
-
-    const init = async () => {
-      try {
-        const jQuery = (await import("jquery")).default as any;
-        (window as any).$ = jQuery;
-        (window as any).jQuery = jQuery;
-
-        // @ts-expect-error - plugin has no types
-        await import("owl.carousel");
-
-        if (!document.querySelector('link[href*="owl.carousel.min.css"]')) {
-          const link = document.createElement("link");
-          link.rel = "stylesheet";
-          link.href =
-            "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";
-          document.head.appendChild(link);
-        }
-
-        if (jQuery.fn?.owlCarousel && !carouselInitializedRef.current) {
-          jQuery(carouselRef.current).owlCarousel({
-            loop: true,
-            margin: 30,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            navText: [
-              '<span class="owl-nav-prev text-2xl cursor-pointer">&#10094;</span>',
-              '<span class="owl-nav-next text-2xl cursor-pointer">&#10095;</span>',
-            ],
-            responsive: {
-              0: { items: 1, nav: false, dots: true },
-              768: { items: 2, nav: false, dots: false },
-              1024: { items: 3, nav: true, dots: false },
-            },
-            onInitialized: function () {
-              const dots = document.querySelectorAll(".owl-dots .owl-dot");
-              dots.forEach((dot, index) => {
-                dot.setAttribute("aria-label", `Go to blog post ${index + 1}`);
-                dot.setAttribute("role", "button");
-                dot.setAttribute("tabindex", "0");
-              });
-            },
-          });
-          carouselInitializedRef.current = true;
-        }
-      } catch (e) {
-        console.error("Error loading carousel:", e);
       }
     };
 
-    init();
-
-    return () => {
-      if (
-        carouselInitializedRef.current &&
-        typeof window !== "undefined" &&
-        (window as any).$ &&
-        carouselRef.current
-      ) {
-        try {
-          (window as any).$(carouselRef.current).trigger("destroy.owl.carousel");
-        } catch (e) {
-          console.error("Error destroying carousel:", e);
-        } finally {
-          carouselInitializedRef.current = false;
-        }
-      }
-    };
-  }, [loading, isCarousel]);
+    load();
+  }, []);
 
   return (
     <section>
-      <div className="container pb-24">
-        <span className={`${isShowBadge ? "d-none" : ""} buttonAnimation green width_fit purple d-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto`}>
+      <div className="container pb-24 blog-slider" id="aiTemplateSection">
+        {/* Badge */}
+        <span
+          className={`${isShowBadge ? "d-none" : ""} buttonAnimation green width_fit purple d-block px-4 py-2 text-sm font-medium rounded-full mx-auto`}
+        >
           Blogs
         </span>
-        <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
+
+        <h2 className="text-center text-3xl md:text-5xl font-semibold text-white mb-5">
           Recent Blogs
         </h2>
 
-        {description && (
-          <p className="text-center paraColor subHeading w-100 mt-3">
-            {description}
-          </p>
-        )}
+        {description && <p className="text-center mt-3">{description}</p>}
 
-        {/* skeleton while loading */}
+        {/* Skeleton */}
         {loading && <SkeletonBlogList />}
 
-        {/* content: carousel (>3) or grid (<=3) */}
+        {/* Slider */}
         {!loading && posts.length > 0 && (
-          <div
-            ref={carouselRef}
-            className={isCarousel ? "owl-carousel owl-theme blog-list-slider mt-5" : "mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"}
-          >
-            {posts.map((post) => {
-              const featuredImage =
-                post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? "/assets/img/previewimg.png";
-              const alt =
-                post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text ||
-                stripHTML(post.title.rendered) ||
-                "Blog image";
-              const category = getCategory(post);
-              const dateStr = formatDate(post.date);
-              const excerpt = truncate(stripHTML(post.excerpt?.rendered || ""), 80);
-              const rawRT = post.meta?._kogents_reading_time;
-              const readingTime = hasText(rawRT) ? rawRT.trim() : "";
+          <div className="relative mt-10">
+            <Swiper
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }}
+              modules={[Navigation]}
+              spaceBetween={30}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                1024: { slidesPerView: 3 },
+              }}
+              className="blogSwiper"
+            >
+              {posts.map((post) => {
+                const featuredImage =
+                  post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
+                  "/assets/img/previewimg.png";
 
-              return (
-                <div
-                  key={post.id}
-                  className={isCarousel ? "p-6 border rounded-lg border-b-600 bg-gd-tertiary mx-2 blogcard-div" : "p-6 border rounded-lg border-b-600 bg-gd-tertiary blogcard-div"}
-                >
-                  <Image
-                    loading="lazy"
-                    width={800}
-                    height={600}
-                    src={featuredImage}
-                    className="w-full rounded-lg blog-img mb-4"
-                    alt={alt}
-                  />
+                const alt =
+                  post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text ||
+                  stripHTML(post.title.rendered);
 
-                  <p className="blog-category mb-4 text-light capitalize">{category}</p>
+                const category = getCategory(post);
+                const dateStr = formatDate(post.date);
 
-                  <Link href={`/blogs/${post.slug}`}>
-                    <h3 className="block mb-3 text-2xl font-medium text-w-500">
-                      {truncate(stripHTML(post.title.rendered), 50)}
-                    </h3>
-                  </Link>
+                const fullTitle = stripHTML(post.title.rendered);
+                const shortTitle = truncate(fullTitle, 40);
 
-                  <div className="flex items-center gap-4 mb-3 text-w-500">
-                    <p className="blog-date flex items-center gap-2">
-                      <FaCalendarAlt className="text-sm" />
-                      {dateStr}
-                    </p>
+                const excerpt = truncate(stripHTML(post.excerpt?.rendered), 80);
 
-                    {readingTime ? (
-                      <p className="blog-reading-time flex items-center gap-2 text-sm">
-                        <FaClock className="text-sm" />
-                        {readingTime}
+                const readingTime = hasText(post.meta?._kogents_reading_time)
+                  ? post.meta!._kogents_reading_time!.trim()
+                  : "";
+
+                return (
+                  <SwiperSlide key={post.id}>
+                    <div className="p-6 border rounded-lg bg-gd-tertiary blogcard-div">
+                      
+                      {/* Image */}
+                      <Image
+                        width={800}
+                        height={500}
+                        src={featuredImage}
+                        alt={alt}
+                        className="w-full rounded-lg mb-4"
+                        loading="lazy"
+                      />
+
+                      <p className="text-light capitalize mb-4 blog-category">
+                        {category}
                       </p>
-                    ) : null}
-                  </div>
 
-                  <p className="mb-6 text-w-100">{excerpt}</p>
+                      {/* ⭐ Title: trimmed → full on hover */}
+                      <Link href={`/blogs/${post.slug}`}>
+                        <h3 className="blog-title text-2xl font-medium text-w-500 mb-3 relative cursor-pointer">
+                          <span className="title-short">{shortTitle}</span>
+                          <span className="title-full">{fullTitle}</span>
+                        </h3>
+                      </Link>
 
-                  <div className="flex flex-wrap gap-2">
-                    <Link
-                      href={`/blogs/${post.slug}`}
-                      className="pink buttonAnimation2 inline-block px-4 py-2 text-sm font-medium capitalize transition-all duration-300 border rounded-full btn-border bg-gd-secondary hover:bg-transparent text-w-900"
-                    >
-                      Read now
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
+                      <div className="flex items-center gap-4 mb-3 text-w-500">
+                        <p className="flex items-center gap-2">
+                          <FaCalendarAlt className="text-sm" />
+                          {dateStr}
+                        </p>
+
+                        {readingTime && (
+                          <p className="flex items-center gap-2 text-sm">
+                            <FaClock className="text-sm" />
+                            {readingTime}
+                          </p>
+                        )}
+                      </div>
+
+                      <p className="mb-6 text-w-100">{excerpt}</p>
+
+                      <Link
+                        href={`/blogs/${post.slug}`}
+                        className="text-white pink buttonAnimation2 inline-block px-4 py-2 text-sm font-medium capitalize border rounded-full bg-gd-secondary hover:bg-transparent"
+                      >
+                        Read now
+                      </Link>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+
+            {/* Nav buttons */}
+            <div className="swiper-button-prev !left-[-40px] z-50"></div>
+            <div className="swiper-button-next !right-[-40px] z-50"></div>
+
+            {/* Pagination for mobile/tablet */}
+            <div
+              ref={paginationRef}
+              className="blog-swiper-pagination swiper-pagination mt-6 lg:hidden"
+            />
           </div>
         )}
       </div>
     </section>
   );
-};
-
-export default BlogListOwlCarousel;
+}
