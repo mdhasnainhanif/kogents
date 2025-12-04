@@ -128,6 +128,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
             e.parentNode.insertBefore($, e);
           })(document, "script");
+            // === Your extra code added here ===
+            window.addEventListener("load", () => {
+              const waitForZopim = setInterval(() => {
+                if (window.$zopim) {
+                  clearInterval(waitForZopim);
+
+                  $zopim(() => {
+                    $zopim.livechat.setOnUnreadMsgs((count) => {
+                      if (count >= 1) {
+                        $zopim.livechat.window.show();
+                      }
+                    });
+                  });
+                }
+              }, 100);
+            });
         `}
       </Script>
 

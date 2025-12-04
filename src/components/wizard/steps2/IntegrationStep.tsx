@@ -619,15 +619,15 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
         const crmPayload = formatCRMData(data, selectedOption);
         console.log('📤 Sending lead data to CRM:', crmPayload);
         
-        await sendLeadToCRM(crmPayload);
+       const response =  await sendLeadToCRM(crmPayload);
         console.log('✅ Lead sent to CRM successfully');
         
         // ✅ Do NOT call footerOptions.onComplete() - this prevents /workspace/kogent-bot API
         // Just redirect or show success message
         // You can add redirect here if needed:
-        // if (typeof window !== 'undefined') {
-        //   window.location.href = '/thank-you';
-        // }
+        if (response.success) {
+          window.location.href = '/thank-you';
+        }
       } catch (error) {
         console.error('❌ Error sending lead to CRM:', error);
         setValidationError('Failed to submit. Please try again.');
@@ -655,7 +655,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                   <div className="mb-4">
                     <div className="stepText my-2">Step 6 of 6</div>
                     <h2 className="h4 fw-bold text-white">
-                      How would you like to integra55te "{data.botname || "agent name"}" on website?
+                      How would you like to integrate "{data.botname || "agent name"}" on website?
                     </h2>
                   </div>
 
@@ -705,7 +705,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                 </div>
               </InViewAnimate>
 
-              <div className="chatbot-content-wrapper footer">
+              <div className="chatbot-content-wrapper footer w-100">
                 <WizardNavigation2 
                   {...modifiedFooterOptions} 
                   isLoading={isSubmitting} // ✅ Pass isLoading separately
