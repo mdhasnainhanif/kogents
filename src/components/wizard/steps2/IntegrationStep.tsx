@@ -655,7 +655,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                   <div className="mb-4">
                     <div className="stepText my-2">Step 6 of 6</div>
                     <h2 className="h4 fw-bold text-white">
-                      How would you like to integra55te "{data.botname || "agent name"}" on website?
+                      How would you like to integrate "{data.botname || "agent name"}" on website?
                     </h2>
                   </div>
 
