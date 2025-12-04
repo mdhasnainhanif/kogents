@@ -25,7 +25,7 @@ const PAGE_GROUP_SIZE = 3; // pagination: 1 2 3 → Next: 4 5 6...
 
 // Base API: per_page & page dynamically add honge
 const API_BASE_URL =
-  "https://kogents.ai/wordpress/wp-json/wp/v2/posts?_embed&orderby=date&order=desc";
+  "https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&orderby=date&order=desc";
 
 // Skeleton kitna time minimum dikhana hai (thoda kam kar diya)
 const MIN_SKELETON_MS = 500;

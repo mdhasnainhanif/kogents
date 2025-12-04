@@ -119,9 +119,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'kogents.ai',
+        hostname: 'portal.kogents.ai',
         port: '',
-        pathname: '/wordpress/wp-content/uploads/**',
+        pathname: '/wp-content/uploads/**',
       },
       {
         protocol: 'https',

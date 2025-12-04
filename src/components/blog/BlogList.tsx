@@ -75,7 +75,7 @@ export default function BlogListSwiper({
 
         const timestamp = Date.now();
         const res = await fetch(
-          `https://kogents.ai/wordpress/wp-json/wp/v2/posts?_embed&per_page=6&_=${timestamp}`,
+          `https://portal.kogents.ai/wp-json/wp/v2/posts?_embed&per_page=6&_=${timestamp}`,
           { cache: "no-store" }
         );
 
