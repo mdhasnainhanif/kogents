@@ -174,7 +174,8 @@ img.blog-img {
   transform: translateY(0);
 }
 
-
+  display: none !important;
+}
 
 .blog-content table tr td a,
 .heading-3,
