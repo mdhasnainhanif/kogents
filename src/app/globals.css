@@ -3527,3 +3527,9 @@ section.newSectionSlider {
     padding-top: 0;
   }
 }
+
+.trustpilot-widget iframe{
+  position: absolute;
+  top: 0;
+  left: -45px;
+}

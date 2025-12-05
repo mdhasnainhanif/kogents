@@ -129,7 +129,7 @@ const AwardSection = ({ className }: { className?: string }) => {
                   data-style-height="52px"
                   data-style-width="100%"
                   data-token="410e4fc3-41bb-4000-8583-55fb7f7613d2"
-                  style={{ marginBottom: "12px" }}
+                  style={{ marginTop: "15px" }}
                 >
                   <a
                     href="https://www.trustpilot.com/review/kogents.ai"

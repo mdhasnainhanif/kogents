@@ -88,10 +88,12 @@ const BlogCard: React.FC = () => {
 
     (async () => {
       try {
-        const url = `${API_BASE_URL}&per_page=${POSTS_PER_PAGE}&page=${currentPage}`;
+        // Cache busting: timestamp add karo URL mein
+        const timestamp = Date.now();
+        const url = `${API_BASE_URL}&per_page=${POSTS_PER_PAGE}&page=${currentPage}&_t=${timestamp}`;
 
         const res = await fetch(url, {
-          // cache: "force-cache", // optional: agar explicitly cache allow karna ho
+          cache: "no-store", // No caching
           signal: controller.signal,
         });
 
