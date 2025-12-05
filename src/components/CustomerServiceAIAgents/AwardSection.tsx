@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const AwardSection = ({ className }: { className?: string }) => {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  const [isTrustpilotLoaded, setIsTrustpilotLoaded] = useState(false);
 
   // --- Clutch script load ---
   useEffect(() => {
@@ -45,6 +46,29 @@ const AwardSection = ({ className }: { className?: string }) => {
       }, 1000);
     }
   }, [isScriptLoaded]);
+
+   /** -------------------------------
+   *  Load Trustpilot Script
+   * ------------------------------- */
+   useEffect(() => {
+    const existingTP = document.querySelector<HTMLScriptElement>(
+      'script[data-tp-script="true"]'
+    );
+
+    if (existingTP) {
+      setIsTrustpilotLoaded(true);
+      return;
+    }
+
+    const tp = document.createElement("script");
+    tp.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+    tp.async = true;
+    tp.type = "text/javascript";
+    tp.setAttribute("data-tp-script", "true");
+
+    tp.onload = () => setIsTrustpilotLoaded(true);
+    document.body.appendChild(tp);
+  }, []);
 
   return (
     <div className={`sectionPadding pt-0 ${className}`}>
@@ -96,12 +120,34 @@ const AwardSection = ({ className }: { className?: string }) => {
                     style={{ border: "0" }}
                   />
                 </a>
-                <img
+                 {/* ---- TRUSTPILOT BADGE (Immediately After Clutch) ---- */}
+                 <div
+                  className="trustpilot-widget"
+                  data-locale="en-US"
+                  data-template-id="56278e9abfbbba0bdcd568bc"
+                  data-businessunit-id="69316dafffffdcbe6fca3b90"
+                  data-style-height="52px"
+                  data-style-width="100%"
+                  data-token="410e4fc3-41bb-4000-8583-55fb7f7613d2"
+                  style={{ marginBottom: "12px" }}
+                >
+                  <a
+                    href="https://www.trustpilot.com/review/kogents.ai"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Trustpilot
+                  </a>
+                </div>
+
+
+                {/* <img
                   width={140}
                   height={24}
                   src="/assets/img/trustpilot11.png"
                   alt="brand logo"
-                />
+                /> */}
+
               </div>
             </>
           ) : (

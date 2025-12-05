@@ -18,7 +18,7 @@ interface TechnologiesSliderProps {
 }
 
 const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
-  tag = "Tech Slack",
+  tag = "Tech Stack",
   heading = "Technologies We Use",
   description,
   technologies = [
