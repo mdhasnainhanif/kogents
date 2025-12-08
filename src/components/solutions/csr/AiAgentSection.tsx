@@ -204,14 +204,14 @@ export default function AiAgentSection() {
                     "Creates insightful surveys quickly. Evaluates responses with AI-powered analysis. Generates actionable insights for business growth.",
                 ],
             },
-            {
-                img: "/assets/img/team-slider/ai-recruiting-assistant.webp",
-                title: "AI Recruiting Assistant ",
-                href: "/solutions/ai-recruiting-assistant",
-                points: [
-                    "Identify top talent faster, automate interview coordination, and maintain personalized candidate engagement throughout the hiring process.",
-                ],
-            },
+            // {
+            //     img: "/assets/img/team-slider/ai-recruiting-assistant.webp",
+            //     title: "AI Recruiting Assistant ",
+            //     href: "/solutions/ai-recruiting-assistant",
+            //     points: [
+            //         "Identify top talent faster, automate interview coordination, and maintain personalized candidate engagement throughout the hiring process.",
+            //     ],
+            // },
             {
                 img: "/assets/img/team-slider/ai-automation-agency.webp",
                 title: "AI Automation Agency",

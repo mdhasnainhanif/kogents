@@ -19,7 +19,7 @@ interface TechnologiesSliderProps {
 
 const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
   tag = "Tech Stack",
-  heading = "Technologies We Use",
+  heading = "Tech Stack",
   description,
   technologies = [
     // Row 1 - Scrolling Left
@@ -49,18 +49,30 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
     },
     {
       id: 5,
+      name: "Python",
+      logo: "/assets/img/technology-slider/python.svg",
+      description: "Backend",
+    },
+    {
+      id: 6,
+      name: "React",
+      logo: "/assets/img/technology-slider/reactjs.svg",
+      description: "Frontend",
+    },
+    {
+      id: 7,
       name: "Socket.IO",
       logo: "/assets/img/technology-slider/nest-js.svg",
       description: "Real-Time Chat",
     },
     {
-      id: 6,
+      id: 8,
       name: "WebSocket",
       logo: "/assets/img/technology-slider/web-socket.svg",
       description: "Real-Time Chat",
     },
     {
-      id: 7,
+      id: 9,
       name: "BullMQ",
       logo: "/assets/img/technology-slider/bull.svg",
       description: "Queues, Jobs",
@@ -68,31 +80,37 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
 
     // Row 2 - Scrolling Right
     {
-      id: 8,
+      id: 10,
       name: "Redis",
       logo: "/assets/img/technology-slider/reddis.svg",
       description: "Queues, Jobs, Sessions",
     },
     {
-      id: 9,
+      id: 11,
       name: "OpenAI",
       logo: "/assets/img/technology-slider/open-ai.svg",
       description: "(LLMs)",
     },
     {
-      id: 10,
+      id: 12,
       name: "Anthropic API",
       logo: "/assets/img/technology-slider/anthropic.svg",
       description: "(LLMs)",
     },
     {
-      id: 11,
+      id: 13,
+      name: "Gemini",
+      logo: "/assets/img/technology-slider/gemini.svg",
+      description: "(LLMs)",
+    },
+    {
+      id: 14,
       name: "LangChain",
       logo: "/assets/img/technology-slider/langchain.svg",
       description: "Prompt Orchestration, RAG",
     },
     {
-      id: 12,
+      id: 15,
       name: "LlamaIndex",
       logo: "/assets/img/technology-slider/lama.svg",
       description: "Prompt Orchestration, RAG",
@@ -100,41 +118,47 @@ const TechnologiesSlider: React.FC<TechnologiesSliderProps> = ({
 
     // Row 3 - Scrolling Left
     {
-      id: 13,
+      id: 16,
       name: "PostgreSQL",
       logo: "/assets/img/technology-slider/postgre.svg",
       description: "+ Prisma ORM",
     },
     {
-      id: 14,
+      id: 17,
       name: "Redis",
       logo: "/assets/img/technology-slider/reddis.svg",
       description: "Cache, Session",
     },
     {
-      id: 15,
+      id: 18,
       name: "MongoDB",
       logo: "/assets/img/technology-slider/mongo.svg",
       description: "Optional Alternative",
     },
     {
-      id: 16,
+      id: 19,
       name: "S3",
       logo: "/assets/img/technology-slider/s3.svg",
       description: "File Storage For KB Docs",
     },
     {
-      id: 17,
+      id: 20,
       name: "Cloudflare R2",
       logo: "/assets/img/technology-slider/cloudfair.svg",
       description: "File Storage For KB Docs",
     },
+    {
+      id: 21,
+      name: "Azure",
+      logo: "/assets/img/technology-slider/azure.svg",
+      description: "Cloud Infrastructure",
+    },
   ],
 }) => {
   // Split technologies into three rows
-  const row1 = technologies.slice(0, 7); // First 7 - scroll left
-  const row2 = technologies.slice(7, 12); // Next 5 - scroll right
-  const row3 = technologies.slice(12); // Remaining - scroll left
+  const row1 = technologies.slice(0, 9); // First 9 - scroll left
+  const row2 = technologies.slice(9, 15); // Next 6 - scroll right
+  const row3 = technologies.slice(15); // Remaining - scroll left
 
   return (
     <div className="sectionPadding p-0">

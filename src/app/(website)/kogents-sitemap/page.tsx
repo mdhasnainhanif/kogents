@@ -20,7 +20,8 @@ const platformChannels = [
   'sunshine-conversation-ai-agent',
   'intercom-ai-agent',
   'shopify-ai-agent',
-  'ai-voice-agent'
+  'ai-voice-agent',
+  'ecommerce-ai-agents'
 ]
 const pageSections = {
   main: {

@@ -104,7 +104,7 @@ export interface platfarmPageDataType {
   customerGrowthCardsSection?: {
     tag?: string;
     heading?: string;
-    description?: string;
+    description?: string | string[];
     solutions: Array<{
       id: number;
       iconColor: string;
@@ -115,6 +115,19 @@ export interface platfarmPageDataType {
     buttonLink?: string;
   };
   faqWithImageSection?: {
+    tag?: string;
+    heading?: string;
+    description?: string;
+    faqItems: Array<{
+      id: number;
+      q: string;
+      a: string;
+      image?: string;
+    }>;
+    rightImage?: string;
+    rightImageAlt?: string;
+  };
+  processSection?: {
     tag?: string;
     heading?: string;
     description?: string;

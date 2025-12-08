@@ -5880,4 +5880,411 @@ export const Data: AllPageDataType = {
             ],
         }
     },
+    "ecommerce-ai-agents": {
+        metadata: {
+            metaTitle: "Enhance Your Growth with Kogents Ecommerce AI Agents",
+            metaDescription: "Reduce workload and improve performance with Kogents ecommerce AI agents that deliver transparent automation. Get Ecommerce AI agent!",
+            slug: "https://kogents.ai/platforms/ecommerce-ai-agents/",
+            primaryKeyword: "ecommerce AI agents",
+            variations: [
+                "ecommerce AI agent",
+                "ecommerce automation AI agents",
+                "ai agents for ecommerce",
+                "ecommerce AI agent setup",
+                "ecommerce workflow automation",
+                "ai-powered ecommerce",
+                "autonomous ecommerce AI agent"
+            ],
+            lsi: [
+                "ecommerce automation",
+                "ecommerce workflow automation",
+                "ecommerce customer support",
+                "ecommerce operations",
+                "ecommerce tools",
+                "ecommerce scaling",
+                "ecommerce personalization"
+            ]
+        },
+        banner: {
+            tag: "Ecommerce AI Agent",
+            title: "Automate, Optimize, and Grow with Ecommerce AI Agents",
+            description: "Slow support and scattered workflows limit performance.\nKogents AI equips ecommerce teams with AI agents for ecommerce that use your product data to streamline search, improve catalog accuracy, and improve customer experience.\nEach ecommerce automation AI agents setup strengthens ecommerce workflow automation and delivers faster ai-powered ecommerce processes across your store.\nEvery autonomous ecommerce AI agent operates under GDPR, ISO/IEC 27001, NIST principles, and ISO 9001 standards to ensure secure and reliable automation.",
+            button: {
+                text: "Start Your Ecommerce Automation",
+                link: "/book-demo",
+            },
+            image: {
+                src: "/assets/img/ai-whatsapp/whatsapp-banner.webp",
+                alt: "Ecommerce AI Agents",
+                width: 900,
+                height: 650,
+                className: "rounded-lg shadow-lg",
+            },
+        },
+        counterSection: {
+            title: "Ecommerce AI Agent Performance",
+            counters: [
+                { label: "Less Manual Work", value: 68, symbol: "%" },
+                { label: "Faster Response Times", value: 74, symbol: "%" },
+                { label: "Higher Order Throughput", value: 59, symbol: "%" },
+                { label: "Better Operational Accuracy", value: 82, symbol: "%" }
+            ]
+        },
+        customerCardsSection: {
+            tag: "Problems",
+            colSize: "col-lg-6 col-md-6 col-12",
+            heading: "Barriers That Disrupt Ecommerce Growth",
+            description: "Ecommerce teams face mounting pressure as manual tasks, disconnected tools, and rising expectations slow performance and weaken the buying experience.",
+            showButton: true,
+            buttonText: "Resolve Ecommerce Struggle",
+            benefits: [
+                {
+                    id: 1,
+                    icon: "/assets/img/ai-whatsapp/1.svg",
+                    title: "Operational Slowdowns",
+                    description: "Daily work builds up through repetitive ecommerce tasks and heavy manual order processing, creating clear ecommerce operations inefficiency. These workload spikes form workflow bottlenecks and expose task automation gaps that drain time and accuracy."
+                },
+                {
+                    id: 2,
+                    icon: "/assets/img/ai-whatsapp/2.svg",
+                    title: "Customer Experience Strain",
+                    description: "Support teams encounter growing ecommerce customer support problems as incomplete data and long queues create an inconsistent customer experience. Limited visibility across platforms increases operational complexity and slows responses."
+                },
+                {
+                    id: 3,
+                    icon: "/assets/img/ai-whatsapp/3.svg",
+                    title: "System Fragmentation and Inventory Issues",
+                    description: "Stores depend on fragmented ecommerce tools that rarely connect smoothly, leading to miscommunication and inventory delays. This misalignment adds multi-channel strain across fulfillment and service operations."
+                },
+                {
+                    id: 4,
+                    icon: "/assets/img/ai-whatsapp/4.svg",
+                    title: "Scaling Pressures and Personalization Limits",
+                    description: "Growth highlights ecommerce scaling issues as disconnected data makes personalization difficult. These gaps cause personalization challenges that weaken engagement and reduce conversion opportunities."
+                },
+                {
+                    id: 5,
+                    icon: "/assets/img/ai-whatsapp/1.svg",
+                    title: "Higher Expectations for Accuracy and Governance",
+                    description: "Teams must still uphold data privacy best practices, maintain responsible AI governance, and meet operational accuracy frameworks, increasing responsibility without easing the underlying workload."
+                }
+            ]
+        },
+        customerGrowthCardsSection: {
+            tag: "Features",
+            heading: "What Kogents Ecommerce AI Agents Deliver",
+            description: ["Kogents delivers ecommerce AI agents that automate workflows, orders, and customer experience with intelligent ecommerce automation."," Every deployment supports omnichannel ecommerce automation with ISO 9001 workflows, GDPR compliance, and secure systems."],
+            solutions: [
+                {
+                    id: 1,
+                    iconColor: "bg-pink-500",
+                    title: "Model-Agnostic Architecture",
+                    description: "Kogents enables flexible deployment through a model-agnostic setup that lets businesses switch between AI providers like OpenAI, Azure OpenAI, and Google Gemini without rewriting logic. This allows continuous improvement, future-proofing, and freedom from vendor lock-in."
+                },
+                {
+                    id: 2,
+                    iconColor: "bg-purple-500",
+                    title: "Built-In E-commerce Integrations",
+                    description: "Native integrations with Shopify, Shopware, and Solidus sync product catalogs, metadata, content, and documentation automatically. Stores can start automating instantly without additional engineering work or manual data handling."
+                },
+                {
+                    id: 3,
+                    iconColor: "bg-teal-500",
+                    title: "Prebuilt Agents for Real Ecommerce Workflows",
+                    description: "Ready-to-use agents handle natural-language product search, catalog enrichment, translations, customer support Q&A, content creation, and document retrieval. Each agent applies vector-based grounding for accuracy and is fully customizable to fit your workflows."
+                },
+                {
+                    id: 4,
+                    iconColor: "bg-teal-500",
+                    title: "Customer Support Automation",
+                    description: "An ecommerce customer support AI agent improves service accuracy through automated support workflows, intelligent response automation, and AI-driven helpdesk support."
+                },
+                {
+                    id: 5,
+                    iconColor: "bg-pink-500",
+                    title: "Ecommerce Automation",
+                    description: "Improve store operations using ecommerce AI agents that support AI-driven inventory management, automated product recommendations, and order processing automation."
+                },
+                {
+                    id: 6,
+                    iconColor: "bg-purple-500",
+                    title: "Marketing Intelligence",
+                    description: "Guide planning and performance with an ecommerce marketing AI agent built for content automation, campaign optimization, and insights from an AI personalization engine."
+                }
+            ],
+            buttonText: "Activate My Store's AI Brain",
+            buttonLink: "/book-demo",
+        },
+        whatsappImagesSection: {
+            subtitle: "Outcomes",
+            title: "What Outcomes You Can Count On",
+            description: "Ecommerce AI agents driving results deliver measurable ecommerce automation outcomes in accuracy, workload reduction, and operational clarity, supported by structured governance frameworks and standardized automation design (ISO, NIST).",
+            backgroundImage: "/assets/img/bc/philosophyofsearch-bg.png",
+            agentCards: [
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-whatsapp/1.webp",
+                    title: "Higher Accuracy Across Operations",
+                    points: [
+                        "Automated processes strengthen data reliability and reduce errors, creating higher accuracy in tasks that depend on precision."
+                    ],
+                },
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-whatsapp/2.webp",
+                    title: "Reduced Manual Workload",
+                    points: [
+                        "Routine activity shifts to automation, resulting in a reduced manual workload and fewer interruptions for core teams."
+                    ],
+                },
+                {
+                    colLg: 4,
+                    image: "/assets/img/ai-whatsapp/3.webp",
+                    title: "Real-Time Insights for Better Decisions",
+                    points: [
+                        "Automated reporting provides real-time insights, improving visibility into trends and supporting informed decision-making."
+                    ],
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-whatsapp/4.webp",
+                    title: "Increased Order Throughput",
+                    points: [
+                        "Streamlined processes enable increased order throughput without additional staffing or operational strain."
+                    ],
+                    imgHeight: true,
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-whatsapp/5.webp",
+                    title: "Improved Customer Satisfaction",
+                    points: [
+                        "Consistent responses and fewer errors contribute to improved customer satisfaction, especially during high-demand periods."
+                    ],
+                    imgHeight: true,
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-whatsapp/1.webp",
+                    title: "Performance Consistency and ROI",
+                    points: [
+                        "Stable execution creates long-term performance consistency and measurable operational ROI across key functions."
+                    ],
+                },
+                {
+                    colLg: 6,
+                    image: "/assets/img/ai-whatsapp/2.webp",
+                    title: "Stronger Workflow Clarity",
+                    points: [
+                        "Automation brings clearer task handoffs and reduces bottlenecks, improving workflow clarity throughout the operation."
+                    ],
+                },
+            ],
+            showButton: true,
+            buttonText: "Get AI Agent for My Store",
+        },
+        faqWithImageSection: {
+            tag: "Use Cases",
+            heading: "E-commerce AI Use Cases",
+            description: "",
+            faqItems: [
+                {
+                    id: 1,
+                    q: "AI-Powered Product Discovery",
+                    a: "Customers can describe what they want in natural language, such as: 'Looking for a long duration sunblock for skin care.' The agent understands context and retrieves verified products directly from your catalog.",
+                },
+                {
+                    id: 2,
+                    q: "Technical Manual & Documentation Search",
+                    a: "AI agents provide precise, grounded answers directly from manuals, technical sheets, and support documents. Example queries: 'How do I reset this device?' or 'What safety standards does this model follow?' Responses are factual, source-linked, and fully traceable.",
+                },
+                {
+                    id: 3,
+                    q: "Intelligent Customer Support Response",
+                    a: "Agents answer order questions, policy inquiries, and product-related concerns using real store data. Example query: 'I need to know if my return request was approved.' The agent pulls accurate details instantly and responds with verified information.",
+                },
+                {
+                    id: 4,
+                    q: "Order Lookup & Workflow Automation",
+                    a: "Customers can check order progress or shipping details naturally. Example query: 'Where is my package? It's been five days since I ordered.' The agent retrieves real-time updates and automates follow-up actions when needed.",
+                },
+                {
+                    id: 5,
+                    q: "Personalized Product Recommendations",
+                    a: "AI agents match products to shopper preferences and catalog context. Example query: 'I need a gift for a fitness lover under $50.' The agent provides tailored recommendations instantly.",
+                },
+                {
+                    id: 6,
+                    q: "Content & Documentation Retrieval",
+                    a: "Whether size guides, warranty info, or policy pages, the agent delivers the exact resource a customer needs. Example query: 'Do you have a sizing chart for women's running shoes?' The agent retrieves the correct document immediately.",
+                },
+            ],
+            rightImage: "/assets/img/faq.png",
+            rightImageAlt: "Ecommerce AI Use Cases",
+        },
+        processSection: {
+            tag: "Process",
+            heading: "Our Process",
+            description: "Our ecommerce ai agent deployment follows a structured ecommerce workflow automation process designed for integrating ai agents into ecommerce workflows with accuracy and clarity at every stage.",
+            faqItems: [
+                {
+                    id: 1,
+                    q: "Identify Pain Points",
+                    a: "We begin with ecommerce workflow analysis to locate delays and inefficiencies. This includes repetitive task identification, operational gap detection, and early ecommerce process mapping, supported by secure assessment practices and human-in-the-loop oversight to maintain accuracy.",
+                    image: "/assets/img/ai-whatsapp/6.webp",
+                },
+                {
+                    id: 2,
+                    q: "Develop Custom Automation",
+                    a: "A tailored ecommerce automation blueprint is created through targeted workflow architecture design and precise AI configuration. This stage applies task orchestration and governance-aligned planning to build automations that remain reliable as operations grow.",
+                    image: "/assets/img/ai-whatsapp/7.webp",
+                },
+                {
+                    id: 3,
+                    q: "Integrate AI Systems",
+                    a: "Next, we complete ecommerce platform integration using structured system integration workflows such as CRM/ERP/Inventory sync automation and coordinated multi-channel orchestration. Secure integration practices ensure data consistency throughout deployment.",
+                    image: "/assets/img/ai-whatsapp/8.webp",
+                },
+                {
+                    id: 4,
+                    q: "Monitor & Optimize",
+                    a: "Automation improves over time through ongoing performance optimization, continuous AI agent refinement, and real-time analytics feedback loops. This includes model optimization, iterative improvement, and real-time decision automation to maintain operational clarity and long-term effectiveness.",
+                    image: "/assets/img/ai-whatsapp/9.webp",
+                },
+            ],
+            rightImage: "/assets/img/faq.png",
+            rightImageAlt: "Ecommerce AI Agent Deployment Process",
+        },
+        clientTestimonialSection: {
+            tag: "Reviews",
+            heading: "Client Testimonials",
+            description: "",
+            testimonials: [
+                {
+                    id: 1,
+                    quote: "Kogents ecommerce AI agents transformed our operations. We've seen a 68% reduction in manual work and our response times improved dramatically. The integration was seamless and the results speak for themselves.",
+                    avatar: "JD",
+                    name: "John Davis",
+                    title: "Ecommerce Director, Retail Plus",
+                    rating: 5,
+                },
+                {
+                    id: 2,
+                    quote: "The AI agents handle our product discovery and customer support with incredible accuracy. Our team can now focus on strategic initiatives while automation handles the routine tasks.",
+                    avatar: "SM",
+                    name: "Sarah Martinez",
+                    title: "Operations Manager, TechStore",
+                    rating: 5,
+                },
+                {
+                    id: 3,
+                    quote: "The human-in-the-loop escalation feature is excellent. Our customers never feel stuck talking to a bot — the system knows exactly when to bring in a real agent for complex issues.",
+                    avatar: "RK",
+                    name: "Robert Kim",
+                    title: "Customer Experience Lead, FashionHub",
+                    rating: 5,
+                },
+                {
+                    id: 4,
+                    quote: "What stood out for me was how simple the setup was with our existing Shopify store. Within just a few days, the AI agent was already live and integrated. Our team no longer waste time on routine catalog updates because everything is automated. After a month of using it, I could already see a 59% improvement in order throughput, and the cost savings compared to hiring additional staff are significant.",
+                    avatar: "EL",
+                    name: "Emily Liu",
+                    title: "Ecommerce Manager, Digital Retail Co",
+                    rating: 5,
+                },
+            ],
+            statistics: [
+                {
+                    id: 1,
+                    icon: "⭐⭐⭐",
+                    value: "82%",
+                    label: "Better Operational Accuracy",
+                },
+                {
+                    id: 2,
+                    icon: "⚙️⏰",
+                    value: "74%",
+                    label: "Faster Response Times",
+                },
+            ],
+        },
+        customerBenefitSection: {
+            buttonText: "Deploy My Ecommerce AI Agent",
+            leftColumn: {
+                tag: "Start Now",
+                title: "Bring Order, Speed, and Clarity to Ecommerce Workflows",
+                subtitle: "Turn stalled workflows into progress with ecommerce ai agents built for ai-powered ecommerce automation that helps teams streamline operations, optimize ecommerce performance, and drive confident automation adoption through secure, compliant automation and a trusted, structured deployment.",
+                appStoreImage: "/assets/img/app-section/6.png",
+                googlePlayImage: "/assets/img/app-section/7.png",
+            },
+            rightColumn: {
+                appPreviewImage: "/assets/img/img-new.webp",
+                qrCodeImage: "/assets/img/app-section/5.png",
+                qrCodeText: "Scan to Download",
+            },
+            backgroundImage: "/assets/img/bc/video-bg.webp",
+        },
+        summary: {
+            tag: "Summary",
+            text: "Kogents AI provides ecommerce AI agents that automate retail workflows, improve operational accuracy, and support data-driven decision-making across online stores."
+        },
+        faq: {
+            tag: "FAQs",
+            heading: "Frequently Asked Questions",
+            items: [
+                {
+                    q: "What are ecommerce AI agents?",
+                    a: "Ecommerce AI agents are intelligent systems that handle retail tasks such as product discovery, support responses, order processing, backend operations, and workflow execution using store data and predefined logic."
+                },
+                {
+                    q: "How do AI agents work in ecommerce in the USA?",
+                    a: "AI agents in USA-based ecommerce operate by connecting to storefronts, CRMs, ERPs, and communication channels, allowing them to answer questions, process tasks, sync data, and trigger actions automatically using automation rules and machine learning."
+                },
+                {
+                    q: "What are the benefits of AI agents for ecommerce?",
+                    a: "They reduce manual work, improve accuracy, speed up customer responses, streamline operations, manage workflows, and support higher efficiency across sales, support, and fulfillment functions."
+                },
+                {
+                    q: "What are examples of ecommerce AI automation?",
+                    a: "Popular examples include automated responses, product recommendations, order status updates, catalog enrichment, inventory updates, abandoned-cart workflows, and predictive demand tasks."
+                },
+                {
+                    q: "How to automate ecommerce workflows?",
+                    a: "You can automate ecommerce workflows by using AI workflow automation for ecommerce, which links store systems to AI-driven logic that handles tasks like tagging, catalog updates, fulfillment sequences, support routing, and internal notifications."
+                },
+                {
+                    q: "How does AI improve customer support in ecommerce?",
+                    a: "AI improves support by delivering instant responses, accessing store data for accurate answers, guiding shoppers through purchasing steps, and routing complex issues to staff. An ecommerce customer support AI agent helps maintain consistency during high-volume periods."
+                },
+                {
+                    q: "What makes Kogents AI ecommerce AI agents different?",
+                    a: "Kogents AI ecommerce agents connect directly to product catalogs, customer data, and workflow systems to automate end-to-end operational tasks across support, sales, catalog updates, and internal processes with high accuracy and reliability."
+                },
+                {
+                    q: "What are ecommerce AI integration services?",
+                    a: "Ecommerce AI integration services connect AI agents with storefronts, CRMs, ERPs, helpdesks, and inventory systems to enable automated messaging, order management, catalog actions, and cross-channel workflow execution."
+                },
+                {
+                    q: "What affects ecommerce customer support AI agent pricing?",
+                    a: "Ecommerce customer support ai agent pricing depends on message volume, workflow complexity, automation depth, number of integrations, and support requirements."
+                },
+                {
+                    q: "What's the difference between AI agents and RPA for ecommerce?",
+                    a: "AI agents and RPA for ecommerce differ significantly: RPA follows rigid rule-based steps, while AI agents use contextual understanding, decision logic, and natural language processing to handle dynamic and unstructured tasks."
+                },
+                {
+                    q: "Can I control the model choice?",
+                    a: "Yes. The platform is model-agnostic. Swap models by updating configuration files."
+                },
+                {
+                    q: "How do you ensure transparency and accuracy?",
+                    a: "Accuracy is enforced through, grounding responses in your catalog or documentation, retrieval-augmented generation, optional validation logic, and full visibility via tracing tools."
+                },
+                {
+                    q: "How secure is the platform?",
+                    a: "Deploy in your environment, integrate with your authentication, logging, and monitoring stack."
+                },
+            ],
+        }
+    },
 }; 

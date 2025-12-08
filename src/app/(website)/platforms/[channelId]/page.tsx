@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const ogImage = "https://www.kogents.ai/assets/img/logo-new.svg";
   const isAiVoiceAgent = channelId === "ai-voice-agent";
   const isWhatsAppAIAgentV2 = channelId === "whatsapp-ai-agent-v2";
+  const isEcommerceAIAgents = channelId === "ecommerce-ai-agents";
   return {
     title,
     description,
@@ -56,6 +57,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       index: true,
       follow: true,
     } : isWhatsAppAIAgentV2 ? {
+      index: true,
+      follow: true,
+    } : isEcommerceAIAgents ? {
       index: true,
       follow: true,
     } : undefined,
@@ -83,7 +87,7 @@ export function generateStaticParams(): Params[] {
     'jira-ai-integration', 'calendly-ai-integration', 'openai', 'anthropic', 'groq', 'hugging-face',
     'slack-ai-agent', 'sunshine-conversation-ai-agent', 'intercom-ai-agent',
     'line-ai-agent', 'microsoft-teams-agents', 'viber-ai-agent',
-    'ai-zendesk-agent', 'ai-telegram-agent','ai-voice-agent',
+    'ai-zendesk-agent', 'ai-telegram-agent','ai-voice-agent', 'ecommerce-ai-agents',
   ];
   return channelIds.map((channelId) => ({ channelId }));
 }
@@ -165,6 +169,17 @@ const Page = async ({ params }: PageProps) => {
           faqItems={pageData.faqWithImageSection.faqItems}
           rightImage={pageData.faqWithImageSection.rightImage}
           rightImageAlt={pageData.faqWithImageSection.rightImageAlt}
+        />
+      )}
+
+      {pageData.processSection && (
+        <FaqWithImage
+          tag={pageData.processSection.tag}
+          heading={pageData.processSection.heading}
+          description={pageData.processSection.description}
+          faqItems={pageData.processSection.faqItems}
+          rightImage={pageData.processSection.rightImage}
+          rightImageAlt={pageData.processSection.rightImageAlt}
         />
       )}
 

@@ -94,7 +94,8 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data, showButton =
       >
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-12">
+            <div className="col-md-8">
+              <div className="sectionHeading">
               {subtitle && (
                 <span className="buttonAnimation green width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">
                   {subtitle}
@@ -106,10 +107,11 @@ const WhatsappPageSection: React.FC<WhatsappSectionData> = ({ data, showButton =
                 </h2>
               )}
               {description && (
-                <p className="text-light text-center mx-auto">
+                <p className="text-light text-center mx-auto paraColor subHeading mt125">
                   {description}
                 </p>
               )}
+            </div>
             </div>
           </div>
           <div className="row rowGap justify-content-center mt-5">
