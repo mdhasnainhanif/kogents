@@ -1612,6 +1612,10 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
 
     // Handle "Activate Agent Now" button click
     const handleActivateAgent = async () => {
+      // Temporarily skip crawl - go directly to next step
+      footerOptions.onNext();
+      return;
+
       // If URL tab is active and has URLs, show modal and trigger crawl
       if (activeTab === "urls" && data.knowledgeSources?.urls?.length > 0) {
         const url = data.knowledgeSources.urls[0];
@@ -1755,6 +1759,10 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       if (!validateSelection()) {
         return;
       }
+
+      // Temporarily skip crawl - go directly to next step
+      footerOptions.onNext?.();
+      return;
 
       // Check if we have URL or files to crawl
       const files = data.knowledgeSources?.files || [];
