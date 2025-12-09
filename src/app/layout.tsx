@@ -81,8 +81,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
 
-    
-
       {/* Google Tag Manager - Loads 10 seconds after page load */}
       <Script id="google-tag-manager" strategy="afterInteractive">
           {`(function(){
@@ -102,6 +100,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               });
             }
           })();`}
+        </Script>
+
+        {/* ClickRank AI SEO Script */}
+        <Script id="clickrank-ai" strategy="afterInteractive">
+          {`
+            (function () {
+              var clickRankAi = document.createElement("script");
+              clickRankAi.src = "https://js.clickrank.ai/seo/f2471eb6-5b04-474d-ad2b-47cf003ec8bb/script?" + new Date().getTime();
+              clickRankAi.async = true;
+              document.head.appendChild(clickRankAi);
+            })();
+          `}
         </Script>
 
         {/* Zopim Chat Widget */}

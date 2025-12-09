@@ -206,7 +206,7 @@ const BlogCard: React.FC = () => {
                 {posts.map((post) => {
                   const featuredImage =
                     post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
-                    "/assets/img/previewimg.png";
+                    "/assets/img/previewimgnew.jpg?v=${Date.now()}";
 
                   const alt =
                     post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text ||
