@@ -18,7 +18,7 @@ import Summary from "@/components/ai-whatsapp-agent/Summary";
 const BASE = "https://kogents.ai";
 
 export const metadata: Metadata = {
-  title: "Kogents Ai Agent | Top Agentic AI Automation & Integration ",
+  title: "Kogents AI Agent | Top Agentic AI Automation & Integration",
   description:
     "Discover Kogents AI Agent for agentic automation and easy integrations built for your workflows. Email info@kogents.ai,  Phone +12672489454.",
   keywords: [
