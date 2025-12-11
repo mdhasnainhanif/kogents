@@ -1611,93 +1611,89 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
     };
 
     // Handle "Activate Agent Now" button click
-    // const handleActivateAgent = async () => {
-    //   // Temporarily skip crawl - go directly to next step
-    //   footerOptions.onNext();
-    //   return;
+    const handleActivateAgent = async () => {
+      // If URL tab is active and has URLs, show modal and trigger crawl
+      if (activeTab === "urls" && data.knowledgeSources?.urls?.length > 0) {
+        const url = data.knowledgeSources.urls[0];
+        if (url && url.trim()) {
+          setShowCrawlModal(true);
+          await crawlWebsite(url);
+        } else {
+          // No URL, proceed directly
+          footerOptions.onNext();
+        }
+      } else {
+        // Files tab or no URL - still show modal and submit
+        setShowCrawlModal(true);
+        try {
+          const wsFiles: File[] = (data.knowledgeSources?.files ||
+            []) as File[];
+          const d: any = data as any;
 
-    //   // If URL tab is active and has URLs, show modal and trigger crawl
-    //   if (activeTab === "urls" && data.knowledgeSources?.urls?.length > 0) {
-    //     const url = data.knowledgeSources.urls[0];
-    //     if (url && url.trim()) {
-    //       setShowCrawlModal(true);
-    //       await crawlWebsite(url);
-    //     } else {
-    //       // No URL, proceed directly
-    //       footerOptions.onNext();
-    //     }
-    //   } else {
-    //     // Files tab or no URL - still show modal and submit
-    //     setShowCrawlModal(true);
-    //     try {
-    //       const wsFiles: File[] = (data.knowledgeSources?.files ||
-    //         []) as File[];
-    //       const d: any = data as any;
+          // Process Step 3 use cases - map to business string value
+          const useCasesList = data.useCases || [];
+          let businessValue: string | undefined = undefined;
+          if (
+            useCasesList.some((uc: string) => uc.startsWith("customer-support"))
+          ) {
+            businessValue = "customer-support";
+          } else if (
+            useCasesList.some((uc: string) => uc.startsWith("lead-capture"))
+          ) {
+            businessValue = "lead-capture";
+          } else if (
+            useCasesList.some((uc: string) => uc.startsWith("sales"))
+          ) {
+            businessValue = "sales";
+          }
 
-    //       // Process Step 3 use cases - map to business string value
-    //       const useCasesList = data.useCases || [];
-    //       let businessValue: string | undefined = undefined;
-    //       if (
-    //         useCasesList.some((uc: string) => uc.startsWith("customer-support"))
-    //       ) {
-    //         businessValue = "customer-support";
-    //       } else if (
-    //         useCasesList.some((uc: string) => uc.startsWith("lead-capture"))
-    //       ) {
-    //         businessValue = "lead-capture";
-    //       } else if (
-    //         useCasesList.some((uc: string) => uc.startsWith("sales"))
-    //       ) {
-    //         businessValue = "sales";
-    //       }
+          setIsCrawling(true);
+          setCrawlProgress(0);
+          setCrawlError(null);
 
-    //       setIsCrawling(true);
-    //       setCrawlProgress(0);
-    //       setCrawlError(null);
+          // Simulate progress for file upload
+          const progressInterval = setInterval(() => {
+            setCrawlProgress((prev) => {
+              if (prev >= 90) {
+                clearInterval(progressInterval);
+                return prev;
+              }
+              return prev + 15;
+            });
+          }, 300);
 
-    //       // Simulate progress for file upload
-    //       const progressInterval = setInterval(() => {
-    //         setCrawlProgress((prev) => {
-    //           if (prev >= 90) {
-    //             clearInterval(progressInterval);
-    //             return prev;
-    //           }
-    //           return prev + 15;
-    //         });
-    //       }, 300);
+          await createWorkspaceWithFiles({
+            companyName: data.companyName || "",
+            industry: data.industry || "",
+            companySize: d.companySize || "",
+            country: d.country || "",
+            websiteUrl: (data.websiteUrl || "").trim(),
+            files: wsFiles,
+            botName: data.botname || "",
+            business: businessValue,
+            fullName: data.name || "",
+            emailAddress: data.email || "",
+            phoneNumber: data.phone || "",
+            info: data.description || "",
+          });
 
-    //       await createWorkspaceWithFiles({
-    //         companyName: data.companyName || "",
-    //         industry: data.industry || "",
-    //         companySize: d.companySize || "",
-    //         country: d.country || "",
-    //         websiteUrl: (data.websiteUrl || "").trim(),
-    //         files: wsFiles,
-    //         botName: data.botname || "",
-    //         business: businessValue,
-    //         fullName: data.name || "",
-    //         emailAddress: data.email || "",
-    //         phoneNumber: data.phone || "",
-    //         info: data.description || "",
-    //       });
+          clearInterval(progressInterval);
+          setCrawlProgress(100);
+          setCrawlComplete(true);
+          setIsCrawling(false);
 
-    //       clearInterval(progressInterval);
-    //       setCrawlProgress(100);
-    //       setCrawlComplete(true);
-    //       setIsCrawling(false);
-
-    //       setTimeout(() => {
-    //         setShowCrawlModal(false);
-    //         footerOptions.onNext();
-    //       }, 1500);
-    //     } catch (wsErr) {
-    //       setIsCrawling(false);
-    //       setCrawlError(
-    //         wsErr instanceof Error ? wsErr.message : "Failed to submit"
-    //       );
-    //     }
-    //   }
-    // };
+          setTimeout(() => {
+            setShowCrawlModal(false);
+            footerOptions.onNext();
+          }, 1500);
+        } catch (wsErr) {
+          setIsCrawling(false);
+          setCrawlError(
+            wsErr instanceof Error ? wsErr.message : "Failed to submit"
+          );
+        }
+      }
+    };
 
     // Add this useEffect at component level (near other useEffects)
     useEffect(() => {
@@ -1759,10 +1755,6 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       if (!validateSelection()) {
         return;
       }
-
-      // Temporarily skip crawl - go directly to next step
-      footerOptions.onNext?.();
-      return;
 
       // Check if we have URL or files to crawl
       const files = data.knowledgeSources?.files || [];
