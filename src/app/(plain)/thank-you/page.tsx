@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import BlogList from "@/components/blog/BlogList";
 import NewFooter from "@/components/NewFooter";
 import ClientTestimonial from "@/components/CustomerServiceAIAgents/ClientTestimonial";
+import HeaderWrapper from "@/components/HeaderWrapper";
 
 export const metadata: Metadata = {
   title: "Thank You | Kogents AI",
@@ -21,18 +22,7 @@ const page = () => {
   return (
     <>
       <div>
-        <header className="chatbot_header px-lg-0">
-          <div className="container">
-            <Link href="/">
-              <img
-                width={150}
-                height={50}
-                src="/assets/img/kogents-logo.svg"
-                alt="logo"
-              />
-            </Link>
-          </div>
-        </header>
+        <HeaderWrapper />
         <section
           className="py-3 bg-center bg-no-repeat bg-cover newBg desktop-section-show"
           id="aiAgentSection"
@@ -139,7 +129,7 @@ const page = () => {
             </div> */}
           </div>
         </section>
-        <div className="pt-5">
+        <div className="pt-16 pb-16">
           <BlogList 
             isShowBadge={true} 
             description="Explore our blogs to learn how AI agents can transform workflows."
