@@ -5,7 +5,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useRef } from "react";
-import { BrowserView } from "react-device-detect";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +38,8 @@ const ProductSection = () => {
       className="section_product-image w-layout-blockcontainer1 wrapper d-none"
       id="sectionTilt"
     >
-      <BrowserView>
+      {/* Desktop View */}
+      <div className="hidden md:block">
         <div className="container">
           <div className="position-relative">
             <div className="bg_product-bg is_bottom"></div>
@@ -67,7 +67,7 @@ const ProductSection = () => {
             </div>
           </div>
         </div>
-      </BrowserView>
+      </div>
 
       <section className="newSection pb-0 mask">
         <div className="hero-brand overflow-hidden whitespace-nowrap relative w-full lg:max-w-[62.5rem] mx-auto">

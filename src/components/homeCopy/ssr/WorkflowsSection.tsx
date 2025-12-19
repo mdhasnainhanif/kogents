@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { BrowserView, MobileView } from "react-device-detect";
 
 export default function WorkflowsSection() {
   return (
@@ -27,7 +24,6 @@ export default function WorkflowsSection() {
           <div className="col-lg-11 d-flex flex-column justify-content-center">
             <div className="row">
               <div className="col-md-3 d-flex justify-content-center align-items-center">
-                {/* <BrowserView> */}
                   <div
                     className="hideOn768 d-flex flex-column align-items-end position-relative marginZeroMobile wfullMobile"
                     style={{ marginRight: "32px" }}
@@ -245,113 +241,110 @@ export default function WorkflowsSection() {
                       </div>
                     </div>
                   </div>
-                {/* </BrowserView> */}
               </div>
               <div className="col-md-6 d-flex flex-column justify-content-center">
                 <div>
                   <div className="d-flex gap-3 justify-content-center position-relative flexColumnOnIpad">
-                    <BrowserView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          bottom: "-48px",
-                          left: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                    {/* Animated line for desktop */}
+                    <div
+                      className="newLineAnimation hidden md:block"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        bottom: "-48px",
+                        left: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                          <animate
-                            attributeName="stroke-dashoffset"
-                            to="-30"
-                            dur="1s"
-                            repeatCount="indefinite"
-                          ></animate>
-                        </svg>
-                      </div>
-                    </BrowserView>
-                    <MobileView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          bottom: "-48px",
-                          left: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                        <animate
+                          attributeName="stroke-dashoffset"
+                          to="-30"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        ></animate>
+                      </svg>
+                    </div>
+                    {/* Static line for mobile */}
+                    <div
+                      className="newLineAnimation block md:hidden"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        bottom: "-48px",
+                        left: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-                    </MobileView>
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
                     <div className="googleFeatureBtn">
                       <div>
                         <svg
@@ -472,108 +465,106 @@ export default function WorkflowsSection() {
                         prompts and task logic.
                       </p>
                     </div>
-                    <BrowserView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          bottom: "-48px",
-                          right: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                    {/* Animated line for desktop */}
+                    <div
+                      className="newLineAnimation hidden md:block"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        bottom: "-48px",
+                        right: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                          <animate
-                            attributeName="stroke-dashoffset"
-                            to="-30"
-                            dur="1s"
-                            repeatCount="indefinite"
-                          ></animate>
-                        </svg>
-                      </div>
-                    </BrowserView>
-                    <MobileView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          bottom: "-48px",
-                          right: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                        <animate
+                          attributeName="stroke-dashoffset"
+                          to="-30"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        ></animate>
+                      </svg>
+                    </div>
+                    {/* Static line for mobile */}
+                    <div
+                      className="newLineAnimation block md:hidden"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        bottom: "-48px",
+                        right: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-                    </MobileView>
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
                     <div className="sync-line-down2 relative z-20 inline-flex h-6 w-10 overflow-hidden [mask-image:url('https://www.cognosys.ai/images/features/top-lines.png')] [mask-size:contain] sm:h-10 md:w-14 lg:h-16 lg:w-24">
                       <div>
                         <svg
@@ -706,108 +697,106 @@ export default function WorkflowsSection() {
                         </svg>
                       </div>
                     </div>
-                    <BrowserView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          left: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                    {/* Animated line for desktop */}
+                    <div
+                      className="newLineAnimation hidden md:block"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        left: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                          <animate
-                            attributeName="stroke-dashoffset"
-                            to="-30"
-                            dur="1s"
-                            repeatCount="indefinite"
-                          ></animate>
-                        </svg>
-                      </div>
-                    </BrowserView>
-                    <MobileView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          left: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                        <animate
+                          attributeName="stroke-dashoffset"
+                          to="-30"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        ></animate>
+                      </svg>
+                    </div>
+                    {/* Static line for mobile */}
+                    <div
+                      className="newLineAnimation block md:hidden"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        left: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-                    </MobileView>
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
                     <div className="googleFeatureBtn mt-0">
                       <div>
                         <svg
@@ -847,108 +836,106 @@ export default function WorkflowsSection() {
                         with smart tracking.
                       </p>
                     </div>
-                    <BrowserView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          right: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                    {/* Animated line for desktop */}
+                    <div
+                      className="newLineAnimation hidden md:block"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        right: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                          <animate
-                            attributeName="stroke-dashoffset"
-                            to="-30"
-                            dur="1s"
-                            repeatCount="indefinite"
-                          ></animate>
-                        </svg>
-                      </div>
-                    </BrowserView>
-                    <MobileView>
-                      <div
-                        className="newLineAnimation"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          right: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                        <animate
+                          attributeName="stroke-dashoffset"
+                          to="-30"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        ></animate>
+                      </svg>
+                    </div>
+                    {/* Static line for mobile */}
+                    <div
+                      className="newLineAnimation block md:hidden"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        right: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-                    </MobileView>
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
                     <div
                       id="syncLineUp2"
                       className="sync-line-up2 relative z-20 inline-flex h-6 w-14 overflow-hidden [mask-image:url('https://www.cognosys.ai/images/features/top-lines.png')] [mask-size:contain] sm:h-10 lg:h-16 lg:w-24"
@@ -1033,207 +1020,204 @@ export default function WorkflowsSection() {
               <div className="col-md-3 d-flex flex-column justify-content-center">
                 <div className="stepBoxMain">
                   <div className="stepBox position-relative">
-                    <BrowserView>
-                      <div
-                        className="newLineAnimation hide_mobile"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          right: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                    {/* Animated lines for desktop */}
+                    <div
+                      className="newLineAnimation hide_mobile hidden md:block"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        right: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                          <animate
-                            attributeName="stroke-dashoffset"
-                            to="-30"
-                            dur="1s"
-                            repeatCount="indefinite"
-                          ></animate>
-                        </svg>
-                      </div>
-                      <div
-                        className="newLineAnimation hide_mobile"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          left: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                        <animate
+                          attributeName="stroke-dashoffset"
+                          to="-30"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        ></animate>
+                      </svg>
+                    </div>
+                    <div
+                      className="newLineAnimation hide_mobile hidden md:block"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        left: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                          <animate
-                            attributeName="stroke-dashoffset"
-                            to="-30"
-                            dur="1s"
-                            repeatCount="indefinite"
-                          ></animate>
-                        </svg>
-                      </div>
-                    </BrowserView>
-                    <MobileView>
-                      <div
-                        className="newLineAnimation hide_mobile"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          right: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                        <animate
+                          attributeName="stroke-dashoffset"
+                          to="-30"
+                          dur="1s"
+                          repeatCount="indefinite"
+                        ></animate>
+                      </svg>
+                    </div>
+                    {/* Static lines for mobile */}
+                    <div
+                      className="newLineAnimation hide_mobile block md:hidden"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        right: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-
-                      <div
-                        className="newLineAnimation hide_mobile"
-                        style={{
-                          position: "absolute",
-                          zIndex: -1,
-                          top: "-48px",
-                          left: "0px",
-                          transform: "rotate(90deg)",
-                        }}
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div
+                      className="newLineAnimation hide_mobile block md:hidden"
+                      style={{
+                        position: "absolute",
+                        zIndex: -1,
+                        top: "-48px",
+                        left: "0px",
+                        transform: "rotate(90deg)",
+                      }}
+                    >
+                      <svg
+                        width="141"
+                        height="3"
+                        viewBox="0 0 141 3"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="md:block max-w-[100%]"
                       >
-                        <svg
-                          width="141"
-                          height="3"
-                          viewBox="0 0 141 3"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="md:block max-w-[100%]"
-                        >
-                          <line
-                            x1="0.608887"
-                            y1="1.66377"
-                            x2="140.319"
-                            y2="1.66377"
-                            stroke="url(#animatedGradient)"
-                            strokeWidth="2"
-                            strokeDasharray="7 3"
-                          ></line>
-                          <defs>
-                            <linearGradient
-                              id="animatedGradient"
-                              x1="1.3296"
-                              y1="9.38818"
-                              x2="139.032"
-                              y2="12.3073"
-                              gradientUnits="userSpaceOnUse"
-                            >
-                              <stop stopColor="#332f4b"></stop>
-                              <stop
-                                offset="1"
-                                stopColor="#6d63a7"
-                                stopOpacity="0.14"
-                              ></stop>
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-                    </MobileView>
+                        <line
+                          x1="0.608887"
+                          y1="1.66377"
+                          x2="140.319"
+                          y2="1.66377"
+                          stroke="url(#animatedGradient)"
+                          strokeWidth="2"
+                          strokeDasharray="7 3"
+                        ></line>
+                        <defs>
+                          <linearGradient
+                            id="animatedGradient"
+                            x1="1.3296"
+                            y1="9.38818"
+                            x2="139.032"
+                            y2="12.3073"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#332f4b"></stop>
+                            <stop
+                              offset="1"
+                              stopColor="#6d63a7"
+                              stopOpacity="0.14"
+                            ></stop>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
                     <div className="stepBoxIcon">
                       <div className="yellowIcon">
                         <svg
@@ -1331,8 +1315,8 @@ export default function WorkflowsSection() {
                       </svg>
                     </div>
                   </div>
-                  <BrowserView>
-                    <div className="stepBox position-relative">
+                  {/* Second workflow box - desktop only */}
+                  <div className="stepBox position-relative hidden md:block">
                       <div className="stepBoxIcon">
                         <div className="yellowIcon blue">
                           <svg
@@ -1430,7 +1414,6 @@ export default function WorkflowsSection() {
                         </svg>
                       </div>
                     </div>
-                  </BrowserView>
                 </div>
               </div>
             </div>

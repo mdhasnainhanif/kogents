@@ -1,13 +1,10 @@
-"use client";
-
 import Image from "next/image";
-import { BrowserView, MobileView } from "react-device-detect";
 
 const AgentOSTwo = () => {
   return (
     <>
-      <BrowserView>
-        <div className="d-none d-sm-block lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('/assets/img/bc/updates&media-bg.png')] pt0Mobile">
+      {/* Desktop View */}
+      <div className="hidden md:block d-none d-sm-block lg:py-24 py-8 bg-center bg-no-repeat bg-cover bg-[url('/assets/img/bc/updates&media-bg.png')] pt0Mobile">
           <div className="container px-5 mx-auto xl:px-0">
             <span className="buttonAnimation width_fit purple d-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mx-auto">
               Agent OS
@@ -157,9 +154,8 @@ const AgentOSTwo = () => {
             </div>
           </div>
         </div>
-      </BrowserView>
-      <MobileView>
-        <div className="sectionPadding bg-center bg-no-repeat bg-cover bg-[url('/assets/img/bc/revolutionize-bg.html')] mobile-section pt0Mobile">
+      {/* Mobile View */}
+      <div className="block md:hidden sectionPadding bg-center bg-no-repeat bg-cover bg-[url('/assets/img/bc/revolutionize-bg.html')] mobile-section pt0Mobile">
           <div className="container px-5 mx-auto xl:px-0">
             <span
               data-aos="fade-up"
@@ -229,7 +225,6 @@ const AgentOSTwo = () => {
             </div>
           </div>
         </div>
-      </MobileView>
     </>
   );
 };

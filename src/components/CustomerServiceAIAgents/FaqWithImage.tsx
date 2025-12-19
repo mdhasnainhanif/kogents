@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { BrowserView, MobileView } from "react-device-detect";
 
 interface FaqItem {
   id: number;
