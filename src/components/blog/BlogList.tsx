@@ -111,7 +111,7 @@ export default function BlogListSwiper({
         </h2>
 
         {description && (
-          <p className="text-center mt-3 mb-8 text-w-100 subHeading max-w-2xl mx-auto">
+          <p className="text-center mt-3 mb-5 text-w-100 subHeading max-w-2xl mx-auto">
             {description}
           </p>
         )}
