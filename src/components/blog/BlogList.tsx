@@ -106,7 +106,7 @@ export default function BlogListSwiper({
           Blogs
         </span>
 
-        <h2 className="text-center text-3xl md:text-5xl font-semibold text-white mb-5 mt-5">
+        <h2 className="text-center text-3xl md:text-5xl font-semibold text-white mb-5">
           Recent Blogs
         </h2>
 

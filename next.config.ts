@@ -115,8 +115,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
-    unoptimized: true,
-
+    unoptimized: true, // Keep unoptimized to avoid hydration mismatches with existing image usage
     remotePatterns: [
       {
         protocol: 'https',
@@ -135,7 +134,12 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
-  generateEtags: false,
+  generateEtags: true,
+  
+  // Experimental features for better performance
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons', '@gsap/react', 'gsap'],
+  },
 
   async headers() {
     return [
@@ -143,8 +147,9 @@ const nextConfig: NextConfig = {
         source: "/",
         headers: [
           { key: "Cache-Control", value: "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800" },
-          { key: "Link", value: "</assets/css/output.css>; rel=preload; as=style" },
+          { key: "Link", value: "</assets/css/bootstrap.css>; rel=preload; as=style" },
           { key: "Link", value: "</assets/css/styles.css>; rel=preload; as=style" },
+          { key: "Link", value: "</assets/fonts/Satoshi-Variable.ttf>; rel=preload; as=font; type=font/ttf; crossorigin=anonymous" },
         ],
       },
       {
