@@ -310,18 +310,22 @@ void main() {
         if (!containerRef.current || !renderer) return;
 
         renderer.dpr = Math.min(window.devicePixelRatio, 2);
-        const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
-        renderer.setSize(wCSS, hCSS);
+        // Use requestAnimationFrame to batch DOM reads and prevent forced reflows
+        requestAnimationFrame(() => {
+          if (!containerRef.current) return;
+          const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
+          renderer.setSize(wCSS, hCSS);
 
-        const dpr = renderer.dpr;
-        const w = wCSS * dpr;
-        const h = hCSS * dpr;
+          const dpr = renderer.dpr;
+          const w = wCSS * dpr;
+          const h = hCSS * dpr;
 
-        uniforms.iResolution.value = [w, h];
+          uniforms.iResolution.value = [w, h];
 
-        const { anchor, dir } = getAnchorAndDir(raysOrigin, w, h);
-        uniforms.rayPos.value = anchor;
-        uniforms.rayDir.value = dir;
+          const { anchor, dir } = getAnchorAndDir(raysOrigin, w, h);
+          uniforms.rayPos.value = anchor;
+          uniforms.rayDir.value = dir;
+        });
       };
 
       if (introAnimation) {
@@ -457,11 +461,15 @@ void main() {
     u.noiseAmount.value = noiseAmount;
     u.distortion.value = distortion;
 
-    const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
-    const dpr = renderer.dpr;
-    const { anchor, dir } = getAnchorAndDir(raysOrigin, wCSS * dpr, hCSS * dpr);
-    u.rayPos.value = anchor;
-    u.rayDir.value = dir;
+    // Cache DOM measurements to prevent forced reflows
+    requestAnimationFrame(() => {
+      if (!containerRef.current) return;
+      const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
+      const dpr = renderer.dpr;
+      const { anchor, dir } = getAnchorAndDir(raysOrigin, wCSS * dpr, hCSS * dpr);
+      u.rayPos.value = anchor;
+      u.rayDir.value = dir;
+    });
   }, [
     raysColor,
     raysSpeed,
@@ -478,18 +486,29 @@ void main() {
   ]);
 
   useEffect(() => {
+    // Cache rect to avoid repeated getBoundingClientRect calls
+    let cachedRect: DOMRect | null = null;
+    let rectCacheTime = 0;
+    const RECT_CACHE_DURATION = 100; // Cache for 100ms
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current || !rendererRef.current) return;
 
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
+      // Use cached rect if available, otherwise recalculate
+      const now = Date.now();
+      if (!cachedRect || now - rectCacheTime > RECT_CACHE_DURATION) {
+        cachedRect = containerRef.current.getBoundingClientRect();
+        rectCacheTime = now;
+      }
+
+      const x = (e.clientX - cachedRect.left) / cachedRect.width;
+      const y = (e.clientY - cachedRect.top) / cachedRect.height;
 
       mouseRef.current = { x, y };
     };
 
     if (followMouse) {
-      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove, { passive: true });
       return () => window.removeEventListener("mousemove", handleMouseMove);
     }
   }, [followMouse]);

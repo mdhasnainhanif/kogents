@@ -195,15 +195,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       type="font/ttf"
       crossOrigin="anonymous"
     />
-      {/* 1) Preload -> fetch early */}
-      {/* <link rel="preload" as="style" href="/assets/css/bootstrap.css" /> */}
-
-      {/* 2) Blocking apply (keeps layout stable) - preload for faster loading */}
+      {/* Load CSS synchronously to prevent FOUC (Flash of Unstyled Content) */}
+      {/* Preload hints for faster CSS loading */}
       <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
-      <link rel="stylesheet" href="/assets/css/bootstrap.css" />
-
-      {/* 3) Your styles - preload for faster loading */}
       <link rel="preload" href="/assets/css/styles.css" as="style" />
+      {/* Load CSS immediately to prevent unstyled flash */}
+      <link rel="stylesheet" href="/assets/css/bootstrap.css" />
       <link rel="stylesheet" href="/assets/css/styles.css" />
       {/* <link rel="stylesheet" href="/assets/css/styles.css" /> */}
       {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          

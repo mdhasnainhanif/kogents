@@ -181,7 +181,7 @@ const AIAgentSection = () => {
   return (
     <>
       <section
-        className="sectionPadding bg-center bg-no-repeat bg-cover newBg"
+        className="sectionPadding bg-center bg-no-repeat bg-cover newBg ai-agent-section-cls"
         id="aiAgentSection"
       >
         <div className="container">
@@ -214,6 +214,7 @@ const AIAgentSection = () => {
                         className="rounded-lg"
                         width={800}
                         height={600}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                   </div>
@@ -251,6 +252,7 @@ const AIAgentSection = () => {
                   className="rounded-lg"
                       width={card.colClass.includes("col-xl-6") ? 600 : 400}
                       height={card.colClass.includes("col-xl-6") ? 500 : 300}
+                      sizes={card.colClass.includes("col-xl-6") ? "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw" : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
                 />
                     <Link href={card.href} className="mt-8 mb-6 text-2xl font-medium text-w-500">
                       {card.title}
