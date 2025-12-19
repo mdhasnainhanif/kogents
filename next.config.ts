@@ -136,9 +136,25 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   
+  // Modern JavaScript target to reduce polyfills
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
+  
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: ['lucide-react', 'react-icons', '@gsap/react', 'gsap'],
+  },
+  
+  // Webpack configuration for modern JS and CSS minification
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      // Target modern browsers to reduce polyfills
+      config.target = ['web', 'es2020'];
+    }
+    return config;
   },
 
   async headers() {

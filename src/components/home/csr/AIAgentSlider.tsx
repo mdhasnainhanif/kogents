@@ -151,6 +151,7 @@ const AIAgentSlider = () => {
                             alt={agent.title}
                             width={800}
                             height={600}
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           />
                           <div className="pt-0 cardFullContent pb-3">
                             <a
