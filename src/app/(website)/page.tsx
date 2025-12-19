@@ -1,19 +1,30 @@
 export const dynamic = "force-dynamic";
 
 import HeroSection from "../../components/home/ssr/HeroSection";
-import ProductSection from "../../components/home/csr/ProductSection";
 import AIAgentSection from "../../components/home/ssr/AIAgentSection";
 import BenefitsSection from "../../components/home/ssr/BenefitsSection";
 import WorkflowsSection from "../../components/home/ssr/WorkflowsSection";
-import FAQSection from "../../components/solutions/csr/FAQSection";
-import AIAgentSlider from "@/components/home/csr/AIAgentSlider";
 import AgentOS from "@/components/home/ssr/AgentOS";
-import TechnologiesSlider from "@/components/CustomerServiceAIAgents/TechnologiesSlider";
 import KogentBenefits from "@/components/home/ssr/KogentBenefits";
 import type { Metadata } from "next";
-import PerformanceOptimizer from "@/components/PerformanceOptimizer";
-import BlogList from "@/components/blog/BlogList";
-import Summary from "@/components/ai-whatsapp-agent/Summary";
+import nextDynamic from "next/dynamic";
+
+// Lazy load client-side components for better code splitting
+// Note: Removing ssr: false as it's not allowed in Server Components
+// Dynamic imports still provide code splitting benefits
+const ProductSection = nextDynamic(() => import("../../components/home/csr/ProductSection"));
+
+const FAQSection = nextDynamic(() => import("@/components/solutions/csr/FAQSection"));
+
+const AIAgentSlider = nextDynamic(() => import("@/components/home/csr/AIAgentSlider"));
+
+const TechnologiesSlider = nextDynamic(() => import("@/components/CustomerServiceAIAgents/TechnologiesSlider"));
+
+const Summary = nextDynamic(() => import("@/components/ai-whatsapp-agent/Summary"));
+
+const BlogList = nextDynamic(() => import("@/components/blog/BlogList"));
+
+const PerformanceOptimizer = nextDynamic(() => import("@/components/PerformanceOptimizer"));
 
 const BASE = "https://kogents.ai";
 

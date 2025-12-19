@@ -69,11 +69,12 @@ const satoshi = localFont({
 });
 
 const poppins = Poppins({
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -81,8 +82,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
 
-      {/* Google Tag Manager - Loads 10 seconds after page load */}
-      <Script id="google-tag-manager" strategy="afterInteractive">
+      {/* Resource hints for third-party domains */}
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="https://js.clickrank.ai" />
+      <link rel="dns-prefetch" href="https://v2.zopim.com" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+
+      {/* Google Tag Manager - Loads 15 seconds after page load with lazyOnload */}
+      <Script id="google-tag-manager" strategy="lazyOnload">
           {`(function(){
             function loadGTM() {
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -93,67 +100,89 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }
             
             if(document.readyState==='complete'){
-              setTimeout(loadGTM,10000);
+              setTimeout(loadGTM,15000);
             } else {
               window.addEventListener('load',function(){
-                setTimeout(loadGTM,10000);
+                setTimeout(loadGTM,15000);
               });
             }
           })();`}
         </Script>
 
-        {/* ClickRank AI SEO Script */}
-        <Script id="clickrank-ai" strategy="afterInteractive">
+        {/* ClickRank AI SEO Script - Delayed loading */}
+        <Script id="clickrank-ai" strategy="lazyOnload">
           {`
             (function () {
-              var clickRankAi = document.createElement("script");
-              clickRankAi.src = "https://js.clickrank.ai/seo/f2471eb6-5b04-474d-ad2b-47cf003ec8bb/script?" + new Date().getTime();
-              clickRankAi.async = true;
-              document.head.appendChild(clickRankAi);
+              function loadClickRank() {
+                var clickRankAi = document.createElement("script");
+                clickRankAi.src = "https://js.clickrank.ai/seo/f2471eb6-5b04-474d-ad2b-47cf003ec8bb/script?" + new Date().getTime();
+                clickRankAi.async = true;
+                document.head.appendChild(clickRankAi);
+              }
+              
+              if(document.readyState==='complete'){
+                setTimeout(loadClickRank,20000);
+              } else {
+                window.addEventListener('load',function(){
+                  setTimeout(loadClickRank,20000);
+                });
+              }
             })();
           `}
         </Script>
 
-        {/* Zopim Chat Widget */}
-      <Script id="zopim-chat" strategy="afterInteractive">
+        {/* Zopim Chat Widget - Delayed loading */}
+      <Script id="zopim-chat" strategy="lazyOnload">
         {`
-          window.$zopim || (function (d, s) {
-            var z = (window.$zopim = function (c) {
-              z._.push(c);
-            });
-            var $ = (z.s = d.createElement(s));
-            var e = d.getElementsByTagName(s)[0];
+          (function() {
+            function loadZopim() {
+              window.$zopim || (function (d, s) {
+                var z = (window.$zopim = function (c) {
+                  z._.push(c);
+                });
+                var $ = (z.s = d.createElement(s));
+                var e = d.getElementsByTagName(s)[0];
 
-            z.set = function (o) {
-              z.set._.push(o);
-            };
-            z._ = [];
-            z.set._ = [];
+                z.set = function (o) {
+                  z.set._.push(o);
+                };
+                z._ = [];
+                z.set._ = [];
 
-            $.async = true;
-            $.setAttribute("charset", "utf-8");
-            $.src = "https://v2.zopim.com/?57jax3RnqduL2zjEGsBWVsnalYJVkElA";
-            $.type = "text/javascript";
-            z.t = +new Date();
+                $.async = true;
+                $.setAttribute("charset", "utf-8");
+                $.src = "https://v2.zopim.com/?57jax3RnqduL2zjEGsBWVsnalYJVkElA";
+                $.type = "text/javascript";
+                z.t = +new Date();
 
-            e.parentNode.insertBefore($, e);
-          })(document, "script");
-            // === Your extra code added here ===
-            window.addEventListener("load", () => {
-              const waitForZopim = setInterval(() => {
-                if (window.$zopim) {
-                  clearInterval(waitForZopim);
+                e.parentNode.insertBefore($, e);
+              })(document, "script");
+              
+              window.addEventListener("load", () => {
+                const waitForZopim = setInterval(() => {
+                  if (window.$zopim) {
+                    clearInterval(waitForZopim);
 
-                  $zopim(() => {
-                    $zopim.livechat.setOnUnreadMsgs((count) => {
-                      if (count >= 1) {
-                        $zopim.livechat.window.show();
-                      }
+                    $zopim(() => {
+                      $zopim.livechat.setOnUnreadMsgs((count) => {
+                        if (count >= 1) {
+                          $zopim.livechat.window.show();
+                        }
+                      });
                     });
-                  });
-                }
-              }, 100);
-            });
+                  }
+                }, 100);
+              });
+            }
+            
+            if(document.readyState==='complete'){
+              setTimeout(loadZopim,25000);
+            } else {
+              window.addEventListener('load',function(){
+                setTimeout(loadZopim,25000);
+              });
+            }
+          })();
         `}
       </Script>
 
@@ -169,12 +198,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {/* 1) Preload -> fetch early */}
       {/* <link rel="preload" as="style" href="/assets/css/bootstrap.css" /> */}
 
-      {/* 2) Blocking apply (keeps layout stable) */}
-      <link rel="preload" href="/assets/css/bootstrap.css" as="style" />      
+      {/* 2) Blocking apply (keeps layout stable) - preload for faster loading */}
+      <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
       <link rel="stylesheet" href="/assets/css/bootstrap.css" />
 
-      {/* 3) Your styles */}
-      <link rel="stylesheet" href={`/assets/css/styles.css?v=${Date.now()}`} />
+      {/* 3) Your styles - preload for faster loading */}
+      <link rel="preload" href="/assets/css/styles.css" as="style" />
+      <link rel="stylesheet" href="/assets/css/styles.css" />
       {/* <link rel="stylesheet" href="/assets/css/styles.css" /> */}
       {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          
       <link rel="preload" href="/assets/css/output.css" as="style" />           */}

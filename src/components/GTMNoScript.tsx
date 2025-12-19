@@ -13,7 +13,7 @@ export default function GTMNoScript() {
         iframe.style.display = "none";
         iframe.style.visibility = "hidden";
         document.body.prepend(iframe);
-      }, 20000); // 10s delay
+      }, 15000); // 15s delay to match GTM script delay
     };
 
     // If already loaded, run immediately; otherwise wait for load.
