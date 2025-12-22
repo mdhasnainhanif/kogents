@@ -82,14 +82,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
     <head>
 
-      {/* Resource hints for third-party domains */}
+      {/* Critical resource hints - fonts first for LCP */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      {/* Preload critical CSS early */}
+      <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
+      <link rel="preload" href="/assets/css/styles.css" as="style" />
+      {/* Non-critical third-party domains - dns-prefetch only */}
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://js.clickrank.ai" />
       <link rel="dns-prefetch" href="https://v2.zopim.com" />
       <link rel="dns-prefetch" href="https://widget.trustpilot.com" />
       <link rel="dns-prefetch" href="https://widget.clutch.co" />
       <link rel="dns-prefetch" href="https://images.provenexpert.com" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+      <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
       {/* Google Tag Manager - Loads 15 seconds after page load with lazyOnload */}
       <Script id="google-tag-manager" strategy="lazyOnload">
@@ -191,19 +197,73 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
     <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0"/>
 
+    {/* Preload fonts for LCP optimization - CRITICAL for LCP element */}
     <link
       rel="preload"
       href="/assets/fonts/Satoshi-Variable.ttf"
       as="font"
       type="font/ttf"
       crossOrigin="anonymous"
+      fetchPriority="high"
     />
-      {/* Preload LCP resources - hero section images */}
-      <link rel="preload" href="/assets/img/erp-011.svg" as="image" fetchPriority="high" />
+    {/* Poppins font is handled automatically by next/font/google with preconnect */}
+      {/* Preload LCP resources - hero section heading is LCP, not images */}
+      {/* Images are below fold, so lower priority */}
+      <link rel="preload" href="/assets/img/erp-011.svg" as="image" />
       <link rel="preload" href="/assets/img/back-img.svg" as="image" />
-      {/* Optimize CSS loading - preload for faster fetch, then load synchronously to prevent hydration mismatch */}
-      <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
-      <link rel="preload" href="/assets/css/styles.css" as="style" />
+      {/* Inline critical CSS for hero section (LCP element) - ensures immediate render */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          /* Critical: LCP element styles - must render immediately */
+          .heroSectionPadding { padding: 100px 0 70px; min-height: 400px; contain: layout style; }
+          .headingSize { 
+            font-size: 3.33rem; 
+            color: #fff; 
+            font-weight: 500; 
+            line-height: 1.1; 
+            margin: 0; 
+            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-display: swap;
+          }
+          .heroSectionPadding h2.headingSize { 
+            font-size: 3.6rem; 
+            font-display: swap; 
+            min-height: 4.5rem; 
+            contain: layout style;
+          }
+          .heroSection a, .heroSection h1, .heroSection h2, .heroSection p, .heroSection span, .modalBookFree, body, html { 
+            font-display: swap; 
+          }
+          .bookConsultation { 
+            color: #fff !important; 
+            position: relative; 
+            font-weight: 800; 
+            font-size: 2rem; 
+            margin: 0; 
+            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          }
+          .heroItems { 
+            min-height: 300px; 
+            contain: layout style;
+          }
+          @media (max-width: 768px) {
+            .heroSectionPadding { 
+              padding: 5.9375rem 0 2.3125rem !important; 
+              min-height: 350px; 
+            }
+            .heroSectionPadding h2.headingSize { 
+              font-size: 2.6rem !important; 
+              min-height: 3.5rem; 
+            }
+            .headingSize { 
+              font-size: 2.225rem !important; 
+            }
+            .heroItems { 
+              min-height: 250px; 
+            }
+          }
+        `
+      }} />
       {/* Load CSS synchronously to prevent FOUC and hydration mismatch */}
       <link rel="stylesheet" href="/assets/css/bootstrap.css" />
       <link rel="stylesheet" href="/assets/css/styles.css" />

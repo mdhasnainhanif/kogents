@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
-  // swcMinify: true,
+  swcMinify: true,
 
   // Comprehensive redirects as backup
   async redirects() {
@@ -153,6 +153,24 @@ const nextConfig: NextConfig = {
     if (!dev && !isServer) {
       // Target modern browsers to reduce polyfills
       config.target = ['web', 'es2020'];
+      
+      // Exclude polyfills for ES2020+ features
+      config.resolve.alias = {
+        ...config.resolve.alias,
+      };
+      
+      // Optimize module resolution to avoid unnecessary polyfills
+      config.optimization = {
+        ...config.optimization,
+        usedExports: true,
+        sideEffects: false,
+      };
+      
+      // Prevent webpack from adding polyfills
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        // Don't polyfill these - modern browsers support them natively
+      };
     }
     return config;
   },

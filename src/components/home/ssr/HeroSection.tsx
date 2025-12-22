@@ -100,7 +100,12 @@ const HeroSection = () => {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      openModal();
+                      // Use requestIdleCallback or setTimeout to avoid blocking INP
+                      if ('requestIdleCallback' in window) {
+                        requestIdleCallback(() => openModal(), { timeout: 100 });
+                      } else {
+                        setTimeout(() => openModal(), 0);
+                      }
                     }}
                     className="mt-2 buttonAnimation2 flex justify-center pink items-center gap-2 lg:mb-14 px-6 py-[.875rem] rounded-full border btn-border text-base font-medium bg-gd-secondary text-w-900"
                     aria-label="Request demo for Kogents AI"
