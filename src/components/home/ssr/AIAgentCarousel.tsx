@@ -81,10 +81,24 @@ const AIAgentCarousel: React.FC<AIAgentCarouselProps> = ({ agentCards }) => {
       }
     };
 
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      loadCarousel();
-    }, 100);
+    // Delay carousel initialization until after page load to avoid blocking LCP
+    const initCarousel = () => {
+      if (document.readyState === 'complete') {
+        // Use requestAnimationFrame to batch DOM operations
+        requestAnimationFrame(() => {
+          setTimeout(loadCarousel, 0);
+        });
+      } else {
+        window.addEventListener('load', () => {
+          requestAnimationFrame(() => {
+            setTimeout(loadCarousel, 0);
+          });
+        }, { once: true });
+      }
+    };
+    
+    // Delay initialization to avoid blocking initial render
+    const timer = setTimeout(initCarousel, 500);
 
     return () => {
       clearTimeout(timer);
