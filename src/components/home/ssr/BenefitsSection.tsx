@@ -87,9 +87,10 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ counterData }) => {
                   src="/assets/img/members.png"
                   alt="video image demo"
                   className="w-100"
-                  width={800}
-                  height={600}
+                  width={1224}
+                  height={1000}
                   priority
+                  style={{ aspectRatio: "1.22" }}
                 />
               </div>
             </div>

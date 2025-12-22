@@ -85,6 +85,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {/* Critical resource hints - fonts first for LCP */}
       <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      {/* Preload LCP font early (local) */}
+      <link
+        rel="preload"
+        href="/assets/fonts/Satoshi-Variable.ttf"
+        as="font"
+        type="font/ttf"
+        crossOrigin="anonymous"
+        fetchPriority="high"
+      />
       {/* Preload critical CSS early */}
       <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
       <link rel="preload" href="/assets/css/styles.css" as="style" />
@@ -96,6 +105,109 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="dns-prefetch" href="https://widget.clutch.co" />
       <link rel="dns-prefetch" href="https://images.provenexpert.com" />
       <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+      <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0"/>
+
+      {/* Preload LCP resources - hero heading is LCP, not images */}
+      <link rel="preload" href="/assets/img/erp-011.svg" as="image" />
+      <link rel="preload" href="/assets/img/back-img.svg" as="image" />
+
+      {/* Inline critical CSS for above-the-fold (no visual changes) */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          /* Critical: LCP element styles - must render immediately */
+          .heroSectionPadding { padding: 100px 0 70px; min-height: 400px; contain: layout style; }
+          .headingSize { 
+            font-size: 3.33rem; 
+            color: #fff; 
+            font-weight: 500; 
+            line-height: 1.1; 
+            margin: 0; 
+            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-display: swap;
+          }
+          .heroSectionPadding h2.headingSize { 
+            font-size: 3.6rem; 
+            font-display: swap; 
+            min-height: 4.5rem; 
+            contain: layout style;
+          }
+          .heroSection a, .heroSection h1, .heroSection h2, .heroSection p, .heroSection span, .modalBookFree, body, html { 
+            font-display: swap; 
+          }
+          .bookConsultation { 
+            color: #fff !important; 
+            position: relative; 
+            font-weight: 800; 
+            font-size: 2rem; 
+            margin: 0; 
+            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          }
+          .heroItems { 
+            min-height: 300px; 
+            contain: layout style;
+          }
+
+          /* Above-the-fold helpers (copied behavior from existing CSS) */
+          .paraColor { color: rgb(255 255 255 / 0.6) !important; }
+          .textPurpleForm { color: #766bc5; }
+          .bannerForm, .modal_form, .formBannerContact { contain: layout style; }
+          .form-group { margin-bottom: 1rem; }
+          .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.25rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          }
+          .form-control::placeholder { color: rgba(255, 255, 255, 0.6); }
+          .buttonAnimation2 {
+            background: conic-gradient(from var(--r), #5d51af 0, #eee 10%, #5d51af 20%);
+            animation: 3s linear infinite rotating;
+            position: relative;
+            z-index: 0;
+            font-size: 0.88rem;
+            border: 1px solid #5d51af;
+            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          }
+          .buttonAnimation2::after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: #5d51af;
+            inset: 1px;
+            border-radius: inherit;
+            z-index: -1;
+          }
+          .buttonAnimation2.pink {
+            background: conic-gradient(from var(--r), #ff4771 0, #eee 10%, #ff4771 20%);
+            border: 1px solid #ff4772;
+          }
+          .buttonAnimation2.pink::after { background: #ff4771; }
+
+          @media (max-width: 768px) {
+            .heroSectionPadding { 
+              padding: 5.9375rem 0 2.3125rem !important; 
+              min-height: 350px; 
+            }
+            .heroSectionPadding h2.headingSize { 
+              font-size: 2.6rem !important; 
+              min-height: 3.5rem; 
+            }
+            .headingSize { 
+              font-size: 2.225rem !important; 
+            }
+            .heroItems { 
+              min-height: 250px; 
+            }
+            .bookConsultation { font-size: 1.75rem; }
+          }
+        `
+      }} />
 
       {/* Google Tag Manager - Loads 15 seconds after page load with lazyOnload */}
       <Script id="google-tag-manager" strategy="lazyOnload">
@@ -194,76 +306,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           })();
         `}
       </Script>
-
-    <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0"/>
-
-    {/* Preload fonts for LCP optimization - CRITICAL for LCP element */}
-    <link
-      rel="preload"
-      href="/assets/fonts/Satoshi-Variable.ttf"
-      as="font"
-      type="font/ttf"
-      crossOrigin="anonymous"
-      fetchPriority="high"
-    />
-    {/* Poppins font is handled automatically by next/font/google with preconnect */}
-      {/* Preload LCP resources - hero section heading is LCP, not images */}
-      {/* Images are below fold, so lower priority */}
-      <link rel="preload" href="/assets/img/erp-011.svg" as="image" />
-      <link rel="preload" href="/assets/img/back-img.svg" as="image" />
-      {/* Inline critical CSS for hero section (LCP element) - ensures immediate render */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          /* Critical: LCP element styles - must render immediately */
-          .heroSectionPadding { padding: 100px 0 70px; min-height: 400px; contain: layout style; }
-          .headingSize { 
-            font-size: 3.33rem; 
-            color: #fff; 
-            font-weight: 500; 
-            line-height: 1.1; 
-            margin: 0; 
-            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-display: swap;
-          }
-          .heroSectionPadding h2.headingSize { 
-            font-size: 3.6rem; 
-            font-display: swap; 
-            min-height: 4.5rem; 
-            contain: layout style;
-          }
-          .heroSection a, .heroSection h1, .heroSection h2, .heroSection p, .heroSection span, .modalBookFree, body, html { 
-            font-display: swap; 
-          }
-          .bookConsultation { 
-            color: #fff !important; 
-            position: relative; 
-            font-weight: 800; 
-            font-size: 2rem; 
-            margin: 0; 
-            font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          }
-          .heroItems { 
-            min-height: 300px; 
-            contain: layout style;
-          }
-          @media (max-width: 768px) {
-            .heroSectionPadding { 
-              padding: 5.9375rem 0 2.3125rem !important; 
-              min-height: 350px; 
-            }
-            .heroSectionPadding h2.headingSize { 
-              font-size: 2.6rem !important; 
-              min-height: 3.5rem; 
-            }
-            .headingSize { 
-              font-size: 2.225rem !important; 
-            }
-            .heroItems { 
-              min-height: 250px; 
-            }
-          }
-        `
-      }} />
       {/* Load CSS synchronously to prevent FOUC and hydration mismatch */}
       <link rel="stylesheet" href="/assets/css/bootstrap.css" />
       <link rel="stylesheet" href="/assets/css/styles.css" />
