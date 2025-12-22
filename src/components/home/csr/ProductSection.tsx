@@ -12,6 +12,13 @@ const ProductSection = () => {
   const sectionRef = useRef(null);
 
   useGSAP(() => {
+    // GSAP/ScrollTrigger can incorrectly treat `window` as array-like (window.length === iframe count)
+    // and then attempt to inspect cross-origin iframe windows, causing SecurityError on mobile.
+    // Use a concrete scroller element instead of `window` to avoid iterating window.frames.
+    const scroller =
+      (typeof document !== "undefined" && document.scrollingElement) ||
+      (typeof document !== "undefined" ? document.documentElement : null);
+
     gsap.fromTo(
       ".visual-tilt-content",
       {
@@ -22,6 +29,7 @@ const ProductSection = () => {
         scale: 1,
         ease: "none",
         scrollTrigger: {
+          scroller: scroller as any,
           trigger: "#sectionTilt",
           start: "top 95%",
           end: "bottom 90%",
