@@ -128,6 +128,7 @@ const HeroSection = () => {
                 <Image
                   src="/assets/img/erp-011.svg"
                   priority
+                  fetchPriority="high"
                   alt="erp"
                   className="image_product-cards"
                   width={800}
@@ -135,6 +136,7 @@ const HeroSection = () => {
                 />
                 <Image
                   priority
+                  fetchPriority="high"
                   src="/assets/img/back-img.svg"
                   alt="background"
                   className="image_product-bg"

@@ -1,33 +1,97 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const AwardSection = ({ className }: { className?: string }) => {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   const [isTrustpilotLoaded, setIsTrustpilotLoaded] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-  // --- Clutch script load ---
+  // --- Deferred widget loading with intersection observer ---
   useEffect(() => {
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      'script[data-clutch-script="true"]'
-    );
+    if (!sectionRef.current) return;
 
-    if (existingScript) {
-      setIsScriptLoaded(true);
-      return;
-    }
+    const loadWidgets = () => {
+      // Delay widget loading until after page load + additional delay
+      const loadAfterPageLoad = () => {
+        if (document.readyState === 'complete') {
+          setTimeout(loadWidgetsImmediately, 3000);
+        } else {
+          window.addEventListener('load', () => {
+            setTimeout(loadWidgetsImmediately, 3000);
+          }, { once: true });
+        }
+      };
 
-    const script = document.createElement("script");
-    script.src = "https://widget.clutch.co/static/js/widget.js";
-    script.async = true;
-    script.type = "text/javascript";
-    script.setAttribute("data-clutch-script", "true");
+      const loadWidgetsImmediately = () => {
+        // --- Clutch script load ---
+        const existingScript = document.querySelector<HTMLScriptElement>(
+          'script[data-clutch-script="true"]'
+        );
 
-    script.onload = () => {
-      setIsScriptLoaded(true);
+        if (!existingScript) {
+          const script = document.createElement("script");
+          script.src = "https://widget.clutch.co/static/js/widget.js";
+          script.async = true;
+          script.type = "text/javascript";
+          script.setAttribute("data-clutch-script", "true");
+
+          script.onload = () => {
+            setIsScriptLoaded(true);
+          };
+
+          document.body.appendChild(script);
+        } else {
+          setIsScriptLoaded(true);
+        }
+
+        // --- Trustpilot script load ---
+        const existingTP = document.querySelector<HTMLScriptElement>(
+          'script[data-tp-script="true"]'
+        );
+
+        if (!existingTP) {
+          const tp = document.createElement("script");
+          tp.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+          tp.async = true;
+          tp.type = "text/javascript";
+          tp.setAttribute("data-tp-script", "true");
+
+          tp.onload = () => setIsTrustpilotLoaded(true);
+          document.body.appendChild(tp);
+        } else {
+          setIsTrustpilotLoaded(true);
+        }
+      };
+
+      // Use Intersection Observer to load when section is near viewport
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              loadAfterPageLoad();
+              observer.disconnect();
+            }
+          });
+        },
+        { rootMargin: '200px' } // Start loading 200px before section enters viewport
+      );
+
+      observer.observe(sectionRef.current!);
+
+      // Fallback: load after 5 seconds if section never becomes visible
+      const fallbackTimer = setTimeout(() => {
+        loadAfterPageLoad();
+        observer.disconnect();
+      }, 5000);
+
+      return () => {
+        observer.disconnect();
+        clearTimeout(fallbackTimer);
+      };
     };
 
-    document.body.appendChild(script);
+    loadWidgets();
   }, []);
 
   // --- Init clutch after script load ---
@@ -47,31 +111,8 @@ const AwardSection = ({ className }: { className?: string }) => {
     }
   }, [isScriptLoaded]);
 
-   /** -------------------------------
-   *  Load Trustpilot Script
-   * ------------------------------- */
-   useEffect(() => {
-    const existingTP = document.querySelector<HTMLScriptElement>(
-      'script[data-tp-script="true"]'
-    );
-
-    if (existingTP) {
-      setIsTrustpilotLoaded(true);
-      return;
-    }
-
-    const tp = document.createElement("script");
-    tp.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-    tp.async = true;
-    tp.type = "text/javascript";
-    tp.setAttribute("data-tp-script", "true");
-
-    tp.onload = () => setIsTrustpilotLoaded(true);
-    document.body.appendChild(tp);
-  }, []);
-
   return (
-    <div className={`sectionPadding pt-0 ${className}`}>
+    <div ref={sectionRef} className={`sectionPadding pt-0 ${className}`}>
       <div className="text-center mb-0">
         <span className="buttonAnimation yellow inline-block px-4 py-2 text-sm font-medium rounded-full border-blue-400 bg-b-600 text-tropical-indigo mb-6">
           Listings

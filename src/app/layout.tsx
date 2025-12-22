@@ -86,6 +86,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://js.clickrank.ai" />
       <link rel="dns-prefetch" href="https://v2.zopim.com" />
+      <link rel="dns-prefetch" href="https://widget.trustpilot.com" />
+      <link rel="dns-prefetch" href="https://widget.clutch.co" />
+      <link rel="dns-prefetch" href="https://images.provenexpert.com" />
       <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
 
       {/* Google Tag Manager - Loads 15 seconds after page load with lazyOnload */}
@@ -195,11 +198,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       type="font/ttf"
       crossOrigin="anonymous"
     />
-      {/* Load CSS synchronously to prevent FOUC (Flash of Unstyled Content) */}
-      {/* Preload hints for faster CSS loading */}
+      {/* Preload LCP resources - hero section images */}
+      <link rel="preload" href="/assets/img/erp-011.svg" as="image" fetchPriority="high" />
+      <link rel="preload" href="/assets/img/back-img.svg" as="image" />
+      {/* Optimize CSS loading - preload for faster fetch, then load synchronously to prevent hydration mismatch */}
       <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
       <link rel="preload" href="/assets/css/styles.css" as="style" />
-      {/* Load CSS immediately to prevent unstyled flash */}
+      {/* Load CSS synchronously to prevent FOUC and hydration mismatch */}
       <link rel="stylesheet" href="/assets/css/bootstrap.css" />
       <link rel="stylesheet" href="/assets/css/styles.css" />
       {/* <link rel="stylesheet" href="/assets/css/styles.css" /> */}
