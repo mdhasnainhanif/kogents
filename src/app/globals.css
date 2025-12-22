@@ -17,12 +17,18 @@ html {
 
 .cv {
   content-visibility: auto;
-  contain-intrinsic-size: 1000px 800px;
+  contain-intrinsic-size: 2000px 1000px;
 }
 
 .ai-agent-section-cls {
   min-height: 600px;
   content-visibility: auto;
+}
+
+@media (max-width: 768px) {
+  .cv {
+    contain-intrinsic-size: 2500px 1200px;
+  }
 }
 
 .breadcrumb-nav {

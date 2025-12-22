@@ -194,12 +194,13 @@ export default function HeaderV2() {
                       <div>
                         <div className="dropdownImgMain">
                           <Image
-                            width={300}
-                            height={200}
+                            width={500}
+                            height={500}
                             className="w-100"
                             src="/assets/img/platform.webp"
                             alt="Platform overview"
                             priority
+                            style={{ aspectRatio: "1.00" }}
                           />
                         </div>
                       </div>
@@ -264,12 +265,13 @@ export default function HeaderV2() {
                       <div>
                         <div className="dropdownImgMain">
                           <Image
-                            width={300}
-                            height={200}
+                            width={500}
+                            height={500}
                             className="w-100"
                             src="/assets/img/solutions.webp"
                             alt="Solutions overview"
                             priority
+                            style={{ aspectRatio: "1.00" }}
                           />
                         </div>
                       </div>

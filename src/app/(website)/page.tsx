@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import HeroSection from "../../components/home/ssr/HeroSection";
 import AIAgentSection from "../../components/home/ssr/AIAgentSection";
 import BenefitsSection from "../../components/home/ssr/BenefitsSection";
@@ -7,24 +5,15 @@ import WorkflowsSection from "../../components/home/ssr/WorkflowsSection";
 import AgentOS from "@/components/home/ssr/AgentOS";
 import KogentBenefits from "@/components/home/ssr/KogentBenefits";
 import type { Metadata } from "next";
-import nextDynamic from "next/dynamic";
-
-// Lazy load client-side components for better code splitting
-// Note: Removing ssr: false as it's not allowed in Server Components
-// Dynamic imports still provide code splitting benefits
-const ProductSection = nextDynamic(() => import("../../components/home/csr/ProductSection"));
-
-const FAQSection = nextDynamic(() => import("@/components/solutions/csr/FAQSection"));
-
-const AIAgentSlider = nextDynamic(() => import("@/components/home/csr/AIAgentSlider"));
-
-const TechnologiesSlider = nextDynamic(() => import("@/components/CustomerServiceAIAgents/TechnologiesSlider"));
-
-const Summary = nextDynamic(() => import("@/components/ai-whatsapp-agent/Summary"));
-
-const BlogList = nextDynamic(() => import("@/components/blog/BlogList"));
-
-const PerformanceOptimizer = nextDynamic(() => import("@/components/PerformanceOptimizer"));
+import DeferredAfterLoad from "@/components/client-only/DeferredAfterLoad";
+import DeferredOnVisible from "@/components/client-only/DeferredOnVisible";
+import AIAgentSliderClient from "@/components/client-only/AIAgentSliderClient";
+import BlogListClient from "@/components/client-only/BlogListClient";
+import FAQSectionClient from "@/components/client-only/FAQSectionClient";
+import PerformanceOptimizerClient from "@/components/client-only/PerformanceOptimizerClient";
+import ProductSectionClient from "@/components/client-only/ProductSectionClient";
+import SummaryClient from "@/components/client-only/SummaryClient";
+import TechnologiesSliderClient from "@/components/client-only/TechnologiesSliderClient";
 
 const BASE = "https://kogents.ai";
 
@@ -156,10 +145,15 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <PerformanceOptimizer />
+      {/* Defer non-critical client work for mobile */} 
+      <DeferredAfterLoad delayMs={1500}>
+        <PerformanceOptimizerClient />
+      </DeferredAfterLoad>
       <HeroSection />
       <section className="cv">
-        <ProductSection />
+        <DeferredOnVisible>
+          <ProductSectionClient />
+        </DeferredOnVisible>
       </section>
       <AIAgentSection />
       <div
@@ -173,25 +167,35 @@ export default function HomePage() {
           <WorkflowsSection />
         </section>
         <section className="cv">
-          <AIAgentSlider />
+          <DeferredOnVisible>
+            <AIAgentSliderClient />
+          </DeferredOnVisible>
         </section>
         <section className="cv">
           <AgentOS />
         </section>
         <section className="cv">
-          <TechnologiesSlider />
+          <DeferredOnVisible>
+            <TechnologiesSliderClient />
+          </DeferredOnVisible>
         </section>
         <section className="cv">
           <KogentBenefits />
         </section>
         <section className="cv">
-          <Summary data={summaryData} />
+          <DeferredOnVisible>
+            <SummaryClient data={summaryData} />
+          </DeferredOnVisible>
         </section>
         <section className="cv">
-          <FAQSection showLoadMore={true} />
+          <DeferredOnVisible>
+            <FAQSectionClient showLoadMore={true} />
+          </DeferredOnVisible>
         </section>
         <section className="cv">
-          <BlogList />
+          <DeferredOnVisible>
+            <BlogListClient />
+          </DeferredOnVisible>
         </section>
       </div>
     </>
