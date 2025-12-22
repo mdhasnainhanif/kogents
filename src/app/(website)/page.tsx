@@ -169,18 +169,30 @@ export default function HomePage() {
         <section className="cv">
           <BenefitsSection counterData={counterData} />
         </section>
-        <WorkflowsSection />
+        <section className="cv">
+          <WorkflowsSection />
+        </section>
         <section className="cv">
           <AIAgentSlider />
         </section>
-        <AgentOS />
-        <TechnologiesSlider />
-        <KogentBenefits />
-        <Summary data={summaryData} />
+        <section className="cv">
+          <AgentOS />
+        </section>
+        <section className="cv">
+          <TechnologiesSlider />
+        </section>
+        <section className="cv">
+          <KogentBenefits />
+        </section>
+        <section className="cv">
+          <Summary data={summaryData} />
+        </section>
         <section className="cv">
           <FAQSection showLoadMore={true} />
         </section>
-        <BlogList />
+        <section className="cv">
+          <BlogList />
+        </section>
       </div>
     </>
   );
