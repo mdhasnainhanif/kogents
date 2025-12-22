@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
-  swcMinify: true,
 
   // Comprehensive redirects as backup
   async redirects() {
@@ -171,6 +170,19 @@ const nextConfig: NextConfig = {
         ...config.resolve.fallback,
         // Don't polyfill these - modern browsers support them natively
       };
+
+      // Emit modern syntax to reduce legacy transforms/polyfills in client bundles
+      if (config.output) {
+        config.output.environment = {
+          ...config.output.environment,
+          arrowFunction: true,
+          const: true,
+          destructuring: true,
+          forOf: true,
+          dynamicImport: true,
+          module: true,
+        };
+      }
     }
     return config;
   },
