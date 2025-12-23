@@ -9,6 +9,7 @@ import GTMNoScript from "@/components/GTMNoScript";
 import CTAModalClient from "@/components/CTAModalClient";
 import ResourceErrorHandler from "@/components/ResourceErrorHandler";
 import ResourceLoadingTest from "@/components/ResourceLoadingTest";
+import DeferredStylesheet from "@/components/DeferredStylesheet";
 
 export const metadata: Metadata = {
   title: {
@@ -80,41 +81,40 @@ const poppins = Poppins({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${satoshi.variable} ${poppins.variable}`}>
-    <head>
+      <head>
 
-      {/* Critical resource hints - fonts first for LCP */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      {/* Preload LCP font early (local) */}
-      <link
-        rel="preload"
-        href="/assets/fonts/Satoshi-Variable.ttf"
-        as="font"
-        type="font/ttf"
-        crossOrigin="anonymous"
-        fetchPriority="high"
-      />
-      {/* Preload critical CSS early */}
-      <link rel="preload" href="/assets/css/bootstrap.css" as="style" />
-      <link rel="preload" href="/assets/css/styles.css" as="style" />
-      {/* Non-critical third-party domains - dns-prefetch only */}
-      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-      <link rel="dns-prefetch" href="https://js.clickrank.ai" />
-      <link rel="dns-prefetch" href="https://v2.zopim.com" />
-      <link rel="dns-prefetch" href="https://widget.trustpilot.com" />
-      <link rel="dns-prefetch" href="https://widget.clutch.co" />
-      <link rel="dns-prefetch" href="https://images.provenexpert.com" />
-      <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+        {/* Critical resource hints */}
+        {/* Note: Google Fonts, Satoshi, and LCP images are handled via next/font or explicit preloads below */}
 
-      <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0"/>
 
-      {/* Preload LCP resources - hero heading is LCP, not images */}
-      <link rel="preload" href="/assets/img/erp-011.svg" as="image" />
-      <link rel="preload" href="/assets/img/back-img.svg" as="image" />
 
-      {/* Inline critical CSS for above-the-fold (no visual changes) */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+        {/* Preload critical CSS early */}
+        {/* Defer non-critical CSS using print/onload pattern to avoid render blocking */}
+        <DeferredStylesheet href="/assets/css/bootstrap.css" />
+        <DeferredStylesheet href="/assets/css/styles.css" />
+        <noscript>
+          <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+          <link rel="stylesheet" href="/assets/css/styles.css" />
+        </noscript>
+
+        {/* Non-critical third-party domains - dns-prefetch only */}
+
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://js.clickrank.ai" />
+        <link rel="dns-prefetch" href="https://v2.zopim.com" />
+        <link rel="dns-prefetch" href="https://widget.trustpilot.com" />
+        <link rel="dns-prefetch" href="https://widget.clutch.co" />
+        <link rel="dns-prefetch" href="https://images.provenexpert.com" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+        <meta name="trustpilot-one-time-domain-verification-id" content="637d740f-7815-4043-98c0-db6bc4cfc2a0" />
+
+        {/* Preload LCP resources - hero heading is LCP, not images */}
+        {/* Removed image preloads as they are not the LCP element */}
+
+        {/* Inline critical CSS for above-the-fold (no visual changes) */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
           /* Critical: LCP element styles - must render immediately */
           .heroSectionPadding { padding: 100px 0 70px; min-height: 400px; contain: layout style; }
           .headingSize { 
@@ -207,10 +207,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             .bookConsultation { font-size: 1.75rem; }
           }
         `
-      }} />
+        }} />
 
-      {/* Google Tag Manager - Loads 15 seconds after page load with lazyOnload */}
-      <Script id="google-tag-manager" strategy="lazyOnload">
+        {/* Google Tag Manager - Loads 15 seconds after page load with lazyOnload */}
+        <Script id="google-tag-manager" strategy="lazyOnload">
           {`(function(){
             function loadGTM() {
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -235,10 +235,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`
             (function () {
               function loadClickRank() {
-                var clickRankAi = document.createElement("script");
-                clickRankAi.src = "https://js.clickrank.ai/seo/f2471eb6-5b04-474d-ad2b-47cf003ec8bb/script?" + new Date().getTime();
-                clickRankAi.async = true;
-                document.head.appendChild(clickRankAi);
+              var clickRankAi = document.createElement("script");
+              clickRankAi.src = "https://js.clickrank.ai/seo/f2471eb6-5b04-474d-ad2b-47cf003ec8bb/script?" + new Date().getTime();
+              clickRankAi.async = true;
+              document.head.appendChild(clickRankAi);
               }
               
               if(document.readyState==='complete'){
@@ -253,47 +253,47 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
 
         {/* Zopim Chat Widget - Delayed loading */}
-      <Script id="zopim-chat" strategy="lazyOnload">
-        {`
+        <Script id="zopim-chat" strategy="lazyOnload">
+          {`
           (function() {
             function loadZopim() {
-              window.$zopim || (function (d, s) {
-                var z = (window.$zopim = function (c) {
-                  z._.push(c);
-                });
-                var $ = (z.s = d.createElement(s));
-                var e = d.getElementsByTagName(s)[0];
+          window.$zopim || (function (d, s) {
+            var z = (window.$zopim = function (c) {
+              z._.push(c);
+            });
+            var $ = (z.s = d.createElement(s));
+            var e = d.getElementsByTagName(s)[0];
 
-                z.set = function (o) {
-                  z.set._.push(o);
-                };
-                z._ = [];
-                z.set._ = [];
+            z.set = function (o) {
+              z.set._.push(o);
+            };
+            z._ = [];
+            z.set._ = [];
 
-                $.async = true;
-                $.setAttribute("charset", "utf-8");
-                $.src = "https://v2.zopim.com/?57jax3RnqduL2zjEGsBWVsnalYJVkElA";
-                $.type = "text/javascript";
-                z.t = +new Date();
+            $.async = true;
+            $.setAttribute("charset", "utf-8");
+            $.src = "https://v2.zopim.com/?57jax3RnqduL2zjEGsBWVsnalYJVkElA";
+            $.type = "text/javascript";
+            z.t = +new Date();
 
-                e.parentNode.insertBefore($, e);
-              })(document, "script");
+            e.parentNode.insertBefore($, e);
+          })(document, "script");
               
-              window.addEventListener("load", () => {
-                const waitForZopim = setInterval(() => {
-                  if (window.$zopim) {
-                    clearInterval(waitForZopim);
+            window.addEventListener("load", () => {
+              const waitForZopim = setInterval(() => {
+                if (window.$zopim) {
+                  clearInterval(waitForZopim);
 
-                    $zopim(() => {
-                      $zopim.livechat.setOnUnreadMsgs((count) => {
-                        if (count >= 1) {
-                          $zopim.livechat.window.show();
-                        }
-                      });
+                  $zopim(() => {
+                    $zopim.livechat.setOnUnreadMsgs((count) => {
+                      if (count >= 1) {
+                        $zopim.livechat.window.show();
+                      }
                     });
-                  }
-                }, 100);
-              });
+                  });
+                }
+              }, 100);
+            });
             }
             
             if(document.readyState==='complete'){
@@ -305,15 +305,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }
           })();
         `}
-      </Script>
-      {/* Load CSS synchronously to prevent FOUC and hydration mismatch */}
-      <link rel="stylesheet" href="/assets/css/bootstrap.css" />
-      <link rel="stylesheet" href="/assets/css/styles.css" />
-      {/* <link rel="stylesheet" href="/assets/css/styles.css" /> */}
-      {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          
+        </Script>
+        {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          
       <link rel="preload" href="/assets/css/output.css" as="style" />           */}
-      <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/x-icon" />
-    </head>
+        <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/x-icon" />
+      </head>
 
 
       <body className="relative overflow-x-hidden font-normal bg-b-900">
@@ -323,8 +319,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CTAModalClient />
         <ResourceLoadingTest />
 
-  
-        
+
+
 
       </body>
     </html>

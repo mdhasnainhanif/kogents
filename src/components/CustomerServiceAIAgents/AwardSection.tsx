@@ -24,23 +24,23 @@ const AwardSection = ({ className }: { className?: string }) => {
       };
 
       const loadWidgetsImmediately = () => {
-        // --- Clutch script load ---
-        const existingScript = document.querySelector<HTMLScriptElement>(
-          'script[data-clutch-script="true"]'
-        );
+  // --- Clutch script load ---
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      'script[data-clutch-script="true"]'
+    );
 
         if (!existingScript) {
-          const script = document.createElement("script");
-          script.src = "https://widget.clutch.co/static/js/widget.js";
-          script.async = true;
-          script.type = "text/javascript";
-          script.setAttribute("data-clutch-script", "true");
+    const script = document.createElement("script");
+    script.src = "https://widget.clutch.co/static/js/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.setAttribute("data-clutch-script", "true");
 
-          script.onload = () => {
-            setIsScriptLoaded(true);
-          };
+    script.onload = () => {
+      setIsScriptLoaded(true);
+    };
 
-          document.body.appendChild(script);
+    document.body.appendChild(script);
         } else {
           setIsScriptLoaded(true);
         }
