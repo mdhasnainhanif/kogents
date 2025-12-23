@@ -75,6 +75,18 @@ const AIAgentCarousel: React.FC<AIAgentCarouselProps> = ({ agentCards }) => {
               },
             },
           });
+
+          // Accessibility: add aria-labels to dot buttons (no UI change)
+          setTimeout(() => {
+            const dots = carouselRef.current?.querySelectorAll(".owl-dot");
+            if (!dots) return;
+            dots.forEach((dot, index) => {
+              const btn = dot as HTMLButtonElement;
+              if (btn && !btn.getAttribute("aria-label")) {
+                btn.setAttribute("aria-label", `Go to slide ${index + 1}`);
+              }
+            });
+          }, 100);
         }
       } catch (error) {
         console.error("Error loading carousel:", error);
@@ -124,8 +136,9 @@ const AIAgentCarousel: React.FC<AIAgentCarouselProps> = ({ agentCards }) => {
                 src={card.image}
                 alt={card.imageAlt}
                 className="rounded-lg"
-                width={400}
-                height={300}
+                width={500}
+                height={384}
+                style={{ aspectRatio: "1.30" }}
               />
               <Link href={card.href} className="mt-8 mb-6 text-2xl font-medium text-w-500">
                 {card.title}

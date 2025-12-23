@@ -250,9 +250,10 @@ const AIAgentSection = () => {
                       src={card.image}
                       alt={card.imageAlt}
                   className="rounded-lg"
-                      width={card.colClass.includes("col-xl-6") ? 600 : 400}
-                      height={card.colClass.includes("col-xl-6") ? 500 : 300}
+                      width={card.colClass.includes("col-xl-6") ? 650 : 500}
+                      height={card.colClass.includes("col-xl-6") ? 500 : 384}
                       sizes={card.colClass.includes("col-xl-6") ? "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw" : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"}
+                      style={{ aspectRatio: "1.30" }}
                 />
                     <Link href={card.href} className="mt-8 mb-6 text-2xl font-medium text-w-500">
                       {card.title}

@@ -12,6 +12,11 @@ const ProductSection = () => {
   const sectionRef = useRef(null);
 
   useGSAP(() => {
+    // Prevent GSAP from iterating window.frames (can throw SecurityError on mobile)
+    const scroller =
+      (typeof document !== "undefined" && document.scrollingElement) ||
+      (typeof document !== "undefined" ? document.documentElement : null);
+
     gsap.fromTo(
       ".visual-tilt-content",
       {
@@ -22,6 +27,7 @@ const ProductSection = () => {
         scale: 1,
         ease: "none",
         scrollTrigger: {
+          scroller: scroller as any,
           trigger: "#sectionTilt",
           start: "top 95%",
           end: "bottom 90%",
