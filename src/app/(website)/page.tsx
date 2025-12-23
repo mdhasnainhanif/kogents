@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 import HeroSection from "../../components/home/ssr/HeroSection";
 import AIAgentSection from "../../components/home/ssr/AIAgentSection";
