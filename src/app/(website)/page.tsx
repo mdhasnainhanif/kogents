@@ -1,3 +1,5 @@
+// export const dynamic = "force-dynamic";
+
 import HeroSection from "../../components/home/ssr/HeroSection";
 import AIAgentSection from "../../components/home/ssr/AIAgentSection";
 import BenefitsSection from "../../components/home/ssr/BenefitsSection";
