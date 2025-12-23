@@ -12,9 +12,13 @@ const ProductSection = () => {
   const sectionRef = useRef(null);
 
   useGSAP(() => {
+<<<<<<< HEAD
     // GSAP/ScrollTrigger can incorrectly treat `window` as array-like (window.length === iframe count)
     // and then attempt to inspect cross-origin iframe windows, causing SecurityError on mobile.
     // Use a concrete scroller element instead of `window` to avoid iterating window.frames.
+=======
+    // Prevent GSAP from iterating window.frames (can throw SecurityError on mobile)
+>>>>>>> d9e8cff33b61b250ddc1380bba7ceae24fc9acb8
     const scroller =
       (typeof document !== "undefined" && document.scrollingElement) ||
       (typeof document !== "undefined" ? document.documentElement : null);

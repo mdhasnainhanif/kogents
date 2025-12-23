@@ -76,7 +76,11 @@ const AIAgentCarousel: React.FC<AIAgentCarouselProps> = ({ agentCards }) => {
             },
           });
 
+<<<<<<< HEAD
           // Accessibility: add aria-labels to dot buttons
+=======
+          // Accessibility: add aria-labels to dot buttons (no UI change)
+>>>>>>> d9e8cff33b61b250ddc1380bba7ceae24fc9acb8
           setTimeout(() => {
             const dots = carouselRef.current?.querySelectorAll(".owl-dot");
             if (!dots) return;
