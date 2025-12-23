@@ -305,8 +305,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }
           })();
         `}
+<<<<<<< HEAD
         </Script>
         {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          
+=======
+      </Script>
+      {/* Load CSS synchronously to prevent FOUC and hydration mismatch */}
+      <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+      <link rel="stylesheet" href="/assets/css/styles.css" />
+      {/* <link rel="stylesheet" href="/assets/css/styles.css" /> */}
+      {/* <link rel="stylesheet" href="/assets/css/output.css" as="style" />          
+>>>>>>> 1a2ab8182b317c6285012220162353987d57c6a2
       <link rel="preload" href="/assets/css/output.css" as="style" />           */}
         <link rel="shortcut icon" href="/assets/img/favicon.svg" type="image/x-icon" />
       </head>
