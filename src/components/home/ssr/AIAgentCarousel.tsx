@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRightIcon } from "@/icons";
 import Link from "next/link";
+import useEmblaCarousel from "embla-carousel-react";
 
 interface AIAgentCard {
   id: string;
@@ -22,141 +23,103 @@ interface AIAgentCarouselProps {
 }
 
 const AIAgentCarousel: React.FC<AIAgentCarouselProps> = ({ agentCards }) => {
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    skipSnaps: false,
+    dragFree: false,
+    slidesToScroll: 1,
+    containScroll: "trimSnaps",
+    breakpoints: {
+      0: { slidesToScroll: 1 },
+      768: { slidesToScroll: 2 },
+      1024: { slidesToScroll: 3 },
+    },
+  });
+
+  // Dots state
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const slideCount = agentCards.length;
+
+  const scrollTo = useCallback(
+    (idx: number) => (emblaApi ? emblaApi.scrollTo(idx) : undefined),
+    [emblaApi]
+  );
 
   useEffect(() => {
-    const loadCarousel = async () => {
-      if (typeof window === "undefined" || !carouselRef.current) return;
+    if (!emblaApi) return;
 
-      try {
-        // Dynamically import jQuery and Owl Carousel
-        const jQuery = (await import("jquery")).default as any;
-        (window as any).$ = jQuery;
-        (window as any).jQuery = jQuery;
-
-        // Import Owl Carousel
-        // @ts-expect-error: plugin no types
-        await import("owl.carousel");
-
-        // Inject Owl CSS if not already present
-        if (!document.querySelector('link[href*="owl.carousel.min.css"]')) {
-          const link = document.createElement("link");
-          link.rel = "stylesheet";
-          link.href =
-            "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";
-          document.head.appendChild(link);
-        }
-
-        // Initialize Owl Carousel
-        if (carouselRef.current && jQuery && jQuery.fn.owlCarousel) {
-          jQuery(carouselRef.current).owlCarousel({
-            loop: true,
-            margin: 30,
-            nav: false,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            responsive: {
-              0: {
-                items: 1,
-                nav: false,
-                dots: true,
-              },
-              768: {
-                items: 2,
-                nav: false,
-                dots: true,
-              },
-              1024: {
-                items: 3,
-                nav: true,
-                dots: false,
-              },
-            },
-          });
-
-          // Accessibility: add aria-labels to dot buttons
-          setTimeout(() => {
-            const dots = carouselRef.current?.querySelectorAll(".owl-dot");
-            if (!dots) return;
-            dots.forEach((dot, index) => {
-              const btn = dot as HTMLButtonElement;
-              if (btn && !btn.getAttribute("aria-label")) {
-                btn.setAttribute("aria-label", `Go to slide ${index + 1}`);
-              }
-            });
-          }, 100);
-        }
-      } catch (error) {
-        console.error("Error loading carousel:", error);
-      }
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
     };
-
-    // Delay carousel initialization until after page load to avoid blocking LCP
-    const initCarousel = () => {
-      if (document.readyState === 'complete') {
-        // Use requestAnimationFrame to batch DOM operations
-        requestAnimationFrame(() => {
-          setTimeout(loadCarousel, 0);
-        });
-      } else {
-        window.addEventListener('load', () => {
-          requestAnimationFrame(() => {
-            setTimeout(loadCarousel, 0);
-          });
-        }, { once: true });
-      }
-    };
-    
-    // Delay initialization to avoid blocking initial render
-    const timer = setTimeout(initCarousel, 500);
-
+    emblaApi.on("select", onSelect);
+    onSelect();
     return () => {
-      clearTimeout(timer);
-      // Cleanup carousel on unmount
-      if (carouselRef.current && (window as any).jQuery) {
-        try {
-          (window as any).jQuery(carouselRef.current).trigger("destroy.owl.carousel");
-        } catch (error) {
-          console.error("Error destroying carousel:", error);
-        }
-      }
+      emblaApi.off("select", onSelect);
     };
-  }, [agentCards]);
+  }, [emblaApi]);
 
   return (
     <div className="d-block d-md-none mt-4">
-      <div ref={carouselRef} className="owl-carousel owl-theme">
-        {agentCards.map((card) => (
-          <div key={card.id} className="item">
-            <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-              <Image
-                loading="lazy"
-                src={card.image}
-                alt={card.imageAlt}
-                className="rounded-lg"
-                width={500}
-                height={384}
-                style={{ aspectRatio: "1.30" }}
-              />
-              <Link href={card.href} className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                {card.title}
-              </Link>
-              <ul className="arrowPointUl">
-                {card.description.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-              <a
-                className={`w_fit ${card.buttonAnimation} inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo`}
-                href="/chatbot/brief"
-              >
-                Request Access
-                <ArrowRightIcon style={{ height: 24 }} />
-              </a>
+      <div
+        className="owl-carousel owl-theme"
+        ref={emblaRef}
+        style={{ overflow: "hidden" }}
+      >
+        <div className="embla__container" style={{ display: "flex" }}>
+          {agentCards.map((card) => (
+            <div
+              className="item embla__slide"
+              key={card.id}
+              style={{ minWidth: 0, flex: "0 0 100%" }}
+            >
+              <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
+                <Image
+                  loading="lazy"
+                  src={card.image}
+                  alt={card.imageAlt}
+                  className="rounded-lg"
+                  width={500}
+                  height={384}
+                  style={{ aspectRatio: "1.30" }}
+                />
+                <Link
+                  href={card.href}
+                  className="mt-8 mb-6 text-2xl font-medium text-w-500"
+                >
+                  {card.title}
+                </Link>
+                <ul className="arrowPointUl">
+                  {card.description.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+                <a
+                  className={`w_fit ${card.buttonAnimation} inline-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo`}
+                  href="/chatbot/brief"
+                >
+                  Request Access
+                  <ArrowRightIcon style={{ height: 24 }} />
+                </a>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+      </div>
+      {/* Carousel dots */}
+      <div className="embla__dots text-center mt-2" style={{ display: "flex", justifyContent: "center", gap: 8 }}>
+        {Array.from({ length: slideCount }).map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            className={
+              "owl-dot embla__dot" +
+              (selectedIndex === idx ? " active" : "")
+            }
+            aria-label={`Go to slide ${idx + 1}`}
+            onClick={() => scrollTo(idx)}
+            style={{ width: 12, height: 12, borderRadius: "50%", border: 0, background: selectedIndex === idx ? "#766bc5" : "#fff", margin: "0 2px" }}
+          />
         ))}
       </div>
     </div>
@@ -164,4 +127,3 @@ const AIAgentCarousel: React.FC<AIAgentCarouselProps> = ({ agentCards }) => {
 };
 
 export default AIAgentCarousel;
-
