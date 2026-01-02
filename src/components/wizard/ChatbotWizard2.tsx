@@ -417,7 +417,9 @@ function ChatbotWizard2() {
         }
         
         // Redirect IMMEDIATELY - no reset needed as user is leaving the page
-        router.push("/thank-you");
+        // Include name in URL if available
+        const nameParam = data.name ? `?name=${encodeURIComponent(data.name)}` : '';
+        router.push(`/thank-you${nameParam}`);
       } else {
         console.error("❌ Brief submission failed:", result.error);
         setSubmitError(result.error || "Form submission failed");

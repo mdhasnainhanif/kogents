@@ -7,6 +7,7 @@ import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
 import Image from "next/image";
 import { ChatWidget } from "../ChatWidget";
+import zopimEvents from "@/utils/zopim-events";
 
 interface UseCaseStepProps {
   data: ChatbotWizardData;
@@ -1506,6 +1507,9 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
       useState<string>("customer-support");
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
+    
+    // Track current zopim tag
+    const currentUseCaseTagRef = useRef<string | null>(null);
 
     const handleUseCaseSelect = (useCaseId: string) => {
       setSelectedUseCase(useCaseId);
@@ -1521,6 +1525,16 @@ export const UseCaseStep = React.memo<UseCaseStepProps>(
       if (hasAttemptedNext) {
         setValidationError("");
       }
+      
+      // Update zopim tag for use case
+      const newUseCaseTag = `Use Case: ${selectedOption?.title || useCaseId}`;
+      // Remove previous use case tag if exists
+      if (currentUseCaseTagRef.current) {
+        zopimEvents.removeTag(currentUseCaseTagRef.current);
+      }
+      // Add new use case tag
+      zopimEvents.addTag(newUseCaseTag);
+      currentUseCaseTagRef.current = newUseCaseTag;
     };
 
     // Validation function

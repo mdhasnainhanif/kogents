@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
 import { fileToBlob, validateFile } from "@/utils/fileUtils";
 import { ChatWidget } from "../ChatWidget";
+import zopimEvents from "@/utils/zopim-events";
 interface CustomizationStepProps {
   data: ChatbotWizardData;
   onUpdate: (updates: Partial<ChatbotWizardData>) => void;
@@ -48,6 +49,10 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
     );
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
     const [hexInputValue, setHexInputValue] = useState<string>("");
+    
+    // Track current zopim tags
+    const currentColorTagRef = useRef<string | null>(null);
+    const currentBotNameTagRef = useRef<string | null>(null);
 
     // ✅ Set default avatar on component mount if no avatar is selected
     useEffect(() => {
@@ -134,6 +139,16 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
           return newErrors;
         });
       }
+      
+      // Update zopim tag for color
+      const newColorTag = `Color: ${color}`;
+      // Remove previous color tag if exists
+      if (currentColorTagRef.current) {
+        zopimEvents.removeTag(currentColorTagRef.current);
+      }
+      // Add new color tag
+      zopimEvents.addTag(newColorTag);
+      currentColorTagRef.current = newColorTag;
     };
 
     // Sync hex input when primary color changes externally
@@ -233,6 +248,19 @@ export const CustomizationStep = React.memo<CustomizationStepProps>(
                             delete newErrors.botname;
                             return newErrors;
                           });
+                        }
+                      }}
+                      onBlur={(e) => {
+                        const botName = e.target.value.trim();
+                        if (botName) {
+                          const newBotNameTag = `Bot Name: ${botName}`;
+                          // Remove previous bot name tag if exists
+                          if (currentBotNameTagRef.current) {
+                            zopimEvents.removeTag(currentBotNameTagRef.current);
+                          }
+                          // Add new bot name tag
+                          zopimEvents.addTag(newBotNameTag);
+                          currentBotNameTagRef.current = newBotNameTag;
                         }
                       }}
                       placeholder="Enter Your Bot Name.."

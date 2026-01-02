@@ -5,10 +5,12 @@ import { Check } from "lucide-react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
-import { ArrowRightIcon2 } from "@/icons";
-import CrawlModal from "../CrawlModal";
-import { createWorkspaceWithFiles } from "@/api/workspace";
-import { io, Socket } from "socket.io-client";
+import { Socket } from "socket.io-client";
+import { useRouter } from "next/navigation";
+import zopimEvents from "@/utils/zopim-events";
+
+// Declare $zopim as a global variable
+declare var $zopim: any;
 
 interface IntegrationStepProps {
   data: ChatbotWizardData;
@@ -36,198 +38,231 @@ const INTEGRATION_OPTIONS = [
 
 // Helper functions to get tracking data
 const getSessionStorage = (key: string): string | null => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     return sessionStorage.getItem(key);
   }
   return null;
 };
 
 const getStableSessionId = (): string => {
-  if (typeof window !== 'undefined') {
-    let stableSessionId = localStorage.getItem('stable_session_id');
+  if (typeof window !== "undefined") {
+    let stableSessionId = localStorage.getItem("stable_session_id");
     if (!stableSessionId) {
-      stableSessionId = 'sid_' + Math.random().toString(36).substr(2, 9) + Date.now();
-      localStorage.setItem('stable_session_id', stableSessionId);
+      stableSessionId =
+        "sid_" + Math.random().toString(36).substr(2, 9) + Date.now();
+      localStorage.setItem("stable_session_id", stableSessionId);
     }
     return stableSessionId;
   }
-  return '';
+  return "";
 };
 
 // Function to format data for CRM API
-const formatCRMData = (data: ChatbotWizardData, selectedIntegration: string) => {
+const formatCRMData = (
+  data: ChatbotWizardData,
+  selectedIntegration: string
+) => {
   // Get tracking data
-  const fingerprint = data.fingerprint || (typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('fingerprint') || '' : '');
+  const fingerprint =
+    data.fingerprint ||
+    (typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("fingerprint") || ""
+      : "");
   const stableSessionId = data.stableSessionId || getStableSessionId();
-  const fingerprintData = data.fingerprintData || '';
-  
+  const fingerprintData = data.fingerprintData || "";
+
   // Get website URL
-  const websiteUrl = data.websiteUrl || data.knowledgeSources?.urls?.[0] || 'https://kogents.ai/';
-  
+  const websiteUrl =
+    data.websiteUrl ||
+    data.knowledgeSources?.urls?.[0] ||
+    "https://kogents.ai/";
+
   // Format integration option label
   const integrationLabels: Record<string, string> = {
-    'self-manage': 'Do you manage your website yourself?',
-    'technical-person': 'I have a technical person to do this for me',
-    'engineering-team': 'Would you like our engineering team to do this for you?'
+    "self-manage": "Do you manage your website yourself?",
+    "technical-person": "I have a technical person to do this for me",
+    "engineering-team":
+      "Would you like our engineering team to do this for you?",
   };
-  const integrationLabel = integrationLabels[selectedIntegration] || selectedIntegration;
-  
+  const integrationLabel =
+    integrationLabels[selectedIntegration] || selectedIntegration;
+
   // Format use cases
   const useCasesList = data.useCases || [];
-  let useCaseLabel = '';
+  let useCaseLabel = "";
   if (useCasesList.length > 0) {
     const firstUseCase = useCasesList[0];
-    const [useCaseId] = firstUseCase.split(':') || [''];
-    if (useCaseId === 'customer-support') {
-      useCaseLabel = 'Customer Support AI Agent';
-    } else if (useCaseId === 'lead-capture') {
-      useCaseLabel = 'Lead Capture AI Agent';
-    } else if (useCaseId === 'sales') {
-      useCaseLabel = 'Sales AI Agent';
+    const [useCaseId] = firstUseCase.split(":") || [""];
+    if (useCaseId === "customer-support") {
+      useCaseLabel = "Customer Support AI Agent";
+    } else if (useCaseId === "lead-capture") {
+      useCaseLabel = "Lead Capture AI Agent";
+    } else if (useCaseId === "sales") {
+      useCaseLabel = "Sales AI Agent";
     } else {
-      useCaseLabel = useCaseId || '';
+      useCaseLabel = useCaseId || "";
     }
   }
-  
+
   // Format role labels
   const roleLabels: Record<string, string> = {
-    'customer-support-manager': 'Customer Support Manager',
-    'product-manager': 'Product Manager',
-    'Kogents': 'Kogents',
-    'sales-manager': 'Sales Manager',
-    'human-resource-manager': 'Human Resource Manager',
-    'ecommerce-category-manager': 'E-commerce Category Manager',
-    'itsm-manager': 'ITSM Manager',
-    'head-of-it': 'Head of IT',
-    'marketing-manager': 'Marketing Manager',
-    'operations-manager': 'Operations Manager',
-    'other': 'Other'
+    "customer-support-manager": "Customer Support Manager",
+    "product-manager": "Product Manager",
+    Kogents: "Kogents",
+    "sales-manager": "Sales Manager",
+    "human-resource-manager": "Human Resource Manager",
+    "ecommerce-category-manager": "E-commerce Category Manager",
+    "itsm-manager": "ITSM Manager",
+    "head-of-it": "Head of IT",
+    "marketing-manager": "Marketing Manager",
+    "operations-manager": "Operations Manager",
+    other: "Other",
   };
-  const roleLabel = roleLabels[data.role] || data.role || '';
-  
+  const roleLabel = roleLabels[data.role] || data.role || "";
+
   // Format heardAboutUs labels
   const heardAboutLabels: Record<string, string> = {
-    'search-engine': 'Search Engine',
-    'social-media': 'Social Media',
-    'youtube': 'YouTube',
-    'blogs-articles': 'Blogs/Articles',
-    'email-newsletter': 'Email Newsletter',
-    'review-comparison-site': 'Review/Comparison Site',
-    'referred-by-colleague': 'Referred by Colleague',
-    'redirected-from-chatsonic': 'Redirected from Chatsonic',
-    'online-ads': 'Online Ads',
-    'conference-event': 'Conference/Event',
-    'other': 'Other'
+    "search-engine": "Search Engine",
+    "social-media": "Social Media",
+    youtube: "YouTube",
+    "blogs-articles": "Blogs/Articles",
+    "email-newsletter": "Email Newsletter",
+    "review-comparison-site": "Review/Comparison Site",
+    "referred-by-colleague": "Referred by Colleague",
+    "redirected-from-chatsonic": "Redirected from Chatsonic",
+    "online-ads": "Online Ads",
+    "conference-event": "Conference/Event",
+    other: "Other",
   };
-  const heardAboutLabel = heardAboutLabels[data.heardAboutUs] || data.heardAboutUs || '';
-  
+  const heardAboutLabel =
+    heardAboutLabels[data.heardAboutUs] || data.heardAboutUs || "";
+
   // Format deployment timeline labels
   const deploymentLabels: Record<string, string> = {
-    'immediately': 'Immediately',
-    'within-1-month': 'Within 1 Month',
-    'within-3-months': 'Within 3 Months',
-    'within-6-months': 'Within 6 Months',
-    'not-sure': 'Not Sure'
+    immediately: "Immediately",
+    "within-1-month": "Within 1 Month",
+    "within-3-months": "Within 3 Months",
+    "within-6-months": "Within 6 Months",
+    "not-sure": "Not Sure",
   };
-  const deploymentLabel = deploymentLabels[data.deploymentTimeline] || data.deploymentTimeline || '';
-  
+  const deploymentLabel =
+    deploymentLabels[data.deploymentTimeline] || data.deploymentTimeline || "";
+
   // Build form_steps array with Step 1, 2, and 3 data
   const formSteps: Record<string, any> = {
-    '0': {
+    "0": {
       fields: [
-        { q: 'Bot Name', a: data.botname || '' },
-        { q: 'Bot Image', a: data.botImage || data.appearance?.avatar || '' },
+        { q: "Bot Name", a: data.botname || "" },
+        { q: "Bot Image", a: data.botImage || data.appearance?.avatar || "" },
         // Step 1 additional fields
-        { q: 'Role', a: roleLabel },
-        { q: 'Heard About Us', a: heardAboutLabel },
-        { q: 'Deployment Timeline', a: deploymentLabel }
-      ]
+        { q: "Role", a: roleLabel },
+        { q: "Heard About Us", a: heardAboutLabel },
+        { q: "Deployment Timeline", a: deploymentLabel },
+      ],
     },
-    '1': {
+    "1": {
       fields: [
-        { q: 'Company Name', a: data.companyName || '' },
-        { q: 'Industry', a: data.industry || '' },
+        { q: "Company Name", a: data.companyName || "" },
+        { q: "Industry", a: data.industry || "" },
         // Step 2 additional fields
-        ...(data.employeeCount ? [{ q: 'Employee Count', a: data.employeeCount }] : []),
-        ...(data.department ? [{ q: 'Department', a: data.department }] : [])
-      ]
+        ...(data.employeeCount
+          ? [{ q: "Employee Count", a: data.employeeCount }]
+          : []),
+        ...(data.department ? [{ q: "Department", a: data.department }] : []),
+      ],
     },
-    '2': {
+    "2": {
       fields: [
         // Step 3: Use Cases
-        ...(useCaseLabel ? [{ q: 'Use Case', a: useCaseLabel }] : [])
-      ]
+        ...(useCaseLabel ? [{ q: "Use Case", a: useCaseLabel }] : []),
+      ],
     },
-    '3': {
+    "3": {
       fields: [
         // Step 3: Appearance/Customization
-        ...(data.appearance?.primaryColor ? [{ q: 'Primary Color', a: data.appearance.primaryColor }] : []),
-        ...(data.appearance?.secondaryColor ? [{ q: 'Secondary Color', a: data.appearance.secondaryColor }] : []),
-        ...(data.appearance?.chatBubbleStyle ? [{ q: 'Chat Bubble Style', a: data.appearance.chatBubbleStyle }] : []),
-        ...(data.appearance?.fontFamily ? [{ q: 'Font Family', a: data.appearance.fontFamily }] : [])
-      ]
+        ...(data.appearance?.primaryColor
+          ? [{ q: "Primary Color", a: data.appearance.primaryColor }]
+          : []),
+        ...(data.appearance?.secondaryColor
+          ? [{ q: "Secondary Color", a: data.appearance.secondaryColor }]
+          : []),
+        ...(data.appearance?.chatBubbleStyle
+          ? [{ q: "Chat Bubble Style", a: data.appearance.chatBubbleStyle }]
+          : []),
+        ...(data.appearance?.fontFamily
+          ? [{ q: "Font Family", a: data.appearance.fontFamily }]
+          : []),
+      ],
     },
-    '4': {
+    "4": {
       fields: [
-        { q: 'Full Name', a: data.name || '' },
-        { q: 'Email', a: data.email || '' },
-        ...(data.phone ? [{ q: 'Phone', a: data.phone }] : [])
-      ]
+        { q: "Full Name", a: data.name || "" },
+        { q: "Email", a: data.email || "" },
+        ...(data.phone ? [{ q: "Phone", a: data.phone }] : []),
+      ],
     },
-    '5': {
-      fields: [
-        { q: 'Integration Option', a: integrationLabel }
-      ]
-    }
+    "5": {
+      fields: [{ q: "Integration Option", a: integrationLabel }],
+    },
   };
-  
+
   // Build the payload
   const payload = {
-    name: data.name || '',
-    phone_number: data.phone || '',
-    email: data.email || '',
+    name: data.name || "",
+    phone_number: data.phone || "",
+    email: data.email || "",
     link: websiteUrl,
-    message: 'Looking for AI chatbot integration',
+    message: "Looking for AI chatbot integration",
     metadata: {
-      brand: 'kogents.ai',
+      brand: "kogents.ai",
       fingerprint: fingerprint,
       stable_session_id: stableSessionId,
-      fingerprintdata: fingerprintData
+      fingerprintdata: fingerprintData,
     },
     form_steps: formSteps,
     stable_session_id: stableSessionId,
     service_id: 2,
-    user_agent: typeof window !== 'undefined' ? navigator.userAgent : ''
+    user_agent: typeof window !== "undefined" ? navigator.userAgent : "",
   };
-  
+
   return payload;
 };
 
 // Function to send data to CRM API
 const sendLeadToCRM = async (payload: any) => {
   try {
-    const response = await fetch('https://portal.kogents.ai/crm/lead/create/briefform', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
-    
+    const response = await fetch(
+      "https://portal.kogents.ai/crm/lead/create/briefform",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     const result = await response.json();
     return result;
   } catch (error) {
-    console.error('Error sending lead to CRM:', error);
+    console.error("Error sending lead to CRM:", error);
     throw error;
   }
 };
 
 export const IntegrationStep = React.memo<IntegrationStepProps>(
-  ({ data, onUpdate, errors, footerOptions, onValidationChange, onValidate }) => {
+  ({
+    data,
+    onUpdate,
+    errors,
+    footerOptions,
+    onValidationChange,
+    onValidate,
+  }) => {
     const [selectedOption, setSelectedOption] = useState<string>("");
     const [validationError, setValidationError] = useState<string>("");
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
@@ -243,6 +278,8 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
     const socketRef = useRef<Socket | null>(null);
 
     console.log("data", data);
+
+    const router = useRouter();
 
     // Initialize from data
     useEffect(() => {
@@ -292,6 +329,21 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
         onValidate(validateSelection);
       }
     }, [onValidate, selectedOption]);
+
+    // Set Zopim user information (name, email, phone)
+    useEffect(() => {
+      if (typeof window !== "undefined" && $zopim) {
+        if (data.name) {
+          zopimEvents.setName(data.name);
+        }
+        if (data.email) {
+          zopimEvents.setEmail(data.email);
+        }
+        if (data.phone) {
+          zopimEvents.setPhone(data.phone);
+        }
+      }
+    }, [data.name, data.email, data.phone]);
 
     // Submit to user-provided workspace API with WebSocket support (same as GetUserInfo2)
     // const crawlWebsite = async (url?: string) => {
@@ -562,7 +614,7 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
         return;
       }
 
-      console.log('🔵 Step 6: handleActivateAgent called');
+      console.log("🔵 Step 6: handleActivateAgent called");
 
       // Show modal immediately (same as GetUserInfo2)
       setShowCrawlModal(true);
@@ -586,21 +638,21 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
       if (!validateSelection()) {
         return;
       }
-      
+
       // ✅ Call CRM API before proceeding
       setIsSubmitting(true);
       try {
         const crmPayload = formatCRMData(data, selectedOption);
-        console.log('📤 Sending lead data to CRM:', crmPayload);
-        
+        console.log("📤 Sending lead data to CRM:", crmPayload);
+
         await sendLeadToCRM(crmPayload);
-        console.log('✅ Lead sent to CRM successfully');
-        
+        console.log("✅ Lead sent to CRM successfully");
+
         // After successful API call, proceed to next step
         footerOptions.onNext();
       } catch (error) {
-        console.error('❌ Error sending lead to CRM:', error);
-        setValidationError('Failed to submit. Please try again.');
+        console.error("❌ Error sending lead to CRM:", error);
+        setValidationError("Failed to submit. Please try again.");
       } finally {
         setIsSubmitting(false);
       }
@@ -612,25 +664,27 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
       if (!validateSelection()) {
         return;
       }
-      
+
       // ✅ Call CRM API only (NO /workspace/kogent-bot API)
       setIsSubmitting(true);
       try {
         const crmPayload = formatCRMData(data, selectedOption);
-        console.log('📤 Sending lead data to CRM:', crmPayload);
-        
-       const response =  await sendLeadToCRM(crmPayload);
-        console.log('✅ Lead sent to CRM successfully');
-        
+        console.log("📤 Sending lead data to CRM:", crmPayload);
+
+        const response = await sendLeadToCRM(crmPayload);
+        console.log("✅ Lead sent to CRM successfully");
+
         // ✅ Do NOT call footerOptions.onComplete() - this prevents /workspace/kogent-bot API
         // Just redirect or show success message
         // You can add redirect here if needed:
         if (response.success) {
-          window.location.href = '/thank-you';
+          // Include name in URL if available
+          const nameParam = data.name ? `?name=${encodeURIComponent(data.name)}` : '';
+          router.push(`/thank-you${nameParam}`);
         }
       } catch (error) {
-        console.error('❌ Error sending lead to CRM:', error);
-        setValidationError('Failed to submit. Please try again.');
+        console.error("❌ Error sending lead to CRM:", error);
+        setValidationError("Failed to submit. Please try again.");
       } finally {
         setIsSubmitting(false);
       }
@@ -650,12 +704,16 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
           <div className="row">
             {/* Left Panel */}
             <div className="col-lg-12 chatbot-left-content-wrapper">
-              <InViewAnimate animClass="fade-up-200" className="chatbot-content-wrapper">
+              <InViewAnimate
+                animClass="fade-up-200"
+                className="chatbot-content-wrapper"
+              >
                 <div className="chatbot-content">
                   <div className="mb-4">
                     <div className="stepText my-2">Step 6 of 6</div>
                     <h2 className="h4 fw-bold text-white">
-                      How would you like to integrate "{data.botname || "agent name"}" on website?
+                      How would you like to integrate "
+                      {data.botname || "agent name"}" on website?
                     </h2>
                   </div>
 
@@ -666,8 +724,9 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                         <div
                           key={option.id}
                           onClick={() => handleOptionSelect(option.id)}
-                          className={`option_item ${isSelected ? "selected_item" : "un_selected_item"
-                            }`}
+                          className={`option_item ${
+                            isSelected ? "selected_item" : "un_selected_item"
+                          }`}
                         >
                           <span className="ms-2">{option.label}</span>
                           <label
@@ -700,14 +759,12 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
                       <p className="text-danger">{validationError}</p>
                     </div>
                   )}
-
-                  
                 </div>
               </InViewAnimate>
 
               <div className="chatbot-content-wrapper footer w-100">
-                <WizardNavigation2 
-                  {...modifiedFooterOptions} 
+                <WizardNavigation2
+                  {...modifiedFooterOptions}
                   isLoading={isSubmitting} // ✅ Pass isLoading separately
                 />
               </div>
@@ -748,4 +805,3 @@ export const IntegrationStep = React.memo<IntegrationStepProps>(
 );
 
 IntegrationStep.displayName = "IntegrationStep";
-

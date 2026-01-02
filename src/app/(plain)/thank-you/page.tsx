@@ -1,12 +1,10 @@
-import { ArrowRightIcon } from "@/icons";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { Metadata } from "next";
 import BlogList from "@/components/blog/BlogList";
 import NewFooter from "@/components/NewFooter";
 import ClientTestimonial from "@/components/CustomerServiceAIAgents/ClientTestimonial";
 import HeaderWrapper from "@/components/HeaderWrapper";
+import ZopimButtonWrapper from "@/components/ZopimButtonWrapper";
 
 export const metadata: Metadata = {
   title: "Thank You | Kogents AI",
@@ -18,7 +16,13 @@ export const metadata: Metadata = {
   },
 };
 
-const page = () => {
+interface PageProps {
+  searchParams: Promise<{ name?: string }>;
+}
+
+const page = async ({ searchParams }: PageProps) => {
+  const params = await searchParams;
+  const userName = params.name || null;
   return (
     <>
       <div>
@@ -30,108 +34,42 @@ const page = () => {
           <div className="container">
             <div className="row justify-content-center sectionPadding">
               <div className="col-md-10">
+                {/* Thank You Badge */}
                 <span className="buttonAnimation yellow mx-auto width_fit d-block px-4 py-2 text-sm font-medium border rounded-full border-blue-400 bg-b-600 text-tropical-indigo aos-init aos-animate">
-                  Thank You
+                  {userName ? `Thank You ${userName}` : "Thank You"}
                 </span>
-                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize">
-                  You're in! Here's What Happens Next.
+
+                {/* Main Heading */}
+                <h2 className="text-center tracking-[-0.02em] text-3xl md:text-5xl font-semibold headingSize mt-4">
+                  We've successfully received your chatbot requirements.
                 </h2>
 
-                {/* <p className="text-center paraColor subHeading w-100 mx-auto mt125">
-                  Explore our blogs to learn how AI agents can transform
-                  workflows.
-                </p> */}
+                {/* Description Paragraphs */}
+                <div className="text-center paraColor subHeading w-100 mx-auto mt-4">
+                  <p className="mb-0">
+                    We're now working behind the scenes to build a smart AI chat
+                    agent for your business.
+                  </p>
+                  <p className="mb-3" style={{ marginTop: 0 }}>
+                    Our team will proceed with chatbot configuration shortly.
+                  </p>
+                  <p className="mb-0">
+                    Please keep your phone and email available. Our team may
+                    reach out for quick confirmations to speed up setup.
+                  </p>
+                </div>
 
+                {/* CTA Button */}
+                <div className="text-center mt-5">
+                  <ZopimButtonWrapper />
+                </div>
               </div>
             </div>
-            {/* <div className="row rowGap justify-content-center mt-5"> */}
-            {/* Card 1 */}
-            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-                <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                  <Image
-                    src="/assets/img/steps/live_chat.webp"
-                    alt="Live Chat"
-                    className="rounded-lg"
-                    width={800}
-                    height={600}
-                  />
-                  <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                    Live Chat
-                  </h3>
-                  <p className="text-white">
-                    Let's Talk! Share your design requirements with one of our
-                    designers to get a perfect logo that you envisioned for
-                  </p>
-                  <Link
-                    href="/"
-                    aria-label="KOGENTS - Go to homepage"
-                    className="w_fit buttonAnimation2 pink mt-3 d-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
-                  >
-                    Let's Chat
-                    <ArrowRightIcon style={{ height: 24 }} />
-                  </Link>
-                </div>
-              </div> */}
-
-            {/* Card 2 */}
-            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-                <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                  <Image
-                    src="/assets/img/steps/about_us.webp"
-                    alt="About Us"
-                    className="rounded-lg"
-                    width={800}
-                    height={600}
-                  />
-                  <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                    About Us
-                  </h3>
-                  <p className="text-white">
-                    Let's Talk! Share your design requirements with one of our
-                    designers to get a perfect logo that you envisioned for
-                  </p>
-                  <Link
-                    href="/about"
-                    className="w_fit buttonAnimation2 green mt-3 d-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
-                  >
-                    Know More About Us
-                    <ArrowRightIcon style={{ height: 24 }} />
-                  </Link>
-                </div>
-              </div> */}
-
-            {/* Card 3 */}
-            {/* <div className="col-xl-4 col-lg-6 col-md-6 col-12">
-                <div className="p-6 border rounded-lg border-b-600 bg-gd-tertiary aos-init aos-animate newServicesCard">
-                  <Image
-                    src="/assets/img/steps/solutions.webp"
-                    alt="Solutions"
-                    className="rounded-lg"
-                    width={800}
-                    height={600}
-                  />
-                  <h3 className="mt-8 mb-6 text-2xl font-medium text-w-500">
-                    Solutions
-                  </h3>
-                  <p className="text-white">
-                    Let's Talk! Share your design requirements with one of our
-                    designers to get a perfect logo that you envisioned for
-                  </p>
-                  <Link
-                    href="/solutions"
-                    className="w_fit buttonAnimation2 yellow mt-3 d-flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 bg-transparent border rounded-full border-tropical-indigo text-w-900 hover:bg-tropical-indigo"
-                  >
-                    Explore More
-                    <ArrowRightIcon style={{ height: 24 }} />
-                  </Link>
-                </div>
-              </div>
-            </div> */}
           </div>
         </section>
-        <div className="pt-16 pb-16">
-          <BlogList 
-            isShowBadge={true} 
+        <div className="pt-16 pb-16" style={{ paddingTop: "6rem" }}>
+          <BlogList
+            isShowBadge={true}
             description="Explore our blogs to learn how AI agents can transform workflows."
           />
         </div>

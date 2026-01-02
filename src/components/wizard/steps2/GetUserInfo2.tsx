@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
@@ -11,6 +11,7 @@ import CrawlModal from "../CrawlModal";
 import axios from "axios";
 import { createWorkspaceWithFiles } from "@/api/workspace";
 import { io, Socket } from "socket.io-client";
+import zopimEvents from "@/utils/zopim-events";
 
 interface BasicInfoStepProps {
   footerOptions: FooterOptions;
@@ -433,6 +434,10 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       stableSessionId: "",
       fingerprintData: null as string | null,
     });
+    
+    // Track current zopim tags
+    const currentWebsiteUrlTagRef = useRef<string | null>(null);
+    const currentFilesTagRef = useRef<string | null>(null);
 
     // Crawl API states
     const [showCrawlModal, setShowCrawlModal] = useState<boolean>(false);
@@ -595,6 +600,25 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
               return newErrors;
             });
           }
+          
+          // Update zopim tag for files
+          if (files.length > 0) {
+            const fileNames = files.map(f => f.name).join(", ");
+            const newFilesTag = `Files: ${fileNames}`;
+            // Remove previous files tag if exists
+            if (currentFilesTagRef.current) {
+              zopimEvents.removeTag(currentFilesTagRef.current);
+            }
+            // Add new files tag
+            zopimEvents.addTag(newFilesTag);
+            currentFilesTagRef.current = newFilesTag;
+          } else {
+            // Remove tag if files are cleared
+            if (currentFilesTagRef.current) {
+              zopimEvents.removeTag(currentFilesTagRef.current);
+              currentFilesTagRef.current = null;
+            }
+          }
         } catch (error) {
           console.error("Error converting files to blobs:", error);
           onUpdate({
@@ -611,6 +635,25 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
               delete newErrors.files;
               return newErrors;
             });
+          }
+          
+          // Update zopim tag for files (even on error)
+          if (files.length > 0) {
+            const fileNames = files.map(f => f.name).join(", ");
+            const newFilesTag = `Files: ${fileNames}`;
+            // Remove previous files tag if exists
+            if (currentFilesTagRef.current) {
+              zopimEvents.removeTag(currentFilesTagRef.current);
+            }
+            // Add new files tag
+            zopimEvents.addTag(newFilesTag);
+            currentFilesTagRef.current = newFilesTag;
+          } else {
+            // Remove tag if files are cleared
+            if (currentFilesTagRef.current) {
+              zopimEvents.removeTag(currentFilesTagRef.current);
+              currentFilesTagRef.current = null;
+            }
           }
         }
       },
@@ -656,6 +699,18 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             return newErrors;
           });
         }
+        
+        // Update zopim tag for website URL
+        if (websiteUrl) {
+          const newWebsiteUrlTag = `Website URL: ${websiteUrl}`;
+          // Remove previous website URL tag if exists
+          if (currentWebsiteUrlTagRef.current) {
+            zopimEvents.removeTag(currentWebsiteUrlTagRef.current);
+          }
+          // Add new website URL tag
+          zopimEvents.addTag(newWebsiteUrlTag);
+          currentWebsiteUrlTagRef.current = newWebsiteUrlTag;
+        }
       },
       [data.knowledgeSources, onUpdate, hasAttemptedNext]
     );
@@ -693,7 +748,7 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
       // Show initial message
       setCrawlProgress(5); // Initial progress
 
-      const progressInterval: NodeJS.Timeout | null = null;
+      let progressInterval: NodeJS.Timeout | null = null;
       let socket: Socket | null = null;
       let userId: string | null = null;
 
@@ -828,6 +883,34 @@ export const GetUserInfo2 = React.memo<BasicInfoStepProps>(
             }));
             // Update progress to show socket is connected
             setCrawlProgress(20); // Show some progress
+
+            // Start interval to gradually increase progress from 20% to 80% over 60 seconds
+            // Clear any existing interval first
+            if (progressInterval) {
+              clearInterval(progressInterval);
+            }
+
+            let currentProgress = 20;
+            const targetProgress = 95;
+            const duration = 60000; // 60 seconds in milliseconds
+            const intervalTime = 5000; // Update every 5 second
+            const totalSteps = duration / intervalTime; // 60 steps
+            const incrementPerStep = (targetProgress - currentProgress) / totalSteps; // 1% per second
+
+            progressInterval = setInterval(() => {
+              currentProgress += incrementPerStep;
+              
+              // Cap at 80% maximum
+              if (currentProgress >= targetProgress) {
+                currentProgress = targetProgress;
+                if (progressInterval) {
+                  clearInterval(progressInterval);
+                  progressInterval = null;
+                }
+              }
+              
+              setCrawlProgress(Math.min(currentProgress, targetProgress));
+            }, intervalTime);
           });
 
           socket.on("connect_error", (error) => {

@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
 import { ChatWidget } from "../ChatWidget";
+import zopimEvents from "@/utils/zopim-events";
 
 interface BasicSetupStepProps {
   footerOptions: FooterOptions;
@@ -48,6 +49,10 @@ export const BasicSetupStep = React.memo<BasicSetupStepProps>(
     const [hasAttemptedNext, setHasAttemptedNext] = useState<boolean>(false);
     const [verticals, setVerticals] = useState<Vertical[]>([]);
     const [isLoadingVerticals, setIsLoadingVerticals] = useState<boolean>(true);
+    
+    // Track current zopim tags
+    const currentCompanyNameTagRef = useRef<string | null>(null);
+    const currentIndustryTagRef = useRef<string | null>(null);
 
     // Fetch verticals from API
     useEffect(() => {
@@ -178,6 +183,19 @@ export const BasicSetupStep = React.memo<BasicSetupStepProps>(
                           });
                         }
                       }}
+                      onBlur={(e) => {
+                        const companyName = e.target.value.trim();
+                        if (companyName) {
+                          const newCompanyNameTag = `Company Name: ${companyName}`;
+                          // Remove previous company name tag if exists
+                          if (currentCompanyNameTagRef.current) {
+                            zopimEvents.removeTag(currentCompanyNameTagRef.current);
+                          }
+                          // Add new company name tag
+                          zopimEvents.addTag(newCompanyNameTag);
+                          currentCompanyNameTagRef.current = newCompanyNameTag;
+                        }
+                      }}
                       placeholder="Enter Your Company Name.."
                       className={`form-control mt-2 ${
                         fieldErrors.companyName && hasAttemptedNext
@@ -205,9 +223,10 @@ export const BasicSetupStep = React.memo<BasicSetupStepProps>(
                           background: "#050315",
                         }}
                         onChange={(e) => {
-                          onUpdate({ industry: e.target.value });
+                          const industryValue = e.target.value;
+                          onUpdate({ industry: industryValue });
                           if (
-                            e.target.value.trim().length > 0 &&
+                            industryValue.trim().length > 0 &&
                             hasAttemptedNext
                           ) {
                             setFieldErrors((prev) => {
@@ -215,6 +234,20 @@ export const BasicSetupStep = React.memo<BasicSetupStepProps>(
                               delete newErrors.industry;
                               return newErrors;
                             });
+                          }
+                          
+                          // Update zopim tag for industry
+                          if (industryValue.trim()) {
+                            const selectedVertical = verticals.find(v => v.name === industryValue);
+                            const industryDisplayName = selectedVertical?.full_name || industryValue;
+                            const newIndustryTag = `Industry: ${industryDisplayName}`;
+                            // Remove previous industry tag if exists
+                            if (currentIndustryTagRef.current) {
+                              zopimEvents.removeTag(currentIndustryTagRef.current);
+                            }
+                            // Add new industry tag
+                            zopimEvents.addTag(newIndustryTag);
+                            currentIndustryTagRef.current = newIndustryTag;
                           }
                         }}
                         className={`form-control mt-2 ${

@@ -248,7 +248,9 @@ function ChatbotWizard3() {
             console.error('Failed to clear localStorage:', error);
           }
         }
-        router.push("/thank-you");
+        // Include name in URL if available
+        const nameParam = data.name ? `?name=${encodeURIComponent(data.name)}` : '';
+        router.push(`/thank-you${nameParam}`);
         return;
       } catch (wsErr) {
         console.error("❌ Workspace API failed:", wsErr);
