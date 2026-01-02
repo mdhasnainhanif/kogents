@@ -7,7 +7,7 @@ import InViewAnimate from "@/components/InViewAnimate";
 import zopimEvents from "@/utils/zopim-events";
 
 // Declare $zopim as a global variable
-declare var $zopim: any;
+declare let $zopim: any;
 
 interface PersonalInfoStepProps {
   footerOptions: FooterOptions;

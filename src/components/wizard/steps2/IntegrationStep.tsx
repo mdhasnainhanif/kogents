@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import zopimEvents from "@/utils/zopim-events";
 
 // Declare $zopim as a global variable
-declare var $zopim: any;
+declare let $zopim: any;
 
 interface IntegrationStepProps {
   data: ChatbotWizardData;

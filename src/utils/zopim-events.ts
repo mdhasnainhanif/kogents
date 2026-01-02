@@ -1,5 +1,5 @@
 // Declare $zopim as a global variable
-declare var $zopim: any;
+declare let $zopim: any;
 
 const zopimEvents = {
   toggleChat: () => {
