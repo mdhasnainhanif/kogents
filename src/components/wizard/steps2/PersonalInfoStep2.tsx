@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Script from "next/script";
 import type { ChatbotWizardData, FooterOptions } from "@/types/wizard";
 import { WizardNavigation2 } from "../WizardNavigation2";
 import InViewAnimate from "@/components/InViewAnimate";
+import zopimEvents from "@/utils/zopim-events";
+
+// Declare $zopim as a global variable
+declare var $zopim: any;
 
 interface PersonalInfoStepProps {
   footerOptions: FooterOptions;
@@ -663,6 +666,13 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                             onClearSubmitError();
                           }
                         }}
+                        onBlur={(e) => {
+                          // Set name in Zopim on blur
+                          const name = e.target.value.trim();
+                          if (name && typeof window !== "undefined" && $zopim) {
+                            zopimEvents.setName(name);
+                          }
+                        }}
                         className={`w-full form-control ${
                           fieldErrors.name && hasAttemptedNext ? "is-invalid" : ""
                         }`}
@@ -703,14 +713,21 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                           }
                         }}
                         onBlur={(e) => {
+                          const email = e.target.value.trim();
+                          
                           // Validate email format on blur if user has attempted next
-                          if (hasAttemptedNext && e.target.value.trim().length > 0) {
-                            if (!validateEmailFormat(e.target.value)) {
+                          if (hasAttemptedNext && email.length > 0) {
+                            if (!validateEmailFormat(email)) {
                               setFieldErrors((prev) => ({
                                 ...prev,
                                 email: "Please enter a valid email address (e.g., john.doe@company.com).",
                               }));
                             }
+                          }
+                          
+                          // Set email in Zopim on blur (only if valid format)
+                          if (email && validateEmailFormat(email) && typeof window !== "undefined" && $zopim) {
+                            zopimEvents.setEmail(email);
                           }
                         }}
                         className={`w-full form-control ${
@@ -734,6 +751,13 @@ export const PersonalInfoStep2 = React.memo<PersonalInfoStepProps>(
                         value={data.phone || ""}
                         autoComplete="off"
                         onChange={(e) => onUpdate({ phone: e.target.value })}
+                        onBlur={(e) => {
+                          // Set phone in Zopim on blur
+                          const phone = e.target.value.trim();
+                          if (phone && typeof window !== "undefined" && $zopim) {
+                            zopimEvents.setPhone(phone);
+                          }
+                        }}
                         className="w-full form-control" 
                       />
                     </div>
