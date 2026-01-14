@@ -53,7 +53,7 @@ const SideForm = () => {
       <div className={`${styles['static_form_main']} ${isOpen ? styles['right_0_rem'] : ''} sideFormMain2`}>
         {/* Toggle Icon */}
         <div className={`sideFormIcon ${styles['staticform_icon']} ${styles.letsGetStartedToggle}`} onClick={toggleForm}>
-          <h6>Book a Free Consultation!</h6>
+          <h6>Signup & Get Free Chatbot</h6>
         </div>
         
         {/* Form Content */}
